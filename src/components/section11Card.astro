@@ -50,7 +50,7 @@ const cardSection  = data?.cardSection?.find(
             >
                 {cardSection?.cardPara}
             </p><button
-                style="padding: 14px 32px; width: 100%; max-width: 320px; border: 1px solid rgb(255, 255, 255); border-radius: 100px; background: transparent; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 600; line-height: normal; cursor: pointer;"
+                style="color:#ffffff ; padding: 14px 32px; width: 100%; max-width: 320px; border: 1px solid rgb(255, 255, 255); border-radius: 100px; background: transparent; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 600; line-height: normal; cursor: pointer;"
                 >{cardSection?.cardButtonContent}</button
             ><Image
                 alt="bannerPattern"
@@ -60,68 +60,3 @@ const cardSection  = data?.cardSection?.find(
         </div>
     </div>
 </section>
-
-<style>
-    /* Section Wrapper */
-    .impact-section {
-        text-align: center;
-        padding: 60px 20px;
-        background: rgb(246, 246, 247);
-        font-family: Arial, sans-serif;
-    }
-
-    .impact-section h2 {
-        font-size: 32px;
-        margin-bottom: 60px;
-        font-weight: 600;
-    }
-
-    /* Grid Layout */
-    .impact-grid {
-        display: flex;
-        justify-content: center;
-        gap: 80px;
-        flex-wrap: wrap;
-    }
-
-    /* Individual Item */
-    .impact-item {
-        max-width: 250px;
-        padding: 0 20px;
-        border-right: 1px solid #dcdcdc;
-    }
-
-    .impact-item:last-child {
-        border-right: none;
-    }
-
-    .impact-item h3 {
-        font-size: 48px;
-        color: #1a73e8;
-        margin: 0 0 15px;
-    }
-
-    .impact-item p {
-        font-size: 16px;
-        color: #555;
-        line-height: 1.5;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .impact-grid {
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .impact-item {
-            border-right: none;
-            border-bottom: 1px solid #dcdcdc;
-            padding-bottom: 20px;
-        }
-
-        .impact-item:last-child {
-            border-bottom: none;
-        }
-    }
-</style>

@@ -1,20 +1,15 @@
 ---
 import qs from "qs";
 
-const homePageQuery = qs.stringify({
-  populate : [
-    "header.logoText",
-    "header.microCourses",
-    "header.pricing",
-    "header.about",
-    "header.ctaButton",
-    "header.freeTrialButton",
-    "header.logoImage",
-    "header.logoImageUrl",
-    "footer.logoText",
-    "footer.socialLink",
-  ],
-}, { encodeValuesOnly: true });
+const homePageQuery = qs.stringify(
+	{
+		populate: {
+			header: {
+				populate: "*",
+			},
+		},
+	}
+, { encodeValuesOnly: true });
 
 async function getStrapiData(path: string) {
   const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
@@ -33,7 +28,6 @@ async function getStrapiData(path: string) {
 const data = await getStrapiData("/api/global");
 
 const header = data?.header;
-console.log(header);
 
 
 ---

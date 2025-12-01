@@ -1,14 +1,12 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import HeroSection from '../components/HeroSection.astro';
 import Layout from '../layouts/Layout.astro';
-import Section9 from '../components/Section9.astro';
-import Section10Faq from '../components/section10Faq.astro';
-import Section11Card from '../components/section11Card.astro';
-import Section8 from '../components/section8.astro';
+import Section1 from '../components/aboutPage/Section1.astro';
+import Section2 from '../components/aboutPage/Section2.astro';
+import Section3 from '../components/aboutPage/Section3.astro';
 import Section7 from '../components/section7.astro';
-import HubForm from '../components/hubForm.astro';
+import Section11Card from '../components/section11Card.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -16,12 +14,10 @@ import HubForm from '../components/hubForm.astro';
 
 <Layout>
 	<Navbar/>
-	<HeroSection />
-	<Section7/>
-	<Section8/>
-	<Section9/>
-	<Section10Faq/>
-	<HubForm/>
-	<Section11Card/>
+    <Section1/>
+    <Section2 />
+    <Section3 />
+    <Section7/>
+    <Section11Card/>
 	<Footer/>
 </Layout>
