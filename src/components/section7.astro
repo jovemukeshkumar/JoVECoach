@@ -35,29 +35,21 @@ const section7 = data?.section7?.find(
 ---
 
 <section class="section7">
-    <div
-        style="background-color: #252a2e; color: white; text-align: center; padding: 81px 0; font-family: Inter, sans-serif;"
-    >
-        <div style="width: 100%; max-width: 720px; margin: 0 auto 73px;">
-            <div
-                style="font-size: 24px; font-weight: 400; color: white; line-height: 140%;"
-            >
+    <div class="section7-container">
+        <div class="section7-heading-wrapper">
+            <div class="section7-heading">
                 {section7?.section7Heading}
             </div>
         </div>
 
-        <div
-            style="position: relative; overflow: hidden;max-width:max-content;margin: 40px auto 0px auto; padding: 0 49px;"
-        >
-            <div
-                style="overflow-x: auto; white-space: nowrap; display: flex; gap: 64px; align-items: center; scroll-behavior: smooth;"
-            >
+        <div class="section7-slider-wrapper">
+            <div class="section7-slider">
                 {
                     section7?.section7LogoImage?.map((img: any) => (
                         <img
                             src={`${import.meta.env.PUBLIC_BACKEND_URL}${img.url}`}
                             alt={img.name}
-                            style="height: auto; max-height: 55px; object-fit: contain;"
+                            class="section7-logo"
                         />
                     ))
                 }
@@ -65,3 +57,116 @@ const section7 = data?.section7?.find(
         </div>
     </div>
 </section>
+
+<style>
+/* ----------------------------
+     Section Container
+----------------------------- */
+.section7-container {
+    background-color: #252a2e;
+    color: white;
+    text-align: center;
+    padding: 81px 0;
+    font-family: Inter, sans-serif;
+}
+
+/* ----------------------------
+      Heading
+----------------------------- */
+.section7-heading-wrapper {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 73px;
+}
+
+.section7-heading {
+    font-size: 24px;
+    font-weight: 400;
+    color: white;
+    line-height: 140%;
+}
+
+/* ----------------------------
+      Logo Slider
+----------------------------- */
+.section7-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-width: max-content;
+    margin: 40px auto 0;
+    padding: 0 49px;
+}
+
+.section7-slider {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    scroll-behavior: smooth;
+}
+
+.section7-logo {
+    height: auto;
+    max-height: 55px;
+    object-fit: contain;
+}
+
+/* ----------------------------
+      RESPONSIVE DESIGN
+----------------------------- */
+
+/* Tablets */
+@media (max-width: 900px) {
+    .section7-heading {
+        font-size: 22px;
+    }
+
+    .section7-slider {
+        gap: 48px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .section7-container {
+        padding: 60px 0;
+    }
+
+    .section7-heading-wrapper {
+        margin-bottom: 48px;
+        /* padding: 0 20px; */
+    }
+
+    .section7-heading {
+        font-size: 18px;
+    }
+
+    .section7-slider-wrapper {
+        padding: 0 20px;
+    }
+
+    .section7-slider {
+        gap: 36px;
+    }
+
+    .section7-logo {
+        max-height: 45px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 400px) {
+    .section7-heading {
+        font-size: 16px;
+    }
+
+    .section7-slider {
+        gap: 28px;
+    }
+
+    .section7-logo {
+        max-height: 40px;
+    }
+}
+</style>

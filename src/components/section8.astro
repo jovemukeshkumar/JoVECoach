@@ -40,149 +40,164 @@ const section8Details = data?.section8Details?.find(
     <h2 class="section8-title">
         The <span class="section8-highlight">Coach</span> Advantage
     </h2>
-    
+
     <div class="section8-wrapper">
+
         <div class="section8-row">
-            <div>
-                <Image
-                    alt=""
-                    src={section8SubHeadingLogo1}
-                    class="section8-icon"
-                />
-            </div>
+            <Image alt="" src={section8SubHeadingLogo1} class="section8-icon" />
 
             <div class="section8-textbox">
-                <h3 class="section8-subheading">
-                    {section8Details?.section8SubHeading1}
-                </h3>
-                <p class="section8-paragraph">
-                    {section8Details?.section8SubPara1}
-                </p>
+                <h3 class="section8-subheading">{section8Details?.section8SubHeading1}</h3>
+                <p class="section8-paragraph">{section8Details?.section8SubPara1}</p>
             </div>
         </div>
 
         <div class="section8-row">
-            <div>
-                <Image
-                    alt=""
-                    src={section8SubHeadingLogo2}
-                    class="section8-icon"
-                />
-            </div>
+            <Image alt="" src={section8SubHeadingLogo2} class="section8-icon" />
+
             <div class="section8-textbox">
-                <h3 class="section8-subheading">
-                    {section8Details?.section8SubHeading2}
-                </h3>
-                <p class="section8-paragraph">
-                    {section8Details?.section8SubPara2}
-                </p>
+                <h3 class="section8-subheading">{section8Details?.section8SubHeading2}</h3>
+                <p class="section8-paragraph">{section8Details?.section8SubPara2}</p>
             </div>
         </div>
 
         <div class="section8-row">
-            <div>
-                <Image
-                    alt=""
-                    src={section8SubHeadingLogo3}
-                    class="section8-icon"
-                />
-            </div>
+            <Image alt="" src={section8SubHeadingLogo3} class="section8-icon" />
+
             <div class="section8-textbox">
-                <h3 class="section8-subheading">
-                    {section8Details?.section8SubHeading3}
-                </h3>
-                <p class="section8-paragraph">
-                    {section8Details?.section8SubPara3}
-                </p>
+                <h3 class="section8-subheading">{section8Details?.section8SubHeading3}</h3>
+                <p class="section8-paragraph">{section8Details?.section8SubPara3}</p>
             </div>
         </div>
 
         <div class="section8-row">
-            <div>
-                <Image
-                    alt=""
-                    src={section8SubHeadingLogo4}
-                    class="section8-icon"
-                />
-            </div>
+            <Image alt="" src={section8SubHeadingLogo4} class="section8-icon" />
+
             <div class="section8-textbox">
-                <h3 class="section8-subheading">
-                    {section8Details?.section8SubHeading4}
-                </h3>
-                <p class="section8-paragraph">
-                    {section8Details?.section8SubPara4}
-                </p>
+                <h3 class="section8-subheading">{section8Details?.section8SubHeading4}</h3>
+                <p class="section8-paragraph">{section8Details?.section8SubPara4}</p>
             </div>
         </div>
+
     </div>
 </section>
 
 <style>
-    .section8Details{
-        margin: 100px 0px;
-    }
-    .section8-wrapper {
-        background-color: rgb(255, 255, 255);
-        padding: 0px 16px 100px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+/* ------------------------------
+      SECTION LAYOUT
+------------------------------ */
+.section8Details {
+    margin: 100px 0;
+}
 
+.section8-wrapper {
+    background: #fff;
+    padding: 0 16px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ------------------------------
+      HEADINGS
+------------------------------ */
+.section8-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 600;
+    color: #000;
+    font-family: Inter, sans-serif;
+}
+
+.section8-highlight {
+    color: rgb(33, 131, 237);
+}
+
+/* ------------------------------
+      ROW LAYOUT
+------------------------------ */
+.section8-row {
+    display: flex;
+    flex-direction: row;
+    max-width: 809px;
+    width: 100%;
+    align-items: flex-start;
+    gap: 27px;
+    margin: 32px auto;
+}
+
+/* ------------------------------
+      ICON
+------------------------------ */
+.section8-icon {
+    width: 32px;
+    height: 32px;
+}
+
+/* ------------------------------
+      TEXT
+------------------------------ */
+.section8-textbox {
+    width: 100%;
+}
+
+.section8-subheading {
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.section8-paragraph {
+    color: rgb(63, 63, 63);
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    margin: 0;
+}
+
+/* ------------------------------
+      RESPONSIVE DESIGN
+------------------------------ */
+
+/* Tablet */
+@media (max-width: 768px) {
     .section8-title {
-        text-align: center;
-        font-size: 36px;
-        font-weight: 600;
-        color: rgb(0, 0, 0);
-        font-family: Inter, sans-serif;
-        font-style: normal;
-        line-height: normal;
-    }
-
-    .section8-highlight {
-        color: rgb(33, 131, 237);
+        font-size: 28px;
     }
 
     .section8-row {
-        display: flex;
-        flex-direction: row;
-        max-width: 809px;
-        min-width: 809px;
-        width: 100%;
-        padding: 0px;
-        align-items: center;
-        justify-content: center;
-        margin: 20px auto;
-        gap: 27px;
-    }
-
-    .section8-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .section8-textbox {
-        width: 100%;
+        max-width: 100%;
+        gap: 20px;
     }
 
     .section8-subheading {
-        color: rgb(0, 0, 0);
-        font-family: Inter;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        margin-bottom: 16px;
+        font-size: 20px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .section8-row {
+        flex-direction: column;   /* Stack rows */
+        text-align: center;
+        align-items: center;
+    }
+
+    .section8-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 12px;
+    }
+
+    .section8-subheading {
+        font-size: 18px;
     }
 
     .section8-paragraph {
-        color: rgb(63, 63, 63);
-        font-family: Inter;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 140%;
-        margin: 0px;
+        font-size: 14px;
     }
+}
 </style>

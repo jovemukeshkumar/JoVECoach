@@ -34,31 +34,27 @@ const faqSection = data?.faqSection?.find(
   .faq-section {
     margin: 100px 0px;
   }
+
   .faq-container {
-    max-width: 805px;
-    min-width: 805px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0px 80px;
     font-family: Inter, sans-serif;
+    max-width: 800px;
   }
 
   .faq-heading {
     text-align: center;
     margin-bottom: 64px;
-    font-family: Inter;
     font-size: 36px;
     font-weight: 600;
-    line-height: normal;
   }
 
-  /* FAQ Item */
+  /* FAQ ITEM */
   .faq-item {
-    border: none;
     border-radius: 8px;
-    box-shadow: none;
     padding: 24px;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
+    transition: 0.3s ease;
     border: 0.5px solid transparent;
   }
 
@@ -72,33 +68,29 @@ const faqSection = data?.faqSection?.find(
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: Inter, sans-serif;
     font-size: 20px;
     font-weight: 500;
-    margin-bottom: 0px;
   }
 
-  /* Arrow icon */
+  /* Arrow Icon */
   .faq-arrow {
-    width: 12px;
-    height: 6px;
+    width: 14px;
+    height: auto;
     transition: transform 0.3s ease;
     transform: rotate(180deg);
   }
 
-  /* Answer */
+  /* Answer Text */
   .faq-answer {
     color: rgb(71, 71, 71);
-    font-family: Inter;
     font-size: 15px;
-    font-weight: 400;
-    line-height: 140%;
+    line-height: 150%;
     margin-top: 16px;
     width: 90%;
     display: none;
   }
 
-  /* When Open */
+  /* Open state */
   .faq-item.open {
     border: 0.5px solid #ccc;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
@@ -110,6 +102,63 @@ const faqSection = data?.faqSection?.find(
 
   .faq-item.open .faq-answer {
     display: block;
+  }
+
+  /* ---------------------------------------------------
+      RESPONSIVE STYLES
+  --------------------------------------------------- */
+
+  @media (max-width: 1024px) {
+    .faq-container {
+      padding: 0 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .faq-section {
+      margin: 60px 0;
+    }
+
+    .faq-container {
+      padding: 0 24px;
+      max-width: 100%;
+    }
+
+    .faq-heading {
+      font-size: 28px;
+      margin-bottom: 48px;
+    }
+
+    .faq-item {
+      padding: 20px 16px;
+    }
+
+    .faq-question {
+      font-size: 18px;
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faq-heading {
+      font-size: 24px;
+    }
+
+    .faq-item {
+      padding: 18px 14px;
+    }
+
+    .faq-question {
+      font-size: 16px;
+    }
+
+    .faq-arrow {
+      width: 12px;
+    }
   }
 </style>
 
@@ -130,7 +179,7 @@ const faqSection = data?.faqSection?.find(
               {" "}
               <div class="faq-question">
                 {q}{" "}
-                <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" /> {" "}
+                <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" /> {" "}
               </div>
               {a && <p class="faq-answer">{a}</p>}{" "}
             </div>
@@ -143,9 +192,21 @@ const faqSection = data?.faqSection?.find(
 <!-- Accordion Script -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("[data-faq]").forEach((faq) => {
+    const faqItems = document.querySelectorAll("[data-faq]");
+    
+    faqItems.forEach((faq) => {
       faq.addEventListener("click", () => {
-        faq.classList.toggle("open");
+        const isOpen = faq.classList.contains("open");
+        
+        // Close all FAQ items
+        faqItems.forEach((item) => {
+          item.classList.remove("open");
+        });
+        
+        // If the clicked item wasn't open, open it
+        if (!isOpen) {
+          faq.classList.add("open");
+        }
       });
     });
   });
