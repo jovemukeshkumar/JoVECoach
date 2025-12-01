@@ -32,7 +32,7 @@ async function getStrapiData(path: string) {
 
 const data = await getStrapiData("/api/home-page");
 const section8Details = data?.section8Details?.find(
-    (b: any) => b.__component === "layout.aboutPageSection2",
+    (b: any) => b.__component === "layout.section8-details",
 );
 ---
 

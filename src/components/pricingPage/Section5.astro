@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 const homePageQuery = qs.stringify(
   {
     populate: {
-      faqSection: {
+      Faq: {
         populate: "*",
       },
     },
@@ -24,8 +24,8 @@ async function getStrapiData(path: string) {
   return json.data;
 }
 
-const data = await getStrapiData("/api/home-page");
-const faqSection = data?.faqSection?.find(
+const data = await getStrapiData("/api/about");
+const faqSection = data?.Faq?.find(
   (b: any) => b.__component === "layout.faq-section",
 );
 ---
@@ -116,18 +116,18 @@ const faqSection = data?.faqSection?.find(
 
     <!-- FAQ LIST -->
     {
-      faqSection &&
+      faqSection && 
         Array?.from({ length: 10 }).map((_, index) => {
           const q = faqSection[`faqSectionQuestion${index + 1}`];
           const a = faqSection[`faqSectionAnswer${index + 1}`];
 
           // Only render the item if a question exists
-          return q ? (
+          return q && q!== "NA" ? (
             <div class="faq-item" data-faq>
               {" "}
               <div class="faq-question">
                 {q}{" "}
-                <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" /> {" "}
+                <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" /> {" "}
               </div>
               {a && <p class="faq-answer">{a}</p>}{" "}
             </div>

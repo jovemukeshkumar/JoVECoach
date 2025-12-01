@@ -1,4 +1,9 @@
 ---
+import { Image } from 'astro:assets'
+import aboutPageIcon1 from '../../assets/aboutPageIcon1.svg'
+import aboutPageIcon2 from '../../assets/aboutPageIcon2.svg'
+import aboutPageIcon3 from '../../assets/aboutPageIcon3.svg'
+import aboutPageIcon4 from '../../assets/aboutPageIcon4.svg'
 
 ---
 
@@ -23,17 +28,18 @@
             style="width: 100%; max-width: 1053px; min-width: 1053px; display: flex; justify-content: space-between; margin: 0px auto; gap: 64px;"
         >
             <div
-                style="display: flex; flex-direction: row; align-items: start; width: 214px; height: 70px;"
+                style="display: flex; flex-direction: row; align-items: center; justify-content: end; width: 214px; height: 70px;"
             >
-                <img
+                <Image
                     alt="Star Icon"
-                    src="/static/media/Star.7b55c04b80724afb18191a101c0d4882.svg"
+                    src={aboutPageIcon1}
                     style="margin-right: 24px;"
-                /><div
-                    style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;"
+                />
+                <div
+                    style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: center; text-align: left;"
                 >
                     <p
-                        style="margin-bottom: 10px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 32px; font-style: normal; font-weight: 500; line-height: 130%;"
+                        style="text-wrap: nowrap; margin: 10px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 32px; font-style: normal; font-weight: 500; line-height: 130%;"
                     >
                         1 Million+
                     </p><p
@@ -43,17 +49,17 @@
                     </p>
                 </div>
             </div><div
-                style="display: flex; flex-direction: row; align-items: start; width: 214px; height: 70px;"
+                style="display: flex; flex-direction: row; align-items: center; justify-content: end; width: 214px; height: 70px;"
             >
-                <img
+                <Image
                     alt="Computer Icon"
-                    src="/static/media/TickComputer.93e25bb8bfbcec75e14e9ff7770f8901.svg"
+                    src={aboutPageIcon2}
                     style="margin-right: 24px;"
                 /><div
                     style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;"
                 >
                     <p
-                        style="margin-bottom: 10px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 32px; font-style: normal; font-weight: 500; line-height: 130%;"
+                        style="text-wrap: nowrap; margin: 10px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 32px; font-style: normal; font-weight: 500; line-height: 130%;"
                     >
                         500+
                     </p><p
@@ -63,17 +69,17 @@
                     </p>
                 </div>
             </div><div
-                style="display: flex; flex-direction: row; align-items: start; width: 198px; height: 70px;"
+                style="display: flex; flex-direction: row; align-items: center; justify-content: end; width: 214px; height: 70px;"
             >
-                <img
+                <Image
                     alt="Tick Icon"
-                    src="/static/media/Playlist.405bbe22e78b2c7615ab74bc651c727c.svg"
+                    src={aboutPageIcon3}
                     style="margin-right: 24px;"
                 /><div
                     style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;"
                 >
                     <p
-                        style="margin-bottom: 10px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 32px; font-style: normal; font-weight: 500; line-height: 130%;"
+                        style="text-wrap: nowrap; margin: 10px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 32px; font-style: normal; font-weight: 500; line-height: 130%;"
                     >
                         6,500+
                     </p><p
@@ -83,17 +89,17 @@
                     </p>
                 </div>
             </div><div
-                style="display: flex; flex-direction: row; align-items: start; width: 214px; height: 70px;"
+                style="display: flex; flex-direction: row; align-items: center; justify-content: end; width: 214px; height: 70px;"
             >
-                <img
+                <Image
                     alt="Tick Icon"
-                    src="/static/media/CircleTick.8cb4eee786c21360fb669bbfa8b36ddc.svg"
+                    src={aboutPageIcon4}
                     style="margin-right: 24px;"
                 /><div
                     style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;"
                 >
                     <p
-                        style="margin-bottom: 10px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 32px; font-style: normal; font-weight: 500; line-height: 130%;"
+                        style="text-wrap: nowrap; margin: 10px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 32px; font-style: normal; font-weight: 500; line-height: 130%;"
                     >
                         19+ years
                     </p><p

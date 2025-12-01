@@ -4,9 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			rel="stylesheet"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
 		<!-- <script src="https://js-na2.hsforms.net/forms/embed/developer/244455004.js" defer></script> -->
@@ -14,12 +17,25 @@
 	<body>
 		<slot />
 	</body>
+	<!-- HubSpot form script -->
+	<script
+		src="https://js-na2.hsforms.net/forms/embed/developer/244455004.js"
+		defer></script>
+
+	<!-- Start of HubSpot Embed Code -->
+	<script
+		type="text/javascript"
+		id="hs-script-loader"
+		async
+		defer
+		src="//js-na2.hs-scripts.com/244455004.js"></script>
+	<!-- End of HubSpot Embed Code -->
 </html>
 
 <style>
 	html,
 	body {
 		margin: 0;
-		font-family: "Inter", 'san-serif';
+		font-family: "Inter", "san-serif";
 	}
 </style>

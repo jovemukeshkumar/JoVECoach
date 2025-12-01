@@ -40,7 +40,7 @@ const header = data?.header;
 				{header && header?.logoImage && (
                   <img
                     src={`${import.meta.env.PUBLIC_BACKEND_URL}${header.logoImage.url}`}
-                    alt={header.logoImage.alternativeText || "Hero Image"}
+                    alt={header.logoImage.alternativeText || "header Image"}
                     width={143}
                     height={"auto"}
                     fetchpriority="high"
@@ -49,17 +49,19 @@ const header = data?.header;
 			</a>
 
 			<!-- Navigation Links -->
-			<div id="nav-links" class="flex gap-8">
+			<!-- <div id="nav-links" class="flex gap-8">
 				<a href={header?.microCourses?.url} class="text-lg">{header?.microCourses?.text || 'NavLink'}</a>
 				<a href={header?.about?.url} class="text-lg">{header?.about?.text || 'NavLink'}</a>
 				<a href={header?.pricing?.url} class="text-lg">{header?.pricing?.text || 'NavLink'}</a>
-			</div>
+			</div> -->
             
 			<!-- Free Trial Button -->
 			<div id="nav-ctas" class="flex ">
-				<a href={header?.ctaButton?.url} class="text-lg">{header?.ctaButton?.text || 'NavLink'}</a>
+				<!-- <a href={header?.ctaButton?.url} class="text-lg">{header?.ctaButton?.text || 'NavLink'}</a> -->
                 <button class="btn-free-trial">
-                    <a  href={header?.freeTrialButton?.url}>
+                    <a  
+					href={"#hubform"}
+					>
                         {header?.freeTrialButton?.text}
                     </a>
                 </button>

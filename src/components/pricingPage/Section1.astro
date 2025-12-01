@@ -74,12 +74,12 @@ const priceDetailsSection = data?.priceDetailsSection?.find(
       {
         priceDetailsSection?.pricingSection?.map((plan : any) => (
           <div class="pricing-col">
-            {plan.tag && (
+            {plan.tag && plan.tag !=="NA" &&(
               <Image alt="Popular" src={mostPopular} class="popular-badge" />
             )}
 
             <div
-              class={`pricing-card ${plan.tag ? "featured-card selected" : "basic-card"}`}
+              class={`pricing-card ${plan.tag && plan.tag !=="NA" ? "featured-card selected" : "basic-card"}`}
               data-card={plan.title.toLowerCase()}
             >
               <div class="ant-card-body pricing-card-body">
@@ -88,7 +88,7 @@ const priceDetailsSection = data?.priceDetailsSection?.find(
                   <div class="pricing-label-row">
                     <p class="plan-type">{plan.title}</p>
 
-                    {plan.tag && (
+                    {plan.tag && plan.tag!=="NA" &&(
                       <span class="discount-tag">
                         <Image
                           alt="discount icon"
@@ -102,7 +102,7 @@ const priceDetailsSection = data?.priceDetailsSection?.find(
                   <h3 class="price-text">{plan.price}</h3>
                 </div>
 
-                {plan.oldPrice && (
+                {plan.oldPrice && plan.oldPrice !=="NA" && ( 
                   <Image alt="Pricecut" src={pricecut} class="pricecut-img" />
                 )}
 
@@ -218,7 +218,7 @@ const priceDetailsSection = data?.priceDetailsSection?.find(
 
 .basic-card {
   border: 2px solid rgb(217, 217, 217);
-  margin-top: 30px;
+  margin-top: 30px !important;
     max-width: 305px;
 }
 
