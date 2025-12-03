@@ -73,7 +73,7 @@ const header = data?.header;
 
 	#nav-links a {
 		text-decoration: none;
-		color: #111827;
+		color: #fff;
 		font-size: 16px;
 		font-weight: 500;
 		transition: color 0.3s ease;
@@ -81,7 +81,7 @@ const header = data?.header;
 	}
 
 	#nav-links a:hover {
-		color: rgb(78, 80, 86);
+		color: #fff;
 	}
 
 	#nav-ctas {
@@ -89,7 +89,7 @@ const header = data?.header;
 		align-items: center;
 	}
 
-	#nav-ctas a {
+	.btn-free-trial a {
 		text-decoration: none;
 		color: #4284E5;
 		font-size: 16px;
@@ -98,7 +98,7 @@ const header = data?.header;
 	}
 
 	#nav-ctas a:hover {
-		color: rgb(78, 80, 86);
+		color: #fff;
 	}
 
 	.btn-free-trial {
@@ -121,6 +121,7 @@ const header = data?.header;
 
 	.btn-free-trial:hover {
 		background-color: #4284E5;
+		color: #fff;
 	}
 
 	.btn-free-trial:hover a {
@@ -286,7 +287,7 @@ const header = data?.header;
 		<!-- Free Trial Button -->
 		<div id="nav-ctas">
 			<button class="btn-free-trial">
-				<a href="#hubform">
+				<a href="#crmWebToEntityForm">
 					{header?.freeTrialButton?.text || "Start Free Trial"}
 				</a>
 			</button>

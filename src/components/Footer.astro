@@ -45,130 +45,6 @@ const footerBottom = footer.find(
 	(f: any) => f.__component === "components.footer-bottom",
 );
 ---
-
-<div class="footer-wrapper">
-	<div class="footer-top">
-		{footerHead && footerHead?.footerLogo && (
-		<img
-			alt="FooterLogo"
-			src={`${import.meta.env.PUBLIC_BACKEND_URL}${footerHead?.footerLogo?.url}`}
-			class="footer-logo"
-		/>
-		)}
-
-		<p class="footer-head-text">
-			{footerHead?.footerHeadContent}
-			<a class="footer-head-link">
-				<span class="footer-head-link-span">JoVE</span>
-				<Image
-					class="footer-head-arrow"
-					src={footerSideArrow}
-					alt={"footerSideArrow"}
-				/>
-			</a>
-		</p>
-	</div>
-
-	<div class="footer-middle">
-		<div class="footer-grid">
-			{
-				footerCourses.map((course: any) => (
-					<div class="footer-grid-column">
-						<div class="footer-grid-title">
-							{course.courseHeading}
-						</div>
-
-						{course.firstCourse && (
-							<div class="footer-grid-item">
-								{course.firstCourse.text}
-							</div>
-						)}
-
-						{course.secondCourse && (
-							<div class="footer-grid-item">
-								{course.secondCourse.text}
-							</div>
-						)}
-
-						{course.thirdCourse && (
-							<div class="footer-grid-item">
-								{course.thirdCourse.text}
-							</div>
-						)}
-
-						{course.fourthCourse && (
-							<div class="footer-grid-item">
-								{course.fourthCourse.text}
-							</div>
-						)}
-					</div>
-				))
-			}
-		</div>
-		<div class="footer-cta">
-			<div class="footer-cta-primary">
-            <a href="#hubform" style="color:#ffffff ; text-decoration: none;">
-				<button>
-					{footerCTA?.firstButton?.title}
-					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
-				</button>
-			</a>
-			</div>
-			<div class="footer-cta-secondary">
-            <a href="#hubform" style="color:#ffffff ; text-decoration: none;">
-				<button>{footerCTA?.secondButton?.title}
-					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
-				</button>
-			</a>
-			</div>
-			<div class="footer-cta-secondary">
-            <a href="#hubform" style="color:#ffffff ; text-decoration: none;">
-				<button>{footerCTA?.thirdButton?.title}
-					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
-				</button>
-			</a>
-			</div>
-			<div class="footer-cta-secondary">
-            <a href="#hubform" style="color:#ffffff ; text-decoration: none;">
-				<button>{footerCTA?.fourthButton?.title}
-					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
-				</button>
-			</a>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="footer-bottom">
-		<div class="footer-bottom-links">
-			<div class="footer-bottom-link">
-				<a href={footerBottom?.footerBottomAboutLink?.url}>
-					{footerBottom?.footerBottomAboutLink?.text}
-				</a>
-			</div>
-			<div class="footer-bottom-link">
-				<a href={footerBottom?.footerBottomHelpLink?.url}>
-					{footerBottom?.footerBottomHelpLink?.text}
-				</a>
-			</div>
-			<div class="footer-bottom-link">
-				<a href={footerBottom?.footerBottomPrivacyLink?.url}>
-					{footerBottom?.footerBottomPrivacyLink?.text}
-				</a>
-			</div>
-		</div>
-		<div class="footer-copyrightText">
-			<Image 
-				src={copyrightIcon}
-				alt={"copyrightIcon"}
-			/>
-			<p>
-				{footerBottom?.copyrightText}
-			</p>
-		</div>
-	</div>
-</div>
-
 <style>
 	/* Footer */
 	/* ROOT FOOTER WRAPPER */
@@ -530,3 +406,126 @@ const footerBottom = footer.find(
 		}
 	}
 </style>
+<div class="footer-wrapper">
+	<div class="footer-top">
+		{footerHead && footerHead?.footerLogo && (
+		<img
+			alt="FooterLogo"
+			src={`${import.meta.env.PUBLIC_BACKEND_URL}${footerHead?.footerLogo?.url}`}
+			class="footer-logo"
+		/>
+		)}
+
+		<p class="footer-head-text">
+			{footerHead?.footerHeadContent}
+			<a class="footer-head-link">
+				<span class="footer-head-link-span">JoVE</span>
+				<Image
+					class="footer-head-arrow"
+					src={footerSideArrow}
+					alt={"footerSideArrow"}
+				/>
+			</a>
+		</p>
+	</div>
+
+	<div class="footer-middle">
+		<div class="footer-grid">
+			{
+				footerCourses.map((course: any) => (
+					<div class="footer-grid-column">
+						<div class="footer-grid-title">
+							{course.courseHeading}
+						</div>
+
+						{course.firstCourse && (
+							<div class="footer-grid-item">
+								{course.firstCourse.text}
+							</div>
+						)}
+
+						{course.secondCourse && (
+							<div class="footer-grid-item">
+								{course.secondCourse.text}
+							</div>
+						)}
+
+						{course.thirdCourse && (
+							<div class="footer-grid-item">
+								{course.thirdCourse.text}
+							</div>
+						)}
+
+						{course.fourthCourse && (
+							<div class="footer-grid-item">
+								{course.fourthCourse.text}
+							</div>
+						)}
+					</div>
+				))
+			}
+		</div>
+		<div class="footer-cta">
+			<div class="footer-cta-primary">
+            <a href="#crmWebToEntityForm" style="color:#ffffff ; text-decoration: none;">
+				<button>
+					{footerCTA?.firstButton?.title}
+					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
+				</button>
+			</a>
+			</div>
+			<div class="footer-cta-secondary">
+            <a href="#crmWebToEntityForm" style="color:#ffffff ; text-decoration: none;">
+				<button>{footerCTA?.secondButton?.title}
+					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
+				</button>
+			</a>
+			</div>
+			<div class="footer-cta-secondary">
+            <a href="#crmWebToEntityForm" style="color:#ffffff ; text-decoration: none;">
+				<button>{footerCTA?.thirdButton?.title}
+					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
+				</button>
+			</a>
+			</div>
+			<div class="footer-cta-secondary">
+            <a href="#crmWebToEntityForm" style="color:#ffffff ; text-decoration: none;">
+				<button>{footerCTA?.fourthButton?.title}
+					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
+				</button>
+			</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="footer-bottom">
+		<div class="footer-bottom-links">
+			<div class="footer-bottom-link">
+				<a href={footerBottom?.footerBottomAboutLink?.url}>
+					{footerBottom?.footerBottomAboutLink?.text}
+				</a>
+			</div>
+			<div class="footer-bottom-link">
+				<a href={footerBottom?.footerBottomHelpLink?.url}>
+					{footerBottom?.footerBottomHelpLink?.text}
+				</a>
+			</div>
+			<div class="footer-bottom-link">
+				<a href={footerBottom?.footerBottomPrivacyLink?.url}>
+					{footerBottom?.footerBottomPrivacyLink?.text}
+				</a>
+			</div>
+		</div>
+		<div class="footer-copyrightText">
+			<Image 
+				src={copyrightIcon}
+				alt={"copyrightIcon"}
+			/>
+			<p>
+				{footerBottom?.copyrightText}
+			</p>
+		</div>
+	</div>
+</div>
+
