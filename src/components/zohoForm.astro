@@ -1,0 +1,420 @@
+---
+// src/components/ZohoForm.astro
+---
+<style>
+  /* Base Styles */
+  #crmWebToEntityForm.zcwf_lblLeft {
+    margin: 50px auto;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    max-width: 1080px !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+    color: #fff !important;
+    background: rgb(33, 131, 237) !important;
+    border-radius: 8px !important;
+    padding: 60px 70px !important;
+    position: relative !important;
+    background-image: url('../assets/section11Card.svg') !important;
+    background-position: right center !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    
+  }
+  #crmWebToEntityForm.zcwf_lblLeft * {
+    box-sizing: border-box;
+  }
+  #crmWebToEntityForm {
+    text-align: left;
+  }
+  #crmWebToEntityForm * {
+    direction: ltr;
+  }
+  .zcwf_lblLeft .zcwf_title {
+    word-wrap: break-word;
+    padding: 0px 6px 10px;
+    margin-bottom: 12px;
+    color: #fff !important;
+    font-family: Inter !important;
+    font-weight: 600 !important;
+    font-size: 32px !important;
+    line-height: 120% !important;
+    letter-spacing: -0.5px !important;
+    vertical-align: middle;
+  }
+  .zcwf_subtitle {
+    font-family: Inter !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 140% !important;
+    letter-spacing: 0% !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    max-width: 500px;
+    margin-bottom: 32px;
+  }
+  .zcwf_form_row {
+    display: flex !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+    margin: 0 !important;
+    max-width: 520px !important;
+  }
+  .zcwf_input_group {
+    flex: 1;
+    /* min-width: 220px; */
+    width: auto !important;
+    float: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .zcwf_lblLeft .zcwf_col_fld input[type=text], input[type=password], .zcwf_lblLeft .zcwf_col_fld textarea {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    resize: vertical;
+    border-radius: 8px;
+    float: none;
+    padding: 12px 16px !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    color: #333 !important;
+    font-size: 14px !important;
+    font-family: Inter !important;
+    transition: all 0.3s ease;
+  }
+  .zcwf_lblLeft .zcwf_col_fld input[type=text]::placeholder {
+    color: #C8C1C1;
+    font-family: Inter !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 140% !important;
+    letter-spacing: 0% !important;
+    vertical-align: middle;
+
+  }
+  .zcwf_lblLeft .zcwf_col_fld input[type=text]:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  }
+  .zcwf_lblLeft .zcwf_col_lab {
+    display: none;
+  }
+  .zcwf_lblLeft .zcwf_col_fld {
+    float: none;
+    width: auto;
+    padding: 0px;
+    position: relative;
+    margin-top: 0;
+  }
+  .zcwf_lblLeft .zcwf_privacy { padding: 6px; }
+  .zcwf_lblLeft .wfrm_fld_dpNn { display: none; }
+  .dIB { display: inline-block; }
+  .zcwf_lblLeft .zcwf_col_fld_slt {
+    width: 60%;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    float: left;
+    resize: vertical;
+    padding: 2px 5px;
+  }
+  .zcwf_lblLeft .zcwf_row:after, .zcwf_lblLeft .zcwf_col_fld:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  .zcwf_lblLeft .zcwf_col_help {
+    float: left;
+    margin-left: 7px;
+    font-size: 12px;
+    max-width: 35%;
+    word-break: break-word;
+    display: none;
+  }
+  .zcwf_lblLeft .zcwf_help_icon {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #c0c6cc;
+    color: #c1c1c1;
+    text-align: center;
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+  .zcwf_lblLeft .zcwf_row {
+    margin: 0px 0px;
+  }
+  .zcwf_button_row {
+    display: flex !important;
+    gap: 12px !important;
+    align-items: center !important;
+    margin: 20px 0px 0px 0px !important;
+  }
+  .zcwf_lblLeft .formsubmit {
+    margin-right: 0;
+    cursor: pointer;
+  }
+  .formsubmit.zcwf_button {
+    color: white !important;
+    background: transparent !important;
+    border: 1px solid white !important;
+    padding: 12px 28px !important;
+    border-radius: 50px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+
+    overflow: visible;
+    text-overflow: unset;
+    font-family: Inter  !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    line-height: 28px !important;
+    letter-spacing: 0% !important;
+    text-align: center;
+    vertical-align: middle;
+
+  }
+  .formsubmit.zcwf_button:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-2px);
+  }
+  .formsubmit.zcwf_button:active {
+    transform: translateY(0);
+  }
+  .formsubmit.zcwf_button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .zcwf_benefits {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-family: Inter;
+    margin-top: 20px;
+  }
+  /* Popup Styles */
+  .wf_customMessageBox {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #132C14;
+    background: #F5FAF5;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.25);
+    max-width: 90%;
+    width: max-content;
+    word-break: break-word;
+    z-index: 11000;
+    border-radius: 6px;
+    border: 1px solid #A9D3AB;
+    min-width: 100px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .wf_customCircle {
+    position: relative;
+    background-color: #12AA67;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    flex: none;
+    margin-right: 7px;
+  }
+  .wf_customCheckMark {
+    box-sizing: unset !important;
+    position: absolute;
+    transform: rotate(45deg) translate(-50%, -50%);
+    left: 6px;
+    top: 9px;
+    height: 8px;
+    width: 3px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+  }
+  @media all and (max-width: 600px) {
+    #crmWebToEntityForm.zcwf_lblLeft {
+      padding: 40px 24px !important;
+    }
+    .zcwf_title {
+      font-size: 24px !important;
+      margin-bottom: 8px;
+    }
+    .zcwf_subtitle {
+      font-size: 14px !important;
+      margin-bottom: 24px;
+    }
+    .zcwf_form_row {
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+    .zcwf_input_group {
+      min-width: unset;
+    }
+    .formsubmit.zcwf_button {
+      min-width: 100%;
+    }
+  }
+</style>
+<div id="crmWebToEntityForm" class="zcwf_lblLeft crmWebToEntityForm">
+  
+  <script is:inline src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <div class="wf_customMessageBox" id="wf_splash" style="display:none">
+    <div class="wf_customCircle">
+      <div class="wf_customCheckMark"></div>
+    </div>
+    <span id="wf_splash_info"></span>
+  </div>
+    <div class="zcwf_title">Try JoVE Coach free.</div>
+    <div class="zcwf_subtitle">7 days. Full access. Your first "aha" is waiting.</div>
+    
+  <form id="webform1127844000000442391" name="WebToLeads1127844000000442391" accept-charset="UTF-8">
+    <input type="text" style="display:none;" name="xnQsjsdp" value="4c97f3c716f9db7e9bf5e5c3e21d76df5389fc68246bade9ac819bf35b694f15">
+    <input type="hidden" name="zc_gad" id="zc_gad" value="">
+    <input type="text" style="display:none;" name="xmIwtLD" value="19419de215b62ba3a7eae7b57d36d27f13c26298f42349ca345fcf4f98acde087f3578a9eb4703a660999f6b7f553c91">
+    <input type="text" style="display:none;" name="actionType" value="TGVhZHM=">
+    <input type="text" style="display:none;" name="returnURL" value="null">
+
+    <div class="zcwf_row zcwf_form_row">
+      <div class="zcwf_col_fld zcwf_input_group">
+        <input type="text" id="Last_Name" aria-required="true" aria-label="Last Name" name="Last Name" maxlength="80" placeholder="Name*">
+        <div class="zcwf_col_help"></div>
+      </div>
+      <div class="zcwf_col_fld zcwf_input_group">
+        <input type="text" data-ftype="email" autocomplete="false" id="Email" aria-required="true" aria-label="Email" name="Email" maxlength="100" placeholder="Email*">
+        <div class="zcwf_col_help"></div>
+      </div>
+    </div>
+
+    <input type="text" type="hidden" style="display: none;" name="aG9uZXlwb3Q" value=""/>
+
+    <div class="zcwf_row zcwf_button_row">
+      <div class="zcwf_col_fld">
+        <input type="submit" id="formsubmit" role="button" class="formsubmit zcwf_button" value="Get started Free" aria-label="Get started" title="Get started">
+      </div>
+    </div>
+
+    <div class="zcwf_benefits">
+      <span>• No credit card required • No commitment • Cancel anytime • Student discounts</span>
+    </div>
+  </form>
+</div>
+
+
+<script is:inline>
+  function validateEmail1127844000000442391() {
+    var form = document.forms['WebToLeads1127844000000442391'];
+    var emailFld = form.querySelectorAll('[data-ftype=email]');
+    var i;
+    for (i = 0; i < emailFld.length; i++) {
+      var emailVal = emailFld[i].value;
+      if ((emailVal.replace(/^\s+|\s+$/g, '')).length != 0) {
+        var atpos = emailVal.indexOf('@');
+        var dotpos = emailVal.lastIndexOf('.');
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
+          alert('Please enter a valid email address. ');
+          emailFld[i].focus();
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  function checkMandatory1127844000000442391() {
+    var mndFileds = new Array('Last Name', 'Email');
+    var fldLangVal = new Array('Name', 'Email');
+    for (i = 0; i < mndFileds.length; i++) {
+      var fieldObj = document.forms['WebToLeads1127844000000442391'][mndFileds[i]];
+      if (fieldObj) {
+        if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
+          if (fieldObj.type == 'file') {
+            alert('Please select a file to upload.');
+            fieldObj.focus();
+            return false;
+          }
+          alert(fldLangVal[i] + ' cannot be empty.');
+          fieldObj.focus();
+          return false;
+        } else if (fieldObj.nodeName == 'SELECT') {
+          if (fieldObj.options[fieldObj.selectedIndex].value == '-None-') {
+            alert(fldLangVal[i] + ' cannot be none.');
+            fieldObj.focus();
+            return false;
+          }
+        } else if (fieldObj.type == 'checkbox') {
+          if (fieldObj.checked == false) {
+            alert('Please accept  ' + fldLangVal[i]);
+            fieldObj.focus();
+            return false;
+          }
+        }
+        try {
+          if (fieldObj.name == 'Last Name') {
+            name = fieldObj.value;
+          }
+        } catch (e) {}
+      }
+    }
+    if (!validateEmail1127844000000442391()) {
+      return false;
+    }
+    var urlparams = new URLSearchParams(window.location.search);
+    if (urlparams.has('service') && (urlparams.get('service') === 'smarturl')) {
+      var webform = document.getElementById('webform1127844000000442391');
+      var service = urlparams.get('service');
+      var smarturlfield = document.createElement('input');
+      smarturlfield.setAttribute('type', 'hidden');
+      smarturlfield.setAttribute('value', service);
+      smarturlfield.setAttribute('name', 'service');
+      webform.appendChild(smarturlfield);
+    }
+    document.querySelector('.crmWebToEntityForm .formsubmit').setAttribute('disabled', true);
+    return true;
+  }
+
+  $(document).ready(function() {
+    $('#webform1127844000000442391').submit(function(e) {
+      var ismandatory = checkMandatory1127844000000442391();
+      e.preventDefault();
+      if (ismandatory) {
+        if (typeof _wfa_track != 'undefined' && _wfa_track.wfa_submit) {
+          _wfa_track.wfa_submit(e);
+        }
+        var formData = new FormData(this);
+        $.ajax({
+          url: 'https://crm.zoho.in/crm/WebToLeadForm',
+          type: 'POST',
+          data: formData,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(data) {
+            var splashinfodom = document.getElementById('wf_splash_info');
+            splashinfodom.innerText = data.actionvalue;
+            var splashdom = document.getElementById('wf_splash');
+            document.getElementById('webform1127844000000442391').reset.click();
+            splashdom.style.display = '';
+            setTimeout(function() {
+              splashdom.style.display = 'none';
+            }, 5000);
+            document.querySelector('.crmWebToEntityForm .formsubmit').removeAttribute('disabled');
+          },
+          error: function(data) {
+            alert('an error occurred');
+          }
+        });
+      }
+    });
+  });
+</script>
+
+<script is:inline id='wf_anal' src='https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=57f62d4ff6a49b53cec5c6a08c3b86aafb443e5764ccdb63ca9510c2e5d5c2a1b1578df8ab60cd989a700a4bffebbee4gid72031317bb1b6b924ba9c11822a3f7544ddfc85be9948e89d134b6832ade2f5fgid0807dd37f1a352fbd87cbd86d50b51bcae72004ad7c7047c3b0be70141fb427dgid0e6f9d3866e276cf214edea77a7bf182d6f0798bdde1da306c22c8485c73ca7e&tw=0afbc523a1b4ac0b03e1b673eb969c9095b3944a8426964f2b756f52cf706255'></script>
