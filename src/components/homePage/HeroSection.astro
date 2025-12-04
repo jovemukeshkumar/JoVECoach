@@ -1,8 +1,8 @@
 ---
 import qs from "qs";
-import HeroSectionImage from "../assets/AP Chemistry.png";
+import HeroSectionImage from "../../assets/AP Chemistry.png";
 import { Image } from "astro:assets";
-import HeroSectionVideo from '../assets/HeroSection.webm'
+import HeroSectionVideo from '../../assets/HeroSection.webm'
 
 const homePageQuery = qs.stringify(
   {
@@ -31,7 +31,7 @@ const data = await getStrapiData("/api/home-page");
 ---
 <style>
   .hero-section {
-    background-image: url('../assets/heroSectionbg.png');
+    background-image: url('../../assets/heroSectionbg.png');
     background-size: cover;
     background-position: center;
     padding: 60px 20px 0px 20px;

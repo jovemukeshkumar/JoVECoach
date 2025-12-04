@@ -267,15 +267,16 @@ const header = data?.header;
 <nav id="container">
 	<div id="navbar">
 		<a href={header?.logoImageUrl?.url || "/"} id="logo">
-			{header?.logoImage && (
-				<img
-					src={`${import.meta.env.PUBLIC_BACKEND_URL}${header.logoImage.url}`}
-					alt={header.logoImage.alternativeText || "Logo"}
-					width="210"
-					height="auto"
-				/>
-			)}
-		</a>
+  {header?.logoImage && (
+    <img
+      src={header.logoImage.url}
+      alt={header.logoImage.alternativeText || "Logo"}
+      width="210"
+      height="auto"
+    />
+  )}
+</a>
+
 
 		<!-- Navigation Links (hidden on mobile) -->
 		<!-- <div id="nav-links">
