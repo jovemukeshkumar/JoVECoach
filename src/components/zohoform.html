@@ -876,35 +876,35 @@
 				}
 			}
 		</script>
-		<script>
-			(function () {
-				const params = new URLSearchParams(window.location.search);
-
-				const mapping = {
-					utm_source: 'CONTACTCF20',
-					utm_medium: 'CONTACTCF19',
-					utm_campaign: 'CONTACTCF17',
-					utm_term: 'CONTACTCF21',
-					utm_content: 'CONTACTCF18',
-
-					ad_id: 'CONTACTCF4',
-					ad_group_id: 'CONTACTCF2',
-					ad_group_name: 'CONTACTCF3',
-					ad_campaign_id: 'CONTACTCF1',
-					ad_name: 'CONTACTCF5',
-					ad_platform: 'CONTACTCF6'
-				};
-
-				for (const key in mapping) {
-					if (params.has(key)) {
-						const fieldId = mapping[key];
-						const el = document.getElementById(fieldId);
-						if (el) {
-							el.value = params.get(key);
-						}
-					}
-				}
-			})();
-		</script>
 	</form>
 </div>
+<script>
+	(function () {
+		const params = new URLSearchParams(window.location.search);
+
+		const mapping = {
+			utm_source: 'CONTACTCF20',
+			utm_medium: 'CONTACTCF19',
+			utm_campaign: 'CONTACTCF17',
+			utm_term: 'CONTACTCF21',
+			utm_content: 'CONTACTCF18',
+
+			ad_id: 'CONTACTCF4',
+			ad_group_id: 'CONTACTCF2',
+			ad_group_name: 'CONTACTCF3',
+			ad_campaign_id: 'CONTACTCF1',
+			ad_name: 'CONTACTCF5',
+			ad_platform: 'CONTACTCF6'
+		};
+
+		for (const key in mapping) {
+			if (params.has(key)) {
+				const fieldId = mapping[key];
+				const el = document.getElementById(fieldId);
+				if (el) {
+					el.value = params.get(key);
+				}
+			}
+		}
+	})();
+</script>
