@@ -32,7 +32,7 @@ async function getStrapiData(path: string) {
 
 const data = await getStrapiData("/api/home-page");
 const coachAdvantages = data?.coachAdvantageSection?.find(
-    (b: any) => b.__component === "layout.coach-advantages",
+    (b: any) => b.__component === "layout.section8-details",
 );
 ---
 

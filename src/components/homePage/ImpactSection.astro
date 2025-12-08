@@ -28,31 +28,9 @@ async function getStrapiData(path: string) {
 
 const data = await getStrapiData("/api/home-page");
 const impactSection = data?.impactSection?.find(
-	(b: any) => b.__component === "components.impact-section",
+	(b: any) => b.__component === "components.section9",
 );
 ---
-
-<section class="impact-section">
-  <h2>{impactSection?.ImpactSectionHeading}</h2>
-
-  <div class="impact-grid">
-    <div class="impact-item">
-      <h3>{impactSection?.ImpactSectionSubHeading1}</h3>
-      <p>{impactSection?.ImpactSectionPara1}</p>
-    </div>
-
-    <div class="impact-item">
-      <h3>{impactSection?.ImpactSectionSubHeading2}</h3>
-      <p>{impactSection?.ImpactSectionPara2}</p>
-    </div>
-
-    <div class="impact-item">
-      <h3>{impactSection?.ImpactSectionSubHeading3}</h3>
-      <p>{impactSection?.ImpactSectionPara3}</p>
-    </div>
-  </div>
-</section>
-
 <style>
     /* Section Wrapper */
 .impact-section {
@@ -119,3 +97,25 @@ const impactSection = data?.impactSection?.find(
 }
 
 </style>
+
+<section class="impact-section">
+  <h2>{impactSection?.impactSectionHeading1}</h2>
+
+  <div class="impact-grid">
+    <div class="impact-item">
+      <h3>{impactSection?.impactSectionSubHeading1}</h3>
+      <p>{impactSection?.impactSectionPara1}</p>
+    </div>
+
+    <div class="impact-item">
+      <h3>{impactSection?.impactSectionSubHeading2}</h3>
+      <p>{impactSection?.impactSectionPara2}</p>
+    </div>
+
+    <div class="impact-item">
+      <h3>{impactSection?.impactSectionSubHeading3}</h3>
+      <p>{impactSection?.impactSectionPara3}</p>
+    </div>
+  </div>
+</section>
+

@@ -29,7 +29,7 @@ async function getStrapiData(path: string) {
 const data = await getStrapiData("/api/home-page");
 
 const trustedPartners = data?.trustedPartners?.find(
-    (b: any) => b.__component === "layout.trusted-partners",
+    (b: any) => b.__component === "layout.section7",
 );
 
 ---
