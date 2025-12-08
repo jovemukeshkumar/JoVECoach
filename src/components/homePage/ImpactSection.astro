@@ -28,27 +28,27 @@ async function getStrapiData(path: string) {
 
 const data = await getStrapiData("/api/home-page");
 const impactSection = data?.impactSection?.find(
-	(b: any) => b.__component === "components.section9",
+	(b: any) => b.__component === "components.impact-section",
 );
 ---
 
 <section class="impact-section">
-  <h2>{impactSection?.section9Heading1}</h2>
+  <h2>{impactSection?.ImpactSectionHeading}</h2>
 
   <div class="impact-grid">
     <div class="impact-item">
-      <h3>{impactSection?.section9SubHeading1}</h3>
-      <p>{impactSection?.section9Para1}</p>
+      <h3>{impactSection?.ImpactSectionSubHeading1}</h3>
+      <p>{impactSection?.ImpactSectionPara1}</p>
     </div>
 
     <div class="impact-item">
-      <h3>{impactSection?.section9SubHeading2}</h3>
-      <p>{impactSection?.section9Para2}</p>
+      <h3>{impactSection?.ImpactSectionSubHeading2}</h3>
+      <p>{impactSection?.ImpactSectionPara2}</p>
     </div>
 
     <div class="impact-item">
-      <h3>{impactSection?.section9SubHeading3}</h3>
-      <p>{impactSection?.section9Para3}</p>
+      <h3>{impactSection?.ImpactSectionSubHeading3}</h3>
+      <p>{impactSection?.ImpactSectionPara3}</p>
     </div>
   </div>
 </section>

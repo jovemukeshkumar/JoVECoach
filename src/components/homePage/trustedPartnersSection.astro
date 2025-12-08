@@ -4,7 +4,7 @@ import qs from "qs";
 const homePageQuery = qs.stringify(
     {
     populate: {
-      section7: {
+      trustedPartners: {
         populate: "*"
       },
     },
@@ -28,8 +28,8 @@ async function getStrapiData(path: string) {
 
 const data = await getStrapiData("/api/home-page");
 
-const section7 = data?.section7?.find(
-    (b: any) => b.__component === "layout.section7",
+const trustedPartners = data?.trustedPartners?.find(
+    (b: any) => b.__component === "layout.trusted-partners",
 );
 
 ---
@@ -38,14 +38,14 @@ const section7 = data?.section7?.find(
     <div class="section7-container">
         <div class="section7-heading-wrapper">
             <div class="section7-heading">
-                {section7?.section7Heading}
+                {trustedPartners?.trustedPartnersHeading}
             </div>
         </div>
 
         <div class="section7-slider-wrapper">
             <div class="section7-slider">
                 {
-                    section7?.section7LogoImage?.map((img: any) => (
+                    trustedPartners?.trustedPartnersLogoImage?.map((img: any) => (
                         <img
                             src={`${img.url}`}
                             alt={img.name}

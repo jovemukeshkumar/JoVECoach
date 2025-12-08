@@ -1,6 +1,6 @@
 ---
 import qs from "qs";
-import HeroSectionImage from "../../assets/AP Chemistry.png";
+import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.webp";
 import { Image } from "astro:assets";
 import HeroSectionVideo from '../../assets/HeroSection.webm'
 
@@ -119,6 +119,10 @@ const data = await getStrapiData("/api/home-page");
     min-width: 770px;
   }
 
+  .hero-mobile-img {
+    display: none;
+  }
+
   .hero-video {
     width: 100%;
     height: auto;
@@ -138,7 +142,7 @@ const data = await getStrapiData("/api/home-page");
     display: flex;
     gap: 40px;
     width: max-content;
-    animation: slide 20s linear infinite;
+    animation: slide 40s linear infinite;
   }
 
   .stat-item {
@@ -277,6 +281,14 @@ const data = await getStrapiData("/api/home-page");
       height: 36px;
       font-size: 18px;
     }
+    .hero-video {
+      display: none;
+    }
+    .hero-mobile-img {
+      display: block;
+      max-width: 500px;
+      height: auto;
+    }
   }
 
   /* Small Mobile */
@@ -325,6 +337,11 @@ const data = await getStrapiData("/api/home-page");
       height: 32px;
       font-size: 16px;
     }
+    .hero-mobile-img {
+      display: block;
+      max-width: 300px;
+      height: auto;
+    }
   }
 
   /* Extra Small Mobile */
@@ -358,11 +375,16 @@ const data = await getStrapiData("/api/home-page");
     </div>
 
     <div class="hero-image">
+      <!-- Desktop / Tablet Video -->
       <video autoplay loop muted playsinline class="hero-video">
         <source src={HeroSectionVideo} type="video/webm" />
         Your browser does not support the video tag.
       </video>
+
+      <!-- Mobile Image -->
+      <Image src={HeroSectionImage} alt="Hero Image" class="hero-mobile-img" />
     </div>
+
   </div>
 </section>
 
@@ -382,15 +404,7 @@ const data = await getStrapiData("/api/home-page");
     </div>
     <div class="stat-item">
       <div class="check-icon">✓</div>
-      <div class="stat-text">2X Test Scores Improvement</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">96% Better Comprehension</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">19 Years Pioneering Education</div>
+      <div class="stat-text">1,800+ schools trust JoVE</div>
     </div>
     <div class="stat-item">
       <div class="check-icon">✓</div>
@@ -406,6 +420,10 @@ const data = await getStrapiData("/api/home-page");
     </div>
     <div class="stat-item">
       <div class="check-icon">✓</div>
+      <div class="stat-text">1,800+ schools trust JoVE</div>
+    </div>
+    <div class="stat-item">
+      <div class="check-icon">✓</div>
       <div class="stat-text">2X Test Scores Improvement</div>
     </div>
     <div class="stat-item">
@@ -415,6 +433,10 @@ const data = await getStrapiData("/api/home-page");
     <div class="stat-item">
       <div class="check-icon">✓</div>
       <div class="stat-text">19 Years Pioneering Education</div>
+    </div>
+    <div class="stat-item">
+      <div class="check-icon">✓</div>
+      <div class="stat-text">1,800+ schools trust JoVE</div>
     </div>
   </div>
 </div>

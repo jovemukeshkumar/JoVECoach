@@ -33,31 +33,6 @@ const cardSection  = data?.cardSection?.find(
     (b: any) => b.__component === "layout.card-section",
 );
 ---
-<section class="card-section">
-    <div class="card-wrapper">
-        <div class="card-box">
-            <p class="card-heading">
-                {cardSection?.cardHeading}
-            </p>
-
-            <p class="card-para">
-                {cardSection?.cardPara}
-            </p>
-
-            <button class="card-btn">
-                <a href="#hubform">
-                    {cardSection?.cardButtonContent}
-                </a>
-            </button>
-
-            <Image
-                alt="bannerPattern"
-                src={section11CardImage}
-                class="card-img"
-            />
-        </div>
-    </div>
-</section>
 
 <style>
 /* Outer wrapper */
@@ -188,3 +163,30 @@ const cardSection  = data?.cardSection?.find(
     }
 }
 </style>
+
+<section class="card-section">
+    <div class="card-wrapper">
+        <div class="card-box">
+            <p class="card-heading">
+                {cardSection?.cardHeading}
+            </p>
+
+            <p class="card-para">
+                {cardSection?.cardPara}
+            </p>
+
+            <button class="card-btn">
+                <a href="#hubform">
+                    {cardSection?.cardButtonContent}
+                </a>
+            </button>
+
+            <Image
+                alt="bannerPattern"
+                src={section11CardImage}
+                class="card-img"
+            />
+        </div>
+    </div>
+</section>
+
