@@ -1,36 +1,72 @@
 ---
 import qs from "qs";
 
+
 const homePageQuery = qs.stringify(
-	{
-		populate: {
-			impactSection: {
-				populate: "*",
-			},
-		},
-	},
-	{ encodeValuesOnly: true },
+  {
+    populate: {
+      impactSection: {
+        populate: "*",
+      },
+    },
+  },
+  { encodeValuesOnly: true },
 );
 
-async function getStrapiData(path: string) {
-	const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
-	const url = new URL(path, BASE_URL);
-	url.search = homePageQuery;
 
-	try {
-		const res = await fetch(url.href);
-		const json = await res.json();    
-		return json.data;
-	} catch (error) {
-		console.error("Strapi fetch error:", error);
-	}
+async function getStrapiData(path: string) {
+  try {
+    const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+    if (!BASE_URL) {
+      console.error("❌ Missing PUBLIC_BACKEND_URL");
+      return null;
+    }
+
+    const url = new URL(path, BASE_URL);
+    url.search = homePageQuery;
+
+    const res = await fetch(url.href);
+
+    if (!res.ok) {
+      console.error("❌ Strapi request failed:", res.status);
+      return null;
+    }
+
+    const json = await res.json();
+    return json?.data ?? null;
+  } catch (error) {
+    console.error("❌ Strapi fetch error:", error);
+    return null;
+  }
 }
 
 const data = await getStrapiData("/api/home-page");
-const impactSection = data?.impactSection?.find(
-	(b: any) => b.__component === "components.section9",
-);
+
+
+const impactSection =
+  data?.impactSection?.find((b: any) => b.__component === "components.section9") ??
+  {
+    impactSectionHeading1: "Our Impact",
+    impactItems: [],
+  };
+
+
+const items = [
+  {
+    heading: impactSection?.impactSectionSubHeading1,
+    text: impactSection?.impactSectionPara1,
+  },
+  {
+    heading: impactSection?.impactSectionSubHeading2,
+    text: impactSection?.impactSectionPara2,
+  },
+  {
+    heading: impactSection?.impactSectionSubHeading3,
+    text: impactSection?.impactSectionPara3,
+  },
+].filter(item => item.heading || item.text); // remove empty ones
 ---
+
 <style>
     /* Section Wrapper */
 .impact-section {
@@ -99,23 +135,18 @@ const impactSection = data?.impactSection?.find(
 </style>
 
 <section class="impact-section">
-  <h2>{impactSection?.impactSectionHeading1}</h2>
+  <h2>{impactSection.impactSectionHeading1 || "Our Impact"}</h2>
 
   <div class="impact-grid">
-    <div class="impact-item">
-      <h3>{impactSection?.impactSectionSubHeading1}</h3>
-      <p>{impactSection?.impactSectionPara1}</p>
-    </div>
-
-    <div class="impact-item">
-      <h3>{impactSection?.impactSectionSubHeading2}</h3>
-      <p>{impactSection?.impactSectionPara2}</p>
-    </div>
-
-    <div class="impact-item">
-      <h3>{impactSection?.impactSectionSubHeading3}</h3>
-      <p>{impactSection?.impactSectionPara3}</p>
-    </div>
+    {
+      items.map((item: any) => (
+        <div class="impact-item">
+          <h3>{item.heading || "—"}</h3>
+          <p>{item.text || ""}</p>
+        </div>
+      ))
+    }
   </div>
 </section>
+
 

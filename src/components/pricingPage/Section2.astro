@@ -5,11 +5,23 @@ import section8SubHeadingLogo1 from "../../assets/section8SubHeadingLogo1.svg";
 import section8SubHeadingLogo2 from "../../assets/section8SubHeadingLogo2.svg";
 import section8SubHeadingLogo3 from "../../assets/section8SubHeadingLogo3.svg";
 import section8SubHeadingLogo4 from "../../assets/section8SubHeadingLogo4.svg";
+
+const icons = [
+    section8SubHeadingLogo1,
+    section8SubHeadingLogo2,
+    section8SubHeadingLogo3,
+    section8SubHeadingLogo4,
+];
+
 const homePageQuery = qs.stringify(
     {
         populate: {
-            aboutPageSection2: {
-                populate: "*",
+            pricingSection2: {
+                on: {
+                    "layout.section8-details": {
+                        populate: "*",
+                    },
+                },
             },
         },
     },
@@ -30,140 +42,116 @@ async function getStrapiData(path: string) {
     }
 }
 
-const data = await getStrapiData("/api/about");
-console.log(data);
+const data = await getStrapiData("/api/pricing-page");
 
-const section8Details = data?.aboutPageSection2?.find(
+const section8Details = data?.pricingSection2?.find(
     (b: any) => b.__component === "layout.section8-details",
 );
+
+// Convert Strapi fields into a clean array
+const rows = [
+    {
+        heading: section8Details?.SectionSubHeading1,
+        paragraph: section8Details?.SectionSubPara1,
+        icon: icons[0],
+    },
+    {
+        heading: section8Details?.SectionSubHeading2,
+        paragraph: section8Details?.SectionSubPara2,
+        icon: icons[1],
+    },
+    {
+        heading: section8Details?.SectionSubHeading3,
+        paragraph: section8Details?.SectionSubPara3,
+        icon: icons[2],
+    },
+    {
+        heading: section8Details?.SectionSubHeading4,
+        paragraph: section8Details?.SectionSubPara4,
+        icon: icons[3],
+    },
+];
+
+// Remove rows where heading or text is "NA"
+const filteredRows = rows.filter((row) => row.heading && row.heading !== "NA");
 ---
 
 <section class="section8Details">
-    <h2 class="section8-title">
-        Why JoVE  <span class="section8-highlight">Coach?</span>
-    </h2>
-    
+    <div class="section8Details-header">
+        <h2 class="section8-title">
+            {section8Details?.SectionHeading}
+            <span class="section8-highlight"> </span>
+        </h2>
+
+        <p>{section8Details?.SectionPara}</p>
+    </div>
+
     <div class="section8-wrapper">
-        <div class="section8-row">
-            <div>
-                <Image
-                    alt=""
-                    src={section8SubHeadingLogo1}
-                    class="section8-icon"
-                />
-            </div>
-
-            <div class="section8-textbox">
-                <h3 class="section8-subheading">
-                    {section8Details?.section8SubHeading1}
-                </h3>
-                <p class="section8-paragraph">
-                    {section8Details?.section8SubPara1}
-                </p>
-            </div>
-        </div>
-
-        <div class="section8-row">
-            <div>
-                <Image
-                    alt=""
-                    src={section8SubHeadingLogo2}
-                    class="section8-icon"
-                />
-            </div>
-            <div class="section8-textbox">
-                <h3 class="section8-subheading">
-                    {section8Details?.section8SubHeading2}
-                </h3>
-                <p class="section8-paragraph">
-                    {section8Details?.section8SubPara2}
-                </p>
-            </div>
-        </div>
-
-        <div class="section8-row">
-            <div>
-                <Image
-                    alt=""
-                    src={section8SubHeadingLogo3}
-                    class="section8-icon"
-                />
-            </div>
-            <div class="section8-textbox">
-                <h3 class="section8-subheading">
-                    {section8Details?.section8SubHeading3}
-                </h3>
-                <p class="section8-paragraph">
-                    {section8Details?.section8SubPara3}
-                </p>
-            </div>
-        </div>
+        {
+            filteredRows.map((item) => (
+                <div class="section8-row">
+                    <Image alt="" src={item.icon} class="section8-icon" />
+                    <div class="section8-textbox">
+                        <h3 class="section8-subheading">{item.heading}</h3>
+                        <p class="section8-paragraph">{item.paragraph}</p>
+                    </div>
+                </div>
+            ))
+        }
     </div>
 </section>
 
 <style>
     .section8-wrapper {
-        background-color: rgb(255, 255, 255);
-        padding: 0px 16px 100px;
+        background-color: #fff;
+        padding: 0 16px 100px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
     }
-
     .section8-title {
         text-align: center;
         font-size: 36px;
         font-weight: 600;
-        color: rgb(0, 0, 0);
-        font-family: Inter, sans-serif;
-        font-style: normal;
-        line-height: normal;
+        color: #000;
     }
-
     .section8-highlight {
         color: rgb(33, 131, 237);
     }
-
+    .section8Details-header p{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: rgb(63, 63, 63);
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    margin-bottom: 40px;
+    }
     .section8-row {
         display: flex;
-        flex-direction: row;
         max-width: 809px;
-        min-width: 809px;
         width: 100%;
-        padding: 0px;
-        align-items: center;
-        justify-content: center;
-        margin: 20px auto;
+        margin: 20px 0;
         gap: 27px;
+        align-items: center;
     }
-
     .section8-icon {
         width: 32px;
         height: 32px;
     }
-
     .section8-textbox {
         width: 100%;
     }
-
     .section8-subheading {
-        color: rgb(0, 0, 0);
-        font-family: Inter;
         font-size: 24px;
-        font-style: normal;
         font-weight: 600;
-        line-height: normal;
         margin-bottom: 16px;
     }
-
     .section8-paragraph {
-        color: rgb(63, 63, 63);
-        font-family: Inter;
+        color: #3f3f3f;
         font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
         line-height: 140%;
-        margin: 0px;
     }
 </style>

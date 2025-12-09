@@ -1,88 +1,78 @@
 ---
 import qs from "qs";
 import { Image } from "astro:assets";
-import coachAdvantageSubHeadingLogo1 from "../../assets/section8SubHeadingLogo1.svg";
-import coachAdvantageSubHeadingLogo2 from "../../assets/section8SubHeadingLogo2.svg";
-import coachAdvantageSubHeadingLogo3 from "../../assets/section8SubHeadingLogo3.svg";
-import coachAdvantageSubHeadingLogo4 from "../../assets/section8SubHeadingLogo4.svg";
+
+// Local fallback icons (if Strapi icons missing)
+import icon1 from "../../assets/section8SubHeadingLogo1.svg";
+import icon2 from "../../assets/section8SubHeadingLogo2.svg";
+import icon3 from "../../assets/section8SubHeadingLogo3.svg";
+import icon4 from "../../assets/section8SubHeadingLogo4.svg";
+
+const fallbackIcons = [icon1, icon2, icon3, icon4];
+
 const homePageQuery = qs.stringify(
-    {
-        populate: {
-            coachAdvantageSection: {
-                populate: "*",
-            },
-        },
+  {
+    populate: {
+      coachAdvantageSection: {
+        populate: "*",
+      },
     },
-    { encodeValuesOnly: true },
+  },
+  { encodeValuesOnly: true },
 );
 
+// Safe Fetch Function
 async function getStrapiData(path: string) {
+  try {
     const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+    if (!BASE_URL) return null;
+
     const url = new URL(path, BASE_URL);
     url.search = homePageQuery;
 
-    try {
-        const res = await fetch(url.href);
-        const json = await res.json();
-        return json.data;
-    } catch (error) {
-        console.error("Strapi fetch error:", error);
-    }
+    const res = await fetch(url.href);
+    if (!res.ok) return null;
+
+    const json = await res.json();
+    return json?.data ?? null;
+  } catch (e) {
+    console.error("Strapi Fetch Error:", e);
+    return null;
+  }
 }
 
 const data = await getStrapiData("/api/home-page");
-const coachAdvantages = data?.coachAdvantageSection?.find(
-    (b: any) => b.__component === "layout.section8-details",
-);
+
+// Find Section
+const section =
+  data?.coachAdvantageSection?.find(
+    (b: any) => b.__component === "layout.section8-details"
+  ) ?? {};
+
+// Convert static items → dynamic array
+const items = [
+  {
+    heading: section.SectionSubHeading1,
+    text: section.SectionSubPara1,
+    icon: fallbackIcons[0],
+  },
+  {
+    heading: section.SectionSubHeading2,
+    text: section.SectionSubPara2,
+    icon: fallbackIcons[1],
+  },
+  {
+    heading: section.SectionSubHeading3,
+    text: section.SectionSubPara3,
+    icon: fallbackIcons[2],
+  },
+  {
+    heading: section.SectionSubHeading4,
+    text: section.SectionSubPara4,
+    icon: fallbackIcons[3],
+  },
+].filter(item => item.heading || item.text);
 ---
-
-<section class="section8Details">
-    <h2 class="section8-title">
-        The <span class="section8-highlight">Coach</span> Advantage
-        <!-- {coachAdvantages?.SectionHeading} -->
-    </h2>
-
-    <div class="section8-wrapper">
-
-        <div class="section8-row">
-            <Image alt="" src={coachAdvantageSubHeadingLogo1} class="section8-icon" />
-
-            <div class="section8-textbox">
-                <h3 class="section8-subheading">{coachAdvantages?.SectionSubHeading1}</h3>
-                <p class="section8-paragraph">{coachAdvantages?.SectionSubPara1}</p>
-            </div>
-        </div>
-
-        <div class="section8-row">
-            <Image alt="" src={coachAdvantageSubHeadingLogo2} class="section8-icon" />
-
-            <div class="section8-textbox">
-                <h3 class="section8-subheading">{coachAdvantages?.SectionSubHeading2}</h3>
-                <p class="section8-paragraph">{coachAdvantages?.SectionSubPara2}</p>
-            </div>
-        </div>
-
-        <div class="section8-row">
-            <Image alt="" src={coachAdvantageSubHeadingLogo3} class="section8-icon" />
-
-            <div class="section8-textbox">
-                <h3 class="section8-subheading">{coachAdvantages?.SectionSubHeading3}</h3>
-                <p class="section8-paragraph">{coachAdvantages?.SectionSubPara3}</p>
-            </div>
-        </div>
-
-        <div class="section8-row">
-            <Image alt="" src={coachAdvantageSubHeadingLogo4} class="section8-icon" />
-
-            <div class="section8-textbox">
-                <h3 class="section8-subheading">{coachAdvantages?.SectionSubHeading4}</h3>
-                <p class="section8-paragraph">{coachAdvantages?.SectionSubPara4}</p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
 <style>
 /* ------------------------------
       SECTION LAYOUT
@@ -202,3 +192,26 @@ const coachAdvantages = data?.coachAdvantageSection?.find(
     }
 }
 </style>
+
+<section class="section8Details">
+  <h2 class="section8-title">
+    The <span class="section8-highlight">Coach</span> Advantage
+  </h2>
+
+  <div class="section8-wrapper">
+    {
+      items.map((item, i) => (
+        <div class="section8-row">
+          <Image alt="" src={item.icon} class="section8-icon" />
+
+          <div class="section8-textbox">
+            <h3 class="section8-subheading">{item.heading ?? "—"}</h3>
+            <p class="section8-paragraph">{item.text ?? ""}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+

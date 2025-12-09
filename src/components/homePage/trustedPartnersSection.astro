@@ -2,66 +2,53 @@
 import qs from "qs";
 
 const homePageQuery = qs.stringify(
-    {
+  {
     populate: {
       trustedPartners: {
-        populate: "*"
+        populate: "*",
       },
     },
   },
-    { encodeValuesOnly: true },
+  { encodeValuesOnly: true },
 );
 
+
 async function getStrapiData(path: string) {
+  try {
     const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+    if (!BASE_URL) {
+      console.error("❌ Missing PUBLIC_BACKEND_URL");
+      return null;
+    }
+
     const url = new URL(path, BASE_URL);
     url.search = homePageQuery;
 
-    try {
-        const res = await fetch(url.href);
-        const json = await res.json();
-        return json.data;
-    } catch (error) {
-        console.error("Strapi fetch error:", error);
+    const res = await fetch(url.href);
+
+    if (!res.ok) {
+      console.error("❌ Strapi request failed:", res.status);
+      return null;
     }
+
+    const json = await res.json();
+    return json?.data ?? null;
+  } catch (error) {
+    console.error("❌ Strapi fetch error:", error);
+    return null;
+  }
 }
 
 const data = await getStrapiData("/api/home-page");
 
-const trustedPartners = data?.trustedPartners?.find(
-    (b: any) => b.__component === "layout.section7",
-);
 
+const trustedPartners =
+  data?.trustedPartners?.find((b: any) => b.__component === "layout.section7") ??
+  { trustedPartnersHeading: "", trustedPartnersLogoImage: [] };
 ---
 
-<section class="section7">
-    <div class="section7-container">
-        <div class="section7-heading-wrapper">
-            <div class="section7-heading">
-                {trustedPartners?.trustedPartnersHeading}
-            </div>
-        </div>
-
-        <div class="section7-slider-wrapper">
-            <div class="section7-slider">
-                {
-                    trustedPartners?.trustedPartnersLogoImage?.map((img: any) => (
-                        <img
-                            src={`${img.url}`}
-                            alt={img.name}
-                            class="section7-logo"
-                        />
-                    ))
-                }
-            </div>
-        </div>
-    </div>
-</section>
-
 <style>
-/* ----------------------------
-     Section Container
------------------------------ */
+
 .section7-container {
     background-color: #252a2e;
     color: white;
@@ -70,9 +57,7 @@ const trustedPartners = data?.trustedPartners?.find(
     font-family: Inter, sans-serif;
 }
 
-/* ----------------------------
-      Heading
------------------------------ */
+
 .section7-heading-wrapper {
     width: 100%;
     max-width: 720px;
@@ -86,9 +71,6 @@ const trustedPartners = data?.trustedPartners?.find(
     line-height: 140%;
 }
 
-/* ----------------------------
-      Logo Slider
------------------------------ */
 .section7-slider-wrapper {
     position: relative;
     overflow: hidden;
@@ -170,3 +152,30 @@ const trustedPartners = data?.trustedPartners?.find(
     }
 }
 </style>
+
+
+<section class="section7">
+  <div class="section7-container">
+    <div class="section7-heading-wrapper">
+      <div class="section7-heading">
+        {trustedPartners.trustedPartnersHeading || "Our Trusted Partners"}
+      </div>
+    </div>
+
+    <div class="section7-slider-wrapper">
+      <div class="section7-slider">
+        {
+          (trustedPartners.trustedPartnersLogoImage ?? []).map((img: any) => {
+            const imgUrl = img?.url ?? "/fallback-logo.png"; // fallback
+            const imgAlt = img?.name ?? "Partner Logo";
+
+            return (
+              <img src={imgUrl} alt={imgAlt} class="section7-logo" loading="lazy" />
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>
+

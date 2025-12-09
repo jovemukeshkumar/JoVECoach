@@ -6,29 +6,54 @@ import { Image } from "astro:assets";
 const homePageQuery = qs.stringify(
   {
     populate: {
-      faqSection: {
-        populate: "*",
-      },
-    },
+      faqSection: { populate: "*" }
+    }
   },
-  { encodeValuesOnly: true },
+  { encodeValuesOnly: true }
 );
 
+// Safe fetch helper
 async function getStrapiData(path: string) {
-  const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
-  const url = new URL(path, BASE_URL);
-  url.search = homePageQuery;
+  try {
+    const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+    if (!BASE_URL) return null;
 
-  const res = await fetch(url?.href);
-  const json = await res.json();
-  return json.data;
+    const url = new URL(path, BASE_URL);
+    url.search = homePageQuery;
+
+    const res = await fetch(url.href);
+    if (!res.ok) return null;
+
+    const json = await res.json();
+    return json?.data ?? null;
+  } catch (err) {
+    console.error("Strapi FAQ Fetch Error:", err);
+    return null;
+  }
 }
 
 const data = await getStrapiData("/api/home-page");
-const faqSection = data?.faqSection?.find(
-  (b: any) => b.__component === "layout.faq-section",
-);
+
+// Safely extract component
+const faqSection =
+  data?.faqSection?.find(
+    (b: any) => b.__component === "layout.faq-section"
+  ) ?? {};
+
+// Dynamically extract all question/answer pairs
+const faqList = Object.keys(faqSection)
+  .filter((key) => key.startsWith("faqSectionQuestion"))
+  .map((qKey) => {
+    const index = qKey.replace("faqSectionQuestion", "");
+    const aKey = `faqSectionAnswer${index}`;
+    return {
+      question: faqSection[qKey],
+      answer: faqSection[aKey]
+    };
+  })
+  .filter((item) => item.question); // Only valid items
 ---
+
 
 <style>
   .faq-section {
@@ -164,49 +189,39 @@ const faqSection = data?.faqSection?.find(
 
 <section class="faq-section">
   <div class="faq-container">
-    <h2 class="faq-heading">{faqSection?.faqSectionHeading}</h2>
+    <h2 class="faq-heading">
+      {faqSection?.faqSectionHeading ?? "Frequently Asked Questions"}
+    </h2>
 
-    <!-- FAQ LIST -->
-    {
-      faqSection &&
-        Array?.from({ length: 10 }).map((_, index) => {
-          const q = faqSection[`faqSectionQuestion${index + 1}`];
-          const a = faqSection[`faqSectionAnswer${index + 1}`];
+    {faqList.length === 0 && (
+      <p style="text-align:center; color:#777;">No FAQs available right now.</p>
+    )}
 
-          // Only render the item if a question exists
-          return q ? (
-            <div class="faq-item" data-faq>
-              {" "}
-              <div class="faq-question">
-                {q}{" "}
-                <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" /> {" "}
-              </div>
-              {a && <p class="faq-answer">{a}</p>}{" "}
-            </div>
-          ) : null;
-        })
-    }
+    {faqList.map((item) => (
+      <div class="faq-item" data-faq>
+        <div class="faq-question">
+          {item.question}
+          <Image src={section10FaqArrow} alt="Arrow" class="faq-arrow" />
+        </div>
+
+        {item.answer && <p class="faq-answer">{item.answer}</p>}
+      </div>
+    ))}
   </div>
 </section>
 
-<!-- Accordion Script -->
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const faqItems = document.querySelectorAll("[data-faq]");
-    
+
     faqItems.forEach((faq) => {
       faq.addEventListener("click", () => {
-        const isOpen = faq.classList.contains("open");
-        
-        // Close all FAQ items
-        faqItems.forEach((item) => {
-          item.classList.remove("open");
-        });
-        
-        // If the clicked item wasn't open, open it
-        if (!isOpen) {
-          faq.classList.add("open");
-        }
+        const open = faq.classList.contains("open");
+
+        faqItems.forEach((item) => item.classList.remove("open"));
+
+        if (!open) faq.classList.add("open");
       });
     });
   });

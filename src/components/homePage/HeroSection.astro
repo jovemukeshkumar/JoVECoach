@@ -2,13 +2,23 @@
 import qs from "qs";
 import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.webp";
 import { Image } from "astro:assets";
-import HeroSectionVideo from '../../assets/HeroSection.webm'
 
 const homePageQuery = qs.stringify(
   {
     populate: {
-      blocks: {
-        populate: "*",
+      HeroSection: {
+        on: {
+          "layout.hero-section": {
+            populate: {
+              video: true,
+              image: true,
+              link: true,
+              pointsSlider: {
+                populate: "*",
+              },
+            },
+          },
+        },
       },
     },
   },
@@ -16,22 +26,39 @@ const homePageQuery = qs.stringify(
 );
 
 async function getStrapiData(path: string) {
-  const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
-  const url = new URL(path, BASE_URL);
-  url.search = homePageQuery;
+  try {
+    const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+    if (!BASE_URL) {
+      console.error("❌ Missing PUBLIC_BACKEND_URL");
+      return null;
+    }
 
-  const res = await fetch(url.href);
-  const json = await res.json();
-  return json.data;
+    const url = new URL(path, BASE_URL);
+    url.search = homePageQuery;
+
+    const res = await fetch(url.toString());
+    if (!res.ok) {
+      console.error("❌ Strapi Fetch Failed:", res.status);
+      return null;
+    }
+
+    const json = await res.json();
+    return json?.data ?? null;
+  } catch (err) {
+    console.error("❌ Error fetching Strapi:", err);
+    return null;
+  }
 }
 
 const data = await getStrapiData("/api/home-page");
 
-
+const heroSection = Array.isArray(data?.HeroSection) ? data.HeroSection : [];
 ---
+
+
 <style>
   .hero-section {
-    background-image: url('../../assets/heroSectionbg.png');
+    background-image: url("../../assets/heroSectionbg.png");
     background-size: cover;
     background-position: center;
     padding: 60px 20px 0px 20px;
@@ -73,11 +100,11 @@ const data = await getStrapiData("/api/home-page");
     letter-spacing: -1%;
     max-width: 400px;
     margin: 0 0 40px 0;
-    color: #4B5563;
+    color: #4b5563;
   }
 
   .cta-button {
-    background: #4284E5;
+    background: #4284e5;
     color: white;
     font-family: Inter, sans-serif;
     font-weight: 600;
@@ -105,7 +132,7 @@ const data = await getStrapiData("/api/home-page");
     font-size: 12px;
     line-height: 20px;
     letter-spacing: 0%;
-    color: #6B7280;
+    color: #6b7280;
     margin: 10px 0px 10px 20px;
     display: block;
   }
@@ -154,8 +181,12 @@ const data = await getStrapiData("/api/home-page");
   }
 
   @keyframes slide {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   .check-icon {
@@ -188,7 +219,7 @@ const data = await getStrapiData("/api/home-page");
       padding: 0 15px;
     }
     .hero-image {
-    min-width: 670px;
+      min-width: 670px;
       /* order: -1; */
     }
     .hero-video {
@@ -199,14 +230,14 @@ const data = await getStrapiData("/api/home-page");
       align-items: center;
       padding: 10px;
     }
-    
+
     .hero-title {
       text-align: center;
     }
     .hero-subtitle {
       text-align: center;
     }
-        .no-credit {
+    .no-credit {
       text-align: center;
       margin-left: 0;
     }
@@ -361,82 +392,86 @@ const data = await getStrapiData("/api/home-page");
   }
 </style>
 
-<section class="hero-section">
-  <div class="hero-container">
-    <div class="hero-content">
-      <h1 class="hero-title">Ace Your Tests, Not Your Stress!</h1>
-      <p class="hero-subtitle">
-        Learn STEM, the smart way with bite-sized expert videos. Instant practice. Real results.
-      </p>
-      <a href="#crmWebToEntityForm">
-        <button class="cta-button">Start Learning Free</button>
-      </a>
-      <span class="no-credit">*No credit card required</span>
-    </div>
+{heroSection.map((hero: any) => {
+  const heading = hero?.heading ?? "Welcome!";
+  const subHeading = hero?.subHeading ?? "";
+  const notes = hero?.notes ?? "";
+  const linkText = hero?.link?.text ?? "Learn More";
+  const linkURL = hero?.link?.url ?? "#";
 
-    <div class="hero-image">
-      <!-- Desktop / Tablet Video -->
-      <video autoplay loop muted playsinline class="hero-video">
-        <source src={HeroSectionVideo} type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
+  const image = hero?.image?.formats?.large;
+  const imageUrl = image?.url ?? HeroSectionImage;
+  const imageWidth = image?.width ?? 500;
+  const imageHeight = image?.height ?? 350;
 
-      <!-- Mobile Image -->
-      <Image src={HeroSectionImage} alt="Hero Image" class="hero-mobile-img" />
-    </div>
+  const videoUrl = hero?.video?.url ?? null;
 
-  </div>
-</section>
+  return (
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">{heading}</h1>
+          <p class="hero-subtitle">{subHeading}</p>
+
+          <a href={linkURL}>
+            <button class="cta-button">{linkText}</button>
+          </a>
+
+          {notes && <span class="no-credit">{notes}</span>}
+        </div>
+
+        <div class="hero-image">
+          {videoUrl && (
+            <video autoplay loop muted playsinline class="hero-video">
+              <source src={videoUrl} type="video/webm" />
+            </video>
+          )}
+
+          <Image
+            src={imageUrl}
+            alt="Hero Image"
+            class="hero-mobile-img"
+            width={imageWidth}
+            height={imageHeight}
+          />
+        </div>
+      </div>
+    </section>
+  );
+})}
+
 
 <div class="stats-bar">
   <div class="stats-slider">
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">2X Test Scores Improvement</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">96% Better Comprehension</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">19 Years Pioneering Education</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">1,800+ schools trust JoVE</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">2X Test Scores Improvement</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">96% Better Comprehension</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">19 Years Pioneering Education</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">1,800+ schools trust JoVE</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">2X Test Scores Improvement</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">96% Better Comprehension</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">19 Years Pioneering Education</div>
-    </div>
-    <div class="stat-item">
-      <div class="check-icon">✓</div>
-      <div class="stat-text">1,800+ schools trust JoVE</div>
-    </div>
+
+    {
+      heroSection.flatMap((hero: any) => {
+        const slider = hero?.pointsSlider;
+        const iconUrl = slider?.icon?.url ?? "/fallback-icon.png";
+
+        return (slider?.points ?? []).map((point: any) => (
+          <div class="stat-item">
+            <img src={iconUrl} alt="Slider Icon" class="check-icon" />
+            <div class="stat-text">{point?.point ?? ""}</div>
+          </div>
+        ));
+      })
+    }
+
+    <!-- Duplicate for animation -->
+    {
+      heroSection.flatMap((hero: any) => {
+        const slider = hero?.pointsSlider;
+        const iconUrl = slider?.icon?.url ?? "/fallback-icon.png";
+
+        return (slider?.points ?? []).map((point: any) => (
+          <div class="stat-item">
+            <img src={iconUrl} alt="Slider Icon" class="check-icon" />
+            <div class="stat-text">{point?.point ?? ""}</div>
+          </div>
+        ));
+      })
+    }
+
   </div>
 </div>
