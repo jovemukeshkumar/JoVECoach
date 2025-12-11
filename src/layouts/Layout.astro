@@ -4,90 +4,116 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 
 <!doctype html>
 <html lang="en">
-<head>
-	<!-- Primary Meta Tags -->
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>JoVE Coach | Master Any STEM Concept in Minutes</title>
-	<meta name="description" content="Stop struggling with STEM. Master any concept in minutes with expert videos and instant practice. Try free for 7 days." />
-	<meta name="keywords" content="STEM learning, science videos, biology help, chemistry videos, physics tutorials, exam prep, study help, college STEM, high school science, STEM mastery" />
-	<meta name="robots" content="index, follow" />
-	<link rel="canonical" href="https://coach.jove.com/pp/" />
+	<head>
+		<!-- Primary Meta Tags -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>JoVE Coach | Master Any STEM Concept in Minutes</title>
+		<meta
+			name="description"
+			content="Stop struggling with STEM. Master any concept in minutes with expert videos and instant practice. Try free for 7 days."
+		/>
+		<meta
+			name="keywords"
+			content="STEM learning, science videos, biology help, chemistry videos, physics tutorials, exam prep, study help, college STEM, high school science, STEM mastery"
+		/>
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://coach.jove.com/pp/" />
 
-	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://coach.jove.com/pp/" />
-	<meta property="og:title" content="Master Any STEM Concept in Minutes | JoVE Coach" />
-	<meta property="og:description" content="Bite-sized expert videos + instant quizzes. Master Bio, Chem, and Physics—without the stress. Try free for 7 days." />
-	<meta property="og:image" content="https://coach.jove.com/home-social.jpg" />
-	<meta property="og:site_name" content="JoVE Coach" />
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://coach.jove.com/pp/" />
+		<meta
+			property="og:title"
+			content="Master Any STEM Concept in Minutes | JoVE Coach"
+		/>
+		<meta
+			property="og:description"
+			content="Bite-sized expert videos + instant quizzes. Master Bio, Chem, and Physics—without the stress. Try free for 7 days."
+		/>
+		<meta
+			property="og:image"
+			content="https://coach.jove.com/home-social.jpg"
+		/>
+		<meta property="og:site_name" content="JoVE Coach" />
 
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://coach.jove.com/pp/" />
-	<meta name="twitter:title" content="Master Any STEM Concept in Minutes | JoVE Coach" />
-	<meta name="twitter:description" content="Short expert videos. Instant quizzes. Real STEM understanding. Try JoVE Coach free for 7 days." />
-	<meta name="twitter:image" content="https://coach.jove.com/home-social.jpg" />
-	<meta name="twitter:site" content="@jovecoach" />
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content="https://coach.jove.com/pp/" />
+		<meta
+			name="twitter:title"
+			content="Master Any STEM Concept in Minutes | JoVE Coach"
+		/>
+		<meta
+			name="twitter:description"
+			content="Short expert videos. Instant quizzes. Real STEM understanding. Try JoVE Coach free for 7 days."
+		/>
+		<meta
+			name="twitter:image"
+			content="https://coach.jove.com/home-social.jpg"
+		/>
+		<meta name="twitter:site" content="@jovecoach" />
 
-	<!-- JSON-LD Schema -->
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "EducationalOrganization",
-			"name": "JoVE Coach",
-			"description": "Bite-sized STEM videos and instant quizzes to help students master Biology, Chemistry, and Physics.",
-			"url": "https://coach.jove.com/pp/",
-			"logo": "./logo.svg",
-			"sameAs": [
-				"https://www.linkedin.com/company/jovecoach",
-				"https://www.youtube.com/jovecoach",
-				"https://www.instagram.com/jovecoach"
-			]
-		}
-	</script>
-
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-		rel="stylesheet"
-	/>
-
-	<!-- Google Tag Manager -->
-	<script>
-		(function (w, d, s, l, i) {
-			(w as any)[l] = (w as any)[l] || [];
-			(w as any)[l].push({
-				"gtm.start": new Date().getTime(),
-				event: "gtm.js",
-			});
-			var f = d.getElementsByTagName(s)[0];
-			var j = d.createElement(s) as HTMLScriptElement;
-			var dl = l != "dataLayer" ? "&l=" + l : "";
-			j.async = true;
-			j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-			if (f && f.parentNode) {
-				f.parentNode.insertBefore(j, f);
+		<!-- JSON-LD Schema -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "EducationalOrganization",
+				"name": "JoVE Coach",
+				"description": "Bite-sized STEM videos and instant quizzes to help students master Biology, Chemistry, and Physics.",
+				"url": "https://coach.jove.com/pp/",
+				"logo": "./logo.svg",
+				"sameAs": [
+					"https://www.linkedin.com/company/jovecoach",
+					"https://www.youtube.com/jovecoach",
+					"https://www.instagram.com/jovecoach"
+				]
 			}
-		})(window, document, "script", "dataLayer", "GTM-TQWX7HXX");
-	</script>
-	<!-- End Google Tag Manager -->
+		</script>
 
-	<meta name="generator" content={Astro.generator} />
-</head>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Google Tag Manager -->
+		<script>
+			(function (w, d, s, l, i) {
+				(w as any)[l] = (w as any)[l] || [];
+				(w as any)[l].push({
+					"gtm.start": new Date().getTime(),
+					event: "gtm.js",
+				});
+				const f = d.getElementsByTagName(s)[0];
+				const j = d.createElement(s) as HTMLScriptElement;
+				const dl = l != "dataLayer" ? "&l=" + l : "";
+				j.async = true;
+				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+
+				if (f && f.parentNode) {
+					f.parentNode.insertBefore(j, f);
+				} else {
+					// fallback: append to <head>
+					d.head.appendChild(j);
+				}
+			})(window, document, "script", "dataLayer", "GTM-MCSS2G35");
+
+		</script>
+		<!-- End Google Tag Manager -->
+		<meta name="generator" content={Astro.generator} />
+	</head>
 
 	<body>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript
 			><iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTM-TQWX7HXX"
+				src="https://www.googletagmanager.com/ns.html?id=GTMMCSS2G35"
 				height="0"
 				width="0"
 				style="display:none;visibility:hidden"></iframe></noscript
-		>
-		<!-- End Google Tag Manager (noscript) -->
+		><!-- End Google Tag Manager (noscript) -->
 		<slot />
 		<SpeedInsights />
 	</body>
