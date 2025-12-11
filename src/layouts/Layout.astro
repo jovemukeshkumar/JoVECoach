@@ -1,3 +1,7 @@
+---
+import SpeedInsights from "@vercel/speed-insights/astro";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -10,11 +14,40 @@
 			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
 			rel="stylesheet"
 		/>
+		<!-- Google Tag Manager -->
+		<script>
+			(function (w, d, s, l, i) {
+				(w as any)[l] = (w as any)[l] || [];
+				(w as any)[l].push({
+					"gtm.start": new Date().getTime(),
+					event: "gtm.js",
+				});
+				var f = d.getElementsByTagName(s)[0];
+				var j = d.createElement(s) as HTMLScriptElement;
+				var dl = l != "dataLayer" ? "&l=" + l : "";
+				j.async = true;
+				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+				if (f && f.parentNode) {
+					f.parentNode.insertBefore(j, f);
+				}
+			})(window, document, "script", "dataLayer", "GTM-TQWX7HXX");
+		</script>
+		<!-- End Google Tag Manager -->
 		<meta name="generator" content={Astro.generator} />
 		<title>JoVE Coach</title>
 	</head>
 	<body>
 		<slot />
+		<SpeedInsights />
+		<!-- Google Tag Manager (noscript) -->
+		<noscript
+			><iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-TQWX7HXX"
+				height="0"
+				width="0"
+				style="display:none;visibility:hidden"></iframe></noscript
+		>
+		<!-- End Google Tag Manager (noscript) -->
 	</body>
 </html>
 
@@ -23,7 +56,6 @@
 	body {
 		margin: 0;
 		font-family: "Inter", "san-serif";
-		  scroll-behavior: smooth;
-
+		scroll-behavior: smooth;
 	}
 </style>

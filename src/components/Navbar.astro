@@ -1,6 +1,7 @@
 ---
 import qs from "qs";
 import NavLogo from '../assets/NavLogo.svg'
+import { Image } from "astro:assets";
 const homePageQuery = qs.stringify(
 	{
 		populate: {
@@ -268,11 +269,11 @@ const header = data?.header;
 	<div id="navbar">
 		<a href={header?.logoImageUrl?.url || "/"} id="logo">
   {header?.logoImage && (
-    <img
+    <Image
       src={header.logoImage.url}
       alt={header.logoImage.alternativeText || "Logo"}
-      width="210"
-      height="auto"
+      width={200}
+      height={50}
     />
   )}
 </a>

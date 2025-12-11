@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 const homePageQuery = qs.stringify(
   {
     populate: {
-      Faq: {
+      faqSection: {
         populate: "*",
       },
     },
@@ -24,8 +24,8 @@ async function getStrapiData(path: string) {
   return json.data;
 }
 
-const data = await getStrapiData("/api/about");
-const faqSection = data?.Faq?.find(
+const data = await getStrapiData("/api/pricing-page");
+const faqSection = data?.faqSection?.find(
   (b: any) => b.__component === "layout.faq-section",
 );
 ---
@@ -114,35 +114,45 @@ const faqSection = data?.Faq?.find(
   <div class="faq-container">
     <h2 class="faq-heading">{faqSection?.faqSectionHeading}</h2>
 
-    <!-- FAQ LIST -->
     {
-      faqSection && 
-        Array?.from({ length: 10 }).map((_, index) => {
+      faqSection &&
+        Array.from({ length: 10 }).map((_, index) => {
           const q = faqSection[`faqSectionQuestion${index + 1}`];
           const a = faqSection[`faqSectionAnswer${index + 1}`];
 
-          // Only render the item if a question exists
-          return q && q!== "NA" ? (
+          // Render only if question exists + valid
+          if (!q || q === "NA") return null;
+
+          return (
             <div class="faq-item" data-faq>
-              {" "}
               <div class="faq-question">
-                {q}{" "}
-                <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" /> {" "}
+                {q}
+                <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" />
               </div>
-              {a && <p class="faq-answer">{a}</p>}{" "}
+
+              {a && a !== "NA" ? (
+                <div class="faq-answer">
+                  <div class="faq-html" set:html={a} />
+                </div>
+              ) : null}
             </div>
-          ) : null;
+          );
         })
     }
   </div>
 </section>
 
-<!-- Accordion Script -->
-<script>
+<script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("[data-faq]").forEach((faq) => {
+    const faqItems = document.querySelectorAll("[data-faq]");
+
+    faqItems.forEach((faq) => {
       faq.addEventListener("click", () => {
-        faq.classList.toggle("open");
+        const open = faq.classList.contains("open");
+
+        faqItems.forEach((item) => item.classList.remove("open"));
+
+        if (!open) faq.classList.add("open");
       });
     });
   });

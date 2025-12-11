@@ -1,0 +1,760 @@
+---
+import { Image } from "astro:assets";
+import HeroSectionVideo from "../../assets/HeroSection.webm";
+import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.webp";
+import NavLogo from '../../assets/NavLogo.svg'
+
+// Jove Coach Hero Section Component
+---
+
+<style>
+  .hero-section {
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 50%, #f0f7ff 100%);
+    background-image: url('../../assets/HeroSectionGridBg.svg');
+    background-repeat: no-repeat;
+    background-position: 1100px top;
+    background-size:1000px 700px;
+    padding: 60px 20px 0px 20px;
+    overflow: hidden;
+    min-height: 85vh;
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+	.logo {
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+	}
+
+	.logo img {
+		width: 210px;
+		max-width: 100%;
+		height: auto;
+		transition: all 0.35s ease-in-out;
+	}
+
+
+  .logo-jove {
+    color: #2183ED;
+    font-weight: 700;
+    font-size: 32px;
+    font-family: Inter, sans-serif;
+  }
+
+  .logo-coach {
+    color: #374151;
+    font-weight: 300;
+    font-size: 32px;
+    font-family: Inter, sans-serif;
+  }
+
+  .hero-title {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 55px;
+    line-height: 1.2;
+    color: #111827;
+    margin: 0 0 20px 0;
+  }
+
+  .hero-subtitle {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 0 30px 0;
+    color: #4b5563;
+  }
+
+  .features-list {
+    list-style: none;
+    margin: 0 0 40px 0;
+    padding: 0;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .check-icon {
+    width: 24px;
+    height: 24px;
+    background: #10b981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .check-icon::after {
+    content: "✓";
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .feature-text {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    color: #374151;
+  }
+
+  .cta-box {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 32px;
+    max-width: 520px;
+  }
+
+  .cta-title {
+    color: #2183ED;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-family: Inter, sans-serif;
+  }
+
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .input-field {
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: Inter, sans-serif;
+    outline: none;
+    transition: all 0.3s;
+  }
+
+  .input-field:focus {
+    border-color: #2183ED;
+    box-shadow: 0 0 0 3px rgba(66, 132, 229, 0.1);
+  }
+
+  .cta-bottom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    background: #2183ED;
+    color: white;
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .cta-button:hover {
+    background: #3a74d4;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(66, 132, 229, 0.3);
+  }
+
+  .cta-note {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    color: #6b7280;
+  }
+
+  .hero-image {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .visual-container {
+    position: relative;
+
+  }
+
+  .blue-circle {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #4284e5 0%, #3b76d6 100%);
+    border-radius: 50%;
+  }
+
+  .pillar-container {
+    position: absolute;
+    bottom: 180px;
+    left: 50%;
+    transform: translateX(-55%);
+    display: flex;
+    align-items: flex-end;
+    gap: 200px;
+    z-index: -1;
+  }
+
+  .pillar {
+    width: 120px;
+    background:#fff;
+    border-radius: 100px 100px 0 0;
+    transform-origin: bottom;
+    animation: growUp 1.2s ease-out forwards;
+    padding: 15px;
+  }
+
+  .pillar-left {
+    height: 180px;
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+
+  .pillar-right {
+    height: 270px;
+    animation-delay: 0.5s;
+    opacity: 0;
+  }
+
+  @keyframes growUp {
+    0% {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  .stat-badge {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    padding: 20px 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    z-index: 10;
+  }
+
+  .stat-badge-left {
+    top: 25%;
+    left: -40px;
+  }
+
+  .stat-badge-right {
+    top: 25%;
+    right: -40px;
+  }
+
+  .stat-number {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color : #2183ED;
+    margin:30px 0px 10px 15px;
+  }
+
+  .stat-label {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color:#3F3F3F;
+    max-width: 80px;
+    margin: 0 15px;  
+  }
+
+  .girl-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 360px;
+    background: linear-gradient(
+      180deg,
+      rgba(147, 197, 253, 0.4) 0%,
+      rgba(96, 165, 250, 0.3) 100%
+    );
+    border-radius: 140px 140px 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 20;
+    overflow: hidden;
+  }
+
+  .girl-placeholder {
+    padding-bottom: 32px;
+    color: white;
+    font-size: 14px;
+    opacity: 0.8;
+    font-family: Inter, sans-serif;
+  }
+
+  .laptop-container {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    z-index: 30;
+  }
+
+  .laptop-frame {
+    background: #e5e7eb;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+
+  .laptop-screen {
+    background: linear-gradient(135deg, #a5f3fc 0%, #60a5fa 100%);
+    border-radius: 6px;
+    aspect-ratio: 16/10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    font-family: Inter, sans-serif;
+  }
+
+  .floating-icon {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 30;
+  }
+
+  .floating-icon-left {
+    bottom: 120px;
+    left: 32px;
+    width: 64px;
+    height: 64px;
+    padding: 8px;
+  }
+
+  .icon-inner-orange {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-radius: 8px;
+  }
+
+  .floating-icons-right {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .small-icon {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    padding: 6px;
+  }
+
+  .icon-inner-pink {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f9a8d4 0%, #c084fc 100%);
+    border-radius: 4px;
+  }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero-content {
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .logo {
+      justify-content: center;
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-title {
+      text-align: center;
+    }
+
+    .hero-subtitle {
+      text-align: center;
+    }
+
+    .cta-box {
+      margin: 0 auto;
+    }
+
+    .hero-image {
+      height: 500px;
+    }
+
+    .visual-container {
+      width: 400px;
+      height: 400px;
+    }
+
+    .pillar-container {
+      bottom: 140px;
+      gap: 100px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 40px 15px;
+    }
+
+    .hero-container {
+      gap: 30px;
+      padding: 0 10px;
+    }
+
+    .hero-content {
+      padding: 0;
+    }
+
+    .logo {
+      margin-bottom: 30px;
+    }
+
+    .logo-jove,
+    .logo-coach {
+      font-size: 28px;
+    }
+
+    .hero-title {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .input-row {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-box {
+      padding: 24px;
+    }
+
+    .cta-bottom {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .cta-button {
+      width: 100%;
+    }
+
+    .cta-note {
+      text-align: center;
+    }
+
+    .hero-image {
+      height: 400px;
+    }
+
+    .visual-container {
+      width: 320px;
+      height: 320px;
+    }
+
+    .laptop-container {
+      width: 280px;
+      bottom: 40px;
+    }
+
+    .girl-container {
+      width: 220px;
+      height: 280px;
+      bottom: 40px;
+    }
+
+    .stat-badge {
+      padding: 16px 20px;
+    }
+
+    .stat-number {
+      font-size: 26px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+    }
+
+    .pillar-container {
+      gap: 80px;
+      bottom: 120px;
+    }
+
+    .pillar {
+      width: 36px;
+    }
+
+    .pillar-left {
+      height: 140px;
+    }
+
+    .pillar-right {
+      height: 180px;
+    }
+
+    .floating-icon-left {
+      width: 56px;
+      height: 56px;
+      bottom: 100px;
+      left: 20px;
+    }
+
+    .small-icon {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  /* Small Mobile */
+  @media (max-width: 480px) {
+    .hero-section {
+      padding: 30px 10px;
+    }
+
+    .hero-container {
+      gap: 20px;
+    }
+
+    .logo-jove,
+    .logo-coach {
+      font-size: 24px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .cta-box {
+      padding: 20px;
+    }
+
+    .cta-button {
+      padding: 12px 24px;
+      font-size: 15px;
+    }
+
+    .visual-container {
+      width: 280px;
+      height: 280px;
+    }
+
+    .stat-badge-left {
+      left: -30px;
+    }
+
+    .stat-badge-right {
+      right: -30px;
+    }
+
+    .stat-badge {
+      padding: 14px 18px;
+    }
+
+    .stat-number {
+      font-size: 24px;
+    }
+
+    .laptop-container {
+      width: 240px;
+    }
+
+    .girl-container {
+      width: 180px;
+      height: 240px;
+    }
+
+    .pillar-container {
+      gap: 60px;
+      bottom: 100px;
+    }
+
+    .pillar {
+      width: 32px;
+    }
+
+    .pillar-left {
+      height: 120px;
+    }
+
+    .pillar-right {
+      height: 150px;
+    }
+  }
+
+  /* Extra Small Mobile */
+  @media (max-width: 360px) {
+    .hero-title {
+      font-size: 28px;
+    }
+
+    .cta-button {
+      font-size: 14px;
+      padding: 12px 20px;
+    }
+
+    .visual-container {
+      width: 260px;
+      height: 260px;
+    }
+  }
+</style>
+
+<section class="hero-section">
+  <div class="logo">
+      <Image
+      src={NavLogo}
+      alt={"Logo"}
+    />
+  </div>
+
+  <div class="hero-container">
+    <!-- Left Content -->
+    <div class="hero-content">
+      <h1 class="hero-title">Ace your tests, Not your stress!</h1>
+
+      <p class="hero-subtitle">
+        Learn STEM, the smart way with bite-sized expert videos. Instant
+        practice. Real results.
+      </p>
+
+      <ul class="features-list">
+        <li class="feature-item">
+          <div class="check-icon"></div>
+          <span class="feature-text">19 years of academic credibility</span>
+        </li>
+        <li class="feature-item">
+          <div class="check-icon"></div>
+          <span class="feature-text">Expert-created content</span>
+        </li>
+        <li class="feature-item">
+          <div class="check-icon"></div>
+          <span class="feature-text">Proven results</span>
+        </li>
+      </ul>
+
+      <div class="cta-box">
+        <h3 class="cta-title">See what stress-free STEM learning feels like</h3>
+
+        <div class="input-row">
+          <input type="text" class="input-field" placeholder="Name*" />
+          <input type="email" class="input-field" placeholder="Email*" />
+        </div>
+
+        <div class="cta-bottom">
+          <button class="cta-button">Try It Free</button>
+          <span class="cta-note"
+            >• 7 days free • Full access • No credit card</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Visual -->
+    <div class="hero-image">
+      <div class="visual-container">
+        <!-- <div class="blue-circle"></div> -->
+
+        <!-- Animated Pillars (Growing from bottom to top) -->
+        <div class="pillar-container">
+          <div class="pillar pillar-left">
+            <div>
+              <h3 class="stat-number">96%</h3>
+              <p class="stat-label">Enhanced Clarity</p>
+          </div>
+          </div>
+          <div class="pillar pillar-right">
+              <h3 class="stat-number">2X</h3>
+              <p class="stat-label">Improved Scores</p>
+          </div>
+        </div>
+
+        <!-- Stat Badges -->
+
+        <!-- Girl Placeholder -->
+        <!-- <video width="900px" height="auto" autoplay muted loop>
+          <source src={HeroSectionVideo} type="video/webm" />
+          Your browser does not support the video tag.
+        </video> -->
+        <Image
+          src={HeroSectionImage}
+          alt="Hero Video"
+          width={900}
+          height={600}
+          class="hero-video"
+        />
+      </div>
+    </div>
+  </div>
+</section>
