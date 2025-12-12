@@ -5,55 +5,43 @@ import ThreeDCarousel from '../assets/3D-Carousel.webm';
 
 <style>
   body {
-    font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background: #f7f7f7;
+    font-family: Inter, sans-serif;
+    background-color: #fff;
   }
-
   section {
     padding: 3rem 1rem;
     max-width: 1320px;
     margin: 0 auto;
-  }
-
-  .video-wrapper {
-    width: 100%;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #000;
+    text-align: center;  /* Center videos */
   }
 
   video {
-    width: 100%;
+    width: 80%;          /* Reduced size by 20% */
     height: auto;
     display: block;
-    max-height: 70vh;        /* prevents too tall video on mobile */
+    margin: 0 auto;      /* Center horizontally */
+    border-radius: 16px;
+    max-height: 70vh;
     object-fit: cover;
+    background: #000;
   }
 
-  /* Mobile responsiveness */
+  /* Tablet */
   @media (max-width: 768px) {
-    section {
-      padding: 2rem 1rem;
-    }
-
     video {
+      width: 90%;        /* Slightly bigger for mobile */
       max-height: 50vh;
     }
   }
 
+  /* Mobile */
   @media (max-width: 480px) {
-    section {
-      padding: 1.5rem 0.8rem;
-    }
-
-    .video-wrapper {
-      border-radius: 12px;
-    }
-
     video {
+      width: 95%;        /* Fill more on small screens */
       max-height: 40vh;
+      border-radius: 12px;
     }
   }
 </style>
@@ -62,22 +50,18 @@ import ThreeDCarousel from '../assets/3D-Carousel.webm';
 
   <!-- Section 1 -->
   <section>
-    <!-- <div class="video-wrapper"> -->
-      <video autoplay muted loop playsinline>
-        <source src={ThreeDImages} type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
-    <!-- </div> -->
+    <video autoplay muted loop playsinline>
+      <source src={ThreeDImages} type="video/webm" />
+      Your browser does not support the video tag.
+    </video>
   </section>
 
   <!-- Section 2 -->
   <section>
-    <!-- <div class="video-wrapper"> -->
-      <video autoplay muted loop playsinline>
-        <source src={ThreeDCarousel} type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
-    <!-- </div> -->
+    <video autoplay muted loop playsinline>
+      <source src={ThreeDCarousel} type="video/webm" />
+      Your browser does not support the video tag.
+    </video>
   </section>
 
 </body>
