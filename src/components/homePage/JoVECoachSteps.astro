@@ -1,0 +1,422 @@
+---
+// JoVECoachSteps.astro
+const steps = [
+  {
+    id: 'ask',
+    icon: '💬',
+    title: 'Ask',
+    number: 'STEP 1',
+    headline: 'Got a question? Just ask.',
+    description: 'No more endless searching. Ask anything about your STEM topic and get instant, clear explanations tailored to your level.',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop',
+    bgColor: 'from-blue-100 to-purple-100'
+  },
+  {
+    id: 'watch',
+    icon: '📺',
+    title: 'Watch',
+    number: 'STEP 2',
+    headline: 'See it in action.',
+    description: 'Watch short, expert-made videos that break down complex concepts into digestible visual explanations.',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop',
+    bgColor: 'from-purple-100 to-pink-100'
+  },
+  {
+    id: 'practise',
+    icon: '✏️',
+    title: 'Practise',
+    number: 'STEP 3',
+    headline: 'Practice makes progress.',
+    description: 'Apply what you learned with interactive practice problems. Get instant feedback and learn from your mistakes.',
+    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop',
+    bgColor: 'from-pink-100 to-orange-100'
+  },
+  {
+    id: 'master',
+    icon: '🏆',
+    title: 'Master',
+    number: 'STEP 4',
+    headline: 'That "I actually get it" feeling—for real',
+    description: 'Crush one concept. Then the next. Build momentum.',
+    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop',
+    bgColor: 'from-orange-100 to-blue-100'
+  }
+];
+---
+
+<section class="jove-coach-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="header-content">
+      <h2 class="main-title">
+        Jove Coach is Not just another <span class="highlight">STEM study tool</span>
+      </h2>
+      
+      <p class="subtitle">
+        Short videos. Expert explanations. Instant practice. All powered by AI—so you<br />
+        learn STEM the way that actually works for you.
+      </p>
+
+      <p class="discover-text">
+        Discover JoVE's 4 steps to Mastery.
+      </p>
+
+      <!-- Navigation Tabs -->
+      <div class="tabs-container">
+        {steps.map((step) => (
+          <button 
+            class="tab-button" 
+            data-step={step.id}
+            aria-label={`View ${step.title} step`}
+          >
+            <span class="tab-icon">{step.icon}</span>
+            <span class="tab-title">{step.title}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Steps Content -->
+    <div class="steps-wrapper">
+      {steps.map((step, index) => (
+        <div 
+          class={`step-content ${index === 0 ? 'active' : ''}`}
+          data-step={step.id}
+        >
+          <div class={`content-grid bg-gradient-to-br ${step.bgColor}`}>
+            <div class="step-visual">
+              <div class="mockup-container">
+                <img 
+                  src={step.image} 
+                  alt={step.title}
+                  class="mockup-image"
+                  loading="lazy"
+                />
+                <div class="play-button">
+                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    <circle cx="30" cy="30" r="30" fill="white" opacity="0.9"/>
+                    <path d="M24 20L40 30L24 40V20Z" fill="#2b9ceb"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-info">
+              <span class="step-number">{step.number}</span>
+              <h3 class="step-headline">{step.headline}</h3>
+              <p class="step-description">{step.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .jove-coach-section {
+    padding: 5rem 1.5rem;
+    background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .jove-coach-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(43, 156, 235, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .header-content {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .main-title {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 130%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #000;
+  }
+
+  .highlight {
+    color: #2183ED;
+  }
+
+  .subtitle {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25.2px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #3F3F3F;
+  }
+
+  .discover-text {
+    font-size: 1rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  /* Tabs */
+  .tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .tab-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px solid #e5e5e5;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tab-button:hover {
+    border-color: #2b9ceb;
+    color: #2b9ceb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(43, 156, 235, 0.15);
+  }
+
+  .tab-button.active {
+    background: #2b9ceb;
+    border-color: #2b9ceb;
+    color: white;
+    box-shadow: 0 4px 16px rgba(43, 156, 235, 0.3);
+  }
+
+  .tab-button.active .tab-icon {
+    filter: grayscale(0) brightness(1.2);
+  }
+
+  .tab-icon {
+    font-size: 1.25rem;
+  }
+
+  /* Steps Content */
+  .steps-wrapper {
+    position: relative;
+    min-height: 500px;
+  }
+
+  .step-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .step-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .step-visual {
+    position: relative;
+  }
+
+  .mockup-container {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    background: white;
+  }
+
+  .mockup-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .play-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .step-info {
+    padding: 1rem;
+  }
+
+  .step-number {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2b9ceb;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+  }
+
+  .step-headline {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .step-description {
+    font-size: 1.125rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 968px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .step-visual {
+      order: 2;
+    }
+
+    .step-info {
+      order: 1;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .jove-coach-section {
+      padding: 3rem 1rem;
+    }
+
+    .main-title {
+      font-size: 1.75rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+
+    .subtitle br {
+      display: none;
+    }
+
+    .tabs-container {
+      gap: 0.5rem;
+    }
+
+    .tab-button {
+      padding: 0.625rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .step-headline {
+      font-size: 1.5rem;
+    }
+
+    .step-description {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-title {
+      font-size: 1.5rem;
+    }
+
+    .tabs-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .tab-button {
+      justify-content: center;
+    }
+
+    .content-grid {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Tab switching functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const stepContents = document.querySelectorAll('.step-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const stepId = button.getAttribute('data-step');
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        stepContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        const activeContent = document.querySelector(`.step-content[data-step="${stepId}"]`);
+        if (activeContent) {
+          activeContent.classList.add('active');
+        }
+      });
+    });
+
+    // Set first tab as active by default
+    if (tabButtons.length > 0) {
+      tabButtons[0].classList.add('active');
+    }
+  });
+</script>

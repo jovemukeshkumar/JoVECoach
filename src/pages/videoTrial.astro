@@ -1,0 +1,83 @@
+---
+import ThreeDImages from '../assets/3D-Still-Images.webm';
+import ThreeDCarousel from '../assets/3D-Carousel.webm';
+---
+
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+  }
+
+  section {
+    padding: 3rem 1rem;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  .video-wrapper {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 70vh;        /* prevents too tall video on mobile */
+    object-fit: cover;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    section {
+      padding: 2rem 1rem;
+    }
+
+    video {
+      max-height: 50vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    section {
+      padding: 1.5rem 0.8rem;
+    }
+
+    .video-wrapper {
+      border-radius: 12px;
+    }
+
+    video {
+      max-height: 40vh;
+    }
+  }
+</style>
+
+<body>
+
+  <!-- Section 1 -->
+  <section>
+    <!-- <div class="video-wrapper"> -->
+      <video autoplay muted loop playsinline>
+        <source src={ThreeDImages} type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    <!-- </div> -->
+  </section>
+
+  <!-- Section 2 -->
+  <section>
+    <!-- <div class="video-wrapper"> -->
+      <video autoplay muted loop playsinline>
+        <source src={ThreeDCarousel} type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    <!-- </div> -->
+  </section>
+
+</body>
