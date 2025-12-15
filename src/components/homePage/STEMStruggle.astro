@@ -8,6 +8,9 @@ import STEMstruggleImg2 from '../../assets/STEMstruggleImg2.png'
 import STEMstruggleImg3 from '../../assets/STEMstruggleImg3.png'
 import STEMstruggleImg4 from '../../assets/STEMstruggleImg4.png'
 import { Image } from 'astro:assets'
+import TrustedPartnersSection from './trustedPartnersSection.astro'
+import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
+
 // STEMStruggle.astro
 const struggles = [
   {
@@ -43,7 +46,7 @@ const struggles = [
 
 <style>
   .stem-struggle {
-    padding: 4rem 1.5rem;
+    padding: 0rem 1.5rem 4rem 1.5rem;
     background-color: #ffffff;
   }
 
@@ -60,10 +63,11 @@ const struggles = [
     letter-spacing: 0%;
     text-align: center;
     color: #000;
+    margin-top: 70px;
   }
 
   .highlight {
-    color: #2b9ceb;
+    color: #2183ED;
   }
 
   .subtitle {
@@ -191,6 +195,8 @@ const struggles = [
     letter-spacing: 0%;
     text-align: center;
     color: #000;
+    max-width: 500px;
+    margin: 2rem auto 0 auto;
   }
 
   .cta-link {
@@ -207,6 +213,11 @@ const struggles = [
     color: #1e7dc4;
     text-decoration: underline;
   }
+
+  .cta-link img {
+  width: 25px;
+  height: auto;
+}
 
   /* Tablet */
   @media (max-width: 768px) {
@@ -259,6 +270,8 @@ const struggles = [
 </style>
 
 <section class="stem-struggle">
+  	<TrustedPartnersSection/>
+
   <div class="container">
     <h2 class="main-title">
       The <span class="highlight">STEM struggle</span> is real.
@@ -287,11 +300,11 @@ const struggles = [
     </div>
 
     <p class="bottom-text">
-      You're not bad at science. You just haven't found the right way to learn it yet.
+      You're not bad at science. You just needed the right way to learn it...
     </p>
 
     <p class="cta-text">
-      That's why <a href="#" class="cta-link">we built JoVE Coach</a>
+      19 years of JoVE clarity, trusted by millions, <a href="#" class="cta-link">now made instant with <Image src={conceptsSectionIcon1} alt={"AI"} /></a>
     </p>
   </div>
 </section>

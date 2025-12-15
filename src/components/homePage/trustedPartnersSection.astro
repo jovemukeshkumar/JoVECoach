@@ -50,27 +50,46 @@ const trustedPartners =
 <style>
 
 .section7-container {
-    background-color: #252a2e;
+  background: linear-gradient(180deg, #2183ED -239.25%, #212528 77.69%);
+  border-radius: 26px;
     color: white;
     text-align: center;
-    padding: 81px 0;
+    padding: 20px 0;
     font-family: Inter, sans-serif;
+    max-width: 1320px;
+    min-height: 250px;
+    margin: -150px auto 0px auto;
+    z-index: 100;
+    position: relative;
 }
 
 
 .section7-heading-wrapper {
     width: 100%;
     max-width: 720px;
-    margin: 0 auto 73px;
+    margin: 20px auto;
 }
 
 .section7-heading {
-    font-size: 24px;
-    font-weight: 400;
-    color: white;
-    line-height: 140%;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color:#fff;
+  margin: 40px 0 0 0;
 }
-
+.subtitle {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #fff;
+}
 .section7-slider-wrapper {
     position: relative;
     overflow: hidden;
@@ -158,8 +177,9 @@ const trustedPartners =
   <div class="section7-container">
     <div class="section7-heading-wrapper">
       <div class="section7-heading">
-        {trustedPartners.trustedPartnersHeading || "Our Trusted Partners"}
+        {trustedPartners.trustedPartnersHeading || "Trusted by 1 Million+ students across"}
       </div>
+      <p>1,800+ top school and universities</p>
     </div>
 
     <div class="section7-slider-wrapper">

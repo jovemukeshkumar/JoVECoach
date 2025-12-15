@@ -1,0 +1,337 @@
+---
+import { Image } from "astro:assets";
+
+import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
+import conceptsSectionIcon2 from "../../assets/conceptsSectionIcon2.svg";
+import conceptsSectionIcon3 from "../../assets/conceptsSectionIcon3.svg";
+import conceptsSectionIcon4 from "../../assets/conceptsSectionIcon4.svg";
+import conceptsSectionIcon5 from "../../assets/conceptsSectionIcon5.svg";
+import conceptsSectionIcon6 from "../../assets/conceptsSectionIcon6.svg";
+import conceptsSectionIcon7 from "../../assets/conceptsSectionIcon7.svg";
+import conceptsSectionIcon8 from "../../assets/conceptsSectionIcon8.svg";
+import conceptsSectionIcon9 from "../../assets/conceptsSectionIcon9.svg";
+import conceptsSectionIcon10 from "../../assets/conceptsSectionIcon6.svg";
+
+import ThreeDvideo from "../../assets/3D-Carousel.webm";
+
+---
+<style>
+    .concepts-section {
+  padding: 100px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+/* Heading */
+.heading h2 {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 130%;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #000;
+}
+.heading h2 span {
+  color: #2183ED;
+}
+.heading p {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25.2px;
+  letter-spacing: 0%;
+  text-align: center;
+  color:#3F3F3F;
+}
+
+/* Features */
+.features {
+  margin: 50px auto 20px auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+}
+.feature {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(206, 228, 251, 0.25) 100%);
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px 0px #2183ED26;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+.feature p {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #3F3F3F;
+  max-width: 120px;
+  margin: 0 auto;
+}
+.feature img {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+/* Carousel */
+.carousel {
+  position: relative;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+/* Video wrapper */
+.video-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive video */
+.concepts-video {
+  width: 100%;
+  max-width: 900px;  
+  height: auto;
+  border-radius: 24px;
+  object-fit: contain;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .concepts-video {
+    max-width: 100%;
+    border-radius: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .concepts-video {
+    border-radius: 14px;
+  }
+}
+
+/* Questions */
+/* Questions wrapper */
+.questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: center;
+  /* max-width: 1200px; */
+  margin: 60px auto;
+}
+
+/* Bubble base */
+.questions span {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 12px;
+  max-width: 220px;
+  background: #F8F7F4;
+  border: 0.5px solid #B4B7B7;
+  border-radius: 25px;
+  padding: 14px 24px;
+  font-family: Inter;
+  font-size: 15px;
+  line-height: 1.35;
+  color: #000;
+  box-shadow: 0px 20px 40px 0px #8C8C8C36;
+}
+
+/* Icon */
+.questions span img {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+/* ============================= */
+/* ODD — LEFT CURVED TAIL */
+/* ============================= */
+.questions span:nth-child(odd)::before {
+  content: "";
+  position: absolute;
+  left: 25px;
+  bottom: -18.4px;
+
+  width: 23px;
+  height: 18px;
+
+  background: #F8F7F4;
+  border-right: 0.5px solid #B4B7B7;
+  border-left: 0.5px solid #B4B7B7;
+  border-bottom: 0.5px solid #B4B7B7;
+
+  border-radius: 0 0 100% 0;
+
+  transform: rotate(0deg);
+}
+
+/* ============================= */
+/* EVEN — RIGHT CURVED TAIL */
+/* ============================= */
+.questions span:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  right: 25px;
+  bottom: -18.4px;
+
+  width: 23px;
+  height: 18px;
+
+  background: #F8F7F4;
+  border-right: 0.5px solid #B4B7B7;
+  border-left: 0.5px solid #B4B7B7;
+  border-bottom: 0.5px solid #B4B7B7;
+  border-radius: 0 0 0 100%;
+  box-shadow: 6px 8px 18px rgba(0, 0, 0, 0.06);
+
+  transform: rotate(0deg);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .questions span {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+}
+
+/* Mobile – center tail */
+@media (max-width: 600px) {
+  .questions span {
+    white-space: normal;
+    max-width: 100%;
+  }
+
+  .questions span::before {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%);
+    border-radius: 0 0 100% 100% !important;
+  }
+}
+
+/* CTA */
+.cta button {
+  background: #2183ED;
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 30px;
+  border: none;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: -0.5%;
+  cursor: pointer;
+}
+.cta button:hover {
+  background: #1558d6;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .carousel {
+    height: 260px;
+  }
+
+  .card.left,
+  .card.right {
+    display: none;
+  }
+}
+
+</style>
+<section class="concepts-section">
+  <!-- Heading -->
+  <div class="heading">
+    <h2>
+      <span>Every concept you need. </span>Zero fluff.
+    </h2>
+    <p>
+      One concept at a time, explained with AI-backed clarity – until it clicks.
+    </p>
+  </div>
+
+  <!-- Feature icons -->
+  <div class="features">
+    <div class="feature">
+      <Image src={conceptsSectionIcon1} alt="AI powered" />
+      <p>AI-powered Platform</p>
+    </div>
+    <div class="feature">
+      <Image src={conceptsSectionIcon2} alt="Curriculum aligned" />
+      <p>Curriculum-aligned</p>
+    </div>
+    <div class="feature">
+      <Image src={conceptsSectionIcon3} alt="Ad free" />
+      <p>Ad-free learning</p>
+    </div>
+    <div class="feature">
+      <Image src={conceptsSectionIcon4} alt="Expert created" />
+      <p>Expert-created content</p>
+    </div>
+    <div class="feature">
+      <Image src={conceptsSectionIcon5} alt="Secure" />
+      <p>Secure & private</p>
+    </div>
+  </div>
+
+<!-- 3D Video -->
+<div class="video-wrapper">
+  <video
+    class="concepts-video"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src={ThreeDvideo} type="video/webm" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+
+  <!-- Question bubbles -->
+  <div class="questions">
+    <span>
+      <Image src={conceptsSectionIcon6} alt="AI powered" />
+      Why does respiration release energy?</span>
+    <span>
+      <Image src={conceptsSectionIcon7} alt="Curriculum aligned" />
+      How does Newton’s third law work in real life?</span>
+    <span>
+      <Image src={conceptsSectionIcon8} alt="Ad free" />
+      How do catalysts actually work?</span>
+    <span>
+      <Image src={conceptsSectionIcon9} alt="Expert created" />
+      Why don’t satellites <br/> fall back to Earth?</span>
+    <span>
+      <Image src={conceptsSectionIcon10} alt="Secure" />
+      Why do enzymes <br/> speed up reactions?</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <button>Explore More</button>
+  </div>
+</section>

@@ -5,6 +5,7 @@ import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.webp";
 import HeroSectioncognition from "../../assets/HeroSectioncognition.svg";
 import HeroSectionStat from "../../assets/HeroSectionStat.svg";
 import NavLogo from "../../assets/NavLogo.svg";
+import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
 
 // Jove Coach Hero Section Component
 ---
@@ -17,7 +18,7 @@ import NavLogo from "../../assets/NavLogo.svg";
     background-position: 1050px top;
     padding: 60px 20px 0px 20px;
     overflow: hidden;
-    min-height: 85vh;
+    min-height: 100vh;
     position: relative;
   }
 
@@ -93,6 +94,46 @@ import NavLogo from "../../assets/NavLogo.svg";
     margin: 0 0 20px 0;
   }
 
+.hero-span {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  text-align: center;
+  color: #2183ED;
+
+  /* Gradient border trick */
+  background:
+    linear-gradient(90deg, #EDF4FB 0%, #FFFFFF 100%) padding-box,
+    linear-gradient(
+      267.67deg,
+      #2183ED -3.42%,
+      #E8F0F8 24.12%,
+      #C8DFF7 53.65%,
+      #E5F0FD 83.69%,
+      #2183ED 100.71%
+    ) border-box;
+
+  border: 0.5px solid transparent;
+  border-radius: 100px;
+
+  padding: 5px 12px;
+  margin-bottom: 20px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-span img {
+  width: 20px;
+  height: auto;
+}
+
+  .hero-span img{
+    width: 20px !important;
+    height: auto ;
+  }
   .hero-subtitle {
     font-family: Inter;
     font-weight: 400;
@@ -146,7 +187,10 @@ import NavLogo from "../../assets/NavLogo.svg";
   }
 
   .cta-box {
-    background: white;
+    background: #4284E5;
+    background-image: url('../../assets/HeroSectionCTABg.svg');
+    background-repeat: no-repeat;
+    background-position: 300px center;
     border-radius: 16px;
     border: 1px solid #4284e5;
     padding: 20px 32px;
@@ -161,7 +205,7 @@ import NavLogo from "../../assets/NavLogo.svg";
     line-height: 120%;
     letter-spacing: 0%;
     vertical-align: middle;
-    color: #4284e5;
+    color: #fff;
   }
 
   .input-row {
@@ -173,12 +217,16 @@ import NavLogo from "../../assets/NavLogo.svg";
 
   .input-field {
     padding: 12px 16px;
-    border: 1px solid #d1d5db;
+    border: 1px solid #3A3A3A99;
     border-radius: 8px 0px 0px 8px;
     font-size: 15px;
     font-family: Inter, sans-serif;
     outline: none;
     transition: all 0.3s;
+  }
+
+  .input-field-mail{
+    border-radius: 0px 8px 8px 0px !important;
   }
 
   .input-field:focus {
@@ -194,36 +242,34 @@ import NavLogo from "../../assets/NavLogo.svg";
   }
 
   .cta-button {
-    background: #2183ed;
+    background: transparent;
     color: white;
+    border: 1px solid #FFFFFF;
     font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
     letter-spacing: -0.5%;
     padding: 14px 32px;
-    border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
   }
 
-  .cta-button:hover {
+  /* .cta-button:hover {
     background: #3a74d4;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(66, 132, 229, 0.3);
-  }
+  } */
 
   .cta-note {
     font-family: Inter;
     font-weight: 400;
-    font-style: Regular;
     font-size: 14px;
-    leading-trim: NONE;
     line-height: 140%;
     letter-spacing: -1%;
-    color: #b8b8b8;
+    color: #FFFFFF99;
   }
 
   .hero-image {
@@ -267,11 +313,11 @@ import NavLogo from "../../assets/NavLogo.svg";
     transform-origin: bottom;
     height: 0; /* starts from zero */
     animation: growHeight 1.2s ease-out forwards;
-      background: linear-gradient(
-    to bottom,
-    white 40%,
-    rgba(66, 132, 229, 0.5) 100%
-  );
+    background: linear-gradient(
+      to bottom,
+      white 40%,
+      rgba(66, 132, 229, 0.5) 100%
+    );
     padding: 20px;
   }
 
@@ -717,7 +763,10 @@ import NavLogo from "../../assets/NavLogo.svg";
     <!-- Left Content -->
     <div class="hero-content">
       <h1 class="hero-title">Ace your tests, Not your stress!</h1>
-
+      <span class="hero-span">with 
+        <Image src={conceptsSectionIcon1} alt={"Logo"} style="width: 120px; height: auto; vertical-align: middle;" />
+        powered learning
+      </span>
       <p class="hero-subtitle">
         Learn STEM, the smart way with bite-sized expert videos. Instant
         practice. Real results.
@@ -743,7 +792,7 @@ import NavLogo from "../../assets/NavLogo.svg";
 
         <div class="input-row">
           <input type="text" class="input-field" placeholder="Name*" />
-          <input type="email" class="input-field" placeholder="Email*" />
+          <input type="email" class="input-field input-field-mail" placeholder="Email*" />
         </div>
 
         <div class="cta-bottom">
@@ -763,21 +812,20 @@ import NavLogo from "../../assets/NavLogo.svg";
         <!-- Animated Pillars (Growing from bottom to top) -->
         <div class="pillar-container">
           <div class="pillar pillar-left">
-  <div class="pillar-content">
-    <h3 class="stat-number">96%</h3>
-    <p class="stat-label">Enhanced Clarity</p>
-    <Image src={HeroSectioncognition} alt="Enhanced Clarity Icon" />
-  </div>
-</div>
+            <div class="pillar-content">
+              <h3 class="stat-number">96%</h3>
+              <p class="stat-label">Enhanced Clarity</p>
+              <Image src={HeroSectioncognition} alt="Enhanced Clarity Icon" />
+            </div>
+          </div>
 
-<div class="pillar pillar-right">
-  <div class="pillar-content">
-    <h3 class="stat-number">2X</h3>
-    <p class="stat-label">Improved Scores</p>
-    <Image src={HeroSectionStat} alt="Improved Scores Icon" />
-  </div>
-</div>
-
+          <div class="pillar pillar-right">
+            <div class="pillar-content">
+              <h3 class="stat-number">2X</h3>
+              <p class="stat-label">Improved Scores</p>
+              <Image src={HeroSectionStat} alt="Improved Scores Icon" />
+            </div>
+          </div>
         </div>
 
         <!-- Stat Badges -->

@@ -57,7 +57,23 @@ const faqList = Object.keys(faqSection)
 
 <style>
   .faq-section {
-    margin: 100px 0px;
+    margin: 0px 0px;
+    padding: 50px 0px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .faq-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0 !important;
+    pointer-events: none;
+    background-image:
+      url("../../assets/JoVECoachStepsBgImage1.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
   }
 
   .faq-container {
@@ -65,13 +81,19 @@ const faqList = Object.keys(faqSection)
     padding: 0px 80px;
     font-family: Inter, sans-serif;
     max-width: 800px;
+     position: relative;
+    z-index: 10;
   }
 
   .faq-heading {
-    text-align: center;
-    margin-bottom: 64px;
-    font-size: 36px;
+    font-family: Inter, sans-serif;
     font-weight: 600;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 64px;
   }
 
   /* FAQ ITEM */

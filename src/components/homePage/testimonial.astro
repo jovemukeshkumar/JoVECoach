@@ -1,0 +1,403 @@
+---
+import { Image } from "astro:assets";
+import ArrowLeft from '../../assets/Arrow.svg'
+import ArrowRight from '../../assets/Arrow.svg'
+const testimonials = [
+  {
+    rating: 5,
+    text: "I finally understand chemistry. Like, actually understand it. Not just memorize-and-forget.",
+    name: "Sophomore, Texas",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sophie"
+  },
+  {
+    rating: 4,
+    text: "Bio used to be my worst subject. Now I'm the one explaining stuff to my friends.",
+    name: "Junior, California",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jake"
+  },
+  {
+    rating: 5,
+    text: "I've watched so many YouTube videos and none of them made sense. This actually does.",
+    name: "Freshman, Florida",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emma"
+  },
+  {
+    rating: 5,
+    text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
+    name: "Senior, New York",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike"
+  },
+  {
+    rating: 5,
+    text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
+    name: "Senior, New York",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike"
+  },
+  {
+    rating: 5,
+    text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
+    name: "Senior, New York",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike"
+  },
+  {
+    rating: 5,
+    text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
+    name: "Senior, New York",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike"
+  }
+];
+---
+
+<section class="testimonial-section">
+  <div class="container">
+    <h2 class="title">
+      You are in <span class="highlight">good company</span>
+    </h2>
+    <p class="subtitle">Students like you are already seeing results</p>
+    
+    <div class="carousel-wrapper">
+      <div class="testimonials-grid" id="testimonials-grid">
+        {testimonials.map((testimonial) => (
+          <div class="testimonial-card">
+            <div class="stars">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span class={i < testimonial.rating ? 'star filled' : 'star'}>★</span>
+              ))}
+            </div>
+            <p class="testimonial-text">{testimonial.text}</p>
+            <div class="author">
+              <img src={testimonial.avatar} alt={testimonial.name} class="avatar" />
+              <span class="author-name">{testimonial.name}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="navigation">
+        <button class="nav-btn prev" id="testimonial-prev" aria-label="Previous">
+          <Image src={ArrowLeft} alt="Previous" width={20} height={20} />
+        </button>
+        <button class="nav-btn next" id="testimonial-next" aria-label="Next">
+          <Image src={ArrowRight} alt="Next" width={20} height={20} />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial-section {
+  padding: 5rem 1.5rem 1rem 1.5rem;
+  position: relative;
+  z-index: 1;
+  }
+.testimonial-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0 !important;
+  pointer-events: none;
+
+  background-image:
+    url("../../assets/JoVECoachStepsBgGrid.svg"),
+    url("../../assets/JoVECoachStepsBgGrid.svg");
+
+  background-repeat: no-repeat, no-repeat;
+  background-position: 1100px top, 600px bottom;
+  background-size: auto 300px, auto 300px;
+
+  opacity: 0.25;
+}
+
+.testimonial-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    url("../../assets/JoVECoachStepsBgImage2.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+    transform: scaleY(-1);
+  background-size: contain;
+}
+
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .title {
+    font-size: 42px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 12px 0;
+    color: #1a1a1a;
+  }
+
+  .highlight {
+    color: #3b82f6;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin: 0 0 60px 0;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    padding: 0 0px 100px 60px;
+    overflow: hidden;
+    margin-right: -290px;
+  }
+
+  .testimonials-grid {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .testimonial-card {
+    flex: 0 0 calc(22% - 16px);
+    min-width: calc(22% - 16px);
+  }
+
+  .testimonial-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0px 10px 20px 0px #2183ED26;
+    border: 0.5px solid #2183ED;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 240px;
+  }
+
+  .stars {
+    display: flex;
+    gap: 4px;
+    font-size: 16px;
+  }
+
+  .star {
+    color: #d1d5db;
+  }
+
+  .star.filled {
+    color: #1a1a1a;
+  }
+
+  .testimonial-text {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25.2px;
+    letter-spacing: 0%;
+    color: #3F3F3F;
+  }
+
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e5e7eb;
+  }
+
+  .author-name {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: #3F3F3F;
+  }
+
+  .navigation {
+    position: absolute;
+    bottom: 0px;
+    right: 150px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .nav-btn:hover {
+    background: #2183ED;
+    color: white;
+    transform: scale(1.05);
+    
+  }
+  .nav-btn:hover img {
+    filter: brightness(0) invert(1);
+    
+    }
+
+    .nav-btn.next {
+    background: #3b82f6;
+  }
+  .nav-btn.next img {
+    filter: brightness(0) invert(1);
+  }
+
+  .nav-btn.prev img{
+    transform: rotate(180deg);
+  }
+  .nav-btn.prev:hover img{
+    transform: rotate(180deg);
+  }
+
+
+  .nav-btn.next:hover {
+    background: #2183ED;
+  }
+
+  .nav-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .nav-btn.disabled:hover {
+    transform: scale(1);
+  }
+
+  @media (max-width: 1024px) {
+    .testimonial-card {
+      flex: 0 0 calc(50% - 12px);
+      min-width: calc(50% - 12px);
+    }
+
+    .carousel-wrapper {
+      padding: 0 40px;
+    }
+
+    .navigation {
+      right: 40px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .testimonial-card {
+      flex: 0 0 calc(100% - 0px);
+      min-width: calc(100% - 0px);
+    }
+
+    .title {
+      font-size: 32px;
+    }
+
+    .carousel-wrapper {
+      padding: 0 20px;
+    }
+
+    .navigation {
+      right: 20px;
+      bottom: -70px;
+    }
+
+    .nav-btn {
+      width: 44px;
+      height: 44px;
+    }
+  }
+</style>
+
+<script>
+  const grid = document.getElementById('testimonials-grid') as HTMLElement;
+  const prevBtn = document.getElementById('testimonial-prev') as HTMLButtonElement;
+  const nextBtn = document.getElementById('testimonial-next') as HTMLButtonElement;
+  
+  let currentIndex = 0;
+  const cards = document.querySelectorAll<HTMLElement>('.testimonial-card');
+  const totalCards = cards.length;
+  
+  function getCardsPerView(): number {
+    if (window.innerWidth <= 640) return 1;
+    if (window.innerWidth <= 1024) return 4;
+    return 4;
+  }
+  
+  function updateCarousel(): void {
+    const cardsPerView = getCardsPerView();
+    const maxIndex = Math.max(0, totalCards - cardsPerView);
+    currentIndex = Math.min(currentIndex, maxIndex);
+    
+    const cardWidth = cards[0]?.offsetWidth || 0;
+    const gap = 24;
+    const offset = -(currentIndex * (cardWidth + gap));
+    
+    if (grid) {
+      grid.style.transform = `translateX(${offset}px)`;
+    }
+    
+    // Update button states
+    if (prevBtn) {
+      prevBtn.disabled = currentIndex === 0;
+      if (currentIndex === 0) {
+        prevBtn.classList.add('disabled');
+      } else {
+        prevBtn.classList.remove('disabled');
+      }
+    }
+    
+    if (nextBtn) {
+      nextBtn.disabled = currentIndex >= maxIndex;
+      if (currentIndex >= maxIndex) {
+        nextBtn.classList.add('disabled');
+      } else {
+        nextBtn.classList.remove('disabled');
+      }
+    }
+  }
+  
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const cardsPerView = getCardsPerView();
+      const maxIndex = totalCards - cardsPerView;
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+  }
+  
+  window.addEventListener('resize', () => {
+    currentIndex = 0;
+    updateCarousel();
+  });
+  
+  // Initial update
+  updateCarousel();
+</script>

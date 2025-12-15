@@ -1,0 +1,379 @@
+---
+import { Image } from 'astro:assets';
+import LearnerPersonasImg1 from '../../assets/LearnerPersonasImg1.png'
+import LearnerPersonasImg2 from '../../assets/LearnerPersonasImg2.png'
+import LearnerPersonasImg3 from '../../assets/LearnerPersonasImg3.png'
+import LearnerPersonasImg4 from '../../assets/LearnerPersonasImg4.png'
+import ArrowLeft from '../../assets/Arrow.svg'
+import ArrowRight from '../../assets/Arrow.svg'
+const learnerTypes = [
+  {
+    image: LearnerPersonasImg1,
+    title: "High schoolers building strong foundations",
+    description: "Get the concepts right now. Ace exams later."
+  },
+  {
+    image: LearnerPersonasImg2,
+    title: "Curious minds going beyond the syllabus",
+    description: "Want to understand the \"why\" behind the formula? Same."
+  },
+  {
+    image: LearnerPersonasImg3,
+    title: "Mastery seekers, not memorizers",
+    description: "You're not here to memorize. You're here to actually get it."
+  },
+  {
+    image: LearnerPersonasImg4,
+    title: "Visual learners who learn better by watching",
+    description: "Not random videos. Expert explanations that click."
+  },
+  {
+    image: LearnerPersonasImg3,
+    title: "Mastery seekers, not memorizers",
+    description: "You're not here to memorize. You're here to actually get it."
+  },
+  {
+    image: LearnerPersonasImg3,
+    title: "Mastery seekers, not memorizers",
+    description: "You're not here to memorize. You're here to actually get it."
+  },
+  {
+    image: LearnerPersonasImg3,
+    title: "Mastery seekers, not memorizers",
+    description: "You're not here to memorize. You're here to actually get it."
+  },
+  
+];
+---
+<style>
+  .learner-types-section {
+    padding: 80px 20px;
+    background: #fff;
+    position: relative;
+    z-index: 10;
+  }
+  .learner-types-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0 !important;
+    pointer-events: none;
+    background-image:
+      url("../../assets/JoVECoachStepsBgImage1.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+      transform: rotate(180deg);
+    transform: scaleY(-1);
+  }
+
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .title {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 130%;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #000000;
+  }
+
+  .highlight {
+    color: #2183ED;
+  }
+
+  .subtitle {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25.2px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #3F3F3F;
+    margin: 0 0 60px 0;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    padding: 0 60px 100px 60px;
+    overflow: hidden;
+    margin-right: -280px;
+  }
+
+  .learner-grid {
+    display: flex;
+    gap: 46px;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .learner-card {
+    flex: 0 0 calc(23% );
+    max-width: calc(23% - 42px);
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .learner-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    
+  }
+
+  .learner-image {
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+  }
+
+  .card-content {
+    padding: 30px;
+    display: flex;
+    position: relative;
+    z-index: 10;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 15px;
+    margin-top: -20px ;
+    background-color: #ffffff;
+  }
+
+  .card-title {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    letter-spacing: 0%;
+    margin: 0;
+    color:#000;
+  }
+
+  .card-description {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    margin: 0;
+    color: #3F3F3F;
+  }
+
+  .navigation {
+    position: absolute;
+    bottom: -10px;
+    right: 150px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .nav-btn:hover {
+    background: #2183ED;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .nav-btn.prev {
+    transform: rotate(180deg);
+  }
+
+  .nav-btn.next:hover {
+    background: #2183ED;
+  }
+
+  .nav-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .nav-btn.disabled:hover {
+    transform: scale(1);
+  }
+
+  @media (max-width: 1024px) {
+    .learner-card {
+      flex: 0 0 calc(33.333% - 16px);
+      min-width: calc(33.333% - 16px);
+    }
+
+    .carousel-wrapper {
+      padding: 0 40px 100px 40px;
+    }
+
+    .navigation {
+      right: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .learner-card {
+      flex: 0 0 calc(50% - 12px);
+      min-width: calc(50% - 12px);
+    }
+
+    .title {
+      font-size: 32px;
+    }
+
+    .carousel-wrapper {
+      padding: 0 20px 100px 20px;
+    }
+
+    .navigation {
+      right: 20px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .learner-card {
+      flex: 0 0 100%;
+      min-width: 100%;
+    }
+
+    .nav-btn {
+      width: 44px;
+      height: 44px;
+    }
+  }
+</style>
+<section class="learner-types-section">
+  <div class="container">
+    <h2 class="title">
+      From struggling to mastery - <span class="highlight">we've got you.</span>
+    </h2>
+    <p class="subtitle">Every learner is different. JoVE Coach fits them all.</p>
+    
+    <div class="carousel-wrapper">
+      <div class="learner-grid" id="learner-grid">
+        {learnerTypes.map((learner) => (
+          <div class="learner-card">
+            <div class="image-container">
+              <Image src={learner.image} alt={learner.title} class="learner-image" />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">{learner.title}</h3>
+              <p class="card-description">{learner.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="navigation">
+        <button class="nav-btn prev" id="prev-btn-learner" aria-label="Previous">
+          <Image src={ArrowLeft} alt="Previous" width={20} height={20} />
+        </button>
+        <button class="nav-btn next" id="next-btn-learner" aria-label="Next">
+          <Image src={ArrowRight} alt="Next" width={20} height={20} />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  const grid = document.getElementById('learner-grid') as HTMLElement;
+  const prevBtn = document.getElementById('prev-btn-learner') as HTMLButtonElement;
+  const nextBtn = document.getElementById('next-btn-learner') as HTMLButtonElement;
+  
+  let currentIndex = 0;
+  const cards = document.querySelectorAll<HTMLElement>('.learner-card');
+  const totalCards = cards.length;
+  
+  function getCardsPerView(): number {
+    if (window.innerWidth <= 640) return 1;
+    if (window.innerWidth <= 768) return 2;
+    if (window.innerWidth <= 1024) return 3;
+    return 5;
+  }
+  
+  function updateCarousel(): void {
+    const cardsPerView = getCardsPerView();
+    const maxIndex = Math.max(0, totalCards - cardsPerView);
+    currentIndex = Math.min(currentIndex, maxIndex);
+    
+    const cardWidth = cards[0]?.offsetWidth || 0;
+    const gap = 24;
+    const offset = -(currentIndex * (cardWidth + gap));
+    
+    if (grid) {
+      grid.style.transform = `translateX(${offset}px)`;
+    }
+    
+    // Update button states
+    if (prevBtn) {
+      prevBtn.disabled = currentIndex === 0;
+      if (currentIndex === 0) {
+        prevBtn.classList.add('disabled');
+      } else {
+        prevBtn.classList.remove('disabled');
+      }
+    }
+    
+    if (nextBtn) {
+      nextBtn.disabled = currentIndex >= maxIndex;
+      if (currentIndex >= maxIndex) {
+        nextBtn.classList.add('disabled');
+      } else {
+        nextBtn.classList.remove('disabled');
+      }
+    }
+  }
+  
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const cardsPerView = getCardsPerView();
+      const maxIndex = totalCards - cardsPerView;
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+  }
+  
+  window.addEventListener('resize', () => {
+    currentIndex = 0;
+    updateCarousel();
+  });
+  
+  // Initial update
+  updateCarousel();
+</script>
