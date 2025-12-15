@@ -5,7 +5,9 @@ import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.webp";
 import HeroSectioncognition from "../../assets/HeroSectioncognition.svg";
 import HeroSectionStat from "../../assets/HeroSectionStat.svg";
 import NavLogo from "../../assets/NavLogo.svg";
+import HeroGridBg from "../../assets/HeroSectionGridBg.svg";
 import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
+import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
 
 // Jove Coach Hero Section Component
 ---
@@ -13,9 +15,6 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
 <style>
   .hero-section {
     background: #ffffff;
-    background-image: url("../../assets/HeroSectionGridBg.svg");
-    background-repeat: no-repeat;
-    background-position: 1050px top;
     padding: 60px 20px 0px 20px;
     overflow: hidden;
     min-height: 100vh;
@@ -37,16 +36,38 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
   }
 
   .hero-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    display: flex;
+    gap: 40px;
     align-items: center;
     max-width: 1320px;
     margin: 0 auto;
     padding: 0 20px;
+    justify-content: space-between;
   }
 
-  .hero-content {
+  /* Left / Right columns */
+  .hero-left {
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+
+  .hero-right {
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: relative; /* containing block for absolutely positioned background image */
+  }
+  .hero-right >img{
+    position: absolute;
+    right: 0;
+    top: -220px;
+    width: 100%;
+    height:auto;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.95;
+  }
+    .hero-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -282,8 +303,21 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
     z-index: 10;
   }
 
+  .hero-bg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 70%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.95;
+  }
+
   .visual-container {
     position: relative;
+    z-index: 10;
   }
 
   .blue-circle {
@@ -490,8 +524,16 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
   /* Tablet */
   @media (max-width: 1024px) {
     .hero-container {
-      grid-template-columns: 1fr;
+      flex-direction: column;
       gap: 40px;
+      align-items: center;
+    }
+
+    .hero-left,
+    .hero-right {
+      flex: 0 0 100%;
+      max-width: 100%;
+      width: 100%;
     }
 
     .hero-content {
@@ -529,6 +571,14 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
     .visual-container {
       width: 400px;
       height: 400px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 60%;
+      opacity: 0.6;
     }
 
     .pillar-container {
@@ -599,6 +649,10 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
     .visual-container {
       width: 320px;
       height: 320px;
+    }
+
+    .hero-bg {
+      display: none;
     }
 
     .laptop-container {
@@ -761,7 +815,8 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
 
   <div class="hero-container">
     <!-- Left Content -->
-    <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-content">
       <h1 class="hero-title">Ace your tests, Not your stress!</h1>
       <span class="hero-span">with 
         <Image src={conceptsSectionIcon1} alt={"Logo"} style="width: 120px; height: auto; vertical-align: middle;" />
@@ -774,15 +829,15 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
 
       <ul class="features-list">
         <li class="feature-item">
-          <div class="check-icon"></div>
+          <Image src={HeroSectionIcon1} alt="Feature Icon" />
           <span class="feature-text">19 years of academic credibility</span>
         </li>
         <li class="feature-item">
-          <div class="check-icon"></div>
+          <Image src={HeroSectionIcon1} alt="Feature Icon" />
           <span class="feature-text">Expert-created content</span>
         </li>
         <li class="feature-item">
-          <div class="check-icon"></div>
+          <Image src={HeroSectionIcon1} alt="Feature Icon" />
           <span class="feature-text">Proven results</span>
         </li>
       </ul>
@@ -803,10 +858,13 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
         </div>
       </div>
     </div>
+  </div>
 
     <!-- Right Visual -->
-    <div class="hero-image">
-      <div class="visual-container">
+    <div class="hero-right">
+      <Image src={HeroGridBg} alt="" class="hero-bg" />
+      <div class="hero-image">
+        <div class="visual-container">
         <!-- <div class="blue-circle"></div> -->
 
         <!-- Animated Pillars (Growing from bottom to top) -->
@@ -842,6 +900,7 @@ import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
           height={600}
           class="hero-video"
         />
+      </div>
       </div>
     </div>
   </div>

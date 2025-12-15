@@ -312,13 +312,30 @@ const isVideo = (file) =>
         max-width: 300px;
     }
 
-    .mockup-container video,
-    .mockup-container img {
+    .mockup-container video {
         width: 100%;
-        height: auto;
+        /* height: auto; */
         display: block;
         object-fit: cover;
-        max-width: 400px;
+        min-width: 400px;
+        height: 385px;
+    }
+    .mockup-container img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .image-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background: url('../../assets/Jove_chat_bg.png');
+        background-size: cover;
+        background-position: center;
+        border-radius: 16px;
+        min-width: 400px;
+        min-height: 385px;
     }
 
     /* Responsive Design */
@@ -459,12 +476,14 @@ const isVideo = (file) =>
                                             video tag.
                                         </video>
                                     ) : (
+                                        <div class="image-wrapper">
                                         <Image
                                             src={step.image}
                                             alt={step.title}
                                             class="mockup-image"
                                             inferSize
                                         />
+                                        </div>
                                     )}
                                 </div>
                             </div>
