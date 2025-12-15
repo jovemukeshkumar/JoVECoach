@@ -17,24 +17,37 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     background: #ffffff;
     padding: 60px 20px 0px 20px;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 1000px;
     position: relative;
+    z-index: 10;
   }
 
   /* Soft down glow shadow */
-  .hero-section::after {
+  /* .hero-section::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -40px; /* move slightly below section */
-    height: 120px; /* size of the glow */
+    bottom: -40px; 
+    height: 120px;
     filter: blur(80px);
-    background: rgb(66, 132, 229, 0.5); /* soft grey glow */
+    background: rgb(66, 132, 229, 0.5); 
     pointer-events: none;
     z-index: 0;
-  }
+  } */
 
+  .hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    url("../../assets/HeroSectionBlueBg.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+}
   .hero-container {
     display: flex;
     gap: 40px;
@@ -43,6 +56,8 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     margin: 0 auto;
     padding: 0 20px;
     justify-content: space-between;
+        position: relative;
+    z-index: 10;
   }
 
   /* Left / Right columns */
@@ -213,7 +228,7 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     background-repeat: no-repeat;
     background-position: 300px center;
     border-radius: 16px;
-    border: 1px solid #2183ED;
+    border: 0.8px solid #FFFFFF;
     padding: 20px 32px;
     max-width: 520px;
     z-index: 1;

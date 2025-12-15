@@ -8,6 +8,7 @@ import Jove_chat_video from "../../assets/Jove_chat_video.webm";
 import Jove_chat_Image1 from "../../assets/Jove_chat_Image1.png";
 import Jove_chat_Image2 from "../../assets/Jove_chat_Image2.png";
 import Jove_chat_Image3 from "../../assets/Jove_chat_Image3.png";
+import conceptsSectionIcon1 from '../../assets/conceptsSectionIcon1.svg'
 const steps = [
     {
         id: "ask",
@@ -82,7 +83,7 @@ const isVideo = (file) =>
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 0 !important;
   pointer-events: none;
 
   background-image:
@@ -98,6 +99,7 @@ const isVideo = (file) =>
         max-width: 1320px;
         margin: 0 auto;
         position: relative;
+        z-index: 10;
     }
 
     .header-content {
@@ -123,6 +125,12 @@ const isVideo = (file) =>
         letter-spacing: inherit;
         text-align: center;
         color: #2183ed;
+    }
+
+    .highlight img{
+        width: 38px;
+        height: auto;
+        margin: 0px 0px -5px 0px;
     }
 
     .subtitle {
@@ -183,7 +191,7 @@ const isVideo = (file) =>
 
     .tab-button:hover {
         border: 1px solid #2183ed80;
-        color: #2b9ceb;
+        color: #2183ed;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(43, 156, 235, 0.15);
     }
@@ -194,15 +202,18 @@ const isVideo = (file) =>
         box-shadow: 0px 11px 15px 0px #0000000d;
     }
 
-    .tab-button.active .tab-icon {
-        filter: grayscale(0) brightness(1.2);
-    }
-
     .tab-icon {
         width: 24px;
         height: auto;
-        filter: grayscale(1) brightness(0.8);
-        transition: filter 0.3s ease;
+        /* filter: grayscale(1) brightness(0.8); */
+        transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Make active tab icons appear blue */
+    .tab-button.active .tab-icon {
+        /* convert neutral SVG/img to a blue tone */
+        filter: grayscale(0) sepia(1) saturate(8) hue-rotate(180deg) brightness(1.05);
+        transform: scale(1.05);
     }
 
     /* Steps Content */
@@ -256,9 +267,12 @@ const isVideo = (file) =>
     }
 
     .mockup-image {
-        width: 100%;
-        height: auto;
+        width: 90%;
+        height: 100%;
         display: block;
+        border-radius: 12px;
+        object-fit: cover;
+
     }
     .tab-title {
         margin-left: 0.75rem;
@@ -334,8 +348,21 @@ const isVideo = (file) =>
         background-size: cover;
         background-position: center;
         border-radius: 16px;
+        overflow: hidden; /* ensure children are clipped to rounded corners */
         min-width: 400px;
         min-height: 385px;
+        z-index: 10;
+    }
+
+    /* Ensure the generated <picture>/<img> from Astro Image respects rounding */
+    .image-wrapper picture,
+    .image-wrapper img,
+    .image-wrapper .mockup-image {
+        border-radius: 17px;
+        display: block;
+        width: 90%;
+        height: 100%;
+        object-fit: cover;
     }
 
     /* Responsive Design */
@@ -417,8 +444,11 @@ const isVideo = (file) =>
         <div class="header-content">
             <h2 class="main-title">
                 JoVE Coach is more than a study tool - <br />
-                <span class="highlight"
-                    >it's that helps you finally get it.</span
+                <span class="highlight">
+                    it's 
+                    <Image src={conceptsSectionIcon1} alt="JoVE Coach"  />
+                    that helps you finally get it.
+                </span
                 >
             </h2>
 

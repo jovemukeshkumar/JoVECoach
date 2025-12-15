@@ -2,42 +2,52 @@
 import { Image } from "astro:assets";
 import ArrowLeft from '../../assets/Arrow.svg'
 import ArrowRight from '../../assets/Arrow.svg'
+import testimonialAuthor1 from '../../assets/testimonialAuthor1.png'
+import testimonialAuthor2 from '../../assets/testimonialAuthor2.png'
+import testimonialAuthor3 from '../../assets/testimonialAuthor3.png'
+import testimonialAuthor4 from '../../assets/testimonialAuthor4.png'
 const testimonials = [
   {
     rating: 5,
     text: "I finally understand chemistry. Like, actually understand it. Not just memorize-and-forget.",
     name: "Sophomore, Texas",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sophie"
+    avatar: testimonialAuthor1
   },
   {
     rating: 4,
     text: "Bio used to be my worst subject. Now I'm the one explaining stuff to my friends.",
     name: "Junior, California",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jake"
+    avatar: testimonialAuthor2
   },
   {
     rating: 5,
     text: "I've watched so many YouTube videos and none of them made sense. This actually does.",
     name: "Freshman, Florida",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emma"
+    avatar: testimonialAuthor3
   },
   {
     rating: 5,
     text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
     name: "Senior, New York",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike"
+    avatar: testimonialAuthor4
   },
   {
     rating: 5,
     text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
     name: "Senior, New York",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike"
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sophie"
   },
   {
     rating: 5,
     text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
     name: "Senior, New York",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike"
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jake"
+  },
+  {
+    rating: 5,
+    text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
+    name: "Senior, New York",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jake"
   },
   {
     rating: 5,
@@ -66,7 +76,7 @@ const testimonials = [
             </div>
             <p class="testimonial-text">{testimonial.text}</p>
             <div class="author">
-              <img src={testimonial.avatar} alt={testimonial.name} class="avatar" />
+              <Image src={testimonial?.avatar} alt={testimonial?.name} class="avatar" inferSize={true} />
               <span class="author-name">{testimonial.name}</span>
             </div>
           </div>
@@ -211,6 +221,7 @@ const testimonials = [
   .avatar {
     width: 40px;
     height: 40px;
+    object-fit: cover;
     border-radius: 50%;
     background: #e5e7eb;
   }

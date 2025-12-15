@@ -46,7 +46,7 @@ import secondCTAIcon from '../../assets/secondCTAIcon.svg'
 
 
 .ai-cta-content{
-    max-width: 705px;
+    min-width: 530px;
 }
 /* Left text */
 .ai-cta-content h3 {
@@ -56,7 +56,6 @@ import secondCTAIcon from '../../assets/secondCTAIcon.svg'
     line-height: 120%;
     letter-spacing: 0%;
     color: #fff;
-    white-space: nowrap;
 }
 
 .ai-cta-content p {
@@ -65,11 +64,12 @@ import secondCTAIcon from '../../assets/secondCTAIcon.svg'
     font-size: 18px;
     line-height: 140%;
     letter-spacing: 0%;
+    max-width: 300px;
     color:#fff;
 }
 
 .ai-cta-btn {
-  background: transparent;
+  background: #2183ED;
   color: #fff;
   border: 1px solid #fff;
   padding: 12px 26px;
@@ -80,6 +80,7 @@ import secondCTAIcon from '../../assets/secondCTAIcon.svg'
   letter-spacing: 0%;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 262px;
 }
 
 .ai-cta-btn:hover {
@@ -90,12 +91,11 @@ import secondCTAIcon from '../../assets/secondCTAIcon.svg'
 /* Center icon */
 .ai-cta-icon {
   display: flex;
-  justify-content: start;
-  height: 200px;
-  align-items: flex-end;
+  justify-content: center;
 }
 
 .ai-cta-icon img {
+  width: 70px;
   height: auto;
 }
 
@@ -104,7 +104,7 @@ import secondCTAIcon from '../../assets/secondCTAIcon.svg'
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 325px;
+  max-width: 327px;
 }
 
 .ai-cta-form input {
@@ -119,6 +119,8 @@ font-weight: 400;
 font-size: 16px;
 line-height: 140%;
 letter-spacing: 0%;
+  min-width: 327px;
+
 }
 
 .ai-cta-form input:focus {
@@ -158,20 +160,20 @@ letter-spacing: 0%;
   <div class="ai-cta-card">
     <!-- Left content -->
     <div class="ai-cta-content">
-      <h3>Ready to try the “Ask → Watch → Practice” flow?</h3>
+      <h3>Ready to try the <br/> “Ask → Watch → Practice” flow?</h3>
       <p>Ask a question and see how AI breaks it down in minutes.</p>
-      <button class="ai-cta-btn">Ask Your First Question</button>
-    </div>
-
-    <!-- Center icon -->
-    <div class="ai-cta-icon">
-      <Image src={secondCTAIcon} alt="AI Chat Icon" />
     </div>
 
     <!-- Right form -->
     <form class="ai-cta-form">
       <input type="text" placeholder="Name*" required />
       <input type="email" placeholder="Email*" required />
+      <button class="ai-cta-btn">Ask Your First Question</button>
     </form>
+
+    <!-- Center icon -->
+    <div class="ai-cta-icon">
+      <Image src={secondCTAIcon} alt="AI Chat Icon" />
+    </div>
   </div>
 </section>

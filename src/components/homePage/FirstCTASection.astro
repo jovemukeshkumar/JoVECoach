@@ -17,7 +17,7 @@ import aiChatIcon from '../../assets/ai-chat-icon.svg'
   margin: 0 auto;
   background: #F8F7F4; /* solid base */
   border-radius: 20px;
-  padding: 0 4rem;
+  padding: 1.5rem 4rem;
   display: grid;
   grid-template-columns: 1.2fr 0.6fr 1fr;
   align-items: center;
@@ -66,6 +66,7 @@ import aiChatIcon from '../../assets/ai-chat-icon.svg'
     font-size: 18px;
     line-height: 140%;
     letter-spacing: 0%;
+    max-width: 300px;
     color:#000;
 }
 
@@ -81,6 +82,7 @@ import aiChatIcon from '../../assets/ai-chat-icon.svg'
   letter-spacing: 0%;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 223px;
 }
 
 .ai-cta-btn:hover {
@@ -91,11 +93,11 @@ import aiChatIcon from '../../assets/ai-chat-icon.svg'
 /* Center icon */
 .ai-cta-icon {
   display: flex;
-  justify-content: start;
+  justify-content: end;
 }
 
 .ai-cta-icon img {
-    width: 100%;
+    width: 227px;
   height: auto;
 }
 
@@ -104,7 +106,7 @@ import aiChatIcon from '../../assets/ai-chat-icon.svg'
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 325px;
+  max-width: 327px;
 }
 
 .ai-cta-form input {
@@ -119,6 +121,8 @@ font-weight: 400;
 font-size: 16px;
 line-height: 140%;
 letter-spacing: 0%;
+  min-width: 327px;
+
 }
 
 .ai-cta-form input:focus {
@@ -160,18 +164,18 @@ letter-spacing: 0%;
     <div class="ai-cta-content">
       <h3>Stuck on a concept right now?</h3>
       <p>See how JoVE Coach explains it clearly — with AI.</p>
-      <button class="ai-cta-btn">Try an AI Explanation</button>
-    </div>
-
-    <!-- Center icon -->
-    <div class="ai-cta-icon">
-      <Image src={aiChatIcon} alt="AI Chat Icon" />
     </div>
 
     <!-- Right form -->
     <form class="ai-cta-form">
       <input type="text" placeholder="Name*" required />
       <input type="email" placeholder="Email*" required />
+      <button class="ai-cta-btn">Try an AI Explanation</button>
     </form>
+    
+    <!-- Center icon -->
+    <div class="ai-cta-icon">
+      <Image src={aiChatIcon} alt="AI Chat Icon" />
+    </div>
   </div>
 </section>

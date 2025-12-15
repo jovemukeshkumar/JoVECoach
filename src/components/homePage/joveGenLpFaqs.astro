@@ -1,0 +1,237 @@
+---
+import section10FaqArrow from "../../assets/section10FaqArrow.svg";
+import { Image } from "astro:assets";
+const faqSectionHeading = "Frequently Asked Questions";
+
+const faqList = [
+  {
+    question: "Is JoVE Coach free?",
+    answer:
+      "You can explore videos free—no sign-up needed. Want full access? Start a 7-day free trial to unlock all videos and micro courses."
+  },
+  {
+    question: "How long are the videos?",
+    answer:
+      "2 minutes. One concept, clearly explained. No filler."
+  },
+  {
+    question: "What are micro courses?",
+    answer:
+      "Bite-sized learning paths that group related videos together. Master a topic step by step—not just video by video."
+  },
+  {
+    question: "How is this different from YouTube?",
+    answer:
+      "Every video is made by STEM experts, not content creators. AI finds exactly what you need, and generates quizzes after each video—so you know if it actually clicked."
+  },
+  {
+    question: "Will JoVE Coach help me pass my exams?",
+    answer:
+      "That's what it's built for. Students who use JoVE Coach consistently report better understanding and 2X improved test scores."
+  },
+  {
+    question: "What subjects do you cover?",
+    answer:
+      "Biology, Chemistry, Physics, and foundational Math. More coming based on what students need."
+  },
+  {
+    question: "Can I cancel anytime?",
+    answer:
+      "Yes. No contracts, no fees, no hassle."
+  }
+];
+
+---
+
+
+<style>
+  .faq-section {
+    margin: 0px 0px;
+    padding: 50px 0px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .faq-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0 !important;
+    pointer-events: none;
+    background-image:
+      url("../../assets/JoVECoachStepsBgImage1.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+  }
+
+  .faq-container {
+    margin: 0 auto;
+    padding: 0px 80px;
+    font-family: Inter, sans-serif;
+    max-width: 800px;
+     position: relative;
+    z-index: 10;
+  }
+
+  .faq-heading {
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 64px;
+  }
+
+  /* FAQ ITEM */
+  .faq-item {
+    border-radius: 8px;
+    padding: 24px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 0.5px solid transparent;
+  }
+
+  /* Removed first-child special styling so no FAQ appears open by default */
+
+  /* Question Row */
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  /* Arrow Icon */
+  .faq-arrow {
+    width: 14px;
+    height: auto;
+    transition: transform 0.3s ease;
+    transform: rotate(180deg);
+  }
+
+  /* Answer Text */
+  .faq-answer {
+    color: rgb(71, 71, 71);
+    font-size: 15px;
+    line-height: 150%;
+    margin-top: 16px;
+    width: 90%;
+    display: none;
+  }
+
+  /* Open state */
+  .faq-item.open {
+    border: 0.5px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .faq-item.open .faq-arrow {
+    transform: rotate(0deg);
+  }
+
+  .faq-item.open .faq-answer {
+    display: block;
+  }
+
+  /* ---------------------------------------------------
+      RESPONSIVE STYLES
+  --------------------------------------------------- */
+
+  @media (max-width: 1024px) {
+    .faq-container {
+      padding: 0 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .faq-section {
+      margin: 60px 0;
+    }
+
+    .faq-container {
+      padding: 0 24px;
+      max-width: 100%;
+    }
+
+    .faq-heading {
+      font-size: 28px;
+      margin-bottom: 48px;
+    }
+
+    .faq-item {
+      padding: 20px 16px;
+    }
+
+    .faq-question {
+      font-size: 18px;
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faq-heading {
+      font-size: 24px;
+    }
+
+    .faq-item {
+      padding: 18px 14px;
+    }
+
+    .faq-question {
+      font-size: 16px;
+    }
+
+    .faq-arrow {
+      width: 12px;
+    }
+  }
+</style>
+
+<section class="faq-section">
+  <div class="faq-container">
+    <h2 class="faq-heading">
+  {faqSectionHeading}
+</h2>
+
+
+    {faqList.length === 0 && (
+  <p style="text-align:center; color:#777;">No FAQs available right now.</p>
+)}
+
+{faqList.map((item, index) => (
+  <div class={`faq-item ${index === 0 ? "open" : ""}`} data-faq>
+    <div class="faq-question">
+      {item.question}
+      <Image src={section10FaqArrow} alt="Arrow" class="faq-arrow" />
+    </div>
+
+    {item.answer && <p class="faq-answer">{item.answer}</p>}
+  </div>
+))}
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll("[data-faq]");
+
+    faqItems.forEach((faq) => {
+      faq.addEventListener("click", () => {
+        const open = faq.classList.contains("open");
+
+        faqItems.forEach((item) => item.classList.remove("open"));
+
+        if (!open) faq.classList.add("open");
+      });
+    });
+  });
+</script>
