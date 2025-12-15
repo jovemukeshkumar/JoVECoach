@@ -28,6 +28,18 @@ const data = await getStrapiData("/api/pricing-page");
 const faqSection = data?.faqSection?.find(
   (b: any) => b.__component === "layout.faq-section",
 );
+
+// Build a list of visible FAQ items (skip empty/NA entries)
+const visibleFaqs = (() => {
+  const items: { q: any; a: any }[] = [];
+  for (let i = 0; i < 10; i++) {
+    const q = faqSection?.[`faqSectionQuestion${i + 1}`];
+    const a = faqSection?.[`faqSectionAnswer${i + 1}`];
+    if (!q || q === "NA") continue;
+    items.push({ q, a });
+  }
+  return items;
+})();
 ---
 
 <style>
@@ -59,10 +71,7 @@ const faqSection = data?.faqSection?.find(
     border: 0.5px solid transparent;
   }
 
-  .faq-item:first-child {
-    border: 0.5px solid #ccc;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-  }
+  /* Removed first-child special styling so no FAQ appears open by default */
 
   /* Question Row */
   .faq-question {
@@ -114,31 +123,20 @@ const faqSection = data?.faqSection?.find(
   <div class="faq-container">
     <h2 class="faq-heading">{faqSection?.faqSectionHeading}</h2>
 
-    {
-      faqSection &&
-        Array.from({ length: 10 }).map((_, index) => {
-          const q = faqSection[`faqSectionQuestion${index + 1}`];
-          const a = faqSection[`faqSectionAnswer${index + 1}`];
+    {visibleFaqs.map((item, idx) => (
+      <div class={`faq-item ${idx === 0 ? "open" : ""}`} data-faq>
+        <div class="faq-question">
+          {item.q}
+          <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" />
+        </div>
 
-          // Render only if question exists + valid
-          if (!q || q === "NA") return null;
-
-          return (
-            <div class="faq-item" data-faq>
-              <div class="faq-question">
-                {q}
-                <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" />
-              </div>
-
-              {a && a !== "NA" ? (
-                <div class="faq-answer">
-                  <div class="faq-html" set:html={a} />
-                </div>
-              ) : null}
-            </div>
-          );
-        })
-    }
+        {item.a && item.a !== "NA" ? (
+          <div class="faq-answer">
+            <div class="faq-html" set:html={item.a} />
+          </div>
+        ) : null}
+      </div>
+    ))}
   </div>
 </section>
 
