@@ -116,16 +116,15 @@ const testimonials = [
   z-index: 0;
   pointer-events: none;
   background-image:
-    url("../../assets/JoVECoachStepsBgImage2.png");
+    url("../../assets/testimonialBg.png");
   background-repeat: no-repeat;
   background-position: center top;
-    transform: scaleY(-1);
   background-size: contain;
 }
 
   .container {
-    max-width: 1320px;
-    margin: 0 auto;
+    /* max-width: 1320px;
+    margin: 0 auto; */
     position: relative;
     z-index: 1;
   }
@@ -153,18 +152,19 @@ const testimonials = [
     position: relative;
     padding: 0 0px 100px 60px;
     overflow: hidden;
-    margin-right: -290px;
+    margin-right: 0px;
   }
 
   .testimonials-grid {
     display: flex;
     gap: 24px;
     transition: transform 0.4s ease-in-out;
+
   }
 
   .testimonial-card {
-    flex: 0 0 calc(22% - 16px);
-    min-width: calc(22% - 16px);
+    flex: 0 0 calc(20% - 16px);
+    min-width: calc(20% - 16px);
   }
 
   .testimonial-card {
