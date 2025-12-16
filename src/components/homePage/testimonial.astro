@@ -65,13 +65,8 @@ const testimonials = [
     </h2>
     <p class="subtitle">Students like you are already seeing results</p>
     
-
     <div class="carousel-wrapper">
-      <!-- LEFT BLUR -->
-      <div class="carousel-blur left"></div>
 
-      <!-- RIGHT BLUR -->
-      <div class="carousel-blur right"></div>
       <div class="testimonials-grid" id="testimonials-grid">
         {testimonials.map((testimonial) => (
           <div class="testimonial-card">
@@ -103,44 +98,40 @@ const testimonials = [
 
 <style>
   .testimonial-section {
-  padding: 5rem 1.5rem 1rem 1.5rem;
-  position: relative;
-  z-index: 1;
+    padding: 5rem 0 1rem 0;
+    position: relative;
+    z-index: 1;
   }
-.testimonial-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0 !important;
-  pointer-events: none;
 
-  background-image:
-    url("../../assets/JoVECoachStepsBgGrid.svg"),
-    url("../../assets/JoVECoachStepsBgGrid.svg");
+  .testimonial-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0 !important;
+    pointer-events: none;
+    background-image:
+      url("../../assets/JoVECoachStepsBgGrid.svg"),
+      url("../../assets/JoVECoachStepsBgGrid.svg");
+    background-repeat: no-repeat, no-repeat;
+    background-position: 1100px top, 600px bottom;
+    background-size: auto 300px, auto 300px;
+    opacity: 0.25;
+  }
 
-  background-repeat: no-repeat, no-repeat;
-  background-position: 1100px top, 600px bottom;
-  background-size: auto 300px, auto 300px;
-
-  opacity: 0.25;
-}
-
-.testimonial-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    url("../../assets/testimonialBg.png");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: contain;
-}
+  .testimonial-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      url("../../assets/testimonialBg.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+  }
 
   .container {
-    /* max-width: 1320px;
-    margin: 0 auto; */
     position: relative;
     z-index: 1;
   }
@@ -166,24 +157,22 @@ const testimonials = [
 
   .carousel-wrapper {
     position: relative;
-    padding: 0 0px 100px 60px;
+    padding: 0 60px 100px 0;
     overflow: hidden;
-    margin-left: 120px;
+    margin-left: 15%;
   }
 
   .testimonials-grid {
     display: flex;
     gap: 24px;
     transition: transform 0.4s ease-in-out;
-
   }
 
   .testimonial-card {
-    flex: 0 0 calc(20% - 16px);
-    min-width: calc(20% - 16px);
-  }
-
-  .testimonial-card {
+    flex: 0 0 280px;
+    min-width: 280px;
+    max-width: 280px;
+    width: 280px;
     background: white;
     border-radius: 16px;
     padding: 32px 28px;
@@ -267,35 +256,33 @@ const testimonials = [
     background: #2183ED;
     color: white;
     transform: scale(1.05);
-    
   }
+
   .nav-btn:hover img {
     filter: brightness(0) invert(1);
-    }
-
-
-  .nav-btn.prev img{
-    transform: rotate(180deg);
   }
-  .nav-btn.prev:hover img{
+
+  .nav-btn.prev img {
     transform: rotate(180deg);
   }
 
-
+  .nav-btn.prev:hover img {
+    transform: rotate(180deg);
+  }
 
   /* Carousel edge blur - Enhanced */
   .carousel-blur {
     position: absolute;
     top: 0;
     bottom: 100px;
-    width: 80px;
+    width: 100px;
     pointer-events: none;
     z-index: 5;
   }
 
   /* Left blur */
   .carousel-blur.left {
-    left: -25px;
+    left: 0;
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 1) 0%,
@@ -309,7 +296,7 @@ const testimonials = [
 
   /* Right blur */
   .carousel-blur.right {
-    right: -20px;
+    right: 0;
     background: linear-gradient(
       to left,
       rgba(255, 255, 255, 1) 0%,
@@ -321,45 +308,57 @@ const testimonials = [
     );
   }
 
-
-
   @media (max-width: 1024px) {
-    .testimonial-card {
-      flex: 0 0 calc(50% - 12px);
-      min-width: calc(50% - 12px);
-    }
-
     .carousel-wrapper {
-      padding: 0 40px;
+      padding: 0 40px 100px 40px;
+      margin-left: 0;
     }
 
     .navigation {
       right: 40px;
     }
+
+    .carousel-blur {
+      width: 60px;
+    }
+
+    .testimonial-card {
+      flex: 0 0 260px;
+      min-width: 260px;
+      max-width: 260px;
+      width: 260px;
+    }
   }
 
   @media (max-width: 640px) {
-    .testimonial-card {
-      flex: 0 0 calc(100% - 0px);
-      min-width: calc(100% - 0px);
-    }
-
     .title {
       font-size: 32px;
     }
 
     .carousel-wrapper {
-      padding: 0 20px;
+      padding: 0 20px 80px 20px;
+      margin-left: 0;
     }
 
     .navigation {
       right: 20px;
-      bottom: -70px;
+      bottom: 5px;
     }
 
     .nav-btn {
       width: 44px;
       height: 44px;
+    }
+
+    .carousel-blur {
+      width: 40px;
+    }
+
+    .testimonial-card {
+      flex: 0 0 240px;
+      min-width: 240px;
+      max-width: 240px;
+      width: 240px;
     }
   }
 </style>
@@ -374,9 +373,14 @@ const testimonials = [
   const totalCards = cards.length;
   
   function getCardsPerView(): number {
-    if (window.innerWidth <= 640) return 1;
-    if (window.innerWidth <= 1024) return 4;
-    return 4;
+    // Always show exactly 4 cards on desktop
+    if (window.innerWidth > 1024) return 4;
+    // Show 3 cards on tablet
+    if (window.innerWidth > 768) return 3;
+    // Show 2 cards on small tablet
+    if (window.innerWidth > 640) return 2;
+    // Show 1 card on mobile
+    return 1;
   }
   
   function updateCarousel(): void {
@@ -384,7 +388,7 @@ const testimonials = [
     const maxIndex = Math.max(0, totalCards - cardsPerView);
     currentIndex = Math.min(currentIndex, maxIndex);
     
-    const cardWidth = cards[0]?.offsetWidth || 0;
+    const cardWidth = cards[0]?.offsetWidth || 280;
     const gap = 24;
     const offset = -(currentIndex * (cardWidth + gap));
     

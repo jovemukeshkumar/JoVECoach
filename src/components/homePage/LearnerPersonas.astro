@@ -43,7 +43,7 @@ const learnerTypes = [
 ---
 <style>
   .learner-types-section {
-    padding: 80px 20px;
+    padding: 80px 0;
     background: #fff;
     position: relative;
     z-index: 10;
@@ -98,9 +98,9 @@ const learnerTypes = [
 
   .carousel-wrapper {
     position: relative;
-    padding: 0 60px 100px 60px;
+    padding: 0 60px 100px 0;
     overflow: hidden;
-    margin-left: 120px;
+    margin-left: 15%;
   }
 
   .learner-grid {
@@ -110,9 +110,9 @@ const learnerTypes = [
   }
 
   .learner-card {
-    flex: 0 0 350px;
-    min-width: 350px;
-    max-width: 350px;
+    flex: 0 0 280px;
+    min-width: 280px;
+    max-width: 280px;
     width: 280px;
     background: white;
     border-radius: 16px;
@@ -205,22 +205,33 @@ const learnerTypes = [
     transform: rotate(180deg);
   }
 
+  .nav-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
+  .nav-btn.disabled:hover {
+    transform: scale(1);
+    background: transparent;
+  }
+
+  .nav-btn.disabled:hover img {
+    filter: none;
+  }
 
   /* Carousel edge blur - Enhanced */
   .carousel-blur {
     position: absolute;
     top: 0;
     bottom: 100px;
-    width: 80px;
+    width: 100px;
     pointer-events: none;
     z-index: 5;
   }
 
-
   /* Left blur */
   .carousel-blur.left {
-    left: -25px;
+    left: 0;
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 1) 0%,
@@ -234,7 +245,7 @@ const learnerTypes = [
 
   /* Right blur */
   .carousel-blur.right {
-    right: -20px;
+    right: 0;
     background: linear-gradient(
       to left,
       rgba(255, 255, 255, 1) 0%,
@@ -249,6 +260,7 @@ const learnerTypes = [
   @media (max-width: 1024px) {
     .carousel-wrapper {
       padding: 0 40px 100px 40px;
+      margin-left: 0;
     }
 
     .navigation {
@@ -267,6 +279,7 @@ const learnerTypes = [
 
     .carousel-wrapper {
       padding: 0 30px 100px 30px;
+      margin-left: 0;
     }
 
     .navigation {
@@ -288,6 +301,7 @@ const learnerTypes = [
   @media (max-width: 640px) {
     .carousel-wrapper {
       padding: 0 20px 100px 20px;
+      margin-left: 0;
     }
 
     .navigation {
@@ -319,11 +333,6 @@ const learnerTypes = [
     <p class="subtitle">Every learner is different. JoVE Coach fits them all.</p>
     
     <div class="carousel-wrapper">
-      <!-- LEFT BLUR -->
-      <div class="carousel-blur left"></div>
-
-      <!-- RIGHT BLUR -->
-      <div class="carousel-blur right"></div>
       
       <div class="learner-grid" id="learner-grid">
         {learnerTypes.map((learner) => (
