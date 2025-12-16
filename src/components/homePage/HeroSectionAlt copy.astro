@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import HeroSectionVideo from "../../assets/LP-Girl-MR.webm";
+import HeroSectionVideo from "../../assets/LP-Girl-LR.webm";
 import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.png";
 import HeroSectioncognition from "../../assets/HeroSectioncognition.svg";
 import HeroSectionStat from "../../assets/HeroSectionStat.svg";
@@ -21,6 +21,20 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     position: relative;
     z-index: 10;
   }
+
+  /* Soft down glow shadow */
+  /* .hero-section::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -40px; 
+    height: 120px;
+    filter: blur(80px);
+    background: rgb(66, 132, 229, 0.5); 
+    pointer-events: none;
+    z-index: 0;
+  } */
 
   .hero-section::before {
   content: "";
@@ -58,10 +72,10 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
   }
   .hero-right >img{
     position: absolute;
-    right: 15px;
+    right: 0;
     top: -200px;
-    /* width: 100%;
-    height:100%; */
+    width: 100%;
+    height:100%;
     object-fit: cover;
     pointer-events: none;
     z-index: 0;
@@ -313,9 +327,6 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     width: 900px;
     height: auto;
   }
-  .hero-mobile-img{
-    display: none;
-  }
 
   .visual-container {
     position: relative;
@@ -324,7 +335,7 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
 
   .pillar-container {
     position: absolute;
-    bottom: 310px;
+    bottom: 180px;
     left: 52%;
     transform: translateX(-55%);
     display: flex;
@@ -585,50 +596,20 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
   /* Mobile */
   @media (max-width: 768px) {
     .hero-section {
-      padding: 0px;
+      padding: 40px 15px;
     }
 
     .hero-container {
       gap: 30px;
-      padding: 0 ;
-      flex-direction: column-reverse;
+      padding: 0 10px;
     }
 
-      .hero-right ::before{
-        background-size: cover;
-        background-position: center top;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 100%;
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        background-image: url("../../assets/HeroSectionGridBg.svg");
-
-
-      }
-
-    .hero-video{
-      display: none;
-    }
-    .hero-mobile-img{
-      display: block;
-      width: 400px;
-      height: auto;
-      margin: 0 auto;
-    }
     .hero-content {
-      align-items: flex-start;
-      padding: 0px 20px 20px 20px;
-    }
-    .features-list{
-      align-items: flex-start;
+      padding: 0;
     }
 
     .logo {
-      margin: 30px;
+      margin-bottom: 30px;
     }
 
     .logo-jove,
@@ -637,30 +618,18 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     }
 
     .hero-title {
-      font-family: Inter;
-      font-weight: 600;
-      font-size: 26px;
-      line-height: 110.00000000000001%;
-      letter-spacing: -1%;
-      text-align: center;
-      vertical-align: middle;
-      max-width: 200px;
+      font-size: 40px;
+      margin-bottom: 15px;
     }
 
     .hero-subtitle {
       font-size: 16px;
       margin-bottom: 25px;
-      text-align: left;
     }
 
     .input-row {
       grid-template-columns: 1fr;
     }
-    
-.feature-item{
-      font-size: 14px;
-      text-align: left;
-}
 
     .cta-box {
       padding: 24px;
@@ -681,15 +650,11 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
 
     .hero-image {
       height: 400px;
-      align-items: end;
     }
 
     .visual-container {
       width: 320px;
-      height: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      height: 320px;
     }
 
     .hero-bg {
@@ -720,24 +685,22 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     }
 
     .pillar-container {
-      /* gap: 80px; */
-      bottom: 110px;
+      gap: 80px;
+      bottom: 120px;
     }
 
     .pillar {
-      width: 50px;
+      width: 36px;
     }
 
-  /* Left & Right pillar final heights */
-  .pillar-left {
-    animation-delay: 0.3s;
-    --final-height: 100px;
-  }
+    .pillar-left {
+      height: 140px;
+    }
 
-  .pillar-right {
-    animation-delay: 0.5s;
-    --final-height: 130px;
-  }
+    .pillar-right {
+      height: 180px;
+    }
+
     .floating-icon-left {
       width: 56px;
       height: 56px;
@@ -749,29 +712,12 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
       width: 36px;
       height: 36px;
     }
-    .input-field{
-      max-width: 100%;
-      border-radius: 8px !important;
-      
-    }
-    .input-field-mail{
-      margin-top: 12px;
-      border-radius: 8px !important;
-    }
   }
 
   /* Small Mobile */
-  /* @media (max-width: 480px) {
+  @media (max-width: 480px) {
     .hero-section {
       padding: 30px 10px;
-    }
-
-    .hero-image >video{
-      display: none;
-    }
-    .hero-mobile-img{
-      max-width: 300px;
-      height: auto;
     }
 
     .hero-container {
@@ -848,10 +794,10 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     .pillar-right {
       height: 150px;
     }
-  } */
+  }
 
   /* Extra Small Mobile */
-  /* @media (max-width: 360px) {
+  @media (max-width: 360px) {
     .hero-title {
       font-size: 28px;
     }
@@ -865,7 +811,7 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
       width: 260px;
       height: 260px;
     }
-  } */
+  }
 </style>
 
 <section class="hero-section">
@@ -953,11 +899,11 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
           <source src={HeroSectionVideo} type="video/webm" />
           Your browser does not support the video tag.
         </video>
-        <Image
+        <!-- <Image
           src={HeroSectionImage}
           alt="Hero Video"
-          class="hero-video hero-mobile-img"
-        />
+          class="hero-video"
+        /> -->
       </div>
       </div>
     </div>
