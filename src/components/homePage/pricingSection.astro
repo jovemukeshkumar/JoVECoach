@@ -344,11 +344,9 @@ const pricingPlans = [
 								</ul>
 
 								<div class="button-row">
-									<a href="#crmWebToEntityForm" tabindex="0">
-										<button class="primary-btn ant-btn ant-btn-default">
-											<span>{plan?.buttonText ?? "Select"}</span>
-										</button>
-									</a>
+									<button class="primary-btn ant-btn ant-btn-default" onclick="window.openZohoModal && window.openZohoModal()">
+										<span>{plan?.buttonText ?? "Select"}</span>
+									</button>
 								</div>
 							</div>
 						</div>

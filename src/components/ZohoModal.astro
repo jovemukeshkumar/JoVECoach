@@ -191,12 +191,18 @@ import formHtml from "../components/zohoform.html?raw";
 	/* Ensure modal form looks like the original */
 	#crmWebToEntityForm_modal {
 		background: #0085f6 !important;
-		background-image: url("/cardBg.svg") !important;
-		background-position: 600px center !important;
-		background-repeat: no-repeat !important;
-		background-size: contain !important;
+		/* Removed cardBg.svg to allow new background image to show */
 		padding: 40px 50px 20px 50px !important;
 		border-radius: 15px !important;
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+	}
+
+	/* Ensure content sits above the background image */
+	#crmWebToEntityForm_modal > form {
+		position: relative;
+		z-index: 1;
 	}
 
 	/* Form Layout Styles */
@@ -227,7 +233,7 @@ import formHtml from "../components/zohoform.html?raw";
 		width: 100%;
 		border: 1px solid rgba(255, 255, 255, 0.3) !important;
 		border-radius: 8px;
-		padding: 10px 16px !important; /* Reduced height */
+		padding: 8px 12px !important; /* Reduced height (0.75x) */
 		background-color: rgba(255, 255, 255, 0.95) !important;
 		color: #333 !important;
 		font-size: 14px !important;
@@ -275,30 +281,64 @@ import formHtml from "../components/zohoform.html?raw";
 		content: "";
 		position: absolute;
 		inset: 0;
-		z-index: -1;
+		z-index: 0; /* Changed from -1 to 0 to sit above background color but below content */
 		background-image: url("/secondCTAbg.png");
-		background-size: 49%;
-		background-position: right center;
+		background-size: 95%;
+		background-position: 1480% 100%;
 		background-repeat: no-repeat;
 		opacity: 0.5;
 		pointer-events: none;
 	}
 
 	@media (max-width: 768px) {
+		.modal-overlay {
+			padding: 0;
+		}
+
+		.modal-container {
+			width: 90%; /* Prevent touching edges */
+			max-height: 85vh; /* Ensure it fits vertically */
+			margin: auto; /* Robust centering */
+		}
+
 		#crmWebToEntityForm_modal {
-			padding: 40px 28px !important;
+			padding: 24px 20px !important; /* Reduced padding */
 			background-position: center bottom !important;
 			background-size: 80% !important;
 			background-image: none !important;
 		}
 
 		.zcwf_title {
-			font-size: 26px !important;
+			font-size: 22px !important; /* Smaller title */
+			margin-bottom: 8px !important;
+		}
+
+		.zcwf_subtitle {
+			font-size: 14px !important;
+			margin-bottom: 20px !important; /* Reduced margin */
 		}
 
 		.zcwf_formVisibleFields_row {
-			flex-direction: column;
-			gap: 12px;
+			flex-direction: column !important;
+			gap: 12px !important; /* Reduced gap */
+			margin-bottom: 16px !important;
+		}
+
+		.zcwf_benefits {
+			margin-top: 16px;
+			font-size: 11px;
+		}
+
+		.zcwf_lblLeft .zcwf_col_fld input[type="text"],
+		.zcwf_lblLeft .zcwf_col_fld input[type="email"] {
+			padding: 8px 12px !important; /* Reduced height (0.75x) */
+			font-size: 13px !important;
+		}
+
+		.zcwf_formVisibleFields_row,
+		.zcwf_formVisibleFields,
+		.zcwf_col_fld {
+			min-height: auto !important;
 		}
 	}
 </style>
