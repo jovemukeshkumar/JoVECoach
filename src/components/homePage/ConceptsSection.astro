@@ -13,398 +13,470 @@ import conceptsSectionIcon9 from "../../assets/conceptsSectionIcon9.svg";
 import conceptsSectionIcon10 from "../../assets/conceptsSectionIcon6.svg";
 
 import ThreeDvideo from "../../assets/3D-Carousel.webm";
-
 ---
+
 <style>
-    .concepts-section {
-  padding: 100px 20px;
-  background: #fff;
-  text-align: center;
-}
+	.concepts-section {
+		padding: 100px 20px;
+		background: #fff;
+		text-align: center;
+	}
 
-/* Heading */
-.heading h2 {
-  font-family: Inter;
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 130%;
-  letter-spacing: 0px;
-  text-align: center;
-  color: #000;
-}
-.heading h2 span {
-  color: #2183ED;
-}
-.heading p {
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 25.2px;
-  letter-spacing: 0%;
-  text-align: center;
-  color:#3F3F3F;
-}
+	/* Heading */
+	.heading h2 {
+		font-family: Inter;
+		font-weight: 600;
+		font-size: 36px;
+		line-height: 130%;
+		letter-spacing: 0px;
+		text-align: center;
+		color: #000;
+	}
+	.heading h2 span {
+		color: #2183ed;
+	}
+	.heading p {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 25.2px;
+		letter-spacing: 0%;
+		text-align: center;
+		color: #3f3f3f;
+	}
 
-/* Features */
-.features {
-  margin: 50px auto 20px auto;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  max-width: 1100px;
-}
-.feature {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(206, 228, 251, 0.25) 100%);
-  border-radius: 15px;
-  box-shadow: 0px 10px 20px 0px #2183ED26;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-.feature p {
-  font-family: Inter;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 140%;
-  letter-spacing: 0%;
-  text-align: center;
-  color: #3F3F3F;
-  max-width: 120px;
-  margin: 0 auto;
-}
-.feature img {
-  margin-bottom: 10px;
-  width: 40px;
-  height: 40px;
-}
+	/* Features */
+	.features {
+		margin: 50px auto 20px auto;
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 35px;
+		max-width: 940px;
+	}
+	.feature {
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(206, 228, 251, 0.25) 100%);
+		border-radius: 15px;
+		box-shadow: 0px 10px 20px 0px #2183ed26;
+		border: 1px solid rgba(33, 131, 237, 0.15);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 20px;
+	}
+	.feature p {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		text-align: center;
+		color: #3f3f3f;
+		max-width: 120px;
+		margin: 0 auto;
+	}
+	.feature img {
+		margin-bottom: 10px;
+		width: 40px;
+		height: 40px;
+	}
 
-/* Carousel */
-.carousel {
-  position: relative;
-  height: 320px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 60px;
-}
+	/* Carousel */
+	.carousel {
+		position: relative;
+		height: 320px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 60px;
+	}
 
-/* Video wrapper */
-.video-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: center;
-}
+	/* Video wrapper */
+	.video-wrapper {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 0 20px;
+		display: flex;
+		justify-content: center;
+	}
 
-/* Responsive video */
-.concepts-video {
-  width: 100%;
-  max-width: 899px;  
-  height: auto;
-  border-radius: 24px;
-  object-fit: contain;
-}
+	/* Responsive video */
+	.concepts-video {
+		width: 100%;
+		max-width: 899px;
+		height: auto;
+		border-radius: 24px;
+		object-fit: contain;
+	}
 
-/* Tablet */
-@media (max-width: 900px) {
-  .concepts-video {
-    max-width: 100%;
-    border-radius: 18px;
-  }
-}
+	/* Tablet */
+	@media (max-width: 900px) {
+		.concepts-video {
+			max-width: 100%;
+			border-radius: 18px;
+		}
+	}
 
-/* Mobile */
-@media (max-width: 600px) {
-  .concepts-video {
-    border-radius: 14px;
-  }
-}
+	/* Mobile */
+	@media (max-width: 600px) {
+		.video-wrapper {
+			padding: 0;
+			margin-left: -20px;
+			margin-right: -20px;
+			width: calc(100% + 40px);
+			max-width: none;
+		}
+		.concepts-video {
+			border-radius: 0;
+			width: 100%;
+			max-width: 100%;
+		}
+	}
 
-/* Questions */
-.questions-slider {
-    max-width: 100%;
-    overflow-x: auto;
-    margin: 0px auto;
-    padding-bottom: 60px;
-    scroll-snap-type: x mandatory;
-}
+	/* Questions */
+	.questions-slider {
+		max-width: 100%;
+		overflow-x: auto;
+		margin: 0px auto;
+		padding-bottom: 60px;
+		scroll-snap-type: x mandatory;
+	}
 
-.questions-slider::-webkit-scrollbar {
-  display: none;
-}
-.questions-slider {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+	.questions-slider::-webkit-scrollbar {
+		display: none;
+	}
+	.questions-slider {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
 
-/* Slider row */
-.questions {
-  display: flex;
-  gap: 22px;
-  width: max-content;
-  padding: 0 20px;
-}
+	/* Slider row */
+	.questions {
+		display: flex;
+		gap: 22px;
+		width: max-content;
+		padding: 0 20px;
+	}
 
-/* Bubble */
-.questions span {
-  scroll-snap-align: center;
-  flex: 0 0 auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 220px;
-  max-width: 220px;
-  text-align: left;
-  background: #f8f7f4;
-  border: 0.5px solid #b4b7b7;
-  border-radius: 25px;
-  padding: 14px 24px;
-  font-family: Inter;
-  font-size: 15px;
-  line-height: 1.35;
-  color: #000;
+	/* Bubble */
+	.questions span {
+		scroll-snap-align: center;
+		flex: 0 0 auto;
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		width: 240px;
+		text-align: left;
+		background: #f8f7f4;
+		border: 0.5px solid #b4b7b7;
+		border-radius: 25px;
+		padding: 14px 24px;
+		font-family: Inter;
+		font-size: 15px;
+		line-height: 1.35;
+		color: #000;
 
-  box-shadow: 0px 20px 40px 0px #8c8c8c36;
-}
+		box-shadow: 0px 20px 40px 0px #8c8c8c36;
+	}
 
-/* Icon */
-.questions span img {
-  width: 25px;
-  height: auto;
-  flex-shrink: 0;
-}
-@keyframes autoSlide {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+	/* Icon */
+	.questions span img {
+		width: 25px;
+		height: auto;
+		flex-shrink: 0;
+	}
+	@keyframes autoSlide {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
 
-.questions {
-  animation: autoSlide 25s linear infinite;
-}
+	.questions {
+		animation: autoSlide 60s linear infinite;
+	}
 
-.questions-slider:hover .questions {
-  animation-play-state: paused;
-}
+	.questions-slider:hover .questions {
+		animation-play-state: paused;
+	}
 
-/* ============================= */
-/* ODD — LEFT CURVED TAIL */
-/* ============================= */
-.questions span:nth-child(odd)::before {
-  content: "";
-  position: absolute;
-  left: 25px;
-  bottom: -18.4px;
+	/* ============================= */
+	/* ODD — LEFT CURVED TAIL */
+	/* ============================= */
+	.questions span:nth-child(odd)::before {
+		content: "";
+		position: absolute;
+		left: 25px;
+		bottom: -18.4px;
 
-  width: 23px;
-  height: 18px;
+		width: 23px;
+		height: 18px;
 
-  background: #F8F7F4;
-  border-right: 0.5px solid #B4B7B7;
-  border-left: 0.5px solid #B4B7B7;
-  border-bottom: 0.5px solid #B4B7B7;
+		background: #f8f7f4;
+		border-right: 0.5px solid #b4b7b7;
+		border-left: 0.5px solid #b4b7b7;
+		border-bottom: 0.5px solid #b4b7b7;
 
-  border-radius: 0 0 100% 0;
+		border-radius: 0 0 100% 0;
 
-  transform: rotate(0deg);
-}
+		transform: rotate(0deg);
+	}
 
-/* ============================= */
-/* EVEN — RIGHT CURVED TAIL */
-/* ============================= */
-.questions span:nth-child(even)::before {
-  content: "";
-  position: absolute;
-  right: 25px;
-  bottom: -18.4px;
+	/* ============================= */
+	/* EVEN — RIGHT CURVED TAIL */
+	/* ============================= */
+	.questions span:nth-child(even)::before {
+		content: "";
+		position: absolute;
+		right: 25px;
+		bottom: -18.4px;
 
-  width: 23px;
-  height: 18px;
+		width: 23px;
+		height: 18px;
 
-  background: #F8F7F4;
-  border-right: 0.5px solid #B4B7B7;
-  border-left: 0.5px solid #B4B7B7;
-  border-bottom: 0.5px solid #B4B7B7;
-  border-radius: 0 0 0 100%;
-  box-shadow: 6px 8px 18px rgba(0, 0, 0, 0.06);
+		background: #f8f7f4;
+		border-right: 0.5px solid #b4b7b7;
+		border-left: 0.5px solid #b4b7b7;
+		border-bottom: 0.5px solid #b4b7b7;
+		border-radius: 0 0 0 100%;
+		box-shadow: 6px 8px 18px rgba(0, 0, 0, 0.06);
 
-  transform: rotate(0deg);
-}
+		transform: rotate(0deg);
+	}
 
-/* Tablet */
-@media (max-width: 900px) {
-  .questions span {
-    font-size: 14px;
-    padding: 12px 20px;
-  }
-}
+	/* Tablet */
+	@media (max-width: 900px) {
+		.questions span {
+			font-size: 14px;
+			padding: 12px 20px;
+		}
+	}
 
-/* Mobile – center tail */
-@media (max-width: 600px) {
-  .questions span {
-    white-space: normal;
-    max-width: 100%;
-  }
+	/* Mobile – center tail */
+	@media (max-width: 600px) {
+		.questions span {
+			white-space: normal;
+			max-width: 100%;
+		}
 
-  .questions span::before {
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%);
-    border-radius: 0 0 100% 100% !important;
-  }
-}
+		/* Reset centering and use specific positioning for odd/even */
+		.questions span::before {
+			left: auto !important;
+			right: auto !important;
+			transform: none !important;
+			border-radius: 0 !important;
+		}
 
-/* CTA */
-.cta button {
-  background: #2183ED;
-  color: #fff;
-  padding: 14px 36px;
-  border-radius: 30px;
-  border: none;
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 140%;
-  letter-spacing: -0.5%;
-  cursor: pointer;
-}
-.cta button:hover {
-  background: #1558d6;
-}
+		/* Restore odd/even specific styles if needed, or keep them as defined above */
+		/* The previous mobile style forced centering which broke the design. 
+           By resetting, we fall back to the odd/even styles which work. 
+           We just need to ensure the border-radius matches the direction. */
 
-/* Responsive */
-@media (max-width: 900px) {
-  .features {
-    grid-template-columns: repeat(2, 1fr);
-  }
+		.questions span:nth-child(odd)::before {
+			left: 25px !important;
+			border-radius: 0 0 100% 0 !important;
+		}
 
-  .carousel {
-    height: 260px;
-  }
+		.questions span:nth-child(even)::before {
+			right: 25px !important;
+			border-radius: 0 0 0 100% !important;
+		}
+	}
 
-  .card.left,
-  .card.right {
-    display: none;
-  }
-}
+	/* CTA */
+	.cta button {
+		background: #2183ed;
+		color: #fff;
+		padding: 14px 36px;
+		border-radius: 30px;
+		border: none;
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: -0.5%;
+		cursor: pointer;
+	}
+	.cta button:hover {
+		background: #1558d6;
+	}
 
+	/* Responsive */
+	@media (max-width: 900px) {
+		.features {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.carousel {
+			height: 260px;
+		}
+
+		.card.left,
+		.card.right {
+			display: none;
+		}
+	}
 </style>
 <section class="concepts-section">
-  <!-- Heading -->
-  <div class="heading">
-    <h2>
-      <span>Every concept you need. </span>Zero fluff.
-    </h2>
-    <p>
-      One concept at a time, explained with AI-backed clarity.
-    </p>
-  </div>
+	<!-- Heading -->
+	<div class="heading">
+		<h2>
+			<span>Every concept you need. </span>Zero fluff.
+		</h2>
+		<p> One concept at a time, explained with AI-backed clarity. </p>
+	</div>
 
-  <!-- Feature icons -->
-  <div class="features">
-    <div class="feature">
-      <Image src={conceptsSectionIcon1} alt="AI powered" />
-      <p>AI-powered Platform</p>
-    </div>
-    <div class="feature">
-      <Image src={conceptsSectionIcon2} alt="Curriculum aligned" />
-      <p>Curriculum-aligned</p>
-    </div>
-    <div class="feature">
-      <Image src={conceptsSectionIcon3} alt="Ad free" />
-      <p>Ad-free learning</p>
-    </div>
-    <div class="feature">
-      <Image src={conceptsSectionIcon4} alt="Expert created" />
-      <p>Expert-created content</p>
-    </div>
-    <div class="feature">
-      <Image src={conceptsSectionIcon5} alt="Secure" />
-      <p>Secure & private</p>
-    </div>
-  </div>
+	<!-- Feature icons -->
+	<div class="features">
+		<div class="feature">
+			<Image src={conceptsSectionIcon1} alt="AI powered" />
+			<p>AI-powered Platform</p>
+		</div>
+		<div class="feature">
+			<Image src={conceptsSectionIcon2} alt="Curriculum aligned" />
+			<p>Curriculum-aligned</p>
+		</div>
+		<div class="feature">
+			<Image src={conceptsSectionIcon3} alt="Ad free" />
+			<p>Ad-free learning</p>
+		</div>
+		<div class="feature">
+			<Image src={conceptsSectionIcon4} alt="Expert created" />
+			<p>Expert-created content</p>
+		</div>
+		<div class="feature">
+			<Image src={conceptsSectionIcon5} alt="Secure" />
+			<p>Secure & private</p>
+		</div>
+	</div>
 
-<!-- 3D Video -->
-<div class="video-wrapper">
-  <video
-    class="concepts-video"
-    autoplay
-    muted
-    loop
-    playsinline
-  >
-    <source src={ThreeDvideo} type="video/webm" />
-    Your browser does not support the video tag.
-  </video>
-</div>
+	<!-- 3D Video -->
+	<div class="video-wrapper">
+		<video class="concepts-video" autoplay muted loop playsinline>
+			<source src={ThreeDvideo} type="video/webm" />
+			Your browser does not support the video tag.
+		</video>
+	</div>
 
+	<!-- Question slider -->
+	<div class="questions-slider">
+		<div class="questions-track">
+			<div class="questions">
+				<!-- First set -->
+				<span>
+					<Image src={conceptsSectionIcon6} alt="AI powered" />
+					Why does respiration release energy?
+				</span>
 
-<!-- Question slider -->
-<div class="questions-slider">
-  <div class="questions-track">
-    <div class="questions">
-    <span>
-      <Image src={conceptsSectionIcon6} alt="AI powered" />
-      Why does respiration release energy?
-    </span>
+				<span>
+					<Image src={conceptsSectionIcon7} alt="Curriculum aligned" />
+					How does Newton's third law work?
+				</span>
 
-    <span>
-      <Image src={conceptsSectionIcon7} alt="Curriculum aligned" />
-      How does Newton’s third law work in real life?
-    </span>
+				<span>
+					<Image src={conceptsSectionIcon9} alt="Expert created" />
+					Why don't satellites fall to Earth?
+				</span>
 
-    <span>
-      <Image src={conceptsSectionIcon9} alt="Expert created" />
-      Why don’t satellites <br /> fall back to Earth?
-    </span>
+				<span>
+					<Image src={conceptsSectionIcon10} alt="Secure" />
+					Why do enzymes speed up reactions?
+				</span>
 
-    <span>
-      <Image src={conceptsSectionIcon10} alt="Secure" />
-      Why do enzymes <br /> speed up reactions?
-    </span>
+				<span>
+					<Image src={conceptsSectionIcon8} alt="Ad free" />
+					How do catalysts work in chemistry?
+				</span>
 
-    <span>
-      <Image src={conceptsSectionIcon8} alt="Ad free" />
-      How do catalysts actually work?
-    </span>
+				<span>
+					<Image src={conceptsSectionIcon10} alt="Secure" />
+					What happens during DNA replication?
+				</span>
+				<span>
+					<Image src={conceptsSectionIcon7} alt="Secure" />
+					Why does light bend in water or glass?
+				</span>
+				<span>
+					<Image src={conceptsSectionIcon9} alt="Secure" />
+					How do chemical reactions reach equilibrium?
+				</span>
+				<span>
+					<Image src={conceptsSectionIcon10} alt="Secure" />
+					Difference between mitosis and meiosis?
+				</span>
 
-    <span>
-      <Image src={conceptsSectionIcon10} alt="Secure" />
-      What happens during DNA replication?
-    </span>
-    <span>
-      <Image src={conceptsSectionIcon7} alt="Secure" />
-      Why does light bend in different mediums?
-    </span>
-     <span>
-      <Image src={conceptsSectionIcon9} alt="Secure" />
-      What happens in a chemical equilibrium?
-    </span>
-    <span>
-      <Image src={conceptsSectionIcon10} alt="Secure" />
-      Difference between mitosis and meiosis
-    </span>
-    
-    <span>
-      <Image src={conceptsSectionIcon7} alt="Secure" />
-      Why don’t satellites fall back to Earth?
-    </span>
-   
-    <span>
-      <Image src={conceptsSectionIcon9} alt="Secure" />
-      What causes electric current?
-    </span>
-    </div>
-  </div>
-</div>
+				<span>
+					<Image src={conceptsSectionIcon7} alt="Secure" />
+					Why don't satellites fall to Earth?
+				</span>
 
+				<span>
+					<Image src={conceptsSectionIcon9} alt="Secure" />
+					What causes an electric current to flow?
+				</span>
 
-  <!-- CTA -->
-  <div class="cta">
-    <a href="#crmWebToEntityForm">
-    <button>Explore More</button>
-    </a>
-  </div>
+				<!-- Duplicate set for seamless loop -->
+				<span>
+					<Image src={conceptsSectionIcon6} alt="AI powered" />
+					Why does respiration release energy?
+				</span>
+
+				<span>
+					<Image src={conceptsSectionIcon7} alt="Curriculum aligned" />
+					How does Newton's third law work?
+				</span>
+
+				<span>
+					<Image src={conceptsSectionIcon9} alt="Expert created" />
+					Why don't satellites fall to Earth?
+				</span>
+
+				<span>
+					<Image src={conceptsSectionIcon10} alt="Secure" />
+					Why do enzymes speed up reactions?
+				</span>
+
+				<span>
+					<Image src={conceptsSectionIcon8} alt="Ad free" />
+					How do catalysts work in chemistry?
+				</span>
+
+				<span>
+					<Image src={conceptsSectionIcon10} alt="Secure" />
+					What happens during DNA replication?
+				</span>
+				<span>
+					<Image src={conceptsSectionIcon7} alt="Secure" />
+					Why does light bend in water or glass?
+				</span>
+				<span>
+					<Image src={conceptsSectionIcon9} alt="Secure" />
+					How do chemical reactions reach equilibrium?
+				</span>
+				<span>
+					<Image src={conceptsSectionIcon10} alt="Secure" />
+					Difference between mitosis and meiosis?
+				</span>
+
+				<span>
+					<Image src={conceptsSectionIcon7} alt="Secure" />
+					Why don't satellites fall to Earth?
+				</span>
+
+				<span>
+					<Image src={conceptsSectionIcon9} alt="Secure" />
+					What causes an electric current to flow?
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- CTA -->
+	<div class="cta">
+		<a href="#crmWebToEntityForm">
+			<button>Explore More</button>
+		</a>
+	</div>
 </section>

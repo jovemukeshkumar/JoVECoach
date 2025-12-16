@@ -1,320 +1,311 @@
 ---
-import STEMstruggleIcon3 from '../../assets/STEMstruggleIcon3.svg'
-import STEMstruggleIcon2 from '../../assets/STEMstruggleIcon2.svg'
-import STEMstruggleIcon4 from '../../assets/STEMstruggleIcon4.svg'
-import STEMstruggleIcon1 from '../../assets/STEMstruggleIcon1.svg'
-import STEMstruggleImg1 from '../../assets/STEMstruggleImg1.png'
-import STEMstruggleImg2 from '../../assets/STEMstruggleImg2.png'
-import STEMstruggleImg3 from '../../assets/STEMstruggleImg3.png'
-import STEMstruggleImg4 from '../../assets/STEMstruggleImg5.png'
-import { Image } from 'astro:assets'
-import TrustedPartnersSection from './trustedPartnersSection.astro'
+import STEMstruggleIcon3 from "../../assets/STEMstruggleIcon3.svg";
+import STEMstruggleIcon2 from "../../assets/STEMstruggleIcon2.svg";
+import STEMstruggleIcon4 from "../../assets/STEMstruggleIcon4.svg";
+import STEMstruggleIcon1 from "../../assets/STEMstruggleIcon1.svg";
+import STEMstruggleImg1 from "../../assets/STEMstruggleImg1.png";
+import STEMstruggleImg2 from "../../assets/STEMstruggleImg2.png";
+import STEMstruggleImg3 from "../../assets/STEMstruggleImg3.png";
+import STEMstruggleImg4 from "../../assets/STEMstruggleImg5.png";
+import { Image } from "astro:assets";
+import TrustedPartnersSection from "./trustedPartnersSection.astro";
 import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
 
 // STEMStruggle.astro
 const struggles = [
-  {
-    icon: STEMstruggleIcon3,
-    title: "Lecture fog",
-    subtitle: "50 minutes in.",
-    description: "Still confused.",
-    image: STEMstruggleImg1
-  },
-  {
-    icon: STEMstruggleIcon2,
-    title: "Textbook loop",
-    subtitle: "Read it three times.",
-    description: "Still lost.",
-    image: STEMstruggleImg2
-  },
-  {
-    icon: STEMstruggleIcon4,
-    title: "YouTube spiral",
-    subtitle: "20 minutes in.",
-    description: "Still no answer.",
-    image: STEMstruggleImg3
-  },
-  {
-    icon: STEMstruggleIcon1,
-    title: "Exam panic",
-    subtitle: "Exam tomorrow.",
-    description: "Still unsure.",
-    image: STEMstruggleImg4
-  }
+	{
+		icon: STEMstruggleIcon3,
+		title: "Lecture fog",
+		subtitle: "50 minutes in.",
+		description: "Still confused.",
+		image: STEMstruggleImg1,
+	},
+	{
+		icon: STEMstruggleIcon2,
+		title: "Textbook loop",
+		subtitle: "Read it three times.",
+		description: "Still lost.",
+		image: STEMstruggleImg2,
+	},
+	{
+		icon: STEMstruggleIcon4,
+		title: "YouTube spiral",
+		subtitle: "20 minutes in.",
+		description: "Still no answer.",
+		image: STEMstruggleImg3,
+	},
+	{
+		icon: STEMstruggleIcon1,
+		title: "Exam panic",
+		subtitle: "Exam tomorrow.",
+		description: "Still unsure.",
+		image: STEMstruggleImg4,
+	},
 ];
 ---
 
 <style>
-  .stem-struggle {
-    padding: 0rem 1.5rem 4rem 1.5rem;
-    background-color: #ffffff;
-  }
+	.stem-struggle {
+		padding: 0rem 1.5rem 4rem 1.5rem;
+		background-color: #ffffff;
+	}
 
-  .container {
-    max-width: 1320px;
-    margin: 0 auto;
-  }
+	.container {
+		max-width: 1320px;
+		margin: 0 auto;
+	}
 
-  .main-title {
-    font-family: Inter;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 150%;
-    letter-spacing: 0%;
-    text-align: center;
-    color: #000;
-    margin-top: 70px;
-  }
+	.main-title {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 36px;
+		line-height: 150%;
+		letter-spacing: 0%;
+		text-align: center;
+		color: #000;
+		margin-top: 70px;
+	}
 
-  .highlight {
-    color: #2183ED;
-  }
+	.highlight {
+		color: #2183ed;
+	}
 
-  .subtitle {
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 25.2px;
-    letter-spacing: 0%;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: #3F3F3F;
-  }
+	.subtitle {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 25.2px;
+		letter-spacing: 0%;
+		text-align: center;
+		margin-bottom: 3rem;
+		color: #3f3f3f;
+	}
 
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
+	.cards-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 260px);
+		justify-content: center;
+		gap: 2.75rem;
+		margin-bottom: 3rem;
+	}
 
-.struggle-card {
-  position: relative;
-  max-width: 240px;
-  height: auto;
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 1.5rem 0 0 0;
-  box-shadow: 0px 10px 25px 0px #2183ED1A;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+	.struggle-card {
+		position: relative;
+		max-width: 260px;
+		height: auto;
+		background: #ffffff;
+		border-radius: 15px;
+		padding: 1.5rem 0 0 0;
+		box-shadow: 0px 10px 25px 0px #2183ed1a;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+	.struggle-card {
+		position: relative;
+		border-radius: 16px; /* example */
+	}
 
-}
-.struggle-card {
-  position: relative;
-  border-radius: 16px; /* example */
-}
+	.struggle-card::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		padding: 0.5px; /* border thickness */
+		border-radius: inherit;
 
-.struggle-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 0.5px; /* border thickness */
-  border-radius: inherit;
+		background: linear-gradient(150.13deg, #1a67ba 2.98%, #ffffff 52.53%, #2183ed 102.08%);
 
-  background: linear-gradient(
-    150.13deg,
-    #1A67BA 2.98%,
-    #FFFFFF 52.53%,
-    #2183ED 102.08%
-  );
+		-webkit-mask:
+			linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
 
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
+		pointer-events: none;
+	}
 
-  pointer-events: none;
-}
+	.struggle-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+	}
+	.card-text-contents {
+		padding-left: 3rem;
+	}
+	.card-icon {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
 
+	.card-title {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 120%;
+		letter-spacing: 0%;
+		color: #000;
+		margin: 0 0 10px 0;
+	}
 
+	.card-subtitle {
+		font-family: Inter;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		color: #3f3f3f;
+		margin: 0;
+	}
 
-  .struggle-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  }
-  .card-text-contents{
-    padding-left: 3rem;
-  }
-  .card-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
+	.card-description {
+		font-family: Inter;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		color: #3f3f3f;
+		margin-top: 0;
+	}
 
-  .card-title {
-    font-family: Inter;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 120%;
-    letter-spacing: 0%;
-    color: #000;
-    margin: 0 0 10px 0;
-  }
+	.card-image {
+		width: 100%;
+		height: 223px;
+		overflow: hidden;
+	}
 
-  .card-subtitle {
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
-    letter-spacing: 0%;
-    color: #3F3F3F;
-    margin: 0;
-  }
+	.card-image img {
+		width: 260px;
+		height: 223px;
+		object-fit: cover;
+		border-radius: 15px;
+	}
 
-  .card-description {
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
-    letter-spacing: 0%;
-    color: #3F3F3F;
-    margin-top: 0;
-  }
+	.bottom-text {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 18;
+		line-height: 25.2px;
+		letter-spacing: 0%;
+		text-align: center;
+		color: #3f3f3f;
+		margin: 30px 0;
+	}
 
-  .card-image {
-    width: 100%;
-    height: 223px;
-    overflow: hidden;
-  }
+	.cta-text {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 22px;
+		line-height: 160%;
+		letter-spacing: 0%;
+		text-align: center;
+		color: #000;
+		max-width: 600px;
+		margin: 2rem auto 0 auto;
+	}
 
-  .card-image img {
-    width: 240px;
-    height: 223px;
-    object-fit: cover;
-    border-radius: 15px;
+	.cta-text img {
+		width: 26px;
+		height: auto;
+		margin-bottom: -1px;
+		margin-left: 6px;
+		transform: translateY(4px);
+	}
 
-  }
+	.cta-text span {
+		font-family: inherit;
+		font-weight: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		letter-spacing: inherit;
+		color: #2183ed;
+		text-decoration: none;
+	}
 
-  .bottom-text {
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 18;
-    line-height: 25.2px;
-    letter-spacing: 0%;
-    text-align: center;
-    color: #3F3F3F;
-    margin: 30px 0;
-  }
+	/* Tablet */
+	@media (max-width: 768px) {
+		.stem-struggle {
+			padding: 3rem 1rem;
+		}
 
-  .cta-text {
-    font-family: Inter;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 160%;
-    letter-spacing: 0%;
-    text-align: center;
-    color: #000;
-    max-width: 600px;
-    margin: 2rem auto 0 auto;
-  }
+		.main-title {
+			font-size: 1.75rem;
+		}
 
-  .cta-text img {
-    width: 26px;
-    height: auto;
-    margin-bottom: -1px;
-  }
+		.cards-grid {
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 1rem;
+		}
 
-  .cta-text span{
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    letter-spacing: inherit;
-    color: #2183ed;
-    text-decoration: none;
-  }
+		.card-image {
+			height: 150px;
+		}
+	}
 
+	/* Mobile */
+	@media (max-width: 480px) {
+		.stem-struggle {
+			padding: 2rem 1rem;
+		}
 
-  /* Tablet */
-  @media (max-width: 768px) {
-    .stem-struggle {
-      padding: 3rem 1rem;
-    }
+		.main-title {
+			font-size: 1.5rem;
+		}
 
-    .main-title {
-      font-size: 1.75rem;
-    }
+		.subtitle {
+			font-size: 0.9rem;
+			margin-bottom: 2rem;
+		}
 
-    .cards-grid {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
+		.cards-grid {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
 
-    .card-image {
-      height: 150px;
-    }
-  }
+		.card-title {
+			font-size: 1.1rem;
+		}
 
-  /* Mobile */
-  @media (max-width: 480px) {
-    .stem-struggle {
-      padding: 2rem 1rem;
-    }
-
-    .main-title {
-      font-size: 1.5rem;
-    }
-
-    .subtitle {
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-    }
-
-    .cards-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .card-title {
-      font-size: 1.1rem;
-    }
-
-    .cta-text {
-      font-size: 1.1rem;
-    }
-  }
+		.cta-text {
+			font-size: 1.1rem;
+		}
+	}
 </style>
 
 <section class="stem-struggle">
-  	<TrustedPartnersSection/>
+	<TrustedPartnersSection />
 
-  <div class="container">
-    <h2 class="main-title">
-      The <span class="highlight">STEM struggle</span> is real.
-    </h2>
-    
-    <p class="subtitle">
-      Let's be honest—STEM can feel impossible sometimes. Sound familiar?
-    </p>
+	<div class="container">
+		<h2 class="main-title">
+			The <span class="highlight">STEM struggle</span> is real.
+		</h2>
 
-    <div class="cards-grid">
-      {struggles?.map((struggle) => (
-        <div class="struggle-card">
-            <div class="card-text-contents">
+		<p class="subtitle"> Let's be honest - STEM can feel impossible sometimes. Sound familiar? </p>
 
-          <Image class="card-icon" src={struggle?.icon} alt={struggle?.title} />
-          <h3 class="card-title">{struggle?.title}</h3>
-          <p class="card-subtitle">{struggle?.subtitle}</p>
-          <p class="card-description">{struggle?.description}</p>
-            </div>
-          <div class="card-image">
-            <Image src={struggle?.image} alt={struggle?.title} loading="lazy" />
-          </div>
+		<div class="cards-grid">
+			{
+				struggles?.map(struggle => (
+					<div class="struggle-card">
+						<div class="card-text-contents">
+							<Image class="card-icon" src={struggle?.icon} alt={struggle?.title} />
+							<h3 class="card-title">{struggle?.title}</h3>
+							<p class="card-subtitle">{struggle?.subtitle}</p>
+							<p class="card-description">{struggle?.description}</p>
+						</div>
+						<div class="card-image">
+							<Image src={struggle?.image} alt={struggle?.title} loading="lazy" />
+						</div>
+					</div>
+				))
+			}
+		</div>
 
-        </div>
-      ))}
-    </div>
+		<p class="bottom-text"> You're not bad at science. You just needed the right way to learn it... </p>
 
-    <p class="bottom-text">
-      You're not bad at science. You just needed the right way to learn it...
-    </p>
-
-    <p class="cta-text">
-      19 years of JoVE clarity, Trusted by 1 Million+ students,<span> now supercharged with</span> <Image src={conceptsSectionIcon1} alt={"AI"} />
-    </p>
-  </div>
+		<p class="cta-text">
+			19 years of JoVE clarity, Trusted by 1 Million+ students,<span> now supercharged with</span>
+			<Image src={conceptsSectionIcon1} alt={"AI"} />
+		</p>
+	</div>
 </section>
-

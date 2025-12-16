@@ -1,443 +1,484 @@
 ---
-import { Image } from 'astro:assets';
-import LearnerPersonasImg1 from '../../assets/LearnersPersonasImage1.png'
-import LearnerPersonasImg2 from '../../assets/LearnersPersonasImage2.png'
-import LearnerPersonasImg3 from '../../assets/LearnersPersonasImage3.png'
-import LearnerPersonasImg4 from '../../assets/LearnersPersonasImage4.png'
-import LearnerPersonasImg5 from '../../assets/LearnersPersonasImage5.png'
-import LearnerPersonasImg6 from '../../assets/LearnersPersonasImage6.png'
-import ArrowLeft from '../../assets/Arrow.svg'
-import ArrowRight from '../../assets/Arrow.svg'
+import { Image } from "astro:assets";
+import LearnerPersonasImg1 from "../../assets/LearnersPersonasImage1.png";
+import LearnerPersonasImg2 from "../../assets/LearnersPersonasImage2.png";
+import LearnerPersonasImg3 from "../../assets/LearnersPersonasImage3.png";
+import LearnerPersonasImg4 from "../../assets/LearnersPersonasImage4.png";
+import LearnerPersonasImg5 from "../../assets/LearnersPersonasImage5.png";
+import LearnerPersonasImg6 from "../../assets/LearnersPersonasImage6.png";
+import ArrowLeft from "../../assets/Arrow.svg";
+import ArrowRight from "../../assets/Arrow.svg";
 const learnerTypes = [
-  {
-    image: LearnerPersonasImg1,
-    title: "Visual learners who learn better by watching",
-    description: "Not random videos. Expert explanations that click."
-  },
-  {
-    image: LearnerPersonasImg2,
-    title: "Curious minds going beyond the syllabus",
-    description: "Understand the \"why\" behind the formula."
-  },
-  {
-    image: LearnerPersonasImg3,
-    title: "Mastery seekers, not memorizers",
-    description: "You're not here to memorize. You're here to actually get it."
-  },
-  {
-    image: LearnerPersonasImg4,
-    title: "High schoolers building strong foundations",
-    description: "Get the concepts right now. Ace exams later."
-  },
-  {
-    image: LearnerPersonasImg5,
-    title: "Get the concepts right now. Ace exams later.",
-    description: "Get the concepts right now. Ace exams later."
-  },
-  {
-    image: LearnerPersonasImg6,
-    title: "Get the concepts right now. Ace exams later.",
-    description: "Get the concepts right now. Ace exams later."
-  }
+	{
+		image: LearnerPersonasImg1,
+		title: "Visual learners who learn best by watching",
+		description: "Not random videos. Expert explanations that click.",
+	},
+	{
+		image: LearnerPersonasImg2,
+		title: "Curious minds going beyond the syllabus",
+		description: 'Understand the "why" behind the formula.',
+	},
+	{
+		image: LearnerPersonasImg3,
+		title: "Mastery seekers, not memorizers",
+		description: "You're not here to memorize. You're here to actually get it.",
+	},
+	{
+		image: LearnerPersonasImg4,
+		title: "High schoolers building strong foundations",
+		description: "Get the concepts right now. Ace exams later.",
+	},
+	{
+		image: LearnerPersonasImg5,
+		title: "Busy students juggling work, sports, and life",
+		description: "Self-paced STEM learning that fits their schedule.",
+	},
+	{
+		image: LearnerPersonasImg6,
+		title: "College freshmen tackling STEM 101s",
+		description: "G New subjects, fast pace. Master them from day one.",
+	},
 ];
 ---
+
 <style>
-  .learner-types-section {
-    padding: 80px 0;
-    background: #fff;
-    position: relative;
-    z-index: 10;
-  }
-  .learner-types-section::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0 !important;
-    pointer-events: none;
-    background-image:
-      url("../../assets/JoVECoachStepsBgImage1.png");
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: contain;
-    transform: rotate(180deg);
-    transform: scaleY(-1);
-  }
+	.learner-types-section {
+		padding: 80px 0;
+		background: #fff;
+		position: relative;
+		z-index: 10;
+	}
+	.learner-types-section::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0 !important;
+		pointer-events: none;
+		background-image: url("../../assets/JoVECoachStepsBgImage1.png");
+		background-repeat: no-repeat;
+		background-position: center top;
+		background-size: contain;
+		transform: rotate(180deg);
+		transform: scaleY(-1);
+	}
 
-  .container {
-    /* max-width: 1320px; */
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
+	.container {
+		/* max-width: 1320px; */
+		margin: 0 auto;
+		position: relative;
+		z-index: 1;
+	}
 
-  .title {
-    font-family: Inter;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 130%;
-    letter-spacing: 0px;
-    text-align: center;
-    color: #000000;
-  }
+	.title {
+		font-family: Inter;
+		font-weight: 600;
+		font-size: 36px;
+		line-height: 130%;
+		letter-spacing: 0px;
+		text-align: center;
+		color: #000000;
+	}
 
-  .highlight {
-    color: #2183ED;
-  }
+	.highlight {
+		color: #2183ed;
+	}
 
-  .subtitle {
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 25.2px;
-    letter-spacing: 0%;
-    text-align: center;
-    vertical-align: middle;
-    color: #3F3F3F;
-    margin: 0 0 60px 0;
-  }
+	.subtitle {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 25.2px;
+		letter-spacing: 0%;
+		text-align: center;
+		vertical-align: middle;
+		color: #3f3f3f;
+		margin: 0 0 60px 0;
+	}
 
-  .carousel-wrapper {
-    position: relative;
-    padding: 0 60px 100px 0;
-    overflow: hidden;
-    margin-left: 15%;
-  }
+	.carousel-wrapper {
+		position: relative;
+		padding: 0 60px 100px 0;
+		overflow: hidden;
+		margin-left: 15%;
+	}
 
-  .learner-grid {
-    display: flex;
-    gap: 24px;
-    transition: transform 0.4s ease-in-out;
-  }
+	.learner-grid {
+		display: flex;
+		gap: 24px;
+		transition: transform 0.4s ease-in-out;
+	}
 
-  .learner-card {
-    flex: 0 0 280px;
-    min-width: 280px;
-    max-width: 280px;
-    width: 280px;
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0px 10px 25px 0px #2183ED1F;
-    border: 1px solid #e5e7eb;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+	.learner-card {
+		flex: 0 0 280px;
+		min-width: 280px;
+		max-width: 280px;
+		width: 280px;
+		background: white;
+		border-radius: 16px;
+		overflow: hidden;
+		box-shadow: 0px 10px 25px 0px #2183ed1f;
+		border: 1px solid #e5e7eb;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
 
-  .image-container {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-  }
+	.image-container {
+		width: 100%;
+		height: 200px;
+		overflow: hidden;
+	}
 
-  .learner-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+	.learner-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 
-  .card-content {
-    padding: 30px;
-    display: flex;
-    position: relative;
-    z-index: 10;
-    flex-direction: column;
-    gap: 12px;
-    border-radius: 15px;
-    margin-top: -20px;
-    background-color: #ffffff;
-  }
+	.card-content {
+		padding: 30px;
+		display: flex;
+		position: relative;
+		z-index: 10;
+		flex-direction: column;
+		gap: 12px;
+		border-radius: 15px;
+		margin-top: -20px;
+		background-color: #ffffff;
+	}
 
-  .card-title {
-    font-family: Inter;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 130%;
-    letter-spacing: 0%;
-    margin: 0;
-    color:#000;
-  }
+	.card-title {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 130%;
+		letter-spacing: 0%;
+		margin: 0;
+		color: #000;
+	}
 
-  .card-description {
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
-    letter-spacing: 0%;
-    margin: 0;
-    color: #3F3F3F;
-  }
+	.card-description {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		margin: 0;
+		color: #3f3f3f;
+	}
 
-  .navigation {
-    position: absolute;
-    bottom: 5px;
-    right: 150px;
-    display: flex;
-    gap: 12px;
-  }
+	.navigation {
+		position: absolute;
+		bottom: 5px;
+		right: 150px;
+		display: flex;
+		gap: 12px;
+	}
 
-  .nav-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-  }
+	.nav-btn {
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s ease;
+	}
 
-  .nav-btn:hover {
-    background: #2183ED;
-    color: white;
-    transform: scale(1.05);
-  }
+	.nav-btn:hover {
+		background: #2183ed;
+		color: white;
+		transform: scale(1.05);
+	}
 
-  .nav-btn:hover img {
-    filter: brightness(0) invert(1);
-  }
+	.nav-btn:hover img {
+		filter: brightness(0) invert(1);
+	}
 
-  .nav-btn.prev img {
-    transform: rotate(180deg);
-  }
+	.nav-btn.prev img {
+		transform: rotate(180deg);
+	}
 
-  .nav-btn.prev:hover img {
-    transform: rotate(180deg);
-  }
+	.nav-btn.prev:hover img {
+		transform: rotate(180deg);
+	}
 
-  .nav-btn.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+	.nav-btn.disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
 
-  .nav-btn.disabled:hover {
-    transform: scale(1);
-    background: transparent;
-  }
+	.nav-btn.disabled:hover {
+		transform: scale(1);
+		background: transparent;
+	}
 
-  .nav-btn.disabled:hover img {
-    filter: none;
-  }
+	.nav-btn.disabled:hover img {
+		filter: none;
+	}
 
-  /* Carousel edge blur - Enhanced */
-  .carousel-blur {
-    position: absolute;
-    top: 0;
-    bottom: 100px;
-    width: 100px;
-    pointer-events: none;
-    z-index: 5;
-  }
+	/* Carousel edge blur - Enhanced */
+	.carousel-blur {
+		position: absolute;
+		top: 0;
+		bottom: 100px;
+		width: 100px;
+		pointer-events: none;
+		z-index: 5;
+	}
 
-  /* Left blur */
-  .carousel-blur.left {
-    left: 0;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.95) 20%,
-      rgba(255, 255, 255, 0.8) 40%,
-      rgba(255, 255, 255, 0.5) 60%,
-      rgba(255, 255, 255, 0.2) 80%,
-      rgba(255, 255, 255, 0) 100%
-    );
-  }
+	/* Left blur */
+	.carousel-blur.left {
+		left: 0;
+		background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0.2) 80%, rgba(255, 255, 255, 0) 100%);
+	}
 
-  /* Right blur */
-  .carousel-blur.right {
-    right: 0;
-    background: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.95) 20%,
-      rgba(255, 255, 255, 0.8) 40%,
-      rgba(255, 255, 255, 0.5) 60%,
-      rgba(255, 255, 255, 0.2) 80%,
-      rgba(255, 255, 255, 0) 100%
-    );
-  }
+	/* Right blur */
+	.carousel-blur.right {
+		right: 0;
+		background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0.2) 80%, rgba(255, 255, 255, 0) 100%);
+	}
 
-  @media (max-width: 1024px) {
-    .carousel-wrapper {
-      padding: 0 40px 100px 40px;
-      margin-left: 0;
-    }
+	@media (max-width: 1024px) {
+		.carousel-wrapper {
+			padding: 0 40px 100px 40px;
+			margin-left: 0;
+		}
 
-    .navigation {
-      right: 40px;
-    }
+		.navigation {
+			right: 40px;
+		}
 
-    .carousel-blur {
-      width: 60px;
-    }
-  }
+		.carousel-blur {
+			width: 60px;
+		}
+	}
 
-  @media (max-width: 768px) {
-    .title {
-      font-size: 32px;
-    }
+	@media (max-width: 768px) {
+		.title {
+			font-size: 32px;
+		}
 
-    .carousel-wrapper {
-      padding: 0 30px 100px 30px;
-      margin-left: 0;
-    }
+		.carousel-wrapper {
+			padding: 0 30px 100px 30px;
+			margin-left: 0;
+		}
 
-    .navigation {
-      right: 30px;
-    }
+		.navigation {
+			right: 30px;
+		}
 
-    .learner-card {
-      flex: 0 0 260px;
-      min-width: 260px;
-      max-width: 260px;
-      width: 260px;
-    }
+		.learner-card {
+			flex: 0 0 260px;
+			min-width: 260px;
+			max-width: 260px;
+			width: 260px;
+		}
 
-    .carousel-blur {
-      width: 50px;
-    }
-  }
+		.carousel-blur {
+			width: 50px;
+		}
+	}
 
-  @media (max-width: 640px) {
-    .carousel-wrapper {
-      padding: 0 20px 100px 20px;
-      margin-left: 0;
-    }
+	@media (max-width: 640px) {
+		.carousel-wrapper {
+			padding: 0 20px 100px 20px;
+			margin-left: 0;
+		}
 
-    .navigation {
-      right: 20px;
-    }
+		.navigation {
+			right: 20px;
+		}
 
-    .learner-card {
-      flex: 0 0 240px;
-      min-width: 240px;
-      max-width: 240px;
-      width: 240px;
-    }
+		.learner-card {
+			flex: 0 0 60%;
+			min-width: 60%;
+			max-width: 60%;
+			width: 60%;
+		}
 
-    .nav-btn {
-      width: 44px;
-      height: 44px;
-    }
+		.nav-btn {
+			width: 44px;
+			height: 44px;
+		}
 
-    .carousel-blur {
-      width: 40px;
-    }
-  }
+		.carousel-blur {
+			width: 40px;
+		}
+	}
 </style>
 <section class="learner-types-section">
-  <div class="container">
-    <h2 class="title">
-      From struggling to mastery - <span class="highlight">we've got you.</span>
-    </h2>
-    <p class="subtitle">Every learner is different. JoVE Coach fits them all.</p>
-    
-    <div class="carousel-wrapper">
-      
-      <div class="learner-grid" id="learner-grid">
-        {learnerTypes.map((learner) => (
-          <div class="learner-card">
-            <div class="image-container">
-              <Image src={learner.image} alt={learner.title} class="learner-image" />
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">{learner.title}</h3>
-              <p class="card-description">{learner.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div class="navigation">
-        <button class="nav-btn prev" id="prev-btn-learner" aria-label="Previous">
-          <Image src={ArrowLeft} alt="Previous" width={20} height={20} />
-        </button>
-        <button class="nav-btn next" id="next-btn-learner" aria-label="Next">
-          <Image src={ArrowRight} alt="Next" width={20} height={20} />
-        </button>
-      </div>
-    </div>
-  </div>
+	<div class="container">
+		<h2 class="title">
+			From struggling to mastery - <span class="highlight">we've got you.</span>
+		</h2>
+		<p class="subtitle">Every learner is different. JoVE Coach fits them all.</p>
+
+		<div class="carousel-wrapper">
+			<div class="learner-grid" id="learner-grid">
+				{
+					learnerTypes.map(learner => (
+						<div class="learner-card">
+							<div class="image-container">
+								<Image src={learner.image} alt={learner.title} class="learner-image" />
+							</div>
+							<div class="card-content">
+								<h3 class="card-title">{learner.title}</h3>
+								<p class="card-description">{learner.description}</p>
+							</div>
+						</div>
+					))
+				}
+			</div>
+
+			<div class="navigation">
+				<button class="nav-btn prev" id="prev-btn-learner" aria-label="Previous">
+					<Image src={ArrowLeft} alt="Previous" width={20} height={20} />
+				</button>
+				<button class="nav-btn next" id="next-btn-learner" aria-label="Next">
+					<Image src={ArrowRight} alt="Next" width={20} height={20} />
+				</button>
+			</div>
+		</div>
+	</div>
 </section>
 
 <script>
-  const grid = document.getElementById('learner-grid') as HTMLElement;
-  const prevBtn = document.getElementById('prev-btn-learner') as HTMLButtonElement;
-  const nextBtn = document.getElementById('next-btn-learner') as HTMLButtonElement;
-  
-  let currentIndex = 0;
-  const cards = document.querySelectorAll<HTMLElement>('.learner-card');
-  const totalCards = cards.length;
-  
-  function getCardsPerView(): number {
-    // Always show exactly 4 cards on desktop
-    if (window.innerWidth > 1024) return 4;
-    // Show 3 cards on tablet
-    if (window.innerWidth > 768) return 3;
-    // Show 2 cards on small tablet
-    if (window.innerWidth > 640) return 2;
-    // Show 1 card on mobile
-    return 1;
-  }
-  
-  function updateCarousel(): void {
-    const cardsPerView = getCardsPerView();
-    const maxIndex = Math.max(0, totalCards - cardsPerView);
-    currentIndex = Math.min(currentIndex, maxIndex);
-    
-    const cardWidth = cards[0]?.offsetWidth || 280;
-    const gap = 24;
-    const offset = -(currentIndex * (cardWidth + gap));
-    
-    if (grid) {
-      grid.style.transform = `translateX(${offset}px)`;
-    }
-    
-    // Update button states
-    if (prevBtn) {
-      prevBtn.disabled = currentIndex === 0;
-      if (currentIndex === 0) {
-        prevBtn.classList.add('disabled');
-      } else {
-        prevBtn.classList.remove('disabled');
-      }
-    }
-    
-    if (nextBtn) {
-      nextBtn.disabled = currentIndex >= maxIndex;
-      if (currentIndex >= maxIndex) {
-        nextBtn.classList.add('disabled');
-      } else {
-        nextBtn.classList.remove('disabled');
-      }
-    }
-  }
-  
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-      }
-    });
-  }
-  
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      const cardsPerView = getCardsPerView();
-      const maxIndex = totalCards - cardsPerView;
-      if (currentIndex < maxIndex) {
-        currentIndex++;
-        updateCarousel();
-      }
-    });
-  }
-  
-  window.addEventListener('resize', () => {
-    currentIndex = 0;
-    updateCarousel();
-  });
-  
-  // Initial update
-  updateCarousel();
+	const grid = document.getElementById("learner-grid") as HTMLElement;
+	const prevBtn = document.getElementById("prev-btn-learner") as HTMLButtonElement;
+	const nextBtn = document.getElementById("next-btn-learner") as HTMLButtonElement;
+
+	let currentIndex = 0;
+	const cards = document.querySelectorAll<HTMLElement>(".learner-card");
+	const totalCards = cards.length;
+
+	function getCardsPerView(): number {
+		const container = document.querySelector(".carousel-wrapper") as HTMLElement;
+		if (!container) return 1;
+
+		const style = window.getComputedStyle(container);
+		const paddingLeft = parseFloat(style.paddingLeft) || 0;
+		const paddingRight = parseFloat(style.paddingRight) || 0;
+		const usableWidth = container.clientWidth - paddingLeft - paddingRight;
+
+		const cardElement = cards[0];
+		if (!cardElement) return 1;
+
+		const cardWidth = cardElement.offsetWidth;
+		const gap = 24; // CSS gap
+
+		// Calculate N such that N * width + (N-1) * gap <= usableWidth
+		const val = Math.floor((usableWidth + gap) / (cardWidth + gap));
+		return Math.max(1, val);
+	}
+
+	function updateCarousel(): void {
+		const cardsPerView = getCardsPerView();
+		const maxIndex = Math.max(0, totalCards - cardsPerView);
+		currentIndex = Math.min(currentIndex, maxIndex);
+
+		const cardWidth = cards[0]?.offsetWidth || 280;
+		const gap = 24;
+		const offset = -(currentIndex * (cardWidth + gap));
+
+		if (grid) {
+			grid.style.transform = `translateX(${offset}px)`;
+		}
+
+		// Update button states
+		if (prevBtn) {
+			prevBtn.disabled = currentIndex === 0;
+			if (currentIndex === 0) {
+				prevBtn.classList.add("disabled");
+			} else {
+				prevBtn.classList.remove("disabled");
+			}
+		}
+
+		if (nextBtn) {
+			nextBtn.disabled = currentIndex >= maxIndex;
+			if (currentIndex >= maxIndex) {
+				nextBtn.classList.add("disabled");
+			} else {
+				nextBtn.classList.remove("disabled");
+			}
+		}
+	}
+
+	if (prevBtn) {
+		prevBtn.addEventListener("click", () => {
+			if (currentIndex > 0) {
+				currentIndex--;
+				updateCarousel();
+			}
+		});
+	}
+
+	if (nextBtn) {
+		nextBtn.addEventListener("click", () => {
+			const cardsPerView = getCardsPerView();
+			const maxIndex = totalCards - cardsPerView;
+			if (currentIndex < maxIndex) {
+				currentIndex++;
+				updateCarousel();
+			}
+		});
+	}
+
+	window.addEventListener("resize", () => {
+		currentIndex = 0;
+		updateCarousel();
+	});
+
+	// Initial update
+	updateCarousel();
+
+	// Touch/Swipe Support
+	let touchStartX = 0;
+	let touchEndX = 0;
+
+	grid.addEventListener(
+		"touchstart",
+		e => {
+			touchStartX = e.changedTouches[0].screenX;
+		},
+		{ passive: true },
+	);
+
+	grid.addEventListener(
+		"touchend",
+		e => {
+			touchEndX = e.changedTouches[0].screenX;
+			handleSwipe();
+		},
+		{ passive: true },
+	);
+
+	function handleSwipe() {
+		const swipeThreshold = 50;
+		if (touchEndX < touchStartX - swipeThreshold) {
+			// Swipe Left -> Next
+			if (nextBtn && !nextBtn.disabled) {
+				const cardsPerView = getCardsPerView();
+				const maxIndex = totalCards - cardsPerView;
+				if (currentIndex < maxIndex) {
+					currentIndex++;
+					updateCarousel();
+				}
+			}
+		}
+		if (touchEndX > touchStartX + swipeThreshold) {
+			// Swipe Right -> Prev
+			if (prevBtn && !prevBtn.disabled) {
+				if (currentIndex > 0) {
+					currentIndex--;
+					updateCarousel();
+				}
+			}
+		}
+	}
 </script>

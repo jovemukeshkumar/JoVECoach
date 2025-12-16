@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import footerSideArrow from "../../assets/footerSideArrow.svg";
-import copyrightIcon from '../../assets/copyrightIcon.svg'
-import joveWhitelogo from '../../assets/jove-whitelogo.svg'
-
+import copyrightIcon from "../../assets/copyrightIcon.svg";
+import joveWhitelogo from "../../assets/jove-whitelogo.svg";
 ---
+
 <style>
 	/* Footer */
 	/* ROOT FOOTER WRAPPER */
@@ -218,6 +218,16 @@ import joveWhitelogo from '../../assets/jove-whitelogo.svg'
 		margin: 0;
 	}
 
+	.footer-copyrightText a {
+		color: #fff;
+		text-decoration: none;
+		transition: opacity 0.3s;
+	}
+
+	.footer-copyrightText a:hover {
+		opacity: 0.8;
+	}
+
 	/* Tablet breakpoint (1024px and below) */
 	@media (max-width: 1024px) {
 		.footer-top {
@@ -230,7 +240,6 @@ import joveWhitelogo from '../../assets/jove-whitelogo.svg'
 			padding: 36px 60px;
 			gap: 40px;
 			flex-direction: column;
-
 		}
 
 		.footer-grid {
@@ -332,14 +341,13 @@ import joveWhitelogo from '../../assets/jove-whitelogo.svg'
 			padding: 28px 20px;
 		}
 		.footer-grid {
-		flex: 1 1 auto;
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 32px;
-		color: rgb(204, 204, 204);
-		width: 100%;
-	}
-
+			flex: 1 1 auto;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 32px;
+			color: rgb(204, 204, 204);
+			width: 100%;
+		}
 
 		.footer-grid-title {
 			font-size: 14px;
@@ -368,30 +376,18 @@ import joveWhitelogo from '../../assets/jove-whitelogo.svg'
 </style>
 <div class="footer-wrapper">
 	<div class="footer-top">
-		
-		<Image
-			alt="FooterLogo"
-			src={joveWhitelogo}
-			class="footer-logo"
-		/>
-
+		<Image alt="FooterLogo" src={joveWhitelogo} class="footer-logo" />
 	</div>
 
 	<div class="footer-bottom">
 		<div class="footer-copyrightText">
 			<p>
-				Privacy Policy · Terms of Service · Contact
-			</p>
+				<a href="https://coach.jove.com/privacyPolicy">Privacy Policy</a> ·
+				<a href="https://coach.jove.com/about">About</a></p
+			>
 		</div>
 		<div class="footer-copyrightText">
-			<Image 
-				src={copyrightIcon}
-				alt={"copyrightIcon"}
-			/>
-			<p>
-				© 2025 JoVE. All rights reserved.
-			</p>
+			<p>© 2025 MyJoVE Corporation</p>
 		</div>
 	</div>
 </div>
-
