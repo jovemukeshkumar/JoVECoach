@@ -1,21 +1,23 @@
 ---
 import { Image } from 'astro:assets';
-import LearnerPersonasImg1 from '../../assets/LearnerPersonasImg1.png'
-import LearnerPersonasImg2 from '../../assets/LearnerPersonasImg2.png'
-import LearnerPersonasImg3 from '../../assets/LearnerPersonasImg3.png'
-import LearnerPersonasImg4 from '../../assets/LearnerPersonasImg4.png'
+import LearnerPersonasImg1 from '../../assets/LearnersPersonasImage1.png'
+import LearnerPersonasImg2 from '../../assets/LearnersPersonasImage2.png'
+import LearnerPersonasImg3 from '../../assets/LearnersPersonasImage3.png'
+import LearnerPersonasImg4 from '../../assets/LearnersPersonasImage4.png'
+import LearnerPersonasImg5 from '../../assets/LearnersPersonasImage5.png'
+import LearnerPersonasImg6 from '../../assets/LearnersPersonasImage6.png'
 import ArrowLeft from '../../assets/Arrow.svg'
 import ArrowRight from '../../assets/Arrow.svg'
 const learnerTypes = [
   {
     image: LearnerPersonasImg1,
-    title: "High schoolers building strong foundations",
-    description: "Get the concepts right now. Ace exams later."
+    title: "Visual learners who learn better by watching",
+    description: "Not random videos. Expert explanations that click."
   },
   {
     image: LearnerPersonasImg2,
     title: "Curious minds going beyond the syllabus",
-    description: "Want to understand the \"why\" behind the formula? Same."
+    description: "Understand the \"why\" behind the formula."
   },
   {
     image: LearnerPersonasImg3,
@@ -24,25 +26,19 @@ const learnerTypes = [
   },
   {
     image: LearnerPersonasImg4,
-    title: "Visual learners who learn better by watching",
-    description: "Not random videos. Expert explanations that click."
+    title: "High schoolers building strong foundations",
+    description: "Get the concepts right now. Ace exams later."
   },
   {
-    image: LearnerPersonasImg3,
-    title: "Mastery seekers, not memorizers",
-    description: "You're not here to memorize. You're here to actually get it."
+    image: LearnerPersonasImg5,
+    title: "Get the concepts right now. Ace exams later.",
+    description: "Get the concepts right now. Ace exams later."
   },
   {
-    image: LearnerPersonasImg3,
-    title: "Mastery seekers, not memorizers",
-    description: "You're not here to memorize. You're here to actually get it."
-  },
-  {
-    image: LearnerPersonasImg3,
-    title: "Mastery seekers, not memorizers",
-    description: "You're not here to memorize. You're here to actually get it."
-  },
-  
+    image: LearnerPersonasImg6,
+    title: "Get the concepts right now. Ace exams later.",
+    description: "Get the concepts right now. Ace exams later."
+  }
 ];
 ---
 <style>
@@ -63,7 +59,7 @@ const learnerTypes = [
     background-repeat: no-repeat;
     background-position: center top;
     background-size: contain;
-      transform: rotate(180deg);
+    transform: rotate(180deg);
     transform: scaleY(-1);
   }
 
@@ -104,38 +100,38 @@ const learnerTypes = [
     position: relative;
     padding: 0 60px 100px 60px;
     overflow: hidden;
-    margin-right: 0px;
+    margin-left: 120px;
   }
 
   .learner-grid {
     display: flex;
-    gap: 46px;
+    gap: 24px;
     transition: transform 0.4s ease-in-out;
   }
 
   .learner-card {
-    flex: 0 0 calc(22% );
-    max-width: calc(22% );
+    flex: 0 0 350px;
+    min-width: 350px;
+    max-width: 350px;
+    width: 280px;
     background: white;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 10px 25px 0px #2183ED1F;
     border: 1px solid #e5e7eb;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-
 
   .image-container {
     width: 100%;
     height: 200px;
     overflow: hidden;
-    
   }
 
   .learner-image {
     width: 100%;
     height: 100%;
-    /* object-fit: cover; */
+    object-fit: cover;
   }
 
   .card-content {
@@ -146,7 +142,7 @@ const learnerTypes = [
     flex-direction: column;
     gap: 12px;
     border-radius: 15px;
-    margin-top: -20px ;
+    margin-top: -20px;
     background-color: #ffffff;
   }
 
@@ -172,7 +168,7 @@ const learnerTypes = [
 
   .navigation {
     position: absolute;
-    bottom: 0px;
+    bottom: 5px;
     right: 150px;
     display: flex;
     gap: 12px;
@@ -197,29 +193,60 @@ const learnerTypes = [
     transform: scale(1.05);
   }
 
-  .nav-btn.prev {
+  .nav-btn:hover img {
+    filter: brightness(0) invert(1);
+  }
+
+  .nav-btn.prev img {
     transform: rotate(180deg);
   }
 
-  .nav-btn.next:hover {
-    background: #2183ED;
+  .nav-btn.prev:hover img {
+    transform: rotate(180deg);
   }
 
-  .nav-btn.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+
+
+  /* Carousel edge blur - Enhanced */
+  .carousel-blur {
+    position: absolute;
+    top: 0;
+    bottom: 100px;
+    width: 80px;
+    pointer-events: none;
+    z-index: 5;
   }
 
-  .nav-btn.disabled:hover {
-    transform: scale(1);
+
+  /* Left blur */
+  .carousel-blur.left {
+    left: -25px;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.95) 20%,
+      rgba(255, 255, 255, 0.8) 40%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0.2) 80%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  /* Right blur */
+  .carousel-blur.right {
+    right: -20px;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.95) 20%,
+      rgba(255, 255, 255, 0.8) 40%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0.2) 80%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 
   @media (max-width: 1024px) {
-    .learner-card {
-      flex: 0 0 calc(33.333% - 16px);
-      min-width: calc(33.333% - 16px);
-    }
-
     .carousel-wrapper {
       padding: 0 40px 100px 40px;
     }
@@ -227,18 +254,38 @@ const learnerTypes = [
     .navigation {
       right: 40px;
     }
+
+    .carousel-blur {
+      width: 60px;
+    }
   }
 
   @media (max-width: 768px) {
-    .learner-card {
-      flex: 0 0 calc(50% - 12px);
-      min-width: calc(50% - 12px);
-    }
-
     .title {
       font-size: 32px;
     }
 
+    .carousel-wrapper {
+      padding: 0 30px 100px 30px;
+    }
+
+    .navigation {
+      right: 30px;
+    }
+
+    .learner-card {
+      flex: 0 0 260px;
+      min-width: 260px;
+      max-width: 260px;
+      width: 260px;
+    }
+
+    .carousel-blur {
+      width: 50px;
+    }
+  }
+
+  @media (max-width: 640px) {
     .carousel-wrapper {
       padding: 0 20px 100px 20px;
     }
@@ -246,17 +293,21 @@ const learnerTypes = [
     .navigation {
       right: 20px;
     }
-  }
 
-  @media (max-width: 640px) {
     .learner-card {
-      flex: 0 0 100%;
-      min-width: 100%;
+      flex: 0 0 240px;
+      min-width: 240px;
+      max-width: 240px;
+      width: 240px;
     }
 
     .nav-btn {
       width: 44px;
       height: 44px;
+    }
+
+    .carousel-blur {
+      width: 40px;
     }
   }
 </style>
@@ -268,6 +319,12 @@ const learnerTypes = [
     <p class="subtitle">Every learner is different. JoVE Coach fits them all.</p>
     
     <div class="carousel-wrapper">
+      <!-- LEFT BLUR -->
+      <div class="carousel-blur left"></div>
+
+      <!-- RIGHT BLUR -->
+      <div class="carousel-blur right"></div>
+      
       <div class="learner-grid" id="learner-grid">
         {learnerTypes.map((learner) => (
           <div class="learner-card">
@@ -294,8 +351,6 @@ const learnerTypes = [
   </div>
 </section>
 
-
-
 <script>
   const grid = document.getElementById('learner-grid') as HTMLElement;
   const prevBtn = document.getElementById('prev-btn-learner') as HTMLButtonElement;
@@ -306,10 +361,14 @@ const learnerTypes = [
   const totalCards = cards.length;
   
   function getCardsPerView(): number {
-    if (window.innerWidth <= 640) return 1;
-    if (window.innerWidth <= 768) return 2;
-    if (window.innerWidth <= 1024) return 3;
-    return 5;
+    // Always show exactly 4 cards on desktop
+    if (window.innerWidth > 1024) return 4;
+    // Show 3 cards on tablet
+    if (window.innerWidth > 768) return 3;
+    // Show 2 cards on small tablet
+    if (window.innerWidth > 640) return 2;
+    // Show 1 card on mobile
+    return 1;
   }
   
   function updateCarousel(): void {
@@ -317,7 +376,7 @@ const learnerTypes = [
     const maxIndex = Math.max(0, totalCards - cardsPerView);
     currentIndex = Math.min(currentIndex, maxIndex);
     
-    const cardWidth = cards[0]?.offsetWidth || 0;
+    const cardWidth = cards[0]?.offsetWidth || 280;
     const gap = 24;
     const offset = -(currentIndex * (cardWidth + gap));
     

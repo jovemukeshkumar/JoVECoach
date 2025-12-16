@@ -123,40 +123,70 @@ import ThreeDvideo from "../../assets/3D-Carousel.webm";
 }
 
 /* Questions */
-/* Questions wrapper */
-.questions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-  justify-content: center;
-  /* max-width: 1200px; */
-  margin: 60px auto;
+.questions-slider {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 0px auto;
+    padding-bottom: 60px;
+    scroll-snap-type: x mandatory;
 }
 
-/* Bubble base */
+.questions-slider::-webkit-scrollbar {
+  display: none;
+}
+.questions-slider {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Slider row */
+.questions {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  padding: 0 20px;
+}
+
+/* Bubble */
 .questions span {
+  scroll-snap-align: center;
+  flex: 0 0 auto;
   position: relative;
   display: flex;
   align-items: center;
-  text-align: left;
   gap: 12px;
+  min-width: 220px;
   max-width: 220px;
-  background: #F8F7F4;
-  border: 0.5px solid #B4B7B7;
+  text-align: left;
+  background: #f8f7f4;
+  border: 0.5px solid #b4b7b7;
   border-radius: 25px;
   padding: 14px 24px;
   font-family: Inter;
   font-size: 15px;
   line-height: 1.35;
   color: #000;
-  box-shadow: 0px 20px 40px 0px #8C8C8C36;
+
+  box-shadow: 0px 20px 40px 0px #8c8c8c36;
 }
 
 /* Icon */
 .questions span img {
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: auto;
   flex-shrink: 0;
+}
+@keyframes autoSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.questions {
+  animation: autoSlide 25s linear infinite;
+}
+
+.questions-slider:hover .questions {
+  animation-play-state: paused;
 }
 
 /* ============================= */
@@ -311,24 +341,65 @@ import ThreeDvideo from "../../assets/3D-Carousel.webm";
 </div>
 
 
-  <!-- Question bubbles -->
-  <div class="questions">
+<!-- Question slider -->
+<div class="questions-slider">
+  <div class="questions-track">
+    <div class="questions">
     <span>
       <Image src={conceptsSectionIcon6} alt="AI powered" />
-      Why does respiration release energy?</span>
+      Why does respiration release energy?
+    </span>
+
     <span>
       <Image src={conceptsSectionIcon7} alt="Curriculum aligned" />
-      How does Newton’s third law work in real life?</span>
-    <span>
-      <Image src={conceptsSectionIcon8} alt="Ad free" />
-      How do catalysts actually work?</span>
+      How does Newton’s third law work in real life?
+    </span>
+
     <span>
       <Image src={conceptsSectionIcon9} alt="Expert created" />
-      Why don’t satellites <br/> fall back to Earth?</span>
+      Why don’t satellites <br /> fall back to Earth?
+    </span>
+
     <span>
       <Image src={conceptsSectionIcon10} alt="Secure" />
-      Why do enzymes <br/> speed up reactions?</span>
+      Why do enzymes <br /> speed up reactions?
+    </span>
+
+    <span>
+      <Image src={conceptsSectionIcon8} alt="Ad free" />
+      How do catalysts actually work?
+    </span>
+
+    <span>
+      <Image src={conceptsSectionIcon10} alt="Secure" />
+      What happens during DNA replication?
+    </span>
+    <span>
+      <Image src={conceptsSectionIcon7} alt="Secure" />
+      Why does light bend in different mediums?
+    </span>
+     <span>
+      <Image src={conceptsSectionIcon9} alt="Secure" />
+      What happens in a chemical equilibrium?
+    </span>
+    <span>
+      <Image src={conceptsSectionIcon10} alt="Secure" />
+      Difference between mitosis and meiosis
+    </span>
+    
+    <span>
+      <Image src={conceptsSectionIcon7} alt="Secure" />
+      Why don’t satellites fall back to Earth?
+    </span>
+   
+    <span>
+      <Image src={conceptsSectionIcon9} alt="Secure" />
+      What causes electric current?
+    </span>
+    </div>
   </div>
+</div>
+
 
   <!-- CTA -->
   <div class="cta">

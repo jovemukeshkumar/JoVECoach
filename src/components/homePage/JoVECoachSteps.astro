@@ -15,37 +15,38 @@ const steps = [
         icon: aILogo,
         title: "Ask",
         number: "STEP 1",
-        headline: "Ask and get unstuck with Ai",
+        headline: "Ask and get unstuck with AI",
         description:
             "No more scrolling. Just ask - and get the video and insights that crack it.",
         image: Jove_chat_video,
     },
+    
     {
         id: "watch",
-        icon: videoPlay,
+        icon:  videoPlay,
         title: "Watch",
         number: "STEP 2",
-        headline: "See it in action.",
+        headline: "Learn in minutes, Not hours",
         description:
-            "Watch short, expert-made videos that break down complex concepts into digestible visual explanations.",
-        image: Jove_chat_Image1,
+            "Watch expert-made videos that actually make sense",
+        image: Jove_chat_Image2,
     },
     {
         id: "practise",
         icon: notePad,
         title: "Practise",
         number: "STEP 3",
-        headline: "Practice makes progress.",
+        headline: "Quick quiz to see if it clicks",
         description:
-            "Apply what you learned with interactive practice problems. Get instant feedback and learn from your mistakes.",
-        image: Jove_chat_Image2,
+            "Quick quiz after every video. See where you stand instantly.",
+        image: Jove_chat_Image1,
     },
     {
         id: "master",
         icon: cupLogo,
         title: "Master",
         number: "STEP 4",
-        headline: 'That "I actually get it" feeling—for real',
+        headline: 'That "I actually get it" feeling-for real',
         description: "Crush one concept. Then the next. Build momentum.",
         image: Jove_chat_Image3,
     },
@@ -152,6 +153,7 @@ const isVideo = (file) =>
         line-height: 25.2px;
         letter-spacing: 0%;
         text-align: center;
+        margin: 10px 0px 20px 0px;
         color: #000;
     }
 
@@ -192,7 +194,6 @@ const isVideo = (file) =>
     .tab-button:hover {
         border: 1px solid #2183ed80;
         color: #2183ed;
-        transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(43, 156, 235, 0.15);
     }
 
@@ -203,17 +204,20 @@ const isVideo = (file) =>
     }
 
     .tab-icon {
-        width: 24px;
+        width: 20px;
         height: auto;
-        /* filter: grayscale(1) brightness(0.8); */
-        transition: filter 0.3s ease, transform 0.3s ease;
+        margin-bottom: -2px;
     }
 
     /* Make active tab icons appear blue */
-    .tab-button.active .tab-icon {
-        /* convert neutral SVG/img to a blue tone */
+    .tab-button:hover .tab-icon {
         filter: grayscale(0) sepia(1) saturate(8) hue-rotate(180deg) brightness(1.05);
-        transform: scale(1.05);
+        /* transform: scale(1.05); */
+    }
+    /* Make active tab icons appear blue */
+    .tab-button.active .tab-icon {
+        filter: grayscale(0) sepia(1) saturate(8) hue-rotate(180deg) brightness(1.05);
+        /* transform: scale(1.05); */
     }
 
     /* Steps Content */
@@ -276,21 +280,13 @@ const isVideo = (file) =>
     }
     .tab-title {
         margin-left: 0.75rem;
+        font-family: Inter;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 140%;
+        letter-spacing: 0%;
+        text-align: center;
     }
-
-    .play-button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    .play-button:hover {
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-
     .step-info {
         padding: 1rem;
     }
@@ -304,7 +300,7 @@ const isVideo = (file) =>
         color: #000;
         border: 0.5px solid #2183ED;
         border-radius: 100px;
-        padding: 10px 20px;
+        padding: 5px 20px;
     }
 
     .step-headline {
@@ -314,6 +310,7 @@ const isVideo = (file) =>
         line-height: 140%;
         letter-spacing: 0%;
         color: #2183ed;
+        min-width: 350px;
     }
 
     .step-description {
@@ -453,8 +450,7 @@ const isVideo = (file) =>
             </h2>
 
             <p class="subtitle">
-                2-minute videos. AI-backed clarity. Instant practice. <br /> A smarter
-                way to learn STEM - one that actually works.
+               2-minute videos. AI-backed clarity. Instant practice.
             </p>
 
             <p class="discover-text">Discover JoVE's 4 steps to Mastery.</p>

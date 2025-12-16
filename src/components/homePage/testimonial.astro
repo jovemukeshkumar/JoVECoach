@@ -33,26 +33,26 @@ const testimonials = [
   },
   {
     rating: 5,
-    text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
-    name: "Senior, New York",
+    text: "Micro courses finally gave me a clear path through organic chem. No more random video hopping.",
+    name: "Sophomore, Illinois",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sophie"
   },
   {
     rating: 5,
-    text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
-    name: "Senior, New York",
+    text: "I typed my question and it found exactly the video I needed. In seconds.",
+    name: "Freshman, Arizona",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jake"
   },
   {
     rating: 5,
-    text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
-    name: "Senior, New York",
+    text: "The AI quizzes showed me what I didn't know. Way better than just rewatching videos.",
+    name: "Senior, Georgia",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jake"
   },
   {
     rating: 5,
-    text: "Used it the night before my physics test. Got a way better grade than I expected to fail.",
-    name: "Senior, New York",
+    text:  "I save every chat. It's like having perfect study notes without actually taking notes.",
+    name: "Junior, Ohio",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike"
   }
 ];
@@ -65,7 +65,13 @@ const testimonials = [
     </h2>
     <p class="subtitle">Students like you are already seeing results</p>
     
+
     <div class="carousel-wrapper">
+      <!-- LEFT BLUR -->
+      <div class="carousel-blur left"></div>
+
+      <!-- RIGHT BLUR -->
+      <div class="carousel-blur right"></div>
       <div class="testimonials-grid" id="testimonials-grid">
         {testimonials.map((testimonial) => (
           <div class="testimonial-card">
@@ -162,7 +168,7 @@ const testimonials = [
     position: relative;
     padding: 0 0px 100px 60px;
     overflow: hidden;
-    margin-right: 0px;
+    margin-left: 120px;
   }
 
   .testimonials-grid {
@@ -185,6 +191,7 @@ const testimonials = [
     border: 0.5px solid #2183ED;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     gap: 20px;
     max-height: 240px;
   }
@@ -237,7 +244,7 @@ const testimonials = [
 
   .navigation {
     position: absolute;
-    bottom: 0px;
+    bottom: 5px;
     right: 150px;
     display: flex;
     gap: 12px;
@@ -264,15 +271,8 @@ const testimonials = [
   }
   .nav-btn:hover img {
     filter: brightness(0) invert(1);
-    
     }
 
-    .nav-btn.next {
-    background: #3b82f6;
-  }
-  .nav-btn.next img {
-    filter: brightness(0) invert(1);
-  }
 
   .nav-btn.prev img{
     transform: rotate(180deg);
@@ -282,18 +282,46 @@ const testimonials = [
   }
 
 
-  .nav-btn.next:hover {
-    background: #2183ED;
+
+  /* Carousel edge blur - Enhanced */
+  .carousel-blur {
+    position: absolute;
+    top: 0;
+    bottom: 100px;
+    width: 80px;
+    pointer-events: none;
+    z-index: 5;
   }
 
-  .nav-btn.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  /* Left blur */
+  .carousel-blur.left {
+    left: -25px;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.95) 20%,
+      rgba(255, 255, 255, 0.8) 40%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0.2) 80%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 
-  .nav-btn.disabled:hover {
-    transform: scale(1);
+  /* Right blur */
+  .carousel-blur.right {
+    right: -20px;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.95) 20%,
+      rgba(255, 255, 255, 0.8) 40%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0.2) 80%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
+
+
 
   @media (max-width: 1024px) {
     .testimonial-card {

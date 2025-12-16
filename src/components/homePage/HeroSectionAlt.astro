@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import HeroSectionVideo from "../../assets/HeroSection.webm";
-import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.webp";
+import HeroSectionVideo from "../../assets/LP-Girl-MR.webm";
+import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.png";
 import HeroSectioncognition from "../../assets/HeroSectioncognition.svg";
 import HeroSectionStat from "../../assets/HeroSectionStat.svg";
 import NavLogo from "../../assets/NavLogo.svg";
@@ -51,7 +51,6 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
   .hero-container {
     display: flex;
     gap: 40px;
-    align-items: center;
     max-width: 1320px;
     margin: 0 auto;
     padding: 0 20px;
@@ -73,10 +72,10 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
   }
   .hero-right >img{
     position: absolute;
-    right: 0;
-    top: -220px;
-    width: 100%;
-    height:auto;
+    right: 15px;
+    top: -200px;
+    /* width: 100%;
+    height:100%; */
     object-fit: cover;
     pointer-events: none;
     z-index: 0;
@@ -227,9 +226,10 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     background-image: url('../../assets/HeroSectionCTABg.svg');
     background-repeat: no-repeat;
     background-position: 300px center;
-    border-radius: 16px;
+    border-radius: 10px;
     border: 0.8px solid #FFFFFF;
-    padding: 20px 32px;
+    box-shadow: 0px 20px 40px 0px #08519F66;
+    padding: 20px 49px 20px 29px;
     max-width: 520px;
     z-index: 1;
   }
@@ -241,6 +241,7 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     line-height: 120%;
     letter-spacing: 0%;
     vertical-align: middle;
+    margin-top: 0;
     color: #fff;
   }
 
@@ -252,17 +253,21 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
   }
 
   .input-field {
-    padding: 12px 16px;
-    border: 1px solid #3A3A3A99;
+    border: 0.5px solid #3A3A3A99;
     border-radius: 8px 0px 0px 8px;
-    font-size: 15px;
     font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
     outline: none;
     transition: all 0.3s;
+    max-width: 205px;
+    min-height: 50px;
+    padding: 0px 10px;
   }
 
   .input-field-mail{
     border-radius: 0px 8px 8px 0px !important;
+    border-left: none;
   }
 
   .input-field:focus {
@@ -318,16 +323,9 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     z-index: 10;
   }
 
-  .hero-bg {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 70%;
-    height: 100%;
-    object-fit: contain;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.95;
+  .hero-video{
+    width: 900px;
+    height: auto;
   }
 
   .visual-container {
@@ -335,16 +333,9 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
     z-index: 10;
   }
 
-  .blue-circle {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #4284e5 0%, #3b76d6 100%);
-    border-radius: 50%;
-  }
-
   .pillar-container {
     position: absolute;
-    bottom: 180px;
+    bottom: 310px;
     left: 52%;
     transform: translateX(-55%);
     display: flex;
@@ -845,15 +836,15 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
       <ul class="features-list">
         <li class="feature-item">
           <Image src={HeroSectionIcon1} alt="Feature Icon" />
-          <span class="feature-text">19 years of academic credibility</span>
+          <span class="feature-text">Trusted by 1 Million+ students. Proven results.</span>
         </li>
         <li class="feature-item">
           <Image src={HeroSectionIcon1} alt="Feature Icon" />
-          <span class="feature-text">Expert-created content</span>
+          <span class="feature-text">19 years of academic credibilityt</span>
         </li>
         <li class="feature-item">
           <Image src={HeroSectionIcon1} alt="Feature Icon" />
-          <span class="feature-text">Proven results</span>
+          <span class="feature-text">2-minute videos made by experts</span>
         </li>
       </ul>
 
@@ -904,17 +895,15 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
         <!-- Stat Badges -->
 
         <!-- Girl Placeholder -->
-        <!-- <video width="900px" height="auto" autoplay muted loop>
+        <video width="900px" height="auto" autoplay muted loop class="hero-video">
           <source src={HeroSectionVideo} type="video/webm" />
           Your browser does not support the video tag.
-        </video> -->
-        <Image
+        </video>
+        <!-- <Image
           src={HeroSectionImage}
           alt="Hero Video"
-          width={900}
-          height={600}
           class="hero-video"
-        />
+        /> -->
       </div>
       </div>
     </div>
