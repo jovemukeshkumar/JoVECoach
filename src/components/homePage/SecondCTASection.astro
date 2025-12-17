@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import secondCTAIcon from "../../assets/secondCTAIcon.svg";
+import ZohoFormEmbed from "../ZohoFormEmbed.astro";
 ---
 
 <style>
@@ -190,11 +191,9 @@ import secondCTAIcon from "../../assets/secondCTAIcon.svg";
 		</div>
 
 		<!-- Right form -->
-		<form class="ai-cta-form" onsubmit="event.preventDefault();">
-			<input type="text" placeholder="Name*" required onclick="window.openZohoModal && window.openZohoModal()" />
-			<input type="email" placeholder="Email*" required onclick="window.openZohoModal && window.openZohoModal()" />
-			<button class="ai-cta-btn" onclick="window.openZohoModal && window.openZohoModal()">Ask Your First Question</button>
-		</form>
+		<div class="ai-cta-form">
+			<ZohoFormEmbed formIdSuffix="cta2" layout="vertical" />
+		</div>
 
 		<!-- Center icon -->
 		<div class="ai-cta-icon">

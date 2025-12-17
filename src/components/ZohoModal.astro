@@ -13,9 +13,9 @@ import formHtml from "../components/zohoform.html?raw";
 			<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 			<form id="webform_modal" action="https://crm.zoho.in/crm/WebToContactForm" name="WebToContacts1127844000000480553" method="POST" accept-charset="UTF-8">
-				<input type="text" style="display:none;" name="xnQsjsdp" value="0236a04fbd0f06625197b7607668d6bd7c7d7cfdd922c010a8d6215176bb9598" />
+				<input type="text" style="display:none;" name="xnQsjsdp" value="390c57945d5f522d4647d0c9d0a4b920a2cb44f83b87ec5e429a60bb20811285" />
 				<input type="hidden" name="zc_gad" id="zc_gad_modal" value="" />
-				<input type="text" style="display:none;" name="xmIwtLD" value="468c1a6522e4640b19430b48c964cc858affc61d2cb0a8912f6251a8a2cf6b30269abff8ca7d4eac4ebe6c47bb5e3a57" />
+				<input type="text" style="display:none;" name="xmIwtLD" value="ce504bcdda7f4f718465437a8dfd0092b41ab3e46ed84ba8025e8c1a1bf8af77f80e1f7fe8b98973a90e99288315377b" />
 				<input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=" />
 				<input type="text" style="display:none;" name="returnURL" value="null" />
 
@@ -114,8 +114,8 @@ import formHtml from "../components/zohoform.html?raw";
 
 				<div class="zcwf_row">
 					<div class="zcwf_col_fld g-recaptcha_div_wrapper">
-						<div class="g-recaptcha" data-sitekey="6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m" data-theme="light" data-callback="rccallback_modal" captcha-verified="false" id="recap_modal"></div>
-						<div id="recapErr_modal" style="font-size:12px;color:red;visibility:hidden;">Captcha validation failed. If you are not a robot then please try again.</div>
+						<!-- Invisible reCAPTCHA for Modal -->
+						<div class="g-recaptcha" data-sitekey="6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m" data-callback="onCaptchaSuccess_modal" data-size="invisible" id="recap_modal"> </div>
 					</div>
 				</div>
 
@@ -128,7 +128,7 @@ import formHtml from "../components/zohoform.html?raw";
 				</div>
 
 				<div class="zcwf_benefits">
-					<span>• No credit card required • No commitment • Cancel anytime • Student discounts</span>
+					<span>• No credit card required • No commitment • Cancel anytime</span>
 				</div>
 			</form>
 		</div>
@@ -380,24 +380,29 @@ import formHtml from "../components/zohoform.html?raw";
 		});
 	}
 
-	// Validation Logic (Scoped to Modal)
-	window.rccallback_modal = function () {
-		if (document.getElementById("recap_modal") != undefined) {
-			document.getElementById("recap_modal").setAttribute("captcha-verified", true);
-		}
-		if (document.getElementById("recapErr_modal") != undefined && document.getElementById("recapErr_modal").style.visibility == "visible") {
-			document.getElementById("recapErr_modal").style.visibility = "hidden";
-		}
-	};
+	// Callback function executed when reCAPTCHA is solved (or invisible check passes)
+	window.onCaptchaSuccess_modal = function (token) {
+		console.log("Modal Captcha validated. Submitting form...");
+		const form = document.getElementById("webform_modal");
 
-	function reCaptchaAlert_modal() {
-		var recap = document.getElementById("recap_modal");
-		if (recap != undefined && recap.getAttribute("captcha-verified") == "false") {
-			document.getElementById("recapErr_modal").style.visibility = "visible";
-			return false;
+		// Construct Redirect URL with Name and Email
+		var nameField = document.getElementById("Last_Name_modal");
+		var emailField = document.getElementById("Email_modal");
+		var redirectURL = "https://coach.jove.com/signup";
+
+		if (nameField && emailField) {
+			redirectURL += "?name=" + encodeURIComponent(nameField.value) + "&email=" + encodeURIComponent(emailField.value);
 		}
-		return true;
-	}
+
+		// Set returnURL hidden field
+		var returnURLField = document.querySelector("#webform_modal input[name='returnURL']");
+		if (returnURLField) {
+			returnURLField.value = redirectURL;
+		}
+
+		// Submit the form programmatically
+		HTMLFormElement.prototype.submit.call(form);
+	};
 
 	function validateEmail_modal() {
 		var form = document.getElementById("webform_modal");
@@ -434,26 +439,13 @@ import formHtml from "../components/zohoform.html?raw";
 		if (!validateEmail_modal()) {
 			return false;
 		}
-		if (!reCaptchaAlert_modal()) {
-			return false;
-		}
-		// Construct Redirect URL with Name and Email
-		var nameField = document.getElementById("Last_Name_modal");
-		var emailField = document.getElementById("Email_modal");
-		var redirectURL = "https://coach.jove.com/signup";
 
-		if (nameField && emailField) {
-			redirectURL += "?name=" + encodeURIComponent(nameField.value) + "&email=" + encodeURIComponent(emailField.value);
-		}
+		// Validation passed. Execute reCAPTCHA.
+		// This will trigger the invisible check.
+		// If successful, 'onCaptchaSuccess_modal' will be called.
+		grecaptcha.execute(document.getElementById("recap_modal").getAttribute("widget-id"));
 
-		// Set returnURL hidden field
-		var returnURLField = document.querySelector("#webform_modal input[name='returnURL']");
-		if (returnURLField) {
-			returnURLField.value = redirectURL;
-		}
-
-		document.querySelector("#webform_modal .formsubmit").setAttribute("disabled", true);
-		return true;
+		return false; // Stop immediate submission
 	};
 
 	// Attach submit handler manually since we can't use inline onSubmit easily with scoped functions

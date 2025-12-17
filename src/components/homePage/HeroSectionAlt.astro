@@ -9,6 +9,7 @@ import HeroGridBg from "../../assets/HeroSectionGridBg.svg";
 import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
 import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
 import HeroSectionBlueBg from "../../assets/HeroSectionBlueBg.png";
+import ZohoFormEmbed from "../ZohoFormEmbed.astro";
 
 const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" });
 
@@ -776,16 +777,7 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 
 				<div class="cta-box">
 					<h3 class="cta-title">See what stress-free STEM learning feels like</h3>
-
-					<div class="input-row">
-						<input type="text" class="input-field" placeholder="Name*" onclick="window.openZohoModal && window.openZohoModal()" />
-						<input type="email" class="input-field input-field-mail" placeholder="Email*" onclick="window.openZohoModal && window.openZohoModal()" />
-					</div>
-
-					<div class="cta-bottom">
-						<button class="cta-button" onclick="window.openZohoModal && window.openZohoModal()">Try It Free</button>
-						<span class="cta-note">• 7 days free • Full access • No credit card</span>
-					</div>
+					<ZohoFormEmbed formIdSuffix="hero" layout="horizontal" />
 				</div>
 			</div>
 		</div>

@@ -48,6 +48,7 @@ const learnerTypes = [
 		background: #fff;
 		position: relative;
 		z-index: 10;
+		padding-top: 0;
 	}
 	.learner-types-section::after {
 		content: "";
@@ -61,6 +62,23 @@ const learnerTypes = [
 		background-size: contain;
 		transform: rotate(180deg);
 		transform: scaleY(-1);
+	}
+
+	.learner-types-section::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0 !important;
+		pointer-events: none;
+		background-image: url("../../assets/JoVECoachStepsBgGrid.svg"), url("../../assets/JoVECoachStepsBgGrid.svg");
+		background-repeat: no-repeat, no-repeat;
+		background-position:
+			1100px top,
+			600px bottom;
+		background-size:
+			auto 300px,
+			auto 300px;
+		opacity: 0.25;
 	}
 
 	.container {
