@@ -7,7 +7,7 @@
 	style='background-color: white;color: black;max-width: 600px;'>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 	<META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
-	<script src='https://www.google.com/recaptcha/api.js' async defer></script>
+	<META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
 	<form id='webform1127844000000480553' action='https://crm.zoho.in/crm/WebToContactForm'
 		name=WebToContacts1127844000000480553 method='POST'
 		accept-charset='UTF-8'>
@@ -808,7 +808,8 @@
 			<div class='zcwf_col_lab'></div>
 			<div class='zcwf_col_fld'>
 				<!-- Invisible reCAPTCHA -->
-				<div class='g-recaptcha' 
+				<div class='g-recaptcha zoho-recaptcha' 
+					 id='zcwf_recaptcha_bottom'
 					 data-sitekey='6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m' 
 					 data-callback='onCaptchaSuccess' 
 					 data-size='invisible'>
@@ -906,7 +907,14 @@
 				// Validation passed. Now execute reCAPTCHA.
 				// This will trigger the invisible check.
 				// If successful (or after user solves challenge), 'onCaptchaSuccess' will be called.
-				grecaptcha.execute();
+				const recap = document.getElementById('zcwf_recaptcha_bottom');
+				if (recap && recap.getAttribute('widget-id')) {
+					grecaptcha.execute(recap.getAttribute('widget-id'));
+				} else {
+					console.error("reCAPTCHA widget not initialized");
+					// Fallback if reCAPTCHA fails to load? Or just alert user.
+					alert("Please wait for reCAPTCHA to load.");
+				}
 				
 				// Return false to stop the immediate form submission.
 				// The form will be submitted by onCaptchaSuccess.

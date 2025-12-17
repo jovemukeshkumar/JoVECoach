@@ -10,7 +10,6 @@ const recaptchaId = `recap_${formIdSuffix}`;
 const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 ---
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <form id={formId} action="https://crm.zoho.in/crm/WebToContactForm" name={`WebToContacts_${formIdSuffix}`} method="POST" accept-charset="UTF-8" class={layout === "horizontal" ? "zoho-form-horizontal" : "zoho-form-vertical"}>
 	<!-- Hidden Fields -->
 	<input type="text" style="display:none;" name="xnQsjsdp" value="390c57945d5f522d4647d0c9d0a4b920a2cb44f83b87ec5e429a60bb20811285" />
@@ -49,7 +48,7 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 
 	<div class="cta-bottom">
 		<!-- Invisible reCAPTCHA -->
-		<div class="g-recaptcha" data-sitekey="6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m" data-callback={callbackName} data-size="invisible" id={recaptchaId}> </div>
+		<div class="g-recaptcha zoho-recaptcha" data-sitekey="6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m" data-callback={callbackName} data-size="invisible" id={recaptchaId}> </div>
 
 		<button type="submit" class="cta-button" id={`btn_${formIdSuffix}`}>
 			{layout === "horizontal" ? "Try It Free" : formIdSuffix === "cta2" ? "Ask Your First Question" : "Try an AI Explanation"}
