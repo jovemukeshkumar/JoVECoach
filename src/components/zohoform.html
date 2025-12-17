@@ -10,7 +10,8 @@
 	<META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
 	<form id='webform1127844000000480553' action='https://crm.zoho.in/crm/WebToContactForm'
 		name=WebToContacts1127844000000480553 method='POST'
-		accept-charset='UTF-8'>
+		accept-charset='UTF-8'
+		onsubmit='javascript:document.charset="UTF-8"; return checkMandatory1127844000000480553()'>
 		<input type='text' style='display:none;' name='xnQsjsdp'
 			value='7cacd23940abbe07ab3afbb0935bce36e48117ac9aa7418df96fe992eea58e0f'>
 		</input>
@@ -36,7 +37,7 @@
 				box-sizing: border-box;
 				width: 100%;
 				height: 100%;
-				max-width: 1320px !important;
+				max-width: 1200px !important;
 				display: flex !important;
 				justify-content: flex-start !important;
 				flex-direction: column !important;
@@ -55,7 +56,7 @@
 				position: absolute;
 				bottom: 0;
 				right: 0;
-				width: 560px;
+				width: 450px;
 				height: auto;
 			}
 
@@ -462,8 +463,8 @@
 					background-position: center bottom !important;
 					background-size: 80% !important;
 					background-image: none !important;
-					margin: 20px !important; /* Add margin around the form */
-					width: auto !important; /* Allow margin to take effect */
+					margin: 20px auto !important; /* Center with margin */
+					width: 90% !important; /* Ensure white space around */
 				}
 
 				.zcwf_title {
@@ -488,7 +489,7 @@
 				#crmWebToEntityForm.zcwf_lblLeft input,
 				#crmWebToEntityForm.zcwf_lblLeft select {
 					font-size: 16px !important;
-					padding: 12px 16px !important;
+					padding: 12px 24px 12px 16px !important; /* Added right padding */
 				}
 
 				#crmWebToEntityForm.zcwf_lblLeft input::placeholder {
@@ -522,8 +523,10 @@
 			@media (max-width: 480px) {
 
 				#crmWebToEntityForm.zcwf_lblLeft {
-					padding: 55px 20px !important;
+					padding: 40px 30px !important; /* Increased padding */
 					background-size: 100% !important;
+					width: 90% !important; /* Explicit width */
+					margin: 20px auto !important; /* Explicit margin */
 				}
 
 				.zcwf_title {
@@ -550,7 +553,7 @@
 			</div>
 			<div class='zcwf_col_fld'>
 				<input type='text' id='Last_Name' aria-required='true' aria-label='Last Name' name='Last Name'
-					aria-valuemax='80' maxlength='80' placeholder="Name*">
+					aria-valuemax='80' maxlength='80' placeholder="Name*" required>
 				</input>
 				<div class='zcwf_col_help'>
 				</div>
@@ -562,7 +565,7 @@
 			</div>
 			<div class='zcwf_col_fld'>
 				<input type='text' ftype='email' autocomplete='false' id='Email' aria-required='true' aria-label='Email'
-					name='Email' aria-valuemax='100' crmlabel='' maxlength='100' placeholder="Email*">
+					name='Email' aria-valuemax='100' crmlabel='' maxlength='100' placeholder="Email*" required>
 				</input>
 				<div class='zcwf_col_help'>
 				</div>
@@ -819,13 +822,7 @@
 		<div class='zcwf_row'>
 			<div class='zcwf_col_lab'></div>
 			<div class='zcwf_col_fld'>
-				<!-- Invisible reCAPTCHA -->
-				<div class='g-recaptcha zoho-recaptcha' 
-					 id='zcwf_recaptcha_bottom'
-					 data-sitekey='6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m' 
-					 data-callback='onCaptchaSuccess' 
-					 data-size='invisible'>
-				</div>
+
 				
 				<div class='button_wrapper'>
 					<input type='submit' id='formsubmit' class='formsubmit zcwf_button' value='Get Started Free' title='Submit'>
@@ -835,6 +832,19 @@
 		</div>
 		<div class="zcwf_benefits">
 			<span>• No credit card required • No commitment • Cancel anytime</span>
+		</div>
+		<div class="image-container">
+			<img src="/zohoCTAImage.png"
+				alt="Jove Coach Free Trial Illustration" 
+				class="zohoCTAImage"
+			/>
+		</div>
+		<!-- Invisible reCAPTCHA -->
+		<div class='g-recaptcha zoho-recaptcha' 
+			 id='zcwf_recaptcha_bottom'
+			 data-sitekey='6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m' 
+			 data-callback='onCaptchaSuccess' 
+			 data-size='invisible'>
 		</div>
 		<script>
 			// Callback function executed when reCAPTCHA is solved (or invisible check passes)

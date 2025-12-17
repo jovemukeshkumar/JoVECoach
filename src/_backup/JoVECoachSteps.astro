@@ -1,0 +1,630 @@
+---
+import { Image, getImage } from "astro:assets";
+import aILogo from "../../assets/aILogo.svg";
+import videoPlay from "../../assets/videoPlay.svg";
+import notePad from "../../assets/notePad.svg";
+import cupLogo from "../../assets/cupLogo.svg";
+import Jove_chat_video from "../../assets/Jove_chat_video.webm";
+import Jove_chat_Image1 from "../../assets/Jove_chat_Image1.png";
+import Jove_chat_Image2 from "../../assets/Jove_chat_Image2.png";
+import Jove_chat_Image3 from "../../assets/Jove_chat_Image3.png";
+import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
+import JoVECoachStepsBgImage1 from "../../assets/JoVECoachStepsBgImage1.png";
+import JoVECoachStepsBgImage2 from "../../assets/JoVECoachStepsBgImage2.png";
+
+const optimizedBg1 = await getImage({ src: JoVECoachStepsBgImage1, format: "webp" });
+const optimizedBg2 = await getImage({ src: JoVECoachStepsBgImage2, format: "webp" });
+
+const steps = [
+	{
+		id: "ask",
+		icon: aILogo,
+		title: "Ask",
+		number: "STEP 1",
+		headline: "Ask and get unstuck with AI",
+		description: "No more scrolling. Just ask - and get the video and insights that crack it.",
+		image: Jove_chat_video,
+	},
+
+	{
+		id: "watch",
+		icon: videoPlay,
+		title: "Watch",
+		number: "STEP 2",
+		headline: "Learn in minutes, Not hours",
+		description: "Watch expert-made videos that actually make sense",
+		image: Jove_chat_Image2,
+	},
+	{
+		id: "practise",
+		icon: notePad,
+		title: "Practise",
+		number: "STEP 3",
+		headline: "Quick quiz to see if it clicks",
+		description: "Quick quiz after every video. See where you stand instantly.",
+		image: Jove_chat_Image1,
+	},
+	{
+		id: "master",
+		icon: cupLogo,
+		title: "Master",
+		number: "STEP 4",
+		headline: 'That "I actually get it" feeling-for real',
+		description: "Crush one concept. Then the next. Build momentum.",
+		image: Jove_chat_Image3,
+	},
+];
+const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i.test(file);
+---
+
+<style>
+	.jove-coach-section {
+		padding: 5rem 1.5rem 1rem 1.5rem;
+		position: relative;
+		/* overflow: hidden; */
+		z-index: 1;
+	}
+	.jove-coach-section::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0 !important;
+		pointer-events: none;
+
+		background-image: url("../../assets/JoVECoachStepsBgGrid.svg"), url("../../assets/JoVECoachStepsBgGrid.svg");
+
+		background-repeat: no-repeat, no-repeat;
+		background-position:
+			1100px top,
+			600px bottom;
+		background-size:
+			auto 300px,
+			auto 300px;
+
+		opacity: 0.25; /* 👈 control grid opacity here */
+	}
+
+	.jove-coach-section::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0 !important;
+		pointer-events: none;
+
+		background-image: var(--bg-image-1), var(--bg-image-2);
+
+		background-repeat: no-repeat, no-repeat;
+		background-position:
+			center top,
+			center bottom;
+		background-size: contain, contain;
+	}
+
+	.container {
+		max-width: 1320px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 10;
+	}
+
+	.header-content {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.main-title {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 36px;
+		line-height: 130%;
+		letter-spacing: 0%;
+		text-align: center;
+		color: #000;
+	}
+
+	.highlight {
+		font-family: inherit;
+		font-weight: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		letter-spacing: inherit;
+		text-align: center;
+		color: #2183ed;
+	}
+
+	.highlight img {
+		width: 38px;
+		height: auto;
+		margin: 0px 0px -5px 0px;
+	}
+
+	.subtitle {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 25.2px;
+		letter-spacing: 0%;
+		text-align: center;
+		color: #3f3f3f;
+		max-width: 470px;
+		margin: 0 auto;
+	}
+
+	.discover-text {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 25.2px;
+		letter-spacing: 0%;
+		text-align: center;
+		margin: 10px 0px 20px 0px;
+		color: #000;
+	}
+
+	/* Tabs */
+	.tabs-container {
+		display: flex;
+		justify-content: space-evenly;
+		gap: 2rem;
+		flex-wrap: wrap;
+		margin: 3rem auto;
+		padding: 15px 20px;
+		border-radius: 15px;
+		max-width: 750px;
+		background: linear-gradient(103.67deg, rgba(204, 227, 251, 0.05) 4.03%, rgba(33, 131, 237, 0.07) 147.63%);
+	}
+
+	.tab-button {
+		display: flex;
+		align-items: center;
+		padding: 0.75rem 1.5rem;
+		background: transparent;
+		border-radius: 15px;
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		text-align: center;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		border: transparent;
+	}
+
+	.tab-button:hover {
+		border: 1px solid #2183ed80;
+		color: #2183ed;
+		box-shadow: 0 4px 12px rgba(43, 156, 235, 0.15);
+	}
+
+	.tab-button.active {
+		border: 1px solid #2183ed80;
+		color: #2183ed;
+		box-shadow: 0px 11px 15px 0px #0000000d;
+	}
+
+	.tab-icon {
+		width: 20px;
+		height: auto;
+		margin-bottom: -2px;
+	}
+
+	/* Make active tab icons appear blue */
+	.tab-button:hover .tab-icon {
+		filter: grayscale(0) sepia(1) saturate(8) hue-rotate(180deg) brightness(1.05);
+		/* transform: scale(1.05); */
+	}
+	/* Make active tab icons appear blue */
+	.tab-button.active .tab-icon {
+		filter: grayscale(0) sepia(1) saturate(8) hue-rotate(180deg) brightness(1.05);
+		/* transform: scale(1.05); */
+	}
+
+	/* Steps Content */
+	.steps-wrapper {
+		position: relative;
+		min-height: 500px;
+	}
+
+	.step-content {
+		display: none;
+		animation: fadeIn 0.5s ease-in-out;
+	}
+
+	.step-content.active {
+		display: block;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.content-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: center;
+		max-width: 750px;
+		min-height: 400px;
+		margin: 0 auto;
+		padding: 0;
+		position: relative;
+		z-index: 10;
+	}
+
+	.step-visual {
+		position: relative;
+	}
+
+	.mockup-container {
+		position: relative;
+		border-radius: 16px;
+		overflow: hidden;
+		background: white;
+	}
+
+	.mockup-image {
+		width: 90%;
+		height: 100%;
+		display: block;
+		border-radius: 12px;
+		object-fit: cover;
+	}
+	.tab-title {
+		margin-left: 0.75rem;
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		text-align: center;
+	}
+	.step-info {
+		padding: 1rem;
+	}
+
+	.step-number {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 140%;
+		letter-spacing: -1%;
+		color: #000;
+		border: 0.5px solid #2183ed;
+		border-radius: 100px;
+		padding: 5px 20px;
+	}
+
+	.step-headline {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		color: #2183ed;
+		min-width: 350px;
+	}
+
+	.step-description {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		color: #3f3f3f;
+		max-width: 300px;
+	}
+
+	.mockup-container video {
+		width: 100%;
+		/* height: auto; */
+		display: block;
+		object-fit: cover;
+		min-width: 400px;
+		height: 385px;
+	}
+	.mockup-container img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+	.image-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
+		background: url("../../assets/Jove_chat_bg.png");
+		background-size: cover;
+		background-position: center;
+		border-radius: 16px;
+		overflow: hidden; /* ensure children are clipped to rounded corners */
+		min-width: 400px;
+		min-height: 385px;
+		z-index: 10;
+	}
+
+	/* Ensure the generated <picture>/<img> from Astro Image respects rounding */
+	.image-wrapper picture,
+	.image-wrapper img,
+	.image-wrapper .mockup-image {
+		border-radius: 17px;
+		display: block;
+		width: 90%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 968px) {
+		.content-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			padding: 2rem;
+		}
+
+		.step-visual {
+			order: 2;
+		}
+
+		.step-info {
+			order: 1;
+			text-align: center;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.jove-coach-section {
+			padding: 3rem 1rem;
+		}
+
+		.main-title {
+			font-size: 1.75rem;
+		}
+
+		.subtitle {
+			font-size: 1rem;
+		}
+
+		.subtitle br {
+			display: none;
+		}
+
+		.tabs-container {
+			gap: 0.5rem;
+		}
+
+		.tab-button {
+			padding: 0.625rem 1rem;
+			font-size: 0.875rem;
+		}
+
+		.step-headline {
+			font-size: 1.5rem;
+		}
+
+		.step-description {
+			font-size: 1rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.main-title {
+			font-size: 1.5rem;
+		}
+
+		.tabs-container {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.tab-button {
+			justify-content: center;
+		}
+
+		.content-grid {
+			padding: 1.5rem 0; /* Remove horizontal padding to allow full width image */
+			gap: 1.5rem;
+		}
+
+		.step-info {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			padding: 0 1.5rem; /* Add padding back to text content */
+		}
+
+		.step-headline {
+			min-width: 0; /* Allow text to wrap */
+			width: 100%;
+		}
+
+		.step-visual {
+			width: 100%;
+			margin: 0;
+		}
+
+		.mockup-container,
+		.image-wrapper,
+		.mockup-container video {
+			min-width: 0;
+			width: 100%;
+			height: auto;
+			min-height: 0;
+			border-radius: 0; /* Optional: remove border radius for full edge-to-edge look */
+		}
+
+		.image-wrapper {
+			border-radius: 0;
+		}
+	}
+</style>
+
+<section class="jove-coach-section" style={`--bg-image-1: url(${optimizedBg1.src}); --bg-image-2: url(${optimizedBg2.src});`}>
+	<div class="container">
+		<!-- Header -->
+		<div class="header-content">
+			<h2 class="main-title">
+				JoVE Coach is more than a study tool - <br />
+				<span class="highlight">
+					it's
+					<Image src={conceptsSectionIcon1} alt="JoVE Coach" />
+					that helps you finally get it.
+				</span>
+			</h2>
+
+			<p class="subtitle"> 2-minute videos. AI-backed clarity. Instant practice. </p>
+
+			<p class="discover-text">Discover JoVE's 4 steps to Mastery.</p>
+
+			<!-- Navigation Tabs -->
+			<div class="tabs-container">
+				{
+					steps.map(step => (
+						<button class="tab-button" data-step={step.id} aria-label={`View ${step.title} step`}>
+							<Image src={step?.icon} alt={step.title} class="tab-icon" loading="lazy" />
+							<span class="tab-title">{step.title}</span>
+						</button>
+					))
+				}
+			</div>
+		</div>
+
+		<!-- Steps Content -->
+		<div class="steps-wrapper">
+			{
+				steps.map((step, index) => (
+					<div class={`step-content ${index === 0 ? "active" : ""}`} data-step={step.id}>
+						<div class={`content-grid bg-gradient-to-br`}>
+							<div class="step-visual">
+								<div class="mockup-container">
+									{isVideo(step.image) ? (
+										<video class="mockup-image" autoplay muted loop playsinline preload="metadata">
+											<source src={step.image} />
+											Your browser does not support the video tag.
+										</video>
+									) : (
+										<div class="image-wrapper">
+											<Image src={step.image} alt={step.title} class="mockup-image" inferSize />
+										</div>
+									)}
+								</div>
+							</div>
+
+							<div class="step-info">
+								<span class="step-number">{step.number}</span>
+								<h3 class="step-headline">{step.headline}</h3>
+								<p class="step-description">{step.description}</p>
+							</div>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabButtons = Array.from(
+      document.querySelectorAll(".tab-button")
+    );
+    const stepContents = Array.from(
+      document.querySelectorAll(".step-content")
+    );
+
+    let autoTabInterval = null;
+    let currentTabIndex = 0;
+    const AUTO_TAB_DELAY = 5000; // 5 seconds
+
+    function activateTab(index) {
+      const button = tabButtons[index];
+      const stepId = button.getAttribute("data-step");
+
+      // Reset all
+      tabButtons.forEach((btn) => btn.classList.remove("active"));
+      stepContents.forEach((content) =>
+        content.classList.remove("active")
+      );
+
+      // Activate current
+      button.classList.add("active");
+      const activeContent = document.querySelector(
+        `.step-content[data-step="${stepId}"]`
+      );
+      if (activeContent) {
+        activeContent.classList.add("active");
+      }
+
+      currentTabIndex = index;
+    }
+
+    function startAutoTabs() {
+      stopAutoTabs();
+      autoTabInterval = window.setInterval(() => {
+        const nextIndex =
+          currentTabIndex + 1 >= tabButtons.length
+            ? 0
+            : currentTabIndex + 1;
+        activateTab(nextIndex);
+      }, AUTO_TAB_DELAY);
+    }
+
+    function stopAutoTabs() {
+      if (autoTabInterval !== null) {
+        clearInterval(autoTabInterval);
+        autoTabInterval = null;
+      }
+    }
+
+    // Manual click handling
+    tabButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        stopAutoTabs();
+        activateTab(index);
+        startAutoTabs(); // resume auto
+      });
+    });
+
+    // Init
+    activateTab(0);
+    startAutoTabs();
+  });
+</script> -->
+
+<script>
+	// Tab switching functionality
+	document.addEventListener("DOMContentLoaded", () => {
+		const tabButtons = document.querySelectorAll(".tab-button");
+		const stepContents = document.querySelectorAll(".step-content");
+
+		tabButtons.forEach(button => {
+			button.addEventListener("click", () => {
+				const stepId = button.getAttribute("data-step");
+
+				// Remove active class from all buttons and contents
+				tabButtons.forEach(btn => btn.classList.remove("active"));
+				stepContents.forEach(content => content.classList.remove("active"));
+
+				// Add active class to clicked button and corresponding content
+				button.classList.add("active");
+				const activeContent = document.querySelector(`.step-content[data-step="${stepId}"]`);
+				if (activeContent) {
+					activeContent.classList.add("active");
+				}
+			});
+		});
+
+		// Set first tab as active by default
+		if (tabButtons.length > 0) {
+			tabButtons[0].classList.add("active");
+		}
+	});
+</script>

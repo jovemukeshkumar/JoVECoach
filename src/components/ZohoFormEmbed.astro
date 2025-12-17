@@ -56,15 +56,14 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 	}
 
 	<div class="cta-bottom">
-		<!-- Invisible reCAPTCHA -->
-		<div class="g-recaptcha zoho-recaptcha" data-sitekey="6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m" data-callback={callbackName} data-size="invisible" id={recaptchaId}> </div>
-
 		<button type="submit" class="cta-button" id={`btn_${formIdSuffix}`}>
 			{layout === "horizontal" ? "Try It Free" : formIdSuffix === "cta2" ? "Ask Your First Question" : "Try an AI Explanation"}
 		</button>
 
 		{layout === "horizontal" && <span class="cta-note">• 7 days free • Full access • No credit card</span>}
 	</div>
+	<!-- Invisible reCAPTCHA -->
+	<div class="g-recaptcha zoho-recaptcha" data-sitekey="6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m" data-callback={callbackName} data-size="invisible" id={recaptchaId}> </div>
 </form>
 
 <style>
@@ -119,9 +118,13 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 		padding: 0px 10px;
 	}
 
+	.zoho-form-horizontal .input-field:first-child {
+		border-right: none;
+	}
+
 	.zoho-form-horizontal .input-field-mail {
 		border-radius: 0px 8px 8px 0px !important;
-		border-left: none;
+		border-left: 0.5px solid #3a3a3a99;
 	}
 
 	.zoho-form-horizontal .cta-bottom {
@@ -164,20 +167,43 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 
 	/* Responsive Adjustments */
 	@media (max-width: 768px) {
+		.input-field {
+			padding: 14px 10px !important; /* Reduced padding for mobile */
+		}
+
 		.zoho-form-horizontal .input-row {
 			grid-template-columns: 1fr;
+			gap: 12px; /* Add gap between stacked inputs */
 		}
 		.zoho-form-horizontal .input-field {
 			border-radius: 8px !important;
 			max-width: 100%;
+			width: 90% !important; /* Width 90% */
+			margin: 0 auto !important; /* Center inputs */
+			min-height: 36px !important; /* Reduced height to 36px */
+			padding: 8px 12px !important; /* Reduced padding */
 		}
 		.zoho-form-horizontal .input-field-mail {
-			margin-top: 12px;
+			margin-top: 0; /* Remove margin-top as gap handles it */
 		}
 		.zoho-form-horizontal .cta-bottom {
 			flex-direction: column;
 			align-items: stretch;
 		}
+
+		.zoho-form-vertical {
+			align-items: center;
+		}
+
+		.zoho-form-vertical .vertical-inputs {
+			align-items: center;
+		}
+	}
+
+	/* Specific override for Second CTA (cta2) which has a blue background */
+	#webform_cta2 .cta-button {
+		background: #2183ed;
+		border: 1px solid #ffffff;
 	}
 </style>
 

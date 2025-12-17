@@ -419,6 +419,7 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 			flex: 0 0 100%;
 			max-width: 100%;
 			width: 100%;
+			min-width: 0; /* Reset min-width to prevent overflow */
 		}
 
 		.hero-content {
