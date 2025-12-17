@@ -20,7 +20,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       method: 'POST',
       body: params,
       headers: {
-        'Referer': 'https://forms.zohopublic.in/',
+        'Referer': 'https://forms.zohopublic.in/coachproductjo1/form/StudentsGenLP/formperma/C_1h6ALc4ULI7tQMz2EShFwpEY5Hn7M_wS2-yuF2cE0',
+        'Origin': 'https://forms.zohopublic.in',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Content-Type': 'application/x-www-form-urlencoded',
       },
