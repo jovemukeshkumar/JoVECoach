@@ -59,16 +59,38 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 
 <style>
 	.jove-coach-section {
-		padding: 5rem 1.5rem 1rem 1.5rem;
 		position: relative;
-		/* overflow: hidden; */
 		z-index: 1;
+		background-color: #fff; /* Ensure background is opaque */
+		padding-top: 50px; /* Added spacing from previous section */
 	}
-	.jove-coach-section::after {
+
+	/* Scroll Track for Desktop */
+	.scroll-track {
+		height: 400vh; /* 100vh per step roughly */
+		position: relative;
+	}
+
+	/* Sticky Wrapper */
+	.sticky-wrapper {
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		padding: 2rem 1.5rem;
+		box-sizing: border-box;
+		z-index: 10;
+	}
+
+	/* Grid Background on Sticky Wrapper */
+	.sticky-wrapper::before {
 		content: "";
 		position: absolute;
 		inset: 0;
-		z-index: 0 !important;
+		z-index: -1;
 		pointer-events: none;
 
 		background-image: url("../../assets/JoVECoachStepsBgGrid.svg"), url("../../assets/JoVECoachStepsBgGrid.svg");
@@ -76,12 +98,12 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 		background-repeat: no-repeat, no-repeat;
 		background-position:
 			1100px top,
-			600px bottom;
+			540px bottom; /* Moved left by 60px */
 		background-size:
 			auto 300px,
 			auto 300px;
 
-		opacity: 0.25; /* 👈 control grid opacity here */
+		opacity: 0.25;
 	}
 
 	.jove-coach-section::before {
@@ -105,11 +127,12 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 		margin: 0 auto;
 		position: relative;
 		z-index: 10;
+		width: 100%;
 	}
 
 	.header-content {
 		text-align: center;
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
 	}
 
 	.main-title {
@@ -167,7 +190,7 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 		justify-content: space-evenly;
 		gap: 2rem;
 		flex-wrap: wrap;
-		margin: 3rem auto;
+		margin: 2rem auto;
 		padding: 15px 20px;
 		border-radius: 15px;
 		max-width: 750px;
@@ -210,14 +233,9 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 	}
 
 	/* Make active tab icons appear blue */
-	.tab-button:hover .tab-icon {
-		filter: grayscale(0) sepia(1) saturate(8) hue-rotate(180deg) brightness(1.05);
-		/* transform: scale(1.05); */
-	}
-	/* Make active tab icons appear blue */
+	.tab-button:hover .tab-icon,
 	.tab-button.active .tab-icon {
 		filter: grayscale(0) sepia(1) saturate(8) hue-rotate(180deg) brightness(1.05);
-		/* transform: scale(1.05); */
 	}
 
 	/* Steps Content */
@@ -324,7 +342,6 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 
 	.mockup-container video {
 		width: 100%;
-		/* height: auto; */
 		display: block;
 		object-fit: cover;
 		min-width: 400px;
@@ -344,13 +361,12 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 		background-size: cover;
 		background-position: center;
 		border-radius: 16px;
-		overflow: hidden; /* ensure children are clipped to rounded corners */
+		overflow: hidden;
 		min-width: 400px;
 		min-height: 385px;
 		z-index: 10;
 	}
 
-	/* Ensure the generated <picture>/<img> from Astro Image respects rounding */
 	.image-wrapper picture,
 	.image-wrapper img,
 	.image-wrapper .mockup-image {
@@ -380,8 +396,19 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 	}
 
 	@media (max-width: 768px) {
-		.jove-coach-section {
+		/* Disable scroll pinning on mobile */
+		.scroll-track {
+			height: auto !important;
+		}
+		.sticky-wrapper {
+			position: static !important;
+			height: auto !important;
+			display: block !important;
 			padding: 3rem 1rem;
+		}
+
+		.jove-coach-section {
+			padding: 0; /* Wrapper padding handled by sticky-wrapper override */
 		}
 
 		.main-title {
@@ -429,7 +456,7 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 		}
 
 		.content-grid {
-			padding: 1.5rem 0; /* Remove horizontal padding to allow full width image */
+			padding: 1.5rem 0;
 			gap: 1.5rem;
 		}
 
@@ -438,11 +465,11 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 			flex-direction: column;
 			align-items: center;
 			text-align: center;
-			padding: 0 1.5rem; /* Add padding back to text content */
+			padding: 0 1.5rem;
 		}
 
 		.step-headline {
-			min-width: 0; /* Allow text to wrap */
+			min-width: 0;
 			width: 100%;
 		}
 
@@ -458,7 +485,7 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 			width: 100%;
 			height: auto;
 			min-height: 0;
-			border-radius: 0; /* Optional: remove border radius for full edge-to-edge look */
+			border-radius: 0;
 		}
 
 		.image-wrapper {
@@ -468,163 +495,131 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 </style>
 
 <section class="jove-coach-section" style={`--bg-image-1: url(${optimizedBg1.src}); --bg-image-2: url(${optimizedBg2.src});`}>
-	<div class="container">
-		<!-- Header -->
-		<div class="header-content">
-			<h2 class="main-title">
-				JoVE Coach is more than a study tool - <br />
-				<span class="highlight">
-					it's
-					<Image src={conceptsSectionIcon1} alt="JoVE Coach" />
-					that helps you finally get it.
-				</span>
-			</h2>
+	<div class="scroll-track">
+		<div class="sticky-wrapper">
+			<div class="container">
+				<!-- Header -->
+				<div class="header-content">
+					<h2 class="main-title">
+						JoVE Coach is more than a study tool - <br />
+						<span class="highlight">
+							it's
+							<Image src={conceptsSectionIcon1} alt="JoVE Coach" />
+							that helps you finally get it.
+						</span>
+					</h2>
 
-			<p class="subtitle"> 2-minute videos. AI-backed clarity. Instant practice. </p>
+					<p class="subtitle"> 2-minute videos. AI-backed clarity. Instant practice. </p>
 
-			<p class="discover-text">Discover JoVE's 4 steps to Mastery.</p>
+					<p class="discover-text">Discover JoVE's 4 steps to Mastery.</p>
 
-			<!-- Navigation Tabs -->
-			<div class="tabs-container">
-				{
-					steps.map(step => (
-						<button class="tab-button" data-step={step.id} aria-label={`View ${step.title} step`}>
-							<Image src={step?.icon} alt={step.title} class="tab-icon" loading="lazy" />
-							<span class="tab-title">{step.title}</span>
-						</button>
-					))
-				}
-			</div>
-		</div>
+					<!-- Navigation Tabs -->
+					<div class="tabs-container">
+						{
+							steps.map(step => (
+								<button class="tab-button" data-step={step.id} aria-label={`View ${step.title} step`}>
+									<Image src={step?.icon} alt={step.title} class="tab-icon" loading="lazy" />
+									<span class="tab-title">{step.title}</span>
+								</button>
+							))
+						}
+					</div>
+				</div>
 
-		<!-- Steps Content -->
-		<div class="steps-wrapper">
-			{
-				steps.map((step, index) => (
-					<div class={`step-content ${index === 0 ? "active" : ""}`} data-step={step.id}>
-						<div class={`content-grid bg-gradient-to-br`}>
-							<div class="step-visual">
-								<div class="mockup-container">
-									{isVideo(step.image) ? (
-										<video class="mockup-image" autoplay muted loop playsinline preload="metadata">
-											<source src={step.image} />
-											Your browser does not support the video tag.
-										</video>
-									) : (
-										<div class="image-wrapper">
-											<Image src={step.image} alt={step.title} class="mockup-image" inferSize />
+				<!-- Steps Content -->
+				<div class="steps-wrapper">
+					{
+						steps.map((step, index) => (
+							<div class={`step-content ${index === 0 ? "active" : ""}`} data-step={step.id}>
+								<div class={`content-grid bg-gradient-to-br`}>
+									<div class="step-visual">
+										<div class="mockup-container">
+											{isVideo(step.image) ? (
+												<video class="mockup-image" autoplay muted loop playsinline preload="metadata">
+													<source src={step.image} />
+													Your browser does not support the video tag.
+												</video>
+											) : (
+												<div class="image-wrapper">
+													<Image src={step.image} alt={step.title} class="mockup-image" inferSize />
+												</div>
+											)}
 										</div>
-									)}
+									</div>
+
+									<div class="step-info">
+										<span class="step-number">{step.number}</span>
+										<h3 class="step-headline">{step.headline}</h3>
+										<p class="step-description">{step.description}</p>
+									</div>
 								</div>
 							</div>
-
-							<div class="step-info">
-								<span class="step-number">{step.number}</span>
-								<h3 class="step-headline">{step.headline}</h3>
-								<p class="step-description">{step.description}</p>
-							</div>
-						</div>
-					</div>
-				))
-			}
+						))
+					}
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
-
-<!-- <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const tabButtons = Array.from(
-      document.querySelectorAll(".tab-button")
-    );
-    const stepContents = Array.from(
-      document.querySelectorAll(".step-content")
-    );
-
-    let autoTabInterval = null;
-    let currentTabIndex = 0;
-    const AUTO_TAB_DELAY = 5000; // 5 seconds
-
-    function activateTab(index) {
-      const button = tabButtons[index];
-      const stepId = button.getAttribute("data-step");
-
-      // Reset all
-      tabButtons.forEach((btn) => btn.classList.remove("active"));
-      stepContents.forEach((content) =>
-        content.classList.remove("active")
-      );
-
-      // Activate current
-      button.classList.add("active");
-      const activeContent = document.querySelector(
-        `.step-content[data-step="${stepId}"]`
-      );
-      if (activeContent) {
-        activeContent.classList.add("active");
-      }
-
-      currentTabIndex = index;
-    }
-
-    function startAutoTabs() {
-      stopAutoTabs();
-      autoTabInterval = window.setInterval(() => {
-        const nextIndex =
-          currentTabIndex + 1 >= tabButtons.length
-            ? 0
-            : currentTabIndex + 1;
-        activateTab(nextIndex);
-      }, AUTO_TAB_DELAY);
-    }
-
-    function stopAutoTabs() {
-      if (autoTabInterval !== null) {
-        clearInterval(autoTabInterval);
-        autoTabInterval = null;
-      }
-    }
-
-    // Manual click handling
-    tabButtons.forEach((button, index) => {
-      button.addEventListener("click", () => {
-        stopAutoTabs();
-        activateTab(index);
-        startAutoTabs(); // resume auto
-      });
-    });
-
-    // Init
-    activateTab(0);
-    startAutoTabs();
-  });
-</script> -->
 
 <script>
 	// Tab switching functionality
 	document.addEventListener("DOMContentLoaded", () => {
 		const tabButtons = document.querySelectorAll(".tab-button");
 		const stepContents = document.querySelectorAll(".step-content");
+		const track = document.querySelector(".scroll-track");
+		const stepsCount = tabButtons.length;
 
-		tabButtons.forEach(button => {
+		// Function to activate a specific tab
+		function activateTab(index) {
+			if (index < 0 || index >= stepsCount) return;
+
+			// Remove active class from all
+			tabButtons.forEach(btn => btn.classList.remove("active"));
+			stepContents.forEach(content => content.classList.remove("active"));
+
+			// Add active class to current
+			tabButtons[index].classList.add("active");
+			const stepId = tabButtons[index].getAttribute("data-step");
+			const activeContent = document.querySelector(`.step-content[data-step="${stepId}"]`);
+			if (activeContent) {
+				activeContent.classList.add("active");
+			}
+		}
+
+		// Click Handler (Manual Override)
+		tabButtons.forEach((button, index) => {
 			button.addEventListener("click", () => {
-				const stepId = button.getAttribute("data-step");
-
-				// Remove active class from all buttons and contents
-				tabButtons.forEach(btn => btn.classList.remove("active"));
-				stepContents.forEach(content => content.classList.remove("active"));
-
-				// Add active class to clicked button and corresponding content
-				button.classList.add("active");
-				const activeContent = document.querySelector(`.step-content[data-step="${stepId}"]`);
-				if (activeContent) {
-					activeContent.classList.add("active");
-				}
+				activateTab(index);
+				// Optional: Scroll to the corresponding section of the track if we want to sync scroll position
+				// But for now, just switching content is fine.
 			});
+		});
+
+		// Scroll Handler
+		window.addEventListener("scroll", () => {
+			// Check if we are on mobile (where scroll track is disabled)
+			if (window.innerWidth <= 768) return;
+
+			if (!track) return;
+
+			const rect = track.getBoundingClientRect();
+			const trackHeight = rect.height - window.innerHeight;
+			const scrolled = -rect.top; // Pixels scrolled into the track
+
+			// If we are within the scroll track
+			if (scrolled >= 0 && scrolled <= trackHeight) {
+				const progress = scrolled / trackHeight;
+				// Map progress (0 to 1) to step index (0 to 3)
+				// We want to switch slightly earlier than the exact division to feel responsive
+				const stepIndex = Math.min(Math.floor(progress * stepsCount), stepsCount - 1);
+				activateTab(stepIndex);
+			}
 		});
 
 		// Set first tab as active by default
 		if (tabButtons.length > 0) {
-			tabButtons[0].classList.add("active");
+			activateTab(0);
 		}
 	});
 </script>

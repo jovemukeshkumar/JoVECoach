@@ -853,8 +853,8 @@
 				const form = document.forms['WebToContacts1127844000000480553'];
 				
 				// Dynamic Return URL Logic (ensure it's set before final submit)
-				const nameVal = form['Last Name'].value;
-				const emailVal = form['Email'].value;
+				const nameVal = document.getElementById('Last_Name').value;
+				const emailVal = document.getElementById('Email').value;
 				const returnUrlInput = form['returnURL'];
 				
 				if (returnUrlInput) {
