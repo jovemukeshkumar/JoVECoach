@@ -537,7 +537,7 @@
 			}
 		</style>
 		<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-	<form action='https://forms.zohopublic.in/coachproductjo1/form/StudentsGenLP/formperma/C_1h6ALc4ULI7tQMz2EShFwpEY5Hn7M_wS2-yuF2cE0/htmlRecords/submit' name='form' method='POST' accept-charset='UTF-8' enctype='multipart/form-data' id='form' target="hidden_iframe">
+	<form action='https://forms.zohopublic.in/coachproductjo1/form/StudentsGenLP/formperma/C_1h6ALc4ULI7tQMz2EShFwpEY5Hn7M_wS2-yuF2cE0/htmlRecords/submit' name='form' method='POST' accept-charset='UTF-8' id='form' target="hidden_iframe">
 		<input type="hidden" name="referrerName" value="null">
 		
 		<!-- Hidden Fields from Zoho Form -->
@@ -858,7 +858,9 @@
 				
 				iframe.onload = function() {
 					loadCount++;
+					console.log('Iframe loaded. Count:', loadCount);
 					if (loadCount > 0) { // Ensure it's the submission load, not initial empty load
+						console.log('Submission complete. Redirecting...');
 						// Redirect to success page
 						const redirectUrl = new URL('https://coach.jove.com/signup');
 						redirectUrl.searchParams.set('name', nameVal);
