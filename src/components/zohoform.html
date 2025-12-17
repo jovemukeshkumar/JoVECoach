@@ -807,7 +807,13 @@
 		<div class='zcwf_row'>
 			<div class='zcwf_col_lab'></div>
 			<div class='zcwf_col_fld'>
-				<div class='g-recaptcha' data-sitekey='6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m'></div>
+				<!-- Invisible reCAPTCHA -->
+				<div class='g-recaptcha' 
+					 data-sitekey='6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m' 
+					 data-callback='onCaptchaSuccess' 
+					 data-size='invisible'>
+				</div>
+				
 				<div class='button_wrapper'>
 					<input type='submit' id='formsubmit' class='formsubmit zcwf_button' value='Get Started Free' title='Submit'>
 					<input type='reset' class='zcwf_button' name='reset' value='Reset' title='Reset' style="display: none;">
@@ -818,6 +824,29 @@
 			<span>• No credit card required • No commitment • Cancel anytime</span>
 		</div>
 		<script>
+			// Callback function executed when reCAPTCHA is solved (or invisible check passes)
+			function onCaptchaSuccess(token) {
+				console.log("Captcha validated. Submitting form...");
+				const form = document.forms['WebToContacts1127844000000480553'];
+				
+				// Dynamic Return URL Logic (ensure it's set before final submit)
+				const nameVal = form['Last Name'].value;
+				const emailVal = form['Email'].value;
+				const returnUrlInput = form['returnURL'];
+				
+				if (returnUrlInput) {
+					const baseUrl = 'https://coach.jove.com/signup';
+					const redirectUrl = new URL(baseUrl);
+					redirectUrl.searchParams.set('name', nameVal);
+					redirectUrl.searchParams.set('email', emailVal);
+					returnUrlInput.value = redirectUrl.toString();
+				}
+
+				// Submit the form programmatically, bypassing the onsubmit handler to avoid loop
+				// We use HTMLFormElement.prototype.submit.call(form) to be safe if there's an input named 'submit'
+				HTMLFormElement.prototype.submit.call(form);
+			}
+
 			function validateEmail1127844000000480553() {
 				var form = document.forms['WebToContacts1127844000000480553'];
 				var emailFld = form.querySelectorAll('[ftype=email]');
@@ -874,28 +903,14 @@
 				}
 				if (!validateEmail1127844000000480553()) { return false; }
 				
-				// reCAPTCHA Validation
-				var response = grecaptcha.getResponse();
-				if (response.length == 0) {
-					alert('Please verify that you are not a robot.');
-					return false;
-				}
-
-				// Dynamic Return URL Logic
-				const form = document.forms['WebToContacts1127844000000480553'];
-				const nameVal = form['Last Name'].value;
-				const emailVal = form['Email'].value;
-				const returnUrlInput = form['returnURL'];
+				// Validation passed. Now execute reCAPTCHA.
+				// This will trigger the invisible check.
+				// If successful (or after user solves challenge), 'onCaptchaSuccess' will be called.
+				grecaptcha.execute();
 				
-				if (returnUrlInput) {
-					const baseUrl = 'https://coach.jove.com/signup';
-					const redirectUrl = new URL(baseUrl);
-					redirectUrl.searchParams.set('name', nameVal);
-					redirectUrl.searchParams.set('email', emailVal);
-					returnUrlInput.value = redirectUrl.toString();
-				}
-
-				return true;
+				// Return false to stop the immediate form submission.
+				// The form will be submitted by onCaptchaSuccess.
+				return false;
 			}
 
 			function tooltipShow1127844000000480553(el) {
