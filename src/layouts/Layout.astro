@@ -51,36 +51,45 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-		<script>
+		<script is:inline>
+			// Global reCAPTCHA Logic
+			window.globalRecaptchaWidgetId = null;
+			window.pendingRecaptchaCallback = null;
+
+			window.onGlobalRecaptchaSuccess = function (token) {
+				console.log("Global reCAPTCHA success. Token received.");
+				if (typeof window.pendingRecaptchaCallback === "function") {
+					window.pendingRecaptchaCallback(token);
+					window.pendingRecaptchaCallback = null; // Reset
+				}
+				// Reset widget so it can be used again
+				if (window.globalRecaptchaWidgetId !== null) {
+					grecaptcha.reset(window.globalRecaptchaWidgetId);
+				}
+			};
+
+			window.executeGlobalRecaptcha = function (callback) {
+				console.log("Executing global reCAPTCHA...");
+				if (window.globalRecaptchaWidgetId !== null) {
+					window.pendingRecaptchaCallback = callback;
+					grecaptcha.execute(window.globalRecaptchaWidgetId);
+				} else {
+					console.error("Global reCAPTCHA widget not loaded yet.");
+					alert("Please wait for security check to load.");
+				}
+			};
+
 			window.onRecaptchaLoad = function () {
-				console.log("Global reCAPTCHA loaded. Finding widgets...");
-				const captchas = document.querySelectorAll(".zoho-recaptcha");
-				console.log(`Found ${captchas.length} widgets.`);
-				captchas.forEach(el => {
-					if (!el.getAttribute("widget-id")) {
-						const sitekey = el.getAttribute("data-sitekey");
-						const callback = el.getAttribute("data-callback");
-						const id = el.id;
-						console.log(`Rendering widget for ${id} with callback name: ${callback}`);
-
-						let callbackFn = callback;
-						if (typeof window[callback] === "function") {
-							console.log(`Callback function found for ${callback}`);
-							callbackFn = window[callback];
-						} else {
-							console.warn(`Callback function ${callback} NOT found on window!`);
-						}
-
-						// @ts-ignore
-						const widgetId = grecaptcha.render(el, {
-							sitekey: sitekey,
-							size: "invisible",
-							callback: callbackFn,
-						});
-						el.setAttribute("widget-id", String(widgetId));
-						console.log(`Widget rendered: ${id} -> ${widgetId}`);
-					}
-				});
+				console.log("Global reCAPTCHA loaded. Rendering shared widget...");
+				const el = document.getElementById("global-recaptcha");
+				if (el) {
+					window.globalRecaptchaWidgetId = grecaptcha.render(el, {
+						sitekey: "6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m",
+						size: "invisible",
+						callback: window.onGlobalRecaptchaSuccess,
+					});
+					console.log(`Global widget rendered with ID: ${window.globalRecaptchaWidgetId}`);
+				}
 			};
 		</script>
 		<script src="https://www.google.com/recaptcha/api.js?render=explicit&onload=onRecaptchaLoad" async defer></script>
@@ -115,6 +124,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTMMCSS2G35" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->
 		<slot />
+		<div id="global-recaptcha"></div>
 		<SpeedInsights />
 	</body>
 </html>

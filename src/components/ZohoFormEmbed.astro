@@ -62,8 +62,8 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 
 		{layout === "horizontal" && <span class="cta-note">• 7 days free • Full access • No credit card</span>}
 	</div>
-	<!-- Invisible reCAPTCHA -->
-	<div class="g-recaptcha zoho-recaptcha" data-sitekey="6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m" data-callback={callbackName} data-size="invisible" id={recaptchaId}> </div>
+	<!-- Invisible reCAPTCHA (Global) -->
+	<!-- No local widget needed -->
 </form>
 
 <style>
@@ -249,28 +249,12 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 				return false;
 			}
 
-			// Execute Invisible reCAPTCHA
-			const recapEl = document.getElementById(recaptchaId);
-			const widgetId = recapEl.getAttribute("widget-id");
-			console.log(`Executing reCAPTCHA for ${recaptchaId}. Widget ID: ${widgetId}`);
-
-			if (widgetId) {
-				grecaptcha
-					.execute(widgetId)
-					.then(token => {
-						console.log(`reCAPTCHA executed successfully for ${recaptchaId}`);
-						// Manually invoke callback since it's not firing automatically
-						if (typeof window[callbackName] === "function") {
-							console.log(`Manually invoking ${callbackName}`);
-							window[callbackName](token);
-						}
-					})
-					.catch(err => {
-						console.error(`reCAPTCHA execution failed for ${recaptchaId}:`, err);
-						alert("Verification failed. Please try again.");
-					});
+			// Execute Global reCAPTCHA
+			console.log(`Executing Global reCAPTCHA for ${formId}`);
+			if (typeof window.executeGlobalRecaptcha === "function") {
+				window.executeGlobalRecaptcha(window[callbackName]);
 			} else {
-				console.error("Widget ID not found. reCAPTCHA not initialized?");
+				console.error("Global reCAPTCHA function not found.");
 				alert("Please wait for reCAPTCHA to load.");
 			}
 		};

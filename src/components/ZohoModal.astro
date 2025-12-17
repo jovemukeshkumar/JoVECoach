@@ -112,8 +112,8 @@ import formHtml from "../components/zohoform.html?raw";
 					</div>
 				</div>
 
-				<!-- Invisible reCAPTCHA for Modal -->
-				<div class="g-recaptcha zoho-recaptcha" data-sitekey="6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m" data-callback="onCaptchaSuccess_modal" data-size="invisible" id="recap_modal"> </div>
+				<!-- Invisible reCAPTCHA (Global) -->
+				<!-- No local widget needed -->
 
 				<input type="text" type="hidden" style="display: none;" name="aG9uZXlwb3Q" value="" />
 
@@ -436,10 +436,13 @@ import formHtml from "../components/zohoform.html?raw";
 			return false;
 		}
 
-		// Validation passed. Execute reCAPTCHA.
-		// This will trigger the invisible check.
-		// If successful, 'onCaptchaSuccess_modal' will be called.
-		grecaptcha.execute(document.getElementById("recap_modal").getAttribute("widget-id"));
+		// Validation passed. Execute Global reCAPTCHA.
+		if (typeof window.executeGlobalRecaptcha === "function") {
+			window.executeGlobalRecaptcha(window.onCaptchaSuccess_modal);
+		} else {
+			console.error("Global reCAPTCHA function not found.");
+			alert("Please wait for reCAPTCHA to load.");
+		}
 
 		return false; // Stop immediate submission
 	};

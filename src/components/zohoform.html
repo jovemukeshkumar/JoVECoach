@@ -834,18 +834,14 @@
 			<span>• No credit card required • No commitment • Cancel anytime</span>
 		</div>
 		<div class="image-container">
-			<img src="/zohoCTAImage.png"
+			<img src="/zohoCTAImage.webp"
 				alt="Jove Coach Free Trial Illustration" 
 				class="zohoCTAImage"
 			/>
 		</div>
-		<!-- Invisible reCAPTCHA -->
-		<div class='g-recaptcha zoho-recaptcha' 
-			 id='zcwf_recaptcha_bottom'
-			 data-sitekey='6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m' 
-			 data-callback='onCaptchaSuccess' 
-			 data-size='invisible'>
-		</div>
+		<!-- Invisible reCAPTCHA (Global) -->
+		<!-- No local widget needed -->
+
 		<script>
 			// Callback function executed when reCAPTCHA is solved (or invisible check passes)
 			function onCaptchaSuccess(token) {
@@ -926,15 +922,11 @@
 				}
 				if (!validateEmail1127844000000480553()) { return false; }
 				
-				// Validation passed. Now execute reCAPTCHA.
-				// This will trigger the invisible check.
-				// If successful (or after user solves challenge), 'onCaptchaSuccess' will be called.
-				const recap = document.getElementById('zcwf_recaptcha_bottom');
-				if (recap && recap.getAttribute('widget-id')) {
-					grecaptcha.execute(recap.getAttribute('widget-id'));
+				// Validation passed. Now execute Global reCAPTCHA.
+				if (typeof window.executeGlobalRecaptcha === 'function') {
+					window.executeGlobalRecaptcha(onCaptchaSuccess);
 				} else {
-					console.error("reCAPTCHA widget not initialized");
-					// Fallback if reCAPTCHA fails to load? Or just alert user.
+					console.error("Global reCAPTCHA function not found.");
 					alert("Please wait for reCAPTCHA to load.");
 				}
 				

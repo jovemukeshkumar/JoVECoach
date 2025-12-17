@@ -9,8 +9,8 @@ import Jove_chat_Image1 from "../../assets/Jove_chat_Image1.png";
 import Jove_chat_Image2 from "../../assets/Jove_chat_Image2.png";
 import Jove_chat_Image3 from "../../assets/Jove_chat_Image3.png";
 import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
-import JoVECoachStepsBgImage1 from "../../assets/JoVECoachStepsBgImage1.png";
-import JoVECoachStepsBgImage2 from "../../assets/JoVECoachStepsBgImage2.png";
+import JoVECoachStepsBgImage1 from "../../assets/JoVECoachStepsBgImage1.webp";
+import JoVECoachStepsBgImage2 from "../../assets/JoVECoachStepsBgImage2.webp";
 
 const optimizedBg1 = await getImage({ src: JoVECoachStepsBgImage1, format: "webp" });
 const optimizedBg2 = await getImage({ src: JoVECoachStepsBgImage2, format: "webp" });
@@ -536,12 +536,12 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 										<div class="mockup-container">
 											{isVideo(step.image) ? (
 												<video class="mockup-image" autoplay muted loop playsinline preload="metadata">
-													<source src={step.image} />
+													<source src={step.image as string} />
 													Your browser does not support the video tag.
 												</video>
 											) : (
 												<div class="image-wrapper">
-													<Image src={step.image} alt={step.title} class="mockup-image" inferSize />
+													<Image src={step.image as ImageMetadata} alt={step.title} class="mockup-image" inferSize />
 												</div>
 											)}
 										</div>
@@ -570,8 +570,11 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 		const track = document.querySelector(".scroll-track");
 		const stepsCount = tabButtons.length;
 
+		// Helper function to check if a file is a video
+		const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i.test(file);
+
 		// Function to activate a specific tab
-		function activateTab(index) {
+		function activateTab(index: number) {
 			if (index < 0 || index >= stepsCount) return;
 
 			// Remove active class from all
