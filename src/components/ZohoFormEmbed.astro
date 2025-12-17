@@ -36,9 +36,10 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 	<input type="text" style="display:none;" id={`CONTACTCF30_${formIdSuffix}`} name="CONTACTCF30" value="-" />
 
 	<!-- Default Values -->
-	<select style="display:none;" name="CONTACTCF15"><option selected value="Paid">Paid</option></select>
-	<select style="display:none;" name="CONTACTCF28"><option selected value="Lead">Lead</option></select>
-	<select style="display:none;" name="CONTACTCF16"><option selected value="Direc">Direc</option></select>
+	<!-- Default Values -->
+	<input type="text" style="display:none;" id={`CONTACTCF15_${formIdSuffix}`} name="CONTACTCF15" value="Paid" />
+	<input type="text" style="display:none;" id={`CONTACTCF28_${formIdSuffix}`} name="CONTACTCF28" value="Lead" />
+	<input type="text" style="display:none;" id={`CONTACTCF16_${formIdSuffix}`} name="CONTACTCF16" value="Direc" />
 
 	{
 		layout === "horizontal" ? (
@@ -285,8 +286,8 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 		}
 
 		// Handle Source/Subsource Logic
-		const sourceSelect = document.querySelector(`select[name="CONTACTCF15"]`); // Source
-		const subsourceSelect = document.querySelector(`select[name="CONTACTCF16"]`); // Subsource
+		const sourceSelect = document.getElementById(`CONTACTCF15_${formIdSuffix}`); // Source
+		const subsourceSelect = document.getElementById(`CONTACTCF16_${formIdSuffix}`); // Subsource
 		const platformSelect = document.getElementById(`CONTACTCF6_${formIdSuffix}`); // Ad Platform (Hidden input in this component, but mapped above)
 
 		const gclid = params.get("gclid");

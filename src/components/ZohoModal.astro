@@ -466,13 +466,13 @@ import formHtml from "../components/zohoform.html?raw";
 			utm_campaign: "CONTACTCF17_modal",
 			utm_term: "CONTACTCF21_modal",
 			utm_content: "CONTACTCF18_modal",
-			ad_set_id: "CONTACTCF7_modal",
 			ad_id: "CONTACTCF4_modal",
-			ad_group_id: "CONTACTCF2_modal",
-			ad_group_name: "CONTACTCF3_modal",
-			ad_campaign_id: "CONTACTCF1_modal",
+			ad_set_id: "CONTACTCF7_modal",
 			ad_name: "CONTACTCF5_modal",
 			ad_platform: "CONTACTCF6_modal",
+			ad_campaign_id: "CONTACTCF1_modal",
+			ad_group_name: "CONTACTCF3_modal",
+			ad_group_id: "CONTACTCF2_modal",
 			ad_campaign_name: "CONTACTCF30_modal",
 			landing_page_url: "CONTACTCF11_modal",
 			referrer_url: "CONTACTCF14_modal",
@@ -481,9 +481,87 @@ import formHtml from "../components/zohoform.html?raw";
 		for (const key in mapping) {
 			const fieldId = mapping[key];
 			const el = document.getElementById(fieldId);
-			if (!el) continue;
-			if (params.has(key)) {
+			if (el && params.has(key)) {
 				el.value = params.get(key);
+			}
+		}
+
+		// Fallback for adset_id (no underscore)
+		const adSetField = document.getElementById("CONTACTCF7_modal");
+		if (adSetField && !adSetField.value && params.has("adset_id")) {
+			adSetField.value = params.get("adset_id");
+		}
+
+		// Handle Dropdowns
+		const subsourceSelect = document.getElementById("CONTACTCF16_modal"); // Subsource
+		const sourceSelect = document.getElementById("CONTACTCF15_modal"); // Source
+		const platformSelect = document.getElementById("CONTACTCF6_modal"); // Ad Platform
+
+		const gclid = params.get("gclid");
+		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
+		const utmMedium = params.get("utm_medium");
+		const adPlatform = params.get("ad_platform");
+		const adId = params.get("ad_id");
+
+		// 1. Ad Platform
+		if (platformSelect) {
+			if (adPlatform) {
+				const options = Array.from(platformSelect.options).map(o => o.value);
+				if (options.includes(adPlatform)) platformSelect.value = adPlatform;
+				else if (adPlatform.toLowerCase() === "google") platformSelect.value = "Google";
+				else if (adPlatform.toLowerCase() === "meta" || adPlatform.toLowerCase() === "facebook") platformSelect.value = "Meta";
+			} else if (gclid) {
+				platformSelect.value = "Google";
+			}
+		}
+
+		// 2. Source (Paid, Organic, Social)
+		if (sourceSelect) {
+			if (sources.some(s => s.toLowerCase() === "paid") || gclid || adId) {
+				sourceSelect.value = "Paid";
+			} else if (sources.some(s => s.toLowerCase() === "organic")) {
+				sourceSelect.value = "Organic";
+			} else if (sources.some(s => s.toLowerCase() === "social")) {
+				sourceSelect.value = "Social";
+			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
+				sourceSelect.value = "Paid";
+			} else {
+				// Default to Organic if nothing else matches? Or leave as is.
+				// zohoform.html sets to Organic default.
+				sourceSelect.value = "Organic";
+			}
+		}
+
+		// 3. Subsource
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			const subsourceOptions = Array.from(subsourceSelect.options).map(o => o.value);
+
+			// Check 'source' params
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "LinkedIn";
+			}
+
+			// Check utm_source
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "LinkedIn";
+				else if (subsourceOptions.includes(utmSource)) subsourceValue = utmSource;
+			}
+
+			if (!subsourceValue && gclid) {
+				subsourceValue = "Google Ads";
+			}
+
+			if (subsourceValue) {
+				subsourceSelect.value = subsourceValue;
+			} else if (!subsourceValue && !utmSource && !gclid) {
+				// Fallback to Direct if nothing else
+				subsourceSelect.value = "Direct";
 			}
 		}
 
