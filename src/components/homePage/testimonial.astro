@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import ArrowLeft from "../../assets/Arrow.svg";
 import ArrowRight from "../../assets/Arrow.svg";
 import testimonialAuthor1 from "../../assets/testimonialAuthor1.png";
@@ -10,6 +10,9 @@ import r1 from "../../assets/r1.jpg";
 import r2 from "../../assets/r2.jpg";
 import r3 from "../../assets/r3.jpg";
 import r4 from "../../assets/r4.jpg";
+import testimonialBg from "../../assets/testimonialBg.png";
+
+const optimizedTestimonialBg = await getImage({ src: testimonialBg, format: "webp" });
 
 const testimonials = [
 	{
@@ -63,7 +66,7 @@ const testimonials = [
 ];
 ---
 
-<section class="testimonial-section">
+<section class="testimonial-section" style={`--testimonial-bg: url(${optimizedTestimonialBg.src});`}>
 	<div class="container">
 		<h2 class="title">
 			You are in <span class="highlight">good company</span>
@@ -132,7 +135,7 @@ const testimonials = [
 		inset: 0;
 		z-index: 0;
 		pointer-events: none;
-		background-image: url("../../assets/testimonialBg.png");
+		background-image: var(--testimonial-bg);
 		background-repeat: no-repeat;
 		background-position: center top;
 		background-size: contain;
