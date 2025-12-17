@@ -41,7 +41,7 @@ import formHtml from "../components/zohoform.html?raw";
 
 				<!-- Hidden Fields (UTM etc) with _modal suffix -->
 				<div class="zcwf_row wfrm_fld_dpNn"><div class="zcwf_col_fld"><input type="text" id="CONTACTCF11_modal" name="CONTACTCF11" value="https://" /></div></div>
-				<div class="zcwf_row wfrm_fld_dpNn"><div class="zcwf_col_fld"><input type="text" id="CONTACTCF14_modal" name="CONTACTCF14" value="https://" /></div></div>
+				<div class="zcwf_row wfrm_fld_dpNn"><div class="zcwf_col_fld"><input type="text" id="CONTACTCF14_modal" name="CONTACTCF14" value="" /></div></div>
 				<div class="zcwf_row wfrm_fld_dpNn"><div class="zcwf_col_fld"><input type="text" id="CONTACTCF20_modal" name="CONTACTCF20" value="-" /></div></div>
 				<div class="zcwf_row wfrm_fld_dpNn"><div class="zcwf_col_fld"><input type="text" id="CONTACTCF21_modal" name="CONTACTCF21" value="-" /></div></div>
 				<div class="zcwf_row wfrm_fld_dpNn"><div class="zcwf_col_fld"><input type="text" id="CONTACTCF18_modal" name="CONTACTCF18" value="-" /></div></div>
@@ -488,8 +488,14 @@ import formHtml from "../components/zohoform.html?raw";
 
 		// Fallback for adset_id (no underscore)
 		const adSetField = document.getElementById("CONTACTCF7_modal");
-		if (adSetField && !adSetField.value && params.has("adset_id")) {
+		if (adSetField && (adSetField.value === "-" || !adSetField.value) && params.has("adset_id")) {
 			adSetField.value = params.get("adset_id");
+		}
+
+		// Fallback for campaign_name (if ad_campaign_name is missing)
+		const campaignNameField = document.getElementById("CONTACTCF30_modal");
+		if (campaignNameField && (campaignNameField.value === "-" || !campaignNameField.value) && params.has("campaign_name")) {
+			campaignNameField.value = params.get("campaign_name");
 		}
 
 		// Handle Dropdowns
@@ -503,6 +509,8 @@ import formHtml from "../components/zohoform.html?raw";
 		const utmMedium = params.get("utm_medium");
 		const adPlatform = params.get("ad_platform");
 		const adId = params.get("ad_id");
+		// Referrer Logic: Check referrer_url, referrer, ref
+		const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
 
 		// 1. Ad Platform
 		if (platformSelect) {
@@ -569,6 +577,12 @@ import formHtml from "../components/zohoform.html?raw";
 		if (landingField) landingField.value = window.location.href;
 
 		const refField = document.getElementById("CONTACTCF14_modal");
-		if (refField) refField.value = document.referrer || "-";
+		if (refField) {
+			if (referrerUrlParam) {
+				refField.value = referrerUrlParam;
+			} else {
+				refField.value = document.referrer || "-";
+			}
+		}
 	})();
 </script>

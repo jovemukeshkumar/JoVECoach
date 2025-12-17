@@ -20,7 +20,7 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 
 	<!-- UTM Hidden Fields -->
 	<input type="text" style="display:none;" id={`CONTACTCF11_${formIdSuffix}`} name="CONTACTCF11" value="https://" />
-	<input type="text" style="display:none;" id={`CONTACTCF14_${formIdSuffix}`} name="CONTACTCF14" value="https://" />
+	<input type="text" style="display:none;" id={`CONTACTCF14_${formIdSuffix}`} name="CONTACTCF14" value="" />
 	<input type="text" style="display:none;" id={`CONTACTCF20_${formIdSuffix}`} name="CONTACTCF20" value="-" />
 	<input type="text" style="display:none;" id={`CONTACTCF19_${formIdSuffix}`} name="CONTACTCF19" value="-" />
 	<input type="text" style="display:none;" id={`CONTACTCF17_${formIdSuffix}`} name="CONTACTCF17" value="-" />
@@ -253,6 +253,7 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 	// UTM Population
 	(function () {
 		const params = new URLSearchParams(window.location.search);
+
 		const mapping = {
 			utm_source: `CONTACTCF20_${formIdSuffix}`,
 			utm_medium: `CONTACTCF19_${formIdSuffix}`,
@@ -281,8 +282,14 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 
 		// Fallback for adset_id (no underscore)
 		const adSetField = document.getElementById(`CONTACTCF7_${formIdSuffix}`);
-		if (adSetField && !adSetField.value && params.has("adset_id")) {
+		if (adSetField && (adSetField.value === "-" || !adSetField.value) && params.has("adset_id")) {
 			adSetField.value = params.get("adset_id");
+		}
+
+		// Fallback for campaign_name (if ad_campaign_name is missing)
+		const campaignNameField = document.getElementById(`CONTACTCF30_${formIdSuffix}`);
+		if (campaignNameField && (campaignNameField.value === "-" || !campaignNameField.value) && params.has("campaign_name")) {
+			campaignNameField.value = params.get("campaign_name");
 		}
 
 		// Handle Source/Subsource Logic
@@ -295,6 +302,9 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 		const utmSource = params.get("utm_source");
 		const utmMedium = params.get("utm_medium");
 		const adPlatform = params.get("ad_platform");
+
+		// Referrer Logic: Check referrer_url, referrer, ref, then document.referrer
+		const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
 
 		// 1. Ad Platform Logic
 		if (platformSelect) {
@@ -339,6 +349,12 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 		if (landingField) landingField.value = window.location.href;
 
 		const refField = document.getElementById(`CONTACTCF14_${formIdSuffix}`);
-		if (refField) refField.value = document.referrer || "-";
+		if (refField) {
+			if (referrerUrlParam) {
+				refField.value = referrerUrlParam;
+			} else {
+				refField.value = document.referrer || "-";
+			}
+		}
 	})();
 </script>

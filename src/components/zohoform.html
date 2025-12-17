@@ -586,7 +586,7 @@
 			</div>
 			<div class='zcwf_col_fld'>
 				<input type='text' id='CONTACTCF14' aria-required='false' aria-label='CONTACTCF14' name='CONTACTCF14'
-					aria-valuemax='255' maxlength='255' value='https&#x3a;&#x2f;&#x2f;'>
+					aria-valuemax='255' maxlength='255' value=''>
 				</input>
 				<div class='zcwf_col_help'>
 				</div>
@@ -736,6 +736,18 @@
 			</div>
 			<div class='zcwf_col_fld'>
 				<input type='text' id='CONTACTCF2' aria-required='false' aria-label='CONTACTCF2' name='CONTACTCF2'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF30'>Ad Campaign Name</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF30' aria-required='false' aria-label='CONTACTCF30' name='CONTACTCF30'
 					aria-valuemax='255' maxlength='255' value='-'>
 				</input>
 				<div class='zcwf_col_help'>
@@ -960,7 +972,7 @@
 				const adGroupId = getParam('ad_group_id');
 				const adGroupName = getParam('ad_group_name');
 				const adCampaignId = getParam('ad_campaign_id');
-				const adCampaignName = getParam('ad_campaign_name'); // Captured for logic/logging
+				const adCampaignName = getParam('ad_campaign_name') || getParam('campaign_name'); // Support both
 				const adName = getParam('ad_name');
 				const adPlatform = getParam('ad_platform');
 				
@@ -969,7 +981,7 @@
 
 				const gclid = getParam('gclid');
 				const sources = params.getAll('source'); // Capture all source params
-
+				const referrerUrlParam = getParam('referrer_url') || getParam('referrer') || getParam('ref');
 				// Map to Zoho CRM fields
 				if (utmSource && form['CONTACTCF20']) form['CONTACTCF20'].value = utmSource;
 				if (utmMedium && form['CONTACTCF19']) form['CONTACTCF19'].value = utmMedium;
@@ -1057,8 +1069,14 @@
 				// Set Landing Page URL
 				if (form['CONTACTCF11']) form['CONTACTCF11'].value = window.location.href;
 				
-				// Set Referrer URL
-				if (form['CONTACTCF14']) form['CONTACTCF14'].value = document.referrer;
+				// Set Referrer URL (Prioritize URL param, fallback to document.referrer)
+				if (form['CONTACTCF14']) {
+					if (referrerUrlParam) {
+						form['CONTACTCF14'].value = referrerUrlParam;
+					} else {
+						form['CONTACTCF14'].value = document.referrer || "-";
+					}
+				}
 
 				console.log("Form populated with params:", Object.fromEntries(params));
 			});
