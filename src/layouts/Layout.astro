@@ -9,49 +9,25 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>JoVE Coach | Master Any STEM Concept in Minutes</title>
-		<meta
-			name="description"
-			content="Ace your tests, not your stress. AI-powered STEM learning with 2-minute expert videos and instant quizzes. Trusted by 1M+ students. Try free for 7 days."
-		/>
-		<meta
-			name="keywords"
-			content="AI STEM learning, STEM videos, biology help, chemistry videos, physics tutorials, AI-powered quizzes, exam prep, study help, college STEM, high school science, JoVE Coach"
-		/>
+		<meta name="description" content="Ace your tests, not your stress. AI-powered STEM learning with 2-minute expert videos and instant quizzes. Trusted by 1M+ students. Try free for 7 days." />
+		<meta name="keywords" content="AI STEM learning, STEM videos, biology help, chemistry videos, physics tutorials, AI-powered quizzes, exam prep, study help, college STEM, high school science, JoVE Coach" />
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href="https://coach.jove.com/pp" />
 
 		<!-- Open Graph / Facebook / LinkedIn -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://coach.jove.com/pp" />
-		<meta
-			property="og:title"
-			content="AI Powered STEM Learning | JoVE Coach"
-		/>
-		<meta
-			property="og:description"
-			content="AI-powered STEM learning. 2-minute expert videos. Instant quizzes. Trusted by 1M+ students at 1,800+ universities. Try free for 7 days."
-		/>
-		<meta
-			property="og:image"
-			content="https://coach.jove.com/pp/home-social.jpg"
-		/>
+		<meta property="og:title" content="AI Powered STEM Learning | JoVE Coach" />
+		<meta property="og:description" content="AI-powered STEM learning. 2-minute expert videos. Instant quizzes. Trusted by 1M+ students at 1,800+ universities. Try free for 7 days." />
+		<meta property="og:image" content="https://coach.jove.com/pp/home-social.jpg" />
 		<meta property="og:site_name" content="JoVE Coach" />
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:url" content="https://coach.jove.com/pp" />
-		<meta
-			name="twitter:title"
-			content="AI Powered STEM Learning | JoVE Coach"
-		/>
-		<meta
-			name="twitter:description"
-			content="AI-powered STEM learning. Expert videos. Instant quizzes. Trusted by 1M+ students. Try free for 7 days."
-		/>
-		<meta
-			name="twitter:image"
-			content="https://coach.jove.com/pp/home-social.jpg"
-		/>
+		<meta name="twitter:title" content="AI Powered STEM Learning | JoVE Coach" />
+		<meta name="twitter:description" content="AI-powered STEM learning. Expert videos. Instant quizzes. Trusted by 1M+ students. Try free for 7 days." />
+		<meta name="twitter:image" content="https://coach.jove.com/pp/home-social.jpg" />
 		<!-- <meta name="twitter:site" content="@JoVEJournal" /> -->
 
 		<!-- JSON-LD Schema -->
@@ -62,7 +38,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 				"name": "JoVE Coach",
 				"description": "AI Powered STEM Learning | Bite-sized videos and instant quizzes to help students master Biology, Chemistry, and Physics.",
 				"url": "https://coach.jove.com/pp/",
-				"logo": "./logo.svg",
+				"logo": "./logo.svg"
 				// "sameAs": [
 				// 	"https://www.linkedin.com/company/jovecoach",
 				// 	"https://www.youtube.com/jovecoach",
@@ -74,10 +50,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-			rel="stylesheet"
-		/>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
 		<!-- Google Tag Manager -->
 		<script>
 			(function (w, d, s, l, i) {
@@ -102,17 +75,12 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		</script>
 		<!-- End Google Tag Manager -->
 		<meta name="generator" content={Astro.generator} />
+		<slot name="head" />
 	</head>
 
 	<body>
 		<!-- Google Tag Manager (noscript) -->
-		<noscript
-			><iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTMMCSS2G35"
-				height="0"
-				width="0"
-				style="display:none;visibility:hidden"></iframe></noscript
-		><!-- End Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTMMCSS2G35" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->
 		<slot />
 		<SpeedInsights />
 	</body>

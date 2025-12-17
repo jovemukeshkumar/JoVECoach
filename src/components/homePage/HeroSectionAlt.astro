@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import HeroSectionVideo from "../../assets/LP-Girl-MR.webm";
 import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.png";
 import HeroSectioncognition from "../../assets/HeroSectioncognition.svg";
@@ -8,6 +8,9 @@ import NavLogo from "../../assets/NavLogo.svg";
 import HeroGridBg from "../../assets/HeroSectionGridBg.svg";
 import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
 import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
+import HeroSectionBlueBg from "../../assets/HeroSectionBlueBg.png";
+
+const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" });
 
 // Jove Coach Hero Section Component
 ---
@@ -28,7 +31,7 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
 		inset: 0;
 		z-index: 0;
 		pointer-events: none;
-		background-image: url("../../assets/HeroSectionBlueBg.png");
+		background-image: var(--hero-bg);
 		background-repeat: no-repeat;
 		background-position: center bottom;
 		background-size: contain;
@@ -849,9 +852,9 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
   } */
 </style>
 
-<section class="hero-section">
+<section class="hero-section" style={`--hero-bg: url(${optimizedHeroBg.src});`}>
 	<div class="logo">
-		<Image src={NavLogo} alt={"Logo"} />
+		<Image src={NavLogo} alt={"Logo"} loading="eager" />
 	</div>
 
 	<div class="hero-container">
@@ -926,11 +929,11 @@ import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
 					<!-- Stat Badges -->
 
 					<!-- Girl Placeholder -->
-					<video width="900px" height="auto" autoplay muted loop class="hero-video">
+					<video width="900px" height="auto" autoplay muted loop playsinline class="hero-video" poster={HeroSectionImage.src}>
 						<source src={HeroSectionVideo} type="video/webm" />
 						Your browser does not support the video tag.
 					</video>
-					<Image src={HeroSectionImage} alt="Hero Video" class="hero-video hero-mobile-img" />
+					<Image src={HeroSectionImage} alt="Hero Video" class="hero-video hero-mobile-img" loading="eager" />
 				</div>
 			</div>
 		</div>
