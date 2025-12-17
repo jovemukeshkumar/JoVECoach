@@ -536,8 +536,7 @@
 				}
 			}
 		</style>
-		<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-	<form action='https://forms.zohopublic.in/coachproductjo1/form/StudentsGenLP/formperma/C_1h6ALc4ULI7tQMz2EShFwpEY5Hn7M_wS2-yuF2cE0/htmlRecords/submit' name='form' method='POST' accept-charset='UTF-8' id='form' target="hidden_iframe">
+	<form action='/api/submit-zoho-proxy' name='form' method='POST' accept-charset='UTF-8' id='form'>
 		<input type="hidden" name="referrerName" value="null">
 		
 		<!-- Hidden Fields from Zoho Form -->
@@ -727,7 +726,7 @@
 			</div>
 		</div>
 		<div class = 'zcwf_row wfrm_fld_dpNn'>
-			<div class = 'zcwf_col_lab' style = 'font-size:12px; font-family: Arial;'>
+			<div = 'zcwf_col_lab' style = 'font-size:12px; font-family: Arial;'>
 				<label for = 'Dropdown2'>Source</label>
 			</div>
 			<div class = 'zcwf_col_fld'>
@@ -840,34 +839,10 @@
 				}
 				if (!validateEmail1127844000000480553()) { return false; }
 				
-				// Form is valid, proceed with submission handling
-				const form = document.getElementById('form');
+				// Form is valid, allow submission to API proxy
 				const submitBtn = document.getElementById('formsubmit');
-				
-				// Disable button to prevent double submit
 				submitBtn.value = 'Submitting...';
 				submitBtn.disabled = true;
-
-				// Get values for redirection
-				const nameVal = document.getElementById('SingleLine').value;
-				const emailVal = document.getElementById('Email').value;
-
-				// Wait for the iframe to load (which means submission is done)
-				const iframe = document.getElementById('hidden_iframe');
-				let loadCount = 0;
-				
-				iframe.onload = function() {
-					loadCount++;
-					console.log('Iframe loaded. Count:', loadCount);
-					if (loadCount > 0) { // Ensure it's the submission load, not initial empty load
-						console.log('Submission complete. Redirecting...');
-						// Redirect to success page
-						const redirectUrl = new URL('https://coach.jove.com/signup');
-						redirectUrl.searchParams.set('name', nameVal);
-						redirectUrl.searchParams.set('email', emailVal);
-						window.location.href = redirectUrl.toString();
-					}
-				};
 
 				return true;
 			}
