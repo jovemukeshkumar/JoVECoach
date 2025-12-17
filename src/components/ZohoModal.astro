@@ -19,7 +19,7 @@ import formHtml from "../components/zohoform.html?raw";
 				<input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=" />
 				<input type="text" style="display:none;" name="returnURL" value="null" />
 
-				<div class="zcwf_title">Ace your tests. Skip the stress.</div>
+				<div class="zcwf_title">The Smarter Way to Learn STEM</div>
 				<div class="zcwf_subtitle">Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.</div>
 
 				<div class="zcwf_row zcwf_formVisibleFields_row">
@@ -180,6 +180,7 @@ import formHtml from "../components/zohoform.html?raw";
 		font-weight: 500 !important;
 		margin-bottom: 12px;
 		margin-top: 20px;
+		max-width: 75%;
 	}
 
 	.zcwf_subtitle {
@@ -436,6 +437,21 @@ import formHtml from "../components/zohoform.html?raw";
 		if (!reCaptchaAlert_modal()) {
 			return false;
 		}
+		// Construct Redirect URL with Name and Email
+		var nameField = document.getElementById("Last_Name_modal");
+		var emailField = document.getElementById("Email_modal");
+		var redirectURL = "https://coach.jove.com/signup";
+
+		if (nameField && emailField) {
+			redirectURL += "?name=" + encodeURIComponent(nameField.value) + "&email=" + encodeURIComponent(emailField.value);
+		}
+
+		// Set returnURL hidden field
+		var returnURLField = document.querySelector("#webform_modal input[name='returnURL']");
+		if (returnURLField) {
+			returnURLField.value = redirectURL;
+		}
+
 		document.querySelector("#webform_modal .formsubmit").setAttribute("disabled", true);
 		return true;
 	};

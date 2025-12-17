@@ -542,7 +542,7 @@
 				}
 			}
 		</style>
-		<div class="zcwf_title">Ace your tests. Skip the stress.</div>
+		<div class="zcwf_title">The Smarter Way to Learn STEM</div>
 		<div class="zcwf_subtitle">Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.</div>
 		<div class='zcwf_row zcwf_formVisibleFields_row'>
 			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
@@ -930,6 +930,22 @@
 					smarturlfield.setAttribute('name', 'service');
 					webform.appendChild(smarturlfield);
 				}
+
+				// Construct Redirect URL with Name and Email
+				var nameField = document.getElementById("Last_Name");
+				var emailField = document.getElementById("Email");
+				var redirectURL = "https://coach.jove.com/signup";
+
+				if (nameField && emailField) {
+					redirectURL += "?name=" + encodeURIComponent(nameField.value) + "&email=" + encodeURIComponent(emailField.value);
+				}
+
+				// Set returnURL hidden field
+				var returnURLField = document.querySelector("#webform1127844000000480553 input[name='returnURL']");
+				if (returnURLField) {
+					returnURLField.value = redirectURL;
+				}
+
 				document.querySelector('.crmWebToEntityForm .formsubmit').setAttribute('disabled', true);
 			}
 			function tooltipShow1127844000000480553(el) {

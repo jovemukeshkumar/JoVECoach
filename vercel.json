@@ -12,5 +12,16 @@
       "source": "/pp/:path*",
       "destination": "/:path*"
     }
+  ],
+  "headers": [
+    {
+      "source": "/(.*).(jpg|jpeg|png|gif|svg|webp|webm|ico|css|js|woff|woff2)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
+      ]
+    }
   ]
 }
