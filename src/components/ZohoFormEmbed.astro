@@ -27,6 +27,12 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 	<input type="text" style="display:none;" id={`CONTACTCF21_${formIdSuffix}`} name="CONTACTCF21" value="-" />
 	<input type="text" style="display:none;" id={`CONTACTCF18_${formIdSuffix}`} name="CONTACTCF18" value="-" />
 	<input type="text" style="display:none;" id={`CONTACTCF7_${formIdSuffix}`} name="CONTACTCF7" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF4_${formIdSuffix}`} name="CONTACTCF4" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF5_${formIdSuffix}`} name="CONTACTCF5" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF6_${formIdSuffix}`} name="CONTACTCF6" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF1_${formIdSuffix}`} name="CONTACTCF1" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF3_${formIdSuffix}`} name="CONTACTCF3" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF2_${formIdSuffix}`} name="CONTACTCF2" value="-" />
 
 	<!-- Default Values -->
 	<select style="display:none;" name="CONTACTCF15"><option selected value="Paid">Paid</option></select>
@@ -251,7 +257,13 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 			utm_campaign: `CONTACTCF17_${formIdSuffix}`,
 			utm_term: `CONTACTCF21_${formIdSuffix}`,
 			utm_content: `CONTACTCF18_${formIdSuffix}`,
+			ad_id: `CONTACTCF4_${formIdSuffix}`,
 			ad_set_id: `CONTACTCF7_${formIdSuffix}`,
+			ad_name: `CONTACTCF5_${formIdSuffix}`,
+			ad_platform: `CONTACTCF6_${formIdSuffix}`,
+			ad_campaign_id: `CONTACTCF1_${formIdSuffix}`,
+			ad_group_name: `CONTACTCF3_${formIdSuffix}`,
+			ad_group_id: `CONTACTCF2_${formIdSuffix}`,
 			landing_page_url: `CONTACTCF11_${formIdSuffix}`,
 			referrer_url: `CONTACTCF14_${formIdSuffix}`,
 		};
@@ -262,6 +274,62 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 			if (el && params.has(key)) {
 				el.value = params.get(key);
 			}
+		}
+
+		// Fallback for adset_id (no underscore)
+		const adSetField = document.getElementById(`CONTACTCF7_${formIdSuffix}`);
+		if (adSetField && !adSetField.value && params.has("adset_id")) {
+			adSetField.value = params.get("adset_id");
+		}
+
+		// Handle Source/Subsource Logic
+		const sourceSelect = document.querySelector(`select[name="CONTACTCF15"]`); // Source
+		const subsourceSelect = document.querySelector(`select[name="CONTACTCF16"]`); // Subsource
+		const platformSelect = document.getElementById(`CONTACTCF6_${formIdSuffix}`); // Ad Platform (Hidden input in this component, but mapped above)
+
+		const gclid = params.get("gclid");
+		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
+		const utmMedium = params.get("utm_medium");
+		const adPlatform = params.get("ad_platform");
+
+		// 1. Ad Platform Logic
+		if (platformSelect) {
+			if (adPlatform) platformSelect.value = adPlatform;
+			else if (gclid) platformSelect.value = "Google";
+		}
+
+		// 2. Source Logic
+		if (sourceSelect) {
+			if (sources.some(s => s.toLowerCase() === "paid") || gclid || params.get("ad_id")) {
+				sourceSelect.value = "Paid";
+			} else if (sources.some(s => s.toLowerCase() === "organic")) {
+				sourceSelect.value = "Organic";
+			} else if (sources.some(s => s.toLowerCase() === "social")) {
+				sourceSelect.value = "Social";
+			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
+				sourceSelect.value = "Paid";
+			}
+		}
+
+		// 3. Subsource Logic
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			// Check 'source' params
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "LinkedIn";
+			}
+			// Check utm_source
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "LinkedIn";
+			}
+			if (!subsourceValue && gclid) subsourceValue = "Google Ads";
+
+			if (subsourceValue) subsourceSelect.value = subsourceValue;
 		}
 
 		const landingField = document.getElementById(`CONTACTCF11_${formIdSuffix}`);

@@ -942,92 +942,124 @@
 				});
 			}
 
-			// Function to get URL parameters
-			function getUrlParameter(name) {
-				name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-				var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-				var results = regex.exec(location.search);
-				return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-			}
-
 			// Populate hidden fields on load
 			window.addEventListener('DOMContentLoaded', (event) => {
 				const form = document.forms['WebToContacts1127844000000480553'];
+				const params = new URLSearchParams(window.location.search);
 				
-				// Get URL parameters
-				const utmSource = getUrlParameter('utm_source');
-				const utmMedium = getUrlParameter('utm_medium');
-				const utmCampaign = getUrlParameter('utm_campaign');
-				const utmTerm = getUrlParameter('utm_term');
-				const utmContent = getUrlParameter('utm_content');
-				const adId = getUrlParameter('ad_id');
-				const adGroupId = getUrlParameter('ad_group_id');
-				const adGroupName = getUrlParameter('ad_group_name');
-				const adCampaignId = getUrlParameter('ad_campaign_id');
-				const adSetId = getUrlParameter('ad_set_id');
-				const adName = getUrlParameter('ad_name');
-				const adPlatform = getUrlParameter('ad_platform');
-				const gclid = getUrlParameter('gclid');
+				// Helper to get param
+				const getParam = (key) => params.get(key) || '';
 
-				// Map to Zoho CRM fields (using names from backup)
+				const utmSource = getParam('utm_source');
+				const utmMedium = getParam('utm_medium');
+				const utmCampaign = getParam('utm_campaign');
+				const utmTerm = getParam('utm_term');
+				const utmContent = getParam('utm_content');
+				
+				const adId = getParam('ad_id');
+				const adGroupId = getParam('ad_group_id');
+				const adGroupName = getParam('ad_group_name');
+				const adCampaignId = getParam('ad_campaign_id');
+				const adCampaignName = getParam('ad_campaign_name'); // Captured for logic/logging
+				const adName = getParam('ad_name');
+				const adPlatform = getParam('ad_platform');
+				
+				let adSetId = getParam('ad_set_id');
+				if (!adSetId) adSetId = getParam('adset_id');
+
+				const gclid = getParam('gclid');
+				const sources = params.getAll('source'); // Capture all source params
+
+				// Map to Zoho CRM fields
 				if (utmSource && form['CONTACTCF20']) form['CONTACTCF20'].value = utmSource;
 				if (utmMedium && form['CONTACTCF19']) form['CONTACTCF19'].value = utmMedium;
 				if (utmCampaign && form['CONTACTCF17']) form['CONTACTCF17'].value = utmCampaign;
 				if (utmTerm && form['CONTACTCF21']) form['CONTACTCF21'].value = utmTerm;
 				if (utmContent && form['CONTACTCF18']) form['CONTACTCF18'].value = utmContent;
+				
 				if (adId && form['CONTACTCF4']) form['CONTACTCF4'].value = adId;
 				if (adGroupId && form['CONTACTCF2']) form['CONTACTCF2'].value = adGroupId;
 				if (adGroupName && form['CONTACTCF3']) form['CONTACTCF3'].value = adGroupName;
 				if (adCampaignId && form['CONTACTCF1']) form['CONTACTCF1'].value = adCampaignId;
+				if (adName && form['CONTACTCF5']) form['CONTACTCF5'].value = adName;
+				
 				if (adSetId && form['CONTACTCF7']) {
 					console.log("Captured ad_set_id:", adSetId);
 					form['CONTACTCF7'].value = adSetId;
 				}
-				if (adName && form['CONTACTCF5']) form['CONTACTCF5'].value = adName;
 
-				// Handle Dropdowns (Subsource and Ad Platform)
-				const subsourceSelect = form['CONTACTCF16'];
-				const sourceSelect = form['CONTACTCF15'];
-				const platformSelect = form['CONTACTCF6'];
+				// Handle Dropdowns
+				const subsourceSelect = form['CONTACTCF16']; // Subsource
+				const sourceSelect = form['CONTACTCF15']; // Source
+				const platformSelect = form['CONTACTCF6']; // Ad Platform
 
-				if (gclid) {
-					if (subsourceSelect) subsourceSelect.value = 'Google Ads';
-					if (sourceSelect) sourceSelect.value = 'Paid';
-					if (platformSelect) platformSelect.value = 'Google';
-				} else if (utmSource) {
-					// Try to match utm_source to Subsource options
-					if (subsourceSelect) {
-						const options = Array.from(subsourceSelect.options).map(o => o.value);
-						if (options.includes(utmSource)) {
-							subsourceSelect.value = utmSource;
-						} else if (utmSource.toLowerCase().includes('google')) {
-							subsourceSelect.value = 'Google Ads';
-						} else if (utmSource.toLowerCase().includes('meta') || utmSource.toLowerCase().includes('facebook')) {
-							subsourceSelect.value = 'Meta Ads';
-						} else if (utmSource.toLowerCase().includes('email')) {
-							subsourceSelect.value = 'Direct'; // Fallback
-						}
+				// 1. Ad Platform
+				if (adPlatform && platformSelect) {
+					const options = Array.from(platformSelect.options).map(o => o.value);
+					if (options.includes(adPlatform)) {
+						platformSelect.value = adPlatform;
+					} else if (adPlatform.toLowerCase() === 'google') {
+						platformSelect.value = 'Google';
+					} else if (adPlatform.toLowerCase() === 'meta' || adPlatform.toLowerCase() === 'facebook') {
+						platformSelect.value = 'Meta';
 					}
-					
-					// Set Source based on medium
-					if (sourceSelect) {
-						if (utmMedium && (utmMedium.toLowerCase().includes('cpc') || utmMedium.toLowerCase().includes('paid'))) {
-							sourceSelect.value = 'Paid';
-						} else {
-							sourceSelect.value = 'Organic';
-						}
-					}
-				} else {
-					// Default to Direct/Organic if no params
-					if (subsourceSelect) subsourceSelect.value = 'Direct';
-					if (sourceSelect) sourceSelect.value = 'Organic';
+				} else if (gclid && platformSelect) {
+					platformSelect.value = 'Google';
 				}
 
+				// 2. Source (Paid, Organic, Social)
+				if (sourceSelect) {
+					if (sources.some(s => s.toLowerCase() === 'paid') || gclid || adId) {
+						sourceSelect.value = 'Paid';
+					} else if (sources.some(s => s.toLowerCase() === 'organic')) {
+						sourceSelect.value = 'Organic';
+					} else if (sources.some(s => s.toLowerCase() === 'social')) {
+						sourceSelect.value = 'Social';
+					} else if (utmMedium && (utmMedium.toLowerCase().includes('cpc') || utmMedium.toLowerCase().includes('paid'))) {
+						sourceSelect.value = 'Paid';
+					} else {
+						sourceSelect.value = 'Organic'; // Default
+					}
+				}
+
+				// 3. Subsource
+				if (subsourceSelect) {
+					let subsourceValue = '';
+					const subsourceOptions = Array.from(subsourceSelect.options).map(o => o.value);
+					
+					// Check 'source' params
+					for (const s of sources) {
+						if (s.toLowerCase() === 'google') subsourceValue = 'Google Ads';
+						else if (s.toLowerCase() === 'facebook' || s.toLowerCase() === 'meta') subsourceValue = 'Meta Ads';
+						else if (s.toLowerCase() === 'linkedin') subsourceValue = 'LinkedIn';
+					}
+
+					// Check utm_source
+					if (!subsourceValue && utmSource) {
+						if (utmSource.toLowerCase().includes('google')) subsourceValue = 'Google Ads';
+						else if (utmSource.toLowerCase().includes('facebook') || utmSource.toLowerCase().includes('meta')) subsourceValue = 'Meta Ads';
+						else if (utmSource.toLowerCase().includes('linkedin')) subsourceValue = 'LinkedIn';
+						else if (subsourceOptions.includes(utmSource)) subsourceValue = utmSource;
+					}
+
+					if (!subsourceValue && gclid) {
+						subsourceValue = 'Google Ads';
+					}
+
+					if (subsourceValue) {
+						subsourceSelect.value = subsourceValue;
+					} else if (!subsourceValue && !utmSource && !gclid) {
+						subsourceSelect.value = 'Direct';
+					}
+				}
+				
 				// Set Landing Page URL
 				if (form['CONTACTCF11']) form['CONTACTCF11'].value = window.location.href;
 				
 				// Set Referrer URL
 				if (form['CONTACTCF14']) form['CONTACTCF14'].value = document.referrer;
+
+				console.log("Form populated with params:", Object.fromEntries(params));
 			});
 		</script>
 	</form>
