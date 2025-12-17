@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import aILogo from "../../assets/aILogo.svg";
 import videoPlay from "../../assets/videoPlay.svg";
 import notePad from "../../assets/notePad.svg";
@@ -9,6 +9,12 @@ import Jove_chat_Image1 from "../../assets/Jove_chat_Image1.png";
 import Jove_chat_Image2 from "../../assets/Jove_chat_Image2.png";
 import Jove_chat_Image3 from "../../assets/Jove_chat_Image3.png";
 import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
+import JoVECoachStepsBgImage1 from "../../assets/JoVECoachStepsBgImage1.png";
+import JoVECoachStepsBgImage2 from "../../assets/JoVECoachStepsBgImage2.png";
+
+const optimizedBg1 = await getImage({ src: JoVECoachStepsBgImage1, format: "webp" });
+const optimizedBg2 = await getImage({ src: JoVECoachStepsBgImage2, format: "webp" });
+
 const steps = [
 	{
 		id: "ask",
@@ -85,7 +91,7 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 		z-index: 0 !important;
 		pointer-events: none;
 
-		background-image: url("../../assets/JoVECoachStepsBgImage1.png"), url("../../assets/JoVECoachStepsBgImage2.png");
+		background-image: var(--bg-image-1), var(--bg-image-2);
 
 		background-repeat: no-repeat, no-repeat;
 		background-position:
@@ -461,7 +467,7 @@ const isVideo = file => typeof file === "string" && /\.(mp4|webm|ogg|mov|m4v)$/i
 	}
 </style>
 
-<section class="jove-coach-section">
+<section class="jove-coach-section" style={`--bg-image-1: url(${optimizedBg1.src}); --bg-image-2: url(${optimizedBg2.src});`}>
 	<div class="container">
 		<!-- Header -->
 		<div class="header-content">

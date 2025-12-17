@@ -27,7 +27,7 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 ---
 
 <Layout>
-	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" fetchpriority="high" />
+	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" fetchpriority="high" media="(min-width: 769px)" />
 	<link rel="preload" href={optimizedHeroBg.src} as="image" type="image/webp" slot="head" fetchpriority="high" />
 	<link rel="preload" href={HeroSectionImage.src} as="image" media="(max-width: 768px)" slot="head" fetchpriority="high" />
 	<!-- <Navbar/> -->
