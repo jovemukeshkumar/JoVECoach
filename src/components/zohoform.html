@@ -964,6 +964,7 @@
 				const adGroupId = getUrlParameter('ad_group_id');
 				const adGroupName = getUrlParameter('ad_group_name');
 				const adCampaignId = getUrlParameter('ad_campaign_id');
+				const adSetId = getUrlParameter('ad_set_id');
 				const adName = getUrlParameter('ad_name');
 				const adPlatform = getUrlParameter('ad_platform');
 				const gclid = getUrlParameter('gclid');
@@ -978,6 +979,10 @@
 				if (adGroupId && form['CONTACTCF2']) form['CONTACTCF2'].value = adGroupId;
 				if (adGroupName && form['CONTACTCF3']) form['CONTACTCF3'].value = adGroupName;
 				if (adCampaignId && form['CONTACTCF1']) form['CONTACTCF1'].value = adCampaignId;
+				if (adSetId && form['CONTACTCF7']) {
+					console.log("Captured ad_set_id:", adSetId);
+					form['CONTACTCF7'].value = adSetId;
+				}
 				if (adName && form['CONTACTCF5']) form['CONTACTCF5'].value = adName;
 
 				// Handle Dropdowns (Subsource and Ad Platform)
