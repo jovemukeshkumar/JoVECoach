@@ -536,6 +536,20 @@
 				}
 			}
 		</style>
+		<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+	<form action='https://forms.zohopublic.in/coachproductjo1/form/StudentsGenLP/formperma/C_1h6ALc4ULI7tQMz2EShFwpEY5Hn7M_wS2-yuF2cE0/htmlRecords/submit' name='form' method='POST' accept-charset='UTF-8' enctype='multipart/form-data' id='form' target="hidden_iframe">
+		<input type="hidden" name="referrerName" value="null">
+		
+		<!-- Hidden Fields from Zoho Form -->
+		<input type="hidden" name="formName" value="StudentsGenLP"/>
+		<input type="hidden" name="formPerma" value="C_1h6ALc4ULI7tQMz2EShFwpEY5Hn7M_wS2-yuF2cE0"/>
+		<input type="hidden" name="isPaymentForm" value="false"/>
+		<input type="hidden" name="formType" value="0"/>
+		<input type="hidden" name="isDocsPublicForm" value="false"/>
+		<input type="hidden" name="date_format" value="dd-MMM-yyyy"/>
+		<input type="hidden" name="resizeform" value="1"/>
+		
+		<!-- Do not remove this code. -->
 		<div class="zcwf_title">The Smarter Way to Learn STEM</div>
 		<div class="zcwf_subtitle">Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.</div>
 		<div class='zcwf_row zcwf_formVisibleFields_row'>
@@ -770,38 +784,175 @@
 					/>
 				</div>
 				<script>
-					(function () {
-						const params = new URLSearchParams(window.location.search);
-						const mapping = {
-							utm_source: 'SingleLine9',
-							utm_medium: 'SingleLine12',
-							utm_campaign: 'SingleLine13',
-							utm_term: 'SingleLine10',
-							utm_content: 'SingleLine11',
-							ad_id: 'SingleLine3',
-							ad_group_id: 'SingleLine7',
-							ad_group_name: 'SingleLine6',
-							ad_campaign_id: 'SingleLine8',
-							ad_platform: 'Dropdown',
-							landing_page_url: 'SingleLine1',
-							referrer_url: 'SingleLine2'
-						};
-				
-						for (const key in mapping) {
-							const fieldId = mapping[key];
-							const el = document.getElementById(fieldId);
-							if (!el) continue;
-							if (params.has(key)) {
-								el.value = params.get(key);
+					function validateEmail1127844000000480553() {
+				var form = document.forms['form'];
+				var emailFld = form.querySelectorAll('[ftype=email]');
+				var i;
+				for (i = 0; i < emailFld.length; i++) {
+					var emailVal = emailFld[i].value;
+					if ((emailVal.replace(/^\s+|\s+$/g, '')).length != 0) {
+						var atpos = emailVal.indexOf('@');
+						var dotpos = emailVal.lastIndexOf('.');
+						if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
+							alert('Please enter a valid email address. ');
+							emailFld[i].focus();
+							return false;
+						}
+					}
+				}
+				return true;
+			}
+
+			function checkMandatory1127844000000480553() {
+				var mndFileds = new Array('SingleLine', 'Email');
+				var fldLangVal = new Array('Name', 'Email');
+				for (i = 0; i < mndFileds.length; i++) {
+					var fieldObj = document.forms['form'][mndFileds[i]];
+					if (fieldObj) {
+						if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
+							if (fieldObj.type == 'file') {
+								alert('Please select a file to upload.');
+								fieldObj.focus();
+								return false;
+							}
+							alert(fldLangVal[i] + ' cannot be empty.');
+							fieldObj.focus();
+							return false;
+						} else if (fieldObj.nodeName == 'SELECT') {
+							if (fieldObj.options[fieldObj.selectedIndex].value == '-Select-') {
+								alert(fldLangVal[i] + ' cannot be none.');
+								fieldObj.focus();
+								return false;
+							}
+						} else if (fieldObj.type == 'checkbox') {
+							if (fieldObj.checked == false) {
+								alert('Please accept  ' + fldLangVal[i]);
+								fieldObj.focus();
+								return false;
 							}
 						}
+						try {
+							if (fieldObj.name == 'Last Name') {
+								name = fieldObj.value;
+							}
+						} catch (e) { }
+					}
+				}
+				if (!validateEmail1127844000000480553()) { return false; }
 				
-						const landingField = document.getElementById('SingleLine1');
-						if (landingField) landingField.value = window.location.href;
+				// Form is valid, proceed with submission handling
+				const form = document.getElementById('form');
+				const submitBtn = document.getElementById('formsubmit');
 				
-						const refField = document.getElementById('SingleLine2');
-						if (refField) refField.value = document.referrer || "-";
-					})();
-				</script>
+				// Disable button to prevent double submit
+				submitBtn.value = 'Submitting...';
+				submitBtn.disabled = true;
+
+				// Get values for redirection
+				const nameVal = document.getElementById('SingleLine').value;
+				const emailVal = document.getElementById('Email').value;
+
+				// Wait for the iframe to load (which means submission is done)
+				const iframe = document.getElementById('hidden_iframe');
+				let loadCount = 0;
+				
+				iframe.onload = function() {
+					loadCount++;
+					if (loadCount > 0) { // Ensure it's the submission load, not initial empty load
+						// Redirect to success page
+						const redirectUrl = new URL('https://coach.jove.com/signup');
+						redirectUrl.searchParams.set('name', nameVal);
+						redirectUrl.searchParams.set('email', emailVal);
+						window.location.href = redirectUrl.toString();
+					}
+				};
+
+				return true;
+			}
+
+			// Attach the validation function to the form's submit event
+			document.getElementById('form').onsubmit = checkMandatory1127844000000480553;
+
+			// Function to get URL parameters
+			function getUrlParameter(name) {
+				name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+				var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+				var results = regex.exec(location.search);
+				return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+			}
+
+			// Populate hidden fields on load
+			window.addEventListener('DOMContentLoaded', (event) => {
+				// Get URL parameters
+				const utmSource = getUrlParameter('utm_source');
+				const utmMedium = getUrlParameter('utm_medium');
+				const utmCampaign = getUrlParameter('utm_campaign');
+				const utmTerm = getUrlParameter('utm_term');
+				const utmContent = getUrlParameter('utm_content');
+				const adId = getUrlParameter('ad_id');
+				const adGroupId = getUrlParameter('ad_group_id');
+				const adGroupName = getUrlParameter('ad_group_name');
+				const adCampaignId = getUrlParameter('ad_campaign_id');
+				const adName = getUrlParameter('ad_name');
+				const adPlatform = getUrlParameter('ad_platform');
+				const gclid = getUrlParameter('gclid');
+
+				// Map to Zoho fields
+				if (utmSource) document.getElementsByName('SingleLine9')[0].value = utmSource;
+				if (utmMedium) document.getElementsByName('SingleLine12')[0].value = utmMedium;
+				if (utmCampaign) document.getElementsByName('SingleLine13')[0].value = utmCampaign;
+				if (utmTerm) document.getElementsByName('SingleLine10')[0].value = utmTerm;
+				if (utmContent) document.getElementsByName('SingleLine11')[0].value = utmContent;
+				if (adId) document.getElementsByName('SingleLine3')[0].value = adId;
+				if (adGroupId) document.getElementsByName('SingleLine5')[0].value = adGroupId;
+				if (adGroupName) document.getElementsByName('SingleLine6')[0].value = adGroupName;
+				if (adCampaignId) document.getElementsByName('SingleLine8')[0].value = adCampaignId;
+				if (adName) document.getElementsByName('SingleLine7')[0].value = adName;
+
+				// Handle Dropdowns (Subsource and Ad Platform)
+				// Logic: If gclid exists -> Subsource=Google, Source=Paid. 
+				// Else if utm_source exists -> Subsource=utm_source (mapped if matches options)
+				
+				const subsourceSelect = document.getElementsByName('Dropdown')[0];
+				const sourceSelect = document.getElementsByName('Dropdown2')[0];
+				const platformSelect = document.getElementsByName('Dropdown1')[0];
+
+				if (gclid) {
+					subsourceSelect.value = 'Google';
+					sourceSelect.value = 'Paid';
+					platformSelect.value = 'Google';
+				} else if (utmSource) {
+					// Try to match utm_source to Subsource options
+					const options = Array.from(subsourceSelect.options).map(o => o.value);
+					// Simple mapping or direct match
+					if (options.includes(utmSource)) {
+						subsourceSelect.value = utmSource;
+					} else if (utmSource.toLowerCase().includes('google')) {
+						subsourceSelect.value = 'Google';
+					} else if (utmSource.toLowerCase().includes('meta') || utmSource.toLowerCase().includes('facebook')) {
+						subsourceSelect.value = 'Meta';
+					} else if (utmSource.toLowerCase().includes('email')) {
+						subsourceSelect.value = 'Email';
+					}
+					
+					// Set Source based on medium
+					if (utmMedium && (utmMedium.toLowerCase().includes('cpc') || utmMedium.toLowerCase().includes('paid'))) {
+						sourceSelect.value = 'Paid';
+					} else {
+						sourceSelect.value = 'Organic';
+					}
+				} else {
+					// Default to Direct/Organic if no params
+					subsourceSelect.value = 'Direct';
+					sourceSelect.value = 'Organic';
+				}
+
+				// Set Landing Page URL
+				document.getElementsByName('SingleLine1')[0].value = window.location.href;
+				
+				// Set Referrer URL
+				document.getElementsByName('SingleLine2')[0].value = document.referrer;
+			});
+		</script>
 	</form>
 </div>
