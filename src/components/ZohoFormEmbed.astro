@@ -173,6 +173,7 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 </style>
 
 <script is:inline define:vars={{ formId, formIdSuffix, callbackName, recaptchaId }}>
+	console.log(`Defining global callback: window.${callbackName}`);
 	// Define the callback function globally with a unique name
 	window[callbackName] = function (token) {
 		console.log(`Captcha validated for ${formIdSuffix}. Submitting...`);
@@ -192,14 +193,17 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 		}
 
 		// Submit programmatically
+		console.log(`Submitting form ${formId} now.`);
 		HTMLFormElement.prototype.submit.call(form);
 	};
 
 	// Form Submission Handler
 	const form = document.getElementById(formId);
 	if (form) {
+		console.log(`Attaching submit handler to ${formId}`);
 		form.onsubmit = function (e) {
 			e.preventDefault();
+			console.log(`Submit triggered for ${formId}`);
 
 			// Basic Validation
 			const name = document.getElementById(`Last_Name_${formIdSuffix}`).value;
@@ -211,8 +215,29 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 			}
 
 			// Execute Invisible reCAPTCHA
-			// This will trigger the challenge if needed, then call the callback
-			grecaptcha.execute(document.getElementById(recaptchaId).getAttribute("widget-id"));
+			const recapEl = document.getElementById(recaptchaId);
+			const widgetId = recapEl.getAttribute("widget-id");
+			console.log(`Executing reCAPTCHA for ${recaptchaId}. Widget ID: ${widgetId}`);
+
+			if (widgetId) {
+				grecaptcha
+					.execute(widgetId)
+					.then(token => {
+						console.log(`reCAPTCHA executed successfully for ${recaptchaId}`);
+						// Manually invoke callback since it's not firing automatically
+						if (typeof window[callbackName] === "function") {
+							console.log(`Manually invoking ${callbackName}`);
+							window[callbackName](token);
+						}
+					})
+					.catch(err => {
+						console.error(`reCAPTCHA execution failed for ${recaptchaId}:`, err);
+						alert("Verification failed. Please try again.");
+					});
+			} else {
+				console.error("Widget ID not found. reCAPTCHA not initialized?");
+				alert("Please wait for reCAPTCHA to load.");
+			}
 		};
 	}
 

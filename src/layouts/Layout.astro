@@ -53,18 +53,32 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
 		<script>
 			window.onRecaptchaLoad = function () {
+				console.log("Global reCAPTCHA loaded. Finding widgets...");
 				const captchas = document.querySelectorAll(".zoho-recaptcha");
+				console.log(`Found ${captchas.length} widgets.`);
 				captchas.forEach(el => {
 					if (!el.getAttribute("widget-id")) {
 						const sitekey = el.getAttribute("data-sitekey");
 						const callback = el.getAttribute("data-callback");
+						const id = el.id;
+						console.log(`Rendering widget for ${id} with callback name: ${callback}`);
+
+						let callbackFn = callback;
+						if (typeof window[callback] === "function") {
+							console.log(`Callback function found for ${callback}`);
+							callbackFn = window[callback];
+						} else {
+							console.warn(`Callback function ${callback} NOT found on window!`);
+						}
+
 						// @ts-ignore
 						const widgetId = grecaptcha.render(el, {
 							sitekey: sitekey,
 							size: "invisible",
-							callback: callback,
+							callback: callbackFn,
 						});
 						el.setAttribute("widget-id", String(widgetId));
+						console.log(`Widget rendered: ${id} -> ${widgetId}`);
 					}
 				});
 			};
