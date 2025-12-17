@@ -16,13 +16,20 @@ import PricingSection from "../components/homePage/pricingSection.astro";
 import ZohoModal from "../components/ZohoModal.astro";
 
 import HeroSectionVideo from "../assets/LP-Girl-MR.webm";
+import HeroSectionImage from "../assets/Hero-Section-Mobile_img.png";
+import HeroSectionBlueBg from "../assets/HeroSectionBlueBg.png";
+import { getImage } from "astro:assets";
+
+const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" });
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" />
+	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" fetchpriority="high" />
+	<link rel="preload" href={optimizedHeroBg.src} as="image" type="image/webp" slot="head" fetchpriority="high" />
+	<link rel="preload" href={HeroSectionImage.src} as="image" media="(max-width: 768px)" slot="head" fetchpriority="high" />
 	<!-- <Navbar/> -->
 	<HeroSection />
 	<STEMStruggle />
