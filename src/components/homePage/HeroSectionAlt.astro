@@ -51,11 +51,13 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 	.hero-left {
 		flex: 0 0 45%;
 		max-width: 45%;
+		min-width: 450px;
 	}
 
 	.hero-right {
 		flex: 0 0 50%;
 		max-width: 50%;
+		min-width: 450px;
 		position: relative; /* containing block for absolutely positioned background image */
 	}
 	.hero-right > img {
@@ -470,9 +472,9 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 	}
 
 	/* Mobile */
-	@media (max-width: 768px) {
+	@media (max-width: 1020px) {
 		.hero-section {
-			padding: 0px;
+			padding: 0px 0px 60px 0px;
 		}
 
 		.hero-container {
@@ -509,7 +511,7 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 			margin: 0 auto 40px auto;
 		}
 		.hero-content {
-			align-items: flex-start;
+			align-items: center;
 			padding: 0px 20px 20px 20px;
 		}
 		.features-list {
@@ -542,7 +544,7 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 		.hero-subtitle {
 			font-size: 16px;
 			margin-bottom: 25px;
-			text-align: left;
+			text-align: center;
 		}
 
 		.input-row {
