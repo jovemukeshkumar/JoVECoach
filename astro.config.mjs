@@ -9,4 +9,7 @@ export default defineConfig({
 
   adapter: vercel(),
   output: 'server',
+  security: {
+    checkOrigin: false,
+  },
 });
