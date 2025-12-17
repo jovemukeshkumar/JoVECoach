@@ -403,106 +403,6 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 		max-width: 80px;
 	}
 
-	.girl-container {
-		position: absolute;
-		bottom: 50px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 280px;
-		height: 360px;
-		background: linear-gradient(180deg, rgba(147, 197, 253, 0.4) 0%, rgba(96, 165, 250, 0.3) 100%);
-		border-radius: 140px 140px 0 0;
-		display: flex;
-		align-items: flex-end;
-		justify-content: center;
-		z-index: 20;
-		overflow: hidden;
-	}
-
-	.girl-placeholder {
-		padding-bottom: 32px;
-		color: white;
-		font-size: 14px;
-		opacity: 0.8;
-		font-family: Inter, sans-serif;
-	}
-
-	.laptop-container {
-		position: absolute;
-		bottom: 48px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 360px;
-		z-index: 30;
-	}
-
-	.laptop-frame {
-		background: #e5e7eb;
-		border-radius: 12px;
-		padding: 8px;
-		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-	}
-
-	.laptop-screen {
-		background: linear-gradient(135deg, #a5f3fc 0%, #60a5fa 100%);
-		border-radius: 6px;
-		aspect-ratio: 16/10;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: rgba(255, 255, 255, 0.6);
-		font-size: 13px;
-		font-family: Inter, sans-serif;
-	}
-
-	.floating-icon {
-		position: absolute;
-		background: white;
-		border-radius: 12px;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-		z-index: 30;
-	}
-
-	.floating-icon-left {
-		bottom: 120px;
-		left: 32px;
-		width: 64px;
-		height: 64px;
-		padding: 8px;
-	}
-
-	.icon-inner-orange {
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-		border-radius: 8px;
-	}
-
-	.floating-icons-right {
-		position: absolute;
-		top: 50%;
-		right: 16px;
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-	}
-
-	.small-icon {
-		width: 40px;
-		height: 40px;
-		background: white;
-		border-radius: 8px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-		padding: 6px;
-	}
-
-	.icon-inner-pink {
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(135deg, #f9a8d4 0%, #c084fc 100%);
-		border-radius: 4px;
-	}
-
 	/* Tablet */
 	@media (max-width: 1024px) {
 		.hero-container {
@@ -581,6 +481,10 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 			flex-direction: column-reverse;
 		}
 
+		.hero-section::before {
+			background-image: none;
+		}
+
 		.hero-right ::before {
 			background-size: cover;
 			background-position: center top;
@@ -624,12 +528,15 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 		.hero-title {
 			font-family: Inter;
 			font-weight: 600;
-			font-size: 26px;
+			font-size: 39px;
 			line-height: 110.00000000000001%;
 			letter-spacing: -1%;
 			text-align: center;
 			vertical-align: middle;
-			max-width: 200px;
+		}
+
+		.hero-span {
+			margin: 0 auto 20px auto;
 		}
 
 		.hero-subtitle {
@@ -665,8 +572,9 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 		}
 
 		.hero-image {
-			height: 400px;
+			height: 375px;
 			align-items: end;
+			background-color: #2183ed;
 		}
 
 		.visual-container {
@@ -681,15 +589,13 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 			display: none;
 		}
 
-		.laptop-container {
-			width: 280px;
-			bottom: 40px;
+		.input-field {
+			max-width: 100%;
+			border-radius: 8px !important;
 		}
-
-		.girl-container {
-			width: 220px;
-			height: 280px;
-			bottom: 40px;
+		.input-field-mail {
+			margin-top: 12px;
+			border-radius: 8px !important;
 		}
 
 		.stat-badge {
@@ -702,12 +608,12 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 
 		.stat-label {
 			font-size: 10px;
-			line-height: 11px;
+			line-height: 10px;
 		}
 
 		.pillar-container {
 			/* gap: 80px; */
-			bottom: 150px;
+			bottom: 155px;
 		}
 
 		.pillar {
@@ -723,25 +629,6 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 		.pillar-right {
 			animation-delay: 0.5s;
 			--final-height: 130px;
-		}
-		.floating-icon-left {
-			width: 56px;
-			height: 56px;
-			bottom: 100px;
-			left: 20px;
-		}
-
-		.small-icon {
-			width: 36px;
-			height: 36px;
-		}
-		.input-field {
-			max-width: 100%;
-			border-radius: 8px !important;
-		}
-		.input-field-mail {
-			margin-top: 12px;
-			border-radius: 8px !important;
 		}
 	}
 
@@ -877,7 +764,7 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 					</li>
 					<li class="feature-item">
 						<Image src={HeroSectionIcon1} alt="Feature Icon" />
-						<span class="feature-text">19 years of academic credibilityt</span>
+						<span class="feature-text">19 years of academic credibility</span>
 					</li>
 					<li class="feature-item">
 						<Image src={HeroSectionIcon1} alt="Feature Icon" />
