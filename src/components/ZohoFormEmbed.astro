@@ -244,7 +244,7 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 			const name = document.getElementById(`Last_Name_${formIdSuffix}`).value;
 			const email = document.getElementById(`Email_${formIdSuffix}`).value;
 
-			if (!name || !email) {
+			if (!name.trim() || !email.trim()) {
 				alert("Please fill in all required fields.");
 				return false;
 			}
