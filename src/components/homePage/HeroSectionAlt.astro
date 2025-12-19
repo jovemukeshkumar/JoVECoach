@@ -16,9 +16,11 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 // Jove Coach Hero Section Component
 interface Props {
 	videoSrc?: string;
+	posterSrc?: string;
+	mobileImgSrc?: ImageMetadata;
 }
 
-const { videoSrc = HeroSectionVideo } = Astro.props;
+const { videoSrc = HeroSectionVideo, posterSrc, mobileImgSrc = HeroSectionImage } = Astro.props;
 ---
 
 <style>
@@ -817,11 +819,11 @@ const { videoSrc = HeroSectionVideo } = Astro.props;
 					<!-- Stat Badges -->
 
 					<!-- Girl Placeholder -->
-					<video width="900px" height="auto" autoplay muted loop playsinline class="hero-video" poster={HeroSectionImage.src}>
+					<video width="900px" height="auto" autoplay muted loop playsinline class="hero-video" poster={posterSrc}>
 						<source src={videoSrc} type="video/webm" />
 						Your browser does not support the video tag.
 					</video>
-					<Image src={HeroSectionImage} alt="Hero Video" class="hero-video hero-mobile-img" loading="eager" />
+					<Image src={mobileImgSrc} alt="Hero Video" class="hero-video hero-mobile-img" loading="eager" />
 				</div>
 			</div>
 		</div>
