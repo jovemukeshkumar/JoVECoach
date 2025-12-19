@@ -2,9 +2,10 @@
 interface Props {
 	title?: string;
 	description?: string;
+	robots?: string;
 }
 
-const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description = "The Smarter Way to Learn STEM AI-powered STEM learning with 2-minute expert videos and instant quizzes. Trusted by 1M+ students. Try free for 7 days." } = Astro.props;
+const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description = "The Smarter Way to Learn STEM AI-powered STEM learning with 2-minute expert videos and instant quizzes. Trusted by 1M+ students. Try free for 7 days.", robots = "index, follow" } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,7 +16,7 @@ const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description =
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<meta name="robots" content="index, follow" />
+		<meta name="robots" content={robots} />
 		<link rel="canonical" href="https://coach.jove.com/pp" />
 
 		<!-- Open Graph / Facebook / LinkedIn -->

@@ -26,7 +26,7 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
+<Layout title="JoVE Coach | Master STEM with AI | AI-Powered Learning" description="Struggling with STEM? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master any concept in minutes. Try free for 7 days." robots="noindex, nofollow">
 	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" fetchpriority="high" media="(min-width: 769px)" />
 	<link rel="preload" href={optimizedHeroBg.src} as="image" type="image/webp" slot="head" fetchpriority="high" />
 	<link rel="preload" href={HeroSectionImage.src} as="image" media="(max-width: 768px)" slot="head" fetchpriority="high" />
