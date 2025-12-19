@@ -1,7 +1,7 @@
 ---
 import { Image, getImage } from "astro:assets";
 import HeroSectionVideo from "../../assets/lp3_HerosectionVideo.webm";
-import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.png";
+import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.webp";
 import HeroSectioncognition from "../../assets/HeroSectioncognition.svg";
 import HeroSectionStat from "../../assets/HeroSectionStat.svg";
 import NavLogo from "../../assets/NavLogo.svg";
@@ -820,7 +820,7 @@ const { videoSrc = HeroSectionVideo, posterSrc, mobileImgSrc = HeroSectionImage 
 
 					<!-- Girl Placeholder -->
 					<video width="900px" height="auto" autoplay muted loop playsinline class="hero-video" poster={posterSrc}>
-						<source src={videoSrc} type="video/webm" />
+						<source src={videoSrc} type="video/webm" media="(min-width: 769px)" />
 						Your browser does not support the video tag.
 					</video>
 					<Image src={mobileImgSrc} alt="Hero Video" class="hero-video hero-mobile-img" loading="eager" />
