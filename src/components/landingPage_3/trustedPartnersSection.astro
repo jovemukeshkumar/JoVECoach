@@ -1,0 +1,195 @@
+---
+import qs from "qs";
+
+const homePageQuery = qs.stringify(
+	{
+		populate: {
+			trustedPartners: {
+				populate: "*",
+			},
+		},
+	},
+	{ encodeValuesOnly: true },
+);
+
+async function getStrapiData(path: string) {
+	try {
+		const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+		if (!BASE_URL) {
+			console.error("❌ Missing PUBLIC_BACKEND_URL");
+			return null;
+		}
+
+		const url = new URL(path, BASE_URL);
+		url.search = homePageQuery;
+
+		const res = await fetch(url.href);
+
+		if (!res.ok) {
+			console.error("❌ Strapi request failed:", res.status);
+			return null;
+		}
+
+		const json = await res.json();
+		return json?.data ?? null;
+	} catch (error) {
+		console.error("❌ Strapi fetch error:", error);
+		return null;
+	}
+}
+
+const data = await getStrapiData("/api/home-page");
+
+const trustedPartners = data?.trustedPartners?.find((b: any) => b.__component === "layout.section7") ?? { trustedPartnersHeading: "", trustedPartnersLogoImage: [] };
+---
+
+<style>
+	.section7-container {
+		background: linear-gradient(180deg, #2183ed -239.25%, #212528 77.69%);
+		border-radius: 26px;
+		color: white;
+		text-align: center;
+		padding: 20px 0;
+		font-family: Inter, sans-serif;
+		max-width: 1320px;
+		min-height: 250px;
+		margin: -150px auto 0px auto;
+		z-index: 100;
+		position: relative;
+	}
+
+	.section7-heading-wrapper {
+		width: 100%;
+		max-width: 720px;
+		margin: 20px auto;
+	}
+
+	.section7-heading {
+		font-family: Inter;
+		font-weight: 600;
+		font-size: 28px;
+		line-height: 130%;
+		letter-spacing: 0%;
+		text-align: center;
+		vertical-align: middle;
+		color: #fff;
+		margin: 40px 0 0 0;
+	}
+	.subtitle {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 34px;
+		letter-spacing: 0%;
+		text-align: center;
+		color: #fff;
+	}
+	.section7-slider-wrapper {
+		position: relative;
+		overflow: hidden;
+		max-width: max-content;
+		margin: 40px auto 0;
+		padding: 0 49px;
+	}
+
+	.section7-slider {
+		overflow-x: auto;
+		white-space: nowrap;
+		display: flex;
+		gap: 64px;
+		align-items: center;
+		scroll-behavior: smooth;
+	}
+
+	.section7-logo {
+		height: auto;
+		max-height: 55px;
+		object-fit: contain;
+	}
+
+	/* ----------------------------
+      RESPONSIVE DESIGN
+----------------------------- */
+
+	/* Tablets */
+	@media (max-width: 900px) {
+		.section7-heading {
+			font-size: 22px;
+		}
+
+		.section7-slider {
+			gap: 48px;
+		}
+	}
+
+	/* Mobile */
+	@media (max-width: 600px) {
+		.section7-container {
+			padding: 60px 0;
+			margin: 0px auto 0 auto;
+		}
+
+		.section7-heading-wrapper {
+			margin-bottom: 48px;
+			/* padding: 0 20px; */
+		}
+
+		.section7-heading {
+			font-size: 18px;
+		}
+
+		.section7-slider-wrapper {
+			padding: 0 20px;
+		}
+
+		.section7-slider {
+			gap: 36px;
+			flex-wrap: wrap;
+			justify-content: center;
+			white-space: normal;
+		}
+
+		.section7-logo {
+			max-height: 45px;
+		}
+	}
+
+	/* Small Mobile */
+	@media (max-width: 400px) {
+		.section7-heading {
+			font-size: 16px;
+		}
+
+		.section7-slider {
+			gap: 28px;
+		}
+
+		.section7-logo {
+			max-height: 40px;
+		}
+	}
+</style>
+
+<section class="section7">
+	<div class="section7-container">
+		<div class="section7-heading-wrapper">
+			<div class="section7-heading">
+				{trustedPartners.trustedPartnersHeading || "Trusted by 1 Million+ students across"}
+			</div>
+			<p>1,800+ top school and universities</p>
+		</div>
+
+		<div class="section7-slider-wrapper">
+			<div class="section7-slider">
+				{
+					(trustedPartners.trustedPartnersLogoImage ?? []).map((img: any) => {
+						const imgUrl = img?.url ?? "/fallback-logo.png"; // fallback
+						const imgAlt = img?.name ?? "Partner Logo";
+
+						return <img src={imgUrl} alt={imgAlt} class="section7-logo" loading="lazy" />;
+					})
+				}
+			</div>
+		</div>
+	</div>
+</section>

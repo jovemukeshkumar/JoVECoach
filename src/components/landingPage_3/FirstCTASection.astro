@@ -1,0 +1,203 @@
+---
+import { Image } from "astro:assets";
+import aiChatIcon from "../../assets/ai-chat-icon.svg";
+import ZohoFormEmbed from "../landingPage_3/ZohoFormEmbed.astro";
+---
+
+<style>
+	.ai-cta-section {
+		padding: 2rem 1rem 6rem 1rem;
+		margin-bottom: -100px;
+		position: relative;
+		z-index: 10;
+	}
+
+	.ai-cta-card {
+		max-width: 1100px;
+		max-height: 280px;
+		margin: 0 auto;
+		background: #f8f7f4; /* solid base */
+		border-radius: 20px;
+		padding: 1.5rem 4rem;
+		display: grid;
+		grid-template-columns: 1.2fr 0.6fr 1fr;
+		align-items: center;
+		gap: 2rem;
+		position: relative;
+		z-index: 10;
+		box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.25);
+		overflow: hidden; /* clip pseudo-element */
+	}
+	.ai-cta-card::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+
+		background-image: url("../../assets/aiChatBg.png");
+		background-size: contain;
+		background-position: right center;
+		background-repeat: no-repeat;
+
+		pointer-events: none;
+	}
+	.ai-cta-card > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.ai-cta-content {
+		max-width: 445px;
+		height: 180px;
+	}
+	/* Left text */
+	.ai-cta-content h3 {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 30px;
+		line-height: 120%;
+		letter-spacing: 0%;
+		color: #000;
+		margin: 0;
+	}
+
+	.ai-cta-content p {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		max-width: 300px;
+		color: #000;
+	}
+
+	.ai-cta-btn {
+		background: #2183ed;
+		color: #fff;
+		border: none;
+		padding: 12px 20px;
+		border-radius: 30px;
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 28px;
+		letter-spacing: 0%;
+		text-align: center;
+		cursor: pointer;
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+		max-width: 223px;
+	}
+
+	.ai-cta-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 25px rgba(33, 131, 237, 0.35);
+	}
+
+	/* Center icon */
+	.ai-cta-icon {
+		display: flex;
+		justify-content: end;
+	}
+
+	.ai-cta-icon img {
+		width: 227px;
+		height: auto;
+	}
+
+	/* Right form */
+	.ai-cta-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		max-width: 327px;
+	}
+
+	.ai-cta-form input {
+		width: 100%;
+		padding: 14px 16px;
+		border-radius: 10px;
+		border: 2px solid #eeeeee;
+		font-size: 15px;
+		outline: none;
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		min-width: 327px;
+	}
+
+	.ai-cta-form input:focus {
+		border-color: #2183ed;
+	}
+
+	/* ---------- Responsive ---------- */
+
+	@media (max-width: 992px) {
+		.ai-cta-card {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			padding: 1.5rem;
+			gap: 1.5rem;
+			height: auto;
+			max-height: none;
+		}
+
+		.ai-cta-content {
+			min-width: 0;
+			width: 100%;
+			height: auto;
+		}
+
+		.ai-cta-icon {
+			display: none;
+		}
+
+		.ai-cta-form {
+			width: 100%;
+			max-width: 100%;
+			align-items: center;
+		}
+
+		.ai-cta-form input {
+			min-width: 0;
+		}
+
+		.ai-cta-btn {
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.ai-cta-content h3 {
+			font-size: 22px;
+		}
+
+		.ai-cta-btn {
+			width: 100%;
+		}
+	}
+</style>
+<section class="ai-cta-section">
+	<div class="ai-cta-card">
+		<!-- Left content -->
+		<div class="ai-cta-content">
+			<h3>Want to see how it supports your child?</h3>
+			<p>See how JoVE Coach explains it clearly - with AI.</p>
+		</div>
+
+		<!-- Right form -->
+		<div class="ai-cta-form">
+			<ZohoFormEmbed formIdSuffix="cta1" layout="vertical" />
+		</div>
+
+		<!-- Center icon -->
+		<div class="ai-cta-icon">
+			<Image src={aiChatIcon} alt="AI Chat Icon" />
+		</div>
+	</div>
+</section>

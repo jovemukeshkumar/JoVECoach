@@ -1,0 +1,824 @@
+---
+import { Image, getImage } from "astro:assets";
+import HeroSectionVideo from "../../assets/lp2_HeroSectionVideo.webm";
+import HeroSectionImage from "../../assets/Hero-Section-Mobile_img.png";
+import HeroSectioncognition from "../../assets/HeroSectioncognition.svg";
+import HeroSectionStat from "../../assets/HeroSectionStat.svg";
+import NavLogo from "../../assets/NavLogo.svg";
+import HeroGridBg from "../../assets/HeroSectionGridBg.svg";
+import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
+import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
+import HeroSectionBlueBg from "../../assets/HeroSectionBlueBg.webp";
+import ZohoFormEmbed from "../landingPage_2/ZohoFormEmbed.astro";
+
+const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" });
+
+// Jove Coach Hero Section Component
+---
+
+<style>
+	.hero-section {
+		background: #ffffff;
+		padding: 60px 20px 0px 20px;
+		overflow: hidden;
+		min-height: 1000px;
+		position: relative;
+		z-index: 10;
+	}
+
+	.hero-section::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		background-image: var(--hero-bg);
+		background-repeat: no-repeat;
+		background-position: center bottom;
+		background-size: contain;
+	}
+	.hero-container {
+		display: flex;
+		gap: 40px;
+		max-width: 1320px;
+		margin: 0 auto;
+		padding: 0 20px;
+		justify-content: space-between;
+		position: relative;
+		z-index: 10;
+	}
+
+	/* Left / Right columns */
+	.hero-left {
+		flex: 0 0 45%;
+		max-width: 45%;
+		min-width: 450px;
+	}
+
+	.hero-right {
+		flex: 0 0 50%;
+		max-width: 50%;
+		min-width: 450px;
+		position: relative; /* containing block for absolutely positioned background image */
+	}
+	.hero-right > img {
+		position: absolute;
+		right: 15px;
+		top: -230px;
+		/* width: 100%;
+    height:100%; */
+		object-fit: cover;
+		pointer-events: none;
+		z-index: 0;
+		opacity: 0.95;
+	}
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 20px 20px 20px 0;
+	}
+
+	.logo {
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		max-width: 1320px;
+		margin: 0 auto 40px auto;
+	}
+
+	.logo img {
+		width: 210px;
+		max-width: 100%;
+		height: auto;
+		transition: all 0.35s ease-in-out;
+	}
+
+	.logo-jove {
+		color: #2183ed;
+		font-weight: 700;
+		font-size: 32px;
+		font-family: Inter, sans-serif;
+	}
+
+	.logo-coach {
+		color: #374151;
+		font-weight: 300;
+		font-size: 32px;
+		font-family: Inter, sans-serif;
+	}
+
+	.hero-title {
+		font-family: Inter;
+		font-weight: 600;
+		font-size: 46px;
+		line-height: 110.00000000000001%;
+		letter-spacing: -1%;
+		vertical-align: middle;
+		color: #111827;
+		max-width: 470px;
+		margin: 0 0 20px 0;
+	}
+
+	.hero-span {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 120%;
+		text-align: center;
+		color: #2183ed;
+
+		/* Gradient border trick */
+		background:
+			linear-gradient(90deg, #edf4fb 0%, #ffffff 100%) padding-box,
+			linear-gradient(267.67deg, #2183ed -3.42%, #e8f0f8 24.12%, #c8dff7 53.65%, #e5f0fd 83.69%, #2183ed 100.71%) border-box;
+
+		border: 0.5px solid transparent;
+		border-radius: 100px;
+
+		padding: 5px 12px;
+		margin-bottom: 20px;
+
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	.hero-span img {
+		width: 20px;
+		height: auto;
+	}
+
+	.hero-span img {
+		width: 20px !important;
+		height: auto;
+	}
+	.hero-subtitle {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 140%;
+		letter-spacing: -1%;
+		max-width: 380px;
+		margin: 0 0 30px 0;
+		color: #3f3f3f;
+	}
+
+	.features-list {
+		list-style: none;
+		margin: 0 0 40px 0;
+		padding: 0;
+	}
+
+	.feature-item {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 12px;
+	}
+
+	.check-icon {
+		width: 24px;
+		height: 24px;
+		background: #10b981;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.check-icon::after {
+		content: "✓";
+		color: white;
+		font-size: 14px;
+		font-weight: bold;
+	}
+
+	.feature-text {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 20px;
+		letter-spacing: 0%;
+		vertical-align: middle;
+		color: #3f3f3f;
+	}
+
+	.cta-box {
+		background: #2183ed;
+		background-image: url("../../assets/HeroSectionCTABg.svg");
+		background-repeat: no-repeat;
+		background-position: 300px center;
+		border-radius: 10px;
+		border: 0.8px solid #ffffff;
+		box-shadow: 0px 20px 40px 0px #08519f66;
+		padding: 20px 49px 20px 29px;
+		max-width: 520px;
+		z-index: 1;
+	}
+
+	.cta-title {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 120%;
+		letter-spacing: 0%;
+		vertical-align: middle;
+		margin-top: 0;
+		color: #fff;
+	}
+
+	.input-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		/* gap: 16px; */
+		margin-bottom: 20px;
+	}
+
+	.input-field {
+		border: 0.5px solid #3a3a3a99;
+		border-radius: 8px 0px 0px 8px;
+		font-family: Inter, sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		outline: none;
+		transition: all 0.3s;
+		max-width: 205px;
+		min-height: 50px;
+		padding: 0px 10px;
+	}
+
+	.input-field-mail {
+		border-radius: 0px 8px 8px 0px !important;
+		border-left: none;
+	}
+
+	.input-field:focus {
+		border-color: #2183ed;
+		box-shadow: 0 0 0 3px rgba(66, 132, 229, 0.1);
+	}
+
+	.cta-bottom {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		flex-wrap: wrap;
+	}
+
+	.cta-button {
+		background: transparent;
+		color: white;
+		border: 1px solid #ffffff;
+		font-family: Inter, sans-serif;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: -0.5%;
+		padding: 14px 32px;
+		border-radius: 50px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		white-space: nowrap;
+	}
+
+	/* .cta-button:hover {
+    background: #3a74d4;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(66, 132, 229, 0.3);
+  } */
+
+	.cta-note {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 140%;
+		letter-spacing: -1%;
+		color: #ffffff99;
+	}
+
+	.hero-image {
+		position: relative;
+		width: 100%;
+		height: 600px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 10;
+	}
+
+	.hero-video {
+		width: 900px;
+		height: auto;
+	}
+	.hero-mobile-img {
+		display: none;
+	}
+
+	.visual-container {
+		position: relative;
+		z-index: 10;
+	}
+
+	.pillar-container {
+		position: absolute;
+		bottom: 310px;
+		left: 52%;
+		transform: translateX(-55%);
+		display: flex;
+		align-items: flex-end;
+		gap: 250px;
+		z-index: -1;
+	}
+
+	.pillar {
+		background: #fff;
+		border-radius: 100px 100px 0 0;
+		width: 80px; /* pillar width */
+		overflow: hidden; /* protects rounded top */
+		position: relative;
+		transform-origin: bottom;
+		height: 0; /* starts from zero */
+		animation: growHeight 1.2s ease-out forwards;
+		background: linear-gradient(to bottom, white 40%, rgba(66, 132, 229, 0.5) 100%);
+		padding: 20px;
+	}
+
+	/* Left & Right pillar final heights */
+	.pillar-left {
+		animation-delay: 0.3s;
+		--final-height: 200px;
+	}
+
+	.pillar-right {
+		animation-delay: 0.5s;
+		--final-height: 270px;
+	}
+	/* Smooth height growth animation */
+	@keyframes growHeight {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--final-height);
+		}
+	}
+
+	.stat-badge {
+		position: absolute;
+		background: white;
+		border-radius: 50%;
+		padding: 20px 24px;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+		text-align: center;
+		z-index: 10;
+	}
+
+	.stat-badge-left {
+		top: 25%;
+		left: -40px;
+	}
+
+	.stat-badge-right {
+		top: 25%;
+		right: -40px;
+	}
+
+	.stat-number {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 30px;
+		line-height: 20px;
+		letter-spacing: 0%;
+		vertical-align: middle;
+		color: #2183ed;
+		margin: 20px 0px 0px 0px;
+	}
+
+	.stat-label {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 20px;
+		letter-spacing: 0%;
+		vertical-align: middle;
+		color: #3f3f3f;
+		max-width: 80px;
+	}
+
+	/* Tablet */
+	@media (max-width: 1024px) {
+		.hero-container {
+			flex-direction: column;
+			gap: 40px;
+			align-items: center;
+		}
+
+		.hero-left,
+		.hero-right {
+			flex: 0 0 100%;
+			max-width: 100%;
+			width: 100%;
+			min-width: 0; /* Reset min-width to prevent overflow */
+		}
+
+		.hero-content {
+			align-items: center;
+			text-align: center;
+			padding: 10px;
+		}
+
+		.logo {
+			justify-content: center;
+		}
+
+		.features-list {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.hero-title {
+			text-align: center;
+		}
+
+		.hero-subtitle {
+			text-align: center;
+		}
+
+		.cta-box {
+			margin: 0 auto;
+		}
+
+		.hero-image {
+			height: 500px;
+		}
+
+		.visual-container {
+			width: 400px;
+			height: 400px;
+		}
+
+		.hero-bg {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 60%;
+			opacity: 0.6;
+		}
+
+		.pillar-container {
+			bottom: 140px;
+			gap: 100px;
+		}
+	}
+
+	/* Mobile */
+	@media (max-width: 1020px) {
+		.hero-section {
+			padding: 0px 0px 60px 0px;
+		}
+
+		.hero-container {
+			gap: 30px;
+			padding: 0;
+			flex-direction: column-reverse;
+		}
+
+		.hero-section::before {
+			background-image: none;
+		}
+
+		.hero-right ::before {
+			background-size: cover;
+			background-position: center top;
+			background-repeat: no-repeat;
+			width: 100%;
+			height: 100%;
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			background-image: url("../../assets/HeroSectionGridBg.svg");
+		}
+
+		.hero-video {
+			display: none;
+		}
+		.hero-mobile-img {
+			display: block;
+			width: 400px;
+			height: auto;
+			margin: 0 auto 40px auto;
+		}
+		.hero-content {
+			align-items: center;
+			padding: 0px 20px 20px 20px;
+		}
+		.features-list {
+			align-items: flex-start;
+		}
+
+		.logo {
+			margin: 30px;
+		}
+
+		.logo-jove,
+		.logo-coach {
+			font-size: 28px;
+		}
+
+		.hero-title {
+			font-family: Inter;
+			font-weight: 600;
+			font-size: 39px;
+			line-height: 110.00000000000001%;
+			letter-spacing: -1%;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		.hero-span {
+			margin: 0 auto 20px auto;
+		}
+
+		.hero-subtitle {
+			font-size: 16px;
+			margin-bottom: 25px;
+			text-align: center;
+		}
+
+		.input-row {
+			grid-template-columns: 1fr;
+		}
+
+		.feature-item {
+			font-size: 14px;
+			text-align: left;
+		}
+
+		.cta-box {
+			padding: 24px;
+		}
+
+		.cta-bottom {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.cta-button {
+			width: 100%;
+		}
+
+		.cta-note {
+			text-align: center;
+		}
+
+		.hero-image {
+			height: 375px;
+			align-items: end;
+			background-color: #2183ed;
+		}
+
+		.visual-container {
+			width: 320px;
+			height: auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.hero-bg {
+			display: none;
+		}
+
+		.input-field {
+			max-width: 100%;
+			border-radius: 8px !important;
+		}
+		.input-field-mail {
+			margin-top: 12px;
+			border-radius: 8px !important;
+		}
+
+		.stat-badge {
+			padding: 16px 20px;
+		}
+
+		.stat-number {
+			font-size: 26px;
+		}
+
+		.stat-label {
+			font-size: 10px;
+			line-height: 10px;
+		}
+
+		.pillar-container {
+			/* gap: 80px; */
+			bottom: 155px;
+		}
+
+		.pillar {
+			width: 50px;
+		}
+
+		/* Left & Right pillar final heights */
+		.pillar-left {
+			animation-delay: 0.3s;
+			--final-height: 100px;
+		}
+
+		.pillar-right {
+			animation-delay: 0.5s;
+			--final-height: 130px;
+		}
+	}
+
+	/* Small Mobile */
+	/* @media (max-width: 480px) {
+    .hero-section {
+      padding: 30px 10px;
+    }
+
+    .hero-image >video{
+      display: none;
+    }
+    .hero-mobile-img{
+      max-width: 300px;
+      height: auto;
+    }
+
+    .hero-container {
+      gap: 20px;
+    }
+
+    .logo-jove,
+    .logo-coach {
+      font-size: 24px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .cta-box {
+      padding: 20px;
+    }
+
+    .cta-button {
+      padding: 12px 24px;
+      font-size: 15px;
+    }
+
+    .visual-container {
+      width: 280px;
+      height: 280px;
+    }
+
+    .stat-badge-left {
+      left: -30px;
+    }
+
+    .stat-badge-right {
+      right: -30px;
+    }
+
+    .stat-badge {
+      padding: 14px 18px;
+    }
+
+    .stat-number {
+      font-size: 24px;
+    }
+
+    .laptop-container {
+      width: 240px;
+    }
+
+    .girl-container {
+      width: 180px;
+      height: 240px;
+    }
+
+    .pillar-container {
+      gap: 60px;
+      bottom: 100px;
+    }
+
+    .pillar {
+      width: 32px;
+    }
+
+    .pillar-left {
+      height: 120px;
+    }
+
+    .pillar-right {
+      height: 150px;
+    }
+  } */
+
+	/* Extra Small Mobile */
+	/* @media (max-width: 360px) {
+    .hero-title {
+      font-size: 28px;
+    }
+
+    .cta-button {
+      font-size: 14px;
+      padding: 12px 20px;
+    }
+
+    .visual-container {
+      width: 260px;
+      height: 260px;
+    }
+  } */
+</style>
+
+<section class="hero-section" style={`--hero-bg: url(${optimizedHeroBg.src});`}>
+	<div class="logo">
+		<Image src={NavLogo} alt={"Logo"} loading="eager" />
+	</div>
+
+	<div class="hero-container">
+		<!-- Left Content -->
+		<div class="hero-left">
+			<div class="hero-content">
+				<h1 class="hero-title"> Homeschool STEM Learning Made Simple</h1>
+				<span class="hero-span"
+					>with
+					<Image src={conceptsSectionIcon1} alt={"Logo"} style="width: 120px; height: auto; vertical-align: middle;" />
+					powered learning
+				</span>
+				<p class="hero-subtitle">Bite-sized expert videos. Structured lessons. Instant practice. Real results-no prep.</p>
+
+				<ul class="features-list">
+					<li class="feature-item">
+						<Image src={HeroSectionIcon1} alt="Feature Icon" />
+						<span class="feature-text">Trusted by 1 Million+ students. Proven results.</span>
+					</li>
+					<li class="feature-item">
+						<Image src={HeroSectionIcon1} alt="Feature Icon" />
+						<span class="feature-text">19 years of academic credibility</span>
+					</li>
+					<li class="feature-item">
+						<Image src={HeroSectionIcon1} alt="Feature Icon" />
+						<span class="feature-text">2-minute videos made by experts</span>
+					</li>
+				</ul>
+
+				<div class="cta-box">
+					<h3 class="cta-title">See what stress-free homeschool STEM looks like</h3>
+					<ZohoFormEmbed formIdSuffix="hero" layout="horizontal" />
+				</div>
+			</div>
+		</div>
+
+		<!-- Right Visual -->
+		<div class="hero-right">
+			<Image src={HeroGridBg} alt="" class="hero-bg" />
+			<div class="hero-image">
+				<div class="visual-container">
+					<!-- <div class="blue-circle"></div> -->
+
+					<!-- Animated Pillars (Growing from bottom to top) -->
+					<div class="pillar-container">
+						<div class="pillar pillar-left">
+							<div class="pillar-content">
+								<h3 class="stat-number">96%</h3>
+								<p class="stat-label">Enhanced Clarity</p>
+								<Image src={HeroSectioncognition} alt="Enhanced Clarity Icon" />
+							</div>
+						</div>
+
+						<div class="pillar pillar-right">
+							<div class="pillar-content">
+								<h3 class="stat-number">2X</h3>
+								<p class="stat-label">Improved Scores</p>
+								<Image src={HeroSectionStat} alt="Improved Scores Icon" />
+							</div>
+						</div>
+					</div>
+
+					<!-- Stat Badges -->
+
+					<!-- Girl Placeholder -->
+					<video width="900px" height="auto" autoplay muted loop playsinline class="hero-video" poster={HeroSectionImage.src}>
+						<source src={HeroSectionVideo} type="video/webm" />
+						Your browser does not support the video tag.
+					</video>
+					<Image src={HeroSectionImage} alt="Hero Video" class="hero-video hero-mobile-img" loading="eager" />
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,49 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/landingPage_2/Footer.astro";
+import HeroSection from "../components/landingPage_2/HeroSectionAlt.astro";
+import Layout from "../layouts/Layout.astro";
+import JoveGenLpFaqs from "../components/landingPage_2/joveGenLpFaqs.astro";
+import ZohoForm from "../components/landingPage_2/zohoForm.astro";
+import STEMStruggle from "../components/landingPage_2/STEMStruggle.astro";
+import JoVECoachSteps from "../components/landingPage_2/JoVECoachSteps.astro";
+import FirstCTASection from "../components/landingPage_2/FirstCTASection.astro";
+import SecondCTASection from "../components/landingPage_2/SecondCTASection.astro";
+import ConceptsSection from "../components/landingPage_2/ConceptsSection.astro";
+// import Testimonial from "../components/landingPage_2/testimonial.astro";
+import LearnerPersonas from "../components/landingPage_2/LearnerPersonas.astro";
+import PricingSection from "../components/landingPage_2/pricingSection.astro";
+import ZohoModal from "../components/landingPage_2/ZohoModal.astro";
+
+import HeroSectionVideo from "../assets/LP-Girl-MR.webm";
+import HeroSectionImage from "../assets/Hero-Section-Mobile_img.png";
+import HeroSectionBlueBg from "../assets/HeroSectionBlueBg.webp";
+import { getImage } from "astro:assets";
+
+const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" });
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout title="JoVE Coach | Homeschool STEM Curriculum | AI-Powered Learning" description="Expert STEM curriculum for homeschool families. 2-minute videos, AI-powered quizzes, structured learning paths. Try free for 7 days.">
+	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" fetchpriority="high" media="(min-width: 769px)" />
+	<link rel="preload" href={optimizedHeroBg.src} as="image" type="image/webp" slot="head" fetchpriority="high" />
+	<link rel="preload" href={HeroSectionImage.src} as="image" media="(max-width: 768px)" slot="head" fetchpriority="high" />
+
+	<HeroSection />
+	<STEMStruggle />
+	<FirstCTASection />
+	<JoVECoachSteps />
+	<SecondCTASection />
+	<ConceptsSection />
+	<!-- <Testimonial /> -->
+	<LearnerPersonas />
+	<PricingSection />
+	<JoveGenLpFaqs />
+
+	<ZohoForm />
+	<ZohoModal />
+
+	<Footer />
+</Layout>

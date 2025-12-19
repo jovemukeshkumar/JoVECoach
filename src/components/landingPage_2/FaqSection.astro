@@ -1,0 +1,249 @@
+---
+import qs from "qs";
+import section10FaqArrow from "../../assets/section10FaqArrow.svg";
+import { Image } from "astro:assets";
+
+const homePageQuery = qs.stringify(
+  {
+    populate: {
+      faqSection: { populate: "*" }
+    }
+  },
+  { encodeValuesOnly: true }
+);
+
+// Safe fetch helper
+async function getStrapiData(path: string) {
+  try {
+    const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+    if (!BASE_URL) return null;
+
+    const url = new URL(path, BASE_URL);
+    url.search = homePageQuery;
+
+    const res = await fetch(url.href);
+    if (!res.ok) return null;
+
+    const json = await res.json();
+    return json?.data ?? null;
+  } catch (err) {
+    console.error("Strapi FAQ Fetch Error:", err);
+    return null;
+  }
+}
+
+const data = await getStrapiData("/api/home-page");
+
+// Safely extract component
+const faqSection =
+  data?.faqSection?.find(
+    (b: any) => b.__component === "layout.faq-section"
+  ) ?? {};
+
+// Dynamically extract all question/answer pairs
+const faqList = Object.keys(faqSection)
+  .filter((key) => key.startsWith("faqSectionQuestion"))
+  .map((qKey) => {
+    const index = qKey.replace("faqSectionQuestion", "");
+    const aKey = `faqSectionAnswer${index}`;
+    return {
+      question: faqSection[qKey],
+      answer: faqSection[aKey]
+    };
+  })
+  .filter((item) => item.question); // Only valid items
+---
+
+
+<style>
+  .faq-section {
+    margin: 0px 0px;
+    padding: 50px 0px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .faq-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0 !important;
+    pointer-events: none;
+    background-image:
+      url("../../assets/JoVECoachStepsBgImage1.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+  }
+
+  .faq-container {
+    margin: 0 auto;
+    padding: 0px 80px;
+    font-family: Inter, sans-serif;
+    max-width: 800px;
+     position: relative;
+    z-index: 10;
+  }
+
+  .faq-heading {
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 64px;
+  }
+
+  /* FAQ ITEM */
+  .faq-item {
+    border-radius: 8px;
+    padding: 24px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 0.5px solid transparent;
+  }
+
+  /* Removed first-child special styling so no FAQ appears open by default */
+
+  /* Question Row */
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  /* Arrow Icon */
+  .faq-arrow {
+    width: 14px;
+    height: auto;
+    transition: transform 0.3s ease;
+    transform: rotate(180deg);
+  }
+
+  /* Answer Text */
+  .faq-answer {
+    color: rgb(71, 71, 71);
+    font-size: 15px;
+    line-height: 150%;
+    margin-top: 16px;
+    width: 90%;
+    display: none;
+  }
+
+  /* Open state */
+  .faq-item.open {
+    border: 0.5px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+
+  }
+
+  .faq-item.open .faq-arrow {
+    transform: rotate(0deg);
+  }
+
+  .faq-item.open .faq-answer {
+    display: block;
+  }
+
+  /* ---------------------------------------------------
+      RESPONSIVE STYLES
+  --------------------------------------------------- */
+
+  @media (max-width: 1024px) {
+    .faq-container {
+      padding: 0 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .faq-section {
+      margin: 60px 0;
+    }
+
+    .faq-container {
+      padding: 0 24px;
+      max-width: 100%;
+    }
+
+    .faq-heading {
+      font-size: 28px;
+      margin-bottom: 48px;
+    }
+
+    .faq-item {
+      padding: 20px 16px;
+    }
+
+    .faq-question {
+      font-size: 18px;
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faq-heading {
+      font-size: 24px;
+    }
+
+    .faq-item {
+      padding: 18px 14px;
+    }
+
+    .faq-question {
+      font-size: 16px;
+    }
+
+    .faq-arrow {
+      width: 12px;
+    }
+  }
+</style>
+
+<section class="faq-section">
+  <div class="faq-container">
+    <h2 class="faq-heading">
+      {faqSection?.faqSectionHeading ?? "Frequently Asked Questions"}
+    </h2>
+
+    {faqList.length === 0 && (
+      <p style="text-align:center; color:#777;">No FAQs available right now.</p>
+    )}
+
+    {faqList.map((item, index) => (
+      <div class={`faq-item ${index === 0 ? "open" : ""}`} data-faq>
+        <div class="faq-question">
+          {item.question}
+          <Image src={section10FaqArrow} alt="Arrow" class="faq-arrow" />
+        </div>
+
+        {item.answer && <p class="faq-answer">{item.answer}</p>}
+      </div>
+    ))}
+  </div>
+</section>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll("[data-faq]");
+
+    faqItems.forEach((faq) => {
+      faq.addEventListener("click", () => {
+        const open = faq.classList.contains("open");
+
+        faqItems.forEach((item) => item.classList.remove("open"));
+
+        if (!open) faq.classList.add("open");
+      });
+    });
+  });
+</script>

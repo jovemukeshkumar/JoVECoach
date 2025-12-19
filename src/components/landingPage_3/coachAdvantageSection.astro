@@ -1,0 +1,217 @@
+---
+import qs from "qs";
+import { Image } from "astro:assets";
+
+// Local fallback icons (if Strapi icons missing)
+import icon1 from "../../assets/section8SubHeadingLogo1.svg";
+import icon2 from "../../assets/section8SubHeadingLogo2.svg";
+import icon3 from "../../assets/section8SubHeadingLogo3.svg";
+import icon4 from "../../assets/section8SubHeadingLogo4.svg";
+
+const fallbackIcons = [icon1, icon2, icon3, icon4];
+
+const homePageQuery = qs.stringify(
+  {
+    populate: {
+      coachAdvantageSection: {
+        populate: "*",
+      },
+    },
+  },
+  { encodeValuesOnly: true },
+);
+
+// Safe Fetch Function
+async function getStrapiData(path: string) {
+  try {
+    const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+    if (!BASE_URL) return null;
+
+    const url = new URL(path, BASE_URL);
+    url.search = homePageQuery;
+
+    const res = await fetch(url.href);
+    if (!res.ok) return null;
+
+    const json = await res.json();
+    return json?.data ?? null;
+  } catch (e) {
+    console.error("Strapi Fetch Error:", e);
+    return null;
+  }
+}
+
+const data = await getStrapiData("/api/home-page");
+
+// Find Section
+const section =
+  data?.coachAdvantageSection?.find(
+    (b: any) => b.__component === "layout.section8-details"
+  ) ?? {};
+
+// Convert static items → dynamic array
+const items = [
+  {
+    heading: section.SectionSubHeading1,
+    text: section.SectionSubPara1,
+    icon: fallbackIcons[0],
+  },
+  {
+    heading: section.SectionSubHeading2,
+    text: section.SectionSubPara2,
+    icon: fallbackIcons[1],
+  },
+  {
+    heading: section.SectionSubHeading3,
+    text: section.SectionSubPara3,
+    icon: fallbackIcons[2],
+  },
+  {
+    heading: section.SectionSubHeading4,
+    text: section.SectionSubPara4,
+    icon: fallbackIcons[3],
+  },
+].filter(item => item.heading || item.text);
+---
+<style>
+/* ------------------------------
+      SECTION LAYOUT
+------------------------------ */
+.section8Details {
+    margin: 100px 0;
+}
+
+.section8-wrapper {
+    background: #fff;
+    padding: 0 16px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ------------------------------
+      HEADINGS
+------------------------------ */
+.section8-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 600;
+    color: #000;
+    font-family: Inter, sans-serif;
+}
+
+.section8-highlight {
+    color: rgb(33, 131, 237);
+}
+
+/* ------------------------------
+      ROW LAYOUT
+------------------------------ */
+.section8-row {
+    display: flex;
+    flex-direction: row;
+    max-width: 809px;
+    width: 100%;
+    align-items: center;
+    gap: 27px;
+    margin: 32px auto;
+}
+
+/* ------------------------------
+      ICON
+------------------------------ */
+.section8-icon {
+    width: 32px;
+    height: 32px;
+}
+
+/* ------------------------------
+      TEXT
+------------------------------ */
+.section8-textbox {
+    width: 100%;
+}
+
+.section8-subheading {
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.section8-paragraph {
+    color: rgb(63, 63, 63);
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    margin: 0;
+}
+
+/* ------------------------------
+      RESPONSIVE DESIGN
+------------------------------ */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .section8-title {
+        font-size: 28px;
+    }
+
+    .section8-row {
+        max-width: 100%;
+        gap: 20px;
+    }
+
+    .section8-subheading {
+        font-size: 20px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .section8-row {
+        flex-direction: column;   /* Stack rows */
+        text-align: center;
+        align-items: center;
+    }
+
+    .section8-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 12px;
+    }
+
+    .section8-subheading {
+        font-size: 18px;
+    }
+
+    .section8-paragraph {
+        font-size: 14px;
+    }
+}
+</style>
+
+<section class="section8Details">
+  <h2 class="section8-title">
+    The <span class="section8-highlight">Coach</span> Advantage
+  </h2>
+
+  <div class="section8-wrapper">
+    {
+      items.map((item, i) => (
+        <div class="section8-row">
+          <Image alt="" src={item.icon} class="section8-icon" />
+
+          <div class="section8-textbox">
+            <h3 class="section8-subheading">{item.heading ?? "—"}</h3>
+            <p class="section8-paragraph">{item.text ?? ""}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+

@@ -1,0 +1,203 @@
+---
+import qs from "qs";
+import section11CardImage from "../../assets/section11Card.svg";
+import { Image } from "astro:assets";
+
+const homePageQuery = qs.stringify(
+  {
+    populate: {
+      cardSection: {
+        populate: "*",
+      },
+    },
+  },
+  { encodeValuesOnly: true }
+);
+
+// Safe fetch wrapper
+async function getStrapiData(path: string) {
+  try {
+    const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+    if (!BASE_URL) return null;
+
+    const url = new URL(path, BASE_URL);
+    url.search = homePageQuery;
+
+    const res = await fetch(url.href);
+    if (!res.ok) return null;
+
+    const json = await res.json();
+    return json?.data ?? null;
+  } catch (error) {
+    console.error("Strapi fetch error:", error);
+    return null;
+  }
+}
+
+const data = await getStrapiData("/api/home-page");
+
+// Safely extract component
+const cardSection =
+  data?.cardSection?.find(
+    (b: any) => b.__component === "layout.card-section"
+  ) ?? {};
+
+// Optional fallbacks
+const heading = cardSection.cardHeading ?? "Become a Better Learner Today";
+const paragraph =
+  cardSection.cardPara ??
+  "Join thousands of students learning smarter, faster, and more effectively.";
+const buttonText = cardSection.cardButtonContent ?? "Get Started";
+const buttonLink = "#hubform";
+---
+
+<style>
+/* Outer wrapper */
+.card-wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 1080px;
+    min-height: 332px;
+    display: flex;
+    justify-content: center;
+    padding: 150px 0 120px;
+    margin: 0 auto;
+}
+
+/* Blue card box */
+.card-box {
+    width: 100%;
+    height: 100%;
+    max-height: 335px;
+    max-width: 1080px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: #fff;
+    background-color: rgb(33, 131, 237);
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+}
+
+/* Heading */
+.card-heading {
+    margin-bottom: 16px;
+    color: #fff;
+    font-family: Inter;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: normal;
+    width: 40%;
+}
+
+/* Paragraph */
+.card-para {
+    margin-bottom: 56px;
+    color: #fff;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    width: 40%;
+}
+
+/* Button */
+.card-btn {
+    color: #fff;
+    padding: 14px 32px;
+    width: 100%;
+    max-width: 320px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    background: transparent;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.card-btn a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Image */
+.card-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* ---------------------------
+      RESPONSIVE DESIGN
+---------------------------- */
+
+/* Tablets */
+@media (max-width: 900px) {
+    .card-heading,
+    .card-para {
+        width: 60%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .card-box {
+        padding: 28px;
+    }
+
+    .card-heading {
+        font-size: 24px;
+        width: 100%;
+    }
+
+    .card-para {
+        font-size: 14px;
+        width: 100%;
+        margin-bottom: 32px;
+    }
+
+    .card-btn {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card-img {
+        width: 140px;
+        opacity: 0.4;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 400px) {
+    .card-heading {
+        font-size: 20px;
+    }
+
+    .card-img {
+        width: 120px;
+    }
+}
+</style>
+
+<section class="card-section">
+  <div class="card-wrapper">
+    <div class="card-box">
+      <p class="card-heading">{heading}</p>
+
+      <p class="card-para">{paragraph}</p>
+
+      <button class="card-btn">
+        <a href={buttonLink}>{buttonText}</a>
+      </button>
+
+      <Image
+        alt="bannerPattern"
+        src={section11CardImage}
+        class="card-img"
+      />
+    </div>
+  </div>
+</section>
+

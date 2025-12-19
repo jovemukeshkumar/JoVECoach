@@ -1,0 +1,498 @@
+---
+import { Image, getImage } from "astro:assets";
+import ArrowLeft from "../../assets/Arrow.svg";
+import ArrowRight from "../../assets/Arrow.svg";
+import testimonialAuthor1 from "../../assets/testimonialAuthor1.png";
+import testimonialAuthor2 from "../../assets/testimonialAuthor2.png";
+import testimonialAuthor3 from "../../assets/testimonialAuthor3.png";
+import testimonialAuthor4 from "../../assets/testimonialAuthor4.png";
+import r1 from "../../assets/r1.jpg";
+import r2 from "../../assets/r2.jpg";
+import r3 from "../../assets/r3.jpg";
+import r4 from "../../assets/r4.jpg";
+import testimonialBg from "../../assets/testimonialBg.png";
+
+const optimizedTestimonialBg = await getImage({ src: testimonialBg, format: "webp" });
+
+const testimonials = [
+	{
+		rating: 5,
+		text: "I finally understand chemistry. Like, actually understand it. Not just memorize-and-forget.	",
+		name: "Sophomore, Texas",
+		avatar: testimonialAuthor1,
+	},
+	{
+		rating: 4,
+		text: "Bio used to be my worst subject. Now I'm the one explaining stuff to my friends.",
+		name: "Junior, California",
+		avatar: testimonialAuthor2,
+	},
+	{
+		rating: 5,
+		text: "I've watched so many YouTube videos and none of them made sense. This actually does.",
+		name: "Freshman, Florida",
+		avatar: testimonialAuthor3,
+	},
+	{
+		rating: 5,
+		text: "Used it the night before my physics test. Got a B+ when I expected to fail.",
+		name: "Senior, New York",
+		avatar: testimonialAuthor4,
+	},
+	{
+		rating: 5,
+		text: "Micro courses finally gave me a clear path through organic chem. No more random video hopping.",
+		name: "Sophomore, Illinois",
+		avatar: r1,
+	},
+	{
+		rating: 5,
+		text: "I typed my question and it found exactly the video I needed. In seconds.",
+		name: "Freshman, Arizona",
+		avatar: r2,
+	},
+	{
+		rating: 5,
+		text: "The AI quizzes showed me what I didn't know. Way better than just rewatching videos.",
+		name: "Senior, Georgia",
+		avatar: r3,
+	},
+	{
+		rating: 5,
+		text: "I save every chat. It's like having perfect study notes without actually taking notes.",
+		name: "Junior, Ohio",
+		avatar: r4,
+	},
+];
+---
+
+<section class="testimonial-section" style={`--testimonial-bg: url(${optimizedTestimonialBg.src});`}>
+	<div class="container">
+		<h2 class="title">
+			You are in <span class="highlight">good company</span>
+		</h2>
+		<p class="subtitle">Students are already seeing results</p>
+
+		<div class="carousel-wrapper">
+			<div class="testimonials-grid" id="testimonials-grid">
+				{
+					testimonials.map(testimonial => (
+						<div class="testimonial-card">
+							<div class="stars">
+								{Array.from({ length: 5 }).map((_, i) => (
+									<span class={i < testimonial.rating ? "star filled" : "star"}>★</span>
+								))}
+							</div>
+							<p class="testimonial-text">{testimonial.text}</p>
+							<div class="author">
+								<Image src={testimonial?.avatar} alt={testimonial?.name} class="avatar" inferSize={true} />
+								<span class="author-name">{testimonial.name}</span>
+							</div>
+						</div>
+					))
+				}
+			</div>
+
+			<div class="navigation">
+				<button class="nav-btn prev" id="testimonial-prev" aria-label="Previous">
+					<Image src={ArrowLeft} alt="Previous" width={20} height={20} />
+				</button>
+				<button class="nav-btn next" id="testimonial-next" aria-label="Next">
+					<Image src={ArrowRight} alt="Next" width={20} height={20} />
+				</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.testimonial-section {
+		padding: 5rem 0 1rem 0;
+		position: relative;
+		z-index: 1;
+	}
+
+	.testimonial-section::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0 !important;
+		pointer-events: none;
+		background-image: url("../../assets/JoVECoachStepsBgGrid.svg"), url("../../assets/JoVECoachStepsBgGrid.svg");
+		background-repeat: no-repeat, no-repeat;
+		background-position:
+			1100px top,
+			600px bottom;
+		background-size:
+			auto 300px,
+			auto 300px;
+		opacity: 0.25;
+	}
+
+	.testimonial-section::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		background-image: var(--testimonial-bg);
+		background-repeat: no-repeat;
+		background-position: center top;
+		background-size: contain;
+	}
+
+	.container {
+		position: relative;
+		z-index: 1;
+	}
+
+	.title {
+		font-size: 36px;
+		font-weight: 600;
+		line-height: 130%;
+		letter-spacing: 0px;
+		text-align: center;
+		margin: 0 0 12px 0;
+		color: #000;
+		font-family: Inter;
+	}
+
+	.highlight {
+		color: #3b82f6;
+	}
+
+	.subtitle {
+		text-align: center;
+		color: #666;
+		font-size: 16px;
+		margin: 0 0 60px 0;
+	}
+
+	.carousel-wrapper {
+		position: relative;
+		padding: 0 60px 100px 0;
+		overflow: hidden;
+		margin-left: 15%;
+	}
+
+	.testimonials-grid {
+		display: flex;
+		gap: 24px;
+		transition: transform 0.4s ease-in-out;
+	}
+
+	.testimonial-card {
+		flex: 0 0 280px;
+		min-width: 280px;
+		max-width: 280px;
+		width: 280px;
+		background: white;
+		border-radius: 16px;
+		padding: 32px 28px;
+		box-shadow: 0px 10px 20px 0px #2183ed26;
+		border: 0.5px solid #2183ed;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		gap: 20px;
+		max-height: 240px;
+	}
+
+	.stars {
+		display: flex;
+		gap: 4px;
+		font-size: 16px;
+	}
+
+	.star {
+		color: #d1d5db;
+	}
+
+	.star.filled {
+		color: #1a1a1a;
+	}
+
+	.testimonial-text {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 25.2px;
+		letter-spacing: 0%;
+		color: #3f3f3f;
+	}
+
+	.author {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.avatar {
+		width: 40px;
+		height: 40px;
+		object-fit: cover;
+		border-radius: 50%;
+		background: #e5e7eb;
+	}
+
+	.author-name {
+		font-family: Inter;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		color: #3f3f3f;
+	}
+
+	.navigation {
+		position: absolute;
+		bottom: 5px;
+		right: 150px;
+		display: flex;
+		gap: 12px;
+	}
+
+	.nav-btn {
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s ease;
+	}
+
+	.nav-btn:hover {
+		background: #2183ed;
+		color: white;
+		transform: scale(1.05);
+	}
+
+	.nav-btn:hover img {
+		filter: brightness(0) invert(1);
+	}
+
+	.nav-btn.prev img {
+		transform: rotate(180deg);
+	}
+
+	.nav-btn.prev:hover img {
+		transform: rotate(180deg);
+	}
+
+	/* Carousel edge blur - Enhanced */
+	.carousel-blur {
+		position: absolute;
+		top: 0;
+		bottom: 100px;
+		width: 100px;
+		pointer-events: none;
+		z-index: 5;
+	}
+
+	/* Left blur */
+	.carousel-blur.left {
+		left: 0;
+		background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0.2) 80%, rgba(255, 255, 255, 0) 100%);
+	}
+
+	/* Right blur */
+	.carousel-blur.right {
+		right: 0;
+		background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0.2) 80%, rgba(255, 255, 255, 0) 100%);
+	}
+
+	@media (max-width: 1024px) {
+		.carousel-wrapper {
+			padding: 0 40px 100px 40px;
+			margin-left: 0;
+		}
+
+		.navigation {
+			right: 40px;
+		}
+
+		.carousel-blur {
+			width: 60px;
+		}
+
+		.testimonial-card {
+			flex: 0 0 260px;
+			min-width: 260px;
+			max-width: 260px;
+			width: 260px;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.title {
+			font-size: 32px;
+		}
+
+		.carousel-wrapper {
+			padding: 0 20px 80px 20px;
+			margin-left: 0;
+		}
+
+		.navigation {
+			right: 20px;
+			bottom: 5px;
+		}
+
+		.nav-btn {
+			width: 44px;
+			height: 44px;
+		}
+
+		.carousel-blur {
+			width: 40px;
+		}
+
+		.testimonial-card {
+			flex: 0 0 60%;
+			min-width: 60%;
+			max-width: 60%;
+			width: 60%;
+		}
+	}
+</style>
+
+<script>
+	const grid = document.getElementById("testimonials-grid") as HTMLElement;
+	const prevBtn = document.getElementById("testimonial-prev") as HTMLButtonElement;
+	const nextBtn = document.getElementById("testimonial-next") as HTMLButtonElement;
+
+	let currentIndex = 0;
+	const cards = document.querySelectorAll<HTMLElement>(".testimonial-card");
+	const totalCards = cards.length;
+
+	function getCardsPerView(): number {
+		const container = document.querySelector(".carousel-wrapper") as HTMLElement;
+		if (!container) return 1;
+
+		const style = window.getComputedStyle(container);
+		const paddingLeft = parseFloat(style.paddingLeft) || 0;
+		const paddingRight = parseFloat(style.paddingRight) || 0;
+		const usableWidth = container.clientWidth - paddingLeft - paddingRight;
+
+		const cardElement = cards[0];
+		if (!cardElement) return 1;
+
+		const cardWidth = cardElement.offsetWidth;
+		const gap = 24; // CSS gap
+
+		// Calculate N such that N * width + (N-1) * gap <= usableWidth
+		const val = Math.floor((usableWidth + gap) / (cardWidth + gap));
+		return Math.max(1, val);
+	}
+
+	function updateCarousel(): void {
+		const cardsPerView = getCardsPerView();
+		const maxIndex = Math.max(0, totalCards - cardsPerView);
+		currentIndex = Math.min(currentIndex, maxIndex);
+
+		const cardWidth = cards[0]?.offsetWidth || 280;
+		const gap = 24;
+		const offset = -(currentIndex * (cardWidth + gap));
+
+		if (grid) {
+			grid.style.transform = `translateX(${offset}px)`;
+		}
+
+		// Update button states
+		if (prevBtn) {
+			prevBtn.disabled = currentIndex === 0;
+			if (currentIndex === 0) {
+				prevBtn.classList.add("disabled");
+			} else {
+				prevBtn.classList.remove("disabled");
+			}
+		}
+
+		if (nextBtn) {
+			nextBtn.disabled = currentIndex >= maxIndex;
+			if (currentIndex >= maxIndex) {
+				nextBtn.classList.add("disabled");
+			} else {
+				nextBtn.classList.remove("disabled");
+			}
+		}
+	}
+
+	if (prevBtn) {
+		prevBtn.addEventListener("click", () => {
+			if (currentIndex > 0) {
+				currentIndex--;
+				updateCarousel();
+			}
+		});
+	}
+
+	if (nextBtn) {
+		nextBtn.addEventListener("click", () => {
+			const cardsPerView = getCardsPerView();
+			const maxIndex = totalCards - cardsPerView;
+			if (currentIndex < maxIndex) {
+				currentIndex++;
+				updateCarousel();
+			}
+		});
+	}
+
+	window.addEventListener("resize", () => {
+		currentIndex = 0;
+		updateCarousel();
+	});
+
+	// Initial update
+	updateCarousel();
+
+	// Touch/Swipe Support
+	let touchStartX = 0;
+	let touchEndX = 0;
+
+	grid.addEventListener(
+		"touchstart",
+		e => {
+			touchStartX = e.changedTouches[0].screenX;
+		},
+		{ passive: true },
+	);
+
+	grid.addEventListener(
+		"touchend",
+		e => {
+			touchEndX = e.changedTouches[0].screenX;
+			handleSwipe();
+		},
+		{ passive: true },
+	);
+
+	function handleSwipe() {
+		const swipeThreshold = 50;
+		if (touchEndX < touchStartX - swipeThreshold) {
+			// Swipe Left -> Next
+			if (nextBtn && !nextBtn.disabled) {
+				// Trigger click logic directly or call click()
+				const cardsPerView = getCardsPerView();
+				const maxIndex = totalCards - cardsPerView;
+				if (currentIndex < maxIndex) {
+					currentIndex++;
+					updateCarousel();
+				}
+			}
+		}
+		if (touchEndX > touchStartX + swipeThreshold) {
+			// Swipe Right -> Prev
+			if (prevBtn && !prevBtn.disabled) {
+				if (currentIndex > 0) {
+					currentIndex--;
+					updateCarousel();
+				}
+			}
+		}
+	}
+</script>

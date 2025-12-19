@@ -1,0 +1,152 @@
+---
+import qs from "qs";
+
+
+const homePageQuery = qs.stringify(
+  {
+    populate: {
+      impactSection: {
+        populate: "*",
+      },
+    },
+  },
+  { encodeValuesOnly: true },
+);
+
+
+async function getStrapiData(path: string) {
+  try {
+    const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+    if (!BASE_URL) {
+      console.error("❌ Missing PUBLIC_BACKEND_URL");
+      return null;
+    }
+
+    const url = new URL(path, BASE_URL);
+    url.search = homePageQuery;
+
+    const res = await fetch(url.href);
+
+    if (!res.ok) {
+      console.error("❌ Strapi request failed:", res.status);
+      return null;
+    }
+
+    const json = await res.json();
+    return json?.data ?? null;
+  } catch (error) {
+    console.error("❌ Strapi fetch error:", error);
+    return null;
+  }
+}
+
+const data = await getStrapiData("/api/home-page");
+
+
+const impactSection =
+  data?.impactSection?.find((b: any) => b.__component === "components.section9") ??
+  {
+    impactSectionHeading1: "Our Impact",
+    impactItems: [],
+  };
+
+
+const items = [
+  {
+    heading: impactSection?.impactSectionSubHeading1,
+    text: impactSection?.impactSectionPara1,
+  },
+  {
+    heading: impactSection?.impactSectionSubHeading2,
+    text: impactSection?.impactSectionPara2,
+  },
+  {
+    heading: impactSection?.impactSectionSubHeading3,
+    text: impactSection?.impactSectionPara3,
+  },
+].filter(item => item.heading || item.text); // remove empty ones
+---
+
+<style>
+    /* Section Wrapper */
+.impact-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgb(246, 246, 247);
+  font-family: Arial, sans-serif;
+}
+
+.impact-section h2 {
+  font-size: 32px;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+/* Grid Layout */
+.impact-grid {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+/* Individual Item */
+.impact-item {
+  max-width: 250px;
+  padding: 0 20px;
+  border-right: 1px solid #dcdcdc;
+}
+
+.impact-item:last-child {
+  border-right: none;
+}
+
+.impact-item h3 {
+  font-size: 48px;
+  color: #1a73e8;
+  margin: 0 0 15px;
+}
+
+.impact-item p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .impact-grid {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .impact-item {
+    border-right: none;
+    border-bottom: 1px solid #dcdcdc;
+    padding-bottom: 20px;
+  }
+
+  .impact-item:last-child {
+    border-bottom: none;
+  }
+}
+
+</style>
+
+<section class="impact-section">
+  <h2>{impactSection.impactSectionHeading1 || "Our Impact"}</h2>
+
+  <div class="impact-grid">
+    {
+      items.map((item: any) => (
+        <div class="impact-item">
+          <h3>{item.heading || "—"}</h3>
+          <p>{item.text || ""}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+
