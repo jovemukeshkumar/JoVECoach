@@ -18,6 +18,7 @@ import ZohoModal from "../components/landingPage_2/ZohoModal.astro";
 import HeroSectionVideo from "../assets/lp2_HeroSectionVideo.webm";
 import HeroSectionImage from "../assets/homeschool-mobile-optimized.webp";
 import HeroSectionBlueBg from "../assets/HeroSectionBlueBg.webp";
+import NavLogo from "../assets/NavLogo.svg";
 import { getImage } from "astro:assets";
 
 const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" });
@@ -30,6 +31,7 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" fetchpriority="high" media="(min-width: 769px)" />
 	<link rel="preload" href={optimizedHeroBg.src} as="image" type="image/webp" slot="head" fetchpriority="high" />
 	<link rel="preload" href={HeroSectionImage.src} as="image" media="(max-width: 768px)" slot="head" fetchpriority="high" />
+	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" />
 
 	<HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} />
 	<STEMStruggle />
