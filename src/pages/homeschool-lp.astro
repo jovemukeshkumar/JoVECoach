@@ -17,11 +17,9 @@ import ZohoModal from "../components/landingPage_2/ZohoModal.astro";
 
 import HeroSectionVideo from "../assets/lp2_HeroSectionVideo.webm";
 import HeroSectionImage from "../assets/homeschool-mobile-optimized.webp";
-import HeroSectionBlueBg from "../assets/HeroSectionBlueBg.webp";
+
 import NavLogo from "../assets/NavLogo.svg";
 import { getImage } from "astro:assets";
-
-const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" });
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -29,11 +27,10 @@ const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" 
 
 <Layout title="JoVE Coach | Homeschool STEM Curriculum | AI-Powered Learning" description="Expert STEM curriculum for homeschool families. 2-minute videos, AI-powered quizzes, structured learning paths. Try free for 7 days." robots="noindex, nofollow">
 	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" fetchpriority="high" media="(min-width: 769px)" />
-	<link rel="preload" href={optimizedHeroBg.src} as="image" type="image/webp" slot="head" fetchpriority="high" />
-	<link rel="preload" href={HeroSectionImage.src} as="image" media="(max-width: 768px)" slot="head" fetchpriority="high" />
+	<link rel="preload" href={HeroSectionImage.src} as="image" slot="head" fetchpriority="high" />
 	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" />
 
-	<HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} />
+	<HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionImage.src} />
 	<STEMStruggle />
 	<FirstCTASection />
 	<JoVECoachSteps />

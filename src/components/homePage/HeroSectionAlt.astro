@@ -31,6 +31,7 @@ const { videoSrc = HeroSectionVideo, posterSrc, mobileImgSrc = HeroSectionImage 
 		min-height: 1000px;
 		position: relative;
 		z-index: 10;
+		background: linear-gradient(0deg, #c3d7ff, white, white, transparent);
 	}
 
 	/* .hero-section::before {
@@ -757,7 +758,7 @@ const { videoSrc = HeroSectionVideo, posterSrc, mobileImgSrc = HeroSectionImage 
   } */
 </style>
 
-<section class="hero-section" style={`--hero-bg: url(${optimizedHeroBg.src});`}>
+<section class="hero-section">
 	<div class="logo">
 		<Image src={NavLogo} alt={"Logo"} loading="eager" />
 	</div>
@@ -825,7 +826,7 @@ const { videoSrc = HeroSectionVideo, posterSrc, mobileImgSrc = HeroSectionImage 
 					<!-- Stat Badges -->
 
 					<!-- Girl Placeholder -->
-					<video width="900px" height="auto" autoplay muted loop playsinline class="hero-video" poster={posterSrc}>
+					<video width="900px" height="auto" autoplay muted loop playsinline class="hero-video" poster={posterSrc} preload="auto" fetchpriority="high">
 						<source src={videoSrc} type="video/webm" media="(min-width: 769px)" />
 						Your browser does not support the video tag.
 					</video>
