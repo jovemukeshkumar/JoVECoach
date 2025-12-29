@@ -117,7 +117,12 @@ import ThreeDvideo from "../../assets/3D-Still-Images.webm";
 	/* Mobile */
 	@media (max-width: 768px) {
 		.video-wrapper {
-			display: none;
+			/* display: none; */
+			padding: 0;
+			margin-left: -20px;
+			margin-right: -20px;
+			width: calc(100% + 40px);
+			max-width: calc(100% + 40px);
 		}
 		.concepts-video {
 			border-radius: 0;
@@ -349,7 +354,7 @@ import ThreeDvideo from "../../assets/3D-Still-Images.webm";
 	<!-- 3D Video -->
 	<div class="video-wrapper">
 		<video class="concepts-video" autoplay muted loop playsinline>
-			<source src={ThreeDvideo} type="video/webm" media="(min-width: 769px)" />
+			<source src={ThreeDvideo} type="video/webm" />
 			Your browser does not support the video tag.
 		</video>
 	</div>
