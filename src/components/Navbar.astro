@@ -1,6 +1,6 @@
 ---
 import qs from "qs";
-import NavLogo from '../assets/NavLogo.svg'
+import NavLogo from "../assets/NavLogo.svg";
 import { Image } from "astro:assets";
 const homePageQuery = qs.stringify(
 	{
@@ -9,21 +9,22 @@ const homePageQuery = qs.stringify(
 				populate: "*",
 			},
 		},
-	}
-, { encodeValuesOnly: true });
+	},
+	{ encodeValuesOnly: true },
+);
 
 async function getStrapiData(path: string) {
-  const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
-  const url = new URL(path, BASE_URL);
-  url.search = homePageQuery;
+	const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+	const url = new URL(path, BASE_URL);
+	url.search = homePageQuery;
 
-  try {
-    const res = await fetch(url.href);
-    const json = await res.json();
-    return json.data;
-  } catch (error) {
-    console.error("Strapi fetch error:", error);
-  }
+	try {
+		const res = await fetch(url.href);
+		const json = await res.json();
+		return json.data;
+	} catch (error) {
+		console.error("Strapi fetch error:", error);
+	}
 }
 
 const data = await getStrapiData("/api/global");
@@ -33,7 +34,6 @@ const header = data?.header;
 
 <style>
 	#container {
-		font-family: Inter, sans-serif;
 		height: 100%;
 		position: sticky;
 		top: 0;
@@ -92,7 +92,7 @@ const header = data?.header;
 
 	.btn-free-trial a {
 		text-decoration: none;
-		color: #4284E5;
+		color: #4284e5;
 		font-size: 16px;
 		font-weight: 500;
 		transition: color 0.3s ease;
@@ -106,9 +106,9 @@ const header = data?.header;
 		background: #ffffff;
 		border-radius: 100px;
 		margin-left: 8px;
-		color: #4284E5;
-		border: 1px #4284E5 solid;
-		font-family: Inter, sans-serif;
+		color: #4284e5;
+		border: 1px #4284e5 solid;
+
 		font-weight: 500;
 		font-size: 12.64px;
 		line-height: 100%;
@@ -121,7 +121,7 @@ const header = data?.header;
 	}
 
 	.btn-free-trial:hover {
-		background-color: #4284E5;
+		background-color: #4284e5;
 		color: #fff;
 	}
 
@@ -268,16 +268,8 @@ const header = data?.header;
 <nav id="container">
 	<div id="navbar">
 		<a href={header?.logoImageUrl?.url || "/"} id="logo">
-  {header?.logoImage && (
-    <Image
-      src={header.logoImage.url}
-      alt={header.logoImage.alternativeText || "Logo"}
-      width={200}
-      height={50}
-    />
-  )}
-</a>
-
+			{header?.logoImage && <Image src={header.logoImage.url} alt={header.logoImage.alternativeText || "Logo"} width={200} height={50} />}
+		</a>
 
 		<!-- Navigation Links (hidden on mobile) -->
 		<!-- <div id="nav-links">
@@ -285,7 +277,7 @@ const header = data?.header;
 			<a href={header?.about?.url}>{header?.about?.text || 'NavLink'}</a>
 			<a href={header?.pricing?.url}>{header?.pricing?.text || 'NavLink'}</a>
 		</div> -->
-		
+
 		<!-- Free Trial Button -->
 		<div id="nav-ctas">
 			<button class="btn-free-trial">

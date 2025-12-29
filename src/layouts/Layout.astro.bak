@@ -1,5 +1,4 @@
 ---
-import "@fontsource-variable/inter";
 interface Props {
 	title?: string;
 	description?: string;
@@ -54,7 +53,12 @@ const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description =
 		</script>
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+		<noscript>
+			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+		</noscript>
 		<script is:inline>
 			// Global reCAPTCHA Logic
 			window.globalRecaptchaWidgetId = null;
@@ -170,23 +174,11 @@ const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description =
 	</body>
 </html>
 
-<style is:global>
+<style>
 	html,
 	body {
 		margin: 0;
-		font-family:
-			"Inter Variable",
-			system-ui,
-			-apple-system,
-			BlinkMacSystemFont,
-			"Segoe UI",
-			Roboto,
-			Oxygen,
-			Ubuntu,
-			Cantarell,
-			"Open Sans",
-			"Helvetica Neue",
-			sans-serif;
+		font-family: "Inter", "san-serif";
 		scroll-behavior: smooth;
 	}
 </style>

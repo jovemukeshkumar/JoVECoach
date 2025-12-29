@@ -4,154 +4,153 @@ import section10FaqArrow from "../../assets/section10FaqArrow.svg";
 import { Image } from "astro:assets";
 
 const homePageQuery = qs.stringify(
-  {
-    populate: {
-      faqSection: {
-        populate: "*",
-      },
-    },
-  },
-  { encodeValuesOnly: true },
+	{
+		populate: {
+			faqSection: {
+				populate: "*",
+			},
+		},
+	},
+	{ encodeValuesOnly: true },
 );
 
 async function getStrapiData(path: string) {
-  const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
-  const url = new URL(path, BASE_URL);
-  url.search = homePageQuery;
+	const BASE_URL = import.meta.env.PUBLIC_BACKEND_URL;
+	const url = new URL(path, BASE_URL);
+	url.search = homePageQuery;
 
-  const res = await fetch(url?.href);
-  const json = await res.json();
-  return json.data;
+	const res = await fetch(url?.href);
+	const json = await res.json();
+	return json.data;
 }
 
 const data = await getStrapiData("/api/pricing-page");
-const faqSection = data?.faqSection?.find(
-  (b: any) => b.__component === "layout.faq-section",
-);
+const faqSection = data?.faqSection?.find((b: any) => b.__component === "layout.faq-section");
 
 // Build a list of visible FAQ items (skip empty/NA entries)
 const visibleFaqs = (() => {
-  const items: { q: any; a: any }[] = [];
-  for (let i = 0; i < 10; i++) {
-    const q = faqSection?.[`faqSectionQuestion${i + 1}`];
-    const a = faqSection?.[`faqSectionAnswer${i + 1}`];
-    if (!q || q === "NA") continue;
-    items.push({ q, a });
-  }
-  return items;
+	const items: { q: any; a: any }[] = [];
+	for (let i = 0; i < 10; i++) {
+		const q = faqSection?.[`faqSectionQuestion${i + 1}`];
+		const a = faqSection?.[`faqSectionAnswer${i + 1}`];
+		if (!q || q === "NA") continue;
+		items.push({ q, a });
+	}
+	return items;
 })();
 ---
 
 <style>
-  .faq-container {
-    max-width: 805px;
-    min-width: 805px;
-    margin: 0 auto;
-    padding: 0;
-    font-family: Inter, sans-serif;
-  }
+	.faq-container {
+		max-width: 805px;
+		min-width: 805px;
+		margin: 0 auto;
+		padding: 0;
+	}
 
-  .faq-heading {
-    text-align: center;
-    margin-bottom: 64px;
-    font-family: Inter;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: normal;
-  }
+	.faq-heading {
+		text-align: center;
+		margin-bottom: 64px;
+		/* /* font-family: Inter; */ */
+		font-size: 36px;
+		font-weight: 600;
+		line-height: normal;
+	}
 
-  /* FAQ Item */
-  .faq-item {
-    border: none;
-    border-radius: 8px;
-    box-shadow: none;
-    padding: 24px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    border: 0.5px solid transparent;
-  }
+	/* FAQ Item */
+	.faq-item {
+		border: none;
+		border-radius: 8px;
+		box-shadow: none;
+		padding: 24px;
+		cursor: pointer;
+		transition: 0.3s ease-in-out;
+		border: 0.5px solid transparent;
+	}
 
-  /* Removed first-child special styling so no FAQ appears open by default */
+	/* Removed first-child special styling so no FAQ appears open by default */
 
-  /* Question Row */
-  .faq-question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: Inter, sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 0px;
-  }
+	/* Question Row */
+	.faq-question {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
-  /* Arrow icon */
-  .faq-arrow {
-    width: 12px;
-    height: 6px;
-    transition: transform 0.3s ease;
-    transform: rotate(180deg);
-  }
+		font-size: 20px;
+		font-weight: 500;
+		margin-bottom: 0px;
+	}
 
-  /* Answer */
-  .faq-answer {
-    color: rgb(71, 71, 71);
-    font-family: Inter;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 140%;
-    margin-top: 16px;
-    width: 90%;
-    display: none;
-  }
+	/* Arrow icon */
+	.faq-arrow {
+		width: 12px;
+		height: 6px;
+		transition: transform 0.3s ease;
+		transform: rotate(180deg);
+	}
 
-  /* When Open */
-  .faq-item.open {
-    border: 0.5px solid #ccc;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-  }
+	/* Answer */
+	.faq-answer {
+		color: rgb(71, 71, 71);
+		/* /* font-family: Inter; */ */
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 140%;
+		margin-top: 16px;
+		width: 90%;
+		display: none;
+	}
 
-  .faq-item.open .faq-arrow {
-    transform: rotate(0deg);
-  }
+	/* When Open */
+	.faq-item.open {
+		border: 0.5px solid #ccc;
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+	}
 
-  .faq-item.open .faq-answer {
-    display: block;
-  }
+	.faq-item.open .faq-arrow {
+		transform: rotate(0deg);
+	}
+
+	.faq-item.open .faq-answer {
+		display: block;
+	}
 </style>
 
 <section class="faq-section">
-  <div class="faq-container">
-    <h2 class="faq-heading">{faqSection?.faqSectionHeading}</h2>
+	<div class="faq-container">
+		<h2 class="faq-heading">{faqSection?.faqSectionHeading}</h2>
 
-    {visibleFaqs.map((item, idx) => (
-      <div class={`faq-item ${idx === 0 ? "open" : ""}`} data-faq>
-        <div class="faq-question">
-          {item.q}
-          <Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" />
-        </div>
+		{
+			visibleFaqs.map((item, idx) => (
+				<div class={`faq-item ${idx === 0 ? "open" : ""}`} data-faq>
+					<div class="faq-question">
+						{item.q}
+						<Image alt="Arrow" src={section10FaqArrow} class="faq-arrow" />
+					</div>
 
-        {item.a && item.a !== "NA" ? (
-          <div class="faq-answer">
-            <div class="faq-html" set:html={item.a} />
-          </div>
-        ) : null}
-      </div>
-    ))}
-  </div>
+					{item.a && item.a !== "NA" ? (
+						<div class="faq-answer">
+							<div class="faq-html" set:html={item.a} />
+						</div>
+					) : null}
+				</div>
+			))
+		}
+	</div>
 </section>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const faqItems = document.querySelectorAll("[data-faq]");
+	document.addEventListener("DOMContentLoaded", () => {
+		const faqItems = document.querySelectorAll("[data-faq]");
 
-    faqItems.forEach((faq) => {
-      faq.addEventListener("click", () => {
-        const open = faq.classList.contains("open");
+		faqItems.forEach(faq => {
+			faq.addEventListener("click", () => {
+				const open = faq.classList.contains("open");
 
-        faqItems.forEach((item) => item.classList.remove("open"));
+				faqItems.forEach(item => item.classList.remove("open"));
 
-        if (!open) faq.classList.add("open");
-      });
-    });
-  });
+				if (!open) faq.classList.add("open");
+			});
+		});
+	});
 </script>

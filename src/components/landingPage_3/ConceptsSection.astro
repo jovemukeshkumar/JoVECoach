@@ -25,7 +25,6 @@ import ThreeDvideo from "../../assets/3D-Still-Images.webm";
 
 	/* Heading */
 	.heading h2 {
-		font-family: Inter;
 		font-weight: 600;
 		font-size: 36px;
 		line-height: 130%;
@@ -37,7 +36,6 @@ import ThreeDvideo from "../../assets/3D-Still-Images.webm";
 		color: #2183ed;
 	}
 	.heading p {
-		font-family: Inter;
 		font-weight: 400;
 		font-size: 18px;
 		line-height: 25.2px;
@@ -65,7 +63,6 @@ import ThreeDvideo from "../../assets/3D-Still-Images.webm";
 		padding: 20px;
 	}
 	.feature p {
-		font-family: Inter;
 		font-weight: 500;
 		font-size: 16px;
 		line-height: 140%;
@@ -118,13 +115,9 @@ import ThreeDvideo from "../../assets/3D-Still-Images.webm";
 	}
 
 	/* Mobile */
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.video-wrapper {
-			padding: 0;
-			margin-left: -20px;
-			margin-right: -20px;
-			width: calc(100% + 40px);
-			max-width: none;
+			display: none;
 		}
 		.concepts-video {
 			border-radius: 0;
@@ -172,7 +165,7 @@ import ThreeDvideo from "../../assets/3D-Still-Images.webm";
 		border: 0.5px solid #b4b7b7;
 		border-radius: 25px;
 		padding: 14px 24px;
-		font-family: Inter;
+
 		font-size: 15px;
 		line-height: 1.35;
 		color: #000;
@@ -293,7 +286,7 @@ import ThreeDvideo from "../../assets/3D-Still-Images.webm";
 		padding: 14px 36px;
 		border-radius: 30px;
 		border: none;
-		font-family: Inter;
+
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 140%;
@@ -356,7 +349,7 @@ import ThreeDvideo from "../../assets/3D-Still-Images.webm";
 	<!-- 3D Video -->
 	<div class="video-wrapper">
 		<video class="concepts-video" autoplay muted loop playsinline>
-			<source src={ThreeDvideo} type="video/webm" />
+			<source src={ThreeDvideo} type="video/webm" media="(min-width: 769px)" />
 			Your browser does not support the video tag.
 		</video>
 	</div>

@@ -24,7 +24,7 @@ import ThreeDvideo from "../../assets/3D-Carousel.webm";
 
 /* Heading */
 .heading h2 {
-  font-family: Inter;
+  /* font-family: Inter; */
   font-weight: 600;
   font-size: 36px;
   line-height: 130%;
@@ -36,7 +36,7 @@ import ThreeDvideo from "../../assets/3D-Carousel.webm";
   color: #2183ED;
 }
 .heading p {
-  font-family: Inter;
+  /* font-family: Inter; */
   font-weight: 400;
   font-size: 18px;
   line-height: 25.2px;
@@ -63,7 +63,7 @@ import ThreeDvideo from "../../assets/3D-Carousel.webm";
   padding: 20px;
 }
 .feature p {
-  font-family: Inter;
+  /* font-family: Inter; */
   font-weight: 500;
   font-size: 16px;
   line-height: 140%;
@@ -162,7 +162,7 @@ import ThreeDvideo from "../../assets/3D-Carousel.webm";
   border: 0.5px solid #b4b7b7;
   border-radius: 25px;
   padding: 14px 24px;
-  font-family: Inter;
+  /* font-family: Inter; */
   font-size: 15px;
   line-height: 1.35;
   color: #000;
@@ -263,7 +263,7 @@ import ThreeDvideo from "../../assets/3D-Carousel.webm";
   padding: 14px 36px;
   border-radius: 30px;
   border: none;
-  font-family: Inter;
+  /* font-family: Inter; */
   font-weight: 400;
   font-size: 16px;
   line-height: 140%;

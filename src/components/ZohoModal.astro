@@ -34,7 +34,7 @@ import formHtml from "../components/zohoform.html?raw";
 						<label for="Email_modal">Email<span style="color:red;">*</span></label>
 					</div>
 					<div class="zcwf_col_fld">
-						<input type="text" ftype="email" autocomplete="false" id="Email_modal" aria-required="true" aria-label="Email" name="Email" aria-valuemax="100" crmlabel="" maxlength="100" placeholder="Email*" />
+						<input type="text" data-ftype="email" autocomplete="false" id="Email_modal" aria-required="true" aria-label="Email" name="Email" aria-valuemax="100" data-crmlabel="" maxlength="100" placeholder="Email*" />
 						<div class="zcwf_col_help"></div>
 					</div>
 				</div>
@@ -171,7 +171,7 @@ import formHtml from "../components/zohoform.html?raw";
 	/* Reuse existing Zoho styles but ensure they apply */
 	.zcwf_lblLeft .zcwf_title {
 		color: #fff !important;
-		font-family: Inter !important;
+
 		font-size: 36px !important;
 		font-weight: 500 !important;
 		margin-bottom: 12px;
@@ -181,7 +181,7 @@ import formHtml from "../components/zohoform.html?raw";
 
 	.zcwf_subtitle {
 		color: rgba(255, 255, 255, 0.9) !important;
-		font-family: Inter !important;
+
 		font-size: 16px !important;
 		margin-bottom: 32px;
 	}
@@ -243,7 +243,6 @@ import formHtml from "../components/zohoform.html?raw";
 		background-color: rgba(255, 255, 255, 0.95) !important;
 		color: #333 !important;
 		font-size: 14px !important;
-		font-family: Inter !important;
 	}
 
 	.zcwf_lblLeft .zcwf_col_fld input::placeholder {
@@ -262,7 +261,7 @@ import formHtml from "../components/zohoform.html?raw";
 		font-size: 12px;
 		color: rgba(255, 255, 255, 0.6);
 		margin-top: 20px;
-		font-family: Inter;
+
 		text-align: left; /* Left align */
 	}
 
@@ -402,7 +401,7 @@ import formHtml from "../components/zohoform.html?raw";
 
 	function validateEmail_modal() {
 		var form = document.getElementById("webform_modal");
-		var emailFld = form.querySelectorAll("[ftype=email]");
+		var emailFld = form.querySelectorAll("[data-ftype=email]");
 		var i;
 		for (i = 0; i < emailFld.length; i++) {
 			var emailVal = emailFld[i].value;

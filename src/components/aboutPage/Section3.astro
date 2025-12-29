@@ -1,87 +1,34 @@
 ---
-import { Image } from 'astro:assets'
-import aboutPageIcon5 from '../../assets/aboutPageIcon5.svg'
-import aboutPageIcon6 from '../../assets/aboutPageIcon6.svg'
-import aboutPageIcon7 from '../../assets/aboutPageIcon7.svg'
+import { Image } from "astro:assets";
+import aboutPageIcon5 from "../../assets/aboutPageIcon5.svg";
+import aboutPageIcon6 from "../../assets/aboutPageIcon6.svg";
+import aboutPageIcon7 from "../../assets/aboutPageIcon7.svg";
 ---
 
-<div
-    style="width: 100%; background: rgb(251, 251, 251); padding: 100px 0px; height: 535px; text-align: center;"
->
-    <p
-        style="color: rgb(0, 0, 0); text-align: center; font-family: Inter; font-size: 36px; font-style: normal; font-weight: 600; line-height: normal; margin-bottom: 80px;"
-    >
-        Why <span style="color: rgb(33, 131, 237);">Video-Based</span> Learning?
-    </p><div
-        style="width: 100%; display: flex; justify-content: center; align-items: center; margin-bottom: 0px;"
-    >
-        <div
-            style="width: 100%; max-width: 1012px; min-width: 1012px; display: flex; justify-content: space-between; margin: 0px auto; gap: 56px;"
-        >
-            <div
-                style="display: flex; flex-direction: row; align-items: start; width: 300px; height: 146px;"
-            >
-                <Image
-                    alt="Star Icon"
-                    src={aboutPageIcon5}
-                    style="margin-right: 27px; width: 32px; height: 32px;"
-                /><div
-                    style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;"
-                >
-                    <p
-                        style="margin-bottom: 16px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 24px; font-style: normal; font-weight: 600; line-height: normal;"
-                    >
-                        Improved <br />outcomes
-                    </p><p
-                        style="margin: 0px; color: rgb(63, 63, 63); font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 140%; text-align: left;"
-                    >
-                        Students reported 2x better test scores learning with
-                        JoVE videos.
-                    </p>
-                </div>
-            </div><div
-                style="display: flex; flex-direction: row; align-items: start; width: 300px; height: 146px;"
-            >
-                <Image
-                    alt="Computer Icon"
-                    src={aboutPageIcon6}
-                    style="margin-right: 27px; width: 32px; height: 32px;"
-                /><div
-                    style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;"
-                >
-                    <p
-                        style="margin-bottom: 16px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 24px; font-style: normal; font-weight: 600; line-height: normal;"
-                    >
-                        Better<br /> comprehension
-                    </p><p
-                        style="margin: 0px; color: rgb(63, 63, 63); font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 140%; text-align: left;"
-                    >
-                        96% students report better understanding of concepts
-                        with video based learning.
-                    </p>
-                </div>
-            </div><div
-                style="display: flex; flex-direction: row; align-items: start; width: 300px; height: 146px;"
-            >
-                <Image
-                    alt="Tick Icon"
-                    src={aboutPageIcon7}
-                    style="margin-right: 27px; width: 32px; height: 32px;"
-                /><div
-                    style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;"
-                >
-                    <p
-                        style="margin-bottom: 16px; text-align: left; color: rgb(0, 0, 0); font-family: Inter; font-size: 24px; font-style: normal; font-weight: 600; line-height: normal;"
-                    >
-                        Reinforcing <br />learning
-                    </p><p
-                        style="margin: 0px; color: rgb(63, 63, 63); font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 140%; text-align: left;"
-                    >
-                        Byte-sized videos make it easier to revise and retain
-                        concepts.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div style="width: 100%; background: rgb(251, 251, 251); padding: 100px 0px; height: 535px; text-align: center;">
+	<p style="color: rgb(0, 0, 0); text-align: center;  font-size: 36px; font-style: normal; font-weight: 600; line-height: normal; margin-bottom: 80px;">
+		Why <span style="color: rgb(33, 131, 237);">Video-Based</span> Learning?
+	</p><div style="width: 100%; display: flex; justify-content: center; align-items: center; margin-bottom: 0px;">
+		<div style="width: 100%; max-width: 1012px; min-width: 1012px; display: flex; justify-content: space-between; margin: 0px auto; gap: 56px;">
+			<div style="display: flex; flex-direction: row; align-items: start; width: 300px; height: 146px;">
+				<Image alt="Star Icon" src={aboutPageIcon5} style="margin-right: 27px; width: 32px; height: 32px;" /><div style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;">
+					<p style="margin-bottom: 16px; text-align: left; color: rgb(0, 0, 0);  font-size: 24px; font-style: normal; font-weight: 600; line-height: normal;">
+						Improved <br />outcomes
+					</p><p style="margin: 0px; color: rgb(63, 63, 63);  font-size: 16px; font-style: normal; font-weight: 400; line-height: 140%; text-align: left;"> Students reported 2x better test scores learning with JoVE videos. </p>
+				</div>
+			</div><div style="display: flex; flex-direction: row; align-items: start; width: 300px; height: 146px;">
+				<Image alt="Computer Icon" src={aboutPageIcon6} style="margin-right: 27px; width: 32px; height: 32px;" /><div style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;">
+					<p style="margin-bottom: 16px; text-align: left; color: rgb(0, 0, 0);  font-size: 24px; font-style: normal; font-weight: 600; line-height: normal;">
+						Better<br /> comprehension
+					</p><p style="margin: 0px; color: rgb(63, 63, 63);  font-size: 16px; font-style: normal; font-weight: 400; line-height: 140%; text-align: left;"> 96% students report better understanding of concepts with video based learning. </p>
+				</div>
+			</div><div style="display: flex; flex-direction: row; align-items: start; width: 300px; height: 146px;">
+				<Image alt="Tick Icon" src={aboutPageIcon7} style="margin-right: 27px; width: 32px; height: 32px;" /><div style="width: 100%; display: flex; flex-direction: column; justify-content: start; align-items: start; text-align: left;">
+					<p style="margin-bottom: 16px; text-align: left; color: rgb(0, 0, 0);  font-size: 24px; font-style: normal; font-weight: 600; line-height: normal;">
+						Reinforcing <br />learning
+					</p><p style="margin: 0px; color: rgb(63, 63, 63);  font-size: 16px; font-style: normal; font-weight: 400; line-height: 140%; text-align: left;"> Byte-sized videos make it easier to revise and retain concepts. </p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

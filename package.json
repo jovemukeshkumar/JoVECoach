@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^9.0.2",
+    "@fontsource-variable/inter": "^5.2.8",
     "@types/qs": "^6.14.0",
     "astro": "^5.15.9",
     "axios": "^1.13.2",
