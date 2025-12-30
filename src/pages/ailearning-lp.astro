@@ -17,7 +17,7 @@ import PricingSection from "../components/homePage/pricingSection.astro";
 import ZohoModal from "../components/ZohoModal.astro";
 
 import HeroSectionVideo from "../assets/LP-Girl-MR.webm";
-import HeroSectionImage from "../assets/Hero-Section-Mobile_img.webp";
+import HeroSectionImage from "../assets/Hero-Section-Mobile_img (ailearning).webp";
 
 import NavLogo from "../assets/NavLogo.svg";
 import { getImage } from "astro:assets";
@@ -31,7 +31,7 @@ import { getImage } from "astro:assets";
 	<link rel="preload" href={HeroSectionImage.src} as="image" slot="head" fetchpriority="high" />
 	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" />
 
-	<HeroSection videoSrc={HeroSectionVideo} posterSrc={HeroSectionImage.src} />
+	<HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionImage.src} />
 	<STEMStruggle />
 	<FirstCTASection />
 	<JoVECoachSteps />

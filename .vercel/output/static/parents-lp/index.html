@@ -1,0 +1,2363 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Primary Meta Tags --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JoVE Coach | STEM Support for Your Child | AI-Powered Learning</title><meta name="description" content="Affordable, effective STEM help. 2-minute expert videos, AI-powered quizzes, real results. Better than a tutor. Try free for 7 days."><meta name="robots" content="noindex, nofollow"><link rel="canonical" href="https://coach.jove.com/pp"><!-- Open Graph / Facebook / LinkedIn --><meta property="og:type" content="website"><meta property="og:url" content="https://coach.jove.com/pp"><meta property="og:title" content="AI Powered STEM Learning | JoVE Coach"><meta property="og:description" content="AI-powered STEM learning. 2-minute expert videos. Instant quizzes. Trusted by 1M+ students at 1,800+ universities. Try free for 7 days."><meta property="og:image" content="https://coach.jove.com/pp/home-social.jpg"><meta property="og:site_name" content="JoVE Coach"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="https://coach.jove.com/pp"><meta name="twitter:title" content="AI Powered STEM Learning | JoVE Coach"><meta name="twitter:description" content="AI-powered STEM learning. Expert videos. Instant quizzes. Trusted by 1M+ students. Try free for 7 days."><meta name="twitter:image" content="https://coach.jove.com/pp/home-social.jpg"><!-- <meta name="twitter:site" content="@JoVEJournal" /> --><!-- JSON-LD Schema --><script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "EducationalOrganization",
+				"name": "JoVE Coach",
+				"description": "AI Powered STEM Learning | Bite-sized videos and instant quizzes to help students master Biology, Chemistry, and Physics.",
+				"url": "https://coach.jove.com/pp/",
+				"logo": "./logo.svg"
+				// "sameAs": [
+				// 	"https://www.linkedin.com/company/jovecoach",
+				// 	"https://www.youtube.com/jovecoach",
+				// 	"https://www.instagram.com/jovecoach"
+				// ]
+			}
+		</script><link rel="icon" type="image/svg+xml" href="/favicon.svg"><script>
+			// Global reCAPTCHA Logic
+			window.globalRecaptchaWidgetId = null;
+			window.pendingRecaptchaCallback = null;
+
+			window.onGlobalRecaptchaSuccess = function (token) {
+				console.log("Global reCAPTCHA success. Token received.");
+				if (typeof window.pendingRecaptchaCallback === "function") {
+					window.pendingRecaptchaCallback(token);
+					window.pendingRecaptchaCallback = null; // Reset
+				}
+				// Reset widget so it can be used again
+				if (window.globalRecaptchaWidgetId !== null) {
+					grecaptcha.reset(window.globalRecaptchaWidgetId);
+				}
+			};
+
+			window.executeGlobalRecaptcha = function (callback) {
+				console.log("Executing global reCAPTCHA...");
+				if (window.globalRecaptchaWidgetId !== null && typeof grecaptcha !== "undefined") {
+					window.pendingRecaptchaCallback = callback;
+					grecaptcha.execute(window.globalRecaptchaWidgetId);
+				} else {
+					console.warn("Global reCAPTCHA widget not ready.");
+					alert("Security check loading... Please try again in 2 seconds.");
+				}
+			};
+
+			window.onRecaptchaLoad = function () {
+				console.log("Global reCAPTCHA loaded. Rendering shared widget...");
+				const el = document.getElementById("global-recaptcha");
+				if (el) {
+					window.globalRecaptchaWidgetId = grecaptcha.render(el, {
+						sitekey: "6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m",
+						size: "invisible",
+						callback: window.onGlobalRecaptchaSuccess,
+					});
+					console.log(`Global widget rendered with ID: ${window.globalRecaptchaWidgetId}`);
+				}
+			};
+
+			// Lazy Load Scripts (GTM & ReCaptcha)
+			(function () {
+				let scriptsLoaded = false;
+
+				function loadScripts() {
+					if (scriptsLoaded) return;
+					scriptsLoaded = true;
+
+					console.log("Lazy loading third-party scripts...");
+
+					// 1. Google Tag Manager
+					(function (w, d, s, l, i) {
+						w[l] = w[l] || [];
+						w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+						var f = d.getElementsByTagName(s)[0],
+							j = d.createElement(s),
+							dl = l != "dataLayer" ? "&l=" + l : "";
+						j.async = true;
+						j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+						f.parentNode.insertBefore(j, f);
+					})(window, document, "script", "dataLayer", "GTM-TQWX7HXX");
+
+					// 2. ReCaptcha
+					const rcScript = document.createElement("script");
+					rcScript.src = "https://www.google.com/recaptcha/api.js?render=explicit&onload=onRecaptchaLoad";
+					rcScript.async = true;
+					rcScript.defer = true;
+					document.head.appendChild(rcScript);
+
+					// 3. Microsoft Clarity
+					(function (c, l, a, r, i, t, y) {
+						c[a] =
+							c[a] ||
+							function () {
+								(c[a].q = c[a].q || []).push(arguments);
+							};
+						t = l.createElement(r);
+						t.async = 1;
+						t.src = "https://www.clarity.ms/tag/" + i;
+						y = l.getElementsByTagName(r)[0];
+						y.parentNode.insertBefore(t, y);
+					})(window, document, "clarity", "script", "uszk2uowh0");
+
+					// Cleanup listeners
+					window.removeEventListener("mousemove", loadScripts);
+					window.removeEventListener("keydown", loadScripts);
+					window.removeEventListener("touchmove", loadScripts);
+					window.removeEventListener("scroll", loadScripts);
+				}
+
+				// Trigger on interaction or timeout
+				window.addEventListener("mousemove", loadScripts, { once: true });
+				window.addEventListener("keydown", loadScripts, { once: true });
+				window.addEventListener("touchmove", loadScripts, { once: true });
+				window.addEventListener("scroll", loadScripts, { once: true });
+
+				// Fallback timeout (4 seconds)
+				setTimeout(loadScripts, 4000);
+			})();
+		</script><!-- End Google Tag Manager --><meta name="generator" content="Astro v5.15.9"><link rel="preload" href="/_astro/lp3_HerosectionVideo.CwZ2Wr_i.webm" as="video" type="video/webm" fetchpriority="high" media="(min-width: 769px)"><link rel="preload" href="/_astro/Hero-Section-Mobile_img.FGC0RzVn.webp" as="image" fetchpriority="high"><link rel="preload" href="/_astro/NavLogo.B6uvUaIy.svg" as="image" type="image/svg+xml" fetchpriority="high"><style>@font-face{font-family:Inter Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/inter-cyrillic-ext-wght-normal.BOeWTOD4.woff2) format("woff2-variations");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Inter Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/inter-cyrillic-wght-normal.DqGufNeO.woff2) format("woff2-variations");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:Inter Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/inter-greek-ext-wght-normal.DlzME5K_.woff2) format("woff2-variations");unicode-range:U+1F00-1FFF}@font-face{font-family:Inter Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/inter-greek-wght-normal.CkhJZR-_.woff2) format("woff2-variations");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:Inter Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/inter-vietnamese-wght-normal.CBcvBZtf.woff2) format("woff2-variations");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Inter Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/inter-latin-ext-wght-normal.DO1Apj_S.woff2) format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Inter Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/inter-latin-wght-normal.Dx4kXJAl.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}html,body{margin:0;font-family:Inter Variable,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;scroll-behavior:smooth}
+</style>
+<link rel="stylesheet" href="/_astro/parents-lp.j-ISEKww.css"></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQWX7HXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) -->     <section class="hero-section" data-astro-cid-tlypocrq> <div class="logo" data-astro-cid-tlypocrq> <img src="/_astro/NavLogo.B6uvUaIy_2ajO2t.svg" alt="Logo" loading="eager" data-astro-cid-tlypocrq="true" decoding="async" fetchpriority="auto" width="218" height="45"> </div> <div class="hero-container" data-astro-cid-tlypocrq> <!-- Left Content --> <div class="hero-left" data-astro-cid-tlypocrq> <div class="hero-content" data-astro-cid-tlypocrq> <h1 class="hero-title" data-astro-cid-tlypocrq> STEM Support Your Child Needs </h1> <span class="hero-span" data-astro-cid-tlypocrq>with
+<img src="/_astro/conceptsSectionIcon1.Bu9AkO-H_Zfciiv.svg" alt="Logo" style="width: 120px; height: auto; vertical-align: middle;" data-astro-cid-tlypocrq="true" loading="lazy" decoding="async" fetchpriority="auto" width="31" height="33">
+powered learning
+</span> <p class="hero-subtitle" data-astro-cid-tlypocrq>Effective STEM help with bite-sized expert videos. Instant practice. Real results.</p> <ul class="features-list" data-astro-cid-tlypocrq> <li class="feature-item" data-astro-cid-tlypocrq> <img src="/_astro/HeroSectionIcon1.Dnu3-bAH_1EjbJc.svg" alt="Feature Icon" data-astro-cid-tlypocrq="true" loading="lazy" decoding="async" fetchpriority="auto" width="21" height="21"> <span class="feature-text" data-astro-cid-tlypocrq>Trusted by 1 Million+ students. Proven results.</span> </li> <li class="feature-item" data-astro-cid-tlypocrq> <img src="/_astro/HeroSectionIcon1.Dnu3-bAH_1EjbJc.svg" alt="Feature Icon" data-astro-cid-tlypocrq="true" loading="lazy" decoding="async" fetchpriority="auto" width="21" height="21"> <span class="feature-text" data-astro-cid-tlypocrq>19 years of academic credibility</span> </li> <li class="feature-item" data-astro-cid-tlypocrq> <img src="/_astro/HeroSectionIcon1.Dnu3-bAH_1EjbJc.svg" alt="Feature Icon" data-astro-cid-tlypocrq="true" loading="lazy" decoding="async" fetchpriority="auto" width="21" height="21"> <span class="feature-text" data-astro-cid-tlypocrq>2-minute videos made by experts</span> </li> </ul> <div class="cta-box" data-astro-cid-tlypocrq> <h3 class="cta-title" data-astro-cid-tlypocrq> See what effective STEM support looks like</h3> <form id="webform_hero" action="https://crm.zoho.in/crm/WebToContactForm" name="WebToContacts_hero" method="POST" accept-charset="UTF-8" class="zoho-form-horizontal" data-astro-cid-jcuw3rfl> <!-- Hidden Fields --> <input type="text" style="display:none;" name="xnQsjsdp" value="7cacd23940abbe07ab3afbb0935bce36e48117ac9aa7418df96fe992eea58e0f" data-astro-cid-jcuw3rfl> <input type="hidden" name="zc_gad" id="zc_gad_hero" value="" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" name="xmIwtLD" value="b4a7085281b2a284d9cd1b01a00b2acad544d903c838c50c3b230c9587ff8a7243f1d77cf0e9a89f5dc74ad36c77b03a" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" name="returnURL" value="null" data-astro-cid-jcuw3rfl> <!-- UTM Hidden Fields --> <input type="text" style="display:none;" id="CONTACTCF11_hero" name="CONTACTCF11" value="https://" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF14_hero" name="CONTACTCF14" value="" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF20_hero" name="CONTACTCF20" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF19_hero" name="CONTACTCF19" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF17_hero" name="CONTACTCF17" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF21_hero" name="CONTACTCF21" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF18_hero" name="CONTACTCF18" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF7_hero" name="CONTACTCF7" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF4_hero" name="CONTACTCF4" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF5_hero" name="CONTACTCF5" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF6_hero" name="CONTACTCF6" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF1_hero" name="CONTACTCF1" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF3_hero" name="CONTACTCF3" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF2_hero" name="CONTACTCF2" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF30_hero" name="CONTACTCF30" value="-" data-astro-cid-jcuw3rfl> <!-- Default Values --> <!-- Default Values --> <input type="text" style="display:none;" id="CONTACTCF15_hero" name="CONTACTCF15" value="Paid" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF28_hero" name="CONTACTCF28" value="Lead" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF16_hero" name="CONTACTCF16" value="Direc" data-astro-cid-jcuw3rfl> <div class="input-row" data-astro-cid-jcuw3rfl> <input type="text" class="input-field" id="Last_Name_hero" name="Last Name" placeholder="Name*" required data-astro-cid-jcuw3rfl> <input type="email" class="input-field input-field-mail" id="Email_hero" name="Email" placeholder="Email*" required data-astro-cid-jcuw3rfl> </div> <div class="cta-bottom" data-astro-cid-jcuw3rfl> <button type="submit" class="cta-button" id="btn_hero" data-astro-cid-jcuw3rfl> Try It Free </button> <span class="cta-note" data-astro-cid-jcuw3rfl>• 7 days free • Full access • No credit card</span> </div> <!-- Invisible reCAPTCHA (Global) --> <!-- No local widget needed --> </form>  <script>(function(){const formId = "webform_hero";
+const formIdSuffix = "hero";
+const callbackName = "onCaptchaSuccess_hero";
+const recaptchaId = "recap_hero";
+
+	console.log(`Defining global callback: window.${callbackName}`);
+	// Define the callback function globally with a unique name
+	window[callbackName] = function (token) {
+		console.log(`Captcha validated for ${formIdSuffix}. Submitting...`);
+		const form = document.getElementById(formId);
+
+		// Dynamic Return URL
+		const nameVal = document.getElementById(`Last_Name_${formIdSuffix}`).value;
+		const emailVal = document.getElementById(`Email_${formIdSuffix}`).value;
+		const returnUrlInput = form.querySelector('input[name="returnURL"]');
+
+		if (returnUrlInput) {
+			const baseUrl = "https://coach.jove.com/signup";
+			const redirectUrl = new URL(baseUrl);
+			redirectUrl.searchParams.set("name", nameVal);
+			redirectUrl.searchParams.set("email", emailVal);
+			returnUrlInput.value = redirectUrl.toString();
+		}
+
+		// Submit programmatically
+		console.log(`Submitting form ${formId} now.`);
+		HTMLFormElement.prototype.submit.call(form);
+	};
+
+	// Form Submission Handler
+	const form = document.getElementById(formId);
+	if (form) {
+		console.log(`Attaching submit handler to ${formId}`);
+		form.onsubmit = function (e) {
+			e.preventDefault();
+			console.log(`Submit triggered for ${formId}`);
+
+			// Basic Validation
+			const name = document.getElementById(`Last_Name_${formIdSuffix}`).value;
+			const email = document.getElementById(`Email_${formIdSuffix}`).value;
+
+			if (!name.trim() || !email.trim()) {
+				alert("Please fill in all required fields.");
+				return false;
+			}
+
+			// Execute Global reCAPTCHA
+			console.log(`Executing Global reCAPTCHA for ${formId}`);
+			if (typeof window.executeGlobalRecaptcha === "function") {
+				window.executeGlobalRecaptcha(window[callbackName]);
+			} else {
+				console.error("Global reCAPTCHA function not found.");
+				alert("Please wait for reCAPTCHA to load.");
+			}
+		};
+	}
+
+	// UTM Population
+	(function () {
+		const params = new URLSearchParams(window.location.search);
+
+		const mapping = {
+			utm_source: `CONTACTCF20_${formIdSuffix}`,
+			utm_medium: `CONTACTCF19_${formIdSuffix}`,
+			utm_campaign: `CONTACTCF17_${formIdSuffix}`,
+			utm_term: `CONTACTCF21_${formIdSuffix}`,
+			utm_content: `CONTACTCF18_${formIdSuffix}`,
+			ad_id: `CONTACTCF4_${formIdSuffix}`,
+			ad_set_id: `CONTACTCF7_${formIdSuffix}`,
+			ad_name: `CONTACTCF5_${formIdSuffix}`,
+			ad_platform: `CONTACTCF6_${formIdSuffix}`,
+			ad_campaign_id: `CONTACTCF1_${formIdSuffix}`,
+			ad_group_name: `CONTACTCF3_${formIdSuffix}`,
+			ad_group_id: `CONTACTCF2_${formIdSuffix}`,
+			ad_campaign_name: `CONTACTCF30_${formIdSuffix}`,
+			landing_page_url: `CONTACTCF11_${formIdSuffix}`,
+			referrer_url: `CONTACTCF14_${formIdSuffix}`,
+		};
+
+		for (const key in mapping) {
+			const fieldId = mapping[key];
+			const el = document.getElementById(fieldId);
+			if (el && params.has(key)) {
+				el.value = params.get(key);
+			}
+		}
+
+		// Fallback for adset_id (no underscore)
+		const adSetField = document.getElementById(`CONTACTCF7_${formIdSuffix}`);
+		if (adSetField && (adSetField.value === "-" || !adSetField.value) && params.has("adset_id")) {
+			adSetField.value = params.get("adset_id");
+		}
+
+		// Fallback for campaign_name (if ad_campaign_name is missing)
+		const campaignNameField = document.getElementById(`CONTACTCF30_${formIdSuffix}`);
+		if (campaignNameField && (campaignNameField.value === "-" || !campaignNameField.value) && params.has("campaign_name")) {
+			campaignNameField.value = params.get("campaign_name");
+		}
+
+		// Handle Source/Subsource Logic
+		const sourceSelect = document.getElementById(`CONTACTCF15_${formIdSuffix}`); // Source
+		const subsourceSelect = document.getElementById(`CONTACTCF16_${formIdSuffix}`); // Subsource
+		const platformSelect = document.getElementById(`CONTACTCF6_${formIdSuffix}`); // Ad Platform (Hidden input in this component, but mapped above)
+
+		const gclid = params.get("gclid");
+		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
+		const utmMedium = params.get("utm_medium");
+		const adPlatform = params.get("ad_platform");
+
+		// Referrer Logic: Check referrer_url, referrer, ref, then document.referrer
+		const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
+
+		// 1. Ad Platform Logic
+		if (platformSelect) {
+			if (adPlatform) platformSelect.value = adPlatform;
+			else if (gclid) platformSelect.value = "Google";
+		}
+
+		// 2. Source Logic
+		if (sourceSelect) {
+			if (sources.some(s => s.toLowerCase() === "paid") || gclid || params.get("ad_id")) {
+				sourceSelect.value = "Paid";
+			} else if (sources.some(s => s.toLowerCase() === "organic")) {
+				sourceSelect.value = "Organic";
+			} else if (sources.some(s => s.toLowerCase() === "social")) {
+				sourceSelect.value = "Social";
+			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
+				sourceSelect.value = "Paid";
+			}
+		}
+
+		// 3. Subsource Logic
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			// Check 'source' params
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "LinkedIn";
+			}
+			// Check utm_source
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "LinkedIn";
+			}
+			if (!subsourceValue && gclid) subsourceValue = "Google Ads";
+
+			if (subsourceValue) subsourceSelect.value = subsourceValue;
+		}
+
+		const landingField = document.getElementById(`CONTACTCF11_${formIdSuffix}`);
+		if (landingField) landingField.value = window.location.href;
+
+		const refField = document.getElementById(`CONTACTCF14_${formIdSuffix}`);
+		if (refField) {
+			if (referrerUrlParam) {
+				refField.value = referrerUrlParam;
+			} else {
+				refField.value = document.referrer || "-";
+			}
+		}
+	})();
+})();</script> </div> </div> </div> <!-- Right Visual --> <div class="hero-right" data-astro-cid-tlypocrq> <img src="/_astro/HeroSectionGridBg.CunfwxHl_Z2i5dBL.svg" alt data-astro-cid-tlypocrq="true" loading="lazy" decoding="async" fetchpriority="auto" width="628" height="743" class="hero-bg"> <div class="hero-image" data-astro-cid-tlypocrq> <div class="visual-container" data-astro-cid-tlypocrq> <!-- <div class="blue-circle"></div> --> <!-- Animated Pillars (Growing from bottom to top) --> <div class="pillar-container" data-astro-cid-tlypocrq> <div class="pillar pillar-left" data-astro-cid-tlypocrq> <div class="pillar-content" data-astro-cid-tlypocrq> <h3 class="stat-number" data-astro-cid-tlypocrq>96%</h3> <p class="stat-label" data-astro-cid-tlypocrq>Enhanced Clarity</p> <img src="/_astro/HeroSectioncognition.DHMWB3mN_1K9XjV.svg" alt="Enhanced Clarity Icon" data-astro-cid-tlypocrq="true" loading="lazy" decoding="async" fetchpriority="auto" width="18" height="19"> </div> </div> <div class="pillar pillar-right" data-astro-cid-tlypocrq> <div class="pillar-content" data-astro-cid-tlypocrq> <h3 class="stat-number" data-astro-cid-tlypocrq>2X</h3> <p class="stat-label" data-astro-cid-tlypocrq>Improved Scores</p> <img src="/_astro/HeroSectionStat.BSKmiaxV_1JKyaN.svg" alt="Improved Scores Icon" data-astro-cid-tlypocrq="true" loading="lazy" decoding="async" fetchpriority="auto" width="12" height="19"> </div> </div> </div> <!-- Stat Badges --> <!-- Girl Placeholder --> <video width="900px" height="auto" autoplay muted loop playsinline class="hero-video" poster="/_astro/Hero-Section-Mobile_img.FGC0RzVn.webp" preload="auto" fetchpriority="high" data-astro-cid-tlypocrq> <source src="/_astro/lp3_HerosectionVideo.CwZ2Wr_i.webm" type="video/webm" media="(min-width: 769px)" data-astro-cid-tlypocrq>
+Your browser does not support the video tag.
+</video> <img src="/_astro/Hero-Section-Mobile_img.FGC0RzVn_e54PH.webp" alt="Hero Video" loading="eager" data-astro-cid-tlypocrq="true" decoding="async" fetchpriority="auto" width="800" height="600" class="hero-video hero-mobile-img"> </div> </div> </div> </div> </section> <section class="stem-struggle" data-astro-cid-ihvla6qn> <section class="section7" data-astro-cid-dcjrjdam> <div class="section7-container" data-astro-cid-dcjrjdam> <div class="section7-heading-wrapper" data-astro-cid-dcjrjdam> <div class="section7-heading" data-astro-cid-dcjrjdam> Trusted by 1 Million+ students across </div> <p data-astro-cid-dcjrjdam>1,800+ top school and universities</p> </div> <div class="section7-slider-wrapper" data-astro-cid-dcjrjdam> <div class="section7-slider" data-astro-cid-dcjrjdam> <img src="https://celebrated-beauty-ac07850f26.media.strapiapp.com/university_of_cambridge_2c3c3332f5.svg" alt="university-of-cambridge.svg" class="section7-logo" loading="lazy" data-astro-cid-dcjrjdam><img src="https://celebrated-beauty-ac07850f26.media.strapiapp.com/kaist_32e31ed87a.svg" alt="kaist.svg" class="section7-logo" loading="lazy" data-astro-cid-dcjrjdam><img src="https://celebrated-beauty-ac07850f26.media.strapiapp.com/eth_9ddfc72a92.svg" alt="eth.svg" class="section7-logo" loading="lazy" data-astro-cid-dcjrjdam><img src="https://celebrated-beauty-ac07850f26.media.strapiapp.com/northeastern_university_98ec84604f.svg" alt="northeastern-university.svg" class="section7-logo" loading="lazy" data-astro-cid-dcjrjdam><img src="https://celebrated-beauty-ac07850f26.media.strapiapp.com/university_of_texas_d1692a434c.svg" alt="university-of-texas.svg" class="section7-logo" loading="lazy" data-astro-cid-dcjrjdam><img src="https://celebrated-beauty-ac07850f26.media.strapiapp.com/university_of_rochester_8a031e2ff2.svg" alt="university-of-rochester.svg" class="section7-logo" loading="lazy" data-astro-cid-dcjrjdam> </div> </div> </div> </section> <div class="container" data-astro-cid-ihvla6qn> <h2 class="main-title" data-astro-cid-ihvla6qn>
+You want to help. <span class="highlight" data-astro-cid-ihvla6qn> But STEM </span> isn't easy.
+</h2> <p class="subtitle" data-astro-cid-ihvla6qn> You've tried everything—expensive tutors, YouTube videos, extra textbooks. Sound Familiar?</p> <div class="cards-grid" data-astro-cid-ihvla6qn> <div class="struggle-card" data-astro-cid-ihvla6qn> <div class="card-text-contents" data-astro-cid-ihvla6qn> <img src="/_astro/STEMstruggleIcon3.CLkUlgGd_Z1Nf8JG.svg" alt="Lecture Fog" data-astro-cid-ihvla6qn="true" loading="lazy" decoding="async" fetchpriority="auto" width="36" height="36" class="card-icon"> <h3 class="card-title" data-astro-cid-ihvla6qn>Lecture Fog</h3> <p class="card-subtitle" data-astro-cid-ihvla6qn>50 minutes in.</p> <p class="card-description" data-astro-cid-ihvla6qn>Still confused.</p> </div> <div class="card-image" data-astro-cid-ihvla6qn> <img src="/_astro/parents-pain-1.B7VGEjFx_1OOriV.webp" alt="Lecture Fog" loading="lazy" data-astro-cid-ihvla6qn="true" decoding="async" fetchpriority="auto" width="468" height="342"> </div> </div><div class="struggle-card" data-astro-cid-ihvla6qn> <div class="card-text-contents" data-astro-cid-ihvla6qn> <img src="/_astro/STEMstruggleIcon2.CC2Kkk6-_1VjKj8.svg" alt="Textbook Loop" data-astro-cid-ihvla6qn="true" loading="lazy" decoding="async" fetchpriority="auto" width="27" height="32" class="card-icon"> <h3 class="card-title" data-astro-cid-ihvla6qn>Textbook Loop</h3> <p class="card-subtitle" data-astro-cid-ihvla6qn>They Read it three times</p> <p class="card-description" data-astro-cid-ihvla6qn>Still lost.</p> </div> <div class="card-image" data-astro-cid-ihvla6qn> <img src="/_astro/parents-pain-2.BSzHB5Kl_1OKM0F.webp" alt="Textbook Loop" loading="lazy" data-astro-cid-ihvla6qn="true" decoding="async" fetchpriority="auto" width="476" height="342"> </div> </div><div class="struggle-card" data-astro-cid-ihvla6qn> <div class="card-text-contents" data-astro-cid-ihvla6qn> <img src="/_astro/STEMstruggleIcon4.D66e2YP2_68cTD.svg" alt=" Youtube Spiral" data-astro-cid-ihvla6qn="true" loading="lazy" decoding="async" fetchpriority="auto" width="24" height="24" class="card-icon"> <h3 class="card-title" data-astro-cid-ihvla6qn> Youtube Spiral</h3> <p class="card-subtitle" data-astro-cid-ihvla6qn>They search for help.</p> <p class="card-description" data-astro-cid-ihvla6qn>Still no answer.</p> </div> <div class="card-image" data-astro-cid-ihvla6qn> <img src="/_astro/parents-pain-3.BzJNHHif_Z1Czdis.webp" alt=" Youtube Spiral" loading="lazy" data-astro-cid-ihvla6qn="true" decoding="async" fetchpriority="auto" width="476" height="342"> </div> </div><div class="struggle-card" data-astro-cid-ihvla6qn> <div class="card-text-contents" data-astro-cid-ihvla6qn> <img src="/_astro/STEMstruggleIcon1.DQKVuMbQ_Z1seXtY.svg" alt=" Exam Panic" data-astro-cid-ihvla6qn="true" loading="lazy" decoding="async" fetchpriority="auto" width="24" height="27" class="card-icon"> <h3 class="card-title" data-astro-cid-ihvla6qn> Exam Panic</h3> <p class="card-subtitle" data-astro-cid-ihvla6qn>Exam tomorrow.</p> <p class="card-description" data-astro-cid-ihvla6qn>Still unsure.</p> </div> <div class="card-image" data-astro-cid-ihvla6qn> <img src="/_astro/parents-pain-4.BZco-SaT_1pEnvm.webp" alt=" Exam Panic" loading="lazy" data-astro-cid-ihvla6qn="true" decoding="async" fetchpriority="auto" width="476" height="343"> </div> </div> </div> <p class="bottom-text" data-astro-cid-ihvla6qn> Your child isn't bad at science. They just haven't found the right way to learn it...</p> <p class="cta-text" data-astro-cid-ihvla6qn>
+19 years of JoVE clarity, Trusted by 1 Million+ students,<span data-astro-cid-ihvla6qn><br data-astro-cid-ihvla6qn> now supercharged with</span> <img src="/_astro/conceptsSectionIcon1.Bu9AkO-H_Zfciiv.svg" alt="AI" data-astro-cid-ihvla6qn="true" loading="lazy" decoding="async" fetchpriority="auto" width="31" height="33"> </p> </div> </section> <section class="ai-cta-section" data-astro-cid-jf5kunw5> <div class="ai-cta-card" data-astro-cid-jf5kunw5> <!-- Left content --> <div class="ai-cta-content" data-astro-cid-jf5kunw5> <h3 data-astro-cid-jf5kunw5>Want to see how it supports your child?</h3> <p data-astro-cid-jf5kunw5>See how JoVE Coach explains it clearly - with AI.</p> </div> <!-- Right form --> <div class="ai-cta-form" data-astro-cid-jf5kunw5> <form id="webform_cta1" action="https://crm.zoho.in/crm/WebToContactForm" name="WebToContacts_cta1" method="POST" accept-charset="UTF-8" class="zoho-form-vertical" data-astro-cid-jcuw3rfl> <!-- Hidden Fields --> <input type="text" style="display:none;" name="xnQsjsdp" value="7cacd23940abbe07ab3afbb0935bce36e48117ac9aa7418df96fe992eea58e0f" data-astro-cid-jcuw3rfl> <input type="hidden" name="zc_gad" id="zc_gad_cta1" value="" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" name="xmIwtLD" value="b4a7085281b2a284d9cd1b01a00b2acad544d903c838c50c3b230c9587ff8a7243f1d77cf0e9a89f5dc74ad36c77b03a" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" name="returnURL" value="null" data-astro-cid-jcuw3rfl> <!-- UTM Hidden Fields --> <input type="text" style="display:none;" id="CONTACTCF11_cta1" name="CONTACTCF11" value="https://" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF14_cta1" name="CONTACTCF14" value="" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF20_cta1" name="CONTACTCF20" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF19_cta1" name="CONTACTCF19" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF17_cta1" name="CONTACTCF17" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF21_cta1" name="CONTACTCF21" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF18_cta1" name="CONTACTCF18" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF7_cta1" name="CONTACTCF7" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF4_cta1" name="CONTACTCF4" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF5_cta1" name="CONTACTCF5" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF6_cta1" name="CONTACTCF6" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF1_cta1" name="CONTACTCF1" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF3_cta1" name="CONTACTCF3" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF2_cta1" name="CONTACTCF2" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF30_cta1" name="CONTACTCF30" value="-" data-astro-cid-jcuw3rfl> <!-- Default Values --> <!-- Default Values --> <input type="text" style="display:none;" id="CONTACTCF15_cta1" name="CONTACTCF15" value="Paid" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF28_cta1" name="CONTACTCF28" value="Lead" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF16_cta1" name="CONTACTCF16" value="Direc" data-astro-cid-jcuw3rfl> <div class="vertical-inputs" data-astro-cid-jcuw3rfl> <input type="text" class="input-field" id="Last_Name_cta1" name="Last Name" placeholder="Name*" required data-astro-cid-jcuw3rfl> <input type="email" class="input-field" id="Email_cta1" name="Email" placeholder="Email*" required data-astro-cid-jcuw3rfl> </div> <div class="cta-bottom" data-astro-cid-jcuw3rfl> <button type="submit" class="cta-button" id="btn_cta1" data-astro-cid-jcuw3rfl> Try an AI Explanation </button>  </div> <!-- Invisible reCAPTCHA (Global) --> <!-- No local widget needed --> </form>  <script>(function(){const formId = "webform_cta1";
+const formIdSuffix = "cta1";
+const callbackName = "onCaptchaSuccess_cta1";
+const recaptchaId = "recap_cta1";
+
+	console.log(`Defining global callback: window.${callbackName}`);
+	// Define the callback function globally with a unique name
+	window[callbackName] = function (token) {
+		console.log(`Captcha validated for ${formIdSuffix}. Submitting...`);
+		const form = document.getElementById(formId);
+
+		// Dynamic Return URL
+		const nameVal = document.getElementById(`Last_Name_${formIdSuffix}`).value;
+		const emailVal = document.getElementById(`Email_${formIdSuffix}`).value;
+		const returnUrlInput = form.querySelector('input[name="returnURL"]');
+
+		if (returnUrlInput) {
+			const baseUrl = "https://coach.jove.com/signup";
+			const redirectUrl = new URL(baseUrl);
+			redirectUrl.searchParams.set("name", nameVal);
+			redirectUrl.searchParams.set("email", emailVal);
+			returnUrlInput.value = redirectUrl.toString();
+		}
+
+		// Submit programmatically
+		console.log(`Submitting form ${formId} now.`);
+		HTMLFormElement.prototype.submit.call(form);
+	};
+
+	// Form Submission Handler
+	const form = document.getElementById(formId);
+	if (form) {
+		console.log(`Attaching submit handler to ${formId}`);
+		form.onsubmit = function (e) {
+			e.preventDefault();
+			console.log(`Submit triggered for ${formId}`);
+
+			// Basic Validation
+			const name = document.getElementById(`Last_Name_${formIdSuffix}`).value;
+			const email = document.getElementById(`Email_${formIdSuffix}`).value;
+
+			if (!name.trim() || !email.trim()) {
+				alert("Please fill in all required fields.");
+				return false;
+			}
+
+			// Execute Global reCAPTCHA
+			console.log(`Executing Global reCAPTCHA for ${formId}`);
+			if (typeof window.executeGlobalRecaptcha === "function") {
+				window.executeGlobalRecaptcha(window[callbackName]);
+			} else {
+				console.error("Global reCAPTCHA function not found.");
+				alert("Please wait for reCAPTCHA to load.");
+			}
+		};
+	}
+
+	// UTM Population
+	(function () {
+		const params = new URLSearchParams(window.location.search);
+
+		const mapping = {
+			utm_source: `CONTACTCF20_${formIdSuffix}`,
+			utm_medium: `CONTACTCF19_${formIdSuffix}`,
+			utm_campaign: `CONTACTCF17_${formIdSuffix}`,
+			utm_term: `CONTACTCF21_${formIdSuffix}`,
+			utm_content: `CONTACTCF18_${formIdSuffix}`,
+			ad_id: `CONTACTCF4_${formIdSuffix}`,
+			ad_set_id: `CONTACTCF7_${formIdSuffix}`,
+			ad_name: `CONTACTCF5_${formIdSuffix}`,
+			ad_platform: `CONTACTCF6_${formIdSuffix}`,
+			ad_campaign_id: `CONTACTCF1_${formIdSuffix}`,
+			ad_group_name: `CONTACTCF3_${formIdSuffix}`,
+			ad_group_id: `CONTACTCF2_${formIdSuffix}`,
+			ad_campaign_name: `CONTACTCF30_${formIdSuffix}`,
+			landing_page_url: `CONTACTCF11_${formIdSuffix}`,
+			referrer_url: `CONTACTCF14_${formIdSuffix}`,
+		};
+
+		for (const key in mapping) {
+			const fieldId = mapping[key];
+			const el = document.getElementById(fieldId);
+			if (el && params.has(key)) {
+				el.value = params.get(key);
+			}
+		}
+
+		// Fallback for adset_id (no underscore)
+		const adSetField = document.getElementById(`CONTACTCF7_${formIdSuffix}`);
+		if (adSetField && (adSetField.value === "-" || !adSetField.value) && params.has("adset_id")) {
+			adSetField.value = params.get("adset_id");
+		}
+
+		// Fallback for campaign_name (if ad_campaign_name is missing)
+		const campaignNameField = document.getElementById(`CONTACTCF30_${formIdSuffix}`);
+		if (campaignNameField && (campaignNameField.value === "-" || !campaignNameField.value) && params.has("campaign_name")) {
+			campaignNameField.value = params.get("campaign_name");
+		}
+
+		// Handle Source/Subsource Logic
+		const sourceSelect = document.getElementById(`CONTACTCF15_${formIdSuffix}`); // Source
+		const subsourceSelect = document.getElementById(`CONTACTCF16_${formIdSuffix}`); // Subsource
+		const platformSelect = document.getElementById(`CONTACTCF6_${formIdSuffix}`); // Ad Platform (Hidden input in this component, but mapped above)
+
+		const gclid = params.get("gclid");
+		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
+		const utmMedium = params.get("utm_medium");
+		const adPlatform = params.get("ad_platform");
+
+		// Referrer Logic: Check referrer_url, referrer, ref, then document.referrer
+		const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
+
+		// 1. Ad Platform Logic
+		if (platformSelect) {
+			if (adPlatform) platformSelect.value = adPlatform;
+			else if (gclid) platformSelect.value = "Google";
+		}
+
+		// 2. Source Logic
+		if (sourceSelect) {
+			if (sources.some(s => s.toLowerCase() === "paid") || gclid || params.get("ad_id")) {
+				sourceSelect.value = "Paid";
+			} else if (sources.some(s => s.toLowerCase() === "organic")) {
+				sourceSelect.value = "Organic";
+			} else if (sources.some(s => s.toLowerCase() === "social")) {
+				sourceSelect.value = "Social";
+			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
+				sourceSelect.value = "Paid";
+			}
+		}
+
+		// 3. Subsource Logic
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			// Check 'source' params
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "LinkedIn";
+			}
+			// Check utm_source
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "LinkedIn";
+			}
+			if (!subsourceValue && gclid) subsourceValue = "Google Ads";
+
+			if (subsourceValue) subsourceSelect.value = subsourceValue;
+		}
+
+		const landingField = document.getElementById(`CONTACTCF11_${formIdSuffix}`);
+		if (landingField) landingField.value = window.location.href;
+
+		const refField = document.getElementById(`CONTACTCF14_${formIdSuffix}`);
+		if (refField) {
+			if (referrerUrlParam) {
+				refField.value = referrerUrlParam;
+			} else {
+				refField.value = document.referrer || "-";
+			}
+		}
+	})();
+})();</script> </div> <!-- Center icon --> <div class="ai-cta-icon" data-astro-cid-jf5kunw5> <img src="/_astro/ai-chat-icon.SIEf4qBf_iogDx.svg" alt="AI Chat Icon" data-astro-cid-jf5kunw5="true" loading="lazy" decoding="async" fetchpriority="auto" width="180" height="180"> </div> </div> </section> <section class="jove-coach-section" style="--bg-image-1: url(/_astro/JoVECoachStepsBgImage1.DGkuN7sB_yJgGW.webp); --bg-image-2: url(/_astro/JoVECoachStepsBgImage2.DrcGqIVJ_mSqB8.webp);" data-astro-cid-usah7wwg> <div class="scroll-track" data-astro-cid-usah7wwg> <div class="sticky-wrapper" data-astro-cid-usah7wwg> <div class="container" data-astro-cid-usah7wwg> <!-- Header --> <div class="header-content" data-astro-cid-usah7wwg> <h2 class="main-title" data-astro-cid-usah7wwg>
+JoVE Coach is more than a study tool - <br data-astro-cid-usah7wwg> <span class="highlight" data-astro-cid-usah7wwg>
+it’s
+<img src="/_astro/conceptsSectionIcon1.Bu9AkO-H_Zfciiv.svg" alt="JoVE Coach" data-astro-cid-usah7wwg="true" loading="lazy" decoding="async" fetchpriority="auto" width="31" height="33">
+that helps them finally get it.
+</span> </h2> <p class="subtitle" data-astro-cid-usah7wwg> 2-minute videos. AI-backed clarity. Instant practice. </p> <p class="discover-text" data-astro-cid-usah7wwg>Discover JoVE's 4 steps to Mastery.</p> <!-- Navigation Tabs --> <div class="tabs-container" data-astro-cid-usah7wwg> <button class="tab-button" data-step="ask" aria-label="View Ask step" data-astro-cid-usah7wwg> <img src="/_astro/aILogo.B21fQ_WV_6ch6k.svg" alt="Ask" loading="lazy" data-astro-cid-usah7wwg="true" decoding="async" fetchpriority="auto" width="25" height="24" class="tab-icon"> <span class="tab-title" data-astro-cid-usah7wwg>Ask</span> </button><button class="tab-button" data-step="watch" aria-label="View Watch step" data-astro-cid-usah7wwg> <img src="/_astro/videoPlay.DNeJxBm__1LOG79.svg" alt="Watch" loading="lazy" data-astro-cid-usah7wwg="true" decoding="async" fetchpriority="auto" width="22" height="19" class="tab-icon"> <span class="tab-title" data-astro-cid-usah7wwg>Watch</span> </button><button class="tab-button" data-step="practise" aria-label="View Practise step" data-astro-cid-usah7wwg> <img src="/_astro/notePad.BEOKJSC2_Z27jPfX.svg" alt="Practise" loading="lazy" data-astro-cid-usah7wwg="true" decoding="async" fetchpriority="auto" width="20" height="25" class="tab-icon"> <span class="tab-title" data-astro-cid-usah7wwg>Practise</span> </button><button class="tab-button" data-step="master" aria-label="View Master step" data-astro-cid-usah7wwg> <img src="/_astro/cupLogo.Bix-hNZ1_Z1cpST8.svg" alt="Master" loading="lazy" data-astro-cid-usah7wwg="true" decoding="async" fetchpriority="auto" width="25" height="20" class="tab-icon"> <span class="tab-title" data-astro-cid-usah7wwg>Master</span> </button> </div> </div> <!-- Steps Content --> <div class="steps-wrapper" data-astro-cid-usah7wwg> <div class="step-content active" data-step="ask" data-astro-cid-usah7wwg> <div class="content-grid bg-gradient-to-br" data-astro-cid-usah7wwg> <div class="step-visual" data-astro-cid-usah7wwg> <div class="mockup-container" data-astro-cid-usah7wwg> <video class="mockup-image" autoplay muted loop playsinline preload="metadata" data-astro-cid-usah7wwg> <source src="/_astro/Jove_chat_video.C3xwevUQ.webm" data-astro-cid-usah7wwg>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="step-info" data-astro-cid-usah7wwg> <span class="step-number" data-astro-cid-usah7wwg>STEP 1</span> <h3 class="step-headline" data-astro-cid-usah7wwg>They Ask and get unstuck with AI</h3> <p class="step-description" data-astro-cid-usah7wwg>No more scrolling. They ask a question—and get the video and insights that crack it.</p> </div> </div> </div><div class="step-content " data-step="watch" data-astro-cid-usah7wwg> <div class="content-grid bg-gradient-to-br" data-astro-cid-usah7wwg> <div class="step-visual" data-astro-cid-usah7wwg> <div class="mockup-container" data-astro-cid-usah7wwg> <div class="image-wrapper" data-astro-cid-usah7wwg> <img src="/_astro/Jove_chat_Image2.VyV0uIKU_Z2poyvc.webp" alt="Watch" inferSize="true" data-astro-cid-usah7wwg="true" loading="lazy" decoding="async" fetchpriority="auto" width="695" height="496" class="mockup-image"> </div> </div> </div> <div class="step-info" data-astro-cid-usah7wwg> <span class="step-number" data-astro-cid-usah7wwg>STEP 2</span> <h3 class="step-headline" data-astro-cid-usah7wwg>They Learn in minutes, not hours</h3> <p class="step-description" data-astro-cid-usah7wwg>Expert-made videos that actually make sense.</p> </div> </div> </div><div class="step-content " data-step="practise" data-astro-cid-usah7wwg> <div class="content-grid bg-gradient-to-br" data-astro-cid-usah7wwg> <div class="step-visual" data-astro-cid-usah7wwg> <div class="mockup-container" data-astro-cid-usah7wwg> <div class="image-wrapper" data-astro-cid-usah7wwg> <img src="/_astro/Jove_chat_Image1.DoFjPa5I_2r55IX.webp" alt="Practise" inferSize="true" data-astro-cid-usah7wwg="true" loading="lazy" decoding="async" fetchpriority="auto" width="664" height="490" class="mockup-image"> </div> </div> </div> <div class="step-info" data-astro-cid-usah7wwg> <span class="step-number" data-astro-cid-usah7wwg>STEP 3</span> <h3 class="step-headline" data-astro-cid-usah7wwg>  Quick quiz to see if it clicks</h3> <p class="step-description" data-astro-cid-usah7wwg>Quick quiz after every video. They see where they stand instantly.</p> </div> </div> </div><div class="step-content " data-step="master" data-astro-cid-usah7wwg> <div class="content-grid bg-gradient-to-br" data-astro-cid-usah7wwg> <div class="step-visual" data-astro-cid-usah7wwg> <div class="mockup-container" data-astro-cid-usah7wwg> <div class="image-wrapper" data-astro-cid-usah7wwg> <img src="/_astro/Jove_chat_Image3.B4VivHui_Zz1Frl.webp" alt="Master" inferSize="true" data-astro-cid-usah7wwg="true" loading="lazy" decoding="async" fetchpriority="auto" width="692" height="432" class="mockup-image"> </div> </div> </div> <div class="step-info" data-astro-cid-usah7wwg> <span class="step-number" data-astro-cid-usah7wwg>STEP 4</span> <h3 class="step-headline" data-astro-cid-usah7wwg>That &quot;I actually get it&quot; feeling-for real</h3> <p class="step-description" data-astro-cid-usah7wwg>They crush one concept. Then the next. Build real momentum.</p> </div> </div> </div> </div> </div> </div> </div> </section> <script type="module">document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelectorAll(".tab-button"),i=document.querySelectorAll(".step-content"),a=document.querySelector(".scroll-track"),s=e.length;function r(t){if(t<0||t>=s)return;e.forEach(o=>o.classList.remove("active")),i.forEach(o=>o.classList.remove("active")),e[t].classList.add("active");const n=e[t].getAttribute("data-step"),c=document.querySelector(`.step-content[data-step="${n}"]`);c&&c.classList.add("active")}e.forEach((t,n)=>{t.addEventListener("click",()=>{r(n)})}),window.addEventListener("scroll",()=>{if(window.innerWidth<=768||!a)return;const t=a.getBoundingClientRect(),n=t.height-window.innerHeight,c=-t.top;if(c>=0&&c<=n){const o=c/n,d=Math.min(Math.floor(o*s),s-1);r(d)}}),e.length>0&&r(0)});</script> <section class="ai-cta-section" data-astro-cid-dle7gyzl> <div class="ai-cta-card" data-astro-cid-dle7gyzl> <!-- Left content --> <div class="ai-cta-content" data-astro-cid-dle7gyzl> <h3 data-astro-cid-dle7gyzl>Ready to try the <br data-astro-cid-dle7gyzl>“Ask → Watch → Practice” flow?</h3> <p data-astro-cid-dle7gyzl> Let your child ask a question and see how AI breaks it down in minutes.</p> </div> <!-- Right form --> <div class="ai-cta-form" data-astro-cid-dle7gyzl> <form id="webform_cta2" action="https://crm.zoho.in/crm/WebToContactForm" name="WebToContacts_cta2" method="POST" accept-charset="UTF-8" class="zoho-form-vertical" data-astro-cid-jcuw3rfl> <!-- Hidden Fields --> <input type="text" style="display:none;" name="xnQsjsdp" value="7cacd23940abbe07ab3afbb0935bce36e48117ac9aa7418df96fe992eea58e0f" data-astro-cid-jcuw3rfl> <input type="hidden" name="zc_gad" id="zc_gad_cta2" value="" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" name="xmIwtLD" value="b4a7085281b2a284d9cd1b01a00b2acad544d903c838c50c3b230c9587ff8a7243f1d77cf0e9a89f5dc74ad36c77b03a" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" name="returnURL" value="null" data-astro-cid-jcuw3rfl> <!-- UTM Hidden Fields --> <input type="text" style="display:none;" id="CONTACTCF11_cta2" name="CONTACTCF11" value="https://" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF14_cta2" name="CONTACTCF14" value="" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF20_cta2" name="CONTACTCF20" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF19_cta2" name="CONTACTCF19" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF17_cta2" name="CONTACTCF17" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF21_cta2" name="CONTACTCF21" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF18_cta2" name="CONTACTCF18" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF7_cta2" name="CONTACTCF7" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF4_cta2" name="CONTACTCF4" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF5_cta2" name="CONTACTCF5" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF6_cta2" name="CONTACTCF6" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF1_cta2" name="CONTACTCF1" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF3_cta2" name="CONTACTCF3" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF2_cta2" name="CONTACTCF2" value="-" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF30_cta2" name="CONTACTCF30" value="-" data-astro-cid-jcuw3rfl> <!-- Default Values --> <!-- Default Values --> <input type="text" style="display:none;" id="CONTACTCF15_cta2" name="CONTACTCF15" value="Paid" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF28_cta2" name="CONTACTCF28" value="Lead" data-astro-cid-jcuw3rfl> <input type="text" style="display:none;" id="CONTACTCF16_cta2" name="CONTACTCF16" value="Direc" data-astro-cid-jcuw3rfl> <div class="vertical-inputs" data-astro-cid-jcuw3rfl> <input type="text" class="input-field" id="Last_Name_cta2" name="Last Name" placeholder="Name*" required data-astro-cid-jcuw3rfl> <input type="email" class="input-field" id="Email_cta2" name="Email" placeholder="Email*" required data-astro-cid-jcuw3rfl> </div> <div class="cta-bottom" data-astro-cid-jcuw3rfl> <button type="submit" class="cta-button" id="btn_cta2" data-astro-cid-jcuw3rfl> Try It With Your Child </button>  </div> <!-- Invisible reCAPTCHA (Global) --> <!-- No local widget needed --> </form>  <script>(function(){const formId = "webform_cta2";
+const formIdSuffix = "cta2";
+const callbackName = "onCaptchaSuccess_cta2";
+const recaptchaId = "recap_cta2";
+
+	console.log(`Defining global callback: window.${callbackName}`);
+	// Define the callback function globally with a unique name
+	window[callbackName] = function (token) {
+		console.log(`Captcha validated for ${formIdSuffix}. Submitting...`);
+		const form = document.getElementById(formId);
+
+		// Dynamic Return URL
+		const nameVal = document.getElementById(`Last_Name_${formIdSuffix}`).value;
+		const emailVal = document.getElementById(`Email_${formIdSuffix}`).value;
+		const returnUrlInput = form.querySelector('input[name="returnURL"]');
+
+		if (returnUrlInput) {
+			const baseUrl = "https://coach.jove.com/signup";
+			const redirectUrl = new URL(baseUrl);
+			redirectUrl.searchParams.set("name", nameVal);
+			redirectUrl.searchParams.set("email", emailVal);
+			returnUrlInput.value = redirectUrl.toString();
+		}
+
+		// Submit programmatically
+		console.log(`Submitting form ${formId} now.`);
+		HTMLFormElement.prototype.submit.call(form);
+	};
+
+	// Form Submission Handler
+	const form = document.getElementById(formId);
+	if (form) {
+		console.log(`Attaching submit handler to ${formId}`);
+		form.onsubmit = function (e) {
+			e.preventDefault();
+			console.log(`Submit triggered for ${formId}`);
+
+			// Basic Validation
+			const name = document.getElementById(`Last_Name_${formIdSuffix}`).value;
+			const email = document.getElementById(`Email_${formIdSuffix}`).value;
+
+			if (!name.trim() || !email.trim()) {
+				alert("Please fill in all required fields.");
+				return false;
+			}
+
+			// Execute Global reCAPTCHA
+			console.log(`Executing Global reCAPTCHA for ${formId}`);
+			if (typeof window.executeGlobalRecaptcha === "function") {
+				window.executeGlobalRecaptcha(window[callbackName]);
+			} else {
+				console.error("Global reCAPTCHA function not found.");
+				alert("Please wait for reCAPTCHA to load.");
+			}
+		};
+	}
+
+	// UTM Population
+	(function () {
+		const params = new URLSearchParams(window.location.search);
+
+		const mapping = {
+			utm_source: `CONTACTCF20_${formIdSuffix}`,
+			utm_medium: `CONTACTCF19_${formIdSuffix}`,
+			utm_campaign: `CONTACTCF17_${formIdSuffix}`,
+			utm_term: `CONTACTCF21_${formIdSuffix}`,
+			utm_content: `CONTACTCF18_${formIdSuffix}`,
+			ad_id: `CONTACTCF4_${formIdSuffix}`,
+			ad_set_id: `CONTACTCF7_${formIdSuffix}`,
+			ad_name: `CONTACTCF5_${formIdSuffix}`,
+			ad_platform: `CONTACTCF6_${formIdSuffix}`,
+			ad_campaign_id: `CONTACTCF1_${formIdSuffix}`,
+			ad_group_name: `CONTACTCF3_${formIdSuffix}`,
+			ad_group_id: `CONTACTCF2_${formIdSuffix}`,
+			ad_campaign_name: `CONTACTCF30_${formIdSuffix}`,
+			landing_page_url: `CONTACTCF11_${formIdSuffix}`,
+			referrer_url: `CONTACTCF14_${formIdSuffix}`,
+		};
+
+		for (const key in mapping) {
+			const fieldId = mapping[key];
+			const el = document.getElementById(fieldId);
+			if (el && params.has(key)) {
+				el.value = params.get(key);
+			}
+		}
+
+		// Fallback for adset_id (no underscore)
+		const adSetField = document.getElementById(`CONTACTCF7_${formIdSuffix}`);
+		if (adSetField && (adSetField.value === "-" || !adSetField.value) && params.has("adset_id")) {
+			adSetField.value = params.get("adset_id");
+		}
+
+		// Fallback for campaign_name (if ad_campaign_name is missing)
+		const campaignNameField = document.getElementById(`CONTACTCF30_${formIdSuffix}`);
+		if (campaignNameField && (campaignNameField.value === "-" || !campaignNameField.value) && params.has("campaign_name")) {
+			campaignNameField.value = params.get("campaign_name");
+		}
+
+		// Handle Source/Subsource Logic
+		const sourceSelect = document.getElementById(`CONTACTCF15_${formIdSuffix}`); // Source
+		const subsourceSelect = document.getElementById(`CONTACTCF16_${formIdSuffix}`); // Subsource
+		const platformSelect = document.getElementById(`CONTACTCF6_${formIdSuffix}`); // Ad Platform (Hidden input in this component, but mapped above)
+
+		const gclid = params.get("gclid");
+		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
+		const utmMedium = params.get("utm_medium");
+		const adPlatform = params.get("ad_platform");
+
+		// Referrer Logic: Check referrer_url, referrer, ref, then document.referrer
+		const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
+
+		// 1. Ad Platform Logic
+		if (platformSelect) {
+			if (adPlatform) platformSelect.value = adPlatform;
+			else if (gclid) platformSelect.value = "Google";
+		}
+
+		// 2. Source Logic
+		if (sourceSelect) {
+			if (sources.some(s => s.toLowerCase() === "paid") || gclid || params.get("ad_id")) {
+				sourceSelect.value = "Paid";
+			} else if (sources.some(s => s.toLowerCase() === "organic")) {
+				sourceSelect.value = "Organic";
+			} else if (sources.some(s => s.toLowerCase() === "social")) {
+				sourceSelect.value = "Social";
+			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
+				sourceSelect.value = "Paid";
+			}
+		}
+
+		// 3. Subsource Logic
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			// Check 'source' params
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "LinkedIn";
+			}
+			// Check utm_source
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "LinkedIn";
+			}
+			if (!subsourceValue && gclid) subsourceValue = "Google Ads";
+
+			if (subsourceValue) subsourceSelect.value = subsourceValue;
+		}
+
+		const landingField = document.getElementById(`CONTACTCF11_${formIdSuffix}`);
+		if (landingField) landingField.value = window.location.href;
+
+		const refField = document.getElementById(`CONTACTCF14_${formIdSuffix}`);
+		if (refField) {
+			if (referrerUrlParam) {
+				refField.value = referrerUrlParam;
+			} else {
+				refField.value = document.referrer || "-";
+			}
+		}
+	})();
+})();</script> </div> <!-- Center icon --> <div class="ai-cta-icon" data-astro-cid-dle7gyzl> <img src="/_astro/secondCTAIcon.DEIqZKlE_1F2Ic0.svg" alt="AI Chat Icon" data-astro-cid-dle7gyzl="true" loading="lazy" decoding="async" fetchpriority="auto" width="55" height="59"> </div> </div> </section> <section class="concepts-section" data-astro-cid-qs4dmbrj> <!-- Heading --> <div class="heading" data-astro-cid-qs4dmbrj> <h2 data-astro-cid-qs4dmbrj> <span data-astro-cid-qs4dmbrj>Comprehensive STEM.</span> Zero guesswork.
+</h2> <p data-astro-cid-qs4dmbrj> Curriculum-aligned content, explained with AI-backed clarity. One concept at a time.</p> </div> <!-- Feature icons --> <div class="features" data-astro-cid-qs4dmbrj> <div class="feature" data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon1.Bu9AkO-H_Zfciiv.svg" alt="AI powered" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="31" height="33"> <p data-astro-cid-qs4dmbrj>AI-powered Platform</p> </div> <div class="feature" data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon2.e8y-Dhbf_ZPy3Nf.svg" alt="Curriculum aligned" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="49" height="49"> <p data-astro-cid-qs4dmbrj>Curriculum-aligned</p> </div> <div class="feature" data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon3.DnJDBmtQ_13OhQ5.svg" alt="Ad free" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="37" height="37"> <p data-astro-cid-qs4dmbrj>Ad-free learning</p> </div> <div class="feature" data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon4.BIAsHyRi_1HL1eG.svg" alt="Expert created" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="39" height="39"> <p data-astro-cid-qs4dmbrj>Expert-created content</p> </div> <div class="feature" data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon5.B5SkBtR1_ZAgwJT.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="42" height="42"> <p data-astro-cid-qs4dmbrj>Secure & private</p> </div> </div> <!-- 3D Video --> <div class="video-wrapper" data-astro-cid-qs4dmbrj> <video class="concepts-video" autoplay muted loop playsinline data-astro-cid-qs4dmbrj> <source src="/_astro/3D-Still-Images.D_WHd6Ny.webm" type="video/webm" data-astro-cid-qs4dmbrj>
+Your browser does not support the video tag.
+</video> </div> <!-- Question slider --> <div class="questions-slider" data-astro-cid-qs4dmbrj> <div class="questions-track" data-astro-cid-qs4dmbrj> <div class="questions" data-astro-cid-qs4dmbrj> <!-- First set --> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon6.v6QtJSlT_Z1iJTi0.svg" alt="AI powered" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="29" height="40">
+Why does respiration release energy?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon7.D57YavhO_1HL1eG.svg" alt="Curriculum aligned" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="39" height="39">
+How does Newton's third law work?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon9.rSTz-1zr_13OhQ5.svg" alt="Expert created" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="37" height="37">
+Why don't satellites fall to Earth?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon6.v6QtJSlT_Z1iJTi0.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="29" height="40">
+Why do enzymes speed up reactions?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon8.Djvs7AcX_1HL1eG.svg" alt="Ad free" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="39" height="39">
+How do catalysts work in chemistry?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon6.v6QtJSlT_Z1iJTi0.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="29" height="40">
+What happens during DNA replication?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon7.D57YavhO_1HL1eG.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="39" height="39">
+Why does light bend in water or glass?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon9.rSTz-1zr_13OhQ5.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="37" height="37">
+How do chemical reactions reach equilibrium?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon6.v6QtJSlT_Z1iJTi0.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="29" height="40">
+Difference between mitosis and meiosis?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon7.D57YavhO_1HL1eG.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="39" height="39">
+Why don't satellites fall to Earth?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon9.rSTz-1zr_13OhQ5.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="37" height="37">
+What causes an electric current to flow?
+</span> <!-- Duplicate set for seamless loop --> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon6.v6QtJSlT_Z1iJTi0.svg" alt="AI powered" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="29" height="40">
+Why does respiration release energy?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon7.D57YavhO_1HL1eG.svg" alt="Curriculum aligned" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="39" height="39">
+How does Newton's third law work?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon9.rSTz-1zr_13OhQ5.svg" alt="Expert created" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="37" height="37">
+Why don't satellites fall to Earth?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon6.v6QtJSlT_Z1iJTi0.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="29" height="40">
+Why do enzymes speed up reactions?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon8.Djvs7AcX_1HL1eG.svg" alt="Ad free" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="39" height="39">
+How do catalysts work in chemistry?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon6.v6QtJSlT_Z1iJTi0.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="29" height="40">
+What happens during DNA replication?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon7.D57YavhO_1HL1eG.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="39" height="39">
+Why does light bend in water or glass?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon9.rSTz-1zr_13OhQ5.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="37" height="37">
+How do chemical reactions reach equilibrium?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon6.v6QtJSlT_Z1iJTi0.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="29" height="40">
+Difference between mitosis and meiosis?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon7.D57YavhO_1HL1eG.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="39" height="39">
+Why don't satellites fall to Earth?
+</span> <span data-astro-cid-qs4dmbrj> <img src="/_astro/conceptsSectionIcon9.rSTz-1zr_13OhQ5.svg" alt="Secure" data-astro-cid-qs4dmbrj="true" loading="lazy" decoding="async" fetchpriority="auto" width="37" height="37">
+What causes an electric current to flow?
+</span> </div> </div> </div> <!-- CTA --> <div class="cta" data-astro-cid-qs4dmbrj> <button onclick="window.openZohoModal && window.openZohoModal()" data-astro-cid-qs4dmbrj>Explore More</button> </div> </section>  <section class="learner-types-section" data-astro-cid-oasfaovu> <div class="container" data-astro-cid-oasfaovu> <h2 class="title" data-astro-cid-oasfaovu>
+From struggling to mastery - <span class="highlight" data-astro-cid-oasfaovu> we've got you.</span> </h2> <p class="subtitle" data-astro-cid-oasfaovu> Every learner is different. JoVE Coach fits them all.</p> <div class="carousel-wrapper" data-astro-cid-oasfaovu> <div class="learner-grid" id="learner-grid" data-astro-cid-oasfaovu> <div class="learner-card" data-astro-cid-oasfaovu> <div class="image-container" data-astro-cid-oasfaovu> <img src="/_astro/LearnersPersonasImage1.BtaP-uNd_7vcau.webp" alt=" Visual learners who learn better by watching" data-astro-cid-oasfaovu="true" loading="lazy" decoding="async" fetchpriority="auto" width="600" height="424" class="learner-image"> </div> <div class="card-content" data-astro-cid-oasfaovu> <h3 class="card-title" data-astro-cid-oasfaovu> Visual learners who learn better by watching</h3> <p class="card-description" data-astro-cid-oasfaovu> Not random videos. Expert explanations that click.</p> </div> </div><div class="learner-card" data-astro-cid-oasfaovu> <div class="image-container" data-astro-cid-oasfaovu> <img src="/_astro/LearnersPersonasImage2.DGQFA2qb_Zyfazu.webp" alt=" High schoolers building strong foundations" data-astro-cid-oasfaovu="true" loading="lazy" decoding="async" fetchpriority="auto" width="600" height="424" class="learner-image"> </div> <div class="card-content" data-astro-cid-oasfaovu> <h3 class="card-title" data-astro-cid-oasfaovu> High schoolers building strong foundations</h3> <p class="card-description" data-astro-cid-oasfaovu> Get the concepts right now. Ace exams later.</p> </div> </div><div class="learner-card" data-astro-cid-oasfaovu> <div class="image-container" data-astro-cid-oasfaovu> <img src="/_astro/LearnersPersonasImage3.BgVKtP_a_Z121pXl.webp" alt="Curious minds going beyond the syllabus" data-astro-cid-oasfaovu="true" loading="lazy" decoding="async" fetchpriority="auto" width="600" height="424" class="learner-image"> </div> <div class="card-content" data-astro-cid-oasfaovu> <h3 class="card-title" data-astro-cid-oasfaovu>Curious minds going beyond the syllabus</h3> <p class="card-description" data-astro-cid-oasfaovu>  Understand the &#39;why&#39; behind the formula.</p> </div> </div><div class="learner-card" data-astro-cid-oasfaovu> <div class="image-container" data-astro-cid-oasfaovu> <img src="/_astro/LearnersPersonasImage4.OZWN-AfP_12T6og.webp" alt="Mastery seekers, not memorizers" data-astro-cid-oasfaovu="true" loading="lazy" decoding="async" fetchpriority="auto" width="600" height="424" class="learner-image"> </div> <div class="card-content" data-astro-cid-oasfaovu> <h3 class="card-title" data-astro-cid-oasfaovu>Mastery seekers, not memorizers</h3> <p class="card-description" data-astro-cid-oasfaovu>You&#39;re not here to memorize. You&#39;re here to actually get it.</p> </div> </div><div class="learner-card" data-astro-cid-oasfaovu> <div class="image-container" data-astro-cid-oasfaovu> <img src="/_astro/LearnersPersonasImage5.CzWu7I_x_Z3xSOT.webp" alt="Busy students juggling work, sports, and life" data-astro-cid-oasfaovu="true" loading="lazy" decoding="async" fetchpriority="auto" width="600" height="424" class="learner-image"> </div> <div class="card-content" data-astro-cid-oasfaovu> <h3 class="card-title" data-astro-cid-oasfaovu>Busy students juggling work, sports, and life</h3> <p class="card-description" data-astro-cid-oasfaovu>Your schedule is packed. Your learning can still be solid.</p> </div> </div><div class="learner-card" data-astro-cid-oasfaovu> <div class="image-container" data-astro-cid-oasfaovu> <img src="/_astro/LearnersPersonasImage6.Bi1q3j-g_Z2pIMHE.webp" alt="College freshmen tackling STEM 101s" data-astro-cid-oasfaovu="true" loading="lazy" decoding="async" fetchpriority="auto" width="600" height="424" class="learner-image"> </div> <div class="card-content" data-astro-cid-oasfaovu> <h3 class="card-title" data-astro-cid-oasfaovu>College freshmen tackling STEM 101s</h3> <p class="card-description" data-astro-cid-oasfaovu>New subjects, fast pace. Master them from day one.</p> </div> </div> </div> <div class="navigation" data-astro-cid-oasfaovu> <button class="nav-btn prev" id="prev-btn-learner" aria-label="Previous" data-astro-cid-oasfaovu> <img src="/_astro/Arrow.B4NJQYzc_Z1cKeQz.svg" alt="Previous" data-astro-cid-oasfaovu="true" loading="lazy" decoding="async" fetchpriority="auto" width="20" height="20"> </button> <button class="nav-btn next" id="next-btn-learner" aria-label="Next" data-astro-cid-oasfaovu> <img src="/_astro/Arrow.B4NJQYzc_Z1cKeQz.svg" alt="Next" data-astro-cid-oasfaovu="true" loading="lazy" decoding="async" fetchpriority="auto" width="20" height="20"> </button> </div> </div> </div> </section> <script type="module">const r=document.getElementById("learner-grid"),s=document.getElementById("prev-btn-learner"),d=document.getElementById("next-btn-learner");let e=0;const f=document.querySelectorAll(".learner-card"),h=f.length;function u(){const t=document.querySelector(".carousel-wrapper");if(!t)return 1;const n=window.getComputedStyle(t),i=parseFloat(n.paddingLeft)||0,p=parseFloat(n.paddingRight)||0,c=t.clientWidth-i-p,g=f[0];if(!g)return 1;const w=g.offsetWidth,m=24,v=Math.floor((c+m)/(w+m));return Math.max(1,v)}function a(){const t=u(),n=Math.max(0,h-t);e=Math.min(e,n);const i=f[0]?.offsetWidth||280,c=-(e*(i+24));r&&(r.style.transform=`translateX(${c}px)`),s&&(s.disabled=e===0,e===0?s.classList.add("disabled"):s.classList.remove("disabled")),d&&(d.disabled=e>=n,e>=n?d.classList.add("disabled"):d.classList.remove("disabled"))}s&&s.addEventListener("click",()=>{e>0&&(e--,a())});d&&d.addEventListener("click",()=>{const t=u(),n=h-t;e<n&&(e++,a())});window.addEventListener("resize",()=>{e=0,a()});a();let o=0,l=0;r.addEventListener("touchstart",t=>{o=t.changedTouches[0].screenX},{passive:!0});r.addEventListener("touchend",t=>{l=t.changedTouches[0].screenX,x()},{passive:!0});function x(){if(l<o-50&&d&&!d.disabled){const n=u(),i=h-n;e<i&&(e++,a())}l>o+50&&s&&!s.disabled&&e>0&&(e--,a())}</script> <section class="pricing-section" data-astro-cid-4ty23xxl> <div class="pricing-container" data-astro-cid-4ty23xxl> <h2 class="pricing-title" data-astro-cid-4ty23xxl> Real STEM support. <span data-astro-cid-4ty23xxl> Without the tutor bill.</span></h2> <p class="pricing-subtitle" data-astro-cid-4ty23xxl>  Expert videos, AI explanations, and instant quizzes - a fraction of what tutoring costs. </p> <div class="pricing-row ant-row ant-row-center css-vrrzze" data-astro-cid-4ty23xxl>  <div class="pricing-col" data-astro-cid-4ty23xxl> <img src="/_astro/mostPopular.Dwk9epbz_Z1U7Xrz.svg" alt="Popular" data-astro-cid-4ty23xxl="true" loading="lazy" decoding="async" fetchpriority="auto" width="147" height="30" class="popular-badge"> <div class="pricing-card featured-card selected" data-card="annual" data-astro-cid-4ty23xxl> <div class="ant-card-body pricing-card-body" data-astro-cid-4ty23xxl> <div class="pricing-header" data-astro-cid-4ty23xxl> <div class="pricing-label-row" data-astro-cid-4ty23xxl> <p class="plan-type" data-astro-cid-4ty23xxl>Annual</p> <span class="discount-tag" data-astro-cid-4ty23xxl> <img src="/_astro/priceDiscountIcon.DAmrYGmi_Z1UAzer.webp" alt data-astro-cid-4ty23xxl="true" loading="lazy" decoding="async" fetchpriority="auto" width="512" height="512" class="discount-icon"> <span class="discount-text" data-astro-cid-4ty23xxl>save 44%</span> </span> </div> <h3 class="price-text" data-astro-cid-4ty23xxl>$16/month</h3> </div> <img src="/_astro/pricecut.CSEPOCiv_ZsN9Ja.svg" alt="Pricecut" data-astro-cid-4ty23xxl="true" loading="lazy" decoding="async" fetchpriority="auto" width="129" height="23" class="pricecut-img"> <hr class="card-divider" data-astro-cid-4ty23xxl> <ul class="feature-list" data-astro-cid-4ty23xxl> <li class="feature-item" data-astro-cid-4ty23xxl> <span class="feature-dot" data-astro-cid-4ty23xxl></span> Unlimited access </li><li class="feature-item" data-astro-cid-4ty23xxl> <span class="feature-dot" data-astro-cid-4ty23xxl></span> One Time payment </li><li class="feature-item" data-astro-cid-4ty23xxl> <span class="feature-dot" data-astro-cid-4ty23xxl></span> Cancel anytime </li><li class="feature-item" data-astro-cid-4ty23xxl> <span class="feature-dot" data-astro-cid-4ty23xxl></span> Renews Annually </li> </ul> <div class="button-row" data-astro-cid-4ty23xxl> <button class="primary-btn ant-btn ant-btn-default" onclick="window.openZohoModal && window.openZohoModal()" data-astro-cid-4ty23xxl> <span data-astro-cid-4ty23xxl>Start with Annual - Save 44%</span> </button> </div> </div> </div> </div><div class="pricing-col" data-astro-cid-4ty23xxl>  <div class="pricing-card basic-card" data-card="monthly" data-astro-cid-4ty23xxl> <div class="ant-card-body pricing-card-body" data-astro-cid-4ty23xxl> <div class="pricing-header" data-astro-cid-4ty23xxl> <div class="pricing-label-row" data-astro-cid-4ty23xxl> <p class="plan-type" data-astro-cid-4ty23xxl>Monthly</p>  </div> <h3 class="price-text" data-astro-cid-4ty23xxl>$29 / month</h3> </div>  <hr class="card-divider" data-astro-cid-4ty23xxl> <ul class="feature-list" data-astro-cid-4ty23xxl> <li class="feature-item" data-astro-cid-4ty23xxl> <span class="feature-dot" data-astro-cid-4ty23xxl></span> Unlimited access </li><li class="feature-item" data-astro-cid-4ty23xxl> <span class="feature-dot" data-astro-cid-4ty23xxl></span> Cancel anytime </li><li class="feature-item" data-astro-cid-4ty23xxl> <span class="feature-dot" data-astro-cid-4ty23xxl></span> Renews Monthly </li> </ul> <div class="button-row" data-astro-cid-4ty23xxl> <button class="primary-btn ant-btn ant-btn-default" onclick="window.openZohoModal && window.openZohoModal()" data-astro-cid-4ty23xxl> <span data-astro-cid-4ty23xxl>Try Monthly Plan</span> </button> </div> </div> </div> </div> </div> <p class="notes" data-astro-cid-4ty23xxl>What </p> <p class="notes" data-astro-cid-4ty23xxl>What </p> <!-- <p class="pricing-notes">• No contracts • Cancel anytime • Student discounts</p> --> </div> </section> <script type="module">document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelectorAll(".pricing-card");e.forEach(c=>{c.addEventListener("click",()=>{e.forEach(t=>t.classList.remove("selected")),c.classList.add("selected")})})});</script> <section class="faq-section" data-astro-cid-62mrq4jn> <div class="faq-container" data-astro-cid-62mrq4jn> <h2 class="faq-heading" data-astro-cid-62mrq4jn> Frequently Asked Questions </h2>  <div class="faq-item open" data-faq data-astro-cid-62mrq4jn> <div class="faq-question" data-astro-cid-62mrq4jn> Is JoVE Coach free? <img src="/_astro/section10FaqArrow.Be7ZIuA1_ZgyqyJ.svg" alt="Arrow" data-astro-cid-62mrq4jn="true" loading="lazy" decoding="async" fetchpriority="auto" width="12" height="6" class="faq-arrow"> </div> <p class="faq-answer" data-astro-cid-62mrq4jn>Your child can explore videos free—no sign-up needed. Want full access? Start a 7-day free trial to unlock all videos and micro courses.</p> </div><div class="faq-item " data-faq data-astro-cid-62mrq4jn> <div class="faq-question" data-astro-cid-62mrq4jn> How long are the videos? <img src="/_astro/section10FaqArrow.Be7ZIuA1_ZgyqyJ.svg" alt="Arrow" data-astro-cid-62mrq4jn="true" loading="lazy" decoding="async" fetchpriority="auto" width="12" height="6" class="faq-arrow"> </div> <p class="faq-answer" data-astro-cid-62mrq4jn>2 minutes. One concept, clearly explained. No filler.</p> </div><div class="faq-item " data-faq data-astro-cid-62mrq4jn> <div class="faq-question" data-astro-cid-62mrq4jn> What are micro courses? <img src="/_astro/section10FaqArrow.Be7ZIuA1_ZgyqyJ.svg" alt="Arrow" data-astro-cid-62mrq4jn="true" loading="lazy" decoding="async" fetchpriority="auto" width="12" height="6" class="faq-arrow"> </div> <p class="faq-answer" data-astro-cid-62mrq4jn>Bite-sized learning paths that group related videos together. Your child masters a topic step by step—not just video by video.</p> </div><div class="faq-item " data-faq data-astro-cid-62mrq4jn> <div class="faq-question" data-astro-cid-62mrq4jn> How is this different from YouTube or hiring a tutor? <img src="/_astro/section10FaqArrow.Be7ZIuA1_ZgyqyJ.svg" alt="Arrow" data-astro-cid-62mrq4jn="true" loading="lazy" decoding="async" fetchpriority="auto" width="12" height="6" class="faq-arrow"> </div> <p class="faq-answer" data-astro-cid-62mrq4jn>Every video is made by STEM experts. AI finds exactly what your child needs, and generates quizzes after each video. It&#39;s like having a tutor available 24/7—at a fraction of the cost.</p> </div><div class="faq-item " data-faq data-astro-cid-62mrq4jn> <div class="faq-question" data-astro-cid-62mrq4jn> Will JoVE Coach help my child pass their exams? <img src="/_astro/section10FaqArrow.Be7ZIuA1_ZgyqyJ.svg" alt="Arrow" data-astro-cid-62mrq4jn="true" loading="lazy" decoding="async" fetchpriority="auto" width="12" height="6" class="faq-arrow"> </div> <p class="faq-answer" data-astro-cid-62mrq4jn>That&#39;s what it&#39;s built for. Students who use JoVE Coach consistently report better understanding and 2X improved test scores.</p> </div><div class="faq-item " data-faq data-astro-cid-62mrq4jn> <div class="faq-question" data-astro-cid-62mrq4jn> What subjects do you cover? <img src="/_astro/section10FaqArrow.Be7ZIuA1_ZgyqyJ.svg" alt="Arrow" data-astro-cid-62mrq4jn="true" loading="lazy" decoding="async" fetchpriority="auto" width="12" height="6" class="faq-arrow"> </div> <p class="faq-answer" data-astro-cid-62mrq4jn>Biology, Chemistry, Physics, Statistics and more. More coming based on what students need.</p> </div><div class="faq-item " data-faq data-astro-cid-62mrq4jn> <div class="faq-question" data-astro-cid-62mrq4jn> Is this affordable? <img src="/_astro/section10FaqArrow.Be7ZIuA1_ZgyqyJ.svg" alt="Arrow" data-astro-cid-62mrq4jn="true" loading="lazy" decoding="async" fetchpriority="auto" width="12" height="6" class="faq-arrow"> </div> <p class="faq-answer" data-astro-cid-62mrq4jn>Yes. JoVE Coach costs less than a single tutoring session—and your child gets unlimited access.</p> </div><div class="faq-item " data-faq data-astro-cid-62mrq4jn> <div class="faq-question" data-astro-cid-62mrq4jn> Can I cancel anytime? <img src="/_astro/section10FaqArrow.Be7ZIuA1_ZgyqyJ.svg" alt="Arrow" data-astro-cid-62mrq4jn="true" loading="lazy" decoding="async" fetchpriority="auto" width="12" height="6" class="faq-arrow"> </div> <p class="faq-answer" data-astro-cid-62mrq4jn>Yes. No contracts, no fees, no hassle.</p> </div> </div> </section> <script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelectorAll("[data-faq]");t.forEach(e=>{e.addEventListener("click",()=>{const n=e.classList.contains("open");t.forEach(o=>o.classList.remove("open")),n||e.classList.add("open")})})});</script> <div><!-- Note :
+   - You can modify the font style and form style to suit your website. 
+   - Code lines with comments Do not remove this code are required for the form to work properly, make sure that you do not remove these lines of code. 
+   - The Mandatory check script can modified as to suit your business needs. 
+   - It is important that you test the modified form before going live.-->
+<div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm'
+	style='background-color: white;color: black;max-width: 600px;'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
+	<META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
+	<form id='webform1127844000000480553' action='https://crm.zoho.in/crm/WebToContactForm'
+		name=WebToContacts1127844000000480553 method='POST'
+		accept-charset='UTF-8'
+		onsubmit='javascript:document.charset="UTF-8"; return checkMandatory1127844000000480553()'>
+		<input type='text' style='display:none;' name='xnQsjsdp'
+			value='7cacd23940abbe07ab3afbb0935bce36e48117ac9aa7418df96fe992eea58e0f'>
+		</input>
+		<input type='hidden' name='zc_gad' id='zc_gad' value=''>
+		</input>
+		<input type='text' style='display:none;' name='xmIwtLD'
+			value='b4a7085281b2a284d9cd1b01a00b2acad544d903c838c50c3b230c9587ff8a7243f1d77cf0e9a89f5dc74ad36c77b03a'>
+		</input>
+		<input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM='>
+		</input>
+		<input type='text' style='display:none;' name='returnURL' value='https://coach.jove.com/signup'>
+		</input>
+		<!-- Do not remove this code. -->
+		<style>
+			html,
+			body {
+				margin: 0px;
+			}
+
+
+			#crmWebToEntityForm.zcwf_lblLeft {
+				margin: 50px auto;
+				box-sizing: border-box;
+				width: 100%;
+				height: 100%;
+				max-width: 1200px !important;
+				display: flex !important;
+				justify-content: flex-start !important;
+				flex-direction: column !important;
+				color: #fff !important;
+				background: #0085F6 !important;
+				border-radius: 15px !important;
+				padding: 40px 70px 20px 70px !important;
+				position: relative !important;
+				background-image: url('/cardBg.svg') !important;
+				background-position: 600px center !important;
+				background-repeat: no-repeat !important;
+				background-size: contain !important;
+
+			}
+			.zohoCTAImage {
+				position: absolute;
+				bottom: -50px;
+				right: 0;
+				width: 450px;
+				height: auto;
+			}
+
+			.zcwf_formVisibleFields_row {
+				gap: 0px !important;
+				flex-wrap: wrap !important;
+				margin: 0 !important;
+
+			}
+
+			.zcwf_formVisibleFields_row .zcwf_col_fld {
+				min-width: 290px !important;
+				width: auto !important;
+				float: none !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			.zcwf_formVisibleFields_row .zcwf_col_fld input {
+				width: 100% !important;
+				border: 1px #EEEEEE solid !important;
+				color: #fff !important;
+				max-width: 280px !important;
+				min-height: 50px !important;
+				border-radius: 10px !important;
+			}
+
+			#crmWebToEntityForm.zcwf_lblLeft * {
+				box-sizing: border-box;
+			}
+
+			#crmWebToEntityForm {
+				text-align: left;
+			}
+
+			#crmWebToEntityForm * {
+				direction: ltr;
+			}
+
+			.zcwf_lblLeft .zcwf_title {
+				word-wrap: break-word;
+				margin-bottom: 12px;
+				color: #fff !important;
+
+				font-weight: 500 !important;
+				font-size: 36px !important;
+				line-height: 120% !important;
+				letter-spacing: -0.5px !important;
+				vertical-align: middle;
+			}
+
+			.zcwf_subtitle {
+
+				font-weight: 400 !important;
+				font-size: 16px !important;
+				line-height: 140% !important;
+				letter-spacing: 0% !important;
+				color: rgba(255, 255, 255, 0.9) !important;
+				max-width: 500px;
+				margin-bottom: 32px;
+			}
+
+			.zcwf_form_row {
+				display: flex !important;
+				gap: 16px !important;
+				flex-wrap: wrap !important;
+				margin: 0 !important;
+				max-width: 520px !important;
+			}
+
+			.zcwf_input_group {
+				flex: 1;
+				/* min-width: 220px; */
+				width: auto !important;
+				float: none !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			.zcwf_lblLeft.cpT_primaryBtn:hover {
+				background: linear-gradient(#02acff 0, #006be4 100%)no-repeat padding-box !important;
+				box-shadow: 0 -2px 0 0 #0159b9 inset !important;
+				border: 0 !important;
+				color: #fff !important;
+				outline: 0 !important;
+			}
+
+			.zcwf_lblLeft .zcwf_col_fld input[type=text],
+			input[type=password],
+			.zcwf_lblLeft .zcwf_col_fld textarea {
+				width: 100%;
+				border: 1px solid rgba(255, 255, 255, 0.3) !important;
+				resize: vertical;
+				border-radius: 8px;
+				float: none;
+				padding: 12px 16px !important;
+				background-color: rgba(255, 255, 255, 0.95) !important;
+				color: #333 !important;
+				font-size: 14px !important;
+
+				transition: all 0.3s ease;
+			}
+
+			.zcwf_lblLeft .zcwf_col_fld input[type=text]:focus {
+				border-color: #fff;
+				box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+			}
+
+
+			/* ===========================
+			SELECT DROPDOWN
+			=========================== */
+			.zcwf_lblLeft select.zcwf_col_fld_slt {
+				width: 100% !important;
+				padding: 12px 16px;
+				background: rgba(255, 255, 255, 0.95);
+				border-radius: 8px;
+				border: 1px solid rgba(255, 255, 255, 0.4);
+				font-size: 15px;
+
+				color: #222;
+				appearance: none;
+				cursor: pointer;
+				transition: all .25s ease;
+				background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='black' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7L10 12L15 7' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-position: right 12px center;
+			}
+
+			.zcwf_lblLeft select.zcwf_col_fld_slt:focus {
+				border-color: #fff;
+				box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+			}
+
+			.zcwf_lblLeft .zcwf_col_lab {
+				display: none;
+			}
+
+			.zcwf_lblLeft .zcwf_col_fld {
+				float: none;
+				width: auto;
+				padding: 0px;
+				position: relative;
+				margin-top: 0;
+			}
+
+			.zcwf_lblLeft .zcwf_privacy {
+				padding: 6px;
+			}
+
+			.zcwf_lblLeft .wfrm_fld_dpNn {
+				display: none;
+			}
+
+			.dIB {
+				display: inline-block;
+			}
+
+			.zcwf_lblLeft .zcwf_col_fld_slt {
+				width: 60%;
+				border: 1px solid #ccc;
+				background: #fff;
+				border-radius: 4px;
+				font-size: 12px;
+				float: left;
+				resize: vertical;
+				padding: 2px 5px;
+			}
+
+			.zcwf_lblLeft .zcwf_row:after,
+			.zcwf_lblLeft .zcwf_col_fld:after {
+				content: '';
+				display: table;
+				clear: both;
+			}
+
+			.zcwf_lblLeft .zcwf_col_help {
+				float: left;
+				margin-left: 7px;
+				font-size: 12px;
+				max-width: 35%;
+				word-break: break-word;
+				display: none;
+			}
+
+			.zcwf_lblLeft .zcwf_help_icon {
+				cursor: pointer;
+				width: 16px;
+				height: 16px;
+				display: inline-block;
+				background: #fff;
+				border: 1px solid #c0c6cc;
+				color: #c1c1c1;
+				text-align: center;
+				font-size: 11px;
+				line-height: 16px;
+				font-weight: bold;
+				border-radius: 50%;
+			}
+
+			.zcwf_lblLeft .zcwf_row {
+				margin: 15px 0px;
+			}
+
+			.zcwf_row {
+				display: flex;
+			}
+
+			.zcwf_lblLeft .formsubmit {
+				margin-right: 0;
+				cursor: pointer;
+			}
+
+			.zcwf_lblLeft .zcwf_privacy_txt {
+				width: 90%;
+				color: rgb(0, 0, 0);
+				font-size: 12px;
+				font-family: Arial;
+				display: inline-block;
+				vertical-align: top;
+				color: #313949;
+				padding-top: 2px;
+				margin-left: 6px;
+			}
+
+			.zcwf_lblLeft .zcwf_button {
+				font-size: 12px;
+				color: #313949;
+				border: 1px solid #c0c6cc;
+				padding: 3px 9px;
+				border-radius: 4px;
+				cursor: pointer;
+				max-width: 120px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			.zcwf_button_row {
+				display: flex !important;
+				gap: 12px !important;
+				align-items: center !important;
+				margin: 20px 0px 0px 0px !important;
+			}
+
+			.zcwf_benefits {
+				font-size: 12px;
+				color: rgba(255, 255, 255, 0.6);
+				line-height: 1.6;
+
+				margin-top: 20px;
+
+				font-weight: 400;
+				font-size: 13px;
+				line-height: 28px;
+				letter-spacing: 0%;
+				vertical-align: middle;
+			}
+
+			.zcwf_lblLeft .zcwf_tooltip_over {
+				position: relative;
+			}
+
+			.zcwf_lblLeft .zcwf_tooltip_ctn {
+				position: absolute;
+				background: #dedede;
+				padding: 3px 6px;
+				top: 3px;
+				border-radius: 4px;
+				word-break: break-word;
+				min-width: 100px;
+				max-width: 150px;
+				color: #313949;
+				z-index: 100;
+			}
+
+			.zcwf_lblLeft .zcwf_ckbox {
+				float: left;
+			}
+
+			.zcwf_lblLeft .zcwf_file {
+				width: 55%;
+				box-sizing: border-box;
+				float: left;
+			}
+
+			.cBoth:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+
+			/* ===========================
+			BUTTON GROUP
+			=========================== */
+			.zcwf_button_row,
+			.zcwf_lblLeft .zcwf_col_fld {
+				display: flex;
+				gap: 12px;
+				align-items: center;
+			}
+
+			.formsubmit.zcwf_button {
+				color: #fff !important;
+				background: transparent !important;
+				border: 1px solid white !important;
+				padding: 12px 28px !important;
+				border-radius: 50px !important;
+				cursor: pointer !important;
+				transition: all 0.3s ease !important;
+
+				overflow: visible;
+				text-overflow: unset;
+
+				font-weight: 500 !important;
+				font-size: 18px !important;
+				line-height: 28px !important;
+				letter-spacing: 0% !important;
+				text-align: center;
+				vertical-align: middle;
+				min-width: 200px !important
+			}
+
+			.formsubmit.zcwf_button:hover {
+				background: rgba(255, 255, 255, 0.15) !important;
+				transform: translateY(-2px);
+			}
+
+			.formsubmit.zcwf_button:active {
+				transform: translateY(0);
+			}
+
+			.formsubmit.zcwf_button:disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+			}
+
+			/* Reset Button */
+			.zcwf_button {
+				background: transparent !important;
+				color: white !important;
+				border: 1px solid rgba(255, 255, 255, 0.4) !important;
+				padding: 12px 28px !important;
+				font-size: 18px !important;
+				font-weight: 400 !important;
+				line-height: 28px !important;
+				letter-spacing: 0% !important;
+				border-radius: 50px !important;
+
+				cursor: pointer;
+				transition: all .25s ease;
+			}
+
+			.zcwf_button:hover {
+				background: rgba(255, 255, 255, 0.28) !important;
+				transform: translateY(-2px);
+				font-weight: 500 !important;
+
+			}
+
+			#crmWebToEntityForm.zcwf_lblLeft input::placeholder {
+
+				font-weight: 400 !important;
+				font-size: 18px !important;
+				line-height: 140% !important;
+				letter-spacing: 0% !important;
+				color: #C8C1C1;
+			}
+
+
+			@media all and (max-width: 600px) {
+
+				.zcwf_lblLeft .zcwf_col_lab,
+				.zcwf_lblLeft .zcwf_col_fld {
+					width: auto;
+					float: none !important;
+				}
+
+				.zcwf_lblLeft .zcwf_col_help {
+					width: 40%;
+				}
+
+				#crmWebToEntityForm.zcwf_lblLeft {
+					padding: 40px 24px;
+				}
+			}
+
+			/* ==============================
+			RESPONSIVE FIXES (SAFE)
+			================================= */
+
+			@media (max-width: 1024px) {
+				#crmWebToEntityForm.zcwf_lblLeft {
+					background-size: 55% auto !important;
+					padding: 48px 40px !important;
+				}
+			}
+
+			@media (max-width: 768px) {
+
+				#crmWebToEntityForm.zcwf_lblLeft {
+					padding: 40px 28px !important;
+					background-position: center bottom !important;
+					background-size: 80% !important;
+					background-image: none !important;
+					margin: 20px auto !important; /* Center with margin */
+					width: 90% !important; /* Ensure white space around */
+				}
+
+				.zcwf_title {
+					font-size: 26px !important;
+				}
+
+				.zcwf_subtitle {
+					font-size: 14px !important;
+					max-width: 100%;
+				}
+
+				.zcwf_row {
+					flex-direction: column !important;
+					gap: 12px !important;
+				}
+
+				.zcwf_col_fld,
+				.zcwf_col_lab {
+					width: 100% !important;
+				}
+
+				#crmWebToEntityForm.zcwf_lblLeft input,
+				#crmWebToEntityForm.zcwf_lblLeft select {
+					font-size: 16px !important;
+					padding: 12px 24px 12px 16px !important; /* Added right padding */
+				}
+
+				#crmWebToEntityForm.zcwf_lblLeft input::placeholder {
+					font-size: 16px !important;
+				}
+
+				.button_wrapper {
+					flex-direction: row !important;
+					align-items: stretch !important;
+				}
+
+				.captcha_wrapper {
+					display: block !important;
+				}
+
+				.formsubmit.zcwf_button,
+				.zcwf_button {
+					width: 100% !important;
+					text-align: center !important;
+				}
+
+				.g-recaptcha_div_wrapper {
+					display: block !important;
+				}
+
+				.zohoCTAImage {
+					display: none !important;
+				}
+			}
+
+			@media (max-width: 480px) {
+
+				#crmWebToEntityForm.zcwf_lblLeft {
+					padding: 40px 30px !important; /* Increased padding */
+					background-size: 100% !important;
+					width: 90% !important; /* Explicit width */
+					margin: 20px auto !important; /* Explicit margin */
+				}
+
+				.zcwf_title {
+					font-size: 22px !important;
+				}
+
+				.zcwf_subtitle {
+					font-size: 13px !important;
+				}
+
+				.zcwf_benefits {
+					font-size: 11px !important;
+					text-align: center;
+				}
+			}
+		</style>
+		<div class="zcwf_title"> Invest in your child's STEM success.</div>
+		<div class="zcwf_subtitle">Try JoVE Coach free for 7 days. Effective, affordable, AI-powered support.</div>
+		<div class='zcwf_row zcwf_formVisibleFields_row'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='Last_Name'>Name
+					<span style='color:red;'>*</span>
+				</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='Last_Name' aria-required='true' aria-label='Last Name' name='Last Name'
+					aria-valuemax='80' maxlength='80' placeholder="Name*" required>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='Email'>Email
+					<span style='color:red;'>*</span>
+				</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' data-ftype='email' autocomplete='false' id='Email' aria-required='true' aria-label='Email'
+					name='Email' aria-valuemax='100' data-crmlabel='' maxlength='100' placeholder="Email*" required>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF11'>Landing Page URL</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF11' aria-required='false' aria-label='CONTACTCF11' name='CONTACTCF11'
+					aria-valuemax='255' maxlength='255' value='https&#x3a;&#x2f;&#x2f;'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF14'>Referrer URL</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF14' aria-required='false' aria-label='CONTACTCF14' name='CONTACTCF14'
+					aria-valuemax='255' maxlength='255' value=''>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF20'>UTM Source</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF20' aria-required='false' aria-label='CONTACTCF20' name='CONTACTCF20'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF21'>UTM Term</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF21' aria-required='false' aria-label='CONTACTCF21' name='CONTACTCF21'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF18'>UTM Content</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF18' aria-required='false' aria-label='CONTACTCF18' name='CONTACTCF18'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF19'>UTM Medium</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF19' aria-required='false' aria-label='CONTACTCF19' name='CONTACTCF19'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF17'>UTM Campaign</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF17' aria-required='false' aria-label='CONTACTCF17' name='CONTACTCF17'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF4'>Ad ID</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF4' aria-required='false' aria-label='CONTACTCF4' name='CONTACTCF4'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF7'>Ad Set ID</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF7' aria-required='false' aria-label='CONTACTCF7' name='CONTACTCF7'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF5'>Ad Name</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF5' aria-required='false' aria-label='CONTACTCF5' name='CONTACTCF5'
+					aria-valuemax='255' maxlength='255' value='&quot;'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF6'>Ad Platform</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<select class='zcwf_col_fld_slt' role='combobox' aria-expanded='false' aria-haspopup='listbox'
+					id='CONTACTCF6' onChange='addAriaSelected1127844000000480553()' aria-required='false'
+					aria-label='CONTACTCF6' name='CONTACTCF6'>
+					<option value='-None-'>-None-</option>
+					<option selected value='Google'>Google</option>
+					<option value='Meta'>Meta</option>
+					<option value='TikTok'>TikTok</option>
+					<option value='Reddit'>Reddit</option>
+				</select>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF1'>Ad Campaign ID</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF1' aria-required='false' aria-label='CONTACTCF1' name='CONTACTCF1'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF3'>Ad Group Name</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF3' aria-required='false' aria-label='CONTACTCF3' name='CONTACTCF3'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF2'>Ad Group ID</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF2' aria-required='false' aria-label='CONTACTCF2' name='CONTACTCF2'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF30'>Ad Campaign Name</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<input type='text' id='CONTACTCF30' aria-required='false' aria-label='CONTACTCF30' name='CONTACTCF30'
+					aria-valuemax='255' maxlength='255' value='-'>
+				</input>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF15'>Source</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<select class='zcwf_col_fld_slt' role='combobox' aria-expanded='false' aria-haspopup='listbox'
+					id='CONTACTCF15' onChange='addAriaSelected1127844000000480553()' aria-required='false'
+					aria-label='CONTACTCF15' name='CONTACTCF15'>
+					<option value='-None-'>-None-</option>
+					<option value='Organic'>Organic</option>
+					<option selected value='Paid'>Paid</option>
+					<option value='Social'>Social</option>
+				</select>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF28'>Record Type</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<select class='zcwf_col_fld_slt' role='combobox' aria-expanded='false' aria-haspopup='listbox'
+					id='CONTACTCF28' onChange='addAriaSelected1127844000000480553()' aria-required='false'
+					aria-label='CONTACTCF28' name='CONTACTCF28'>
+					<option value='-None-'>-None-</option>
+					<option selected value='Lead'>Lead</option>
+					<option value='Customer'>Customer</option>
+				</select>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row wfrm_fld_dpNn'>
+			<div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+				<label for='CONTACTCF16'>Subsource</label>
+			</div>
+			<div class='zcwf_col_fld'>
+				<select class='zcwf_col_fld_slt' role='combobox' aria-expanded='false' aria-haspopup='listbox'
+					id='CONTACTCF16' onChange='addAriaSelected1127844000000480553()' aria-required='false'
+					aria-label='CONTACTCF16' name='CONTACTCF16'>
+					<option value='-None-'>-None-</option>
+					<option value='SEO'>SEO</option>
+					<option value='Blog'>Blog</option>
+					<option value='Direct'>Direct</option>
+					<option value='Google&#x20;Ads'>Google Ads</option>
+					<option value='Meta&#x20;Ads'>Meta Ads</option>
+					<option value='Reddit&#x20;Ads'>Reddit Ads</option>
+					<option value='Tiktok&#x20;Ads'>Tiktok Ads</option>
+					<option value='Other&#x20;Paid'>Other Paid</option>
+					<option value='Instagram'>Instagram</option>
+					<option value='Facebook'>Facebook</option>
+					<option value='LinkedIn'>LinkedIn</option>
+					<option value='Twitter&#x2f;X'>Twitter&#x2f;X</option>
+					<option value='YouTube'>YouTube</option>
+					<option value='Other&#x20;Socials'>Other Socials</option>
+					<option selected value='Direc'>Direc</option>
+				</select>
+				<div class='zcwf_col_help'>
+				</div>
+			</div>
+		</div>
+		<div class='zcwf_row'>
+			<div class='zcwf_col_lab'></div>
+			<div class='zcwf_col_fld'>
+
+				
+				<div class='button_wrapper'>
+					<input type='submit' id='formsubmit' class='formsubmit zcwf_button' value='Get Started Free' title='Submit'>
+					<input type='reset' class='zcwf_button' name='reset' value='Reset' title='Reset' style="display: none;">
+				</div>
+			</div>
+		</div>
+		<div class="zcwf_benefits">
+			<span>• No credit card required • No commitment • Cancel anytime
+</span>
+		</div>
+		<div class="image-container">
+			<img src="/parents-form-img.webp"
+				alt="Jove Coach Free Trial Illustration" 
+				class="zohoCTAImage"
+			/>
+		</div>
+		<!-- Invisible reCAPTCHA (Global) -->
+		<!-- No local widget needed -->
+
+		<script>
+			// Callback function executed when reCAPTCHA is solved (or invisible check passes)
+			function onCaptchaSuccess(token) {
+				console.log("Captcha validated. Submitting form...");
+				const form = document.forms['WebToContacts1127844000000480553'];
+				
+				// Dynamic Return URL Logic (ensure it's set before final submit)
+				const nameVal = document.getElementById('Last_Name').value;
+				const emailVal = document.getElementById('Email').value;
+				const returnUrlInput = form['returnURL'];
+				
+				if (returnUrlInput) {
+					const baseUrl = 'https://coach.jove.com/signup';
+					const redirectUrl = new URL(baseUrl);
+					redirectUrl.searchParams.set('name', nameVal);
+					redirectUrl.searchParams.set('email', emailVal);
+					returnUrlInput.value = redirectUrl.toString();
+				}
+
+				// Submit the form programmatically, bypassing the onsubmit handler to avoid loop
+				// We use HTMLFormElement.prototype.submit.call(form) to be safe if there's an input named 'submit'
+				HTMLFormElement.prototype.submit.call(form);
+			}
+
+			function validateEmail1127844000000480553() {
+				var form = document.forms['WebToContacts1127844000000480553'];
+				var emailFld = form.querySelectorAll('[data-ftype=email]');
+				var i;
+				for (i = 0; i < emailFld.length; i++) {
+					var emailVal = emailFld[i].value;
+					if ((emailVal.replace(/^\s+|\s+$/g, '')).length != 0) {
+						var atpos = emailVal.indexOf('@');
+						var dotpos = emailVal.lastIndexOf('.');
+						if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
+							alert('Please enter a valid email address. ');
+							emailFld[i].focus();
+							return false;
+						}
+					}
+				}
+				return true;
+			}
+
+			function checkMandatory1127844000000480553() {
+				var mndFileds = new Array('Last Name', 'Email');
+				var fldLangVal = new Array('Name', 'Email');
+				for (i = 0; i < mndFileds.length; i++) {
+					var fieldObj = document.forms['WebToContacts1127844000000480553'][mndFileds[i]];
+					if (fieldObj) {
+						if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
+							if (fieldObj.type == 'file') {
+								alert('Please select a file to upload.');
+								fieldObj.focus();
+								return false;
+							}
+							alert(fldLangVal[i] + ' cannot be empty.');
+							fieldObj.focus();
+							return false;
+						} else if (fieldObj.nodeName == 'SELECT') {
+							if (fieldObj.options[fieldObj.selectedIndex].value == '-None-') {
+								alert(fldLangVal[i] + ' cannot be none.');
+								fieldObj.focus();
+								return false;
+							}
+						} else if (fieldObj.type == 'checkbox') {
+							if (fieldObj.checked == false) {
+								alert('Please accept  ' + fldLangVal[i]);
+								fieldObj.focus();
+								return false;
+							}
+						}
+						try {
+							if (fieldObj.name == 'Last Name') {
+								name = fieldObj.value;
+							}
+						} catch (e) { }
+					}
+				}
+				if (!validateEmail1127844000000480553()) { return false; }
+				
+				// Validation passed. Now execute Global reCAPTCHA.
+				if (typeof window.executeGlobalRecaptcha === 'function') {
+					window.executeGlobalRecaptcha(onCaptchaSuccess);
+				} else {
+					console.error("Global reCAPTCHA function not found.");
+					alert("Please wait for reCAPTCHA to load.");
+				}
+				
+				// Return false to stop the immediate form submission.
+				// The form will be submitted by onCaptchaSuccess.
+				return false;
+			}
+
+			function tooltipShow1127844000000480553(el) {
+				var tooltip = el.nextElementSibling;
+				var tooltipDisplay = tooltip.style.display;
+				if (tooltipDisplay == 'none') {
+					var allTooltip = document.getElementsByClassName('zcwf_tooltip_over');
+					for (i = 0; i < allTooltip.length; i++) {
+						allTooltip[i].style.display = 'none';
+					}
+					tooltip.style.display = 'block';
+				} else {
+					tooltip.style.display = 'none';
+				}
+			}
+			
+			function addAriaSelected1127844000000480553() {
+				var selectElements = document.querySelectorAll('select.zcwf_col_fld_slt');
+				selectElements.forEach(function (select) {
+					select.setAttribute('aria-selected', 'true');
+				});
+			}
+
+			// Populate hidden fields on load
+			window.addEventListener('DOMContentLoaded', (event) => {
+				const form = document.forms['WebToContacts1127844000000480553'];
+				const params = new URLSearchParams(window.location.search);
+				
+				// Helper to get param
+				const getParam = (key) => params.get(key) || '';
+
+				const utmSource = getParam('utm_source');
+				const utmMedium = getParam('utm_medium');
+				const utmCampaign = getParam('utm_campaign');
+				const utmTerm = getParam('utm_term');
+				const utmContent = getParam('utm_content');
+				
+				const adId = getParam('ad_id');
+				const adGroupId = getParam('ad_group_id');
+				const adGroupName = getParam('ad_group_name');
+				const adCampaignId = getParam('ad_campaign_id');
+				const adCampaignName = getParam('ad_campaign_name') || getParam('campaign_name'); // Support both
+				const adName = getParam('ad_name');
+				const adPlatform = getParam('ad_platform');
+				
+				let adSetId = getParam('ad_set_id');
+				if (!adSetId) adSetId = getParam('adset_id');
+
+				const gclid = getParam('gclid');
+				const sources = params.getAll('source'); // Capture all source params
+				const referrerUrlParam = getParam('referrer_url') || getParam('referrer') || getParam('ref');
+				// Map to Zoho CRM fields
+				if (utmSource && form['CONTACTCF20']) form['CONTACTCF20'].value = utmSource;
+				if (utmMedium && form['CONTACTCF19']) form['CONTACTCF19'].value = utmMedium;
+				if (utmCampaign && form['CONTACTCF17']) form['CONTACTCF17'].value = utmCampaign;
+				if (utmTerm && form['CONTACTCF21']) form['CONTACTCF21'].value = utmTerm;
+				if (utmContent && form['CONTACTCF18']) form['CONTACTCF18'].value = utmContent;
+				
+				if (adId && form['CONTACTCF4']) form['CONTACTCF4'].value = adId;
+				if (adGroupId && form['CONTACTCF2']) form['CONTACTCF2'].value = adGroupId;
+				if (adGroupName && form['CONTACTCF3']) form['CONTACTCF3'].value = adGroupName;
+				if (adCampaignId && form['CONTACTCF1']) form['CONTACTCF1'].value = adCampaignId;
+				if (adName && form['CONTACTCF5']) form['CONTACTCF5'].value = adName;
+				if (adCampaignName && form['CONTACTCF30']) form['CONTACTCF30'].value = adCampaignName;
+				
+				if (adSetId && form['CONTACTCF7']) {
+					console.log("Captured ad_set_id:", adSetId);
+					form['CONTACTCF7'].value = adSetId;
+				}
+
+				// Handle Dropdowns
+				const subsourceSelect = form['CONTACTCF16']; // Subsource
+				const sourceSelect = form['CONTACTCF15']; // Source
+				const platformSelect = form['CONTACTCF6']; // Ad Platform
+
+				// 1. Ad Platform
+				if (adPlatform && platformSelect) {
+					const options = Array.from(platformSelect.options).map(o => o.value);
+					if (options.includes(adPlatform)) {
+						platformSelect.value = adPlatform;
+					} else if (adPlatform.toLowerCase() === 'google') {
+						platformSelect.value = 'Google';
+					} else if (adPlatform.toLowerCase() === 'meta' || adPlatform.toLowerCase() === 'facebook') {
+						platformSelect.value = 'Meta';
+					}
+				} else if (gclid && platformSelect) {
+					platformSelect.value = 'Google';
+				}
+
+				// 2. Source (Paid, Organic, Social)
+				if (sourceSelect) {
+					if (sources.some(s => s.toLowerCase() === 'paid') || gclid || adId) {
+						sourceSelect.value = 'Paid';
+					} else if (sources.some(s => s.toLowerCase() === 'organic')) {
+						sourceSelect.value = 'Organic';
+					} else if (sources.some(s => s.toLowerCase() === 'social')) {
+						sourceSelect.value = 'Social';
+					} else if (utmMedium && (utmMedium.toLowerCase().includes('cpc') || utmMedium.toLowerCase().includes('paid'))) {
+						sourceSelect.value = 'Paid';
+					} else {
+						sourceSelect.value = 'Organic'; // Default
+					}
+				}
+
+				// 3. Subsource
+				if (subsourceSelect) {
+					let subsourceValue = '';
+					const subsourceOptions = Array.from(subsourceSelect.options).map(o => o.value);
+					
+					// Check 'source' params
+					for (const s of sources) {
+						if (s.toLowerCase() === 'google') subsourceValue = 'Google Ads';
+						else if (s.toLowerCase() === 'facebook' || s.toLowerCase() === 'meta') subsourceValue = 'Meta Ads';
+						else if (s.toLowerCase() === 'linkedin') subsourceValue = 'LinkedIn';
+					}
+
+					// Check utm_source
+					if (!subsourceValue && utmSource) {
+						if (utmSource.toLowerCase().includes('google')) subsourceValue = 'Google Ads';
+						else if (utmSource.toLowerCase().includes('facebook') || utmSource.toLowerCase().includes('meta')) subsourceValue = 'Meta Ads';
+						else if (utmSource.toLowerCase().includes('linkedin')) subsourceValue = 'LinkedIn';
+						else if (subsourceOptions.includes(utmSource)) subsourceValue = utmSource;
+					}
+
+					if (!subsourceValue && gclid) {
+						subsourceValue = 'Google Ads';
+					}
+
+					if (subsourceValue) {
+						subsourceSelect.value = subsourceValue;
+					} else if (!subsourceValue && !utmSource && !gclid) {
+						subsourceSelect.value = 'Direct';
+					}
+				}
+				
+				// Set Landing Page URL
+				if (form['CONTACTCF11']) form['CONTACTCF11'].value = window.location.href;
+				
+				// Set Referrer URL (Prioritize URL param, fallback to document.referrer)
+				if (form['CONTACTCF14']) {
+					if (referrerUrlParam) {
+						form['CONTACTCF14'].value = referrerUrlParam;
+					} else {
+						form['CONTACTCF14'].value = document.referrer || "-";
+					}
+				}
+
+				console.log("Form populated with params:", Object.fromEntries(params));
+			});
+		</script>
+	</form>
+</div></div> <div id="zoho-modal-overlay" class="modal-overlay" style="display: none;" data-astro-cid-ocs7okrj> <div class="modal-container" data-astro-cid-ocs7okrj> <button id="close-modal-btn" class="close-btn" data-astro-cid-ocs7okrj>&times;</button> <!-- Modal Form Content --> <div id="crmWebToEntityForm_modal" class="zcwf_lblLeft crmWebToEntityForm" style="background-color: white;color: black;max-width: 600px;" data-astro-cid-ocs7okrj> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta http-equiv="content-type" content="text/html;charset=UTF-8"> <form id="webform_modal" action="https://crm.zoho.in/crm/WebToContactForm" name="WebToContacts1127844000000480553" method="POST" accept-charset="UTF-8" data-astro-cid-ocs7okrj> <input type="text" style="display:none;" name="xnQsjsdp" value="7cacd23940abbe07ab3afbb0935bce36e48117ac9aa7418df96fe992eea58e0f" data-astro-cid-ocs7okrj> <input type="hidden" name="zc_gad" id="zc_gad_modal" value="" data-astro-cid-ocs7okrj> <input type="text" style="display:none;" name="xmIwtLD" value="b4a7085281b2a284d9cd1b01a00b2acad544d903c838c50c3b230c9587ff8a7243f1d77cf0e9a89f5dc74ad36c77b03a" data-astro-cid-ocs7okrj> <input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=" data-astro-cid-ocs7okrj> <input type="text" style="display:none;" name="returnURL" value="null" data-astro-cid-ocs7okrj> <div class="zcwf_title" data-astro-cid-ocs7okrj>The Smarter Way to Learn STEM</div> <div class="zcwf_subtitle" data-astro-cid-ocs7okrj>Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.</div> <div class="zcwf_row zcwf_formVisibleFields_row" data-astro-cid-ocs7okrj> <div class="zcwf_col_lab" style="font-size:12px; font-family: Arial;" data-astro-cid-ocs7okrj> <label for="Last_Name_modal" data-astro-cid-ocs7okrj>Name<span style="color:red;" data-astro-cid-ocs7okrj>*</span></label> </div> <div class="zcwf_col_fld" data-astro-cid-ocs7okrj> <input type="text" id="Last_Name_modal" aria-required="true" aria-label="Last Name" name="Last Name" aria-valuemax="80" maxlength="80" placeholder="Name*" data-astro-cid-ocs7okrj> <div class="zcwf_col_help" data-astro-cid-ocs7okrj></div> </div> <div class="zcwf_col_lab" style="font-size:12px; font-family: Arial;" data-astro-cid-ocs7okrj> <label for="Email_modal" data-astro-cid-ocs7okrj>Email<span style="color:red;" data-astro-cid-ocs7okrj>*</span></label> </div> <div class="zcwf_col_fld" data-astro-cid-ocs7okrj> <input type="text" data-ftype="email" autocomplete="false" id="Email_modal" aria-required="true" aria-label="Email" name="Email" aria-valuemax="100" data-crmlabel="" maxlength="100" placeholder="Email*" data-astro-cid-ocs7okrj> <div class="zcwf_col_help" data-astro-cid-ocs7okrj></div> </div> </div> <!-- Hidden Fields (UTM etc) with _modal suffix --> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF11_modal" name="CONTACTCF11" value="https://" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF14_modal" name="CONTACTCF14" value="" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF20_modal" name="CONTACTCF20" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF21_modal" name="CONTACTCF21" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF18_modal" name="CONTACTCF18" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF19_modal" name="CONTACTCF19" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF17_modal" name="CONTACTCF17" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF4_modal" name="CONTACTCF4" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF7_modal" name="CONTACTCF7" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF5_modal" name="CONTACTCF5" value="&quot;" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj> <div class="zcwf_col_fld" data-astro-cid-ocs7okrj> <select class="zcwf_col_fld_slt" id="CONTACTCF6_modal" name="CONTACTCF6" data-astro-cid-ocs7okrj> <option value="-None-" data-astro-cid-ocs7okrj>-None-</option> <option selected value="Google" data-astro-cid-ocs7okrj>Google</option> <option value="Meta" data-astro-cid-ocs7okrj>Meta</option> <option value="TikTok" data-astro-cid-ocs7okrj>TikTok</option> <option value="Reddit" data-astro-cid-ocs7okrj>Reddit</option> </select> </div> </div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF1_modal" name="CONTACTCF1" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF3_modal" name="CONTACTCF3" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF2_modal" name="CONTACTCF2" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj><div class="zcwf_col_fld" data-astro-cid-ocs7okrj><input type="text" id="CONTACTCF30_modal" name="CONTACTCF30" value="-" data-astro-cid-ocs7okrj></div></div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj> <div class="zcwf_col_fld" data-astro-cid-ocs7okrj> <select class="zcwf_col_fld_slt" id="CONTACTCF15_modal" name="CONTACTCF15" data-astro-cid-ocs7okrj> <option value="-None-" data-astro-cid-ocs7okrj>-None-</option> <option value="Organic" data-astro-cid-ocs7okrj>Organic</option> <option selected value="Paid" data-astro-cid-ocs7okrj>Paid</option> <option value="Social" data-astro-cid-ocs7okrj>Social</option> </select> </div> </div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj> <div class="zcwf_col_fld" data-astro-cid-ocs7okrj> <select class="zcwf_col_fld_slt" id="CONTACTCF28_modal" name="CONTACTCF28" data-astro-cid-ocs7okrj> <option value="-None-" data-astro-cid-ocs7okrj>-None-</option> <option selected value="Lead" data-astro-cid-ocs7okrj>Lead</option> <option value="Customer" data-astro-cid-ocs7okrj>Customer</option> </select> </div> </div> <div class="zcwf_row wfrm_fld_dpNn" data-astro-cid-ocs7okrj> <div class="zcwf_col_fld" data-astro-cid-ocs7okrj> <select class="zcwf_col_fld_slt" id="CONTACTCF16_modal" name="CONTACTCF16" data-astro-cid-ocs7okrj> <option value="-None-" data-astro-cid-ocs7okrj>-None-</option> <option value="SEO" data-astro-cid-ocs7okrj>SEO</option> <option value="Blog" data-astro-cid-ocs7okrj>Blog</option> <option value="Direct" data-astro-cid-ocs7okrj>Direct</option> <option value="Google Ads" data-astro-cid-ocs7okrj>Google Ads</option> <option value="Meta Ads" data-astro-cid-ocs7okrj>Meta Ads</option> <option value="Reddit Ads" data-astro-cid-ocs7okrj>Reddit Ads</option> <option value="Tiktok Ads" data-astro-cid-ocs7okrj>Tiktok Ads</option> <option value="Other Paid" data-astro-cid-ocs7okrj>Other Paid</option> <option value="Instagram" data-astro-cid-ocs7okrj>Instagram</option> <option value="Facebook" data-astro-cid-ocs7okrj>Facebook</option> <option value="LinkedIn" data-astro-cid-ocs7okrj>LinkedIn</option> <option value="Twitter/X" data-astro-cid-ocs7okrj>Twitter/X</option> <option value="YouTube" data-astro-cid-ocs7okrj>YouTube</option> <option value="Other Socials" data-astro-cid-ocs7okrj>Other Socials</option> <option selected value="Direc" data-astro-cid-ocs7okrj>Direc</option> </select> </div> </div> <!-- Invisible reCAPTCHA (Global) --> <!-- No local widget needed --> <input type="text" type="hidden" style="display: none;" name="aG9uZXlwb3Q" value="" data-astro-cid-ocs7okrj> <div class="zcwf_row" data-astro-cid-ocs7okrj> <div class="zcwf_col_fld" data-astro-cid-ocs7okrj> <input type="submit" id="formsubmit_modal" role="button" class="formsubmit zcwf_button" value="Get Started Free" aria-label="Submit" title="Submit" data-astro-cid-ocs7okrj> </div> </div> <div class="zcwf_benefits" data-astro-cid-ocs7okrj> <span data-astro-cid-ocs7okrj>• No credit card required • No commitment • Cancel anytime</span> </div> </form> </div> </div> </div>  <script>
+	// Modal Logic
+	const modalOverlay = document.getElementById("zoho-modal-overlay");
+	const closeBtn = document.getElementById("close-modal-btn");
+
+	window.openZohoModal = function () {
+		modalOverlay.style.display = "flex";
+		document.body.style.overflow = "hidden"; // Prevent scrolling
+	};
+
+	window.closeZohoModal = function () {
+		modalOverlay.style.display = "none";
+		document.body.style.overflow = "auto";
+	};
+
+	if (closeBtn) {
+		closeBtn.addEventListener("click", window.closeZohoModal);
+	}
+
+	if (modalOverlay) {
+		modalOverlay.addEventListener("click", e => {
+			if (e.target === modalOverlay) {
+				window.closeZohoModal();
+			}
+		});
+	}
+
+	// Callback function executed when reCAPTCHA is solved (or invisible check passes)
+	window.onCaptchaSuccess_modal = function (token) {
+		console.log("Modal Captcha validated. Submitting form...");
+		const form = document.getElementById("webform_modal");
+
+		// Construct Redirect URL with Name and Email
+		var nameField = document.getElementById("Last_Name_modal");
+		var emailField = document.getElementById("Email_modal");
+		var redirectURL = "https://coach.jove.com/signup";
+
+		if (nameField && emailField) {
+			redirectURL += "?name=" + encodeURIComponent(nameField.value) + "&email=" + encodeURIComponent(emailField.value);
+		}
+
+		// Set returnURL hidden field
+		var returnURLField = document.querySelector("#webform_modal input[name='returnURL']");
+		if (returnURLField) {
+			returnURLField.value = redirectURL;
+		}
+
+		// Submit the form programmatically
+		HTMLFormElement.prototype.submit.call(form);
+	};
+
+	function validateEmail_modal() {
+		var form = document.getElementById("webform_modal");
+		var emailFld = form.querySelectorAll("[data-ftype=email]");
+		var i;
+		for (i = 0; i < emailFld.length; i++) {
+			var emailVal = emailFld[i].value;
+			if (emailVal.replace(/^\s+|\s+$/g, "").length != 0) {
+				var atpos = emailVal.indexOf("@");
+				var dotpos = emailVal.lastIndexOf(".");
+				if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
+					alert("Please enter a valid email address. ");
+					emailFld[i].focus();
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	window.checkMandatory_modal = function () {
+		var mndFileds = new Array("Last Name", "Email");
+		var fldLangVal = new Array("Name", "Email");
+		for (i = 0; i < mndFileds.length; i++) {
+			var fieldObj = document.forms["webform_modal"][mndFileds[i]];
+			if (fieldObj) {
+				if (fieldObj.value.replace(/^\s+|\s+$/g, "").length == 0) {
+					alert(fldLangVal[i] + " cannot be empty.");
+					fieldObj.focus();
+					return false;
+				}
+			}
+		}
+		if (!validateEmail_modal()) {
+			return false;
+		}
+
+		// Validation passed. Execute Global reCAPTCHA.
+		if (typeof window.executeGlobalRecaptcha === "function") {
+			window.executeGlobalRecaptcha(window.onCaptchaSuccess_modal);
+		} else {
+			console.error("Global reCAPTCHA function not found.");
+			alert("Please wait for reCAPTCHA to load.");
+		}
+
+		return false; // Stop immediate submission
+	};
+
+	// Attach submit handler manually since we can't use inline onSubmit easily with scoped functions
+	const modalForm = document.getElementById("webform_modal");
+	if (modalForm) {
+		modalForm.onsubmit = function () {
+			document.charset = "UTF-8";
+			return window.checkMandatory_modal();
+		};
+	}
+
+	// UTM Population for Modal
+	(function () {
+		const params = new URLSearchParams(window.location.search);
+		const mapping = {
+			utm_source: "CONTACTCF20_modal",
+			utm_medium: "CONTACTCF19_modal",
+			utm_campaign: "CONTACTCF17_modal",
+			utm_term: "CONTACTCF21_modal",
+			utm_content: "CONTACTCF18_modal",
+			ad_id: "CONTACTCF4_modal",
+			ad_set_id: "CONTACTCF7_modal",
+			ad_name: "CONTACTCF5_modal",
+			ad_platform: "CONTACTCF6_modal",
+			ad_campaign_id: "CONTACTCF1_modal",
+			ad_group_name: "CONTACTCF3_modal",
+			ad_group_id: "CONTACTCF2_modal",
+			ad_campaign_name: "CONTACTCF30_modal",
+			landing_page_url: "CONTACTCF11_modal",
+			referrer_url: "CONTACTCF14_modal",
+		};
+
+		for (const key in mapping) {
+			const fieldId = mapping[key];
+			const el = document.getElementById(fieldId);
+			if (el && params.has(key)) {
+				el.value = params.get(key);
+			}
+		}
+
+		// Fallback for adset_id (no underscore)
+		const adSetField = document.getElementById("CONTACTCF7_modal");
+		if (adSetField && (adSetField.value === "-" || !adSetField.value) && params.has("adset_id")) {
+			adSetField.value = params.get("adset_id");
+		}
+
+		// Fallback for campaign_name (if ad_campaign_name is missing)
+		const campaignNameField = document.getElementById("CONTACTCF30_modal");
+		if (campaignNameField && (campaignNameField.value === "-" || !campaignNameField.value) && params.has("campaign_name")) {
+			campaignNameField.value = params.get("campaign_name");
+		}
+
+		// Handle Dropdowns
+		const subsourceSelect = document.getElementById("CONTACTCF16_modal"); // Subsource
+		const sourceSelect = document.getElementById("CONTACTCF15_modal"); // Source
+		const platformSelect = document.getElementById("CONTACTCF6_modal"); // Ad Platform
+
+		const gclid = params.get("gclid");
+		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
+		const utmMedium = params.get("utm_medium");
+		const adPlatform = params.get("ad_platform");
+		const adId = params.get("ad_id");
+		// Referrer Logic: Check referrer_url, referrer, ref
+		const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
+
+		// 1. Ad Platform
+		if (platformSelect) {
+			if (adPlatform) {
+				const options = Array.from(platformSelect.options).map(o => o.value);
+				if (options.includes(adPlatform)) platformSelect.value = adPlatform;
+				else if (adPlatform.toLowerCase() === "google") platformSelect.value = "Google";
+				else if (adPlatform.toLowerCase() === "meta" || adPlatform.toLowerCase() === "facebook") platformSelect.value = "Meta";
+			} else if (gclid) {
+				platformSelect.value = "Google";
+			}
+		}
+
+		// 2. Source (Paid, Organic, Social)
+		if (sourceSelect) {
+			if (sources.some(s => s.toLowerCase() === "paid") || gclid || adId) {
+				sourceSelect.value = "Paid";
+			} else if (sources.some(s => s.toLowerCase() === "organic")) {
+				sourceSelect.value = "Organic";
+			} else if (sources.some(s => s.toLowerCase() === "social")) {
+				sourceSelect.value = "Social";
+			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
+				sourceSelect.value = "Paid";
+			} else {
+				// Default to Organic if nothing else matches? Or leave as is.
+				// zohoform.html sets to Organic default.
+				sourceSelect.value = "Organic";
+			}
+		}
+
+		// 3. Subsource
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			const subsourceOptions = Array.from(subsourceSelect.options).map(o => o.value);
+
+			// Check 'source' params
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "LinkedIn";
+			}
+
+			// Check utm_source
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "LinkedIn";
+				else if (subsourceOptions.includes(utmSource)) subsourceValue = utmSource;
+			}
+
+			if (!subsourceValue && gclid) {
+				subsourceValue = "Google Ads";
+			}
+
+			if (subsourceValue) {
+				subsourceSelect.value = subsourceValue;
+			} else if (!subsourceValue && !utmSource && !gclid) {
+				// Fallback to Direct if nothing else
+				subsourceSelect.value = "Direct";
+			}
+		}
+
+		const landingField = document.getElementById("CONTACTCF11_modal");
+		if (landingField) landingField.value = window.location.href;
+
+		const refField = document.getElementById("CONTACTCF14_modal");
+		if (refField) {
+			if (referrerUrlParam) {
+				refField.value = referrerUrlParam;
+			} else {
+				refField.value = document.referrer || "-";
+			}
+		}
+	})();
+</script> <style>
+	/* Footer */
+	/* ROOT FOOTER WRAPPER */
+	.footer-wrapper {
+		background-color: rgb(26, 26, 26);
+		color: rgb(255, 255, 255);
+
+		margin-top: 150px;
+	}
+
+	/* TOP SECTION */
+	.footer-top {
+		padding: 36px 120px 40px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.footer-logo {
+		transform: none;
+		transition: transform 0.3s;
+		max-width: 150px;
+		height: auto;
+	}
+
+	.footer-head-text {
+		margin: 0px;
+		color: var(--Background, #faf9f5);
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.footer-head-link {
+		text-decoration: none;
+		cursor: pointer;
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.footer-head-link-span {
+		color: var(--Background, #faf9f5);
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		text-decoration-line: underline;
+		margin-left: 5px;
+		cursor: pointer;
+	}
+
+	.footer-head-arrow {
+		width: 12px;
+		height: 12px;
+		margin-left: 3px;
+		cursor: pointer;
+	}
+
+	/* MIDDLE SECTION */
+	.footer-middle {
+		display: flex;
+		justify-content: space-between;
+		/* flex-wrap: wrap; */
+		border-top: 1px solid rgb(63, 63, 63);
+		padding: 40px 120px;
+		gap: 48px;
+	}
+
+	/* LEFT GRID */
+	.footer-grid {
+		flex: 1 1 auto;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 32px;
+		color: rgb(204, 204, 204);
+		width: 100%;
+	}
+
+	.footer-grid-column {
+		margin-bottom: 24px;
+	}
+
+	.footer-grid-title {
+		font-weight: 700;
+		font-size: 16px;
+		color: rgb(255, 255, 255);
+		margin-bottom: 14px;
+		font-style: normal;
+		line-height: normal;
+	}
+
+	.footer-grid-item {
+		font-size: 16px;
+		font-weight: 400;
+		margin-bottom: 14px;
+		cursor: pointer;
+		color: rgb(204, 204, 204);
+		pointer-events: auto;
+		font-style: normal;
+		line-height: normal;
+	}
+
+	/* CTA RIGHT SECTION */
+	.footer-cta {
+		flex: 0 0 auto;
+		min-width: 280px;
+		max-width: 350px;
+		width: 100%;
+	}
+
+	.footer-cta-primary button {
+		width: 100%;
+		background-color: rgb(33, 131, 237);
+		color: white;
+		border: none;
+		border-radius: 8px;
+		margin: 0px 0px 8px;
+		cursor: pointer;
+		padding: 16px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		transition: background-color 0.3s;
+	}
+
+	.footer-cta-primary button:hover {
+		background-color: rgb(28, 111, 201);
+	}
+
+	.footer-cta-secondary button {
+		width: 100%;
+		color: rgb(179, 179, 179);
+		background-color: transparent;
+		border: none;
+		border-radius: 0px;
+		margin: 20px 0px 8px;
+		cursor: pointer;
+		padding: 12px 16px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		transition: color 0.3s;
+	}
+
+	.footer-cta-secondary button:hover {
+		color: rgb(255, 255, 255);
+	}
+
+	/* BOTTOM SECTION */
+	.footer-bottom {
+		padding: 40px 120px 36px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 24px;
+		color: rgb(255, 255, 255);
+
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+	}
+
+	.footer-bottom-links {
+		display: flex;
+		gap: 40px;
+		flex-wrap: wrap;
+	}
+
+	.footer-bottom-link a {
+		text-decoration: none;
+		color: #fff;
+		cursor: pointer;
+		transition: color 0.3s;
+	}
+
+	.footer-bottom-link a:hover {
+		color: rgb(179, 179, 179);
+	}
+
+	.footer-copyrightText {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.footer-copyrightText img {
+		width: 18px;
+		height: auto;
+	}
+
+	.footer-copyrightText p {
+		margin: 0;
+	}
+
+	.footer-copyrightText a {
+		color: #fff;
+		text-decoration: none;
+		transition: opacity 0.3s;
+	}
+
+	.footer-copyrightText a:hover {
+		opacity: 0.8;
+	}
+
+	/* Tablet breakpoint (1024px and below) */
+	@media (max-width: 1024px) {
+		.footer-top {
+			padding: 32px 60px 36px;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.footer-middle {
+			padding: 36px 60px;
+			gap: 40px;
+			flex-direction: column;
+		}
+
+		.footer-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 24px;
+		}
+
+		.footer-cta {
+			max-width: 100%;
+		}
+
+		.footer-bottom {
+			padding: 32px 60px;
+		}
+	}
+
+	/* Mobile breakpoint (768px and below) */
+	@media (max-width: 768px) {
+		.footer-top {
+			padding: 24px 32px 28px;
+		}
+
+		.footer-logo {
+			max-width: 120px;
+		}
+
+		.footer-head-text {
+			font-size: 14px;
+		}
+
+		.footer-head-link-span {
+			font-size: 14px;
+		}
+
+		.footer-middle {
+			padding: 32px 32px;
+			gap: 32px;
+			flex-direction: column;
+		}
+
+		.footer-grid {
+			grid-template-columns: 1fr;
+			gap: 0;
+		}
+
+		.footer-grid-column {
+			margin-bottom: 32px;
+		}
+
+		.footer-grid-title {
+			font-size: 15px;
+		}
+
+		.footer-grid-item {
+			font-size: 14px;
+		}
+
+		.footer-cta {
+			min-width: 100%;
+		}
+
+		.footer-cta-primary button,
+		.footer-cta-secondary button {
+			font-size: 15px;
+			padding: 14px;
+		}
+
+		.footer-cta-secondary button {
+			margin: 16px 0px 8px;
+		}
+
+		.footer-bottom {
+			padding: 28px 32px;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.footer-bottom-links {
+			gap: 24px;
+			flex-direction: column;
+		}
+
+		.footer-copyrightText {
+			align-self: flex-start;
+		}
+	}
+
+	/* Small mobile breakpoint (480px and below) */
+	@media (max-width: 480px) {
+		.footer-top {
+			padding: 20px 20px 24px;
+		}
+
+		.footer-head-text {
+			font-size: 13px;
+		}
+
+		.footer-middle {
+			padding: 28px 20px;
+		}
+		.footer-grid {
+			flex: 1 1 auto;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 32px;
+			color: rgb(204, 204, 204);
+			width: 100%;
+		}
+
+		.footer-grid-title {
+			font-size: 14px;
+		}
+
+		.footer-grid-item {
+			font-size: 13px;
+			margin-bottom: 12px;
+		}
+
+		.footer-cta-primary button,
+		.footer-cta-secondary button {
+			font-size: 14px;
+			padding: 12px;
+		}
+
+		.footer-bottom {
+			padding: 24px 20px;
+			font-size: 13px;
+		}
+
+		.footer-bottom-links {
+			gap: 16px;
+		}
+	}
+</style><div class="footer-wrapper"> <div class="footer-top"> <img src="/_astro/jove-whitelogo.DOK8oVDo_ZTTF2c.svg" alt="FooterLogo" loading="lazy" decoding="async" fetchpriority="auto" width="188" height="40" class="footer-logo"> </div> <div class="footer-bottom"> <div class="footer-copyrightText"> <p> <a href="https://coach.jove.com/privacyPolicy">Privacy Policy</a> ·
+<a href="https://coach.jove.com/about">About</a></p> </div> <div class="footer-copyrightText"> <p>© 2025 MyJoVE Corporation</p> </div> </div> </div>  <div id="global-recaptcha"></div> </body></html>

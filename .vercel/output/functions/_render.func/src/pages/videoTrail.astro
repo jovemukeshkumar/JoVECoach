@@ -1,0 +1,65 @@
+---
+import ThreeDImages from "../assets/3D-Still-Images.webm";
+import ThreeDCarousel from "../assets/3D-Carousel.webm";
+---
+
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+
+		background-color: #fff;
+	}
+	section {
+		padding: 3rem 1rem;
+		max-width: 1320px;
+		margin: 0 auto;
+		text-align: center; /* Center videos */
+	}
+
+	video {
+		width: 800px; /* Reduced size by 20% */
+		height: auto;
+		display: block;
+		margin: 0 auto; /* Center horizontally */
+		border-radius: 16px;
+		max-height: 70vh;
+		object-fit: cover;
+		background: #000;
+	}
+
+	/* Tablet */
+	@media (max-width: 768px) {
+		video {
+			width: 90%; /* Slightly bigger for mobile */
+			max-height: 50vh;
+		}
+	}
+
+	/* Mobile */
+	@media (max-width: 480px) {
+		video {
+			width: 95%; /* Fill more on small screens */
+			max-height: 40vh;
+			border-radius: 12px;
+		}
+	}
+</style>
+
+<body>
+	<!-- Section 1 -->
+	<section>
+		<video autoplay muted loop playsinline>
+			<source src={ThreeDImages} type="video/webm" />
+			Your browser does not support the video tag.
+		</video>
+	</section>
+
+	<!-- Section 2 -->
+	<section>
+		<video autoplay muted loop playsinline>
+			<source src={ThreeDCarousel} type="video/webm" />
+			Your browser does not support the video tag.
+		</video>
+	</section>
+</body>
