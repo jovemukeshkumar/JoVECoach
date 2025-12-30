@@ -831,7 +831,7 @@ const { videoSrc = HeroSectionVideo, posterSrc, mobileImgSrc = HeroSectionImage 
 						<source src={videoSrc} type="video/webm" media="(min-width: 769px)" />
 						Your browser does not support the video tag.
 					</video>
-					<Image src={mobileImgSrc} alt="Hero Video" class="hero-video hero-mobile-img" loading="eager" />
+					<Image src={mobileImgSrc} alt="Hero Video" class="hero-video hero-mobile-img" loading="eager" style={{ "aspect-ratio": `${mobileImgSrc.width} / ${mobileImgSrc.height}` }} />
 				</div>
 			</div>
 		</div>
