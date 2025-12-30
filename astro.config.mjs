@@ -12,4 +12,5 @@ export default defineConfig({
   security: {
     checkOrigin: false,
   },
+  compressHTML: true,
 });
