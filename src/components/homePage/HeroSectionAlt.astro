@@ -9,6 +9,7 @@ import HeroGridBg from "../../assets/HeroSectionGridBg.svg";
 import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
 import HeroSectionIcon1 from "../../assets/HeroSectionIcon1.svg";
 import HeroSectionBlueBg from "../../assets/HeroSectionBlueBg.webp";
+import HeroSectionCTABg from "../../assets/HeroSectionCTABg.svg";
 import ZohoFormEmbed from "../ZohoFormEmbed.astro";
 
 const optimizedHeroBg = await getImage({ src: HeroSectionBlueBg, format: "webp" });
@@ -215,7 +216,7 @@ const { videoSrc = HeroSectionVideo, posterSrc, mobileImgSrc = HeroSectionImage 
 
 	.cta-box {
 		background: #2183ed;
-		background-image: url("../../assets/HeroSectionCTABg.svg");
+		background-image: var(--cta-bg);
 		background-repeat: no-repeat;
 		background-position: 300px center;
 		border-radius: 10px;
@@ -791,7 +792,7 @@ const { videoSrc = HeroSectionVideo, posterSrc, mobileImgSrc = HeroSectionImage 
 					</li>
 				</ul>
 
-				<div class="cta-box">
+				<div class="cta-box" style={{ "--cta-bg": `url(${HeroSectionCTABg.src})` }}>
 					<h3 class="cta-title">See what stress-free STEM learning feels like</h3>
 					<ZohoFormEmbed formIdSuffix="hero" layout="horizontal" />
 				</div>
