@@ -18,6 +18,7 @@ import ZohoModal from "../components/landingPage_3/ZohoModal.astro";
 
 import HeroSectionVideo from "../assets/lp3_HerosectionVideo.webm";
 import HeroSectionImage from "../assets/Hero-Section-Mobile_img.webp";
+import HeroSectionPoster from "../assets/parents-mobile-optimized.webp";
 
 import NavLogo from "../assets/NavLogo.svg";
 import { getImage } from "astro:assets";
@@ -30,7 +31,7 @@ import { getImage } from "astro:assets";
 	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" fetchpriority="high" media="(min-width: 769px)" />
 	<link rel="preload" href={HeroSectionImage.src} as="image" slot="head" fetchpriority="high" />
 	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" />
-	<HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionImage.src} />
+	<HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionPoster.src} />
 	<STEMStruggle />
 	<FirstCTASection />
 	<JoVECoachSteps />

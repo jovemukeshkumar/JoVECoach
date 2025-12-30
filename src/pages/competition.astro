@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/homePage/Footer.astro";
 import HeroSection from "../components/homePage/HeroSectionAlt.astro";
@@ -10,28 +11,40 @@ import JoVECoachSteps from "../components/homePage/JoVECoachSteps.astro";
 import FirstCTASection from "../components/homePage/FirstCTASection.astro";
 import SecondCTASection from "../components/homePage/SecondCTASection.astro";
 import ConceptsSection from "../components/homePage/ConceptsSection.astro";
-import Testimonial from "../components/homePage/testimonial.astro";
+// import Testimonial from "../components/homePage/testimonial.astro";
 import LearnerPersonas from "../components/homePage/LearnerPersonas.astro";
 import PricingSection from "../components/homePage/pricingSection.astro";
+import ZohoModal from "../components/ZohoModal.astro";
+
+import HeroSectionVideo from "../assets/LP-Girl-MR.webm";
+import HeroSectionImage from "../assets/Hero-Section-Mobile_img (ailearning).webp";
+import HeroSectionPoster from "../assets/ailearning-poster.webp";
+
+import NavLogo from "../assets/NavLogo.svg";
+import { getImage } from "astro:assets";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout title="JoVE Coach | Master STEM with AI | AI-Powered Learning" description="Struggling with STEM? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master any concept in minutes. Try free for 7 days." robots="noindex, nofollow">
-	<!-- <Navbar/> -->
-	<HeroSection />
+	<link rel="preload" href={HeroSectionVideo} as="video" type="video/webm" slot="head" fetchpriority="high" media="(min-width: 769px)" />
+	<link rel="preload" href={HeroSectionImage.src} as="image" slot="head" fetchpriority="high" />
+	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" />
+
+	<HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionPoster.src} />
 	<STEMStruggle />
 	<FirstCTASection />
 	<JoVECoachSteps />
 	<SecondCTASection />
 	<ConceptsSection />
-	<Testimonial />
+	<!-- <Testimonial /> -->
 	<LearnerPersonas />
 	<PricingSection />
 	<JoveGenLpFaqs />
 
 	<ZohoForm />
-	<!-- <Section11Card/> -->
+	<ZohoModal />
+
 	<Footer />
 </Layout>
