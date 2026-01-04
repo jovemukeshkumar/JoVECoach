@@ -799,35 +799,40 @@ const { videoSrc = HeroSectionVideo, posterSrc, mobileImgSrc = HeroSectionImage 
 			</div>
 		</div>
 
-		<!-- Right Content -->
+		<!-- Right Visual -->
 		<div class="hero-right">
-			<img src={optimizedHeroBg.src} class="hero-bg" alt="Hero Background Pattern" />
-
+			<Image src={HeroGridBg} alt="" class="hero-bg" />
 			<div class="hero-image">
 				<div class="visual-container">
-					<video class="hero-video" autoPlay loop muted playsInline poster={posterSrc}>
-						<source src={videoSrc} type="video/webm" />
-					</video>
-					<img class="hero-mobile-img" src={mobileImgSrc.src} alt="Hero Image" />
+					<!-- <div class="blue-circle"></div> -->
 
-					<!-- Animated Pillars behind image/video -->
+					<!-- Animated Pillars (Growing from bottom to top) -->
 					<div class="pillar-container">
-						<div class="pillar pillar-left"></div>
-						<div class="pillar pillar-right"></div>
+						<div class="pillar pillar-left">
+							<div class="pillar-content">
+								<h3 class="stat-number">96%</h3>
+								<p class="stat-label">Enhanced Clarity</p>
+								<Image src={HeroSectioncognition} alt="Enhanced Clarity Icon" />
+							</div>
+						</div>
+
+						<div class="pillar pillar-right">
+							<div class="pillar-content">
+								<h3 class="stat-number">2X</h3>
+								<p class="stat-label">Improved Scores</p>
+								<Image src={HeroSectionStat} alt="Improved Scores Icon" />
+							</div>
+						</div>
 					</div>
 
-					<!-- Floating Badges -->
-					<div class="stat-badge stat-badge-left">
-						<img src={HeroSectioncognition.src} alt="Cognition" />
-						<div class="stat-number">20%</div>
-						<div class="stat-label">Higher Test Scores</div>
-					</div>
+					<!-- Stat Badges -->
 
-					<div class="stat-badge stat-badge-right">
-						<img src={HeroSectionStat.src} alt="Stat" />
-						<div class="stat-number">40%</div>
-						<div class="stat-label">Better Retention</div>
-					</div>
+					<!-- Girl Placeholder -->
+					<video width="900px" height="auto" autoplay muted loop playsinline class="hero-video" poster={posterSrc} preload="auto">
+						<source src={videoSrc} type="video/webm" media="(min-width: 769px)" />
+						Your browser does not support the video tag.
+					</video>
+					<Image src={mobileImgSrc} alt="Hero Video" class="hero-video hero-mobile-img" loading="eager" fetchpriority="high" style={{ "aspect-ratio": `${mobileImgSrc.width} / ${mobileImgSrc.height}` }} />
 				</div>
 			</div>
 		</div>
