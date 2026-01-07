@@ -13,7 +13,7 @@ import NavLogo from "../assets/NavLogo.svg";
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout robots="index, follow">
+<Layout robots="noindex, nofollow">
 	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" />
 	<Navbar />
 	<HeroSection />
