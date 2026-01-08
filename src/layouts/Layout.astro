@@ -18,26 +18,26 @@ const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description =
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="robots" content={robots} />
-		<link rel="canonical" href="https://coach.jove.com/pp" />
+		<link rel="canonical" href={`https://coach.jove.com/pp${Astro.url.pathname === "/" ? "" : Astro.url.pathname}`} />
 
 		<!-- Open Graph / Facebook / LinkedIn -->
-		<meta property="og:type" content="website" />
+		<!-- <meta property="og:type" content="website" />
 		<meta property="og:url" content="https://coach.jove.com/pp" />
 		<meta property="og:title" content="AI Powered STEM Learning | JoVE Coach" />
 		<meta property="og:description" content="AI-powered STEM learning. 2-minute expert videos. Instant quizzes. Trusted by 1M+ students at 1,800+ universities. Try free for 7 days." />
 		<meta property="og:image" content="https://coach.jove.com/pp/home-social.jpg" />
-		<meta property="og:site_name" content="JoVE Coach" />
+		<meta property="og:site_name" content="JoVE Coach" /> -->
 
 		<!-- Twitter -->
-		<meta name="twitter:card" content="summary_large_image" />
+		<!-- <meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:url" content="https://coach.jove.com/pp" />
 		<meta name="twitter:title" content="AI Powered STEM Learning | JoVE Coach" />
 		<meta name="twitter:description" content="AI-powered STEM learning. Expert videos. Instant quizzes. Trusted by 1M+ students. Try free for 7 days." />
-		<meta name="twitter:image" content="https://coach.jove.com/pp/home-social.jpg" />
+		<meta name="twitter:image" content="https://coach.jove.com/pp/home-social.jpg" /> -->
 		<!-- <meta name="twitter:site" content="@JoVEJournal" /> -->
 
 		<!-- JSON-LD Schema -->
-		<script type="application/ld+json">
+		<!-- <script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
 				"@type": "EducationalOrganization",
@@ -51,7 +51,7 @@ const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description =
 				// 	"https://www.instagram.com/jovecoach"
 				// ]
 			}
-		</script>
+		</script> -->
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
