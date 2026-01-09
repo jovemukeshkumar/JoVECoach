@@ -893,9 +893,11 @@
 				if (!validateEmail1127844000000480553_test()) { return false; }
 
 				// Construct Redirect URL with Name and Email
+				// Use Scoped Selector to ensure we target THIS form's returnURL, not duplicate ones on the page
+				var form = document.forms['WebToContacts1127844000000480553'];
 				var nameVal = document.getElementById('Last_Name').value;
 				var emailVal = document.getElementById('Email').value;
-				var returnUrlInput = document.querySelector('input[name="returnURL"]');
+				var returnUrlInput = form.querySelector('input[name="returnURL"]');
 
 				// FORCE LOGGING to debug
 				console.log("JoVe Test Redirect Logic Executing...");
@@ -909,7 +911,7 @@
 					returnUrlInput.value = redirectUrl.toString();
 					console.log("Return URL set to:", returnUrlInput.value);
 				} else {
-                    console.error("Return URL input not found!");
+                    console.error("Return URL input not found in form!");
                 }
 
 				return true;
