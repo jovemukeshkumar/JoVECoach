@@ -841,7 +841,7 @@
 			/>
 		</div>
 		<script is:inline>
-			function validateEmail1127844000000480553() {
+			function validateEmail1127844000000480553_test() {
 				var form = document.forms['WebToContacts1127844000000480553'];
 				var emailFld = form.querySelectorAll('[data-ftype=email]');
 				var i;
@@ -860,7 +860,7 @@
 				return true;
 			}
 
-			function checkMandatory1127844000000480553() {
+			function checkMandatory1127844000000480553_test() {
 				var mndFileds = new Array('Last Name', 'Email');
 				var fldLangVal = new Array('Name', 'Email');
 				for (i = 0; i < mndFileds.length; i++) {
@@ -888,19 +888,18 @@
 								return false;
 							}
 						}
-						try {
-							if (fieldObj.name == 'Last Name') {
-								name = fieldObj.value;
-							}
-						} catch (e) { }
 					}
 				}
-				if (!validateEmail1127844000000480553()) { return false; }
+				if (!validateEmail1127844000000480553_test()) { return false; }
 
 				// Construct Redirect URL with Name and Email
 				var nameVal = document.getElementById('Last_Name').value;
 				var emailVal = document.getElementById('Email').value;
 				var returnUrlInput = document.querySelector('input[name="returnURL"]');
+
+				// FORCE LOGGING to debug
+				console.log("JoVe Test Redirect Logic Executing...");
+				console.log("Name:", nameVal, "Email:", emailVal);
 
 				if (returnUrlInput) {
 					const baseUrl = 'https://coach.jove.com/home';
@@ -908,12 +907,15 @@
 					redirectUrl.searchParams.set('username', nameVal);
 					redirectUrl.searchParams.set('email', emailVal);
 					returnUrlInput.value = redirectUrl.toString();
-				}
+					console.log("Return URL set to:", returnUrlInput.value);
+				} else {
+                    console.error("Return URL input not found!");
+                }
 
 				return true;
 
 			}
-			function toolTipPopup1127844000000480553(id) {
+			function toolTipPopup1127844000000480553_test(id) {
 				var toolTip = document.getElementById(id);
 				if (toolTip.style.display == 'none') {
 					toolTip.style.display = 'block';

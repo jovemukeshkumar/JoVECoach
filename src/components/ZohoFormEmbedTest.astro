@@ -1,0 +1,370 @@
+---
+interface Props {
+	formIdSuffix: string;
+	layout?: "horizontal" | "vertical";
+}
+
+const { formIdSuffix, layout = "vertical" } = Astro.props;
+const formId = `webform_${formIdSuffix}`;
+const recaptchaId = `recap_${formIdSuffix}`;
+const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
+---
+
+<form id={formId} action="https://crm.zoho.in/crm/WebToContactForm" name={`WebToContacts_${formIdSuffix}`} method="POST" accept-charset="UTF-8" class={layout === "horizontal" ? "zoho-form-horizontal" : "zoho-form-vertical"}>
+	<!-- Hidden Fields -->
+	<input type="text" style="display:none;" name="xnQsjsdp" value="7cacd23940abbe07ab3afbb0935bce36e48117ac9aa7418df96fe992eea58e0f" />
+	<input type="hidden" name="zc_gad" id={`zc_gad_${formIdSuffix}`} value="" />
+	<input type="text" style="display:none;" name="xmIwtLD" value="b4a7085281b2a284d9cd1b01a00b2acad544d903c838c50c3b230c9587ff8a7243f1d77cf0e9a89f5dc74ad36c77b03a" />
+	<input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=" />
+	<input type="text" style="display:none;" name="returnURL" value="null" />
+
+	<!-- UTM Hidden Fields -->
+	<input type="text" style="display:none;" id={`CONTACTCF11_${formIdSuffix}`} name="CONTACTCF11" value="https://" />
+	<input type="text" style="display:none;" id={`CONTACTCF14_${formIdSuffix}`} name="CONTACTCF14" value="" />
+	<input type="text" style="display:none;" id={`CONTACTCF20_${formIdSuffix}`} name="CONTACTCF20" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF19_${formIdSuffix}`} name="CONTACTCF19" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF17_${formIdSuffix}`} name="CONTACTCF17" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF21_${formIdSuffix}`} name="CONTACTCF21" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF18_${formIdSuffix}`} name="CONTACTCF18" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF7_${formIdSuffix}`} name="CONTACTCF7" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF4_${formIdSuffix}`} name="CONTACTCF4" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF5_${formIdSuffix}`} name="CONTACTCF5" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF6_${formIdSuffix}`} name="CONTACTCF6" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF1_${formIdSuffix}`} name="CONTACTCF1" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF3_${formIdSuffix}`} name="CONTACTCF3" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF2_${formIdSuffix}`} name="CONTACTCF2" value="-" />
+	<input type="text" style="display:none;" id={`CONTACTCF30_${formIdSuffix}`} name="CONTACTCF30" value="-" />
+
+	<!-- Default Values -->
+	<!-- Default Values -->
+	<input type="text" style="display:none;" id={`CONTACTCF15_${formIdSuffix}`} name="CONTACTCF15" value="Paid" />
+	<input type="text" style="display:none;" id={`CONTACTCF28_${formIdSuffix}`} name="CONTACTCF28" value="Lead" />
+	<input type="text" style="display:none;" id={`CONTACTCF16_${formIdSuffix}`} name="CONTACTCF16" value="Direc" />
+
+	{
+		layout === "horizontal" ? (
+			<div class="input-row">
+				<input type="text" class="input-field" id={`Last_Name_${formIdSuffix}`} name="Last Name" placeholder="Name*" required />
+				<input type="email" class="input-field input-field-mail" id={`Email_${formIdSuffix}`} name="Email" placeholder="Email*" required />
+			</div>
+		) : (
+			<div class="vertical-inputs">
+				<input type="text" class="input-field" id={`Last_Name_${formIdSuffix}`} name="Last Name" placeholder="Name*" required />
+				<input type="email" class="input-field" id={`Email_${formIdSuffix}`} name="Email" placeholder="Email*" required />
+			</div>
+		)
+	}
+
+	<div class="cta-bottom">
+		<button type="submit" class="cta-button" id={`btn_${formIdSuffix}`}>
+			{layout === "horizontal" ? "Try It Free" : formIdSuffix === "cta2" ? "Ask Your First Question" : "Try an AI Explanation"}
+		</button>
+
+		{layout === "horizontal" && <span class="cta-note">• 7 days free • Full access • No credit card</span>}
+	</div>
+	<!-- Invisible reCAPTCHA (Global) -->
+	<!-- No local widget needed -->
+</form>
+
+<style>
+	/* Shared Styles */
+	.input-field {
+		width: 100%;
+		/* padding: 14px 16px; */
+		padding: 0px 16px;
+		border: 2px solid #eeeeee; /* Default for vertical */
+		border-radius: 10px;
+		font-size: 16px;
+
+		outline: none;
+		transition: all 0.3s;
+	}
+
+	.input-field:focus {
+		border-color: #2183ed;
+	}
+
+	.cta-button {
+		background: #2183ed; /* Default blue */
+		color: white;
+		border: none;
+		padding: 12px 26px;
+		border-radius: 30px;
+		font-size: 18px;
+		font-weight: 500;
+		cursor: pointer;
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+		white-space: nowrap;
+	}
+
+	.cta-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 25px rgba(33, 131, 237, 0.35);
+	}
+
+	/* Horizontal Layout (Hero) Specifics */
+	.zoho-form-horizontal .input-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		margin-bottom: 20px;
+	}
+
+	.zoho-form-horizontal .input-field {
+		border: 0.5px solid #3a3a3a99;
+		border-radius: 8px 0px 0px 8px;
+		max-width: 205px;
+		min-height: 50px;
+		padding: 0px 10px;
+	}
+
+	.zoho-form-horizontal .input-field:first-child {
+		border-right: none;
+	}
+
+	.zoho-form-horizontal .input-field-mail {
+		border-radius: 0px 8px 8px 0px !important;
+		border-left: 0.5px solid #3a3a3a99;
+	}
+
+	.zoho-form-horizontal .cta-bottom {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		flex-wrap: wrap;
+	}
+
+	.zoho-form-horizontal .cta-button {
+		background: transparent;
+		border: 1px solid #ffffff;
+		padding: 14px 32px;
+	}
+
+	.zoho-form-horizontal .cta-note {
+		font-size: 14px;
+		color: #ffffff99;
+	}
+
+	/* Vertical Layout (CTAs) Specifics */
+	.zoho-form-vertical {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		max-width: 327px;
+	}
+
+	.zoho-form-vertical .vertical-inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.zoho-form-vertical .cta-button {
+		width: 100%; /* Full width button for vertical forms */
+		max-width: 100%;
+	}
+
+	/* Responsive Adjustments */
+	@media (max-width: 768px) {
+		.input-field {
+			padding: 14px 10px !important; /* Reduced padding for mobile */
+		}
+
+		.zoho-form-horizontal .input-row {
+			grid-template-columns: 1fr;
+			gap: 12px; /* Add gap between stacked inputs */
+		}
+		.zoho-form-horizontal .input-field {
+			border-radius: 8px !important;
+			max-width: 100%;
+			width: 90% !important; /* Width 90% */
+			margin: 0 auto !important; /* Center inputs */
+			min-height: 36px !important; /* Reduced height to 36px */
+			padding: 8px 12px !important; /* Reduced padding */
+		}
+		.zoho-form-horizontal .input-field-mail {
+			margin-top: 0; /* Remove margin-top as gap handles it */
+		}
+		.zoho-form-horizontal .cta-bottom {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.zoho-form-vertical {
+			align-items: center;
+		}
+
+		.zoho-form-vertical .vertical-inputs {
+			align-items: center;
+		}
+	}
+
+	/* Specific override for Second CTA (cta2) which has a blue background */
+	#webform_cta2 .cta-button {
+		background: #2183ed;
+		border: 1px solid #ffffff;
+	}
+</style>
+
+<script is:inline define:vars={{ formId, formIdSuffix, callbackName, recaptchaId }}>
+	console.log(`Defining global callback: window.${callbackName}`);
+	// Define the callback function globally with a unique name
+	window[callbackName] = function (token) {
+		console.log(`Captcha validated for ${formIdSuffix}. Submitting...`);
+		const form = document.getElementById(formId);
+
+		// Dynamic Return URL
+		const nameVal = document.getElementById(`Last_Name_${formIdSuffix}`).value;
+		const emailVal = document.getElementById(`Email_${formIdSuffix}`).value;
+		const returnUrlInput = form.querySelector('input[name="returnURL"]');
+
+		if (returnUrlInput) {
+			const baseUrl = "https://coach.jove.com/home";
+			const redirectUrl = new URL(baseUrl);
+			redirectUrl.searchParams.set("username", nameVal);
+			redirectUrl.searchParams.set("email", emailVal);
+			returnUrlInput.value = redirectUrl.toString();
+		}
+
+		// Submit programmatically
+		console.log(`Submitting form ${formId} now.`);
+		HTMLFormElement.prototype.submit.call(form);
+	};
+
+	// Form Submission Handler
+	const form = document.getElementById(formId);
+	if (form) {
+		console.log(`Attaching submit handler to ${formId}`);
+		form.onsubmit = function (e) {
+			e.preventDefault();
+			console.log(`Submit triggered for ${formId}`);
+
+			// Basic Validation
+			const name = document.getElementById(`Last_Name_${formIdSuffix}`).value;
+			const email = document.getElementById(`Email_${formIdSuffix}`).value;
+
+			if (!name.trim() || !email.trim()) {
+				alert("Please fill in all required fields.");
+				return false;
+			}
+
+			// Execute Global reCAPTCHA
+			console.log(`Executing Global reCAPTCHA for ${formId}`);
+			if (typeof window.executeGlobalRecaptcha === "function") {
+				window.executeGlobalRecaptcha(window[callbackName]);
+			} else {
+				console.error("Global reCAPTCHA function not found.");
+				alert("Please wait for reCAPTCHA to load.");
+			}
+		};
+	}
+
+	// UTM Population
+	(function () {
+		const params = new URLSearchParams(window.location.search);
+
+		const mapping = {
+			utm_source: `CONTACTCF20_${formIdSuffix}`,
+			utm_medium: `CONTACTCF19_${formIdSuffix}`,
+			utm_campaign: `CONTACTCF17_${formIdSuffix}`,
+			utm_term: `CONTACTCF21_${formIdSuffix}`,
+			utm_content: `CONTACTCF18_${formIdSuffix}`,
+			ad_id: `CONTACTCF4_${formIdSuffix}`,
+			ad_set_id: `CONTACTCF7_${formIdSuffix}`,
+			ad_name: `CONTACTCF5_${formIdSuffix}`,
+			ad_platform: `CONTACTCF6_${formIdSuffix}`,
+			ad_campaign_id: `CONTACTCF1_${formIdSuffix}`,
+			ad_group_name: `CONTACTCF3_${formIdSuffix}`,
+			ad_group_id: `CONTACTCF2_${formIdSuffix}`,
+			ad_campaign_name: `CONTACTCF30_${formIdSuffix}`,
+			landing_page_url: `CONTACTCF11_${formIdSuffix}`,
+			referrer_url: `CONTACTCF14_${formIdSuffix}`,
+		};
+
+		for (const key in mapping) {
+			const fieldId = mapping[key];
+			const el = document.getElementById(fieldId);
+			if (el && params.has(key)) {
+				el.value = params.get(key);
+			}
+		}
+
+		// Fallback for adset_id (no underscore)
+		const adSetField = document.getElementById(`CONTACTCF7_${formIdSuffix}`);
+		if (adSetField && (adSetField.value === "-" || !adSetField.value) && params.has("adset_id")) {
+			adSetField.value = params.get("adset_id");
+		}
+
+		// Fallback for campaign_name (if ad_campaign_name is missing)
+		const campaignNameField = document.getElementById(`CONTACTCF30_${formIdSuffix}`);
+		if (campaignNameField && (campaignNameField.value === "-" || !campaignNameField.value) && params.has("campaign_name")) {
+			campaignNameField.value = params.get("campaign_name");
+		}
+
+		// Handle Source/Subsource Logic
+		const sourceSelect = document.getElementById(`CONTACTCF15_${formIdSuffix}`); // Source
+		const subsourceSelect = document.getElementById(`CONTACTCF16_${formIdSuffix}`); // Subsource
+		const platformSelect = document.getElementById(`CONTACTCF6_${formIdSuffix}`); // Ad Platform (Hidden input in this component, but mapped above)
+
+		const gclid = params.get("gclid");
+		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
+		const utmMedium = params.get("utm_medium");
+		const adPlatform = params.get("ad_platform");
+
+		// Referrer Logic: Check referrer_url, referrer, ref, then document.referrer
+		const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
+
+		// 1. Ad Platform Logic
+		if (platformSelect) {
+			if (adPlatform) platformSelect.value = adPlatform;
+			else if (gclid) platformSelect.value = "Google";
+		}
+
+		// 2. Source Logic
+		if (sourceSelect) {
+			if (sources.some(s => s.toLowerCase() === "paid") || gclid || params.get("ad_id")) {
+				sourceSelect.value = "Paid";
+			} else if (sources.some(s => s.toLowerCase() === "organic")) {
+				sourceSelect.value = "Organic";
+			} else if (sources.some(s => s.toLowerCase() === "social")) {
+				sourceSelect.value = "Social";
+			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
+				sourceSelect.value = "Paid";
+			}
+		}
+
+		// 3. Subsource Logic
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			// Check 'source' params
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "LinkedIn";
+			}
+			// Check utm_source
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "LinkedIn";
+			}
+			if (!subsourceValue && gclid) subsourceValue = "Google Ads";
+
+			if (subsourceValue) subsourceSelect.value = subsourceValue;
+		}
+
+		const landingField = document.getElementById(`CONTACTCF11_${formIdSuffix}`);
+		if (landingField) landingField.value = window.location.href;
+
+		const refField = document.getElementById(`CONTACTCF14_${formIdSuffix}`);
+		if (refField) {
+			if (referrerUrlParam) {
+				refField.value = referrerUrlParam;
+			} else {
+				refField.value = document.referrer || "-";
+			}
+		}
+	})();
+</script>
