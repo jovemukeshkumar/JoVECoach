@@ -22,7 +22,7 @@
 		</input>
 		<input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM='>
 		</input>
-		<input type='text' style='display:none;' name='returnURL' value='https://coach.jove.com'>
+		<input type='text' style='display:none;' name='returnURL' value='https://coach.jove.com/home'>
 		</input>
 		<!-- Do not remove this code. -->
 		<style>
@@ -855,9 +855,9 @@
 				const returnUrlInput = form['returnURL'];
 				
 				if (returnUrlInput) {
-					const baseUrl = 'https://coach.jove.com';
+					const baseUrl = 'https://coach.jove.com/home';
 					const redirectUrl = new URL(baseUrl);
-					redirectUrl.searchParams.set('name', nameVal);
+					redirectUrl.searchParams.set('username', nameVal);
 					redirectUrl.searchParams.set('email', emailVal);
 					returnUrlInput.value = redirectUrl.toString();
 				}
