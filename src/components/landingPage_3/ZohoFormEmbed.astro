@@ -219,9 +219,9 @@ const callbackName = `onCaptchaSuccess_${formIdSuffix}`;
 		const returnUrlInput = form.querySelector('input[name="returnURL"]');
 
 		if (returnUrlInput) {
-			const baseUrl = "https://coach.jove.com";
+			const baseUrl = "https://coach.jove.com/home";
 			const redirectUrl = new URL(baseUrl);
-			redirectUrl.searchParams.set("name", nameVal);
+			redirectUrl.searchParams.set("username", nameVal);
 			redirectUrl.searchParams.set("email", emailVal);
 			returnUrlInput.value = redirectUrl.toString();
 		}
