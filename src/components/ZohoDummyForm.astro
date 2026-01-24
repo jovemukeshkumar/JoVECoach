@@ -1,0 +1,157 @@
+---
+interface Props {
+	layout?: "horizontal" | "vertical";
+	ctaText?: string;
+	formIdSuffix?: string;
+	redirectPath?: string; // Optional: Override default redirect path (e.g. /home or /)
+}
+
+const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath } = Astro.props;
+---
+
+<form id={`dummy-form-${formIdSuffix}`} class={`zoho-dummy-form ${layout === "horizontal" ? "horizontal" : "vertical"}`} onsubmit="return false;">
+	<div class="input-container">
+		<input type="text" name="dummyName" placeholder="Name*" required class="input-field name-field" />
+		<input type="email" name="dummyEmail" placeholder="Email*" required class="input-field email-field" />
+	</div>
+
+	<button type="submit" class="cta-button">
+		{ctaText}
+	</button>
+
+	{layout === "horizontal" && <span class="cta-note">• 7 days free • Full access • No credit card</span>}
+</form>
+
+<script is:inline define:vars={{ formIdSuffix, redirectPath }}>
+	(function () {
+		const form = document.getElementById(`dummy-form-${formIdSuffix}`);
+		if (form) {
+			form.addEventListener("submit", function (e) {
+				e.preventDefault();
+				console.log(`Dummy form ${formIdSuffix} submitted.`);
+
+				const name = form.querySelector('input[name="dummyName"]').value;
+				const email = form.querySelector('input[name="dummyEmail"]').value;
+
+				if (window.submitToZoho) {
+					window.submitToZoho({ name, email, redirectUrl: redirectPath });
+				} else {
+					console.error("window.submitToZoho is not defined. Make sure ZohoMasterForm is included.");
+					alert("Submission failed. Please try again later.");
+				}
+			});
+		}
+	})();
+</script>
+
+<style>
+	.zoho-dummy-form {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.zoho-dummy-form.vertical {
+		flex-direction: column;
+		max-width: 327px;
+	}
+
+	.zoho-dummy-form.horizontal {
+		flex-direction: column;
+	}
+
+	/* Use existing styles or mimic them */
+	.input-container {
+		display: flex;
+		gap: 0;
+	}
+
+	.horizontal .input-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.vertical .input-container {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.input-field {
+		width: 100%;
+		padding: 0px 16px;
+		min-height: 50px;
+		border: 1px solid #3a3a3a99; /* based on HeroSectionAltTest */
+		font-size: 16px;
+		outline: none;
+		transition: all 0.3s;
+	}
+
+	.horizontal .name-field {
+		border-radius: 8px 0 0 8px;
+	}
+
+	.horizontal .email-field {
+		border-radius: 0 8px 8px 0;
+		border-left: none;
+	}
+
+	.vertical .input-field {
+		border-radius: 10px;
+		border: 2px solid #eeeeee;
+	}
+
+	.input-field:focus {
+		border-color: #2183ed;
+	}
+
+	.cta-button {
+		background: #2183ed;
+		color: white;
+		border: none;
+		padding: 12px 26px;
+		border-radius: 30px;
+		font-size: 18px;
+		font-weight: 500;
+		cursor: pointer;
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+		white-space: nowrap;
+	}
+
+	.horizontal .cta-button {
+		background: transparent;
+		border: 1px solid white;
+		margin-top: 1rem;
+		width: fit-content;
+	}
+
+	.cta-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 25px rgba(33, 131, 237, 0.35);
+	}
+
+	.cta-note {
+		font-size: 14px;
+		color: #ffffff99;
+		margin-left: 1rem;
+		align-self: center;
+	}
+
+	/* Mobile responsive */
+	@media (max-width: 768px) {
+		.horizontal .input-container {
+			grid-template-columns: 1fr;
+			gap: 12px;
+		}
+
+		.horizontal .name-field,
+		.horizontal .email-field {
+			border-radius: 8px !important;
+			border-left: 1px solid #3a3a3a99; /* Restore border */
+		}
+
+		.horizontal .cta-button {
+			width: 100%;
+		}
+	}
+</style>
