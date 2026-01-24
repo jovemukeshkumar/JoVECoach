@@ -3,12 +3,12 @@
 ---
 
 <div id="zoho-master-form-container" style="display: none;">
-	<!-- New WebToLead Form -->
+	<!-- New WebToLead Form (Updated) -->
 	<form id="zoho-master-form" action="https://crm.zoho.in/crm/WebToLeadForm" name="WebToLeads1127844000000442391" method="POST" accept-charset="UTF-8">
 		<!-- Hidden Config Fields -->
-		<input type="text" style="display:none;" name="xnQsjsdp" value="e51eed6a953be73a8c7c04085d8508ad289ce9073d734ba616ca4f9f4010e4c9" />
+		<input type="text" style="display:none;" name="xnQsjsdp" value="70041e7467a731a921a9780702cd3528bd8b3c9f77ac31c86d9c1ee7ca3894ad" />
 		<input type="hidden" name="zc_gad" id="zc_gad_master" value="" />
-		<input type="text" style="display:none;" name="xmIwtLD" value="4ac9df97458dc37789aabb461ae6c3613d7914fbef5df2accc520f88b0b1b1b4781af7ac720186148e84972a9584a84a" />
+		<input type="text" style="display:none;" name="xmIwtLD" value="431f26677cbcb0765c87150134b809b451a299472a03bc728f516e635487c158e015a637abdf99e4927ddf7b815e3787" />
 		<input type="text" style="display:none;" name="actionType" value="TGVhZHM=" />
 		<input type="text" style="display:none;" name="returnURL" value="https://coach.jove.com/home" />
 
@@ -30,6 +30,10 @@
 		<input type="text" style="display:none;" id="LEADCF18_master" name="LEADCF18" value="" />
 		<input type="text" style="display:none;" id="LEADCF5_master" name="LEADCF5" value="" />
 		<input type="text" style="display:none;" id="LEADCF12_master" name="LEADCF12" value="" />
+
+		<!-- New Fields: Landing Page & Referrer URL -->
+		<textarea style="display:none;" id="LEADCF23_master" name="LEADCF23"></textarea>
+		<textarea style="display:none;" id="LEADCF16_master" name="LEADCF16"></textarea>
 
 		<!-- Helper fields for selects -->
 		<select style="display:none;" id="LEADCF25_master" name="LEADCF25">
@@ -87,10 +91,6 @@
 		const baseUrl = redirectUrl || "https://coach.jove.com/home";
 
 		// Handle case where baseUrl might already have params or incomplete path
-		// Simple logic: if it starts with http, treat as absolute. Otherwise relative to current origin.
-		// Actually, Zoho might typically expect a full URL, but redirects might be relative on the site.
-		// The previous implementation used baseUrl.startsWith logic which I will preserve and refine.
-
 		let urlObj;
 		try {
 			urlObj = new URL(baseUrl.startsWith("http") ? baseUrl : window.location.origin + (baseUrl.startsWith("/") ? "" : "/") + baseUrl);
@@ -135,6 +135,20 @@
 			const el = document.getElementById(fieldId);
 			if (el && params.has(key)) {
 				el.value = params.get(key);
+			}
+		}
+
+		// Populate Landing Page & Referrer
+		const landingField = document.getElementById(`LEADCF23${suffix}`);
+		if (landingField) landingField.value = window.location.href;
+
+		const refField = document.getElementById(`LEADCF16${suffix}`);
+		if (refField) {
+			const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
+			if (referrerUrlParam) {
+				refField.value = referrerUrlParam;
+			} else {
+				refField.value = document.referrer || "-";
 			}
 		}
 
