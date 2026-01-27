@@ -35,7 +35,7 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 		z-index: 1;
 		background-color: #fff; /* Ensure background is opaque */
 		padding-top: 50px; /* Added spacing from previous section */
-		padding-bottom: 50px;
+		/* padding-bottom: 50px; */
 	}
 
 	/* Scroll Track for Desktop */
@@ -47,15 +47,23 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 	/* Sticky Wrapper */
 	.sticky-wrapper {
 		position: sticky;
-		top: 80px;
-		height: calc(100vh - 80px);
+		top: 60px;
+		height: calc(100vh - 40px);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		overflow: hidden;
-		padding: 2rem 1.5rem;
+		overflow-y: auto; /* Allow scrolling if content is taller than viewport */
+		overflow-x: hidden;
+		padding: 0rem 1.5rem 2rem 1.5rem; /* Reduced top padding from 2rem to 0 */
 		box-sizing: border-box;
 		z-index: 10;
+	}
+
+	@media (max-height: 800px) {
+		.sticky-wrapper {
+			align-items: flex-start; /* Start from top on shorter screens */
+			padding-top: 1rem;
+		}
 	}
 
 	/* Grid Background on Sticky Wrapper */
@@ -101,6 +109,21 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 		position: relative;
 		z-index: 10;
 		width: 100%;
+	}
+
+	.header-content {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	.static-header {
+		padding-top: 2.5rem;
+		margin-bottom: 0rem; /* Reduced from 1rem */
+	}
+
+	.sticky-header-content {
+		padding-top: 0;
+		margin-bottom: 0rem; /* Reduced from 1rem */
 	}
 
 	.header-content h2 :global(span) {
@@ -254,6 +277,8 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 	}
 
 	.step-number {
+		display: inline-block; /* Fix overlap issue */
+		margin-bottom: 15px;
 		font-weight: 500;
 		font-size: 18px;
 		line-height: 140%;
@@ -285,7 +310,7 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 	.mockup-container video {
 		width: 100%;
 		display: block;
-		object-fit: cover;
+		object-fit: contain;
 		min-width: 400px;
 		height: 385px;
 	}
@@ -322,6 +347,10 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 
 	/* Responsive Design */
 	@media (max-width: 968px) {
+		.step-description {
+			margin: 0 auto;
+			max-width: unset !important;
+		}
 		.content-grid {
 			grid-template-columns: 1fr;
 			gap: 2rem;
@@ -340,12 +369,18 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 
 	@media (max-width: 768px) {
 		/* Disable scroll pinning on mobile */
-		.scroll-track {
+		/* .scroll-track {
 			padding-top: 2rem;
+		} */
+
+		.header-content.static-header {
+			margin-bottom: 0.5rem;
+			padding-top: 2rem; /* Reduced padding on mobile */
 		}
 
-		.header-content {
-			margin-bottom: 1rem !important;
+		.header-content.sticky-header-content {
+			margin-bottom: 1rem;
+			padding-top: 0;
 		}
 		.content-grid {
 			max-height: unset;
@@ -388,6 +423,7 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 
 		.step-description {
 			font-size: 14px;
+			margin: 0 auto;
 		}
 		.step-number {
 			display: none;
@@ -485,11 +521,13 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 </style>
 
 <section class="jove-coach-section" style={`--bg-image-1: url(${optimizedBg1.src}); --bg-image-2: url(${optimizedBg2.src});`}>
+	<!-- Main header moved inside sticky wrapper -->
+
 	<div class="scroll-track">
 		<div class="sticky-wrapper">
 			<div class="container">
 				<!-- Header -->
-				<div class="header-content" style="text-align: center; margin-bottom: 2rem;">
+				<div class="header-content sticky-header-content">
 					<h2 set:html={title} />
 					<p class="discover-text">{discoverText}</p>
 

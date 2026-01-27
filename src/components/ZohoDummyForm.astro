@@ -6,9 +6,10 @@ interface Props {
 	redirectPath?: string;
 	buttonLayout?: "full" | "inline";
 	noteColor?: string;
+	buttonMinWidth?: string;
 }
 
-const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath, buttonLayout = "full", noteColor = "#000" } = Astro.props;
+const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath, buttonLayout = "full", noteColor = "#000", buttonMinWidth = "200px" } = Astro.props;
 ---
 
 <form id={`dummy-form-${formIdSuffix}`} class={`zoho-dummy-form ${layout === "horizontal" ? "horizontal" : "vertical"}`} onsubmit="return false;">
@@ -18,7 +19,7 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 	</div>
 
 	<div class={`cta-wrapper ${buttonLayout}`}>
-		<button type="submit" class="global-form-btn">
+		<button type="submit" class="global-form-btn" style={`min-width: ${buttonMinWidth} !important;`}>
 			{ctaText}
 		</button>
 
@@ -97,7 +98,7 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 	.horizontal .email-field {
 		border-radius: 0 8px 8px 0;
 
-		width: unset !important;
+		width: 100% !important;
 	}
 
 	.cta-wrapper {
@@ -113,8 +114,8 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 	}
 
 	.horizontal .global-form-btn {
-		width: auto;
-		/* min-width: 200px; */
+		width: auto !important;
+		min-width: 200px;
 		flex-shrink: 0;
 	}
 
@@ -133,7 +134,7 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 	}
 
 	.cta-wrapper.inline .global-form-btn {
-		width: auto;
+		width: auto !important;
 		min-width: 200px;
 	}
 

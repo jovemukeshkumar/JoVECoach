@@ -336,7 +336,18 @@ const questionsList = questions || defaultQuestions;
 	/* Responsive */
 	@media (max-width: 900px) {
 		.features {
-			grid-template-columns: repeat(3, 1fr);
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 20px;
+		}
+
+		.feature {
+			flex: 0 0 160px; /* Fixed width, no growing */
+			width: 160px;
+			max-width: 160px; /* strict limit */
+			aspect-ratio: 1 / 1;
+			padding: 20px; /* Keep padding consistent */
 		}
 
 		.carousel {

@@ -71,7 +71,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 				<div class="cta-box" style={{ "--cta-bg": `url(${HeroSectionCTABg.src})` }}>
 					<h3 class="cta-title">{ctaTitle}</h3>
-					<ZohoDummyForm layout="horizontal" formIdSuffix="hero" ctaText={heroFormCta} />
+					<ZohoDummyForm layout="horizontal" formIdSuffix="hero" ctaText={heroFormCta} buttonMinWidth="180px" />
 				</div>
 			</div>
 
@@ -332,8 +332,19 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 		.hero-right {
 			flex: 0 0 100%;
 			max-width: 100%;
+			padding-right: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 0 auto;
 		}
-
+		.mobile-image-wrapper {
+			padding-bottom: 0 !important;
+			margin-bottom: 0 !important;
+		}
+		.trust-text-wrapper {
+			margin-top: 0;
+		}
 		.hero-right {
 			display: none; /* Hide desktop image on tablet/mobile as per original design intention for mobile-image-wrapper */
 		}
@@ -367,13 +378,23 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 		.cta-box {
 			margin: 0 auto;
-			text-align: left;
+			text-align: center;
+			max-width: 580px; /* Ensure specific width to allow centering */
 		}
 		.cta-title {
-			text-align: left;
+			text-align: center;
 		}
 
 		.trust-text-wrapper {
+			justify-content: center;
+		}
+
+		.trust-bar {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.hero-logos {
 			justify-content: center;
 		}
 	}
@@ -382,6 +403,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 		/* Kept for safety, though 1024px block handles most */
 		.hero-section {
 			overflow: visible; /* Allow negative margin overlap */
+			padding-bottom: 15rem; /* Ensure space for form */
 		}
 		.hero-container {
 			gap: 3rem;

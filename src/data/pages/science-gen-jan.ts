@@ -283,12 +283,12 @@ export const scienceGenJanData: LandingPageData = {
     },
     modal: {
         title: "The Smarter Way to Learn Science",
-        subtitle: "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.",
+        subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     },
     footer: {
         title: "The Smarter Way to Learn Science",
-        subtitle: "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.",
+        subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     }
 };

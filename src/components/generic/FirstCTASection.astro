@@ -141,11 +141,11 @@ const { title = "Stuck on a concept right now?", subtitle = "See how JoVE Coach 
 
 	@media (max-width: 992px) {
 		.ai-cta-card {
-			display: flex;
-			flex-direction: column;
-			text-align: center;
-			padding: 1.5rem;
-
+			display: grid;
+			grid-template-columns: 1fr 1fr; /* layout becomes 2 columns: Text | Form */
+			gap: 2rem;
+			padding: 2rem;
+			text-align: left; /* Align text left for better readability side-by-side */
 			height: auto;
 			max-height: none;
 		}
@@ -157,13 +157,13 @@ const { title = "Stuck on a concept right now?", subtitle = "See how JoVE Coach 
 		}
 
 		.ai-cta-icon {
-			display: none;
+			display: none; /* Hide icon as per previous login, or keep if grid allows. User complaints implies 2 columns is "issue" or maybe "3 columns and now 2" implies they want 3? No, they said "flex is causing issues". Grid 2 is safer than Flex Column at 990. */
 		}
 
 		.ai-cta-form {
 			width: 100%;
 			max-width: 100%;
-			align-items: center;
+			align-items: flex-start; /* Align form left */
 		}
 
 		.ai-cta-form input {
@@ -177,11 +177,22 @@ const { title = "Stuck on a concept right now?", subtitle = "See how JoVE Coach 
 	}
 
 	@media (max-width: 768px) {
+		.ai-cta-card {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem !important; /* Restore gap for stacking */
+			text-align: center; /* Center text on mobile */
+		}
+
 		.ai-cta-content p {
 			max-width: unset;
 		}
-		.ai-cta-section .ai-cta-card {
-			gap: 0 !important;
+
+		.ai-cta-form {
+			align-items: center; /* Center form on mobile */
+			width: 100%;
+			max-width: 400px;
+			margin: 0 auto;
 		}
 	}
 
