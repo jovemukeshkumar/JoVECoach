@@ -11,9 +11,12 @@ import videoPlay from "../../assets/videoPlay.svg";
 import notePad from "../../assets/notePad.svg";
 import cupLogo from "../../assets/cupLogo.svg";
 import Jove_chat_video from "../../assets/Jove_chat_video.webm"; 
+import Jove_chat_video_biology from "../../assets/Jove_chat_video_biology.webm";
 import Jove_chat_Image1 from "../../assets/Jove_chat_Image1.png";
 import Jove_chat_Image2 from "../../assets/Jove_chat_Image2.png";
 import Jove_chat_Image3 from "../../assets/Jove_chat_Image3.png";
+import Jove_chat_Image2_Biology from "../../assets/Jove_chat_Image2-Biology.png";
+import Jove_chat_Image3_Biology from "../../assets/Jove_chat_Image3-Biology.png";
 import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
 
 // Concepts Icons (for questions)
@@ -65,7 +68,7 @@ export const scienceGenJanData: LandingPageData = {
         ],
         video: biologyCarouselDesktop,
         mobileVideo: biologyCarouselMobile,
-        videoPlaybackSpeed: 0.8,
+        videoPlaybackSpeed: 0.75,
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
             { icon: conceptsSectionIcon6, text: "How does cellular respiration produce energy?" },
@@ -92,7 +95,7 @@ export const scienceGenJanData: LandingPageData = {
                 number: "STEP 1",
                 headline: "Ask and get unstuck with AI",
                 description: "No more scrolling. Just ask - and get the video and insights that crack it.",
-                image: Jove_chat_video, 
+                image: Jove_chat_video_biology, 
             },
             {
                 id: "watch",
@@ -101,7 +104,7 @@ export const scienceGenJanData: LandingPageData = {
                 number: "STEP 2",
                 headline: "Learn in minutes, Not hours",
                 description: "Watch expert-verified videos that actually make sense",
-                image: Jove_chat_Image2,
+                image: Jove_chat_Image2_Biology,
             },
             {
                 id: "practise",
@@ -119,7 +122,7 @@ export const scienceGenJanData: LandingPageData = {
                 number: "STEP 4",
                 headline: 'That "I actually get it" feeling-for real',
                 description: "Crush one concept. Then the next. Build momentum.",
-                image: Jove_chat_Image3,
+                image: Jove_chat_Image3_Biology,
             },
         ]
     },
