@@ -369,9 +369,11 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 
 	@media (max-width: 768px) {
 		/* Disable scroll pinning on mobile */
-		/* .scroll-track {
+		.scroll-track {
+			height: auto;
+			position: static;
 			padding-top: 2rem;
-		} */
+		}
 
 		.header-content.static-header {
 			margin-bottom: 0.5rem;
@@ -414,8 +416,10 @@ const isVideo = (file: any) => typeof file === "string" && /\.(mp4|webm|ogg|mov|
 		.sticky-wrapper {
 			justify-content: flex-start;
 			align-items: stretch;
-			overflow-y: auto; /* Allow internal scroll if content is too tall */
-			padding: 1rem 0; /* Reduced padding */
+			overflow-y: visible; /* Allow content to flow naturally */
+			padding: 1rem 0;
+			position: static;
+			height: auto;
 		}
 		.tab-title {
 			font-size: 18px;

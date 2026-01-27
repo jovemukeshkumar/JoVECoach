@@ -65,6 +65,7 @@ export const scienceGenJanData: LandingPageData = {
         ],
         video: biologyCarouselDesktop,
         mobileVideo: biologyCarouselMobile,
+        videoPlaybackSpeed: 0.8,
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
             { icon: conceptsSectionIcon6, text: "How does cellular respiration produce energy?" },

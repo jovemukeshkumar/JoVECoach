@@ -29,9 +29,10 @@ interface Props {
 	videoSrc?: string;
 	mobileVideoSrc?: string;
 	questions?: ConceptQuestion[];
+	videoPlaybackSpeed?: number;
 }
 
-const { heading, subheading, features, videoSrc, mobileVideoSrc, questions } = Astro.props;
+const { heading, subheading, features, videoSrc, mobileVideoSrc, questions, videoPlaybackSpeed = 1.0 } = Astro.props;
 
 // Icon mapping
 const iconMap: Record<string, ImageMetadata> = {
@@ -423,12 +424,23 @@ const questionsList = questions || defaultQuestions;
 
 		<!-- 3D Video -->
 		<div class="video-wrapper">
-			<video class="concepts-video" autoplay muted loop playsinline>
+			<video class="concepts-video" autoplay muted loop playsinline data-speed={videoPlaybackSpeed}>
 				<source src={mobileVideoSrc} type="video/webm" media="(max-width: 768px)" />
 				<source src={videoSrc} type="video/webm" />
 				Your browser does not support the video tag.
 			</video>
 		</div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const videos = document.querySelectorAll("video.concepts-video");
+				videos.forEach(vid => {
+					const videoEl = vid as HTMLVideoElement;
+					const speed = parseFloat(videoEl.dataset.speed || "1.0");
+					videoEl.playbackRate = speed;
+				});
+			});
+		</script>
 
 		<!-- Question slider -->
 		<div class="questions-slider">

@@ -65,6 +65,7 @@ export const scienceGenJanData: LandingPageData = {
         ],
         video: threeDStillImages,
         mobileVideo: mobileCarouselVideo,
+        videoPlaybackSpeed: 0.8,
         questions: [
             { icon: conceptsSectionIcon6, text: "Why does respiration release energy?" },
             { icon: conceptsSectionIcon7, text: "How does Newton's third law work?" },
