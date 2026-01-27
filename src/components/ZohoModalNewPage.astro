@@ -91,8 +91,8 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 			const email = modalForm.querySelector('input[name="modalEmail"]').value;
 
 			if (window.submitToZoho) {
-				// Use current location as redirect or default
-				window.submitToZoho({ name, email, redirectUrl: window.location.href });
+				// Pass null/undefined to use default redirect (https://coach.jove.com/home)
+				window.submitToZoho({ name, email, redirectUrl: null });
 			} else {
 				console.error("Master form function missing.");
 				alert("Submission failed. Please try again later.");
