@@ -1,9 +1,9 @@
 
 // Hero Images
-import HeroImage from "../../assets/generic-desktop.webp";
-import HeroImageMobile from "../../assets/HeroSectionMobileImage.webp";
-import threeDStillImages from "../../assets/3D-Still-Images.webm";
-import mobileCarouselVideo from "../../assets/Generic-Carousel-Mobile.webm";
+import HeroImage from "../../assets/biology-desktop.webp";
+import HeroImageMobile from "../../assets/biology-mobile.webp";
+import biologyCarouselDesktop from "../../assets/biology-carousel-desktop.webm";
+import biologyCarouselMobile from "../../assets/biology-carousel-mobile.webm";
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -63,20 +63,20 @@ export const scienceGenJanData: LandingPageData = {
             { icon: "expert", text: "Expert-created content" },
             { icon: "secure", text: "Secure & private" },
         ],
-        video: threeDStillImages,
-        mobileVideo: mobileCarouselVideo,
+        video: biologyCarouselDesktop,
+        mobileVideo: biologyCarouselMobile,
         questions: [
-            { icon: conceptsSectionIcon6, text: "Why does respiration release energy?" },
-            { icon: conceptsSectionIcon7, text: "How does Newton's third law work?" },
-            { icon: conceptsSectionIcon9, text: "Why don't satellites fall to Earth?" },
-            { icon: conceptsSectionIcon6, text: "Why do enzymes speed up reactions?" }, 
-            { icon: conceptsSectionIcon8, text: "How do catalysts work in chemistry?" },
-            { icon: conceptsSectionIcon6, text: "What happens during DNA replication?" }, 
-            { icon: conceptsSectionIcon7, text: "Why does light bend in water or glass?" },
-            { icon: conceptsSectionIcon9, text: "How do chemical reactions reach equilibrium?" },
-            { icon: conceptsSectionIcon6, text: "Difference between mitosis and meiosis?" }, 
-            { icon: conceptsSectionIcon7, text: "Why don't satellites fall to Earth?" }, 
-            { icon: conceptsSectionIcon9, text: "What causes an electric current to flow?" },
+            { icon: conceptsSectionIcon6, text: "What happens inside a cell?" },
+            { icon: conceptsSectionIcon7, text: "How does cellular respiration work?" },
+            { icon: conceptsSectionIcon8, text: "How does photosynthesis work?" },
+            { icon: conceptsSectionIcon9, text: "What causes cell division?" }, 
+            { icon: conceptsSectionIcon6, text: "Difference between mitosis and meiosis?" },
+            { icon: conceptsSectionIcon7, text: "How is DNA copied?" }, 
+            { icon: conceptsSectionIcon8, text: "How do genes control traits?" },
+            { icon: conceptsSectionIcon9, text: "Why do enzymes speed up reactions?" }, 
+            { icon: conceptsSectionIcon6, text: "How do cells communicate?" }, 
+            { icon: conceptsSectionIcon7, text: "What causes genetic mutations?" },
+            { icon: conceptsSectionIcon8, text: "How do organisms maintain balance?" },
         ]
     },
     steps: {
@@ -128,33 +128,33 @@ export const scienceGenJanData: LandingPageData = {
         items: [
             {
                 image: LearnerPersonasImg1,
-                title: "Visual learners who learn best by watching",
-                description: "Not random videos. Expert explanations that click.",
+                title: "Pre-med students tackling Biology",
+                description: "High stakes. Get the clarity to stay ahead.",
             },
             {
                 image: LearnerPersonasImg2,
-                title: "Curious minds going beyond the syllabus",
-                description: 'Understand the "why" behind the formula.',
+                title: "AP Biology students prepping for exams",
+                description: 'Master concepts before test day. No panic.',
             },
             {
                 image: LearnerPersonasImg3,
-                title: "Mastery seekers, not memorizers",
-                description: "You're not here to memorize. You're here to actually get it.",
+                title: "College freshmen in Bio 101",
+                description: "Fast pace. Strong foundations from day one.",
             },
             {
                 image: LearnerPersonasImg4,
-                title: "High schoolers building strong foundations",
-                description: "Get the concepts right now. Ace exams later.",
+                title: "Visual learners struggling with cell processes",
+                description: "Watch Biology come to life. Not read it.",
             },
             {
                 image: LearnerPersonasImg5,
-                title: "Busy students juggling work, sports, and life",
-                description: "Self-paced STEM learning that fits their schedule.",
+                title: "Students stuck memorizing Biology",
+                description: "Clarity today. Confidence on exam day.",
             },
             {
                 image: LearnerPersonasImg6,
-                title: "College freshmen tackling Science 101s",
-                description: "New subjects, fast pace. Master them from day one.",
+                title: "Busy students juggling coursework and life",
+                description: "Packed schedule. 2-minute videos that fit.",
             },
         ]
     },
@@ -224,7 +224,7 @@ export const scienceGenJanData: LandingPageData = {
     },
     secondCTA: {
         title: 'Ready to try the 4 steps',
-        subtitle: "Ask a question and watch science click."
+        subtitle: "Ask a question and watch Biology click."
     },
     pricing: {
         title: 'Built for students. <span>Priced like it.</span>',
@@ -272,8 +272,8 @@ export const scienceGenJanData: LandingPageData = {
                 answer: "That's what it's built for. Students who use JoVE Coach consistently report better understanding and 2X improved test scores.",
             },
             {
-                question: "What subjects do you cover?",
-                answer: "Biology, Chemistry, Physics, Statistics and more. More coming based on what students need.",
+                question: "What Biology subjects do you cover?",
+                answer: "Cell Biology, Microbiology, Molecular Biology and more. More coming based on what students need.",
             },
             {
                 question: "Can I cancel anytime?",
@@ -282,12 +282,12 @@ export const scienceGenJanData: LandingPageData = {
         ]
     },
     modal: {
-        title: "The Smarter Way to Learn Science",
+        title: "The Smarter Way to Learn Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     },
     footer: {
-        title: "The Smarter Way to Learn Science",
+        title: "The Smarter Way to Learn Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     }
