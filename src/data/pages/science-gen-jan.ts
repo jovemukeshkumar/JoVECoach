@@ -242,7 +242,7 @@ export const scienceGenJanData: LandingPageData = {
             {
                 title: "Monthly",
                 tag: "NA",
-                price: "$29 / month",
+                price: "$29/month",
                 oldPrice: "NA",
                 buttonText: "Try Monthly Plan",
                 featuresListText: [{ listText: "Unlimited access" }, { listText: "Cancel anytime" }, { listText: "Renews Monthly" }],
