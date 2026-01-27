@@ -3,23 +3,33 @@ interface Props {
 	layout?: "horizontal" | "vertical";
 	ctaText?: string;
 	formIdSuffix?: string;
-	redirectPath?: string; // Optional: Override default redirect path (e.g. /home or /)
+	redirectPath?: string;
+	buttonLayout?: "full" | "inline";
+	noteColor?: string;
 }
 
-const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath } = Astro.props;
+const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath, buttonLayout = "full", noteColor = "#000" } = Astro.props;
 ---
 
 <form id={`dummy-form-${formIdSuffix}`} class={`zoho-dummy-form ${layout === "horizontal" ? "horizontal" : "vertical"}`} onsubmit="return false;">
 	<div class="input-container">
-		<input type="text" name="dummyName" placeholder="Name*" required class="input-field name-field" />
-		<input type="email" name="dummyEmail" placeholder="Email*" required class="input-field email-field" />
+		<input type="text" name="dummyName" placeholder="Name*" required class="global-form-input name-field" />
+		<input type="email" name="dummyEmail" placeholder="Email*" required class="global-form-input email-field" />
 	</div>
 
-	<button type="submit" class="cta-button">
-		{ctaText}
-	</button>
+	<div class={`cta-wrapper ${buttonLayout}`}>
+		<button type="submit" class="global-form-btn">
+			{ctaText}
+		</button>
 
-	{layout === "horizontal" && <span class="cta-note">• 7 days free • Full access • No credit card</span>}
+		{
+			(layout === "horizontal" || buttonLayout === "inline") && (
+				<span class="cta-note" style={buttonLayout === "inline" ? `color: ${noteColor}; font-size: 13px; margin-left:10px;` : ""}>
+					{buttonLayout === "inline" ? "No credit card" : "• 7 days free • Full access • No credit card"}
+				</span>
+			)
+		}
+	</div>
 </form>
 
 <script is:inline define:vars={{ formIdSuffix, redirectPath }}>
@@ -52,14 +62,13 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 
 	.zoho-dummy-form.vertical {
 		flex-direction: column;
-		max-width: 327px;
+		width: 100%;
 	}
 
 	.zoho-dummy-form.horizontal {
 		flex-direction: column;
 	}
 
-	/* Use existing styles or mimic them */
 	.input-container {
 		display: flex;
 		gap: 0;
@@ -75,83 +84,110 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 		gap: 1rem;
 	}
 
-	.input-field {
-		width: 100%;
-		padding: 0px 16px;
-		min-height: 50px;
-		border: 1px solid #3a3a3a99; /* based on HeroSectionAltTest */
-		font-size: 16px;
-		outline: none;
-		transition: all 0.3s;
+	/* Specific overrides for horizontal layout merging */
+	.horizontal .input-container {
+		margin-bottom: 0.25rem;
 	}
 
 	.horizontal .name-field {
 		border-radius: 8px 0 0 8px;
+		border-right: none;
 	}
 
 	.horizontal .email-field {
 		border-radius: 0 8px 8px 0;
-		border-left: none;
+
+		width: unset !important;
 	}
 
-	.vertical .input-field {
-		border-radius: 10px;
-		border: 2px solid #eeeeee;
+	.cta-wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
 	}
 
-	.input-field:focus {
-		border-color: #2183ed;
+	.horizontal .cta-wrapper {
+		flex-direction: row;
+		align-items: center;
+		gap: 1rem;
 	}
 
-	.cta-button {
-		background: #2183ed;
-		color: white;
-		border: none;
-		padding: 12px 26px;
-		border-radius: 30px;
-		font-size: 18px;
-		font-weight: 500;
-		cursor: pointer;
-		transition:
-			transform 0.2s ease,
-			box-shadow 0.2s ease;
-		white-space: nowrap;
-	}
-
-	.horizontal .cta-button {
-		background: transparent;
-		border: 1px solid white;
-		margin-top: 1rem;
-		width: fit-content;
-	}
-
-	.cta-button:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 10px 25px rgba(33, 131, 237, 0.35);
+	.horizontal .global-form-btn {
+		width: auto;
+		/* min-width: 200px; */
+		flex-shrink: 0;
 	}
 
 	.cta-note {
-		font-size: 14px;
-		color: #ffffff99;
-		margin-left: 1rem;
-		align-self: center;
+		font-size: 12px;
+		color: #fff;
+		line-height: 1.2;
+		opacity: 0.8 !important;
+	}
+
+	.cta-wrapper.inline {
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 0.5rem;
+	}
+
+	.cta-wrapper.inline .global-form-btn {
+		width: auto;
+		min-width: 200px;
+	}
+
+	@media (max-width: 480px) {
+		.cta-wrapper.inline {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		.cta-wrapper.inline .global-form-btn {
+			width: 100%;
+		}
+		.cta-wrapper.inline .cta-note {
+			margin-left: 0 !important;
+			text-align: center;
+			margin-top: 5px;
+		}
 	}
 
 	/* Mobile responsive */
 	@media (max-width: 768px) {
+		.zoho-dummy-form {
+			gap: 0.5rem;
+		}
 		.horizontal .input-container {
 			grid-template-columns: 1fr;
 			gap: 12px;
+			/* padding-right: 2rem; */
 		}
 
 		.horizontal .name-field,
 		.horizontal .email-field {
 			border-radius: 8px !important;
-			border-left: 1px solid #3a3a3a99; /* Restore border */
+			border-right: 1px solid #d1d5db; /* Restore border */
+			font-size: 14px;
+		}
+		.horizontal .email-field {
+			width: 100% !important;
 		}
 
-		.horizontal .cta-button {
+		.horizontal .cta-wrapper {
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.horizontal .global-form-btn {
 			width: 100%;
+		}
+
+		.cta-note {
+			text-align: center;
+		}
+
+		.cta-wrapper.inline {
+			margin-top: 0.5rem;
 		}
 	}
 </style>

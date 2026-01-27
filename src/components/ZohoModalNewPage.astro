@@ -1,0 +1,275 @@
+---
+import HeroSectionCTABg from "../assets/HeroSectionCTABg.svg";
+
+interface Props {
+	title?: string;
+	subtitle?: string;
+	ctaText?: string;
+}
+
+const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free" } = Astro.props;
+---
+
+<div id="zoho-modal-overlay" class="modal-overlay" style="display: none;">
+	<div class="modal-container">
+		<!-- Modal Form Content -->
+		<div id="crmWebToEntityForm_modal" class="zcwf_lblLeft crmWebToEntityForm" style={`--bg-image: url(${HeroSectionCTABg.src}); max-width: 600px;`}>
+			<button id="close-modal-btn" class="close-btn">&times;</button>
+			<div class="zcwf_title">{title}</div>
+			<div class="zcwf_subtitle">{subtitle}</div>
+
+			<form id="webform_modal" onsubmit="return false;">
+				<div class="zcwf_row zcwf_formVisibleFields_row">
+					<div class="zcwf_col_lab" style="font-size:12px; font-family: Arial;">
+						<label for="Last_Name_modal">Name<span style="color:red;">*</span></label>
+					</div>
+					<div class="zcwf_col_fld">
+						<input type="text" id="Last_Name_modal" name="modalName" placeholder="Name*" required class="global-form-input" />
+						<div class="zcwf_col_help"></div>
+					</div>
+
+					<div class="zcwf_col_lab" style="font-size:12px; font-family: Arial;">
+						<label for="Email_modal">Email<span style="color:red;">*</span></label>
+					</div>
+					<div class="zcwf_col_fld">
+						<input type="email" id="Email_modal" name="modalEmail" placeholder="Email*" required class="global-form-input" />
+						<div class="zcwf_col_help"></div>
+					</div>
+				</div>
+
+				<div class="zcwf_row">
+					<button id="formsubmit_modal" class="global-form-btn" type="submit">{ctaText}</button>
+				</div>
+
+				<div class="zcwf_row">
+					<div class="zcwf_col_fld" style="text-align: center;">
+						<span class="modal-disclaimer">• 7 days free • Full access • No credit card</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script is:inline>
+	// Modal Open/Close Logic
+	window.openZohoModal = function () {
+		const overlay = document.getElementById("zoho-modal-overlay");
+		if (overlay) {
+			overlay.style.display = "flex";
+			document.body.style.overflow = "hidden";
+		}
+	};
+
+	window.closeZohoModal = function () {
+		const overlay = document.getElementById("zoho-modal-overlay");
+		if (overlay) {
+			overlay.style.display = "none";
+			document.body.style.overflow = "auto";
+		}
+	};
+
+	// Event Listeners
+	const closeBtn = document.getElementById("close-modal-btn");
+	if (closeBtn) closeBtn.addEventListener("click", window.closeZohoModal);
+
+	const overlay = document.getElementById("zoho-modal-overlay");
+	if (overlay) {
+		overlay.addEventListener("click", e => {
+			if (e.target === overlay) window.closeZohoModal();
+		});
+	}
+
+	// Form Submission Logic
+	const modalForm = document.getElementById("webform_modal");
+	if (modalForm) {
+		modalForm.addEventListener("submit", function (e) {
+			e.preventDefault();
+			console.log("Modal Form Submitted");
+
+			const name = modalForm.querySelector('input[name="modalName"]').value;
+			const email = modalForm.querySelector('input[name="modalEmail"]').value;
+
+			if (window.submitToZoho) {
+				// Use current location as redirect or default
+				window.submitToZoho({ name, email, redirectUrl: window.location.href });
+			} else {
+				console.error("Master form function missing.");
+				alert("Submission failed. Please try again later.");
+			}
+		});
+	}
+</script>
+
+<style>
+	.modal-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(5px);
+		z-index: 9999;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;
+	}
+
+	.modal-container {
+		position: relative;
+		width: 100%;
+		max-width: 550px;
+		max-height: 90vh;
+		overflow-y: auto;
+		overflow-x: hidden; /* Prevent horizontal scroll */
+		border-radius: 15px;
+		background: transparent;
+		box-shadow: none;
+		box-sizing: border-box;
+	}
+
+	/* Zoho Form Styles (Simplified but matching Legacy) */
+	#crmWebToEntityForm_modal {
+		background-color: #0085f6 !important;
+		/* Background SVG from PROPS/Previous Tool, handled via style var in HTML usually or hardcoded url if imported in script */
+		/* Since I cannot inject dynamic src easily into CSS block, I will set it in HTML style attribute or use a variable */
+		background-image: var(--bg-image);
+		background-repeat: no-repeat;
+		background-position: right -200px bottom;
+		background-size: 60%;
+
+		padding: 40px !important;
+		border-radius: 12px;
+		color: white !important;
+		position: relative;
+		box-sizing: border-box; /* Ensure padding doesn't affect width calculations */
+		width: 100%; /* Ensure it fits container */
+		max-width: 100% !important; /* Override inline max-width if needed */
+	}
+
+	.zcwf_title {
+		font-weight: 500;
+		font-size: 30px; /* Updated for desktop as requested */
+		margin-bottom: 0.5rem;
+		text-align: center;
+		padding-top: 0;
+		color: #fff !important;
+		line-height: 1.2;
+	}
+
+	.zcwf_subtitle {
+		text-align: center;
+		color: rgba(255, 255, 255, 0.9) !important;
+		margin-bottom: 30px;
+		padding: 0 10px;
+		font-size: 15px;
+	}
+
+	.zcwf_row {
+		margin-bottom: 15px;
+		padding: 0;
+	}
+
+	/* Input Row Layout */
+	.zcwf_formVisibleFields_row {
+		display: flex;
+		flex-direction: column; /* Stack inputs vertically */
+		gap: 15px; /* Add spacing between inputs */
+		/* margin: 0 auto; */
+	}
+
+	.zcwf_col_fld {
+		width: 100%; /* Full width for column layout */
+	}
+
+	/* Hiding labels as per request */
+	.zcwf_col_lab {
+		display: none;
+	}
+
+	.close-btn {
+		position: absolute;
+		top: 20px; /* Moved down */
+		right: 20px; /* Moved left */
+		background: transparent; /* Explicitly removed background */
+		border: none;
+		color: white !important;
+		font-size: 30px;
+		line-height: 1;
+		cursor: pointer;
+		opacity: 0.8;
+		z-index: 100;
+		padding: 0;
+		width: auto;
+		height: auto;
+		transition: transform 0.3s ease;
+	}
+
+	.close-btn:hover {
+		opacity: 1;
+		transform: rotate(90deg);
+	}
+
+	.modal-disclaimer {
+		font-size: 12px;
+		color: rgba(255, 255, 255, 0.8);
+		white-space: nowrap;
+	}
+
+	@media (max-width: 480px) {
+		.modal-disclaimer {
+			white-space: normal;
+			font-size: 11px;
+		}
+		#crmWebToEntityForm_modal {
+			padding: 30px 20px !important; /* Less padding on mobile to preventing squishing */
+		}
+	}
+
+	/* Ensure global inputs look good on blue bg */
+	.global-form-input {
+		border: 1px solid rgba(255, 255, 255, 0.3) !important;
+		background: rgba(255, 255, 255, 0.1) !important;
+		color: white !important;
+	}
+
+	.global-form-input::placeholder {
+		color: rgba(255, 255, 255, 0.7);
+	}
+
+	.global-form-btn {
+		background: white !important;
+		color: #0085f6 !important;
+		border: none !important;
+		font-weight: 600 !important;
+	}
+
+	.global-form-btn:hover {
+		background: #f0f0f0 !important;
+		transform: translateY(-2px);
+	}
+
+	@media (max-width: 768px) {
+		#crmWebToEntityForm_modal {
+			background-position: right -180px bottom;
+			background-size: 60%;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.modal-container {
+			min-width: 100% !important;
+			max-width: 100% !important;
+			padding: 2rem !important;
+			margin-left: -50px;
+		}
+		#crmWebToEntityForm_modal {
+			background-position: right -200px bottom;
+		}
+		.zcwf_title {
+			font-size: 24px !important;
+		}
+	}
+</style>

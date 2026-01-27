@@ -1,0 +1,502 @@
+---
+import { Image } from "astro:assets";
+
+import HeroSectionCTABg from "../../assets/HeroSectionCTABg.svg";
+// Use the new custom form
+import ZohoDummyForm from "../../components/ZohoDummyForm.astro";
+import TrustLogos from "../../assets/trust-logos.svg";
+
+interface Props {
+	heroImage: ImageMetadata;
+	mobileImgSrc: ImageMetadata;
+	title?: string;
+	subtitle?: string;
+	mobileSubtitle?: string;
+	trustText?: string;
+	ctaTitle?: string;
+	heroFormCta?: string;
+}
+
+const {
+	heroImage,
+	mobileImgSrc,
+	title = 'Science Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
+	subtitle = "Biology, Chemistry and Physics made simple.",
+	mobileSubtitle = "From confused to confident. Biology, Chemistry and Physics finally made simple. 20 years of trusted science education.",
+	trustText = "1,000,000+ students at 1,800+ universities trust JoVE",
+	ctaTitle = "See what stress-free science learning feels like",
+	heroFormCta = "Try It Free",
+} = Astro.props;
+
+const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+---
+
+<section class="hero-section">
+	<div class="container">
+		<div class="hero-container">
+			<div class="hero-left">
+				<h1 set:html={title} />
+
+				<p class="hero-description desktop-desc">
+					{subtitle}
+				</p>
+				<p class="hero-description mobile-desc">
+					{mobileSubtitle}
+				</p>
+
+				<!-- Mobile Image Placement -->
+				<div class="mobile-image-wrapper">
+					<picture>
+						<!-- Don't load on desktop (min-width: 1025px) -->
+						<source media="(min-width: 1025px)" srcset={transparentPixel} />
+						<Image src={mobileImgSrc} alt="JoVE Coach Interface" class="hero-img-mobile" loading="eager" fetchpriority="high" />
+					</picture>
+				</div>
+
+				<div class="trust-bar">
+					<div class="trust-text-wrapper">
+						<span class="line"></span>
+						<p class="trust-text">
+							{trustText}
+						</p>
+						<span class="line"></span>
+					</div>
+
+					<div class="hero-logos">
+						<div class="hero-logo-wrapper">
+							<Image src={TrustLogos} alt="Trusted by leading universities" />
+						</div>
+					</div>
+				</div>
+
+				<div class="cta-box" style={{ "--cta-bg": `url(${HeroSectionCTABg.src})` }}>
+					<h3 class="cta-title">{ctaTitle}</h3>
+					<ZohoDummyForm layout="horizontal" formIdSuffix="hero" ctaText={heroFormCta} />
+				</div>
+			</div>
+
+			<div class="hero-right">
+				<div class="desktop-image-wrapper">
+					<picture>
+						<!-- Don't load on mobile (max-width: 1024px) -->
+						<source media="(max-width: 1024px)" srcset={transparentPixel} />
+						<Image src={heroImage} alt="JoVE Coach Interface" class="hero-img" loading="eager" fetchpriority="high" />
+					</picture>
+				</div>
+			</div>
+
+			<div class="blur-ball-1"></div>
+			<div class="blur-ball-2"></div>
+			<div class="blur-ball-3"></div>
+			<div class="blur-ball-4"></div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.blur-ball-1 {
+		position: absolute;
+		width: 300px;
+		height: 300px;
+		right: 600px;
+		top: 70px;
+		background: rgba(237, 227, 252, 1);
+		filter: blur(104px);
+		border-radius: 50%;
+		z-index: 0;
+		pointer-events: none;
+		opacity: 1;
+	}
+
+	.blur-ball-2 {
+		position: absolute;
+		width: 300px;
+		height: 300px;
+		right: 250px;
+		top: 0px;
+		background: rgba(206, 228, 251, 0.3);
+		filter: blur(124px);
+		border-radius: 50%;
+		z-index: 0;
+		pointer-events: none;
+	}
+	.blur-ball-3 {
+		position: absolute;
+		width: 300px;
+		height: 300px;
+		right: 250px;
+		bottom: 0px;
+		background: rgba(206, 228, 251, 0.5);
+		filter: blur(124px);
+		border-radius: 50%;
+		z-index: 0;
+		pointer-events: none;
+	}
+	.blur-ball-4 {
+		position: absolute;
+		width: 300px;
+		height: 300px;
+		right: 0px;
+		bottom: 70px;
+		background: rgba(237, 227, 252, 1);
+		filter: blur(104px);
+		border-radius: 50%;
+		z-index: 0;
+		pointer-events: none;
+		opacity: 1;
+	}
+
+	.hero-section {
+		position: relative;
+		padding: 3rem 0 5rem 0;
+		/* background: #fff; */
+		height: auto !important; /* Force auto height to prevent clipping */
+		min-height: auto !important;
+		overflow: visible !important; /* Ensure content is never clipped */
+		/* Subtle blue gradient blob as seen in design top right */
+		background-image: linear-gradient(to top, #e3edff 0%, rgba(227, 237, 255, 0) 25%), url("../../../assets/Newherosectiongridbg.svg");
+		background-size:
+			100% 100%,
+			400px;
+		background-position:
+			bottom,
+			center bottom 0px;
+		background-repeat: no-repeat;
+	}
+
+	.hero-container {
+		margin: 0 auto;
+
+		display: flex;
+		justify-content: space-between;
+		gap: 2 rem;
+		align-items: flex-start;
+	}
+
+	.hero-left {
+		flex: 0 0 40%;
+		max-width: 40%;
+		z-index: 1;
+		padding-right: 2rem;
+	}
+
+	.hero-right {
+		flex: 0 0 50%;
+		max-width: 50%;
+		z-index: 1;
+	}
+
+	/* === Typography === */
+	/* hero-title and hero-subtitle replaced by global h1 and .hero-description */
+	.mobile-desc {
+		display: none;
+	}
+
+	.highlight {
+		color: var(--color-primary);
+		white-space: nowrap;
+	}
+
+	/* === Trust Bar === */
+	.trust-bar {
+		margin-bottom: 3rem;
+		max-width: 580px;
+	}
+
+	.trust-text-wrapper {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		margin-bottom: 0rem;
+		margin-top: 2rem;
+		color: var(--color-text-muted);
+		width: 100%;
+	}
+
+	.line {
+		height: 0.5px;
+		background-color: var(--text-color); /* Gray-300 */
+		flex-grow: 1; /* Stretch to fill space */
+		display: block;
+		min-width: 20px;
+	}
+	/* On Desktop, maximize lines */
+
+	.trust-text {
+		font-weight: 400;
+		font-size: var(--fs-trust-text);
+		line-height: 130%;
+		letter-spacing: -1%;
+		text-align: center;
+		color: var(--color-text-sub);
+	}
+
+	.hero-logos {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		/* margin-top: 1rem; */
+		width: 100%;
+	}
+
+	.hero-logo-wrapper {
+		width: 100%;
+	}
+
+	.hero-logo-wrapper img {
+		width: 100%;
+		height: auto;
+	}
+
+	.logo-text {
+		font-size: 0.7rem;
+		color: var(--text-color);
+		line-height: 1.1;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	/* === CTA BOX === */
+	.cta-box {
+		background-color: var(--primary-color);
+		background-image: var(--cta-bg);
+		background-repeat: no-repeat;
+		background-position: right -150px center;
+		background-size: contain;
+		border-radius: var(--corner-radius);
+		padding: 1.75rem 2rem;
+		box-shadow: 0px 20px 40px 0px rgba(8, 81, 159, 0.4);
+		color: white;
+		max-width: 580px;
+		position: relative;
+		/* overflow: hidden; Removed to prevent form clipping on resize */
+	}
+
+	.cta-title {
+		font-family: Inter;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 120%;
+		letter-spacing: 0%;
+		vertical-align: middle;
+		margin: 0 0 1.5rem 0;
+		color: white;
+	}
+
+	.form-footer {
+		display: flex;
+		gap: 16px;
+		margin-top: 1rem;
+		font-size: 0.8rem;
+		color: rgba(255, 255, 255, 0.9);
+		flex-wrap: wrap;
+	}
+
+	/* === IMAGES === */
+	.desktop-image-wrapper {
+		position: relative;
+	}
+
+	.hero-img {
+		width: 100%;
+		transform: scale(1.2);
+		height: auto;
+		/* filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1)); */
+	}
+
+	.mobile-image-wrapper {
+		display: none;
+		margin-bottom: 2rem;
+	}
+	.hero-img-mobile {
+		width: 100%;
+		height: auto;
+	}
+
+	/* === RESPONSIVE === */
+	@media (max-width: 1024px) {
+		.headline {
+			font-size: 2.5rem;
+		}
+		.hero-logos {
+			gap: 1.5rem;
+			justify-content: center;
+		}
+		.hero-container {
+			flex-direction: column;
+			gap: 2rem;
+			text-align: center;
+		}
+
+		.hero-left,
+		.hero-right {
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+
+		.hero-right {
+			display: none; /* Hide desktop image on tablet/mobile as per original design intention for mobile-image-wrapper */
+		}
+
+		.mobile-image-wrapper {
+			display: flex; /* Show mobile image */
+			justify-content: center;
+			margin: 0 auto 3rem auto;
+			max-width: 600px;
+			position: relative;
+		}
+
+		/* Add blue background blob behind mobile image */
+		.mobile-image-wrapper::before {
+			content: "";
+			position: absolute;
+			inset: -20px;
+			background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+			z-index: -1;
+		}
+
+		.hero-title {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.hero-subtitle {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.cta-box {
+			margin: 0 auto;
+			text-align: left;
+		}
+		.cta-title {
+			text-align: left;
+		}
+
+		.trust-text-wrapper {
+			justify-content: center;
+		}
+	}
+
+	@media (max-width: 900px) {
+		/* Kept for safety, though 1024px block handles most */
+		.hero-section {
+			overflow: visible; /* Allow negative margin overlap */
+		}
+		.hero-container {
+			gap: 3rem;
+			padding: 0rem;
+		}
+		.blur-ball-1,
+		.blur-ball-2,
+		.blur-ball-3 {
+			display: none;
+		}
+		.mobile-image-wrapper {
+			margin: 0;
+		}
+
+		.hero-left {
+			flex: 0 0 100%;
+			max-width: 100%;
+			padding-right: 0;
+			padding: 0 2rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.hero-title {
+			max-width: unset;
+		}
+
+		.hero-subtitle {
+			margin-bottom: 2rem;
+			max-width: unset;
+		}
+
+		.trust-bar {
+			margin: 1.5rem 0;
+		}
+		.hero-logos {
+			justify-content: center;
+			gap: 0.5rem;
+			flex-wrap: nowrap;
+		}
+
+		.hero-logo-wrapper img {
+			width: 80%;
+			height: auto;
+			object-fit: contain;
+			object-position: center;
+		}
+
+		.cta-box {
+			padding: 2rem;
+			margin: 0px 0px -190px 0px;
+			box-shadow: none;
+			position: relative;
+			z-index: 10;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.desktop-desc {
+			display: none;
+		}
+
+		.hero-logo-wrapper img {
+			width: 100% !important;
+		}
+
+		.mobile-desc {
+			display: block;
+		}
+		.hero-description.mobile-desc {
+			margin-top: 0 !important;
+		}
+		.hero-left {
+			padding: 0 !important;
+		}
+		.trust-bar {
+			padding: 0 0.25rem;
+		}
+		.trust-bar,
+		.trust-text-wrapper {
+			margin-top: 0 !important;
+		}
+		.hero-section {
+			padding-bottom: 15rem;
+		}
+		.line {
+			min-width: unset;
+		}
+		.trust-text {
+			font-size: 11px;
+		}
+		.trust-text-wrapper {
+			gap: 0.5rem;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.cta-title {
+			text-align: center;
+			font-size: 16px;
+			letter-spacing: -1;
+
+			margin-bottom: 1rem;
+		}
+		.hero-section {
+			padding-top: 2rem;
+		}
+
+		.headline {
+			font-size: 2rem;
+		}
+
+		.cta-box {
+			padding: 1.5rem;
+		}
+	}
+</style>

@@ -1,0 +1,194 @@
+:root {
+	--max-width: 1320px;
+	--primary-color: #2183ed;
+	--text-color: #3f3f3f;
+	--heading-color: #000;
+	--bg-color: #fff;
+
+	--section-padding-top: 2.5rem;
+	--section-padding-bottom: 2.5rem;
+	--section-padding-right-left: 20px;
+
+
+	--corner-radius:10px;
+
+	
+	--cta-width:1100px;
+
+    --color-text-main: #111827;
+    --color-text-sub: #3f3f3f;
+    --color-text-muted: #374151;
+    --color-border-light: #d1d5db;
+    --color-text-logo: #4b5563;
+
+    --fs-hero-title: 32px;
+    --fs-hero-subtitle: 15px;
+    --fs-trust-text: 13px;
+  }
+
+
+html,
+body {
+	margin: 0;
+	font-family: "Inter Variable", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	scroll-behavior: smooth;
+	color: var(--text-color);
+	background-color: var(--bg-color);
+}
+
+/* Common Container */
+.container {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* Common Section Padding */
+.section-padding {
+	padding: var(--section-padding-top) 0;
+}
+
+/* Standardized Typography */
+
+h1, .h1 {
+	font-weight: 600;
+	font-size: 32px;
+	line-height: 130%; /* Default or inferred */
+	color: var(--heading-color);
+	margin: 0 0 1rem 0;
+}
+
+h2, .h2 {
+	font-weight: 600;
+	font-size: 30px;
+	line-height: 150%;
+	color: var(--heading-color);
+	margin: 0 0 1rem 0;
+}
+
+h3{
+	font-size:26px;
+	font-weight:600;
+}
+
+/* Hero Description */
+.hero-description {
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 160%;
+	color: var(--text-color);
+}
+
+/* Body Copy / Section Subheading equivalent */
+p, .body-copy {
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 140%;
+	color: var(--text-color);
+}
+
+/* Headings Spans */
+h1 span, .h1 span,
+h2 span, .h2 span {
+	color: var(--primary-color);
+}
+
+/* Utilities */
+.text-center {
+	text-align: center;
+}
+
+.highlight {
+	color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+
+	
+	.container {
+		padding: 0 .5rem;
+	}
+	h1, .h1 {
+		font-size: 21px;
+		line-height: 120%;
+	}
+	h2, .h2 {
+		font-size: 20px;
+		line-height: 130%;
+		max-width:80%;
+		margin:0 auto;
+	}
+	.hero-description {
+		font-size: 13px;
+		line-height: 140%;
+	}
+	p, .body-copy {
+		font-size: 14px;
+		line-height: 140%;
+	}
+	
+}
+/* Global Form Elements */
+.global-form-input {
+	width: 100%;
+	padding: 12px 16px;
+	/* min-height: 50px; */
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	font-size: 16px;
+	outline: none;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	background-color: #fff;
+	color: var(--text-color, #333);
+	box-sizing: border-box;
+}
+
+.global-form-input:focus {
+	border-color: var(--primary-color, #2183ed);
+	box-shadow: 0 0 0 3px rgba(33, 131, 237, 0.15);
+}
+
+/* Global Button Style (Premium pill shape) */
+.global-form-btn {
+	width: 100%;
+	padding: 12px 24px;
+	background-color: #000;
+	color: white;
+	border: none;
+	border-radius: 50px;
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1.2;
+	border:.5px solid transparent;
+	box-sizing: border-box;
+}
+
+.global-form-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 25px rgba(10, 75, 145, 0.25);
+	/* background-color: #333; */
+	border:.5px solid rgba(255,255,255,.8);
+}
+
+.global-form-btn:active {
+	transform: translateY(0);
+	box-shadow: none;
+}
+
+
+@media screen and (max-width: 768px)
+{	
+	.global-form-btn {
+		font-size:15px;
+	}
+	
+}

@@ -1,0 +1,220 @@
+---
+import { Image } from "astro:assets";
+import aiChatIcon from "../../assets/ai-chat-icon.svg";
+import ZohoDummyForm from "../../components/ZohoDummyForm.astro";
+
+interface Props {
+	title?: string;
+	subtitle?: string;
+	ctaText?: string;
+}
+
+const { title = "Stuck on a concept right now?", subtitle = "See how JoVE Coach explains it clearly - with AI.", ctaText = "Start My Free Trial" } = Astro.props;
+---
+
+<style>
+	#Last_Name_cta1 {
+		padding: 0 15px;
+	}
+	.ai-cta-section {
+		padding: 2rem 1rem 6rem 1rem;
+		/* margin-bottom: -100px; */
+		position: relative;
+		z-index: 10;
+	}
+
+	.ai-cta-card {
+		max-width: var(--cta-width);
+		max-height: 280px;
+		margin: 0 auto;
+		background: #f8f7f4; /* solid base */
+		border-radius: 20px;
+		padding: 2rem 4rem;
+		display: grid;
+		grid-template-columns: 1.2fr 1fr 1fr;
+		align-items: center;
+		gap: 2rem;
+		position: relative;
+		z-index: 10;
+		box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.25);
+		overflow: hidden; /* clip pseudo-element */
+	}
+	.ai-cta-card::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+
+		background-image: url("../../assets/aiChatBg.png");
+		background-size: contain;
+		background-position: right -300px center;
+		background-repeat: no-repeat;
+
+		pointer-events: none;
+	}
+	.ai-cta-card > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.ai-cta-content {
+		max-width: 445px;
+		height: 180px;
+	}
+	/* Left text */
+	.ai-cta-content h3 {
+		color: #000;
+		margin: 0;
+	}
+
+	.ai-cta-content p {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 140%;
+		letter-spacing: 0%;
+		max-width: 300px;
+		color: #000;
+	}
+
+	.ai-cta-btn {
+		background: #2183ed;
+		color: #fff;
+		border: none;
+		padding: 12px 20px;
+		border-radius: 30px;
+
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 28px;
+		letter-spacing: 0%;
+		text-align: center;
+		cursor: pointer;
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+	}
+
+	.ai-cta-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 25px rgba(33, 131, 237, 0.35);
+	}
+
+	/* Center icon */
+	.ai-cta-icon {
+		display: flex;
+		justify-content: end;
+	}
+
+	.ai-cta-icon img {
+		width: 100%;
+		max-width: 200px; /* Reduced max-width to fit smaller column */
+		height: auto;
+	}
+
+	/* Right form */
+	.ai-cta-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		width: 100%;
+	}
+
+	.ai-cta-form input {
+		width: 100%;
+		padding: 14px 16px;
+		border-radius: 10px;
+		border: 2px solid #eeeeee;
+		font-size: 15px;
+		outline: none;
+
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: 0%;
+	}
+
+	.ai-cta-form input:focus {
+		border-color: #2183ed;
+	}
+
+	/* ---------- Responsive ---------- */
+
+	@media (max-width: 992px) {
+		.ai-cta-card {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			padding: 1.5rem;
+
+			height: auto;
+			max-height: none;
+		}
+
+		.ai-cta-content {
+			min-width: 0;
+			width: 100%;
+			height: auto;
+		}
+
+		.ai-cta-icon {
+			display: none;
+		}
+
+		.ai-cta-form {
+			width: 100%;
+			max-width: 100%;
+			align-items: center;
+		}
+
+		.ai-cta-form input {
+			min-width: 0;
+		}
+
+		.ai-cta-btn {
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.ai-cta-content p {
+			max-width: unset;
+		}
+		.ai-cta-section .ai-cta-card {
+			gap: 0 !important;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.ai-cta-content h3 {
+			font-size: 22px;
+		}
+
+		.ai-cta-content p {
+			font-size: 14px;
+		}
+
+		.ai-cta-btn {
+			width: 100%;
+		}
+	}
+</style>
+<section class="ai-cta-section">
+	<div class="ai-cta-card">
+		<!-- Left content -->
+		<div class="ai-cta-content">
+			<h3 set:html={title} />
+			<p>{subtitle}</p>
+		</div>
+
+		<!-- Right form -->
+		<div class="ai-cta-form">
+			<ZohoDummyForm layout="vertical" formIdSuffix="cta1" ctaText={ctaText} buttonLayout="inline" />
+		</div>
+
+		<!-- Center icon -->
+		<div class="ai-cta-icon">
+			<Image src={aiChatIcon} alt="AI Chat Icon" />
+		</div>
+	</div>
+</section>

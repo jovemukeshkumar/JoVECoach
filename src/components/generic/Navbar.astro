@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+import NavLogo from "../../assets/NavLogo.svg";
+---
+
+<nav class="navbar">
+	<div class="container navbar-content">
+		<div class="logo">
+			<a href="/">
+				<Image src={NavLogo} alt="JoVE Coach" height={32} />
+				<!-- Adjusting logo size to match image better, usually 32-40px height -->
+			</a>
+		</div>
+		<div class="cta-container">
+			<button class="cta-button" onclick="window.openZohoModal && window.openZohoModal()">Start My Free Trial</button>
+			<span class="subtext">No credit card required</span>
+		</div>
+	</div>
+</nav>
+
+<style>
+	.navbar {
+		padding: 0.5rem 0;
+		background-color: #fff;
+		box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.06);
+		border: 1px solid rgba(225, 225, 225, 1);
+		border-radius: 0px 0px 50px 50px;
+		z-index: 999;
+	}
+
+	.navbar-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+
+	/* Logo styling details */
+	.logo a {
+		display: flex;
+		align-items: center;
+	}
+
+	.cta-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.cta-button {
+		background: transparent;
+		border: 1px solid #2183ed;
+		color: #2183ed;
+		padding: 0.6rem 1.75rem;
+		border-radius: 9999px;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: -0.5%;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		white-space: nowrap;
+	}
+
+	.cta-button:hover {
+		/* background: #eff6ff; Removed as per request */
+		transform: translateY(-2px);
+		box-shadow: 0 4px 6px rgba(33, 131, 237, 0.2);
+	}
+
+	.subtext {
+		font-weight: 400;
+		font-size: 11px;
+		line-height: 140%;
+		letter-spacing: -1%;
+		text-align: center;
+		color: #aeaeae;
+	}
+
+	/* Mobile Enhancements */
+	@media (max-width: 640px) {
+		.container {
+			padding: 0 1rem;
+		}
+		.navbar {
+			border-radius: 0px 0px 20px 20px;
+		}
+
+		.cta-button {
+			padding: 0.4rem 0.8rem;
+			font-size: 12px;
+		}
+		.subtext {
+			font-size: 9px;
+		}
+	}
+</style>

@@ -1,0 +1,149 @@
+---
+import "@fontsource-variable/inter";
+import "../styles/global.css";
+import ZohoMasterForm from "../components/ZohoMasterForm.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	robots?: string;
+}
+
+const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description = "The Smarter Way to Learn STEM AI-powered STEM learning with 2-minute expert videos and instant quizzes. Trusted by 1M+ students. Try free for 7 days.", robots = "noindex, nofollow" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Primary Meta Tags -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="robots" content={robots} />
+		<link rel="canonical" href={Astro.url.pathname === "/" ? "https://coach.jove.com" : `https://coach.jove.com/pp${Astro.url.pathname}`} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<script is:inline>
+			// Global reCAPTCHA Logic
+			window.globalRecaptchaWidgetId = null;
+			window.pendingRecaptchaCallback = null;
+
+			window.onGlobalRecaptchaSuccess = function (token) {
+				console.log("Global reCAPTCHA success. Token received.");
+				if (typeof window.pendingRecaptchaCallback === "function") {
+					window.pendingRecaptchaCallback(token);
+					window.pendingRecaptchaCallback = null; // Reset
+				}
+				// Reset widget so it can be used again
+				if (window.globalRecaptchaWidgetId !== null) {
+					grecaptcha.reset(window.globalRecaptchaWidgetId);
+				}
+			};
+
+			window.executeGlobalRecaptcha = function (callback) {
+				console.log("Executing global reCAPTCHA...");
+				if (window.globalRecaptchaWidgetId !== null && typeof grecaptcha !== "undefined") {
+					window.pendingRecaptchaCallback = callback;
+					grecaptcha.execute(window.globalRecaptchaWidgetId);
+				} else {
+					console.warn("Global reCAPTCHA widget not ready.");
+					alert("Security check loading... Please try again in 2 seconds.");
+				}
+			};
+
+			window.onRecaptchaLoad = function () {
+				console.log("Global reCAPTCHA loaded. Rendering shared widget...");
+				const el = document.getElementById("global-recaptcha");
+				if (el) {
+					window.globalRecaptchaWidgetId = grecaptcha.render(el, {
+						sitekey: "6LdHLyQsAAAAALp3_wGJDs9-K6k9N37-vPz0JS9m",
+						size: "invisible",
+						callback: window.onGlobalRecaptchaSuccess,
+					});
+					console.log(`Global widget rendered with ID: ${window.globalRecaptchaWidgetId}`);
+				}
+			};
+
+			// Lazy Load Scripts (GTM & ReCaptcha)
+			(function () {
+				let scriptsLoaded = false;
+
+				function loadScripts() {
+					if (scriptsLoaded) return;
+					scriptsLoaded = true;
+
+					console.log("Lazy loading third-party scripts...");
+
+					const allowedDomains = ["coach.jove.com", "www.coach.jove.com"];
+					const isProduction = allowedDomains.includes(window.location.hostname);
+
+					if (isProduction) {
+						// 1. Google Tag Manager
+						(function (w, d, s, l, i) {
+							w[l] = w[l] || [];
+							w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+							var f = d.getElementsByTagName(s)[0],
+								j = d.createElement(s),
+								dl = l != "dataLayer" ? "&l=" + l : "";
+							j.async = true;
+							j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+							f.parentNode.insertBefore(j, f);
+						})(window, document, "script", "dataLayer", "GTM-TQWX7HXX");
+					}
+
+					// 2. ReCaptcha (Always load for form testing)
+					const rcScript = document.createElement("script");
+					rcScript.src = "https://www.google.com/recaptcha/api.js?render=explicit&onload=onRecaptchaLoad";
+					rcScript.async = true;
+					rcScript.defer = true;
+					document.head.appendChild(rcScript);
+
+					if (isProduction) {
+						// 3. Microsoft Clarity
+						(function (c, l, a, r, i, t, y) {
+							c[a] =
+								c[a] ||
+								function () {
+									(c[a].q = c[a].q || []).push(arguments);
+								};
+							t = l.createElement(r);
+							t.async = 1;
+							t.src = "https://www.clarity.ms/tag/" + i;
+							y = l.getElementsByTagName(r)[0];
+							y.parentNode.insertBefore(t, y);
+						})(window, document, "clarity", "script", "uszk2uowh0");
+					}
+
+					// Cleanup listeners
+					window.removeEventListener("mousemove", loadScripts);
+					window.removeEventListener("keydown", loadScripts);
+					window.removeEventListener("touchmove", loadScripts);
+					window.removeEventListener("scroll", loadScripts);
+				}
+
+				// Trigger on interaction or timeout
+				window.addEventListener("mousemove", loadScripts, { once: true });
+				window.addEventListener("keydown", loadScripts, { once: true });
+				window.addEventListener("touchmove", loadScripts, { once: true });
+				window.addEventListener("scroll", loadScripts, { once: true });
+
+				// Fallback timeout (4 seconds)
+				setTimeout(loadScripts, 4000);
+			})();
+		</script>
+		<!-- End Google Tag Manager -->
+		<meta name="generator" content={Astro.generator} />
+		<slot name="head" />
+	</head>
+
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQWX7HXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<slot />
+		<ZohoMasterForm />
+		<div id="global-recaptcha"></div>
+	</body>
+</html>

@@ -1,0 +1,217 @@
+---
+interface Props {
+	title?: string;
+	subtitle?: string;
+	ctaText?: string;
+}
+
+const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free" } = Astro.props;
+
+import { Image } from "astro:assets";
+import zohoCTAImage from "../assets/zohoCTAImage.png";
+---
+
+<div class="container">
+	<div id="crmWebToEntityForm" class="zcwf_lblLeft crmWebToEntityForm" style="background-color: white;color: black;max-width: 600px;">
+		<div class="zcwf_title">{title}</div>
+		<div class="zcwf_subtitle">{subtitle}</div>
+
+		<form id="webform_footer" onsubmit="return false;">
+			<div class="zcwf_row zcwf_formVisibleFields_row">
+				<div class="zcwf_col_lab" style="font-size:12px; font-family: Arial;">
+					<label for="Last_Name_footer">Name<span style="color:red;">*</span></label>
+				</div>
+				<div class="zcwf_col_fld">
+					<input type="text" id="Last_Name_footer" name="footerName" placeholder="Name*" required class="global-form-input" />
+					<div class="zcwf_col_help"></div>
+				</div>
+
+				<div class="zcwf_col_lab" style="font-size:12px; font-family: Arial;">
+					<label for="Email_footer">Email<span style="color:red;">*</span></label>
+				</div>
+				<div class="zcwf_col_fld">
+					<input type="email" id="Email_footer" name="footerEmail" placeholder="Email*" required class="global-form-input" />
+					<div class="zcwf_col_help"></div>
+				</div>
+			</div>
+
+			<div class="zcwf_row style-check" style="align-items: center; justify-content: flex-start; margin-top: 15px !important;">
+				<div class="zcwf_col_fld" style="width: auto !important; flex: 0 0 auto !important;">
+					<button id="formsubmit_footer" class="global-form-btn" type="submit">{ctaText}</button>
+				</div>
+				<div class="zcwf_col_fld" style="width: auto !important; flex: 1 !important;">
+					<span class="modal-disclaimer" style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin-left: 10px;">• 7 days free • Full access • No credit card</span>
+				</div>
+			</div>
+		</form>
+
+		<Image src={zohoCTAImage} class="zohoCTAImage" alt="JoVE Coach" />
+	</div>
+</div>
+
+<script is:inline>
+	const footerForm = document.getElementById("webform_footer");
+	if (footerForm) {
+		footerForm.addEventListener("submit", function (e) {
+			e.preventDefault();
+			const name = footerForm.querySelector('input[name="footerName"]').value;
+			const email = footerForm.querySelector('input[name="footerEmail"]').value;
+
+			if (window.submitToZoho) {
+				window.submitToZoho({ name, email });
+			} else {
+				console.error("Global submit function missing");
+			}
+		});
+	}
+</script>
+
+<style>
+	html,
+	body {
+		margin: 0px;
+	}
+
+	#crmWebToEntityForm.zcwf_lblLeft {
+		margin: 50px auto;
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		max-width: 1200px !important;
+		display: flex !important;
+		justify-content: flex-start !important;
+		flex-direction: column !important;
+		color: #fff !important;
+		background: #0085f6 !important;
+		border-radius: 15px !important;
+		padding: 40px 70px 40px 70px !important;
+		position: relative !important;
+		background-image: url("/cardBg.svg") !important;
+		background-position: 770px center !important;
+		background-repeat: no-repeat !important;
+		background-size: contain !important;
+	}
+	.zohoCTAImage {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 350px;
+		height: auto;
+	}
+
+	.zcwf_formVisibleFields_row {
+		display: flex !important;
+		flex-direction: row !important;
+		gap: 10px !important;
+		flex-wrap: nowrap !important;
+		width: 100% !important;
+	}
+
+	.zcwf_formVisibleFields_row .zcwf_col_fld {
+		flex: 1 !important;
+		min-width: 0 !important;
+		width: auto !important;
+	}
+
+	/* Removed duplicated input styles in favor of global-form-input */
+
+	#crmWebToEntityForm.zcwf_lblLeft * {
+		box-sizing: border-box;
+	}
+
+	#crmWebToEntityForm {
+		text-align: left;
+	}
+
+	#crmWebToEntityForm * {
+		direction: ltr;
+	}
+
+	.zcwf_lblLeft .zcwf_title {
+		word-wrap: break-word;
+		margin-bottom: 12px;
+		font-size: 30px;
+		color: #fff !important;
+
+		font-weight: 500 !important;
+		line-height: 120% !important;
+		letter-spacing: -0.5px !important;
+		vertical-align: middle;
+	}
+
+	.zcwf_subtitle {
+		font-weight: 400 !important;
+		font-size: 16px !important;
+		line-height: 140% !important;
+		letter-spacing: 0% !important;
+		color: rgba(255, 255, 255, 0.9) !important;
+		/* max-width: 500px; */
+		margin-bottom: 32px;
+	}
+
+	.zcwf_row {
+		display: flex !important;
+		gap: 16px !important;
+		flex-wrap: wrap !important;
+		margin: 0 !important;
+		max-width: 520px !important;
+	}
+
+	.zcwf_col_lab {
+		display: none !important;
+	}
+
+	/* Removed redundant focus/hover styles now handled by global classes */
+
+	@media (max-width: 768px) {
+		#crmWebToEntityForm.zcwf_lblLeft {
+			padding: 40px 28px !important;
+			background-position: center bottom !important;
+			background-size: 80% !important;
+			background-image: none !important;
+			margin: 20px auto !important;
+			width: 90% !important;
+		}
+
+		.zcwf_title {
+			font-size: 24px !important;
+			text-align: center;
+		}
+		.zcwf_subtitle {
+			font-size: 14px !important;
+			text-align: center;
+		}
+		.modal-disclaimer {
+			font-size: 12px !important;
+		}
+		.zcwf_row {
+			flex-direction: column !important;
+			gap: 12px !important;
+		}
+
+		/* Mobile Layout Adjustments */
+		.style-check {
+			align-items: center !important;
+		}
+
+		.style-check .zcwf_col_fld {
+			width: 100% !important;
+			text-align: center;
+		}
+
+		.global-form-btn {
+			width: 100% !important;
+		}
+
+		.modal-disclaimer {
+			display: block;
+			text-align: center;
+			margin-left: 0 !important;
+			margin-top: 10px;
+		}
+
+		.zohoCTAImage {
+			display: none !important;
+		}
+	}
+</style>

@@ -1,0 +1,561 @@
+---
+// src/components/ComparisonTable.astro
+// src/components/ComparisonTable.astro
+import { Image } from "astro:assets";
+
+interface ComparisonItem {
+	id: string;
+	name: string;
+	logo: ImageMetadata;
+	mobileLogo?: ImageMetadata;
+	logoColor?: string;
+	highlighted?: boolean;
+}
+
+interface Feature {
+	name: string;
+	values: Record<string, boolean | string>;
+}
+
+interface Props {
+	title?: string;
+	subtitle?: string;
+	items?: ComparisonItem[];
+	features?: Feature[];
+	ctaText?: string;
+	ctaLink?: string;
+	tagline?: string;
+}
+
+const {
+	title = 'See why students  <span class="highlight-blue">choose JoVE Coach</span>',
+	subtitle = "20 years of science expertise makes the difference.",
+	items = [],
+	features = [],
+	ctaText = "Start My Free Trial",
+	ctaLink = "#",
+	tagline = 'Better <span class="highlight-blue">content</span>. Better <span class="highlight-blue">value</span>. Better <span class="highlight-blue">results</span>.',
+} = Astro.props;
+---
+
+<style>
+	.comparison-section {
+		padding: 60px 20px;
+		position: relative;
+	}
+
+	.comparison-header {
+		text-align: center;
+	}
+
+	.comparison-header :global(.highlight-blue) {
+		color: #2183ed;
+	}
+
+	.table-container {
+		max-width: 1320px;
+		margin: 0 auto;
+		padding: 40px;
+		padding-top: 0;
+		transform: scale(0.9);
+	}
+
+	/* Desktop Table */
+	.desktop-table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	.desktop-table thead th {
+		padding: 20px 15px;
+		text-align: center;
+		/* border-bottom: 2px solid #f0f0f0; */
+		font-weight: 500;
+		/* background: white; */
+	}
+
+	.desktop-table thead th.highlighted-column {
+		background: #2183ed0f;
+		position: relative;
+	}
+
+	/* Vertical borders between columns (blue, 0.5px) */
+	.desktop-table thead th,
+	.desktop-table tbody td {
+		border-right: 0.5px solid #2183ed40;
+		border-bottom: none;
+		min-width: 160px;
+	}
+
+	/* Remove right border on last column to avoid outer border */
+	.desktop-table thead th:last-child,
+	.desktop-table tbody td:last-child {
+		border-right: none;
+	}
+
+	/* Horizontal border for header row */
+	.desktop-table thead tr {
+		/* border-bottom: 0.5px solid #D9D9D9; */
+	}
+
+	.feature-header {
+		text-align: left !important;
+		width: 25%;
+	}
+
+	.logo-cell {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.desktop-logo {
+		display: block;
+	}
+	.mobile-logo {
+		display: none;
+	}
+	.universal-logo {
+		display: block;
+	}
+
+	/* ===== STICKY FEATURE COLUMN ===== */
+
+	/* Header cell (top-left empty cell) */
+	.desktop-table thead th.feature-header {
+		position: sticky;
+		left: -2px;
+		z-index: 4;
+		background: white;
+		border-right: 0.5px solid #2183ed40;
+	}
+
+	/* Feature name cells */
+	.desktop-table tbody td.feature-name {
+		position: sticky;
+		left: -2px;
+		z-index: 3;
+		background: white;
+		border-right: 0.5px solid #2183ed40;
+	}
+
+	/* CTA empty cell (last row first column) */
+	.desktop-table tbody tr.cta-row td:first-child {
+		position: sticky;
+		left: -2px;
+		z-index: 3;
+		background: white;
+	}
+
+	.logo-cell img {
+		width: auto;
+		height: 25px;
+	}
+
+	.desktop-table tbody tr {
+		border-bottom: 0.5px solid #d9d9d9;
+	}
+
+	.desktop-table tbody tr:last-child {
+		border-bottom: none;
+	}
+
+	.desktop-table tbody tr:hover td:not(.highlighted-column) {
+		/* background-color: #fafafa; */
+	}
+
+	.desktop-table tbody td {
+		/* padding: 18px 15px; */
+		text-align: center;
+		max-height: 41px !important;
+		border-right: 0.5px solid #2183ed40;
+	}
+
+	.desktop-table tbody td.highlighted-column {
+		background: #2183ed0f;
+	}
+
+	.feature-name {
+		text-align: right !important;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 340%;
+		letter-spacing: 0%;
+		text-align: right;
+		color: #3f3f3f;
+		padding-right: 30px !important;
+		text-wrap: nowrap;
+	}
+
+	.varies {
+		color: #666;
+		font-size: 0.9rem;
+	}
+
+	.cta-row td {
+		padding: 25px 15px !important;
+		border-bottom: none !important;
+	}
+
+	.mobile-cta-section {
+		display: none; /* Hidden on desktop */
+		text-align: center;
+		margin-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	.mobile-cta-note {
+		font-size: 14px;
+		color: #666;
+		margin-top: 8px;
+		display: block;
+	}
+
+	.cta-button {
+		display: inline-block;
+		background: #2183ed;
+		color: white;
+		border: none;
+		padding: 12px 20px;
+		border-radius: 25px;
+		font-size: 16px;
+		letter-spacing: -0.5%;
+		line-height: 140%;
+		font-weight: 400;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		text-decoration: none;
+		max-width: 80%;
+	}
+
+	.cta-button:hover {
+		background: #1976d2;
+		box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+		transform: translateY(-2px);
+	}
+
+	.comparison-footer {
+		text-align: center;
+	}
+
+	.tagline {
+		font-size: 1.3rem;
+		color: #333;
+		font-weight: 500;
+	}
+
+	.tagline :global(.highlight-blue) {
+		color: #2196f3;
+	}
+
+	/* Mobile Responsive */
+	@media (max-width: 1320px) {
+		.comparison-section {
+			padding: 40px 10px;
+		}
+
+		.cta-row {
+			display: none !important; /* Hide table CTA row on mobile */
+		}
+
+		.mobile-cta-section {
+			display: block; /* Show mobile CTA section */
+		}
+
+		.table-container {
+			padding: 0px;
+		}
+		.logo-cell img {
+			width: auto;
+			height: 17px;
+		}
+		.cta-cell-mobile {
+			min-height: 80px;
+			border-bottom: none;
+		}
+		/* Scrollbar styling */
+		.values-section::-webkit-scrollbar {
+			height: 6px;
+		}
+
+		.values-section::-webkit-scrollbar-track {
+			background: #f1f1f1;
+			border-radius: 10px;
+		}
+
+		.values-section::-webkit-scrollbar-thumb {
+			background: #2196f3;
+			border-radius: 10px;
+		}
+
+		.values-section::-webkit-scrollbar-thumb:hover {
+			background: #1976d2;
+		}
+
+		.tagline {
+			font-size: 1rem !important;
+		}
+
+		.cta-button {
+			font-size: 0.85rem;
+			padding: 10px 24px;
+		}
+	}
+	/* ===== RESPONSIVE TABLE WRAPPER ===== */
+	.table-scroll {
+		width: 100%;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Prevent column collapse */
+	.responsive-table {
+		min-width: 1100px;
+	}
+
+	/* Scrollbar */
+	.table-scroll::-webkit-scrollbar {
+		height: 6px;
+	}
+	.table-scroll::-webkit-scrollbar-thumb {
+		/* background: #2183ED; */
+		border-radius: 10px;
+	}
+
+	/* ===== TABLET ===== */
+	@media (max-width: 1024px) {
+		.responsive-table {
+			min-width: 900px;
+		}
+
+		.feature-name {
+			font-size: 14px;
+			padding-right: 16px !important;
+		}
+
+		.logo-cell img {
+			height: 18px;
+		}
+		.desktop-table tbody td {
+			width: 150px;
+		}
+		/* Header cell (top-left empty cell) */
+		.desktop-table thead th.feature-header {
+			position: sticky;
+			left: -2px;
+			z-index: 4;
+			background: white;
+			border-right: 0.5px solid #2183ed40;
+			min-width: 150px;
+		}
+
+		/* Feature name cells */
+		.desktop-table tbody td.feature-name {
+			position: sticky;
+			left: -2px;
+			z-index: 3;
+			background: white;
+			border-right: 0.5px solid #2183ed40;
+			min-width: 150px;
+		}
+
+		/* CTA empty cell (last row first column) */
+		.desktop-table tbody tr.cta-row td:first-child {
+			position: sticky;
+			left: -2px;
+			z-index: 3;
+			background: white;
+			min-width: 150px;
+			padding: 12px 24px;
+			width: 100%;
+			text-align: center;
+		}
+
+		/* Ensure highlighted column bg doesn't overflow or look weird */
+		.desktop-table thead th.highlighted-column,
+		.desktop-table tbody td.highlighted-column {
+			/* background matches logic above */
+		}
+	}
+	/* ===== MOBILE ===== */
+	@media (max-width: 600px) {
+		.table-container {
+			padding: 0;
+		}
+		.comparison-section {
+			padding: 40px 10px;
+		}
+
+		.table-scroll {
+			overflow-x: visible; /* Disable scroll */
+		}
+
+		.responsive-table {
+			min-width: unset;
+			width: 100%;
+			table-layout: fixed; /* Force equal/set widths */
+		}
+
+		/* Column Widths Configuration */
+		/* First col (Feature) */
+		.desktop-table thead th:first-child,
+		.desktop-table tbody td:first-child {
+			width: 28%; /* Give features a bit more space */
+			padding-right: 8px !important;
+		}
+
+		/* Other cols (Competitors) */
+		.desktop-table thead th:not(:first-child),
+		.desktop-table tbody td:not(:first-child) {
+			width: 25.4%; /* Remaining 72% / 5 columns = ~14.4% */
+			padding: 10px 2px !important;
+			min-width: unset;
+		}
+
+		.feature-name {
+			font-size: 11px;
+			line-height: 1.2;
+			text-align: right;
+			white-space: normal; /* extensive wrapping */
+		}
+
+		.logo-cell img.desktop-logo {
+			display: none;
+		}
+		.logo-cell img.mobile-logo {
+			display: block;
+			width: 60%;
+			height: auto;
+		}
+
+		.logo-cell img.universal-logo {
+			display: block;
+			width: 48%; /* 0.8x of 60% */
+			height: auto;
+		}
+
+		.logo-cell img {
+			height: auto; /* Allow auto height for wrapped logos */
+			width: 100%;
+			max-width: 100%;
+		}
+
+		/* Adjust check/cross icons */
+		.tick-icon {
+			width: 19px !important; /* 0.8x of 24px */
+			height: 19px !important;
+		}
+		.cross-icon {
+			width: 10px !important; /* Slightly smaller for consistency */
+			height: 10px !important;
+		}
+
+		.cta-button {
+			font-size: 14px;
+			padding: 12px 24px;
+			width: 100%;
+			text-align: center;
+		}
+
+		/* Ensure highlighted column bg doesn't overflow or look weird */
+		.desktop-table thead th.highlighted-column,
+		.desktop-table tbody td.highlighted-column {
+			/* background matches logic above */
+		}
+	}
+</style>
+
+<div class="comparison-section">
+	<header class="comparison-header">
+		<h2 set:html={title} />
+		<p>{subtitle}</p>
+	</header>
+
+	<div class="table-container">
+		<div class="table-wrapper">
+			<!-- Desktop Table -->
+			<div class="table-scroll">
+				<table class="comparison-table desktop-table responsive-table">
+					<thead>
+						<tr>
+							<th class="feature-header"></th>
+							{
+								items.map((item: any) => (
+									<th class={item.highlighted ? "highlighted-column" : ""}>
+										<div class="logo-cell">
+											<Image src={item.logo} alt={item.name} class={item.mobileLogo ? "desktop-logo" : "universal-logo"} />
+											{item.mobileLogo && <Image src={item.mobileLogo} alt={item.name} class="mobile-logo" />}
+										</div>
+									</th>
+								))
+							}
+						</tr>
+					</thead>
+					<tbody>
+						{
+							features.map((feature: any) => (
+								<tr>
+									<td class="feature-name">{feature.name}</td>
+									{items.map((item: any) => {
+										const value = feature.values[item.id];
+										return (
+											<td class={item.highlighted ? "highlighted-column" : ""}>
+												{typeof value === "boolean" ? (
+													value ? (
+														<svg class="tick-icon" width="24" height="24" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path
+																fill-rule="evenodd"
+																clip-rule="evenodd"
+																d="M12.5 25C14.1415 25 15.767 24.6767 17.2835 24.0485C18.8001 23.4203 20.1781 22.4996 21.3388 21.3388C22.4996 20.1781 23.4203 18.8001 24.0485 17.2835C24.6767 15.767 25 14.1415 25 12.5C25 10.8585 24.6767 9.23303 24.0485 7.71646C23.4203 6.19989 22.4996 4.8219 21.3388 3.66116C20.1781 2.50043 18.8001 1.57969 17.2835 0.951506C15.767 0.323322 14.1415 -2.44606e-08 12.5 0C9.18479 4.94004e-08 6.00537 1.31696 3.66117 3.66116C1.31696 6.00537 0 9.18479 0 12.5C0 15.8152 1.31696 18.9946 3.66117 21.3388C6.00537 23.683 9.18479 25 12.5 25ZM12.1778 17.5556L19.1222 9.22222L16.9889 7.44444L11.0167 14.6097L7.92639 11.5181L5.9625 13.4819L10.1292 17.6486L11.2042 18.7236L12.1778 17.5556Z"
+																fill="#2183ED"
+															/>
+														</svg>
+													) : (
+														<svg class="cross-icon" width="12" height="12" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path
+																d="M0.395262 0.412139C0.648424 0.159053 0.991741 0.0168768 1.34971 0.0168768C1.70768 0.0168768 2.051 0.159053 2.30416 0.412139L5.21206 3.31869L8.11861 0.412139C8.24315 0.2832 8.39211 0.180354 8.55682 0.109602C8.72152 0.0388501 8.89867 0.00160862 9.07792 5.0972e-05C9.25717 -0.00150668 9.43494 0.0326503 9.60085 0.10053C9.76676 0.168409 9.91749 0.26865 10.0442 0.395406C10.171 0.522161 10.2712 0.672892 10.3391 0.838802C10.407 1.00471 10.4412 1.18248 10.4396 1.36173C10.438 1.54098 10.4008 1.71813 10.33 1.88284C10.2593 2.04754 10.1565 2.19651 10.0275 2.32104L7.12096 5.22894L10.0275 8.13549C10.2734 8.3901 10.4095 8.73111 10.4064 9.08508C10.4033 9.43905 10.2614 9.77764 10.0111 10.0279C9.76077 10.2782 9.42217 10.4202 9.0682 10.4233C8.71424 10.4264 8.37323 10.2903 8.11861 10.0444L5.21206 7.13784L2.30416 10.0444C2.04857 10.2844 1.70963 10.4156 1.35906 10.4101C1.00848 10.4047 0.673776 10.2631 0.425764 10.0152C0.177752 9.76738 0.0358913 9.43277 0.0301987 9.0822C0.024506 8.73163 0.155427 8.3926 0.395262 8.13684L3.30181 5.23029L0.395262 2.32239C0.142176 2.06923 0 1.72591 0 1.36794C0 1.00997 0.142176 0.666652 0.395262 0.413489"
+																fill="#EF7070"
+															/>
+														</svg>
+													)
+												) : (
+													<span class="varies">{value}</span>
+												)}
+											</td>
+										);
+									})}
+								</tr>
+							))
+						}
+						<tr class="cta-row">
+							<td></td>
+							{
+								items.map((item: any) => (
+									<td class={item.highlighted ? "highlighted-column" : ""}>
+										{item.highlighted && (
+											<a href="javascript:void(0)" onclick="openZohoModal()" class="cta-button">
+												{ctaText}
+											</a>
+										)}
+									</td>
+								))
+							}
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="mobile-cta-section">
+		<a href="javascript:void(0)" onclick="openZohoModal()" class="cta-button">
+			{ctaText}
+		</a>
+		<span class="mobile-cta-note">No credit card</span>
+	</div>
+
+	<footer class="comparison-footer">
+		<p class="tagline" set:html={tagline} />
+	</footer>
+</div>
