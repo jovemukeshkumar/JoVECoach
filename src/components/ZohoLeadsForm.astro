@@ -1,0 +1,191 @@
+---
+
+---
+
+<div id="zoho-leads-form-container" style="display: none;">
+	<form id="zoho-master-form" action="https://crm.zoho.in/crm/WebToLeadForm" name="WebToLeads_Master" method="POST" accept-charset="UTF-8">
+		<!-- Active Leads Configuration (Moved from bottom of MasterForm) -->
+		<input type="text" style="display:none;" name="xnQsjsdp" value="70041e7467a731a921a9780702cd3528bd8b3c9f77ac31c86d9c1ee7ca3894ad" />
+		<input type="hidden" name="zc_gad" id="zc_gad_master" value="" />
+		<input type="text" style="display:none;" name="xmIwtLD" value="431f26677cbcb0765c87150134b809b451a299472a03bc728f516e635487c158e015a637abdf99e4927ddf7b815e3787" />
+		<input type="text" style="display:none;" name="actionType" value="TGVhZHM=" />
+		<input type="text" style="display:none;" name="returnURL" value="https://coach.jove.com/home" />
+
+		<!-- Actual Data Fields -->
+		<input type="text" style="display:none;" id="Last_Name_master" name="Last Name" maxlength="80" />
+		<input type="text" style="display:none;" id="Email_master" name="Email" maxlength="100" />
+
+		<!-- UTM & Tracking Hidden Fields (LEADCF) -->
+		<input type="text" style="display:none;" id="LEADCF11_master" name="LEADCF11" value="" />
+		<input type="text" style="display:none;" id="LEADCF8_master" name="LEADCF8" value="" />
+		<input type="text" style="display:none;" id="LEADCF9_master" name="LEADCF9" value="" />
+		<input type="text" style="display:none;" id="LEADCF10_master" name="LEADCF10" value="" />
+		<input type="text" style="display:none;" id="LEADCF7_master" name="LEADCF7" value="" />
+		<input type="text" style="display:none;" id="LEADCF4_master" name="LEADCF4" value="" />
+		<input type="text" style="display:none;" id="LEADCF13_master" name="LEADCF13" value="" />
+		<input type="text" style="display:none;" id="LEADCF17_master" name="LEADCF17" value="" />
+		<input type="text" style="display:none;" id="LEADCF14_master" name="LEADCF14" value="" />
+		<input type="text" style="display:none;" id="LEADCF6_master" name="LEADCF6" value="" />
+		<input type="text" style="display:none;" id="LEADCF18_master" name="LEADCF18" value="" />
+		<input type="text" style="display:none;" id="LEADCF5_master" name="LEADCF5" value="" />
+		<input type="text" style="display:none;" id="LEADCF12_master" name="LEADCF12" value="" />
+
+		<!-- New Fields: Landing Page & Referrer URL -->
+		<textarea style="display:none;" id="LEADCF23_master" name="LEADCF23"></textarea>
+		<textarea style="display:none;" id="LEADCF16_master" name="LEADCF16"></textarea>
+
+		<!-- Helper fields for selects -->
+		<select style="display:none;" id="LEADCF25_master" name="LEADCF25">
+			<option value="-None-">-None-</option>
+			<option selected value="Paid">Paid</option>
+			<option value="Organic">Organic</option>
+			<option value="Social">Social</option>
+		</select>
+
+		<select style="display:none;" id="LEADCF26_master" name="LEADCF26">
+			<option value="-None-">-None-</option>
+			<option value="SEO">SEO</option>
+			<option value="Blog">Blog</option>
+			<option value="Direct">Direct</option>
+			<option selected value="Google Ads">Google Ads</option>
+			<option value="Meta Ads">Meta Ads</option>
+			<option value="Reddit Ads">Reddit Ads</option>
+			<option value="Tiktok Ads">Tiktok Ads</option>
+			<option value="Other Paid">Other Paid</option>
+			<option value="Instagram">Instagram</option>
+			<option value="Facebook">Facebook</option>
+			<option value="Linkedin">Linkedin</option>
+			<option value="Twitter/X">Twitter/X</option>
+			<option value="YouTube">YouTube</option>
+			<option value="Other Socials">Other Socials</option>
+		</select>
+
+		<input type="text" type="hidden" style="display: none;" name="aG9uZXlwb3Q" value="" />
+	</form>
+</div>
+
+<script is:inline>
+	// Global function to be called by dummy forms (Overwrites MasterForm version if both loaded, but safer for testing)
+	window.submitToZoho = function (data) {
+		console.log("submitToZoho (Leads) called with:", data);
+
+		const { name, email, redirectUrl } = data;
+
+		if (!name || !email) {
+			console.error("Name and Email are required for Zoho submission.");
+			return;
+		}
+
+		const form = document.getElementById("zoho-master-form");
+		const nameInput = document.getElementById("Last_Name_master");
+		const emailInput = document.getElementById("Email_master");
+		const returnURLInput = form.querySelector('input[name="returnURL"]');
+
+		// 1. Populate Data
+		nameInput.value = name;
+		emailInput.value = email;
+
+		// 2. Construct Return URL
+		// Use provided redirectUrl or default to /home
+		const baseUrl = redirectUrl || "https://coach.jove.com/home";
+
+		// Handle case where baseUrl might already have params or incomplete path
+		let urlObj;
+		try {
+			urlObj = new URL(baseUrl.startsWith("http") ? baseUrl : window.location.origin + (baseUrl.startsWith("/") ? "" : "/") + baseUrl);
+		} catch (e) {
+			console.error("Invalid Redirect URL", baseUrl);
+			urlObj = new URL("https://coach.jove.com/home");
+		}
+
+		urlObj.searchParams.set("username", name);
+		urlObj.searchParams.set("email", email);
+		returnURLInput.value = urlObj.toString();
+
+		console.log("Submitting Leads Form...", returnURLInput.value);
+
+		// 3. Submit
+		HTMLFormElement.prototype.submit.call(form);
+	};
+
+	// UTM Population (Run on load)
+	(function () {
+		const params = new URLSearchParams(window.location.search);
+		const suffix = "_master";
+
+		const mapping = {
+			utm_source: `LEADCF8${suffix}`,
+			utm_medium: `LEADCF9${suffix}`,
+			utm_campaign: `LEADCF11${suffix}`,
+			utm_term: `LEADCF7${suffix}`,
+			utm_content: `LEADCF10${suffix}`,
+			ad_id: `LEADCF13${suffix}`,
+			ad_set_id: `LEADCF14${suffix}`,
+			ad_name: `LEADCF18${suffix}`,
+			ad_platform: `LEADCF12${suffix}`,
+			ad_campaign_id: `LEADCF4${suffix}`,
+			ad_group_name: `LEADCF5${suffix}`,
+			ad_group_id: `LEADCF17${suffix}`,
+			ad_campaign_name: `LEADCF6${suffix}`,
+		};
+
+		for (const key in mapping) {
+			const fieldId = mapping[key];
+			const el = document.getElementById(fieldId);
+			if (el && params.has(key)) {
+				el.value = params.get(key);
+			}
+		}
+
+		// Populate Landing Page & Referrer
+		const landingField = document.getElementById(`LEADCF23${suffix}`);
+		if (landingField) landingField.value = window.location.href;
+
+		const refField = document.getElementById(`LEADCF16${suffix}`);
+		if (refField) {
+			const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
+			if (referrerUrlParam) {
+				refField.value = referrerUrlParam;
+			} else {
+				refField.value = document.referrer || "-";
+			}
+		}
+
+		const sourceSelect = document.getElementById(`LEADCF25${suffix}`);
+		const subsourceSelect = document.getElementById(`LEADCF26${suffix}`);
+
+		const gclid = params.get("gclid");
+		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
+		const utmMedium = params.get("utm_medium");
+
+		if (sourceSelect) {
+			if (sources.some(s => s.toLowerCase() === "paid") || gclid || params.get("ad_id")) {
+				sourceSelect.value = "Paid";
+			} else if (sources.some(s => s.toLowerCase() === "organic")) {
+				sourceSelect.value = "Organic";
+			} else if (sources.some(s => s.toLowerCase() === "social")) {
+				sourceSelect.value = "Social";
+			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
+				sourceSelect.value = "Paid";
+			}
+		}
+
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "Linkedin";
+			}
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "Linkedin";
+			}
+			if (!subsourceValue && gclid) subsourceValue = "Google Ads";
+
+			if (subsourceValue) subsourceSelect.value = subsourceValue;
+		}
+	})();
+</script>
