@@ -54,10 +54,10 @@ export const PhysicsGenJanData: LandingPageData = {
         mobileImage: HeroImageMobile,
     },
     concepts: {
-        heading: '<span>Every concept you need. </span>Zero fluff.',
-        subheading: "One concept at a time, explained with AI-backed clarity.",
+        heading: '<span>Every concept you need. </span>Under 2 minutes.',
+        subheading: "One concept at a time, explained with short videos.",
         features: [
-            { icon: "ai", text: "AI-powered Platform" },
+            { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
             { icon: "ad-free", text: "Ad-free learning" },
             { icon: "expert", text: "Expert-created content" },

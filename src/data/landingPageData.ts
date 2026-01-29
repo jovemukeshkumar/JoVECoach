@@ -169,5 +169,6 @@ export interface LandingPageData {
 		title: string;
 		subtitle: string;
 		ctaText: string;
+		image?: ImageMetadata;
 	};
 }

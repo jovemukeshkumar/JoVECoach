@@ -1,0 +1,431 @@
+---
+import mostPopular from "../../assets/mostPopular.svg";
+import pricecut from "../../assets/pricecut.svg";
+import priceDiscountIcon from "../../assets/priceDiscountIcon.png";
+import { Image } from "astro:assets";
+
+interface Feature {
+	listText: string;
+}
+
+interface Plan {
+	title: string;
+	tag: string;
+	price: string;
+	oldPrice: string;
+	buttonText: string;
+	featuresListText: Feature[];
+}
+
+interface Props {
+	title?: string;
+	subtitle?: string;
+	plans?: Plan[];
+}
+
+const {
+	title = "Built for students. <span>Priced like it.</span>",
+	subtitle = "Expert videos, AI explanations, and instant quizzes - without the stress (or the heavy price tag).",
+	plans = [
+		{
+			title: "Annual",
+			tag: "save 44%",
+			price: "$16/month",
+			oldPrice: "$29/month",
+			buttonText: "Start with Annual - Save 44%",
+			featuresListText: [{ listText: "Unlimited access" }, { listText: "One Time payment" }, { listText: "Cancel anytime" }, { listText: "Renews Annually" }],
+		},
+		{
+			title: "Monthly",
+			tag: "NA",
+			price: "$29/month",
+			oldPrice: "NA",
+			buttonText: "Try Monthly Plan",
+			featuresListText: [{ listText: "Unlimited access" }, { listText: "Cancel anytime" }, { listText: "Renews Monthly" }],
+		},
+	],
+} = Astro.props;
+---
+
+<style>
+	/* Layout */
+	.pricing-section {
+		width: 100%;
+		height: auto;
+		margin: 40px 0;
+		position: relative;
+		/* Subtle blue gradient blob matching hero */
+		background-image: url("../../assets/Newherosectiongridbg.svg");
+		background-size: 400px;
+		background-position: center bottom 0px;
+		background-repeat: no-repeat;
+	}
+
+	.pricing-container {
+		width: 100%;
+		height: 100%;
+		padding-top: 40px;
+		/* padding-bottom: 25px; */
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+		box-sizing: border-box;
+	}
+
+	.pricing-notes {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 25.2px;
+		letter-spacing: 0%;
+		text-align: center;
+		color: #3f3f3f;
+		max-width: 570px;
+		margin: 30px auto 20px auto;
+	}
+
+	/* Titles */
+
+	.notes {
+		opacity: 0;
+	}
+	.pricing-title {
+		color: #000;
+		text-align: center;
+
+		font-size: 36px;
+		font-weight: 600;
+		line-height: 130%;
+		letter-spacing: 0px;
+		max-width: 700px;
+		margin: 20px auto;
+	}
+	.pricing-title span {
+		color: #2183ed;
+	}
+	.pricing-subtitle {
+		text-align: center;
+
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 140%;
+		color: #3f3f3f;
+		margin: 30px auto;
+	}
+
+	/* Grid */
+	.pricing-row {
+		margin-left: -16px;
+		margin-right: -16px;
+		margin-top: 24px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.pricing-col {
+		padding-left: 16px;
+		padding-right: 16px;
+		width: 406px;
+		position: relative;
+	}
+
+	/* Popular badge */
+	.popular-badge {
+		position: relative;
+		top: 4px;
+		margin-left: -211px;
+	}
+
+	/* Card Styles */
+	.pricing-card {
+		border: 1px solid rgb(217, 217, 217);
+		border-radius: 24px;
+		box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 8px;
+		margin: 0px;
+		padding: 24px 28px;
+		max-width: 374px;
+		background-color: white;
+	}
+	.pricing-card.selected {
+		border: 1px solid rgb(22, 119, 255) !important;
+		box-shadow: 0px 0px 12px rgba(22, 119, 255, 0.25);
+	}
+
+	.featured-card {
+		border: 1px solid rgb(217, 217, 217);
+		max-width: 375px;
+	}
+
+	.basic-card {
+		border: 1px solid rgb(217, 217, 217);
+		margin-top: 30px !important;
+		max-width: 305px;
+	}
+
+	.pricing-card-body {
+		padding: 0;
+		max-width: 315px;
+		min-height: 313px;
+	}
+
+	.pricing-header {
+		margin-bottom: 15px;
+	}
+	.pricing-header + img {
+		display: block;
+	}
+
+	/* Row with label + tag */
+	.pricing-label-row {
+		display: flex;
+		align-items: center;
+	}
+
+	/* Plan type */
+	.plan-type {
+		font-weight: 600;
+		font-size: 22px;
+		color: #000;
+		text-align: left;
+		margin-bottom: 24px;
+	}
+
+	/* Discount badge */
+	.discount-tag {
+		background-color: rgb(139, 255, 174);
+		margin-top: 7px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 24px;
+		width: 103px;
+		margin-left: 12px;
+		border-radius: 50px;
+	}
+
+	.discount-icon {
+		height: 16px;
+		width: 16px;
+	}
+
+	.discount-text {
+		color: #000;
+		margin-left: 6px;
+	}
+
+	/* Pricing text */
+	.price-text {
+		text-align: left;
+
+		font-weight: 600;
+		font-size: 28px;
+		margin: 0px 0px 12px 0px;
+	}
+
+	/* Pricecut image */
+	.pricecut-img {
+		width: auto;
+		height: auto;
+	}
+
+	/* Divider */
+	.card-divider {
+		margin: 24px 0;
+		border: 0.5px solid #d9d9d9;
+		width: 100%;
+	}
+
+	/* Feature List */
+	.feature-list {
+		text-align: left;
+		padding: 0;
+		list-style: none;
+		margin: 0;
+	}
+
+	.feature-item {
+		font-size: 15px;
+		display: flex;
+		align-items: center;
+		margin-bottom: 10px;
+	}
+
+	.feature-dot {
+		display: inline-block;
+		width: 8px;
+		height: 8px;
+		background-color: rgb(33, 131, 237);
+		margin-right: 12px;
+		border-radius: 2px;
+	}
+
+	/* Buttons */
+	.button-row {
+		text-align: center;
+	}
+
+	.primary-btn {
+		width: 100%;
+		height: 56px;
+		margin-top: 14px;
+		background-color: rgb(33, 131, 237);
+		color: white;
+		font-size: 16px;
+		font-weight: 700;
+
+		border-radius: 100px;
+		padding: 13px 24px;
+		border: none;
+		transition: all 0.3s ease;
+		cursor: pointer;
+	}
+
+	.primary-btn:hover {
+		transform: scale(1.02);
+		box-shadow: 0 4px 12px rgba(33, 131, 237, 0.3);
+	}
+
+	.basic-card .primary-btn {
+		background-color: transparent;
+		color: #000;
+		border: 1px solid #d9d9d9;
+	}
+
+	.basic-card .primary-btn:hover {
+		background-color: #f5f5f5;
+		border-color: #999;
+		transform: scale(1.02);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	}
+	.pricing-container {
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	/* Mobile Responsive */
+	@media (max-width: 768px) {
+		.pricing-container {
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-bottom: 0;
+		}
+		.pricing-section {
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+
+		.pricing-row {
+			flex-direction: column;
+			align-items: center;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.pricing-col {
+			width: 100%;
+			max-width: none;
+			padding: 0;
+			margin-bottom: 2rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			box-sizing: border-box;
+		}
+
+		.pricing-card {
+			width: 100%;
+			max-width: 100%;
+			box-sizing: border-box;
+			padding: 20px;
+		}
+
+		.featured-card {
+			max-width: 100%;
+		}
+
+		.basic-card {
+			margin-top: 0 !important; /* Remove top margin on mobile since they are stacked */
+		}
+
+		.popular-badge {
+			margin-left: 0;
+			align-self: flex-start; /* Align badge to start of card */
+			left: 28px; /* Match card padding */
+		}
+	}
+</style>
+
+<section class="pricing-section">
+	<div class="pricing-container">
+		<h2 set:html={title} />
+
+		<p>
+			{subtitle}
+		</p>
+
+		<div class="pricing-row ant-row ant-row-center css-vrrzze">
+			{plans.length === 0 && <p style="text-align:center; color:#777;">Pricing details will be updated soon.</p>}
+
+			{
+				plans.map((plan: any) => (
+					<div class="pricing-col">
+						{plan?.tag && plan.tag !== "NA" && <Image src={mostPopular} alt="Popular" class="popular-badge" />}
+
+						<div class={`pricing-card ${plan?.tag && plan.tag !== "NA" ? "featured-card selected" : "basic-card"}`} data-card={plan?.title?.toLowerCase() ?? ""}>
+							<div class="ant-card-body pricing-card-body">
+								<div class="pricing-header">
+									<div class="pricing-label-row">
+										<p class="plan-type">{plan?.title ?? ""}</p>
+
+										{plan?.tag && plan.tag !== "NA" && (
+											<span class="discount-tag">
+												<Image src={priceDiscountIcon} alt="" class="discount-icon" />
+												<span class="discount-text">{plan.tag}</span>
+											</span>
+										)}
+									</div>
+
+									<h3 class="price-text">{plan?.price ?? ""}</h3>
+								</div>
+
+								{plan?.oldPrice && plan.oldPrice !== "NA" && <Image src={pricecut} alt="Pricecut" class="pricecut-img" />}
+
+								<hr class="card-divider" />
+
+								<ul class="feature-list">
+									{plan?.featuresListText?.map((item: any) => (
+										<li class="feature-item">
+											<span class="feature-dot" />
+											{item?.listText ?? ""}
+										</li>
+									))}
+								</ul>
+
+								<div class="button-row">
+									<button class="primary-btn ant-btn ant-btn-default" onclick="window.openZohoModal && window.openZohoModal()">
+										<span>{plan?.buttonText ?? "Select"}</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				))
+			}
+		</div>
+		<p class="notes">What </p>
+		<p class="notes">What </p>
+		<!-- <p class="pricing-notes">• No contracts • Cancel anytime • Student discounts</p> -->
+	</div>
+</section>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const cards = document.querySelectorAll(".pricing-card");
+
+		cards.forEach(card => {
+			card.addEventListener("click", () => {
+				cards.forEach(c => c.classList.remove("selected"));
+				card.classList.add("selected");
+			});
+		});
+	});
+</script>

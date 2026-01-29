@@ -54,7 +54,7 @@ body {
 
 h1, .h1 {
 	font-weight: 600;
-	font-size: 32px;
+	font-size: 31.5px;
 	line-height: 130%; /* Default or inferred */
 	color: var(--heading-color);
 	margin: 0 0 1rem 0;

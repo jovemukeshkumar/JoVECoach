@@ -3,9 +3,10 @@ interface Props {
 	title?: string;
 	subtitle?: string;
 	ctaText?: string;
+	image?: ImageMetadata;
 }
 
-const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free" } = Astro.props;
+const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free", image = zohoCTAImage } = Astro.props;
 
 import { Image } from "astro:assets";
 import zohoCTAImage from "../assets/zohoCTAImage.png";
@@ -45,7 +46,7 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 			</div>
 		</form>
 
-		<Image src={zohoCTAImage} class="zohoCTAImage" alt="JoVE Coach" />
+		<Image src={image} class="zohoCTAImage" alt="JoVE Coach" />
 	</div>
 </div>
 
