@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/generic-desktop.webp";
+import HeroImage from "../../assets/generic-desktop-v2.webp";
 import HeroImageMobile from "../../assets/HeroSectionMobileImage.webp";
 import threeDStillImages from "../../assets/3D-Still-Images.webm";
 import mobileCarouselVideo from "../../assets/Generic-Carousel-Mobile.webm";
