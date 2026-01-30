@@ -1,7 +1,7 @@
 
 // Hero Images
 // Hero Images
-import HeroImage from "../../assets/business-desktop-v2.webp";
+import HeroImage from "../../assets/business-desktop-v4.webp";
 import HeroImageMobile from "../../assets/business-mobile.webp";
 import biologyCarouselDesktop from "../../assets/business-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/business-carousel-mobile.webm";

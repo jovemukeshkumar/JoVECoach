@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/chemistry-desktop-v3.webp";
+import HeroImage from "../../assets/chemistry-desktop-v4.webp";
 import HeroImageMobile from "../../assets/chemistry-mobile.webp";
 import ChemistryCarouselDesktop from "../../assets/chemistry-carousel-desktop.webm";
 import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm";
