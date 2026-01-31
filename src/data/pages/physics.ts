@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/generic-desktop.webp";
+import HeroImage from "../../assets/generic-desktop-v5.webp";
 import HeroImageMobile from "../../assets/HeroSectionMobileImage.webp";
 import PhysicsCarouselDesktop from "../../assets/physics-carousel-desktop.webm";
 import PhysicsCarouselMobile from "../../assets/physics-carousel-mobile.webm";
