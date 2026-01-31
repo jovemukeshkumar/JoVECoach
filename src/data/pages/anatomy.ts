@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/anatomy-desktop-v4.webp";
+import HeroImage from "../../assets/anatomy-desktop-v5.webp";
 import HeroImageMobile from "../../assets/anatomy-mobile.webp";
 import biologyCarouselDesktop from "../../assets/anatomy-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/anatomy-carousel-mobile.webm";
@@ -57,9 +57,9 @@ import type { LandingPageData } from "../landingPageData";
 
 export const anatomyData: LandingPageData = {
     hero: {
-        title: 'Anatomy Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
-        subtitle: "From confused to confident. Anatomy finally made simple for health science students. Backed by 20 years of trusted science education.",
-        mobileSubtitle: "Anatomy made simple for health science students.",
+        title: 'Anatomy & Physiology Feeling Impossible? Master It in <span class="highlight">2-Min Videos.</span>',
+        subtitle: "From confused to confident. Anatomy and Physiology finally made simple for health science students. Backed by 20 years of trusted science education.",
+        mobileSubtitle: "Anatomy and Physiology made simple for health science students.",
         ctaTitle: "See what stress-free learning looks like",
         heroFormCta: "Start My Free Trial",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
