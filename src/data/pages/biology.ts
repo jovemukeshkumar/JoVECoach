@@ -74,11 +74,11 @@ export const scienceGenJanData: LandingPageData = {
         mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
         conceptCards: [
-            { image: conceptsImg1, title: "Gene Evolution", views: "3.4K", time: "2:27" },
-            { image: conceptsImg2, title: "Protein Synthesis & Translation", views: "156.8K", time: "1:57" },
-            { image: conceptsImg3, title: "Gene Duplication & Divergence", views: "3.4K", time: "1:51" },
-            { image: conceptsImg4, title: "Restriction Enzymes", views: "3.4K", time: "1:22" },
-            { image: conceptsImg5, title: "Mitosis & Meiosis ", views: "70.6K", time: "1:30" },
+            { image: conceptsImg1, title: "Gene Evolution", views: "8.2K", time: "2:05" },
+            { image: conceptsImg2, title: "Protein Synthesis & Translation", views: "156.8K", time: "1:31" },
+            { image: conceptsImg3, title: "Gene Duplication & Divergence", views: "8.0K", time: "2:37" },
+            { image: conceptsImg4, title: "Restriction Enzymes", views: "36.24K", time: "1:11" },
+            { image: conceptsImg5, title: "Mitosis & Meiosis ", views: "70.6K", time: "2:58" },
         ],
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
