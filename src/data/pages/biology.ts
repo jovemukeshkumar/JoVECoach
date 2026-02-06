@@ -74,11 +74,11 @@ export const scienceGenJanData: LandingPageData = {
         mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
         conceptCards: [
-            { image: conceptsImg1, title: "Base-pairing and DNA Repair", views: "3.4K", time: "2:27" },
-            { image: conceptsImg2, title: "Sanger Sequencing", views: "3.4K", time: "1:57" },
-            { image: conceptsImg3, title: "Prokaryotic Cells", views: "3.4K", time: "1:51" },
-            { image: conceptsImg4, title: "Protein Folding", views: "3.4K", time: "1:22" },
-            { image: conceptsImg5, title: "Carbohydrate Catabolism", views: "3.4K", time: "1:30" },
+            { image: conceptsImg1, title: "Gene Evolution", views: "3.4K", time: "2:27" },
+            { image: conceptsImg2, title: "Protein Synthesis & Translation", views: "156.8K", time: "1:57" },
+            { image: conceptsImg3, title: "Gene Duplication & Divergence", views: "3.4K", time: "1:51" },
+            { image: conceptsImg4, title: "Restriction Enzymes", views: "3.4K", time: "1:22" },
+            { image: conceptsImg5, title: "Mitosis & Meiosis ", views: "70.6K", time: "1:30" },
         ],
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
