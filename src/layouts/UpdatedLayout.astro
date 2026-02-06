@@ -1,7 +1,7 @@
 ---
 import "@fontsource-variable/inter";
 import "../styles/global.css";
-import ZohoMasterForm from "../components/ZohoMasterForm.astro";
+import ZohoLeadsForm from "../components/ZohoLeadsForm.astro";
 
 interface Props {
 	title?: string;
@@ -143,7 +143,7 @@ const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description =
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQWX7HXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
 		<slot />
-		<ZohoMasterForm />
+		<ZohoLeadsForm />
 		<div id="global-recaptcha"></div>
 	</body>
 </html>

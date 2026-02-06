@@ -1,9 +1,13 @@
 
 // Hero Images
-import HeroImage from "../../assets/biology-desktop-v5.webp";
-import HeroImageMobile from "../../assets/biology-mobile.webp";
+import HeroImage from "../../assets/biology-new-hero.webp";
 import biologyCarouselDesktop from "../../assets/biology-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/biology-carousel-mobile.webm";
+import conceptsImg1 from "../../assets/biology-concepts-img1.webp"; // Placeholder
+import conceptsImg2 from "../../assets/biology-concepts-img2.webp"; // Placeholder
+import conceptsImg3 from "../../assets/biology-concepts-img3.webp"; // Placeholder
+import conceptsImg4 from "../../assets/biology-concepts-img4.webp"; // Placeholder       
+import conceptsImg5 from "../../assets/biology-concepts-img5.webp"; // Placeholder       
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -51,13 +55,13 @@ export const scienceGenJanData: LandingPageData = {
         subtitle: "From confused to confident. Biology finally made simple. 20 years of trusted science education.",
         mobileSubtitle: "From confused to confident. Biology finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
-        heroFormCta: "Start My Free Trial",
+        heroFormCta: "Start Learning - It’s Free",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
-        mobileImage: HeroImageMobile,
+        mobileImage: HeroImage,
     },
     concepts: {
-        heading: '<span>Every concept you need. </span>Under 2 minutes.',
+        heading: 'Every <span>Biology</span> concept you need. <span>Under 2 minutes.</span>',
         subheading: "One concept at a time, explained with short videos.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
@@ -69,6 +73,13 @@ export const scienceGenJanData: LandingPageData = {
         video: biologyCarouselDesktop,
         mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
+        conceptCards: [
+            { image: conceptsImg1, title: "Base-pairing and DNA Repair", views: "3.4K", time: "2:27" },
+            { image: conceptsImg2, title: "Sanger Sequencing", views: "3.4K", time: "1:57" },
+            { image: conceptsImg3, title: "Prokaryotic Cells", views: "3.4K", time: "1:51" },
+            { image: conceptsImg4, title: "Protein Folding", views: "3.4K", time: "1:22" },
+            { image: conceptsImg5, title: "Carbohydrate Catabolism", views: "3.4K", time: "1:30" },
+        ],
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
             { icon: conceptsSectionIcon6, text: "How does cellular respiration produce energy?" },
@@ -83,6 +94,33 @@ export const scienceGenJanData: LandingPageData = {
             { icon: conceptsSectionIcon6, text: "How do organisms maintain homeostasis?" },
         ]
     },
+    // concepts: {
+    //     heading: '<span>Every concept you need. </span>Under 2 minutes.',
+    //     subheading: "One concept at a time, explained with short videos.",
+    //     features: [
+    //         { icon: "micro-courses", text: "500+ Micro-courses" },
+    //         { icon: "curriculum", text: "Curriculum-aligned" },
+    //         { icon: "ad-free", text: "Ad-free learning" },
+    //         { icon: "expert", text: "Expert-created content" },
+    //         { icon: "secure", text: "Secure & private" },
+    //     ],
+    //     video: biologyCarouselDesktop,
+    //     mobileVideo: biologyCarouselMobile,
+    //     videoPlaybackSpeed: 0.75,
+    //     questions: [
+    //         { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
+    //         { icon: conceptsSectionIcon6, text: "How does cellular respiration produce energy?" },
+    //         { icon: conceptsSectionIcon6, text: "How exactly does photosynthesis create food?" },
+    //         { icon: conceptsSectionIcon6, text: "What mechanisms trigger cell division?" }, 
+    //         { icon: conceptsSectionIcon6, text: "Difference between mitosis and meiosis?" },
+    //         { icon: conceptsSectionIcon6, text: "How is DNA copied during replication?" }, 
+    //         { icon: conceptsSectionIcon6, text: "How do genes control biological traits?" },
+    //         { icon: conceptsSectionIcon6, text: "Why do enzymes speed up chemical reactions?" }, 
+    //         { icon: conceptsSectionIcon6, text: "How do cells communicate with each other?" }, 
+    //         { icon: conceptsSectionIcon6, text: "What factors cause genetic mutations?" },
+    //         { icon: conceptsSectionIcon6, text: "How do organisms maintain homeostasis?" },
+    //     ]
+    // },
     steps: {
         title: `JoVE Coach is more than a study tool - <span class="highlight">it's <img src="${conceptsSectionIcon1.src}" alt="JoVE Coach" style="width: 27px; height: auto; margin-bottom: -5px;" /> that helps you finally get it.</span>`,
         subtitle: "2-minute videos. AI-backed clarity. Instant practice.",

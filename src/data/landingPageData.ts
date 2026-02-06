@@ -132,6 +132,12 @@ export interface LandingPageData {
 		video: string; 
 		mobileVideo: string;
 		videoPlaybackSpeed?: number;
+		conceptCards?: {
+			image: ImageMetadata;
+			title: string;
+			views: string;
+			time: string;
+		}[];
 		questions: {
 			icon: ImageMetadata;
 			text: string;

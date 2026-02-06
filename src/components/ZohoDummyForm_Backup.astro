@@ -1,7 +1,4 @@
 ---
-import GreenTick from "../assets/greentick.svg";
-import { Image } from "astro:assets";
-
 interface Props {
 	layout?: "horizontal" | "vertical";
 	ctaText?: string;
@@ -10,10 +7,9 @@ interface Props {
 	buttonLayout?: "full" | "inline";
 	noteColor?: string;
 	buttonMinWidth?: string;
-	showFeatures?: boolean;
 }
 
-const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath, buttonLayout = "full", noteColor = "#000", buttonMinWidth = "200px", showFeatures = false } = Astro.props;
+const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath, buttonLayout = "full", noteColor = "#000", buttonMinWidth = "200px" } = Astro.props;
 ---
 
 <form id={`dummy-form-${formIdSuffix}`} class={`zoho-dummy-form ${layout === "horizontal" ? "horizontal" : "vertical"}`} onsubmit="return false;">
@@ -28,27 +24,10 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 		</button>
 
 		{
-			showFeatures ? (
-				<div class="features-list">
-					<div class="feature-item">
-						<Image src={GreenTick} alt="tick" class="tick-icon" />
-						<span>7 days full access</span>
-					</div>
-					<div class="feature-item">
-						<Image src={GreenTick} alt="tick" class="tick-icon" />
-						<span>No credit card</span>
-					</div>
-					<div class="feature-item">
-						<Image src={GreenTick} alt="tick" class="tick-icon" />
-						<span>Cancel anytime</span>
-					</div>
-				</div>
-			) : (
-				(layout === "horizontal" || buttonLayout === "inline") && (
-					<span class="cta-note" style={buttonLayout === "inline" ? `color: ${noteColor}; font-size: 13px; margin-left:10px;` : ""}>
-						{buttonLayout === "inline" ? "No credit card" : "• 7 days free • Full access • No credit card"}
-					</span>
-				)
+			(layout === "horizontal" || buttonLayout === "inline") && (
+				<span class="cta-note" style={buttonLayout === "inline" ? `color: ${noteColor}; font-size: 13px; margin-left:10px;` : ""}>
+					{buttonLayout === "inline" ? "No credit card" : "• 7 days free • Full access • No credit card"}
+				</span>
 			)
 		}
 	</div>
@@ -98,7 +77,7 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 
 	.horizontal .input-container {
 		display: grid;
-		grid-template-columns: 0.8fr 1.2fr;
+		grid-template-columns: 1fr 1fr;
 	}
 
 	.vertical .input-container {
@@ -210,46 +189,6 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 
 		.cta-wrapper.inline {
 			margin-top: 0.5rem;
-		}
-	}
-	/* Features List Styles */
-	.features-list {
-		display: flex;
-		flex-wrap: wrap; /* Allow wrapping on small screens if needed, though design implies inline row */
-		gap: 12px;
-		margin-top: 12px;
-		width: 100%;
-		justify-content: center;
-	}
-
-	.feature-item {
-		display: flex;
-		align-items: flex-start;
-		gap: 6px;
-		color: #000; /* Assuming black text as per earlier heading change */
-		font-size: 13px;
-		font-weight: 400;
-	}
-
-	.tick-icon {
-		width: 14px;
-		height: 14px;
-	}
-
-	/* Override for horizontal layout when features are shown */
-	.zoho-dummy-form.horizontal:has(.features-list) .cta-wrapper {
-		flex-direction: column; /* Force column to put features below button */
-		align-items: flex-start;
-	}
-
-	.zoho-dummy-form.horizontal:has(.features-list) .global-form-btn {
-		width: 100% !important; /* Full width button */
-		min-width: unset;
-	}
-
-	@media (max-width: 768px) {
-		.features-list {
-			justify-content: center;
 		}
 	}
 </style>

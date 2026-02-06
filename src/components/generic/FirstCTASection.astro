@@ -137,6 +137,17 @@ const { title = "Stuck on a concept right now?", subtitle = "See how JoVE Coach 
 		border-color: #2183ed;
 	}
 
+	/* Override button color for this section */
+	.ai-cta-form :global(.global-form-btn) {
+		background-color: var(--primary-color) !important;
+		color: white !important;
+		border: none !important;
+	}
+
+	.ai-cta-form :global(.global-form-btn:hover) {
+		background-color: #1a6bbf !important;
+	}
+
 	/* ---------- Responsive ---------- */
 
 	@media (max-width: 992px) {

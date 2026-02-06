@@ -71,7 +71,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 				<div class="cta-box" style={{ "--cta-bg": `url(${HeroSectionCTABg.src})` }}>
 					<h3 class="cta-title">{ctaTitle}</h3>
-					<ZohoDummyForm layout="horizontal" formIdSuffix="hero" ctaText={heroFormCta} buttonMinWidth="180px" />
+					<ZohoDummyForm layout="horizontal" formIdSuffix="hero" ctaText={heroFormCta} buttonMinWidth="180px" showFeatures={true} />
 				</div>
 			</div>
 
@@ -98,10 +98,10 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 		position: absolute;
 		width: 300px;
 		height: 300px;
-		right: 600px;
-		top: 70px;
-		background: rgba(237, 227, 252, 1);
-		filter: blur(104px);
+		right: 610px;
+		top: -10px;
+		background: rgb(219, 203, 243);
+		filter: blur(120px);
 		border-radius: 50%;
 		z-index: 0;
 		pointer-events: none;
@@ -113,9 +113,9 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 		width: 300px;
 		height: 300px;
 		right: 250px;
-		top: 0px;
+		top: -10px;
 		background: rgba(206, 228, 251, 0.3);
-		filter: blur(124px);
+		filter: blur(75px);
 		border-radius: 50%;
 		z-index: 0;
 		pointer-events: none;
@@ -138,8 +138,8 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 		height: 300px;
 		right: 0px;
 		bottom: 70px;
-		background: rgba(237, 227, 252, 1);
-		filter: blur(104px);
+		background: rgba(206, 228, 251, 0.3);
+		filter: blur(124px);
 		border-radius: 50%;
 		z-index: 0;
 		pointer-events: none;
@@ -148,7 +148,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 	.hero-section {
 		position: relative;
-		padding: 3rem 0 5rem 0;
+		padding: 4rem 0 1rem 0;
 		/* background: #fff; */
 		height: auto !important; /* Force auto height to prevent clipping */
 		min-height: auto !important;
@@ -188,7 +188,11 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 	/* === Typography === */
 	/* hero-title and hero-subtitle replaced by global h1 and .hero-description */
-	.mobile-desc {
+	.hero-left h1 {
+		font-size: 35px;
+	}
+
+	.hero-description {
 		display: none;
 	}
 
@@ -258,29 +262,40 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 	/* === CTA BOX === */
 	.cta-box {
-		background-color: var(--primary-color);
-		background-image: var(--cta-bg);
-		background-repeat: no-repeat;
+		background-color: #f7f7f7;
+		/* background-image: var(--cta-bg); */
+		/* background-repeat: no-repeat;
 		background-position: right -150px center;
-		background-size: contain;
+		background-size: contain; */
 		border-radius: var(--corner-radius);
 		padding: 1.75rem 2rem;
-		box-shadow: 0px 20px 40px 0px rgba(8, 81, 159, 0.4);
-		color: white;
+		box-shadow: 0 20.303px 38.678px 0 rgba(75, 75, 75, 0.26);
+		border: 0.203px solid #429dff;
+		color: black;
 		max-width: 580px;
 		position: relative;
 		/* overflow: hidden; Removed to prevent form clipping on resize */
 	}
 
 	.cta-title {
-		font-family: Inter;
+		display: none;
 		font-weight: 500;
 		font-size: 20px;
 		line-height: 120%;
 		letter-spacing: 0%;
 		vertical-align: middle;
 		margin: 0 0 1.5rem 0;
-		color: white;
+		color: var(--heading-color);
+	}
+
+	.cta-box :global(.global-form-btn) {
+		background-color: var(--primary-color) !important;
+		color: white !important;
+		border: none !important;
+	}
+
+	.cta-box :global(.global-form-btn:hover) {
+		background-color: #1a6bbf !important;
 	}
 
 	.form-footer {
@@ -299,8 +314,9 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 	.hero-img {
 		width: 100%;
-		transform: scale(1.2);
 		height: auto;
+		transform-origin: center top;
+		transform: scale(0.9);
 		/* filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1)); */
 	}
 
@@ -472,7 +488,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 		}
 
 		.mobile-desc {
-			display: block;
+			display: none;
 		}
 		.hero-description.mobile-desc {
 			margin-top: 0 !important;
@@ -502,6 +518,10 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 	}
 
 	@media (max-width: 640px) {
+		.hero-left h1 {
+			font-size: 22px;
+		}
+
 		.cta-title {
 			text-align: center;
 			font-size: 16px;
