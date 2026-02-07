@@ -63,7 +63,7 @@ import type { LandingPageData } from "../landingPageData";
 
 export const anatomyData: LandingPageData = {
     hero: {
-        title: 'Anatomy & Physiology Feeling Impossible? Master It in <span class="highlight">2-Min Videos.</span>',
+        title: 'Anatomy & Physiology <br/>Feeling Impossible? <br/>Master It in <span class="highlight">2-Min Videos.</span>',
         subtitle: "From confused to confident. Anatomy and Physiology finally made simple for health science students. Backed by 20 years of trusted science education.",
         mobileSubtitle: "Anatomy and Physiology made simple for health science students.",
         ctaTitle: "See what stress-free learning looks like",
