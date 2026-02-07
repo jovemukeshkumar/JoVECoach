@@ -1,16 +1,9 @@
 
 // Hero Images
-import HeroImage from "../../assets/college-chemistry-hero.webp";
-import HeroImageMobile from "../../assets/chemistry-mobile.webp";
-import ChemistryCarouselDesktop from "../../assets/chemistry-carousel-desktop.webm";
-import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm";
-
-
-import conceptsImg1 from "../../assets/chemistry-concepts-img1-v2.webp";
-import conceptsImg2 from "../../assets/chemistry-concepts-img2.webp";
-import conceptsImg3 from "../../assets/chemistry-concepts-img3.webp";
-import conceptsImg4 from "../../assets/chemistry-concepts-img4.webp";
-import conceptsImg5 from "../../assets/chemistry-concepts-img5.webp";
+import HeroImage from "../../assets/anatomy-desktop-v5.webp";
+import HeroImageMobile from "../../assets/anatomy-mobile.webp";
+import biologyCarouselDesktop from "../../assets/anatomy-carousel-desktop.webm";
+import biologyCarouselMobile from "../../assets/anatomy-carousel-mobile.webm";
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -18,13 +11,26 @@ import videoPlay from "../../assets/videoPlay.svg";
 import notePad from "../../assets/notePad.svg";
 import cupLogo from "../../assets/cupLogo.svg";
 import Jove_chat_video from "../../assets/Jove_chat_video.webm"; 
+import Jove_chat_video_biology from "../../assets/Jove_chat_video_biology.webm";
 import Jove_chat_Image1 from "../../assets/Jove_chat_Image1.png";
 import Jove_chat_Image2 from "../../assets/Jove_chat_Image2.png";
 import Jove_chat_Image3 from "../../assets/Jove_chat_Image3.png";
-import conceptsSectionIcon1 from "../../assets/conceptsSectionIcon1.svg";
+import Jove_chat_Image2_Biology from "../../assets/jove-chat-2.png";
+import Jove_chat_Image3_Biology from "../../assets/jove-chat-4.png";
+import conceptsSectionIcon1 from "../../assets/micro-courses.svg";
 
 // Concepts Icons (for questions)
 import conceptsSectionIcon6 from "../../assets/conceptsSectionIcon6.svg";
+import kidney from "../../assets/kidney.svg";
+import organ from "../../assets/organ.svg";
+import heart from "../../assets/heart.svg";
+import lung from "../../assets/lung.svg";
+import muscle from "../../assets/muscle.svg";
+
+import hormone from "../../assets/hormone.svg";
+import blood from "../../assets/blood.svg";
+
+
 import conceptsSectionIcon7 from "../../assets/conceptsSectionIcon7.svg";
 import conceptsSectionIcon8 from "../../assets/conceptsSectionIcon8.svg";
 import conceptsSectionIcon9 from "../../assets/conceptsSectionIcon9.svg";
@@ -49,11 +55,11 @@ import wrappedLogo3 from "../../assets/wrappedLogo3.svg";
 
 import type { LandingPageData } from "../landingPageData";
 
-export const ChemistryGenJanData: LandingPageData = {
+export const anatomyData: LandingPageData = {
     hero: {
-        title: 'Chemistry Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
-        subtitle: "From confused to confident. Chemistry finally made simple. 20 years of trusted science education.",
-        mobileSubtitle: "From confused to confident. Chemistry finally made simple.",
+        title: 'Anatomy & Physiology Feeling Impossible? Master It in <span class="highlight">2-Min Videos.</span>',
+        subtitle: "From confused to confident. Anatomy and Physiology finally made simple for health science students. Backed by 20 years of trusted science education.",
+        mobileSubtitle: "Anatomy and Physiology made simple for health science students.",
         ctaTitle: "See what stress-free learning looks like",
         heroFormCta: "Start My Free Trial",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
@@ -61,7 +67,7 @@ export const ChemistryGenJanData: LandingPageData = {
         mobileImage: HeroImageMobile,
     },
     concepts: {
-        heading: 'Every <span>Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
+        heading: '<span>Every concept you need. </span>Under 2 minutes.',
         subheading: "One concept at a time, explained with short videos.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
@@ -70,34 +76,27 @@ export const ChemistryGenJanData: LandingPageData = {
             { icon: "expert", text: "Expert-created content" },
             { icon: "secure", text: "Secure & private" },
         ],
-        video: ChemistryCarouselDesktop,
-        mobileVideo: ChemistryCarouselMobile,
+        video: biologyCarouselDesktop,
+        mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
-        conceptCards: [
-            { image: conceptsImg1, title: "Reaction: Stereochemistry", views: "10.4K", time: "1:26" },
-            { image: conceptsImg2, title: "Cellular Respiration", views: "2K", time: "1:19" },
-            { image: conceptsImg3, title: "Dynamic Equilibrium", views: "63K", time: "2:20" },
-            { image: conceptsImg4, title: "Thermodynamics", views: "41.1K", time: "2:16" },
-            { image: conceptsImg5, title: "Affinity Chromatography", views: "3.1K", time: "1:03" },
-        ],
         questions: [
-            { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
-            { icon: conceptsSectionIcon6, text: "How does cellular respiration produce energy?" },
-            { icon: conceptsSectionIcon6, text: "How exactly does photosynthesis create food?" },
-            { icon: conceptsSectionIcon6, text: "What mechanisms trigger cell division?" }, 
-            { icon: conceptsSectionIcon6, text: "Difference between mitosis and meiosis?" },
-            { icon: conceptsSectionIcon6, text: "How is DNA copied during replication?" }, 
-            { icon: conceptsSectionIcon6, text: "How do genes control biological traits?" },
-            { icon: conceptsSectionIcon6, text: "Why do enzymes speed up chemical reactions?" }, 
-            { icon: conceptsSectionIcon6, text: "How do cells communicate with each other?" }, 
-            { icon: conceptsSectionIcon6, text: "What factors cause genetic mutations?" },
-            { icon: conceptsSectionIcon6, text: "How do organisms maintain homeostasis?" },
-        ]
+  { icon: organ, text: "How do cells form tissues and organs?" },
+  { icon: muscle, text: "How do muscles produce movement and force?" },
+  { icon: muscle, text: "What controls nerve signals and reflexes?" }, 
+  { icon: heart, text: "How does the heart pump blood through the body?" },
+  { icon: hormone, text: "What roles do the immune system play?" },
+  { icon: muscle, text: "Voluntary and involuntary muscles - Difference?" },
+  { icon: lung, text: "How do lungs exchange oxygen and carbon dioxide?" }, 
+  { icon: hormone, text: "How do hormones regulate body functions?" },
+  { icon: kidney, text: "How do kidneys maintain fluid balance?" }, 
+  { icon: blood, text: "Why is blood vital for transport and defense?" }, 
+  { icon: hormone, text: "How does the body maintain homeostasis?" },
+]
     },
     steps: {
         title: `JoVE Coach is more than a study tool - <span class="highlight">it's <img src="${conceptsSectionIcon1.src}" alt="JoVE Coach" style="width: 27px; height: auto; margin-bottom: -5px;" /> that helps you finally get it.</span>`,
         subtitle: "2-minute videos. AI-backed clarity. Instant practice.",
-        discoverText: "Master Chemistry in 4 easy steps",
+        discoverText: "Master Anatomy & Physiology in 4 easy steps",
         items: [
             {
                 id: "ask",
@@ -106,7 +105,7 @@ export const ChemistryGenJanData: LandingPageData = {
                 number: "STEP 1",
                 headline: "Ask and get unstuck with AI",
                 description: "No more scrolling. Just ask - and get the video and insights that crack it.",
-                image: Jove_chat_video, 
+                image: Jove_chat_video_biology, 
             },
             {
                 id: "watch",
@@ -115,7 +114,7 @@ export const ChemistryGenJanData: LandingPageData = {
                 number: "STEP 2",
                 headline: "Learn in minutes, Not hours",
                 description: "Watch expert-verified videos that actually make sense",
-                image: Jove_chat_Image2,
+                image: Jove_chat_Image2_Biology,
             },
             {
                 id: "practise",
@@ -133,7 +132,7 @@ export const ChemistryGenJanData: LandingPageData = {
                 number: "STEP 4",
                 headline: 'That "I actually get it" feeling-for real',
                 description: "Crush one concept. Then the next. Build momentum.",
-                image: Jove_chat_Image3,
+                image: Jove_chat_Image3_Biology,
             },
         ]
     },
@@ -141,41 +140,41 @@ export const ChemistryGenJanData: LandingPageData = {
         title: 'From struggling to mastery - <span class="highlight">we\'ve got you.</span>',
         subtitle: "Every learner is different. JoVE Coach fits them all.",
         items: [
-            {
-                image: LearnerPersonasImg1,
-                title: "Pre-med Chemistry students",
-                description: "Medical science starts with Chemistry clarity.",
-            },
-            {
-                image: LearnerPersonasImg2,
-                title: "AP Chemistry students prepping for exams",
-                description: 'Concepts first. Reactions that actually make sense.',
-            },
-            {
-                image: LearnerPersonasImg3,
-                title: "College freshmen in Chem 101",
-                description: "Fast pace. Strong foundations from day one.",
-            },
-            {
-                image: LearnerPersonasImg4,
-                title: "Visual learners stuck on reactions & structures",
-                description: "See Chemistry happen. Not just equations.",
-            },
-            {
-                image: LearnerPersonasImg5,
-                title: "Students stuck memorizing Chemistry",
-                description: "Stop rote learning. Start reasoning.",
-            },
-            {
-                image: LearnerPersonasImg6,
-                title: "Busy students juggling coursework and life",
-                description: "Packed schedule. 2-minute Chemistry explainers that fit.",
-            },
+{
+  image: LearnerPersonasImg1,
+  title: "Pre-med students studying Anatomy",
+  description: "High-stakes courses. Clear concepts you can trust.",
+},
+{
+  image: LearnerPersonasImg2,
+  title: "AP Biology students studying human systems",
+  description: "Understand before exam day. No last-minute panic.",
+},
+{
+  image: LearnerPersonasImg3,
+  title: "College freshmen in Anatomy & Physiology",
+  description: "Fast-paced classes. Strong foundations from day one.",
+},
+{
+  image: LearnerPersonasImg4,
+  title: "Visual learners understanding anatomy",
+  description: "See how the body works — not just read about it.",
+},
+{
+  image: LearnerPersonasImg5,
+  title: "Students moving beyond memorization",
+  description: "Real understanding. Not just rote learning.",
+},
+{
+  image: LearnerPersonasImg6,
+  title: "Busy students balancing labs, lectures, and life",
+  description: "Packed schedules. 2-minute videos that actually fit.",
+},
         ]
     },
     comparison: {
         title: 'See why students  <span class="highlight-blue">choose JoVE Coach</span>',
-        subtitle: "20 years of Chemistry expertise makes the difference.",
+        subtitle: "20 years of science expertise makes the difference.",
         tagline: 'Better <span class="highlight-blue">content</span>. Better <span class="highlight-blue">value</span>. Better <span class="highlight-blue">results</span>.',
         ctaText: "Start My Free Trial",
         items: [
@@ -239,7 +238,7 @@ export const ChemistryGenJanData: LandingPageData = {
     },
     secondCTA: {
         title: 'Ready to try the 4 steps',
-        subtitle: "Ask a question and watch Chemistry click."
+        subtitle: "Ask a question and watch Anatomy & Physiology click."
     },
     pricing: {
         title: 'Built for students. <span>Priced like it.</span>',
@@ -280,29 +279,29 @@ export const ChemistryGenJanData: LandingPageData = {
             },
             {
                 question: "How is this different from YouTube?",
-                answer: "Every video is made by Chemistry experts, not content creators. AI finds exactly what you need, and generates quizzes after each video-so you know if it actually clicked.",
+                answer: "Every video is made by science experts, not content creators. AI finds exactly what you need, and generates quizzes after each video-so you know if it actually clicked.",
             },
             {
                 question: "Will JoVE Coach help me pass my exams?",
                 answer: "That's what it's built for. Students who use JoVE Coach consistently report better understanding and 2X improved test scores.",
             },
             {
-                question: "What Chemistry subjects do you cover?",
-                answer: "Chemical quantities and Aqueous reactions, Analytical Chemistry, Organic Chemistry and more.",
+                question: "What Anatomy and Physiology subjects do you cover?",
+                answer: "From cells and tissues to major body systems including skeletal, muscular, nervous, cardiovascular, respiratory, and more.",
             },
-            {   
+            {
                 question: "Can I cancel anytime?",
                 answer: "Yes. No contracts, no fees, no hassle.",
             },
         ]
     },
     modal: {
-        title: "The Smarter Way to Learn Chemistry",
+        title: "The Smarter Way to Learn Anatomy & Physiology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     },
     footer: {
-        title: "The Smarter Way to Learn Chemistry",
+        title: "The Smarter Way to Learn Anatomy & Physiology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     }

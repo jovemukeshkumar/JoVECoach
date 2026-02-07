@@ -1,9 +1,15 @@
 
 // Hero Images
-import HeroImage from "../../assets/anatomy-desktop-v5.webp";
+import HeroImage from "../../assets/anatomy-hero-image.webp";
 import HeroImageMobile from "../../assets/anatomy-mobile.webp";
 import biologyCarouselDesktop from "../../assets/anatomy-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/anatomy-carousel-mobile.webm";
+
+import conceptsImg1 from "../../assets/anatomy-concepts-img1.webp";
+import conceptsImg2 from "../../assets/anatomy-concepts-img2.webp";
+import conceptsImg3 from "../../assets/anatomy-concepts-img3.webp";
+import conceptsImg4 from "../../assets/anatomy-concepts-img4.webp";
+import conceptsImg5 from "../../assets/anatomy-concepts-img5.webp";
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -67,7 +73,7 @@ export const anatomyData: LandingPageData = {
         mobileImage: HeroImageMobile,
     },
     concepts: {
-        heading: '<span>Every concept you need. </span>Under 2 minutes.',
+        heading: 'Every <span>Anatomy & Physiology</span> concept you need. <span>Under 2 minutes.</span>',
         subheading: "One concept at a time, explained with short videos.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
@@ -79,19 +85,26 @@ export const anatomyData: LandingPageData = {
         video: biologyCarouselDesktop,
         mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
+        conceptCards: [
+            { image: conceptsImg1, title: "Lymphatic System", views: "6.9K", time: "1:28" },
+            { image: conceptsImg2, title: "Nervous System", views: "7.4K", time: "1:18" },
+            { image: conceptsImg3, title: "Respiratory System", views: "10.1K", time: "1:23" },
+            { image: conceptsImg4, title: "Digestive System", views: "3.3K", time: "1:25" },
+            { image: conceptsImg5, title: "Endrocrine System", views: "14.2K", time: "1:10" },
+        ],
         questions: [
-  { icon: organ, text: "How do cells form tissues and organs?" },
-  { icon: muscle, text: "How do muscles produce movement and force?" },
-  { icon: muscle, text: "What controls nerve signals and reflexes?" }, 
-  { icon: heart, text: "How does the heart pump blood through the body?" },
-  { icon: hormone, text: "What roles do the immune system play?" },
-  { icon: muscle, text: "Voluntary and involuntary muscles - Difference?" },
-  { icon: lung, text: "How do lungs exchange oxygen and carbon dioxide?" }, 
-  { icon: hormone, text: "How do hormones regulate body functions?" },
-  { icon: kidney, text: "How do kidneys maintain fluid balance?" }, 
-  { icon: blood, text: "Why is blood vital for transport and defense?" }, 
-  { icon: hormone, text: "How does the body maintain homeostasis?" },
-]
+            { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
+            { icon: conceptsSectionIcon6, text: "How does cellular respiration produce energy?" },
+            { icon: conceptsSectionIcon6, text: "How exactly does photosynthesis create food?" },
+            { icon: conceptsSectionIcon6, text: "What mechanisms trigger cell division?" }, 
+            { icon: conceptsSectionIcon6, text: "Difference between mitosis and meiosis?" },
+            { icon: conceptsSectionIcon6, text: "How is DNA copied during replication?" }, 
+            { icon: conceptsSectionIcon6, text: "How do genes control biological traits?" },
+            { icon: conceptsSectionIcon6, text: "Why do enzymes speed up chemical reactions?" }, 
+            { icon: conceptsSectionIcon6, text: "How do cells communicate with each other?" }, 
+            { icon: conceptsSectionIcon6, text: "What factors cause genetic mutations?" },
+            { icon: conceptsSectionIcon6, text: "How do organisms maintain homeostasis?" },
+        ]
     },
     steps: {
         title: `JoVE Coach is more than a study tool - <span class="highlight">it's <img src="${conceptsSectionIcon1.src}" alt="JoVE Coach" style="width: 27px; height: auto; margin-bottom: -5px;" /> that helps you finally get it.</span>`,
