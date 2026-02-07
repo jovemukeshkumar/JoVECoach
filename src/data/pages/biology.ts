@@ -302,8 +302,8 @@ export const scienceGenJanData: LandingPageData = {
                 answer: "2 minutes. One concept, clearly explained. No filler.",
             },
             {
-                question: "What are micro courses?",
-                answer: "Bite-sized learning paths that group related videos together. Master a topic step by step-not just video by video.",
+                question: "What is a micro-course?",
+                answer: "A micro-course is a structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to help you go from confused to confident without long courses.",
             },
             {
                 question: "How is this different from YouTube?",

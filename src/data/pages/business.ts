@@ -266,8 +266,8 @@ items: [
     answer: "About 2 minutes each. One concept at a time, explained clearly—no filler.",
   },
   {
-    question: "What are micro-courses?",
-    answer: "Short learning paths that group related videos together, so you can understand a topic end-to-end—not just one concept in isolation.",
+  question: "What is a micro-course?",
+  answer: "A micro-course is a structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to help you go from confused to confident without long courses.",
   },
   {
     question: "How is this different from YouTube or Coursera?",

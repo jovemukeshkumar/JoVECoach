@@ -261,7 +261,7 @@ export const PhysicsGenJanData: LandingPageData = {
                 answer: "2 minutes. One concept, clearly explained. No filler.",
             },
             {
-                question: "What are micro courses?",
+                question: "What is a micro-course?",
                 answer: "Bite-sized learning paths that group related videos together. Master a topic step by step-not just video by video.",
             },
             {
