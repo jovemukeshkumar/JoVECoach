@@ -1,7 +1,7 @@
 
 // Hero Images
 import HeroImage from "../../assets/college-chemistry-hero.webp";
-import HeroImageMobile from "../../assets/chemistry-mobile.webp";
+
 import ChemistryCarouselDesktop from "../../assets/chemistry-carousel-desktop.webm";
 import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm";
 
@@ -58,7 +58,7 @@ export const ChemistryGenJanData: LandingPageData = {
         heroFormCta: "Start My Free Trial",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
-        mobileImage: HeroImageMobile,
+        mobileImage: HeroImage,
     },
     concepts: {
         heading: 'Every <span>Chemistry</span> concept you need. <span>Under 2 minutes.</span>',

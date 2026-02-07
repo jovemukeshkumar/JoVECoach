@@ -1,7 +1,7 @@
 
 // Hero Images
 import HeroImage from "../../assets/anatomy-hero-image.webp";
-import HeroImageMobile from "../../assets/anatomy-mobile.webp";
+
 import biologyCarouselDesktop from "../../assets/anatomy-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/anatomy-carousel-mobile.webm";
 
@@ -70,7 +70,7 @@ export const anatomyData: LandingPageData = {
         heroFormCta: "Start My Free Trial",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
-        mobileImage: HeroImageMobile,
+        mobileImage: HeroImage,
     },
     concepts: {
         heading: 'Every <span>Anatomy & Physiology</span> concept you need. <span>Under 2 minutes.</span>',
