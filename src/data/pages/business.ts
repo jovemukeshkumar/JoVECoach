@@ -257,34 +257,36 @@ ctaText: "Try It Free",
     faq: {
        heading: "Frequently Asked Questions",
 items: [
+
   {
-    question: "Is JoVE Coach free?",
-    answer: "You can explore sample videos for free—no sign-up needed. Want full access? Start a 7-day free trial to unlock all business content and micro-courses.",
-  },
-  {
-    question: "How long are the videos?",
-    answer: "About 2 minutes each. One concept at a time, explained clearly—no filler.",
-  },
-  {
+  question: "Is JoVE Coach free?",
+  answer: "You can explore videos for free—no sign-up needed. For full access, start a 7-day free trial to unlock all videos and micro-courses.",
+},
+{
+  question: "How long are the videos?",
+  answer: "About 2 minutes each. One concept, clearly explained. No filler.",
+},
+{
   question: "What is a micro-course?",
-  answer: "A micro-course is a structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to help you go from confused to confident without long courses.",
-  },
-  {
-    question: "How is this different from YouTube or Coursera?",
-    answer: "Every video is created by academic experts, not content creators. AI helps you find exactly what you need, when you need it—without long courses or distractions.",
-  },
-  {
-    question: "Will JoVE Coach help me at work?",
-    answer: "Yes. It’s built to help professionals understand finance, accounting, and economics clearly—so they can make better decisions with confidence.",
-  },
-  {
+  answer: "A structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to take you from confused to confident without long courses.",
+},
+{
+  question: "How is this different from YouTube?",
+  answer: "Videos are created by science experts, not content creators. AI finds exactly what you need and adds quick quizzes to confirm it clicked.",
+},
+{
+  question: "Will JoVE Coach help me pass my exams?",
+  answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
+},
+ {
     question: "What business topics do you cover?",
     answer: "Business fundamentals including finance, accounting, microeconomics, and macroeconomics. More topics are added based on learner needs.",
   },
-  {
-    question: "Can I cancel anytime?",
-    answer: "Yes. No contracts, no hidden fees, and no hassle.",
-  },
+{
+  question: "Can I cancel anytime?",
+  answer: "Yes. No contracts, no fees, no hassle.",
+}
+
 ]
     },
     modal: {

@@ -279,33 +279,34 @@ export const anatomyData: LandingPageData = {
         heading: "Frequently Asked Questions",
         items: [
             {
-                question: "Is JoVE Coach free?",
-                answer: "You can explore videos free-no sign-up needed. Want full access? Start a 7-day free trial to unlock all videos and micro courses.",
-            },
-            {
-                question: "How long are the videos?",
-                answer: "2 minutes. One concept, clearly explained. No filler.",
-            },
-            {
-                question: "What is a micro-course?",
-                answer: "A micro-course is a structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to help you go from confused to confident without long courses.",
-            },
-            {
-                question: "How is this different from YouTube?",
-                answer: "Every video is made by science experts, not content creators. AI finds exactly what you need, and generates quizzes after each video-so you know if it actually clicked.",
-            },
-            {
-                question: "Will JoVE Coach help me pass my exams?",
-                answer: "That's what it's built for. Students who use JoVE Coach consistently report better understanding and 2X improved test scores.",
-            },
-            {
-                question: "What Anatomy and Physiology subjects do you cover?",
-                answer: "From cells and tissues to major body systems including skeletal, muscular, nervous, cardiovascular, respiratory, and more.",
-            },
-            {
-                question: "Can I cancel anytime?",
-                answer: "Yes. No contracts, no fees, no hassle.",
-            },
+  question: "Is JoVE Coach free?",
+  answer: "You can explore videos for free—no sign-up needed. For full access, start a 7-day free trial to unlock all videos and micro-courses.",
+},
+{
+  question: "How long are the videos?",
+  answer: "About 2 minutes each. One concept, clearly explained. No filler.",
+},
+{
+  question: "What is a micro-course?",
+  answer: "A structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to take you from confused to confident without long courses.",
+},
+{
+  question: "How is this different from YouTube?",
+  answer: "Videos are created by science experts, not content creators. AI finds exactly what you need and adds quick quizzes to confirm it clicked.",
+},
+{
+  question: "Will JoVE Coach help me pass my exams?",
+  answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
+},
+{
+  question: "What Anatomy & Physiology topics do you cover?",
+  answer: "From cells and tissues to major systems—skeletal, muscular, nervous, cardiovascular, respiratory, and more.",
+},
+{
+  question: "Can I cancel anytime?",
+  answer: "Yes. No contracts, no fees, no hassle.",
+}
+
         ]
     },
     modal: {
