@@ -54,13 +54,6 @@ const defaultFeatures = [
 ];
 
 const featuresList = features || defaultFeatures;
-
-const defaultQuestions = [
-	{ icon: conceptsSectionIcon6, text: "Why does respiration release energy?" },
-	{ icon: conceptsSectionIcon7, text: "How does Newton's third law work?" },
-];
-
-const questionsList = questions || defaultQuestions;
 ---
 
 <style>
@@ -422,159 +415,12 @@ const questionsList = questions || defaultQuestions;
 		display: none;
 	}
 
-	/* Questions */
-	.questions-slider {
-		max-width: 100%;
-		overflow-x: auto;
-		margin: 0px auto;
-		padding-bottom: 60px;
-		scroll-snap-type: x mandatory;
-	}
-
-	.questions-slider::-webkit-scrollbar {
-		display: none;
-	}
-	.questions-slider {
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-		/* Feathering edges with mask-image */
-		mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-		-webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-	}
-
-	/* Slider row */
-	.questions {
-		display: flex;
-		gap: 22px;
-		width: max-content;
-		padding: 0 20px;
-	}
-
-	/* Bubble */
-	.questions span {
-		scroll-snap-align: center;
-		flex: 0 0 auto;
-		position: relative;
-		display: flex;
-		align-items: center;
-		gap: 12px;
-		width: 240px;
-		text-align: left;
-		background: #f8f7f4;
-		border: 0.5px solid #b4b7b7;
-		border-radius: 25px;
-		padding: 14px 24px;
-
-		font-size: 15px;
-		line-height: 1.35;
-		color: #000;
-
-		box-shadow: 0px 20px 40px 0px #8c8c8c36;
-	}
-
-	/* Icon */
-	.questions span img {
-		width: 25px;
-		height: auto;
-		flex-shrink: 0;
-	}
 	@keyframes autoSlide {
 		0% {
 			transform: translateX(0);
 		}
 		100% {
 			transform: translateX(-50%);
-		}
-	}
-
-	.questions {
-		animation: autoSlide 60s linear infinite;
-	}
-
-	.questions-slider:hover .questions {
-		animation-play-state: paused;
-	}
-
-	/* ============================= */
-	/* ODD — LEFT CURVED TAIL */
-	/* ============================= */
-	.questions span:nth-child(odd)::before {
-		content: "";
-		position: absolute;
-		left: 25px;
-		bottom: -18.4px;
-
-		width: 23px;
-		height: 18px;
-
-		background: #f8f7f4;
-		border-right: 0.5px solid #b4b7b7;
-		border-left: 0.5px solid #b4b7b7;
-		border-bottom: 0.5px solid #b4b7b7;
-
-		border-radius: 0 0 100% 0;
-
-		transform: rotate(0deg);
-	}
-
-	/* ============================= */
-	/* EVEN — RIGHT CURVED TAIL */
-	/* ============================= */
-	.questions span:nth-child(even)::before {
-		content: "";
-		position: absolute;
-		right: 25px;
-		bottom: -18.4px;
-
-		width: 23px;
-		height: 18px;
-
-		background: #f8f7f4;
-		border-right: 0.5px solid #b4b7b7;
-		border-left: 0.5px solid #b4b7b7;
-		border-bottom: 0.5px solid #b4b7b7;
-		border-radius: 0 0 0 100%;
-		box-shadow: 6px 8px 18px rgba(0, 0, 0, 0.06);
-
-		transform: rotate(0deg);
-	}
-
-	/* Tablet */
-	@media (max-width: 900px) {
-		.questions span {
-			font-size: 14px;
-			padding: 12px 20px;
-		}
-	}
-
-	/* Mobile – center tail */
-	@media (max-width: 600px) {
-		.questions span {
-			white-space: normal;
-			max-width: 100%;
-		}
-
-		/* Reset centering and use specific positioning for odd/even */
-		.questions span::before {
-			left: auto !important;
-			right: auto !important;
-			transform: none !important;
-			border-radius: 0 !important;
-		}
-
-		/* Restore odd/even specific styles if needed, or keep them as defined above */
-		/* The previous mobile style forced centering which broke the design. 
-           By resetting, we fall back to the odd/even styles which work. 
-           We just need to ensure the border-radius matches the direction. */
-
-		.questions span:nth-child(odd)::before {
-			left: 25px !important;
-			border-radius: 0 0 100% 0 !important;
-		}
-
-		.questions span:nth-child(even)::before {
-			right: 25px !important;
-			border-radius: 0 0 0 100% !important;
 		}
 	}
 
@@ -626,9 +472,6 @@ const questionsList = questions || defaultQuestions;
 	@media (max-width: 768) {
 		.concepts-section {
 			padding: 48px 0;
-		}
-		.questions-slider {
-			margin-top: 2rem;
 		}
 	}
 
@@ -814,37 +657,6 @@ const questionsList = questions || defaultQuestions;
 				}
 			});
 		</script>
-
-		<!-- Question slider -->
-		<!-- <div class="questions-slider">
-      <div class="questions-track">
-        <div class="questions">
-          {/* Use props for questions */}
-          {
-            questionsList && questionsList.length > 0 ? (
-              <>
-                {questionsList.map((q) => (
-                  <span>
-                    <Image src={q.icon} alt="Question Icon" />
-                    {q.text}
-                  </span>
-                ))}
-                {/* Duplicate for loop */}
-                {questionsList.map((q) => (
-                  <span>
-                    <Image src={q.icon} alt="Question Icon" />
-                    {q.text}
-                  </span>
-                ))}
-              </>
-            ) : (
-              /* Fallback or empty if needed, but data should be there */
-              <span>No questions available</span>
-            )
-          }
-        </div>
-      </div>
-    </div> -->
 
 		<!-- CTA -->
 		<div class="cta">

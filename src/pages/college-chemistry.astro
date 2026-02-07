@@ -7,7 +7,7 @@ import FAQSection from "../components/generic/FAQSection.astro";
 import StepsSection from "../components/generic/StepsSection.astro";
 import FirstCTASection from "../components/generic/FirstCTASection.astro";
 import SecondCTASection from "../components/generic/SecondCTASection.astro";
-import ConceptsSection from "../components/generic/ConceptsSection.astro";
+import ConceptsSection from "../components/generic/TopicsSection.astro";
 // import Testimonial from "../components/homePage/testimonial.astro";
 import LearnerPersonas from "../components/generic/LearnerPersonas.astro";
 import PricingSection from "../components/generic/PricingSection.astro";
@@ -18,7 +18,7 @@ import NavLogo from "../assets/NavLogo.svg";
 import HeroSection from "../components/generic/HeroSection.astro";
 import Navbar from "../components/generic/Navbar.astro";
 
-import { ChemistryGenJanData } from "../data/pages/chemistry";
+import { ChemistryGenJanData } from "../data/pages/college-chemistry";
 // Select data subset (e.g. 'science-gen')
 const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = ChemistryGenJanData;
 ---
@@ -34,14 +34,19 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 
 	<HeroSection heroImage={hero.image} mobileImgSrc={hero.mobileImage} title={hero.title} subtitle={hero.subtitle} mobileSubtitle={hero.mobileSubtitle} trustText={hero.trustText} ctaTitle={hero.ctaTitle} heroFormCta={hero.heroFormCta} />
 
-	<ConceptsSection heading={concepts.heading} subheading={concepts.subheading} features={concepts.features} videoSrc={concepts.video} mobileVideoSrc={concepts.mobileVideo} questions={concepts.questions} videoPlaybackSpeed={concepts.videoPlaybackSpeed} />
+	<ConceptsSection
+		heading={concepts.heading}
+		subheading={concepts.subheading}
+		features={concepts.features}
+		videoSrc={concepts.video}
+		mobileVideoSrc={concepts.mobileVideo}
+		questions={concepts.questions}
+		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
+		conceptCards={concepts.conceptCards}
+	/>
 
 	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} />
-	<!-- <StepsSection title={steps.title} subtitle={steps.subtitle} discoverText={steps.discoverText} steps={steps.items} /> -->
-	<!-- <SecondCTASection title={secondCTA.title} subtitle={secondCTA.subtitle} ctaText={secondCTA.ctaText} /> -->
 	<ComparisonTable title={comparison.title} subtitle={comparison.subtitle} tagline={comparison.tagline} ctaText={comparison.ctaText} items={comparison.items} features={comparison.features} />
-	<!-- <LearnerPersonas personas={personas.items} title={personas.title} subtitle={personas.subtitle} /> -->
-	<PricingSection title={pricing.title} subtitle={pricing.subtitle} plans={pricing.plans} />
 	<FAQSection heading={faq.heading} items={faq.items} />
 
 	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} />
