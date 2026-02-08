@@ -224,7 +224,7 @@ export const collegeBiologyData: LandingPageData = {
                 values: { jove: true, khan: true, youtube: false, chatgpt: false, chegg: false },
             },
             {
-                name: "Science-focussed",
+                name: "Science-focused",
                 values: { jove: true, khan: false, youtube: false, chatgpt: false, chegg: true },
             },
             {
