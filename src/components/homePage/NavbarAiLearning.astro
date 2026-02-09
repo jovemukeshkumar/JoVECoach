@@ -4,88 +4,88 @@ import NavLogo from "../../assets/NavLogo.svg";
 ---
 
 <nav class="navbar">
-  <div class="container">
-    <div class="logo">
-      <a href="/">
-        <Image src={NavLogo} alt="JoVE Coach" height={32} />
-        <!-- Adjusting logo size to match image better, usually 32-40px height -->
-      </a>
-    </div>
-    <div class="cta-container">
-      <button class="cta-button">Start My Free Trial</button>
-      <span class="subtext">No credit card required</span>
-    </div>
-  </div>
+	<div class="container">
+		<div class="logo">
+			<a href="https://coach.jove.com">
+				<Image src={NavLogo} alt="JoVE Coach" height={32} />
+				<!-- Adjusting logo size to match image better, usually 32-40px height -->
+			</a>
+		</div>
+		<div class="cta-container">
+			<button class="cta-button">Start My Free Trial</button>
+			<span class="subtext">No credit card required</span>
+		</div>
+	</div>
 </nav>
 
 <style>
-  .navbar {
-    padding: 1.25rem 0;
-    background-color: #fff;
-    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(225, 225, 225, 1);
-    border-radius: 0px 0px 50px 50px;
-  }
+	.navbar {
+		padding: 1.25rem 0;
+		background-color: #fff;
+		box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.06);
+		border: 1px solid rgba(225, 225, 225, 1);
+		border-radius: 0px 0px 50px 50px;
+	}
 
-  .container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+	.container {
+		max-width: 1320px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 
-  /* Logo styling details */
-  .logo a {
-    display: flex;
-    align-items: center;
-  }
+	/* Logo styling details */
+	.logo a {
+		display: flex;
+		align-items: center;
+	}
 
-  .cta-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-  }
+	.cta-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+	}
 
-  .cta-button {
-    background: transparent;
-    border: 1px solid #2183ed;
-    color: #2183ed;
-    padding: 0.6rem 1.75rem;
-    border-radius: 9999px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 140%;
-    letter-spacing: -0.5%;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
+	.cta-button {
+		background: transparent;
+		border: 1px solid #2183ed;
+		color: #2183ed;
+		padding: 0.6rem 1.75rem;
+		border-radius: 9999px;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: -0.5%;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		white-space: nowrap;
+	}
 
-  .cta-button:hover {
-    background: #eff6ff;
-  }
+	.cta-button:hover {
+		background: #eff6ff;
+	}
 
-  .subtext {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 140%;
-    letter-spacing: -1%;
-    text-align: center;
-    color: #aeaeae;
-  }
+	.subtext {
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 140%;
+		letter-spacing: -1%;
+		text-align: center;
+		color: #aeaeae;
+	}
 
-  /* Mobile Enhancements */
-  @media (max-width: 640px) {
-    .container {
-      padding: 0 1rem;
-    }
+	/* Mobile Enhancements */
+	@media (max-width: 640px) {
+		.container {
+			padding: 0 1rem;
+		}
 
-    .cta-button {
-      padding: 0.5rem 1rem;
-      font-size: 0.85rem;
-    }
-  }
+		.cta-button {
+			padding: 0.5rem 1rem;
+			font-size: 0.85rem;
+		}
+	}
 </style>

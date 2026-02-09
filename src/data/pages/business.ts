@@ -57,7 +57,7 @@ import type { LandingPageData } from "../landingPageData";
 
 export const businessJanData: LandingPageData = {
     hero: {
-        title: 'Struggling with business basics? <br class="desktop-br" /> Master Them in <span class="highlight">2-Minute Videos.</span>',
+        title: 'Struggling with Business Basics? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
         subtitle: "Finance, accounting, and economics—explained for real work, without long courses. 20 years of trusted education.",
         mobileSubtitle: "Finance, accounting, and economics—explained for real work.",
         ctaTitle: "See business concepts finally make sense",
