@@ -61,10 +61,10 @@ export const businessJanData: LandingPageData = {
         subtitle: "Finance, accounting, and economics—explained for real work, without long courses. 20 years of trusted education.",
         mobileSubtitle: "Finance, accounting, and economics—explained for real work.",
         ctaTitle: "See business concepts finally make sense",
-        heroFormCta: "Start Learning - It’s Free",
-        trustText: "Trusted by 1 Million+ learners-from universities to workplaces.",
+        heroFormCta: "<strong>Get Certified</strong>&nbsp;- It's Free",
+        trustText: "Trusted by 1 Million+ learners",
         image: HeroImage,
-        mobileImage: HeroImageMobile,
+        mobileImage: HeroImage,
     },
     concepts: {
         heading: 'Every <span>Business</span> concept you need. <span>Under 2 minutes.</span>',

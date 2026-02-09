@@ -23,9 +23,7 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 	</div>
 
 	<div class={`cta-wrapper ${buttonLayout}`}>
-		<button type="submit" class="global-form-btn" style={`min-width: ${buttonMinWidth} !important;`}>
-			{ctaText}
-		</button>
+		<button type="submit" class="global-form-btn" style={`min-width: ${buttonMinWidth} !important;`} set:html={ctaText} />
 
 		{
 			showFeatures ? (
