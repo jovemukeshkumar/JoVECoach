@@ -78,7 +78,7 @@ export const highSchoolChemistryData: LandingPageData = {
             { image: conceptsImg2, title: "Distillation", views: "36.6K", time: "1:01" },
             { image: conceptsImg3, title: "Aldehydes and Ketones", views: "145.8K", time: "1:32" },
             { image: conceptsImg4, title: "Periodic Table & Trends", views: "117.3K", time: "3:24" },
-            { image: conceptsImg5, title: "States of Matter", views: "1041K", time: "2:48" },
+            { image: conceptsImg5, title: "States of Matter", views: "104.1K", time: "2:48" },
         ],
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },

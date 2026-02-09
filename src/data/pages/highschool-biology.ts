@@ -55,7 +55,7 @@ export const highSchoolBiologyData: LandingPageData = {
         subtitle: "From confused to confident. Biology finally made simple. 20 years of trusted science education.",
         mobileSubtitle: "From confused to confident. Biology finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
-        heroFormCta: "Start Learning - It’s Free",
+        heroFormCta: "Start Learning - It's Free",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
