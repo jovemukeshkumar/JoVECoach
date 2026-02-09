@@ -3,10 +3,10 @@
 import HeroImage from "../../assets/highschool-biology-hero.webp";
 import biologyCarouselDesktop from "../../assets/biology-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/biology-carousel-mobile.webm";
-import conceptsImg1 from "../../assets/biology-concepts-img1.webp"; // Placeholder
+import conceptsImg1 from "../../assets/highschool-biology-concepts-img1.webp"; // Placeholder
 import conceptsImg2 from "../../assets/biology-concepts-img2.webp"; // Placeholder
-import conceptsImg3 from "../../assets/biology-concepts-img3.webp"; // Placeholder
-import conceptsImg4 from "../../assets/biology-concepts-img4.webp"; // Placeholder       
+import conceptsImg3 from "../../assets/highschool-biology-concepts-img3.webp"; // Placeholder
+import conceptsImg4 from "../../assets/highschool-biology-concepts-img4.webp"; // Placeholder       
 import conceptsImg5 from "../../assets/biology-concepts-img5.webp"; // Placeholder       
 
 // Steps Images
@@ -74,10 +74,10 @@ export const highSchoolBiologyData: LandingPageData = {
         mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
         conceptCards: [
-            { image: conceptsImg1, title: "Gene Evolution", views: "8.2K", time: "2:05" },
+            { image: conceptsImg1, title: "Photosynthesis", views: "20.6K", time: "1:00" },
             { image: conceptsImg2, title: "Protein Synthesis & Translation", views: "156.8K", time: "1:31" },
-            { image: conceptsImg3, title: "Gene Duplication & Divergence", views: "8.1K", time: "2:37" },
-            { image: conceptsImg4, title: "Restriction Enzymes", views: "36.24K", time: "1:11" },
+            { image: conceptsImg3, title: "Genetics & Heredity", views: "27.9K", time: "2:05" },
+            { image: conceptsImg4, title: "Evolution & Natural Selection", views: "129.6K", time: "1:31" },
             { image: conceptsImg5, title: "Mitosis & Meiosis ", views: "70.6K", time: "2:58" },
         ],
         questions: [
@@ -287,8 +287,8 @@ export const highSchoolBiologyData: LandingPageData = {
                 answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
             },
             {
-                question: "What subjects do you cover?",
-                answer: "Biology, Chemistry, Physics, Statistics and more. More coming based on what students need.",
+                question: "What Biology subjects do you cover?",
+                answer: "Cell Biology, Microbiology, Molecular Biology and more.",
             },
             {
                 question: "Can I cancel anytime?",

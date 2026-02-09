@@ -48,7 +48,7 @@ export const PhysicsGenJanData: LandingPageData = {
         subtitle: "From confused to confident. Physics finally made simple. 20 years of trusted science education.",
         mobileSubtitle: "From confused to confident. Physics finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
-        heroFormCta: "Start My Free Trial",
+        heroFormCta: "Start Learning - It's Free",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImageMobile,
@@ -210,7 +210,7 @@ export const PhysicsGenJanData: LandingPageData = {
                 values: { jove: true, khan: true, youtube: false, chatgpt: false, chegg: false },
             },
             {
-                name: "Physics-focussed",
+                name: "Physics-focused",
                 values: { jove: true, khan: false, youtube: false, chatgpt: false, chegg: true },
             },
             {

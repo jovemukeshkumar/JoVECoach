@@ -18,9 +18,9 @@ import NavLogo from "../assets/NavLogo.svg";
 import HeroSection from "../components/generic/HeroSection.astro";
 import Navbar from "../components/generic/Navbar.astro";
 
-import { businessJanData } from "../data/pages/business";
+import { highSchoolChemistryData } from "../data/pages/highschool-chemistry";
 // Select data subset (e.g. 'science-gen')
-const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = businessJanData;
+const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = highSchoolChemistryData;
 ---
 
 <Layout title="JoVE Coach | Master Science with AI | AI-Powered Learning" description="Struggling with Science? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master any concept in minutes. Try free for 7 days." robots="noindex, nofollow">
@@ -32,9 +32,7 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	<!-- <HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionDesktopPoster.src} /> -->
 	<Navbar />
 
-	<div class="business-hero-wrapper">
-		<HeroSection heroImage={hero.image} mobileImgSrc={hero.mobileImage} title={hero.title} subtitle={hero.subtitle} mobileSubtitle={hero.mobileSubtitle} trustText={hero.trustText} ctaTitle={hero.ctaTitle} heroFormCta={hero.heroFormCta} />
-	</div>
+	<HeroSection heroImage={hero.image} mobileImgSrc={hero.mobileImage} title={hero.title} subtitle={hero.subtitle} mobileSubtitle={hero.mobileSubtitle} trustText={hero.trustText} ctaTitle={hero.ctaTitle} heroFormCta={hero.heroFormCta} />
 
 	<ConceptsSection
 		heading={concepts.heading}
@@ -46,31 +44,15 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
 		conceptCards={concepts.conceptCards}
 	/>
-	<!-- <ConceptsSection heading={concepts.heading} subheading={concepts.subheading} features={concepts.features} videoSrc={concepts.video} mobileVideoSrc={concepts.mobileVideo} questions={concepts.questions} videoPlaybackSpeed={concepts.videoPlaybackSpeed} /> -->
 
 	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} />
-	<!-- <StepsSection title={steps.title} subtitle={steps.subtitle} discoverText={steps.discoverText} steps={steps.items} /> -->
-	<!-- <SecondCTASection title={secondCTA.title} subtitle={secondCTA.subtitle} ctaText={secondCTA.ctaText} /> -->
 	<ComparisonTable title={comparison.title} subtitle={comparison.subtitle} tagline={comparison.tagline} ctaText={comparison.ctaText} items={comparison.items} features={comparison.features} />
-	<!-- <LearnerPersonas personas={personas.items} title={personas.title} subtitle={personas.subtitle} /> -->
-	<!-- <PricingSection title={pricing.title} subtitle={pricing.subtitle} plans={pricing.plans} /> -->
 	<FAQSection heading={faq.heading} items={faq.items} />
 
-	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} image={footer?.image} />
+	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} />
 	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
 
 	<Footer />
 
 	<!-- Hidden Master Form for Submissions -->
 </Layout>
-
-<style>
-	.feature img {
-		width: 35px !important;
-		height: 35px !important;
-	}
-
-	.business-hero-wrapper :global(h1) {
-		font-size: 31px !important;
-	}
-</style>

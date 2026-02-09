@@ -1,10 +1,18 @@
 
 // Hero Images
 // Hero Images
-import HeroImage from "../../assets/business-desktop-v5.webp";
+import HeroImage from "../../assets/business-hero.webp";
 import HeroImageMobile from "../../assets/business-mobile.webp";
 import biologyCarouselDesktop from "../../assets/business-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/business-carousel-mobile.webm";
+
+
+import conceptsImg1 from "../../assets/business-concepts-img1.webp";
+import conceptsImg2 from "../../assets/business-concepts-img2.webp";
+import conceptsImg3 from "../../assets/business-concepts-img3.webp";
+import conceptsImg4 from "../../assets/business-concepts-img4.webp";
+import conceptsImg5 from "../../assets/business-concepts-img5.webp";
+
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -53,17 +61,17 @@ export const businessJanData: LandingPageData = {
         subtitle: "Finance, accounting, and economics—explained for real work, without long courses. 20 years of trusted education.",
         mobileSubtitle: "Finance, accounting, and economics—explained for real work.",
         ctaTitle: "See business concepts finally make sense",
-        heroFormCta: "Start My Free Trial",
+        heroFormCta: "Start Learning - It’s Free",
         trustText: "Trusted by 1 Million+ learners-from universities to workplaces.",
         image: HeroImage,
         mobileImage: HeroImageMobile,
     },
     concepts: {
-        heading: '<span>Every concept you need. </span>Under 2 minutes.',
-        subheading: "Understand how each idea connects to real-world decisions.",
+        heading: 'Every <span>Business</span> concept you need. <span>Under 2 minutes.</span>',
+        subheading: "One concept at a time, explained with short videos.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
-            { icon: "industry", text: "Industry-aligned" },
+            { icon: "curriculum", text: "Curriculum-aligned" },
             { icon: "ad-free", text: "Ad-free learning" },
             { icon: "expert", text: "Expert-created content" },
             { icon: "secure", text: "Secure & private" },
@@ -71,18 +79,25 @@ export const businessJanData: LandingPageData = {
         video: biologyCarouselDesktop,
         mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
+        conceptCards: [
+            { image: conceptsImg1, title: "Digital Marketing", views: "473", time: "1:15" },
+            { image: conceptsImg2, title: "Personal Finance", views: "14.9K", time: "1:36" },
+            { image: conceptsImg3, title: "Marketing Strategy", views: "458", time: "1:25" },
+            { image: conceptsImg4, title: "Market Research", views: "1.4K", time: "1:26" },
+            { image: conceptsImg5, title: "Economics", views: "877", time: "1:15" },
+        ],
         questions: [
-            { icon: conceptsSectionIcon6, text: "How do markets determine prices and output?" },
-{ icon: conceptsSectionIcon6, text: "Why does demand rise or fall?" },
-{ icon: conceptsSectionIcon7, text: "How do producers respond to price changes?" },
-{ icon: conceptsSectionIcon8, text: "How do markets reach equilibrium over time?" },
-{ icon: conceptsSectionIcon6, text: "How do consumers make economic choices?" },
-{ icon: conceptsSectionIcon7, text: "How do firms decide what to produce?" },
-{ icon: conceptsSectionIcon6, text: "What determines a firm’s costs and profits?" },
-{ icon: conceptsSectionIcon7, text: "How do financial statements reflect performance?" },
-{ icon: conceptsSectionIcon8, text: "How do ratios reveal business health?" },
-{ icon: conceptsSectionIcon6, text: "How does money grow over time?" },
-{ icon: conceptsSectionIcon8, text: "How do risk and return relate?" },
+            { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
+            { icon: conceptsSectionIcon6, text: "How does cellular respiration produce energy?" },
+            { icon: conceptsSectionIcon6, text: "How exactly does photosynthesis create food?" },
+            { icon: conceptsSectionIcon6, text: "What mechanisms trigger cell division?" }, 
+            { icon: conceptsSectionIcon6, text: "Difference between mitosis and meiosis?" },
+            { icon: conceptsSectionIcon6, text: "How is DNA copied during replication?" }, 
+            { icon: conceptsSectionIcon6, text: "How do genes control biological traits?" },
+            { icon: conceptsSectionIcon6, text: "Why do enzymes speed up chemical reactions?" }, 
+            { icon: conceptsSectionIcon6, text: "How do cells communicate with each other?" }, 
+            { icon: conceptsSectionIcon6, text: "What factors cause genetic mutations?" },
+            { icon: conceptsSectionIcon6, text: "How do organisms maintain homeostasis?" },
         ]
     },
     steps: {
@@ -215,7 +230,7 @@ ctaText: "Try It Free",
                 values: { jove: true, coursera: true, youtube: false, chatgpt: false, udemy: false },
             },
             {
-                name: "Business-focussed",
+                name: "Business-focused",
                 values: { jove: true, coursera: true, youtube: false, chatgpt: false, udemy: true },
             },
             {
@@ -280,7 +295,7 @@ items: [
 },
  {
     question: "What business topics do you cover?",
-    answer: "Business fundamentals including finance, accounting, microeconomics, and macroeconomics. More topics are added based on learner needs.",
+    answer: "Business fundamentals including Marketing, Finance, Accounting, Economics and more.",
   },
 {
   question: "Can I cancel anytime?",
@@ -291,12 +306,12 @@ items: [
     },
     modal: {
         title: "A Smarter Way to Understand Business Fundamentals",
-        subtitle: "Try Jove Coach and understand finance, accounting, and economics—fast.",
+        subtitle: "Try Jove Coach and understand Marketing, Finance, Accounting and Economics—fast.",
         ctaText: "Start My Free Trial"
     },
     footer: {
         title: "A Smarter Way to Understand Business Fundamentals",
-        subtitle: "Try Jove Coach and understand finance, accounting, and economics—fast.",
+        subtitle: "Try Jove Coach and understand Marketing, Finance, Accounting and Economics—fast.",
         ctaText: "Start My Free Trial",
         image: footerValuesImage
     }

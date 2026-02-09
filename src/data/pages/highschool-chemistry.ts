@@ -1,16 +1,16 @@
 
 // Hero Images
-import HeroImage from "../../assets/college-chemistry-hero.webp";
+import HeroImage from "../../assets/highschool-chemistry-hero.webp";
 
 import ChemistryCarouselDesktop from "../../assets/chemistry-carousel-desktop.webm";
 import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm";
 
 
-import conceptsImg1 from "../../assets/chemistry-concepts-img1-v2.webp";
-import conceptsImg2 from "../../assets/chemistry-concepts-img2.webp";
-import conceptsImg3 from "../../assets/chemistry-concepts-img3.webp";
-import conceptsImg4 from "../../assets/chemistry-concepts-img4.webp";
-import conceptsImg5 from "../../assets/chemistry-concepts-img5.webp";
+import conceptsImg1 from "../../assets/highschool-chemistry-concepts-img1-v1.webp";
+import conceptsImg2 from "../../assets/highschool-chemistry-concepts-img2-v1.webp";
+import conceptsImg3 from "../../assets/highschool-chemistry-concepts-img3-v1.webp";
+import conceptsImg4 from "../../assets/highschool-chemistry-concepts-img4-v1.webp";
+import conceptsImg5 from "../../assets/highschool-chemistry-concepts-img5-v1.webp";
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -49,13 +49,13 @@ import wrappedLogo3 from "../../assets/wrappedLogo3.svg";
 
 import type { LandingPageData } from "../landingPageData";
 
-export const ChemistryGenJanData: LandingPageData = {
+export const highSchoolChemistryData: LandingPageData = {
     hero: {
         title: 'Chemistry Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
         subtitle: "From confused to confident. Chemistry finally made simple. 20 years of trusted science education.",
         mobileSubtitle: "From confused to confident. Chemistry finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
-        heroFormCta: "Start Learning - It’s Free",
+        heroFormCta: "Start Learning - It's Free",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
@@ -74,11 +74,11 @@ export const ChemistryGenJanData: LandingPageData = {
         mobileVideo: ChemistryCarouselMobile,
         videoPlaybackSpeed: 0.75,
         conceptCards: [
-            { image: conceptsImg1, title: "Reaction: Stereochemistry", views: "10.4K", time: "1:26" },
-            { image: conceptsImg2, title: "Cellular Respiration", views: "2K", time: "1:19" },
-            { image: conceptsImg3, title: "Dynamic Equilibrium", views: "63K", time: "2:20" },
-            { image: conceptsImg4, title: "Thermodynamics", views: "41.1K", time: "2:16" },
-            { image: conceptsImg5, title: "Affinity Chromatography", views: "3.1K", time: "1:03" },
+            { image: conceptsImg1, title: "Chemical Equations", views: "81.9K", time: "3:10" },
+            { image: conceptsImg2, title: "Distillation", views: "36.6K", time: "1:01" },
+            { image: conceptsImg3, title: "Aldehydes and Ketones", views: "145.8K", time: "1:32" },
+            { image: conceptsImg4, title: "Periodic Table & Trends", views: "117.3K", time: "3:24" },
+            { image: conceptsImg5, title: "States of Matter", views: "1041K", time: "2:48" },
         ],
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
@@ -289,7 +289,7 @@ export const ChemistryGenJanData: LandingPageData = {
 },
 {
                 question: "What Chemistry subjects do you cover?",
-                answer: "Chemical quantities and Aqueous reactions, Analytical Chemistry, Organic Chemistry and more.",
+                answer: "Analytical Chemistry, Organic Chemistry, States of Matter and more.",
 },
 {
   question: "Can I cancel anytime?",
