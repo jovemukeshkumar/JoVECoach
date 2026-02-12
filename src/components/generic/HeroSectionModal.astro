@@ -332,7 +332,16 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 		height: auto;
 		transform-origin: center top;
 		transform: scale(0.9);
+		transition:
+			transform 0.4s ease,
+			filter 0.4s ease;
+		cursor: pointer;
 		/* filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1)); */
+	}
+
+	.hero-img:hover {
+		transform: scale(0.92); /* Gentle zoom */
+		filter: brightness(1.05); /* Slight brighten */
 	}
 
 	.mobile-image-wrapper {
