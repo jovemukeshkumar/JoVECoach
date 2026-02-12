@@ -53,9 +53,33 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 
 <script is:inline>
 	// Modal Open/Close Logic
-	window.openZohoModal = function () {
+	let defaultTitle = "";
+	let defaultSubtitle = "";
+	let defaultCtaText = "";
+
+	// Initialize defaults once the script runs
+	const modalOverlay = document.getElementById("zoho-modal-overlay");
+	if (modalOverlay) {
+		const t = modalOverlay.querySelector(".zcwf_title");
+		if (t) defaultTitle = t.innerText;
+		const s = modalOverlay.querySelector(".zcwf_subtitle");
+		if (s) defaultSubtitle = s.innerText;
+		const b = modalOverlay.querySelector("#formsubmit_modal");
+		if (b) defaultCtaText = b.innerText;
+	}
+
+	window.openZohoModal = function (title, subtitle, ctaText) {
 		const overlay = document.getElementById("zoho-modal-overlay");
 		if (overlay) {
+			const titleEl = overlay.querySelector(".zcwf_title");
+			if (titleEl) titleEl.innerText = title || defaultTitle;
+
+			const subtitleEl = overlay.querySelector(".zcwf_subtitle");
+			if (subtitleEl) subtitleEl.innerText = subtitle || defaultSubtitle;
+
+			const btnEl = overlay.querySelector("#formsubmit_modal");
+			if (btnEl) btnEl.innerText = ctaText || defaultCtaText;
+
 			overlay.style.display = "flex";
 			document.body.style.overflow = "hidden";
 		}

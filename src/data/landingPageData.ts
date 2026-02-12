@@ -177,4 +177,10 @@ export interface LandingPageData {
 		ctaText: string;
 		image?: ImageMetadata;
 	};
+	heroModal?: {
+		title: string;
+		subtitle: string;
+		ctaText: string;
+		videoSrc?: string;
+	};
 }
