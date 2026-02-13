@@ -1,7 +1,6 @@
 
 // Hero Images
 import HeroImage from "../../assets/anatomy-hero-image.webp";
-import HeroVideo from "../../assets/anatomy-carousel-desktop.webm";
 
 import biologyCarouselDesktop from "../../assets/anatomy-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/anatomy-carousel-mobile.webm";
@@ -68,7 +67,7 @@ export const anatomyData: LandingPageData = {
         subtitle: "From confused to confident. Anatomy and Physiology finally made simple for health science students. Backed by 20 years of trusted science education.",
         mobileSubtitle: "Anatomy and Physiology made simple for health science students.",
         ctaTitle: "See what stress-free learning looks like",
-        heroFormCta:"Start Learning <strong> &nbsp;Anatomy&nbsp;</strong> for Free",
+        heroFormCta: "Start Learning - It's Free",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
@@ -105,8 +104,7 @@ export const anatomyData: LandingPageData = {
             { icon: conceptsSectionIcon6, text: "How do cells communicate with each other?" }, 
             { icon: conceptsSectionIcon6, text: "What factors cause genetic mutations?" },
             { icon: conceptsSectionIcon6, text: "How do organisms maintain homeostasis?" },
-        ],
-        ctaText: "Explore Anatomy Courses"
+        ]
     },
     steps: {
         title: `JoVE Coach is more than a study tool - <span class="highlight">it's <img src="${conceptsSectionIcon1.src}" alt="JoVE Coach" style="width: 27px; height: auto; margin-bottom: -5px;" /> that helps you finally get it.</span>`,
@@ -301,7 +299,7 @@ export const anatomyData: LandingPageData = {
   answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
 },
 {
-  question: "What Anatomy topics do you cover?",
+  question: "What Anatomy & Physiology topics do you cover?",
   answer: "From cells and tissues to major systems—skeletal, muscular, nervous, cardiovascular, respiratory, and more.",
 },
 {
@@ -316,16 +314,9 @@ export const anatomyData: LandingPageData = {
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     },
-    heroModal: {
-        title: "Watch the 2-Minute Video",
-        subtitle: "Enter your details for instant access to this lesson and more like it.",
-        ctaText: "Continue to Video",
-        videoSrc: HeroVideo
-    },
     footer: {
         title: "The Smarter Way to Learn Anatomy & Physiology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial",
-        seoText: "JoVE Coach offers Anatomy courses with expert-verified 2-minute videos across core human anatomy topics, including skeletal, muscular, nervous, cardiovascular and more."
+        ctaText: "Start My Free Trial"
     }
 };

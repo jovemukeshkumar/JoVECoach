@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 // import Navbar from "../components/Navbar.astro";
-import Footer from "../components/generic/Footer.astro";
+import Footer from "../components/generic/FooterWithSEO.astro";
 import Layout from "../layouts/UpdatedLayout.astro";
 import FAQSection from "../components/generic/FAQSection.astro";
 import StepsSection from "../components/generic/StepsSection.astro";
@@ -23,11 +23,7 @@ import { anatomyData } from "../data/pages/anatomy";
 const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = anatomyData;
 ---
 
-<Layout
-	title="JoVE Coach | Master Anatomy with 2-Minute Anatomy Videos"
-	description="Struggling with Anatomy? Learn anatomy faster with AI-powered explanations, 2-minute videos, and quick quizzes. Master key anatomy concepts with expert-verified lessons. Try free for 7 days."
-	robots="noindex, nofollow"
->
+<Layout title="JoVE Coach | Master Anatomy with 2-Minute Videos" description="Struggling with Anatomy? Learn faster with 2-minute videos and short quizzes. Master key anatomy concepts with expert-verified lessons. Try free for 7 days." robots="noindex, nofollow">
 	<link rel="preload" href={hero.mobileImage.src} as="image" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
 	<link rel="preload" href={hero.image.src} as="image" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
 
@@ -47,6 +43,7 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 		questions={concepts.questions}
 		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
 		conceptCards={concepts.conceptCards}
+		ctaText={concepts.ctaText}
 	/>
 	<!-- <ConceptsSection heading={concepts.heading} subheading={concepts.subheading} features={concepts.features} videoSrc={concepts.video} mobileVideoSrc={concepts.mobileVideo} questions={concepts.questions} videoPlaybackSpeed={concepts.videoPlaybackSpeed} /> -->
 
@@ -61,7 +58,7 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} />
 	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
 
-	<Footer />
+	<Footer seoText={footer?.seoText} />
 
 	<!-- Hidden Master Form for Submissions -->
 </Layout>
