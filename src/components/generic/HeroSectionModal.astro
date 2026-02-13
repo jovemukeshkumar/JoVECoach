@@ -53,7 +53,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 				</p>
 
 				<!-- Mobile Image Placement -->
-				<div class="mobile-image-wrapper" onclick={`handleHeroClick('${heroModalTitle}', '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}')`} style="cursor: pointer;">
+				<div class="mobile-image-wrapper" onclick={`handleHeroClick(event, '${heroModalTitle}', '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}')`} style="cursor: pointer;">
 					<picture>
 						<!-- Don't load on desktop (min-width: 1025px) -->
 						<source media="(min-width: 1025px)" srcset={transparentPixel} />
@@ -84,7 +84,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 			</div>
 
 			<div class="hero-right">
-				<div class="desktop-image-wrapper" onclick={`handleHeroClick('${heroModalTitle}', '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}')`} style="cursor: pointer;">
+				<div class="desktop-image-wrapper" onclick={`handleHeroClick(event, '${heroModalTitle}', '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}')`} style="cursor: pointer;">
 					<picture>
 						<!-- Don't load on mobile (max-width: 1024px) -->
 						<source media="(max-width: 1024px)" srcset={transparentPixel} />
@@ -570,24 +570,13 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 </style>
 
 <script is:inline>
-	let heroClickTimeout;
-	window.handleHeroClick = function (title, subtitle, ctaText, videoSrc) {
-		if (heroClickTimeout) {
-			clearTimeout(heroClickTimeout);
-			heroClickTimeout = null;
-			// Double Click: Open Video Modal if source exists
-			if (videoSrc && window.openVideoModal) {
-				window.openVideoModal();
-			} else {
-				// Fallback to form if no video
-				window.openZohoModal(title, subtitle, ctaText);
-			}
+	window.handleHeroClick = function (event, title, subtitle, ctaText, videoSrc) {
+		// Shift + Click: Open Video Modal if source exists
+		if (event.shiftKey && videoSrc && window.openVideoModal) {
+			window.openVideoModal();
 		} else {
-			heroClickTimeout = setTimeout(() => {
-				heroClickTimeout = null;
-				// Single Click: Open Form Modal
-				window.openZohoModal(title, subtitle, ctaText);
-			}, 250); // 250ms delay to wait for double click
+			// Regular Click: Open Form Modal
+			window.openZohoModal(title, subtitle, ctaText);
 		}
 	};
 </script>
