@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 // import Navbar from "../components/Navbar.astro";
-import Footer from "../components/generic/Footer.astro";
+import Footer from "../components/generic/FooterAnatomy.astro";
 import Layout from "../layouts/UpdatedLayout.astro";
 import FAQSection from "../components/generic/FAQSection.astro";
 import StepsSection from "../components/generic/StepsSection.astro";
@@ -57,6 +57,7 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 		questions={concepts.questions}
 		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
 		conceptCards={concepts.conceptCards}
+		ctaText={concepts.ctaText}
 	/>
 	<!-- <ConceptsSection heading={concepts.heading} subheading={concepts.subheading} features={concepts.features} videoSrc={concepts.video} mobileVideoSrc={concepts.mobileVideo} questions={concepts.questions} videoPlaybackSpeed={concepts.videoPlaybackSpeed} /> -->
 

@@ -64,17 +64,17 @@ import type { LandingPageData } from "../landingPageData";
 
 export const anatomyData: LandingPageData = {
     hero: {
-        title: 'Anatomy & Physiology <br/>Feeling Impossible? <br/>Master It in <span class="highlight">2-Min Videos.</span>',
+        title: 'Anatomy Feeling Impossible? <br/>Master It in <span class="highlight">2-Minute Videos.</span>',
         subtitle: "From confused to confident. Anatomy and Physiology finally made simple for health science students. Backed by 20 years of trusted science education.",
         mobileSubtitle: "Anatomy and Physiology made simple for health science students.",
         ctaTitle: "See what stress-free learning looks like",
-        heroFormCta: "Start Learning - It's Free",
+        heroFormCta:"Start Learning Anatomy for Free",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
     },
     concepts: {
-        heading: 'Every <span>A&P</span> concept you need. <span>Under 2 minutes.</span>',
+        heading: 'Every <span>Anatomy</span> concept you need. <span>Under 2 minutes.</span>',
         subheading: "One concept at a time, explained with short videos.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
@@ -105,7 +105,8 @@ export const anatomyData: LandingPageData = {
             { icon: conceptsSectionIcon6, text: "How do cells communicate with each other?" }, 
             { icon: conceptsSectionIcon6, text: "What factors cause genetic mutations?" },
             { icon: conceptsSectionIcon6, text: "How do organisms maintain homeostasis?" },
-        ]
+        ],
+        ctaText: "Explore Anatomy Courses"
     },
     steps: {
         title: `JoVE Coach is more than a study tool - <span class="highlight">it's <img src="${conceptsSectionIcon1.src}" alt="JoVE Coach" style="width: 27px; height: auto; margin-bottom: -5px;" /> that helps you finally get it.</span>`,
@@ -300,7 +301,7 @@ export const anatomyData: LandingPageData = {
   answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
 },
 {
-  question: "What Anatomy & Physiology topics do you cover?",
+  question: "What Anatomy topics do you cover?",
   answer: "From cells and tissues to major systems—skeletal, muscular, nervous, cardiovascular, respiratory, and more.",
 },
 {

@@ -31,9 +31,10 @@ interface Props {
 	questions?: ConceptQuestion[];
 	videoPlaybackSpeed?: number;
 	conceptCards?: any[];
+	ctaText?: string;
 }
 
-const { heading, subheading, features, videoSrc, mobileVideoSrc, questions, videoPlaybackSpeed = 1.0, conceptCards } = Astro.props;
+const { heading, subheading, features, videoSrc, mobileVideoSrc, questions, videoPlaybackSpeed = 1.0, conceptCards, ctaText = "Explore what 1M+ students see" } = Astro.props;
 
 // Icon mapping
 const iconMap: Record<string, ImageMetadata> = {
@@ -660,7 +661,7 @@ const featuresList = features || defaultFeatures;
 
 		<!-- CTA -->
 		<div class="cta">
-			<button onclick="window.openZohoModal && window.openZohoModal()">Explore what 1M+ students see</button>
+			<button onclick="window.openZohoModal && window.openZohoModal()">{ctaText}</button>
 		</div>
 	</div>
 </section>

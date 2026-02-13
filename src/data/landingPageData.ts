@@ -142,6 +142,7 @@ export interface LandingPageData {
 			icon: ImageMetadata;
 			text: string;
 		}[];
+		ctaText?: string;
 	};
 	steps: {
 		title: string;
