@@ -3,6 +3,12 @@ import { Image } from "astro:assets";
 // import footerSideArrow from "../../assets/footerSideArrow.svg";
 // import copyrightIcon from "../../assets/copyrightIcon.svg";
 import joveWhitelogo from "../../assets/jove-whitelogo.svg";
+
+interface Props {
+	seoText?: string;
+}
+
+const { seoText } = Astro.props;
 ---
 
 <style is:inline>
@@ -393,7 +399,7 @@ import joveWhitelogo from "../../assets/jove-whitelogo.svg";
 	<div class="footer-top">
 		<div style="display: flex; flex-direction: column; gap: 10px;">
 			<Image alt="FooterLogo" src={joveWhitelogo} class="footer-logo" />
-			<p class="footer-seo-text"> JoVE Coach offers Anatomy courses with expert-verified 2-minute video lessons across core human anatomy topics, including skeletal, muscular, nervous, cardiovascular, and more. </p>
+			{seoText && <p class="footer-seo-text" set:html={seoText} />}
 		</div>
 	</div>
 

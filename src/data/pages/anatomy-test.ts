@@ -64,17 +64,17 @@ import type { LandingPageData } from "../landingPageData";
 
 export const anatomyData: LandingPageData = {
     hero: {
-        title: 'Anatomy Feeling Impossible? <br/>Master It in <span class="highlight">2-Minute Videos.</span>',
+        title: 'Anatomy & Physiology <br/>Feeling Impossible? <br/>Master It in <span class="highlight">2-Min Videos.</span>',
         subtitle: "From confused to confident. Anatomy and Physiology finally made simple for health science students. Backed by 20 years of trusted science education.",
         mobileSubtitle: "Anatomy and Physiology made simple for health science students.",
         ctaTitle: "See what stress-free learning looks like",
-        heroFormCta:"Start Learning Anatomy for Free",
+        heroFormCta:"Start Learning <strong> &nbsp;Anatomy&nbsp;</strong> for Free",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
     },
     concepts: {
-        heading: 'Every <span>Anatomy</span> concept you need. <span>Under 2 minutes.</span>',
+        heading: 'Every <span>A&P</span> concept you need. <span>Under 2 minutes.</span>',
         subheading: "One concept at a time, explained with short videos.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
@@ -325,6 +325,7 @@ export const anatomyData: LandingPageData = {
     footer: {
         title: "The Smarter Way to Learn Anatomy & Physiology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Start My Free Trial",
+        seoText: "JoVE Coach offers Anatomy courses with expert-verified 2-minute videos across core human anatomy topics, including skeletal, muscular, nervous, cardiovascular and more."
     }
 };

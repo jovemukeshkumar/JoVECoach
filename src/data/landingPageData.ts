@@ -177,6 +177,7 @@ export interface LandingPageData {
 		subtitle: string;
 		ctaText: string;
 		image?: ImageMetadata;
+		seoText?: string;
 	};
 	heroModal?: {
 		title: string;
