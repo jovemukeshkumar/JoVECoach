@@ -59,6 +59,12 @@ export const highSchoolChemistryData: LandingPageData = {
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
+        heroModal: {
+            title: "Watch the 2-Minute Video",
+            subtitle: "Enter your details for instant access.",
+            ctaText: "Continue to Video",
+            videoSrc: ChemistryCarouselDesktop
+        },
     },
     concepts: {
         heading: 'Every <span>Chemistry</span> concept you need. <span>Under 2 minutes.</span>',

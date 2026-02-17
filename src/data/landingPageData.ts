@@ -121,6 +121,12 @@ export interface LandingPageData {
 		trustText: string;
 		image: ImageMetadata;
 		mobileImage: ImageMetadata;
+		heroModal?: {
+			title: string;
+			subtitle: string;
+			ctaText: string;
+			videoSrc?: string;
+		};
 	};
 	concepts: {
 		heading: string;
@@ -179,10 +185,5 @@ export interface LandingPageData {
 		image?: ImageMetadata;
 		seoText?: string;
 	};
-	heroModal?: {
-		title: string;
-		subtitle: string;
-		ctaText: string;
-		videoSrc?: string;
-	};
+
 }

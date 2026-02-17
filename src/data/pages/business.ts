@@ -65,6 +65,12 @@ export const businessJanData: LandingPageData = {
         trustText: "Trusted by 1 Million+ learners",
         image: HeroImage,
         mobileImage: HeroImage,
+        heroModal: {
+            title: "Watch the 2-Minute Video",
+            subtitle: "Enter your details for instant access.",
+            ctaText: "Continue to Video",
+            videoSrc: biologyCarouselDesktop
+        },
     },
     concepts: {
         heading: 'Every <span>Business</span> concept you need. <span>Under 2 minutes.</span>',

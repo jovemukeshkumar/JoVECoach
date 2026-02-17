@@ -72,6 +72,12 @@ export const anatomyData: LandingPageData = {
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
+        heroModal: {
+            title: "Watch the 2-Minute Video",
+            subtitle: "Enter your details for instant access to this lesson and more like it.",
+            ctaText: "Continue to Video",
+            videoSrc: HeroVideo
+        },
     },
     concepts: {
         heading: 'Every <span>A&P</span> concept you need. <span>Under 2 minutes.</span>',
@@ -316,12 +322,7 @@ export const anatomyData: LandingPageData = {
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     },
-    heroModal: {
-        title: "Watch the 2-Minute Video",
-        subtitle: "Enter your details for instant access to this lesson and more like it.",
-        ctaText: "Continue to Video",
-        videoSrc: HeroVideo
-    },
+
     footer: {
         title: "The Smarter Way to Learn Anatomy & Physiology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",

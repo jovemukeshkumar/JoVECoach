@@ -13,9 +13,10 @@ import LearnerPersonas from "../components/generic/LearnerPersonas.astro";
 import PricingSection from "../components/generic/PricingSection.astro";
 import ZohoFooterFormNewPage from "../components/ZohoFooterFormNewPage.astro";
 import ZohoModalNewPage from "../components/ZohoModalNewPage.astro";
+import VideoModal from "../components/VideoModal.astro";
 import ComparisonTable from "../components/generic/ComparisonTable.astro";
 import NavLogo from "../assets/NavLogo.svg";
-import HeroSection from "../components/generic/HeroSection.astro";
+import HeroSection from "../components/generic/HeroSectionModal.astro";
 import Navbar from "../components/generic/Navbar.astro";
 
 import { highSchoolChemistryData } from "../data/pages/highschool-chemistry";
@@ -32,7 +33,20 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	<!-- <HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionDesktopPoster.src} /> -->
 	<Navbar />
 
-	<HeroSection heroImage={hero.image} mobileImgSrc={hero.mobileImage} title={hero.title} subtitle={hero.subtitle} mobileSubtitle={hero.mobileSubtitle} trustText={hero.trustText} ctaTitle={hero.ctaTitle} heroFormCta={hero.heroFormCta} />
+	<HeroSection
+		heroImage={hero.image}
+		mobileImgSrc={hero.mobileImage}
+		title={hero.title}
+		subtitle={hero.subtitle}
+		mobileSubtitle={hero.mobileSubtitle}
+		trustText={hero.trustText}
+		ctaTitle={hero.ctaTitle}
+		heroFormCta={hero.heroFormCta}
+		heroModalTitle={hero.heroModal?.title}
+		heroModalSubtitle={hero.heroModal?.subtitle}
+		heroModalCtaText={hero.heroModal?.ctaText}
+		heroModalVideoSrc={hero.heroModal?.videoSrc}
+	/>
 
 	<ConceptsSection
 		heading={concepts.heading}
@@ -43,6 +57,9 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 		questions={concepts.questions}
 		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
 		conceptCards={concepts.conceptCards}
+		modalTitle={hero.heroModal?.title}
+		modalSubtitle={hero.heroModal?.subtitle}
+		modalCtaText={hero.heroModal?.ctaText}
 	/>
 
 	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} />
@@ -51,6 +68,7 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 
 	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} />
 	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
+	<VideoModal videoSrc={hero.heroModal?.videoSrc} />
 
 	<Footer />
 
