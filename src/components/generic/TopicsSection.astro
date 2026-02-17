@@ -32,9 +32,12 @@ interface Props {
 	videoPlaybackSpeed?: number;
 	conceptCards?: any[];
 	ctaText?: string;
+	modalTitle?: string;
+	modalSubtitle?: string;
+	modalCtaText?: string;
 }
 
-const { heading, subheading, features, videoSrc, mobileVideoSrc, questions, videoPlaybackSpeed = 1.0, conceptCards, ctaText = "Explore what 1M+ students see" } = Astro.props;
+const { heading, subheading, features, videoSrc, mobileVideoSrc, questions, videoPlaybackSpeed = 1.0, conceptCards, ctaText = "Explore what 1M+ students see", modalTitle, modalSubtitle, modalCtaText } = Astro.props;
 
 // Icon mapping
 const iconMap: Record<string, ImageMetadata> = {
@@ -529,7 +532,7 @@ const featuresList = features || defaultFeatures;
 
 					<div class="concept-cards-container">
 						{conceptCards.map(card => (
-							<div class="concept-card">
+							<div class="concept-card" onclick={`window.openZohoModal && window.openZohoModal('${modalTitle || ""}', '${modalSubtitle || ""}', '${modalCtaText || ""}')`}>
 								<div class="card-image-wrapper">
 									<Image src={card.image} alt={card.title} class="card-bg-image" />
 									<div class="card-overlay">

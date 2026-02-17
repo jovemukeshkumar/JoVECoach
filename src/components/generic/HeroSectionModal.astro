@@ -571,11 +571,8 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 <script is:inline>
 	window.handleHeroClick = function (event, title, subtitle, ctaText, videoSrc) {
-		// Shift + Click: Open Video Modal if source exists
-		if (event.shiftKey && videoSrc && window.openVideoModal) {
-			window.openVideoModal();
-		} else {
-			// Regular Click: Open Form Modal
+		// Always Open Form Modal
+		if (window.openZohoModal) {
 			window.openZohoModal(title, subtitle, ctaText);
 		}
 	};

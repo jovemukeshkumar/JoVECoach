@@ -318,7 +318,7 @@ export const anatomyData: LandingPageData = {
     },
     heroModal: {
         title: "Watch the 2-Minute Video",
-        subtitle: "Enter your details for instant access to this lesson and more like it.",
+        subtitle: "Enter your details for instant access.",
         ctaText: "Continue to Video",
         videoSrc: HeroVideo
     },
