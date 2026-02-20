@@ -1,0 +1,76 @@
+---
+export const prerender = true;
+// import Navbar from "../components/Navbar.astro";
+import Footer from "../components/generic/Footer.astro";
+import Layout from "../layouts/UpdatedLayout.astro";
+import FAQSection from "../components/generic/FAQSection.astro";
+import StepsSection from "../components/generic/StepsSection.astro";
+import FirstCTASection from "../components/generic/FirstCTASection.astro";
+import SecondCTASection from "../components/generic/SecondCTASection.astro";
+import ConceptsSection from "../components/generic/TopicsSection.astro";
+// import Testimonial from "../components/homePage/testimonial.astro";
+import LearnerPersonas from "../components/generic/LearnerPersonas.astro";
+import PricingSection from "../components/generic/PricingSection.astro";
+import ZohoFooterFormNewPage from "../components/ZohoFooterFormNewPage.astro";
+import ZohoModalNewPage from "../components/ZohoModalNewPage.astro";
+import VideoModal from "../components/VideoModal.astro";
+import ComparisonTable from "../components/generic/ComparisonTable.astro";
+import NavLogo from "../assets/NavLogo.svg";
+import HeroSection from "../components/generic/HeroSectionModal.astro";
+import Navbar from "../components/generic/Navbar.astro";
+
+import { mcatPhysicsAndChemistryData } from "../data/pages/mcat-physics-and-chemistry";
+// Select data subset (e.g. 'science-gen')
+const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = mcatPhysicsAndChemistryData;
+---
+
+<Layout title="JoVE Coach | Master Science with AI | AI-Powered Learning" description="Struggling with Science? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master any concept in minutes. Try free for 7 days." robots="noindex, nofollow">
+	<link rel="preload" href={hero.mobileImage.src} as="image" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
+	<link rel="preload" href={hero.image.src} as="image" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+
+	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+
+	<!-- <HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionDesktopPoster.src} /> -->
+	<Navbar />
+
+	<HeroSection
+		heroImage={hero.image}
+		mobileImgSrc={hero.mobileImage}
+		title={hero.title}
+		subtitle={hero.subtitle}
+		mobileSubtitle={hero.mobileSubtitle}
+		trustText={hero.trustText}
+		ctaTitle={hero.ctaTitle}
+		heroFormCta={hero.heroFormCta}
+		heroModalTitle={hero.heroModal?.title}
+		heroModalSubtitle={hero.heroModal?.subtitle}
+		heroModalCtaText={hero.heroModal?.ctaText}
+		heroModalVideoSrc={hero.heroModal?.videoSrc}
+	/>
+
+	<ConceptsSection
+		heading={concepts.heading}
+		subheading={concepts.subheading}
+		features={concepts.features}
+		videoSrc={concepts.video}
+		mobileVideoSrc={concepts.mobileVideo}
+		questions={concepts.questions}
+		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
+		conceptCards={concepts.conceptCards}
+		modalTitle={hero.heroModal?.title}
+		modalSubtitle={hero.heroModal?.subtitle}
+		modalCtaText={hero.heroModal?.ctaText}
+	/>
+
+	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} />
+	<ComparisonTable title={comparison.title} subtitle={comparison.subtitle} tagline={comparison.tagline} ctaText={comparison.ctaText} items={comparison.items} features={comparison.features} />
+	<FAQSection heading={faq.heading} items={faq.items} />
+
+	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} />
+	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
+	<VideoModal videoSrc={hero.heroModal?.videoSrc} />
+
+	<Footer />
+
+	<!-- Hidden Master Form for Submissions -->
+</Layout>
