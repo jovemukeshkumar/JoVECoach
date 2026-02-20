@@ -1,13 +1,13 @@
 
 // Hero Images
-import HeroImage from "../../assets/highschool-biology-hero.webp";
+import HeroImage from "../../assets/ap-bio-hero-v2.webp";
 import biologyCarouselDesktop from "../../assets/biology-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/biology-carousel-mobile.webm";
-import conceptsImg1 from "../../assets/highschool-biology-concepts-img1.webp"; // Placeholder
-import conceptsImg2 from "../../assets/biology-concepts-img2.webp"; // Placeholder
-import conceptsImg3 from "../../assets/highschool-biology-concepts-img3.webp"; // Placeholder
-import conceptsImg4 from "../../assets/highschool-biology-concepts-img4.webp"; // Placeholder       
-import conceptsImg5 from "../../assets/biology-concepts-img5.webp"; // Placeholder       
+import conceptsImg1 from "../../assets/AP-Bio-1-v2.webp";
+import conceptsImg2 from "../../assets/AP-Bio-2-v2.webp";
+import conceptsImg3 from "../../assets/AP-Bio-3-v2.webp";
+import conceptsImg4 from "../../assets/AP-Bio-4-v2.webp";       
+import conceptsImg5 from "../../assets/AP-Bio-5-v2.webp";       
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -51,7 +51,7 @@ import type { LandingPageData } from "../landingPageData";
 
 export const apBiologyData: LandingPageData = {
     hero: {
-        title: 'Struggling with AP Chemistry? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
+        title: 'Struggling with AP Biology? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
         subtitle: "From confused to confident. Biology finally made simple. 20 years of trusted science education.",
         mobileSubtitle: "From confused to confident. Biology finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
@@ -67,7 +67,7 @@ export const apBiologyData: LandingPageData = {
         },
     },
     concepts: {
-        heading: 'Every <span>Biology</span> concept you need. <span>Under 2 minutes.</span>',
+        heading: 'Every <span>AP Biology</span> concept you need. <span>Under 2 minutes.</span>',
         subheading: "One concept at a time, explained with short videos.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
@@ -80,11 +80,11 @@ export const apBiologyData: LandingPageData = {
         mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
         conceptCards: [
-            { image: conceptsImg1, title: "Acid-Base Titration Curves", views: "141.5K", time: "2:23" },
-            { image: conceptsImg2, title: "Kinetic Models", views: "156.8K", time: "1:31" },
-            { image: conceptsImg3, title: "Genetics & Heredity", views: "27.9K", time: "2:05" },
-            { image: conceptsImg4, title: "Evolution & Natural Selection", views: "129.6K", time: "1:31" },
-            { image: conceptsImg5, title: "Mitosis & Meiosis ", views: "70.6K", time: "2:58" },
+            { image: conceptsImg1, title: "Nucleic Acids", views: "190K", time: "2:43" },
+            { image: conceptsImg2, title: "Membrane Transporters", views: "18.2K", time: "1:31" },
+            { image: conceptsImg3, title: "Gene Expression", views: "196.9K", time: "1:42" },
+            { image: conceptsImg4, title: "Population Genetics", views: "64.8K", time: "1:25" },
+            { image: conceptsImg5, title: "Transcription", views: "156.7K", time: "1:10" },
         ],
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
@@ -293,8 +293,8 @@ export const apBiologyData: LandingPageData = {
                 answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
             },
             {
-                question: "What Biology subjects do you cover?",
-                answer: "Cell Biology, Microbiology, Molecular Biology and more.",
+                question: "What AP Biology topics do you cover?",
+                answer: "Evolution, Energetics, Information Transfer, System Interactions, and more.",
             },
             {
                 question: "Can I cancel anytime?",
@@ -303,12 +303,12 @@ export const apBiologyData: LandingPageData = {
         ]
     },
     modal: {
-        title: "The Smarter Way to Learn Biology",
+        title: "The Smarter Way to Learn AP Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     },
     footer: {
-        title: "The Smarter Way to Learn Biology",
+        title: "The Smarter Way to Learn AP Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     }
