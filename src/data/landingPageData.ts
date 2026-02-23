@@ -143,6 +143,7 @@ export interface LandingPageData {
 			title: string;
 			views: string;
 			time: string;
+			description?: string;
 		}[];
 		questions: {
 			icon: ImageMetadata;

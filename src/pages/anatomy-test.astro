@@ -21,7 +21,7 @@ import Navbar from "../components/generic/Navbar.astro";
 
 import { anatomyData } from "../data/pages/anatomy-test";
 // Select data subset (e.g. 'science-gen')
-const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer, heroModal } = anatomyData;
+const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = anatomyData;
 ---
 
 <Layout title="JoVE Coach | Master Anatomy with 2-Minute Videos" description="Struggling with Anatomy? Learn faster with 2-minute videos and short quizzes. Master key anatomy concepts with expert-verified lessons. Try free for 7 days." robots="noindex, nofollow">
@@ -42,10 +42,11 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 		trustText={hero.trustText}
 		ctaTitle={hero.ctaTitle}
 		heroFormCta={hero.heroFormCta}
-		heroModalTitle={heroModal?.title}
-		heroModalSubtitle={heroModal?.subtitle}
-		heroModalCtaText={heroModal?.ctaText}
-		heroModalVideoSrc={heroModal?.videoSrc}
+		heroModalTitle={hero.heroModal?.title}
+		heroModalSubtitle={hero.heroModal?.subtitle}
+		heroModalCtaText={hero.heroModal?.ctaText}
+		heroModalVideoSrc={hero.heroModal?.videoSrc}
+		showSubtitle={true}
 	/>
 
 	<ConceptsSection
@@ -58,9 +59,9 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
 		conceptCards={concepts.conceptCards}
 		ctaText={concepts.ctaText}
-		modalTitle={heroModal?.title}
-		modalSubtitle={heroModal?.subtitle}
-		modalCtaText={heroModal?.ctaText}
+		modalTitle={hero.heroModal?.title}
+		modalSubtitle={hero.heroModal?.subtitle}
+		modalCtaText={hero.heroModal?.ctaText}
 	/>
 	<!-- <ConceptsSection heading={concepts.heading} subheading={concepts.subheading} features={concepts.features} videoSrc={concepts.video} mobileVideoSrc={concepts.mobileVideo} questions={concepts.questions} videoPlaybackSpeed={concepts.videoPlaybackSpeed} /> -->
 
@@ -74,7 +75,7 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 
 	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} />
 	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
-	<VideoModal videoSrc={heroModal?.videoSrc} />
+	<VideoModal videoSrc={hero.heroModal?.videoSrc} />
 
 	<Footer seoText={footer?.seoText} />
 
