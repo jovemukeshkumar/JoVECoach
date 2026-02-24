@@ -68,7 +68,7 @@ export const collegeBiologyData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>Biology</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "Covers: Cell Biology · Genetics · Microbiology · Molecular Biology",
+        subheading: "A complete online biology course — built for college students.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
