@@ -68,7 +68,7 @@ export const highSchoolBiologyData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>Biology</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "Perfect for AP Biology, honors biology, and high school bio classes.",
+        subheading: "Perfect for AP Biology, Honors Biology, and high school biology classes.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },

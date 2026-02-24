@@ -68,7 +68,7 @@ export const highSchoolChemistryData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "Built for high school chemistry, AP Chem, and IB students.",
+        subheading: "Built for High School Chemistry, AP Chem, and IB students.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },

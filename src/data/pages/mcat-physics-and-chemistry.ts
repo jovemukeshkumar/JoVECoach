@@ -68,7 +68,7 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>MCAT Physics & Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "Covers: General Chemistry · Organic Chemistry · Mechanics · Thermodynamics.",
+        subheading: "A complete MCAT Physics and Chemistry prep course — built for top-scoring pre-med students.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
