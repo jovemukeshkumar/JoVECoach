@@ -52,7 +52,7 @@ import type { LandingPageData } from "../landingPageData";
 export const collegeBiologyData: LandingPageData = {
     hero: {
         title: 'Biology Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
-        subtitle: "From confused to confident. Biology finally made simple. 20 years of trusted science education.",
+        subtitle: "A complete online biology course — built for college students.",
         mobileSubtitle: "From confused to confident. Biology finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
         heroFormCta: "Start Learning - It’s Free",
@@ -68,7 +68,7 @@ export const collegeBiologyData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>Biology</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "One concept at a time, explained with short videos.",
+        subheading: "Covers: Cell Biology · Genetics · Microbiology · Molecular Biology",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -291,11 +291,11 @@ export const collegeBiologyData: LandingPageData = {
 },
 {
   question: "Will JoVE Coach help me pass my exams?",
-  answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
+  answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use. Including MCAT prep, AP Biology, and College Biology exams..",
 },
  {
                 question: "What Biology subjects do you cover?",
-                answer: "Endocrine system, Cell Biology, Genetics and more.",
+                answer: "Cell Biology, Genetics, Microbiology, Molecular Biology, Ecology, Evolution, and more.",
             },  
 {
   question: "Can I cancel anytime?",
@@ -307,11 +307,11 @@ export const collegeBiologyData: LandingPageData = {
     modal: {
         title: "The Smarter Way to Learn Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Get My Free Biology Tutor"
     },
     footer: {
         title: "The Smarter Way to Learn Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Get My Free Biology Tutor"
     }
 };

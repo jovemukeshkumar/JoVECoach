@@ -65,10 +65,10 @@ import type { LandingPageData } from "../landingPageData";
 export const anatomyData: LandingPageData = {
     hero: {
         title: 'Anatomy & Physiology <br/>Feeling Impossible? <br/>Master It in <span class="highlight">2-Min Videos.</span>',
-        subtitle: "From confused to confident. Anatomy and Physiology finally made simple for health science students. Backed by 20 years of trusted science education.",
+        subtitle: "Structured A&P courses — from body systems to exam prep",
         mobileSubtitle: "Anatomy and Physiology made simple for health science students.",
         ctaTitle: "See what stress-free learning looks like",
-        heroFormCta:"Start Learning <strong> &nbsp;Anatomy&nbsp;</strong> for Free",
+        heroFormCta:"Start  <strong> &nbsp;My A&P Course&nbsp;</strong> for Free",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
@@ -81,7 +81,7 @@ export const anatomyData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>A&P</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "One concept at a time, explained with short videos.",
+        subheading: "Structured A&P courses — from body systems to exam prep.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -93,11 +93,11 @@ export const anatomyData: LandingPageData = {
         mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
         conceptCards: [
-            { image: conceptsImg1, title: "Lymphatic System", views: "6.9K", time: "1:28" },
-            { image: conceptsImg2, title: "Nervous System", views: "7.4K", time: "1:18" },
-            { image: conceptsImg3, title: "Respiratory System", views: "10.1K", time: "1:23" },
-            { image: conceptsImg4, title: "Digestive System", views: "3.3K", time: "1:25" },
-            { image: conceptsImg5, title: "Endrocrine System", views: "14.2K", time: "1:10" },
+            { image: conceptsImg1, title: "Lymphatic System", views: "6.9K", time: "1:28", description: "Learn about the network of tissues and organs that help rid the body of toxins and waste." },
+            { image: conceptsImg2, title: "Nervous System", views: "7.4K", time: "1:18", description: "Explore the complex network of nerves and cells that carry messages to and from the brain." },
+            { image: conceptsImg3, title: "Respiratory System", views: "10.1K", time: "1:23", description: "Master the organs and tissues that help you breathe and exchange gases." },
+            { image: conceptsImg4, title: "Digestive System", views: "3.3K", time: "1:25", description: "Understand how the body breaks down food into nutrients for energy, growth, and repair." },
+            { image: conceptsImg5, title: "Endocrine System", views: "14.2K", time: "1:10", description: "Discover the glands that produce hormones regulating metabolism, growth, and tissue function." },
         ],
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
@@ -305,6 +305,14 @@ export const anatomyData: LandingPageData = {
 {
   question: "Will JoVE Coach help me pass my exams?",
   answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
+},
+{
+  question: "Will this help me prepare for nursing school entrance?",
+  answer: "Yes, covers all A&P body systems.",
+},
+{
+  question: "Do you cover both Anatomy AND Physiology?",
+  answer: "Yes, all body systems covered.",
 },
 {
   question: "What Anatomy topics do you cover?",

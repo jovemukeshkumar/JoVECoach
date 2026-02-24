@@ -8,7 +8,7 @@ import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm
 
 import conceptsImg1 from "../../assets/highschool-chemistry-concepts-img1-v1.webp";
 import conceptsImg2 from "../../assets/highschool-chemistry-concepts-img2-v1.webp";
-import conceptsImg3 from "../../assets/highschool-chemistry-concepts-img3-v1.webp";
+import conceptsImg3 from "../../assets/highschool-chemistry-concepts-img3-v2.webp";
 import conceptsImg4 from "../../assets/highschool-chemistry-concepts-img4-v1.webp";
 import conceptsImg5 from "../../assets/highschool-chemistry-concepts-img5-v1.webp";
 
@@ -52,11 +52,11 @@ import type { LandingPageData } from "../landingPageData";
 export const highSchoolChemistryData: LandingPageData = {
     hero: {
         title: 'Chemistry Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
-        subtitle: "From confused to confident. Chemistry finally made simple. 20 years of trusted science education.",
+        subtitle: "Built for high school chemistry, AP Chem, and IB students.",
         mobileSubtitle: "From confused to confident. Chemistry finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
         heroFormCta: "Start Learning - It's Free",
-        trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
+        trustText: "1,000,000+ students — from high school to university — trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
@@ -68,7 +68,7 @@ export const highSchoolChemistryData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "One concept at a time, explained with short videos.",
+        subheading: "Covers: Balancing Equations · Periodic Table · Acids & Bases · Stoichiometry · Atomic Structure.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -82,7 +82,7 @@ export const highSchoolChemistryData: LandingPageData = {
         conceptCards: [
             { image: conceptsImg1, title: "Chemical Equations", views: "81.9K", time: "3:10" },
             { image: conceptsImg2, title: "Distillation", views: "36.6K", time: "1:01" },
-            { image: conceptsImg3, title: "Aldehydes and Ketones", views: "145.8K", time: "1:32" },
+            { image: conceptsImg3, title: "Structure of Atoms", views: "28.8K", time: "2:28" },
             { image: conceptsImg4, title: "Periodic Table & Trends", views: "117.3K", time: "3:24" },
             { image: conceptsImg5, title: "States of Matter", views: "104.1K", time: "2:48" },
         ],
@@ -286,16 +286,20 @@ export const highSchoolChemistryData: LandingPageData = {
   answer: "A structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to take you from confused to confident without long courses.",
 },
 {
+  question: "I'm in high school — is this right for me?",
+  answer: "Yes, aligned to AP, IB, and standard HS curricula.",
+},
+{
   question: "How is this different from YouTube?",
   answer: "Videos are created by science experts, not content creators. AI finds exactly what you need and adds quick quizzes to confirm it clicked.",
 },
 {
   question: "Will JoVE Coach help me pass my exams?",
-  answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
+  answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use. Including AP Chemistry, SAT Chemistry Subject Test, and your regular class exams.",
 },
 {
                 question: "What Chemistry subjects do you cover?",
-                answer: "Analytical Chemistry, Organic Chemistry, States of Matter and more.",
+                answer: "Balancing Equations, Periodic Table, Atomic Structure, Acids & Bases, States of Matter, Stoichiometry — aligned to AP Chem and standard HS curricula.",
 },
 {
   question: "Can I cancel anytime?",

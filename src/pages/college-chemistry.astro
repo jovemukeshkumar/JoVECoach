@@ -33,20 +33,22 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	<!-- <HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionDesktopPoster.src} /> -->
 	<Navbar />
 
-	<HeroSection
-		heroImage={hero.image}
-		mobileImgSrc={hero.mobileImage}
-		title={hero.title}
-		subtitle={hero.subtitle}
-		mobileSubtitle={hero.mobileSubtitle}
-		trustText={hero.trustText}
-		ctaTitle={hero.ctaTitle}
-		heroFormCta={hero.heroFormCta}
-		heroModalTitle={hero.heroModal?.title}
-		heroModalSubtitle={hero.heroModal?.subtitle}
-		heroModalCtaText={hero.heroModal?.ctaText}
-		heroModalVideoSrc={hero.heroModal?.videoSrc}
-	/>
+	<div class="custom-hero">
+		<HeroSection
+			heroImage={hero.image}
+			mobileImgSrc={hero.mobileImage}
+			title={hero.title}
+			subtitle={hero.subtitle}
+			mobileSubtitle={hero.mobileSubtitle}
+			trustText={hero.trustText}
+			ctaTitle={hero.ctaTitle}
+			heroFormCta={hero.heroFormCta}
+			heroModalTitle={hero.heroModal?.title}
+			heroModalSubtitle={hero.heroModal?.subtitle}
+			heroModalCtaText={hero.heroModal?.ctaText}
+			heroModalVideoSrc={hero.heroModal?.videoSrc}
+		/>
+	</div>
 
 	<ConceptsSection
 		heading={concepts.heading}
@@ -74,3 +76,14 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 
 	<!-- Hidden Master Form for Submissions -->
 </Layout>
+
+<style>
+	.custom-hero :global(.hero-left h1) {
+		font-size: 30px !important;
+	}
+	@media (max-width: 640px) {
+		.custom-hero :global(.hero-left h1) {
+			font-size: 22px !important; /* Retaining mobile size from component if needed, or adjust as requested */
+		}
+	}
+</style>

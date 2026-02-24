@@ -52,11 +52,11 @@ import type { LandingPageData } from "../landingPageData";
 export const highSchoolBiologyData: LandingPageData = {
     hero: {
         title: 'Biology Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
-        subtitle: "From confused to confident. Biology finally made simple. 20 years of trusted science education.",
+        subtitle: "Perfect for AP Biology, honors biology, and high school bio classes.",
         mobileSubtitle: "From confused to confident. Biology finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
         heroFormCta: "Start Learning - It's Free",
-        trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
+        trustText: "1,000,000+ students — from high school to university — trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
@@ -277,6 +277,10 @@ export const highSchoolBiologyData: LandingPageData = {
                 answer: "You can explore videos for free—no sign-up needed. For full access, start a 7-day free trial to unlock all videos and micro-courses.",
             },
             {
+                question: "I'm in high school — is this right for me?",
+                answer: "Yes, aligned to AP, IB, and standard HS curricula.",
+            },
+            {
                 question: "How long are the videos?",
                 answer: "About 2 minutes each. One concept, clearly explained. No filler.",
             },
@@ -290,11 +294,11 @@ export const highSchoolBiologyData: LandingPageData = {
             },
             {
                 question: "Will JoVE Coach help me pass my exams?",
-                answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
+                answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use. Including EOC exams, AP Biology, IB Biology, and regular class tests.",
             },
             {
                 question: "What Biology subjects do you cover?",
-                answer: "Cell Biology, Microbiology, Molecular Biology and more.",
+                answer: "Genetics, Evolution, Cell Division, Photosynthesis, Ecology — aligned to AP Biology and standard HS curricula.",
             },
             {
                 question: "Can I cancel anytime?",

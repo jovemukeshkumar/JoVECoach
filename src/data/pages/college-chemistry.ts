@@ -7,7 +7,7 @@ import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm
 
 
 import conceptsImg1 from "../../assets/chemistry-concepts-img1-v2.webp";
-import conceptsImg2 from "../../assets/chemistry-concepts-img2.webp";
+import conceptsImg2 from "../../assets/chemistry-concepts-img2-v2.webp";
 import conceptsImg3 from "../../assets/chemistry-concepts-img3.webp";
 import conceptsImg4 from "../../assets/chemistry-concepts-img4.webp";
 import conceptsImg5 from "../../assets/chemistry-concepts-img5.webp";
@@ -51,8 +51,10 @@ import type { LandingPageData } from "../landingPageData";
 
 export const ChemistryGenJanData: LandingPageData = {
     hero: {
-        title: 'Chemistry Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
+        title: 'Stuck on Chemistry Homework? <br class="desktop-br" /> Master Any Concept in <span class="highlight">2-Minutes.</span>',
         subtitle: "From confused to confident. Chemistry finally made simple. 20 years of trusted science education.",
+        // title: 'Chemistry Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
+        // subtitle: "From confused to confident. Chemistry finally made simple. 20 years of trusted science education.",
         mobileSubtitle: "From confused to confident. Chemistry finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
         heroFormCta: "Start Learning - It's Free",
@@ -68,7 +70,7 @@ export const ChemistryGenJanData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "One concept at a time, explained with short videos.",
+        subheading: "Your Gen Chem crash course — one concept at a time.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -81,7 +83,7 @@ export const ChemistryGenJanData: LandingPageData = {
         videoPlaybackSpeed: 0.75,
         conceptCards: [
             { image: conceptsImg1, title: "Reaction: Stereochemistry", views: "10.4K", time: "1:26" },
-            { image: conceptsImg2, title: "Cellular Respiration", views: "2K", time: "1:19" },
+            { image: conceptsImg2, title: "Stoichiometry", views: "78K", time: "2:57" },
             { image: conceptsImg3, title: "Dynamic Equilibrium", views: "63K", time: "2:20" },
             { image: conceptsImg4, title: "Thermodynamics", views: "41.1K", time: "2:16" },
             { image: conceptsImg5, title: "Affinity Chromatography", views: "3.1K", time: "1:03" },
@@ -295,7 +297,7 @@ export const ChemistryGenJanData: LandingPageData = {
 },
 {
                 question: "What Chemistry subjects do you cover?",
-                answer: "Chemical quantities and Aqueous reactions, Analytical Chemistry, Organic Chemistry and more.",
+                answer: "Chemical quantities and Aqueous reactions, General Chemistry, Analytical Chemistry, Organic Chemistry, Stoichiometry, Thermodynamics and more.",
 },
 {
   question: "Can I cancel anytime?",
