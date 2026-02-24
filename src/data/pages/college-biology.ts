@@ -312,6 +312,7 @@ export const collegeBiologyData: LandingPageData = {
     footer: {
         title: "The Smarter Way to Learn Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Start My Free Trial",
+        seoText: "JoVE Coach offers College Biology courses with expert-verified 2-minute videos across core biology topics, including Cell Biology, Genetics, Microbiology, Molecular Biology and more."
     }
 };

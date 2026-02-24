@@ -68,7 +68,7 @@ export const apBiologyData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>AP Biology</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "One concept at a time, explained with short videos.",
+        subheading: "Built for high school students preparing for the AP exam.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -310,6 +310,7 @@ export const apBiologyData: LandingPageData = {
     footer: {
         title: "The Smarter Way to Learn AP Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Start My Free Trial",
+        seoText: "JoVE Coach offers AP Biology courses with expert-verified 2-minute videos across essential AP biology topics, including Evolution, Cellular Energetics, Information Transfer, Genetics, Ecology and more."
     }
 };

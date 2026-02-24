@@ -68,7 +68,7 @@ export const apChemistryData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>AP Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "One concept at a time, explained with short videos.",
+        subheading: "Built for high school students preparing for the AP exam.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -312,6 +312,7 @@ export const apChemistryData: LandingPageData = {
     footer: {
         title: "The Smarter Way to Learn AP Chemistry",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Start My Free Trial",
+        seoText: "JoVE Coach offers AP Chemistry courses with expert-verified 2-minute videos across essential AP chemistry topics, including Atomic Structure, Thermodynamics, Equilibrium, Acids and Bases, Kinetics, Intermolecular Forces and more."
     }
 };

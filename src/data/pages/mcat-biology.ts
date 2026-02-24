@@ -68,7 +68,7 @@ export const mcatBiologyData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>MCAT Biology</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "A complete MCAT Biology prep course — built for students aiming for top scores",
+        subheading: "A complete MCAT Biology prep course — built for students aiming for top scores.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -310,6 +310,7 @@ export const mcatBiologyData: LandingPageData = {
     footer: {
         title: "The Smarter Way to Learn MCAT Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Start My Free Trial",
+        seoText: "JoVE Coach offers MCAT Biology courses with expert-verified 2-minute videos across core MCAT biology topics, including Biochemistry, Molecular Biology, Cell Biology, Genetics and more."
     }
 };

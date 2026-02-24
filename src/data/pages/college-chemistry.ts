@@ -314,6 +314,7 @@ export const ChemistryGenJanData: LandingPageData = {
     footer: {
         title: "The Smarter Way to Learn Chemistry",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Start My Free Trial",
+        seoText: "JoVE Coach offers College Chemistry courses with expert-verified 2-minute videos across core chemistry topics, including Atomic Structure, Chemical Bonding, Thermodynamics, Acids & Bases, Electrochemistry and more."
     }
 };

@@ -316,6 +316,7 @@ export const highSchoolChemistryData: LandingPageData = {
     footer: {
         title: "The Smarter Way to Learn Chemistry",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Start My Free Trial",
+        seoText: "JoVE Coach offers High School Chemistry courses with expert-verified 2-minute videos across essential chemistry topics, including Balancing Equations, Periodic Table, Acids & Bases, Stoichiometry, Atomic Structure and more."
     }
 };

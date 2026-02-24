@@ -68,7 +68,7 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>MCAT Physics & Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "A complete MCAT Physics and Chemistry prep course — built for top-scoring pre-med students.",
+        subheading: "Perfect for MCAT prep and pre-med success.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -305,13 +305,14 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
         ]
     },
     modal: {
-        title: "The Smarter Way to Learn Chemistry",
+        title: "The Smarter Way to Learn MCAT Physics & Chemistry",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     },
     footer: {
-        title: "The Smarter Way to Learn Chemistry",
+        title: "The Smarter Way to Learn MCAT Physics & Chemistry",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Start My Free Trial",
+        seoText: "JoVE Coach offers MCAT Physics and Chemistry courses with expert-verified 2-minute videos across core MCAT topics, including General Chemistry, Organic Chemistry, Mechanics, Thermodynamics and more."
     }
 };

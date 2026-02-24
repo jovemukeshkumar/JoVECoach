@@ -314,6 +314,7 @@ export const highSchoolBiologyData: LandingPageData = {
     footer: {
         title: "The Smarter Way to Learn Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Start My Free Trial"
+        ctaText: "Start My Free Trial",
+        seoText: "JoVE Coach offers High School Biology courses with expert-verified 2-minute videos across essential biology topics, including Cell Biology, Genetics, Photosynthesis, Evolution, Human Body Systems and more."
     }
 };
