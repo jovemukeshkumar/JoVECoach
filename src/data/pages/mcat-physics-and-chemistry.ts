@@ -1,16 +1,16 @@
 
 // Hero Images
-import HeroImage from "../../assets/highschool-chemistry-hero.webp";
+import HeroImage from "../../assets/MCAT-chem&Phy-hero-v1.webp";
 
 import ChemistryCarouselDesktop from "../../assets/chemistry-carousel-desktop.webm";
 import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm";
 
 
-import conceptsImg1 from "../../assets/highschool-chemistry-concepts-img1-v1.webp";
-import conceptsImg2 from "../../assets/highschool-chemistry-concepts-img2-v1.webp";
-import conceptsImg3 from "../../assets/highschool-chemistry-concepts-img3-v1.webp";
-import conceptsImg4 from "../../assets/highschool-chemistry-concepts-img4-v1.webp";
-import conceptsImg5 from "../../assets/highschool-chemistry-concepts-img5-v1.webp";
+import conceptsImg1 from "../../assets/MCAT-phy-1-v1.webp";
+import conceptsImg2 from "../../assets/MCAT-phy-2-v1.webp";
+import conceptsImg3 from "../../assets/MCAT-phy-3-v1.webp";
+import conceptsImg4 from "../../assets/MCAT-phy-4-v1.webp";
+import conceptsImg5 from "../../assets/MCAT-phy-5-v1.webp";
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -51,7 +51,7 @@ import type { LandingPageData } from "../landingPageData";
 
 export const mcatPhysicsAndChemistryData: LandingPageData = {
     hero: {
-        title: 'Chemistry Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
+        title: 'MCAT Physics & Chemistry Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
         subtitle: "From confused to confident. Chemistry finally made simple. 20 years of trusted science education.",
         mobileSubtitle: "From confused to confident. Chemistry finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
@@ -67,8 +67,8 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
         },
     },
     concepts: {
-        heading: 'Every <span>Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "One concept at a time, explained with short videos.",
+        heading: 'Every <span>MCAT Physics & Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
+        subheading: "Covers: General Chemistry · Organic Chemistry · Mechanics · Thermodynamics.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -80,11 +80,11 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
         mobileVideo: ChemistryCarouselMobile,
         videoPlaybackSpeed: 0.75,
         conceptCards: [
-            { image: conceptsImg1, title: "Chemical Equations", views: "81.9K", time: "3:10" },
-            { image: conceptsImg2, title: "Distillation", views: "36.6K", time: "1:01" },
-            { image: conceptsImg3, title: "Aldehydes and Ketones", views: "145.8K", time: "1:32" },
-            { image: conceptsImg4, title: "Periodic Table & Trends", views: "117.3K", time: "3:24" },
-            { image: conceptsImg5, title: "States of Matter", views: "104.1K", time: "2:48" },
+            { image: conceptsImg1, title: "Ionic Bonding", views: "49.2K", time: "2:48" },
+            { image: conceptsImg2, title: "Bernoulli's Equation", views: "15.8K", time: "00:59" },
+            { image: conceptsImg3, title: "Doppler Effect", views: "6.4K", time: "00:56" },
+            { image: conceptsImg4, title: "Coulomb's Law", views: "11.7K", time: "1:30" },
+            { image: conceptsImg5, title: "Molecular Geometry", views: "19.1K", time: "2:36" },
         ],
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
@@ -294,8 +294,8 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
   answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
 },
 {
-                question: "What Chemistry subjects do you cover?",
-                answer: "Analytical Chemistry, Organic Chemistry, States of Matter and more.",
+                question: "What MCAT Physics and Chemistry subjects do you cover?",
+                answer: "Physics and Chemistry topics tested on the MCAT: Mechanics, Thermodynamics, Electricity & Magnetism, Waves, Optics, General Chemistry, Organic Chemistry, Acids & Bases, Electrochemistry, Kinetics, and more.",
 },
 {
   question: "Can I cancel anytime?",

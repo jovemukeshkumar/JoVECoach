@@ -1,13 +1,13 @@
 
 // Hero Images
-import HeroImage from "../../assets/highschool-biology-hero.webp";
+import HeroImage from "../../assets/MCAT-bio-hero-v1.webp";
 import biologyCarouselDesktop from "../../assets/biology-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/biology-carousel-mobile.webm";
-import conceptsImg1 from "../../assets/highschool-biology-concepts-img1.webp"; // Placeholder
-import conceptsImg2 from "../../assets/biology-concepts-img2.webp"; // Placeholder
-import conceptsImg3 from "../../assets/highschool-biology-concepts-img3.webp"; // Placeholder
-import conceptsImg4 from "../../assets/highschool-biology-concepts-img4.webp"; // Placeholder       
-import conceptsImg5 from "../../assets/biology-concepts-img5.webp"; // Placeholder       
+import conceptsImg1 from "../../assets/MCAT-bio-1-v1.webp"; 
+import conceptsImg2 from "../../assets/MCAT-bio-2-v1.webp"; 
+import conceptsImg3 from "../../assets/MCAT-bio-3-v1.webp"; 
+import conceptsImg4 from "../../assets/MCAT-bio-4-v1.webp";        
+import conceptsImg5 from "../../assets/MCAT-bio-5-v1.webp"; 
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -51,7 +51,7 @@ import type { LandingPageData } from "../landingPageData";
 
 export const mcatBiologyData: LandingPageData = {
     hero: {
-        title: 'Biology Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
+        title: 'MCAT Biology Feeling Impossible? <br class="desktop-br" /> Master It in <span class="highlight">2-Minute Videos.</span>',
         subtitle: "From confused to confident. Biology finally made simple. 20 years of trusted science education.",
         mobileSubtitle: "From confused to confident. Biology finally made simple.",
         ctaTitle: "See what stress-free learning looks like",
@@ -67,8 +67,8 @@ export const mcatBiologyData: LandingPageData = {
         },
     },
     concepts: {
-        heading: 'Every <span>Biology</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "One concept at a time, explained with short videos.",
+        heading: 'Every <span>MCAT Biology</span> concept you need. <span>Under 2 minutes.</span>',
+        subheading: "Covers: Biochemistry · Molecular Biology · Cell Biology · Genetics.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -80,11 +80,11 @@ export const mcatBiologyData: LandingPageData = {
         mobileVideo: biologyCarouselMobile,
         videoPlaybackSpeed: 0.75,
         conceptCards: [
-            { image: conceptsImg1, title: "Photosynthesis", views: "20.6K", time: "1:00" },
-            { image: conceptsImg2, title: "Protein Synthesis & Translation", views: "156.8K", time: "1:31" },
-            { image: conceptsImg3, title: "Genetics & Heredity", views: "27.9K", time: "2:05" },
-            { image: conceptsImg4, title: "Evolution & Natural Selection", views: "129.6K", time: "1:31" },
-            { image: conceptsImg5, title: "Mitosis & Meiosis ", views: "70.6K", time: "2:58" },
+  { image: conceptsImg1, title: "Lipid Digestion", views: "99.5K", time: "1:06" },
+            { image: conceptsImg2, title: "Convergent Evolution", views: "22K", time: "1:53" },
+            { image: conceptsImg3, title: "Respiratory System", views: "89.5K", time: "1:16" },
+            { image: conceptsImg4, title: "Introduction To Enzymes", views: "32.2K", time: "1:22" },
+            { image: conceptsImg5, title: "Meiosis", views: "257.6K", time: "1:35" },
         ],
         questions: [
             { icon: conceptsSectionIcon6, text: "What processes happen inside a variety of cells?" },
@@ -293,8 +293,8 @@ export const mcatBiologyData: LandingPageData = {
                 answer: "Yes. Students report better understanding and up to 2X improved test scores with consistent use.",
             },
             {
-                question: "What Biology subjects do you cover?",
-                answer: "Cell Biology, Microbiology, Molecular Biology and more.",
+                question: "What MCAT Biology subjects do you cover?",
+                answer: "Biochemistry, Molecular Biology, Cell Biology, Genetics, Microbiology, Anatomy & Physiology—everything tested on the MCAT Biology section.",
             },
             {
                 question: "Can I cancel anytime?",
@@ -303,12 +303,12 @@ export const mcatBiologyData: LandingPageData = {
         ]
     },
     modal: {
-        title: "The Smarter Way to Learn Biology",
+        title: "The Smarter Way to Learn MCAT Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     },
     footer: {
-        title: "The Smarter Way to Learn Biology",
+        title: "The Smarter Way to Learn MCAT Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial"
     }

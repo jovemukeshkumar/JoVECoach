@@ -307,11 +307,11 @@ export const collegeBiologyData: LandingPageData = {
     modal: {
         title: "The Smarter Way to Learn Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Get My Free Biology Tutor"
+        ctaText: "Start My Free Trial"
     },
     footer: {
         title: "The Smarter Way to Learn Biology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
-        ctaText: "Get My Free Biology Tutor"
+        ctaText: "Start My Free Trial"
     }
 };
