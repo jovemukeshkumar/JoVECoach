@@ -20,6 +20,7 @@ interface Props {
 	heroModalCtaText?: string;
 	heroModalVideoSrc?: string;
 	showSubtitle?: boolean;
+	playVideoOnClick?: boolean;
 }
 
 const {
@@ -36,6 +37,7 @@ const {
 	heroModalCtaText = "Try It Free",
 	heroModalVideoSrc,
 	showSubtitle = false,
+	playVideoOnClick = false,
 } = Astro.props;
 
 const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -50,7 +52,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 				{showSubtitle && <p class="hero-subtitle">{subtitle}</p>}
 
 				<!-- Mobile Image Placement -->
-				<div class="mobile-image-wrapper" onclick={`handleHeroClick(event, '${heroModalTitle}', '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}')`} style="cursor: pointer;">
+				<div class="mobile-image-wrapper" onclick={`handleHeroClick(event, '${heroModalTitle}', '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick})`} style="cursor: pointer;">
 					<picture>
 						<!-- Don't load on desktop (min-width: 1025px) -->
 						<source media="(min-width: 1025px)" srcset={transparentPixel} />
@@ -81,7 +83,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 			</div>
 
 			<div class="hero-right">
-				<div class="desktop-image-wrapper" onclick={`handleHeroClick(event, '${heroModalTitle}', '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}')`} style="cursor: pointer;">
+				<div class="desktop-image-wrapper" onclick={`handleHeroClick(event, '${heroModalTitle}', '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick})`} style="cursor: pointer;">
 					<picture>
 						<!-- Don't load on mobile (max-width: 1024px) -->
 						<source media="(max-width: 1024px)" srcset={transparentPixel} />
@@ -585,10 +587,24 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 </style>
 
 <script is:inline>
-	window.handleHeroClick = function (event, title, subtitle, ctaText, videoSrc) {
-		// Always Open Form Modal
-		if (window.openZohoModal) {
-			window.openZohoModal(title, subtitle, ctaText);
+	window.handleHeroClick = function (event, title, subtitle, ctaText, videoSrc, playVideoOnClick) {
+		if (playVideoOnClick && videoSrc && window.openVideoModal) {
+			window.openVideoModal();
+
+			// Close video and open form modal after 15 seconds
+			setTimeout(() => {
+				if (window.closeVideoModal) {
+					window.closeVideoModal();
+				}
+				if (window.openZohoModal) {
+					window.openZohoModal(title, subtitle, ctaText);
+				}
+			}, 15000);
+		} else {
+			// Always Open Form Modal
+			if (window.openZohoModal) {
+				window.openZohoModal(title, subtitle, ctaText);
+			}
 		}
 	};
 </script>
