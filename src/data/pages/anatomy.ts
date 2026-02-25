@@ -68,7 +68,7 @@ export const anatomyData: LandingPageData = {
         subtitle: "Structured A&P courses — from body systems to exam prep",
         mobileSubtitle: "Anatomy and Physiology made simple for health science students.",
         ctaTitle: "See what stress-free learning looks like",
-        heroFormCta:"Start  <strong> &nbsp;My A&P Course&nbsp;</strong> for Free",
+        heroFormCta:"Start  <strong> &nbsp;My Anatomy Course&nbsp;</strong> for Free",
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
@@ -80,8 +80,8 @@ export const anatomyData: LandingPageData = {
         },
     },
     concepts: {
-        heading: 'Every <span>A&P</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "Structured A&P courses — from body systems to exam prep.",
+        heading: 'Every <span>Anatomy</span> concept you need. <span>Under 2 minutes.</span>',
+        subheading: "Structured Anatomy courses — from body systems to exam prep.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
@@ -335,6 +335,6 @@ export const anatomyData: LandingPageData = {
         title: "The Smarter Way to Learn Anatomy & Physiology",
         subtitle: "Try Jove Coach for free and master concepts in minutes.",
         ctaText: "Start My Free Trial",
-        seoText: "JoVE Coach offers Anatomy courses with expert-verified 2-minute videos across core human anatomy topics, including skeletal, muscular, nervous, cardiovascular and more."
+        seoText: "JoVE Coach offers Anatomy and Physiology courses with expert-verified 2-minute videos across core human anatomy topics, including skeletal, muscular, nervous, cardiovascular and more."
     }
 };
