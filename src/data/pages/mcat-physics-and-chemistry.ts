@@ -68,7 +68,7 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
     },
     concepts: {
         heading: 'Every <span>MCAT Physics & Chemistry</span> concept you need. <span>Under 2 minutes.</span>',
-        subheading: "Perfect for MCAT prep and pre-med success.",
+        subheading: "A complete MCAT Physics and Chemistry review — built for students aiming for top scores.",
         features: [
             { icon: "micro-courses", text: "500+ Micro-courses" },
             { icon: "curriculum", text: "Curriculum-aligned" },
