@@ -59,6 +59,12 @@ export const scienceGenJanData: LandingPageData = {
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImage,
+        heroModal: {
+            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            // subtitle: "Enter your details for instant access.",
+            ctaText: "Your Free Biology Lesson is Ready",
+            videoSrc: biologyCarouselDesktop
+        },
     },
     concepts: {
         heading: 'Every <span>Biology</span> concept you need. <span>Under 2 minutes.</span>',

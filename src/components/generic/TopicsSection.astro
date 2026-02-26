@@ -37,9 +37,26 @@ interface Props {
 	modalCtaText?: string;
 	showDescription?: boolean;
 	showSubheading?: boolean;
+	playVideoOnClick?: boolean;
 }
 
-const { heading, subheading, features, videoSrc, mobileVideoSrc, questions, videoPlaybackSpeed = 1.0, conceptCards, ctaText = "Explore what 1M+ students see", modalTitle, modalSubtitle, modalCtaText, showDescription = false, showSubheading = true } = Astro.props;
+const {
+	heading,
+	subheading,
+	features,
+	videoSrc,
+	mobileVideoSrc,
+	questions,
+	videoPlaybackSpeed = 1.0,
+	conceptCards,
+	ctaText = "Explore what 1M+ students see",
+	modalTitle,
+	modalSubtitle = "NONE",
+	modalCtaText,
+	showDescription = false,
+	showSubheading = true,
+	playVideoOnClick = false,
+} = Astro.props;
 
 // Icon mapping
 const iconMap: Record<string, ImageMetadata> = {

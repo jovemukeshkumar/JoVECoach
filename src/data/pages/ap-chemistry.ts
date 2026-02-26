@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/ap-chem-hero-v2.webp";
+import HeroImage from "../../assets/ap-chem-hero-v3.webp";
 
 import ChemistryCarouselDesktop from "../../assets/chemistry-carousel-desktop.webm";
 import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm";
@@ -60,9 +60,9 @@ export const apChemistryData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Watch the 2-Minute Video",
-            subtitle: "Enter your details for instant access.",
-            ctaText: "Continue to Video",
+            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            // subtitle: "Enter your details for instant access.",
+            ctaText: "Your Free AP Chemistry Lesson is Ready",
             videoSrc: ChemistryCarouselDesktop
         },
     },
@@ -295,7 +295,7 @@ export const apChemistryData: LandingPageData = {
 },
 {
                 question: "What AP Chemistry topics do you cover?",
-                answer: "Atomic Structure, Thermodynamics, Equilibrium, Acids and Bases, and more.",
+                answer: "Atomic Structure, Thermodynamics, Equilibrium, Acids and Bases - everything you need to ace AP Chemistry",
 },
 {
   question: "Can I cancel anytime?",

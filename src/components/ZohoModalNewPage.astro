@@ -72,13 +72,38 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		const overlay = document.getElementById("zoho-modal-overlay");
 		if (overlay) {
 			const titleEl = overlay.querySelector(".zcwf_title");
-			if (titleEl) titleEl.innerText = title || defaultTitle;
+			if (titleEl) {
+				titleEl.innerText = title || defaultTitle;
+				if (subtitle === "NONE") {
+					titleEl.style.fontSize = "22px";
+					titleEl.style.marginBottom = "1.25rem";
+				} else {
+					titleEl.style.fontSize = "";
+					titleEl.style.marginBottom = "";
+				}
+			}
 
 			const subtitleEl = overlay.querySelector(".zcwf_subtitle");
-			if (subtitleEl) subtitleEl.innerText = subtitle || defaultSubtitle;
+			if (subtitleEl) {
+				if (subtitle === "NONE") {
+					subtitleEl.style.display = "none";
+				} else {
+					subtitleEl.style.display = "block";
+					subtitleEl.innerText = subtitle || defaultSubtitle;
+				}
+			}
 
 			const btnEl = overlay.querySelector("#formsubmit_modal");
 			if (btnEl) btnEl.innerText = ctaText || defaultCtaText;
+
+			const disclaimerEl = overlay.querySelector(".modal-disclaimer");
+			if (disclaimerEl) {
+				if (subtitle === "NONE") {
+					disclaimerEl.style.display = "none";
+				} else {
+					disclaimerEl.style.display = "block";
+				}
+			}
 
 			overlay.style.display = "flex";
 			document.body.style.overflow = "hidden";

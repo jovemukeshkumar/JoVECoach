@@ -73,9 +73,9 @@ export const anatomyData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Keep watching (full 2-minute video)",
-            subtitle: "Enter your details to resume right away.",
-            ctaText: "Continue to Video",
+            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            // subtitle: "Enter your details to resume right away.",
+            ctaText: "Your Free Biology Lesson is Ready",
             videoSrc: HeroVideo
         },
     },

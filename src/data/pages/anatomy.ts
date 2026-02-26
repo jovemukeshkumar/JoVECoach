@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/anatomy-hero-image.webp";
+import HeroImage from "../../assets/anatomy-hero-v1.webp";
 import HeroVideo from "../../assets/anatomy-carousel-desktop.webm";
 
 import biologyCarouselDesktop from "../../assets/anatomy-carousel-desktop.webm";
@@ -73,9 +73,9 @@ export const anatomyData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Watch the 2-Minute Video",
-            subtitle: "Enter your details for instant access to this lesson and more like it.",
-            ctaText: "Continue to Video",
+            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            // subtitle: "Enter your details for instant access to this lesson and more like it.",
+            ctaText: "Your Free Anatomy & Physiology Lesson is Ready",
             videoSrc: HeroVideo
         },
     },

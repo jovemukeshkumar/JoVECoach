@@ -52,6 +52,12 @@ export const PhysicsGenJanData: LandingPageData = {
         trustText: "1,000,000+ students at 1,800+ universities trust JoVE",
         image: HeroImage,
         mobileImage: HeroImageMobile,
+        heroModal: {
+            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            // subtitle: "Enter your details for instant access.",
+            ctaText: "Your Free Physics Lesson is Ready",
+            videoSrc: PhysicsCarouselDesktop
+        },
     },
     concepts: {
         heading: '<span>Every concept you need. </span>Under 2 minutes.',

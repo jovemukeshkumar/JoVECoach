@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/MCAT-chem&Phy-hero-v1.webp";
+import HeroImage from "../../assets/MCAT-chem_Phy-hero-v2.webp";
 
 import ChemistryCarouselDesktop from "../../assets/chemistry-carousel-desktop.webm";
 import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm";
@@ -60,9 +60,9 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Watch the 2-Minute Video",
-            subtitle: "Enter your details for instant access.",
-            ctaText: "Continue to Video",
+            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            // subtitle: "Enter your details for instant access.",
+            ctaText: "Your Free MCAT Physics & Chemistry Lesson is Ready",
             videoSrc: ChemistryCarouselDesktop
         },
     },
@@ -295,7 +295,7 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
 },
 {
                 question: "What MCAT Physics and Chemistry subjects do you cover?",
-                answer: "Physics and Chemistry topics tested on the MCAT: Mechanics, Thermodynamics, Electricity & Magnetism, Waves, Optics, General Chemistry, Organic Chemistry, Acids & Bases, Electrochemistry, Kinetics, and more.",
+                answer: "Mechanics, Thermodynamics, Electricity & Magnetism, Waves, Optics, General Chemistry, Organic Chemistry, Acids & Bases, Electrochemistry, Kinetics - everything you need to ace MCAT Physics and Chemistry.",
 },
 {
   question: "Can I cancel anytime?",

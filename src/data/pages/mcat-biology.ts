@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/MCAT-bio-hero-v1.webp";
+import HeroImage from "../../assets/MCAT-bio-hero-v2.webp";
 import biologyCarouselDesktop from "../../assets/biology-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/biology-carousel-mobile.webm";
 import conceptsImg1 from "../../assets/MCAT-bio-1-v1.webp"; 
@@ -60,9 +60,9 @@ export const mcatBiologyData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Watch the 2-Minute Video",
-            subtitle: "Enter your details for instant access.",
-            ctaText: "Continue to Video",
+            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            // subtitle: "Enter your details for instant access.",
+            ctaText: "Your Free MCAT Biology Lesson is Ready",
             videoSrc: biologyCarouselDesktop
         },
     },
@@ -294,7 +294,7 @@ export const mcatBiologyData: LandingPageData = {
             },
             {
                 question: "What MCAT Biology subjects do you cover?",
-                answer: "Biochemistry, Molecular Biology, Cell Biology, Genetics, Microbiology, Anatomy & Physiology—everything tested on the MCAT Biology section.",
+                answer: "Biochemistry, Molecular Biology, Cell Biology, Genetics, Microbiology, Anatomy & Physiology — everything you need to ace MCAT Biology.",
             },
             {
                 question: "Can I cancel anytime?",

@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/college-chemistry-hero.webp";
+import HeroImage from "../../assets/college-chemistry-hero-v2.webp";
 
 import ChemistryCarouselDesktop from "../../assets/chemistry-carousel-desktop.webm";
 import ChemistryCarouselMobile from "../../assets/chemistry-carousel-mobile.webm";
@@ -62,9 +62,9 @@ export const ChemistryGenJanData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Watch the 2-Minute Video",
-            subtitle: "Enter your details for instant access.",
-            ctaText: "Continue to Video",
+            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            // subtitle: "Enter your details for instant access.",
+            ctaText: "Your Free Chemistry Lesson is Ready",
             videoSrc: ChemistryCarouselDesktop
         },
     },
