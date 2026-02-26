@@ -123,7 +123,7 @@ export interface LandingPageData {
 		mobileImage: ImageMetadata;
 		heroModal?: {
 			title: string;
-			subtitle: string;
+			subtitle?: string;
 			ctaText: string;
 			videoSrc?: string;
 		};

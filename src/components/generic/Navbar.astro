@@ -6,10 +6,10 @@ import NavLogo from "../../assets/NavLogo.svg";
 <nav class="navbar">
 	<div class="container navbar-content">
 		<div class="logo">
-			<a href="https://coach.jove.com">
+			<div class="logo-wrapper">
 				<Image src={NavLogo} alt="JoVE Coach" height={32} />
 				<!-- Adjusting logo size to match image better, usually 32-40px height -->
-			</a>
+			</div>
 		</div>
 		<div class="cta-container">
 			<button class="cta-button" onclick="window.openZohoModal && window.openZohoModal()">Start My Free Trial</button>
@@ -36,7 +36,7 @@ import NavLogo from "../../assets/NavLogo.svg";
 	}
 
 	/* Logo styling details */
-	.logo a {
+	.logo .logo-wrapper {
 		display: flex;
 		align-items: center;
 	}

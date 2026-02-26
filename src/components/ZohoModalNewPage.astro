@@ -75,11 +75,9 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 			if (titleEl) {
 				titleEl.innerText = title || defaultTitle;
 				if (subtitle === "NONE") {
-					titleEl.style.fontSize = "22px";
-					titleEl.style.marginBottom = "1.25rem";
+					titleEl.classList.add("is-video-modal-title");
 				} else {
-					titleEl.style.fontSize = "";
-					titleEl.style.marginBottom = "";
+					titleEl.classList.remove("is-video-modal-title");
 				}
 			}
 
@@ -278,6 +276,10 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		#crmWebToEntityForm_modal {
 			padding: 30px 20px !important; /* Less padding on mobile to preventing squishing */
 		}
+		.close-btn {
+			top: 10px;
+			right: 10px;
+		}
 	}
 
 	/* Ensure global inputs look good on blue bg */
@@ -310,6 +312,11 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		}
 	}
 
+	.zcwf_title.is-video-modal-title {
+		font-size: 22px !important;
+		margin-bottom: 1.25rem !important;
+	}
+
 	@media (max-width: 768px) {
 		.modal-container {
 			min-width: 100% !important;
@@ -322,6 +329,9 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		}
 		.zcwf_title {
 			font-size: 24px !important;
+		}
+		.zcwf_title.is-video-modal-title {
+			font-size: 18px !important;
 		}
 	}
 </style>
