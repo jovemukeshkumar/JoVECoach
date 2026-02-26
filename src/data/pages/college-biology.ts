@@ -1,6 +1,6 @@
 
 // Hero Images
-import HeroImage from "../../assets/biology-new-hero.webp";
+import HeroImage from "../../assets/college-biology-hero-v1.webp";
 import biologyCarouselDesktop from "../../assets/biology-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/biology-carousel-mobile.webm";
 import conceptsImg1 from "../../assets/biology-concepts-img1.webp"; // Placeholder
