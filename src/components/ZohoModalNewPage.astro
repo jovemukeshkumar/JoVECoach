@@ -61,7 +61,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 	const modalOverlay = document.getElementById("zoho-modal-overlay");
 	if (modalOverlay) {
 		const t = modalOverlay.querySelector(".zcwf_title");
-		if (t) defaultTitle = t.innerText;
+		if (t) defaultTitle = t.innerHTML;
 		const s = modalOverlay.querySelector(".zcwf_subtitle");
 		if (s) defaultSubtitle = s.innerText;
 		const b = modalOverlay.querySelector("#formsubmit_modal");
@@ -73,7 +73,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		if (overlay) {
 			const titleEl = overlay.querySelector(".zcwf_title");
 			if (titleEl) {
-				titleEl.innerText = title || defaultTitle;
+				titleEl.innerHTML = title || defaultTitle;
 				if (subtitle === "NONE") {
 					titleEl.classList.add("is-video-modal-title");
 				} else {

@@ -60,9 +60,9 @@ export const mcatPhysicsAndChemistryData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+           title: "Master the MCAT in 2-Minute Videos <br class='modal-break' />- Join 1M+ Students",
             // subtitle: "Enter your details for instant access.",
-            ctaText: "Your Free MCAT Physics & Chemistry Lesson is Ready",
+            ctaText: "Watch MCAT Bio Videos Free — No Signup",
             videoSrc: ChemistryCarouselDesktop
         },
     },
