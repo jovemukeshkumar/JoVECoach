@@ -62,7 +62,7 @@ export const apChemistryData: LandingPageData = {
         heroModal: {
              title: "Master AP Exams in 2-Minute Videos <br class='modal-break' />- Join 1M+ Students",
             // subtitle: "Enter your details for instant access.",
-            ctaText: "Watch AP Bio Videos Free — No Signup",
+            ctaText: "Watch AP Chem Videos Free — No Signup",
             videoSrc: ChemistryCarouselDesktop
         },
     },
