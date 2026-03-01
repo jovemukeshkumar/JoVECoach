@@ -73,7 +73,7 @@ export const anatomyData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            title: "Master Anatomy in 2-Minute Videos <br class=\"modal-break\" />- Join 1M+ Students",
             // subtitle: "Enter your details for instant access to this lesson and more like it.",
             ctaText: "Your Free Anatomy & Physiology Lesson is Ready",
             videoSrc: HeroVideo
