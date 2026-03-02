@@ -1,0 +1,81 @@
+---
+export const prerender = true;
+import Footer from "../components/generic/FooterWithSEO.astro";
+import Layout from "../layouts/UpdatedLayout.astro";
+import FAQSection from "../components/generic/FAQSection.astro";
+import StepsSection from "../components/generic/StepsSection.astro";
+import FirstCTASection from "../components/generic/FirstCTASection.astro";
+import SecondCTASection from "../components/generic/SecondCTASection.astro";
+import ConceptsSection from "../components/generic/TopicsSection.astro";
+import LearnerPersonas from "../components/generic/LearnerPersonas.astro";
+import PricingSection from "../components/generic/PricingSection.astro";
+import ZohoFooterFormNewPage from "../components/ZohoFooterFormNewPage.astro";
+import ZohoModalNewPage from "../components/ZohoModalNewPage.astro";
+import VideoModal from "../components/VideoModal.astro";
+import ComparisonTable from "../components/generic/ComparisonTable.astro";
+import NavLogo from "../assets/NavLogo.svg";
+import HeroSection from "../components/generic/HeroSectionModal.astro";
+import Navbar from "../components/generic/Navbar.astro";
+import FormSourceTest from "../components/FormSourceTest.astro";
+
+import { anatomyData } from "../data/pages/testing";
+const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = anatomyData;
+---
+
+<Layout title="Form Source Test | JoVE Coach" description="Testing form source tracking implementation" robots="noindex, nofollow">
+	<link rel="preload" href={hero.mobileImage.src} as="image" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
+	<link rel="preload" href={hero.image.src} as="image" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+	<Navbar />
+	<HeroSection
+		heroImage={hero.image}
+		mobileImgSrc={hero.mobileImage}
+		title={hero.title}
+		subtitle={hero.subtitle}
+		mobileSubtitle={hero.mobileSubtitle}
+		trustText={hero.trustText}
+		ctaTitle={hero.ctaTitle}
+		heroFormCta={hero.heroFormCta}
+		heroModalTitle={hero.heroModal?.title}
+		heroModalSubtitle={hero.heroModal?.subtitle}
+		heroModalCtaText={hero.heroModal?.ctaText}
+		heroModalVideoSrc={hero.heroModal?.videoSrc}
+		showSubtitle={false}
+		playVideoOnClick={false}
+	/>
+	<ConceptsSection
+		heading={concepts.heading}
+		subheading={concepts.subheading}
+		features={concepts.features}
+		videoSrc={concepts.video}
+		mobileVideoSrc={concepts.mobileVideo}
+		questions={concepts.questions}
+		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
+		conceptCards={concepts.conceptCards}
+		ctaText={concepts.ctaText}
+		modalTitle={hero.heroModal?.title}
+		modalSubtitle={hero.heroModal?.subtitle}
+		modalCtaText={hero.heroModal?.ctaText}
+	/>
+	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} />
+	<ComparisonTable title={comparison.title} subtitle={comparison.subtitle} tagline={comparison.tagline} ctaText={comparison.ctaText} items={comparison.items} features={comparison.features} />
+	<FAQSection heading={faq.heading} items={faq.items} />
+	<!-- Replace the regular Zoho footer with a test form that includes the hidden Form Source field -->
+	<div id="form-source-test"><FormSourceTest formSource="hero_form" returnURL="https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system" /></div>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const heroImg = document.querySelector(".hero-section img");
+			const formEl = document.getElementById("form-source-test");
+			if (heroImg && formEl) {
+				heroImg.style.cursor = "pointer";
+				heroImg.addEventListener("click", e => {
+					e.preventDefault();
+					formEl.scrollIntoView({ behavior: "smooth" });
+				});
+			}
+		});
+	</script>
+	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
+	<VideoModal videoSrc={hero.heroModal?.videoSrc} />
+	<Footer seoText={footer?.seoText} />
+</Layout>
