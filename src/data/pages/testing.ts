@@ -75,7 +75,7 @@ export const anatomyData: LandingPageData = {
         heroModal: {
             title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
             // subtitle: "Enter your details to resume right away.",
-            ctaText: "Your Free Anatomy & Physiology Lesson is Ready",
+            ctaText: "Watch Anatomy Videos Free — No Signup",
             videoSrc: HeroVideo
         },
     },
