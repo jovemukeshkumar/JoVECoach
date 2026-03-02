@@ -62,9 +62,9 @@ export const ChemistryGenJanData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            title: "Master College Chemistry in 2-Minute Videos - Join 1M+ Students",
             // subtitle: "Enter your details for instant access.",
-            ctaText: "Your Free Chemistry Lesson is Ready",
+            ctaText: "Watch College Chem Videos Free — No Signup",
             videoSrc: ChemistryCarouselDesktop
         },
     },

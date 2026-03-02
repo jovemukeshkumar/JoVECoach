@@ -60,9 +60,9 @@ export const collegeBiologyData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            title: "Master College Biology in 2-Minute Videos <br class=\"modal-break\" />- Join 1M+ Students",
             // subtitle: "Enter your details for instant access.",
-            ctaText: "Your Free Biology Lesson is Ready",
+            ctaText: "Watch College Bio Videos Free — No Signup",
             videoSrc: biologyCarouselDesktop
         },
     },

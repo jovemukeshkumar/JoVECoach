@@ -66,9 +66,9 @@ export const businessJanData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            title: "Master Business in 2-Minute Videos <br class=\"modal-break\" />- Join 1M+ Learners",
             // subtitle: "Enter your details for instant access.",
-            ctaText: "Your Free Business Basics Lesson is Ready",
+            ctaText: "Watch Business Videos Free — No Signup",
             videoSrc: biologyCarouselDesktop
         },
     },
