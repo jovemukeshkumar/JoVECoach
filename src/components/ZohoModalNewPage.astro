@@ -113,6 +113,11 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		if (overlay) {
 			overlay.style.display = "none";
 			document.body.style.overflow = "auto";
+
+			// Also close the video modal if it's open
+			if (window.closeVideoModal) {
+				window.closeVideoModal();
+			}
 		}
 	};
 
@@ -140,6 +145,11 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 			if (window.submitToZoho) {
 				// Pass null/undefined to use default redirect (https://coach.jove.com/home)
 				window.submitToZoho({ name, email, redirectUrl: null });
+
+				// Close the video modal on submit as well
+				if (window.closeVideoModal) {
+					window.closeVideoModal();
+				}
 			} else {
 				console.error("Master form function missing.");
 				alert("Submission failed. Please try again later.");
@@ -157,7 +167,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		height: 100%;
 		background: rgba(0, 0, 0, 0.5);
 		backdrop-filter: blur(5px);
-		z-index: 9999;
+		z-index: 10005; /* Higher than Video Modal (10000) */
 		display: flex;
 		justify-content: center;
 		align-items: center;

@@ -60,7 +60,7 @@ export const mcatBiologyData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Master the MCAT in 2-Minute Videos <br class='modal-break' />- Join 1M+ Students",
+            title: "Master the MCAT in 2-Minute Videos <br class=\"modal-break\" />- Join 1M+ Students",
             // subtitle: "Enter your details for instant access.",
             ctaText: "Watch MCAT Bio Videos Free — No Signup",
             videoSrc: biologyCarouselDesktop

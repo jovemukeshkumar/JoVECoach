@@ -591,11 +591,10 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 		if (playVideoOnClick && videoSrc && window.openVideoModal) {
 			window.openVideoModal();
 
-			// Close video and open form modal after 15 seconds
+			// Pause video and open form modal after 15 seconds
 			setTimeout(() => {
-				if (window.closeVideoModal) {
-					window.closeVideoModal();
-				}
+				const video = document.getElementById("hero-video-player");
+				if (video) video.pause();
 				if (window.openZohoModal) {
 					window.openZohoModal(title, subtitle, ctaText);
 				}
