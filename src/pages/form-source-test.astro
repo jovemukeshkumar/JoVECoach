@@ -16,7 +16,7 @@ import ComparisonTable from "../components/generic/ComparisonTable.astro";
 import NavLogo from "../assets/NavLogo.svg";
 import HeroSection from "../components/generic/HeroSectionModal.astro";
 import Navbar from "../components/generic/Navbar.astro";
-import FormSourceTest from "../components/FormSourceTest.astro";
+import ZohoFormWithSource from "../components/ZohoFormWithSource.astro";
 
 import { anatomyData } from "../data/pages/testing";
 const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = anatomyData;
@@ -61,7 +61,7 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	<ComparisonTable title={comparison.title} subtitle={comparison.subtitle} tagline={comparison.tagline} ctaText={comparison.ctaText} items={comparison.items} features={comparison.features} />
 	<FAQSection heading={faq.heading} items={faq.items} />
 	<!-- Replace the regular Zoho footer with a test form that includes the hidden Form Source field -->
-	<div id="form-source-test"><FormSourceTest formSource="hero_form" returnURL="https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system" /></div>
+	<div id="form-source-test"><ZohoFormWithSource formSource="hero_form" returnURL="https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system" /></div>
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			const heroImg = document.querySelector(".hero-section img");
