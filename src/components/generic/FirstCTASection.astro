@@ -7,9 +7,10 @@ interface Props {
 	title?: string;
 	subtitle?: string;
 	ctaText?: string;
+	formSource?: string;
 }
 
-const { title = "Stuck on a concept right now?", subtitle = "See how JoVE Coach explains it clearly - with AI.", ctaText = "Start My Free Trial" } = Astro.props;
+const { title = "Stuck on a concept right now?", subtitle = "See how JoVE Coach explains it clearly - with AI.", ctaText = "Start My Free Trial", formSource = "first-cta" } = Astro.props;
 ---
 
 <style>
@@ -243,7 +244,7 @@ const { title = "Stuck on a concept right now?", subtitle = "See how JoVE Coach 
 
 		<!-- Right form -->
 		<div class="ai-cta-form">
-			<ZohoDummyForm layout="vertical" formIdSuffix="cta1" ctaText={ctaText} buttonLayout="inline" />
+			<ZohoDummyForm layout="vertical" formIdSuffix="cta1" ctaText={ctaText} buttonLayout="inline" formSource={formSource} />
 		</div>
 
 		<!-- Center icon -->

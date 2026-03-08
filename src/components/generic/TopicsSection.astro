@@ -559,8 +559,8 @@ const featuresList = features || defaultFeatures;
 					</div>
 
 					<div class="concept-cards-container">
-						{conceptCards.map(card => (
-							<div class="concept-card" onclick={`window.openZohoModal && window.openZohoModal('${modalTitle || ""}', '${modalSubtitle || ""}', '${modalCtaText || ""}')`}>
+						{conceptCards.map((card, index) => (
+							<div class="concept-card" onclick={`window.openZohoModal && window.openZohoModal('${modalTitle || ""}', '${modalSubtitle || ""}', '${modalCtaText || ""}', 'thumbnail-${index + 1}')`}>
 								<div class="card-image-wrapper">
 									<Image src={card.image} alt={card.title} class="card-bg-image" />
 									<div class="card-overlay">
@@ -693,7 +693,7 @@ const featuresList = features || defaultFeatures;
 
 		<!-- CTA -->
 		<div class="cta">
-			<button onclick="window.openZohoModal && window.openZohoModal()">{ctaText}</button>
+			<button onclick={`window.openZohoModal && window.openZohoModal('', '', '', 'concept-cta')`}>{ctaText}</button>
 		</div>
 	</div>
 </section>

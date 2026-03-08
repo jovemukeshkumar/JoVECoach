@@ -38,6 +38,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 				</div>
 
 				<div class="zcwf_row">
+					<input type="hidden" name="modalFormSource" id="modalFormSourceInput" value="" />
 					<button id="formsubmit_modal" class="global-form-btn" type="submit">{ctaText}</button>
 				</div>
 
@@ -68,7 +69,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		if (b) defaultCtaText = b.innerText;
 	}
 
-	window.openZohoModal = function (title, subtitle, ctaText) {
+	window.openZohoModal = function (title, subtitle, ctaText, formSource) {
 		const overlay = document.getElementById("zoho-modal-overlay");
 		if (overlay) {
 			const titleEl = overlay.querySelector(".zcwf_title");
@@ -93,6 +94,11 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 
 			const btnEl = overlay.querySelector("#formsubmit_modal");
 			if (btnEl) btnEl.innerText = ctaText || defaultCtaText;
+
+			const sourceInput = overlay.querySelector("#modalFormSourceInput");
+			if (sourceInput) {
+				sourceInput.value = formSource || "nav-modal";
+			}
 
 			const disclaimerEl = overlay.querySelector(".modal-disclaimer");
 			if (disclaimerEl) {
@@ -141,10 +147,11 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 
 			const name = modalForm.querySelector('input[name="modalName"]').value;
 			const email = modalForm.querySelector('input[name="modalEmail"]').value;
+			const formSource = modalForm.querySelector('input[name="modalFormSource"]').value;
 
 			if (window.submitToZoho) {
 				// Pass null/undefined to use default redirect (https://coach.jove.com/home)
-				window.submitToZoho({ name, email, redirectUrl: null });
+				window.submitToZoho({ name, email, redirectUrl: null, formSource });
 
 				// Close the video modal on submit as well
 				if (window.closeVideoModal) {

@@ -635,7 +635,7 @@ const {
 								items.map((item: any) => (
 									<td class={item.highlighted ? "highlighted-column" : ""}>
 										{item.highlighted && (
-											<a href="javascript:void(0)" onclick="openZohoModal()" class="cta-button">
+											<a href="javascript:void(0)" onclick="openZohoModal('', '', '', 'pricing-cta')" class="cta-button">
 												{ctaText}
 											</a>
 										)}
@@ -650,7 +650,7 @@ const {
 	</div>
 
 	<div class="mobile-cta-section">
-		<a href="javascript:void(0)" onclick="openZohoModal()" class="cta-button">
+		<a href="javascript:void(0)" onclick="openZohoModal('', '', '', 'pricing-cta')" class="cta-button">
 			{ctaText}
 		</a>
 		<span class="mobile-cta-note">No credit card</span>

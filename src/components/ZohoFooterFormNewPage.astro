@@ -4,9 +4,10 @@ interface Props {
 	subtitle?: string;
 	ctaText?: string;
 	image?: ImageMetadata;
+	formSource?: string;
 }
 
-const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free", image = zohoCTAImage } = Astro.props;
+const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free", image = zohoCTAImage, formSource = "" } = Astro.props;
 
 import { Image } from "astro:assets";
 import zohoCTAImage from "../assets/zohoCTAImage.png";
@@ -50,7 +51,7 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 	</div>
 </div>
 
-<script is:inline>
+<script is:inline define:vars={{ formSource }}>
 	const footerForm = document.getElementById("webform_footer");
 	if (footerForm) {
 		footerForm.addEventListener("submit", function (e) {
@@ -59,7 +60,7 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 			const email = footerForm.querySelector('input[name="footerEmail"]').value;
 
 			if (window.submitToZoho) {
-				window.submitToZoho({ name, email });
+				window.submitToZoho({ name, email, formSource });
 			} else {
 				console.error("Global submit function missing");
 			}

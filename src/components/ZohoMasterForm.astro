@@ -4,39 +4,65 @@
 
 <div id="zoho-master-form-container" style="display: none;">
 	<form id="zoho-master-form" action="https://crm.zoho.in/crm/WebToContactForm" name="WebToContacts_Master" method="POST" accept-charset="UTF-8">
-		<!-- Hidden Fields from ZohoFormEmbedHardcoded -->
-		<input type="text" style="display:none;" name="xnQsjsdp" value="7cacd23940abbe07ab3afbb0935bce36e48117ac9aa7418df96fe992eea58e0f" />
+		<!-- Hidden Fields from new Zoho Contact Form -->
+		<input type="text" style="display:none;" name="xnQsjsdp" value="97b63ca06e39f1345bf59ceecacca2f8e21ffe4cf854ab1ec8d8a112a2051fd8" />
 		<input type="hidden" name="zc_gad" id="zc_gad_master" value="" />
-		<input type="text" style="display:none;" name="xmIwtLD" value="b4a7085281b2a284d9cd1b01a00b2acad544d903c838c50c3b230c9587ff8a7243f1d77cf0e9a89f5dc74ad36c77b03a" />
-		<input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=" />
+		<input type="text" style="display:none;" name="xmIwtLD" value="9d1fcc56eae30acd3ae3146b4c6c16c689975f0fe07f7d8b961a453e6f1ea30d0186b46b29641e92a97c1a22996870de" />
+		<input type="text" style="display:none;" name="actionType" value="TGVhZHM=" />
 		<input type="text" style="display:none;" name="returnURL" value="https://coach.jove.com/home" />
 
 		<!-- Actual Data Fields -->
 		<input type="text" style="display:none;" id="Last_Name_master" name="Last Name" maxlength="80" />
 		<input type="text" style="display:none;" id="Email_master" name="Email" maxlength="100" />
 
-		<!-- UTM & Tracking Hidden Fields (Updated to CONTACTCF) -->
-		<!-- Mapping based on ZohoFormEmbedHardcoded -->
-		<input type="text" style="display:none;" id="CONTACTCF11_master" name="CONTACTCF11" value="https://" />
-		<input type="text" style="display:none;" id="CONTACTCF14_master" name="CONTACTCF14" value="" />
-		<input type="text" style="display:none;" id="CONTACTCF20_master" name="CONTACTCF20" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF19_master" name="CONTACTCF19" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF17_master" name="CONTACTCF17" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF21_master" name="CONTACTCF21" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF18_master" name="CONTACTCF18" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF7_master" name="CONTACTCF7" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF4_master" name="CONTACTCF4" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF5_master" name="CONTACTCF5" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF6_master" name="CONTACTCF6" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF1_master" name="CONTACTCF1" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF3_master" name="CONTACTCF3" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF2_master" name="CONTACTCF2" value="-" />
-		<input type="text" style="display:none;" id="CONTACTCF30_master" name="CONTACTCF30" value="-" />
+		<!-- UTM & Tracking Hidden Fields (Updated to LEADCF based on new form) -->
+		<!-- Mapping based on new form HTML provided by user -->
+		<input type="text" style="display:none;" id="LEADCF11_master" name="LEADCF11" value="" />
+		<input type="text" style="display:none;" id="LEADCF8_master" name="LEADCF8" value="" />
+		<input type="text" style="display:none;" id="LEADCF9_master" name="LEADCF9" value="" />
+		<input type="text" style="display:none;" id="LEADCF10_master" name="LEADCF10" value="" />
+		<input type="text" style="display:none;" id="LEADCF7_master" name="LEADCF7" value="" />
+		<input type="text" style="display:none;" id="LEADCF4_master" name="LEADCF4" value="" />
+		<input type="text" style="display:none;" id="LEADCF13_master" name="LEADCF13" value="" />
+		<input type="text" style="display:none;" id="LEADCF17_master" name="LEADCF17" value="" />
+		<input type="text" style="display:none;" id="LEADCF14_master" name="LEADCF14" value="" />
+		<input type="text" style="display:none;" id="LEADCF6_master" name="LEADCF6" value="" />
+		<input type="text" style="display:none;" id="LEADCF18_master" name="LEADCF18" value="" />
+		<input type="text" style="display:none;" id="LEADCF5_master" name="LEADCF5" value="" />
+		<input type="text" style="display:none;" id="LEADCF12_master" name="LEADCF12" value="" />
 
-		<!-- Default Values -->
-		<input type="text" style="display:none;" id="CONTACTCF15_master" name="CONTACTCF15" value="Paid" />
-		<input type="text" style="display:none;" id="CONTACTCF28_master" name="CONTACTCF28" value="Lead" />
-		<input type="text" style="display:none;" id="CONTACTCF16_master" name="CONTACTCF16" value="Direct" />
+		<!-- Source & Subsource Selects (From new form) -->
+		<select style="display:none;" id="LEADCF25_master" name="LEADCF25">
+			<option value="-None-">-None-</option>
+			<option selected value="Paid">Paid</option>
+			<option value="Organic">Organic</option>
+			<option value="Social">Social</option>
+		</select>
+
+		<select style="display:none;" id="LEADCF26_master" name="LEADCF26">
+			<option value="-None-">-None-</option>
+			<option value="SEO">SEO</option>
+			<option value="Blog">Blog</option>
+			<option value="Direct">Direct</option>
+			<option selected value="Google Ads">Google Ads</option>
+			<option value="Meta Ads">Meta Ads</option>
+			<option value="Reddit Ads">Reddit Ads</option>
+			<option value="Tiktok Ads">Tiktok Ads</option>
+			<option value="Other Paid">Other Paid</option>
+			<option value="Instagram">Instagram</option>
+			<option value="Facebook">Facebook</option>
+			<option value="Linkedin">Linkedin</option>
+			<option value="Twitter/X">Twitter/X</option>
+			<option value="YouTube">YouTube</option>
+			<option value="Other Socials">Other Socials</option>
+		</select>
+
+		<!-- New Fields: Landing Page, Referrer URL, Form Source -->
+		<textarea style="display:none;" id="LEADCF23_master" name="LEADCF23"></textarea>
+		<textarea style="display:none;" id="LEADCF16_master" name="LEADCF16"></textarea>
+		<input type="text" style="display:none;" id="LEADCF29_master" name="LEADCF29" value="" />
+
+		<input type="hidden" name="aG9uZXlwb3Q" value="" />
 	</form>
 </div>
 
@@ -45,7 +71,7 @@
 	window.submitToZoho = function (data) {
 		console.log("submitToZoho (Contacts) called with:", data);
 
-		const { name, email, redirectUrl } = data;
+		const { name, email, redirectUrl, formSource } = data;
 
 		if (!name || !email) {
 			console.error("Name and Email are required for Zoho submission.");
@@ -55,11 +81,15 @@
 		const form = document.getElementById("zoho-master-form");
 		const nameInput = document.getElementById("Last_Name_master");
 		const emailInput = document.getElementById("Email_master");
+		const sourceInput = document.getElementById("LEADCF29_master");
 		const returnURLInput = form.querySelector('input[name="returnURL"]');
 
 		// 1. Populate Data
 		nameInput.value = name;
 		emailInput.value = email;
+		if (sourceInput && formSource) {
+			sourceInput.value = formSource;
+		}
 
 		// 2. Construct Return URL
 		const baseUrl = redirectUrl || "https://coach.jove.com/home";
@@ -88,21 +118,19 @@
 		const suffix = "_master";
 
 		const mapping = {
-			utm_source: `CONTACTCF20${suffix}`,
-			utm_medium: `CONTACTCF19${suffix}`,
-			utm_campaign: `CONTACTCF17${suffix}`,
-			utm_term: `CONTACTCF21${suffix}`,
-			utm_content: `CONTACTCF18${suffix}`,
-			ad_id: `CONTACTCF4${suffix}`,
-			ad_set_id: `CONTACTCF7${suffix}`,
-			ad_name: `CONTACTCF5${suffix}`,
-			ad_platform: `CONTACTCF6${suffix}`,
-			ad_campaign_id: `CONTACTCF1${suffix}`,
-			ad_group_name: `CONTACTCF3${suffix}`,
-			ad_group_id: `CONTACTCF2${suffix}`,
-			ad_campaign_name: `CONTACTCF30${suffix}`,
-			landing_page_url: `CONTACTCF11${suffix}`,
-			referrer_url: `CONTACTCF14${suffix}`,
+			utm_source: `LEADCF8${suffix}`,
+			utm_medium: `LEADCF9${suffix}`,
+			utm_campaign: `LEADCF11${suffix}`,
+			utm_term: `LEADCF7${suffix}`,
+			utm_content: `LEADCF10${suffix}`,
+			ad_id: `LEADCF13${suffix}`,
+			ad_set_id: `LEADCF14${suffix}`,
+			ad_name: `LEADCF18${suffix}`,
+			ad_platform: `LEADCF12${suffix}`,
+			ad_campaign_id: `LEADCF4${suffix}`,
+			ad_group_name: `LEADCF5${suffix}`,
+			ad_group_id: `LEADCF17${suffix}`,
+			ad_campaign_name: `LEADCF6${suffix}`,
 		};
 
 		for (const key in mapping) {
@@ -114,30 +142,33 @@
 		}
 
 		// Fallbacks
-		const adSetField = document.getElementById(`CONTACTCF7${suffix}`);
+		const adSetField = document.getElementById(`LEADCF14${suffix}`);
 		if (adSetField && (adSetField.value === "-" || !adSetField.value) && params.has("adset_id")) {
 			adSetField.value = params.get("adset_id");
 		}
 
-		const campaignNameField = document.getElementById(`CONTACTCF30${suffix}`);
+		const campaignNameField = document.getElementById(`LEADCF6${suffix}`);
 		if (campaignNameField && (campaignNameField.value === "-" || !campaignNameField.value) && params.has("campaign_name")) {
 			campaignNameField.value = params.get("campaign_name");
 		}
 
 		// Populate Landing Page & Referrer
-		const landingField = document.getElementById(`CONTACTCF11${suffix}`);
+		const landingField = document.getElementById(`LEADCF23${suffix}`);
 		if (landingField) landingField.value = window.location.href;
 
-		const refField = document.getElementById(`CONTACTCF14${suffix}`);
+		const refField = document.getElementById(`LEADCF16${suffix}`);
 		if (refField) {
 			const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
 			refField.value = referrerUrlParam || document.referrer || "-";
 		}
 
-		// Source Logic
-		const sourceSelect = document.getElementById(`CONTACTCF15${suffix}`);
+		// Source and Subsource Select Logic
+		const sourceSelect = document.getElementById(`LEADCF25${suffix}`);
+		const subsourceSelect = document.getElementById(`LEADCF26${suffix}`);
+
 		const gclid = params.get("gclid");
 		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
 		const utmMedium = params.get("utm_medium");
 
 		if (sourceSelect) {
@@ -150,6 +181,23 @@
 			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
 				sourceSelect.value = "Paid";
 			}
+		}
+
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "Linkedin";
+			}
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "Linkedin";
+			}
+			if (!subsourceValue && gclid) subsourceValue = "Google Ads";
+
+			if (subsourceValue) subsourceSelect.value = subsourceValue;
 		}
 	})();
 </script>

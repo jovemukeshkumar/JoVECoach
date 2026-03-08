@@ -424,7 +424,7 @@ const {
 								</ul>
 
 								<div class="button-row">
-									<button class="primary-btn ant-btn ant-btn-default" onclick="window.openZohoModal && window.openZohoModal()">
+									<button class="primary-btn ant-btn ant-btn-default" onclick={`window.openZohoModal && window.openZohoModal('', '', '', 'pricing-cta')`}>
 										<span>{plan?.buttonText ?? "Select"}</span>
 									</button>
 								</div>

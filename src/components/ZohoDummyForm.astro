@@ -11,9 +11,10 @@ interface Props {
 	noteColor?: string;
 	buttonMinWidth?: string;
 	showFeatures?: boolean;
+	formSource?: string;
 }
 
-const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath, buttonLayout = "full", noteColor = "#000", buttonMinWidth = "200px", showFeatures = false } = Astro.props;
+const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath, buttonLayout = "full", noteColor = "#000", buttonMinWidth = "200px", showFeatures = false, formSource = "" } = Astro.props;
 ---
 
 <form id={`dummy-form-${formIdSuffix}`} class={`zoho-dummy-form ${layout === "horizontal" ? "horizontal" : "vertical"}`} onsubmit="return false;">
@@ -52,7 +53,7 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 	</div>
 </form>
 
-<script is:inline define:vars={{ formIdSuffix, redirectPath }}>
+<script is:inline define:vars={{ formIdSuffix, redirectPath, formSource }}>
 	(function () {
 		const form = document.getElementById(`dummy-form-${formIdSuffix}`);
 		if (form) {
@@ -64,7 +65,7 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 				const email = form.querySelector('input[name="dummyEmail"]').value;
 
 				if (window.submitToZoho) {
-					window.submitToZoho({ name, email, redirectUrl: redirectPath });
+					window.submitToZoho({ name, email, redirectUrl: redirectPath, formSource });
 				} else {
 					console.error("window.submitToZoho is not defined. Make sure ZohoMasterForm is included.");
 					alert("Submission failed. Please try again later.");
