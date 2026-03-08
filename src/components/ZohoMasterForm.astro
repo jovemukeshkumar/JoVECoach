@@ -108,8 +108,25 @@
 
 		console.log("Submitting Master Form...", returnURLInput.value);
 
-		// 3. Submit
-		HTMLFormElement.prototype.submit.call(form);
+		// 3. Submit via Fetch to intercept JSON and manually redirect
+		const formData = new FormData(form);
+
+		fetch(form.action, {
+			method: "POST",
+			body: formData,
+			mode: "no-cors", // Zoho doesn't support CORS for these forms natively from arbitrary domains
+		})
+			.then(() => {
+				// Because of no-cors, we can't read the actual JSON response {"result":"success"}.
+				// We just have to assume it worked if the network request completed, and redirect.
+				console.log("Form submitted. Redirecting to:", returnURLInput.value);
+				window.location.href = returnURLInput.value;
+			})
+			.catch(err => {
+				console.error("Form submission failed:", err);
+				// Fallback redirect anyway
+				window.location.href = returnURLInput.value;
+			});
 	};
 
 	// UTM Population (Run on load)
@@ -299,8 +316,22 @@
 
 		console.log("Check Return URL:", returnURLInput.value);
 
-		// 3. Submit
-		HTMLFormElement.prototype.submit.call(form);
+		// 3. Submit via Fetch to intercept JSON and manually redirect
+		const formData = new FormData(form);
+
+		fetch(form.action, {
+			method: "POST",
+			body: formData,
+			mode: "no-cors",
+		})
+			.then(() => {
+				console.log("Form submitted. Redirecting to:", returnURLInput.value);
+				window.location.href = returnURLInput.value;
+			})
+			.catch(err => {
+				console.error("Form submission failed:", err);
+				window.location.href = returnURLInput.value;
+			});
 	};
 
 	// UTM Population (Run on load)
