@@ -52,7 +52,11 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 				{showSubtitle && <p class="hero-subtitle">{subtitle}</p>}
 
 				<!-- Mobile Image Placement -->
-				<div class="mobile-image-wrapper" onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick})`} style="cursor: pointer;">
+				<div
+					class="mobile-image-wrapper"
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', 'https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system')`}
+					style="cursor: pointer;"
+				>
 					<picture>
 						<!-- Don't load on desktop (min-width: 1025px) -->
 						<source media="(min-width: 1025px)" srcset={transparentPixel} />
@@ -83,7 +87,11 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 			</div>
 
 			<div class="hero-right">
-				<div class="desktop-image-wrapper" onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick})`} style="cursor: pointer;">
+				<div
+					class="desktop-image-wrapper"
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', 'https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system')`}
+					style="cursor: pointer;"
+				>
 					<picture>
 						<!-- Don't load on mobile (max-width: 1024px) -->
 						<source media="(max-width: 1024px)" srcset={transparentPixel} />
@@ -587,7 +595,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 </style>
 
 <script is:inline>
-	window.handleHeroClick = function (event, title, subtitle, ctaText, videoSrc, playVideoOnClick) {
+	window.handleHeroClick = function (event, title, subtitle, ctaText, videoSrc, playVideoOnClick, formSource, redirectUrl) {
 		if (playVideoOnClick && videoSrc && window.openVideoModal) {
 			window.openVideoModal();
 
@@ -596,13 +604,13 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 				const video = document.getElementById("hero-video-player");
 				if (video) video.pause();
 				if (window.openZohoModal) {
-					window.openZohoModal(title, subtitle, ctaText);
+					window.openZohoModal(title, subtitle, ctaText, formSource, redirectUrl);
 				}
 			}, 15000);
 		} else {
 			// Always Open Form Modal
 			if (window.openZohoModal) {
-				window.openZohoModal(title, subtitle, ctaText);
+				window.openZohoModal(title, subtitle, ctaText, formSource, redirectUrl);
 			}
 		}
 	};

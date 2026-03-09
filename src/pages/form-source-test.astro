@@ -61,19 +61,6 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	<FAQSection heading={faq.heading} items={faq.items} />
 	<!-- Replace the regular Zoho footer with a test form that includes the hidden Form Source field -->
 	<div id="form-source-test"><ZohoFooterFormNewPage formSource="bottom-form" /></div>
-	<script>
-		document.addEventListener("DOMContentLoaded", () => {
-			const heroImg = document.querySelector(".hero-section img");
-			const formEl = document.getElementById("form-source-test");
-			if (heroImg && formEl) {
-				heroImg.style.cursor = "pointer";
-				heroImg.addEventListener("click", e => {
-					e.preventDefault();
-					formEl.scrollIntoView({ behavior: "smooth" });
-				});
-			}
-		});
-	</script>
 	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
 	<VideoModal videoSrc={hero.heroModal?.videoSrc} />
 	<Footer seoText={footer?.seoText} />

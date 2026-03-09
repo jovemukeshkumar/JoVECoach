@@ -39,6 +39,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 
 				<div class="zcwf_row">
 					<input type="hidden" name="modalFormSource" id="modalFormSourceInput" value="" />
+					<input type="hidden" name="modalRedirectUrl" id="modalRedirectUrlInput" value="" />
 					<button id="formsubmit_modal" class="global-form-btn" type="submit">{ctaText}</button>
 				</div>
 
@@ -100,6 +101,11 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 				sourceInput.value = formSource || "nav-modal";
 			}
 
+			const redirectInput = overlay.querySelector("#modalRedirectUrlInput");
+			if (redirectInput) {
+				redirectInput.value = redirectUrl || "";
+			}
+
 			const disclaimerEl = overlay.querySelector(".modal-disclaimer");
 			if (disclaimerEl) {
 				if (subtitle === "NONE") {
@@ -148,10 +154,15 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 			const name = modalForm.querySelector('input[name="modalName"]').value;
 			const email = modalForm.querySelector('input[name="modalEmail"]').value;
 			const formSource = modalForm.querySelector('input[name="modalFormSource"]').value;
+			let redirectUrl = modalForm.querySelector('input[name="modalRedirectUrl"]').value;
+
+			// If no custom redirectUrl was passed into the modal, send null so master defaults to /home
+			if (!redirectUrl || redirectUrl.trim() === "") {
+				redirectUrl = null;
+			}
 
 			if (window.submitToZoho) {
-				// Pass null/undefined to use default redirect (https://coach.jove.com/home)
-				window.submitToZoho({ name, email, redirectUrl: null, formSource });
+				window.submitToZoho({ name, email, redirectUrl, formSource });
 
 				// Close the video modal on submit as well
 				if (window.closeVideoModal) {
