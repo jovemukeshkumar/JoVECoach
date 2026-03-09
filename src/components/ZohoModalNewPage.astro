@@ -70,7 +70,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		if (b) defaultCtaText = b.innerText;
 	}
 
-	window.openZohoModal = function (title, subtitle, ctaText, formSource) {
+	window.openZohoModal = function (title, subtitle, ctaText, formSource, redirectUrl) {
 		const overlay = document.getElementById("zoho-modal-overlay");
 		if (overlay) {
 			const titleEl = overlay.querySelector(".zcwf_title");
