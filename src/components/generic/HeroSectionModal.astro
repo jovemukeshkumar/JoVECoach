@@ -54,7 +54,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 				<!-- Mobile Image Placement -->
 				<div
 					class="mobile-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', window.location.pathname === '/form-source-test' ? 'https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system' : null)`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', window.location.pathname.includes('/form-source-test') ? 'https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system' : null)`}
 					style="cursor: pointer;"
 				>
 					<picture>
@@ -89,7 +89,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 			<div class="hero-right">
 				<div
 					class="desktop-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', window.location.pathname === '/form-source-test' ? 'https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system' : null)`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', window.location.pathname.includes('/form-source-test') ? 'https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system' : null)`}
 					style="cursor: pointer;"
 				>
 					<picture>
