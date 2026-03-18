@@ -76,7 +76,7 @@ export const anatomyData: LandingPageData = {
             title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
             // subtitle: "Enter your details to resume right away.",
             ctaText: "Watch Anatomy Videos Free — No Signup",
-            videoSrc: HeroVideo
+            videoSrc: "https://cloudfront.jove.com/CDNSource/samples2/16242.mp4"
         },
     },
     concepts: {
