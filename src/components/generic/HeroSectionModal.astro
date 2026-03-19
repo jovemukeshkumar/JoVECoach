@@ -54,7 +54,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 				<!-- Mobile Image Placement -->
 				<div
 					class="mobile-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.jove.com/home?final_destination=https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system' : null)`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.preview-res6u.test.jove.com/home?final_destination=%2Fbiology%2Fphotosynthesis-explained%2Fphotosynthesis-definition' : null)`}
 					style="cursor: pointer;"
 				>
 					<picture>
@@ -89,7 +89,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 			<div class="hero-right">
 				<div
 					class="desktop-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.jove.com/home?final_destination=https://coach.jove.com/microcourse/anatomy-and-physiology/the-urinary-system/introduction-to-urinary-system' : null)`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.preview-res6u.test.jove.com/home?final_destination=%2Fbiology%2Fphotosynthesis-explained%2Fphotosynthesis-definition' : null)`}
 					style="cursor: pointer;"
 				>
 					<picture>
@@ -597,16 +597,52 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 <script is:inline>
 	window.handleHeroClick = function (event, title, subtitle, ctaText, videoSrc, playVideoOnClick, formSource, redirectUrl) {
 		if (playVideoOnClick && videoSrc && window.openVideoModal) {
+			const videoPlayer = document.getElementById("hero-video-player");
+			if (videoPlayer) {
+				// Reset any previous fade and blur styles
+				videoPlayer.style.transition = "none";
+				videoPlayer.style.opacity = "1";
+				videoPlayer.style.filter = "none";
+			}
+
 			window.openVideoModal();
 
-			// Pause video and open form modal after 15 seconds
+			// Start 2-second visual and audio fade at 13 seconds (finishes at 15s)
 			setTimeout(() => {
 				const video = document.getElementById("hero-video-player");
-				if (video) video.pause();
-				if (window.openZohoModal) {
-					window.openZohoModal(title, subtitle, ctaText, formSource, redirectUrl);
+				if (video) {
+					// Smooth visual fade & blur over 2 seconds
+					video.style.transition = "all 2s ease";
+					video.style.opacity = "0.2";
+					video.style.filter = "blur(10px)";
+
+					// Smooth audio fade out over 2 seconds before pausing
+					const originalVol = video.volume;
+					const fadeStep = originalVol / 40; // 40 steps @ 50ms = 2s
+					const fadeInterval = setInterval(() => {
+						if (video.volume > fadeStep) {
+							video.volume -= fadeStep;
+						} else {
+							clearInterval(fadeInterval);
+							video.pause();
+							video.volume = originalVol; // Restore for next play
+						}
+					}, 50);
 				}
-			}, 15000);
+				
+				// Open Zoho modal with fade-in animation over the playing/fading video
+				if (window.openZohoModal) {
+					const zohoOverlay = document.getElementById("zoho-modal-overlay");
+					if (zohoOverlay) zohoOverlay.classList.add("video-transition");
+
+					const videoTitle = '<div class="modal-pill"><span class="stars">★★★★★</span> Trusted by 1M+ students</div><br/>Ready for the full lesson?';
+					const videoSubtitle = 'Join for free - your session starts instantly';
+					const videoCtaText = 'Start My 7-day Free Trial';
+					const videoDisclaimer = 'No credit Card • Cancel anytime • Instant access';
+
+					window.openZohoModal(videoTitle, videoSubtitle, videoCtaText, formSource, redirectUrl, videoDisclaimer);
+				}
+			}, 13000);
 		} else {
 			// Always Open Form Modal
 			if (window.openZohoModal) {

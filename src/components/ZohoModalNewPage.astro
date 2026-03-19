@@ -58,6 +58,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 	let defaultTitle = "";
 	let defaultSubtitle = "";
 	let defaultCtaText = "";
+	let defaultDisclaimer = "• 7 days free • Full access • No credit card";
 
 	// Initialize defaults once the script runs
 	const modalOverlay = document.getElementById("zoho-modal-overlay");
@@ -68,9 +69,11 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		if (s) defaultSubtitle = s.innerText;
 		const b = modalOverlay.querySelector("#formsubmit_modal");
 		if (b) defaultCtaText = b.innerText;
+		const d = modalOverlay.querySelector(".modal-disclaimer");
+		if (d) defaultDisclaimer = d.innerHTML;
 	}
 
-	window.openZohoModal = function (title, subtitle, ctaText, formSource, redirectUrl) {
+	window.openZohoModal = function (title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer) {
 		const overlay = document.getElementById("zoho-modal-overlay");
 		if (overlay) {
 			const titleEl = overlay.querySelector(".zcwf_title");
@@ -108,7 +111,8 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 
 			const disclaimerEl = overlay.querySelector(".modal-disclaimer");
 			if (disclaimerEl) {
-				if (subtitle === "NONE") {
+				disclaimerEl.innerHTML = customDisclaimer || defaultDisclaimer;
+				if (subtitle === "NONE" && !customDisclaimer) {
 					disclaimerEl.style.display = "none";
 				} else {
 					disclaimerEl.style.display = "block";
@@ -124,6 +128,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		const overlay = document.getElementById("zoho-modal-overlay");
 		if (overlay) {
 			overlay.style.display = "none";
+			overlay.classList.remove("video-transition");
 			document.body.style.overflow = "auto";
 
 			// Also close the video modal if it's open
@@ -177,6 +182,16 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 </script>
 
 <style>
+	@keyframes fadeInOverlay {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+
+	@keyframes scaleUpModal {
+		from { transform: scale(0.95); opacity: 0; }
+		to { transform: scale(1); opacity: 1; }
+	}
+
 	.modal-overlay {
 		position: fixed;
 		top: 0;
@@ -192,6 +207,10 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		padding: 20px;
 	}
 
+	.modal-overlay.video-transition[style*="display: flex"] {
+		animation: fadeInOverlay 2s ease forwards;
+	}
+
 	.modal-container {
 		position: relative;
 		width: 100%;
@@ -203,6 +222,31 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		background: transparent;
 		box-shadow: none;
 		box-sizing: border-box;
+	}
+
+	.modal-overlay.video-transition[style*="display: flex"] .modal-container {
+		animation: scaleUpModal 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	/* Trust Pill Styles (Must be global for dynamically injected HTML) */
+	:global(.modal-pill) {
+		display: inline-flex;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		padding: 4px 10px;
+		border-radius: 20px;
+		font-size: 11px; /* Increased by 1px */
+		color: #fff;
+		margin-top: -16px; /* Move up slightly more */
+		margin-bottom: 20px;
+		font-weight: 500;
+		backdrop-filter: blur(4px);
+	}
+	:global(.modal-pill .stars) {
+		color: #FFD700;
+		margin-right: 4px;
+		letter-spacing: 1px;
 	}
 
 	/* Zoho Form Styles (Simplified but matching Legacy) */
@@ -222,6 +266,11 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		box-sizing: border-box; /* Ensure padding doesn't affect width calculations */
 		width: 100%; /* Ensure it fits container */
 		max-width: 100% !important; /* Override inline max-width if needed */
+	}
+
+	.modal-overlay.video-transition #crmWebToEntityForm_modal {
+		background-color: rgba(0, 133, 246, 0.85) !important; /* Slightly transparent */
+		backdrop-filter: blur(12px);
 	}
 
 	.zcwf_title {
