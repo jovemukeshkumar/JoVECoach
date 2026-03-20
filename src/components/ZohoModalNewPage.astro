@@ -209,6 +209,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 
 	.modal-overlay.video-transition[style*="display: flex"] {
 		animation: fadeInOverlay 2s ease forwards;
+		background: rgba(0, 0, 0, 0.15); /* Keep it much brighter */
 	}
 
 	.modal-container {
@@ -269,7 +270,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 	}
 
 	.modal-overlay.video-transition #crmWebToEntityForm_modal {
-		background-color: rgba(0, 133, 246, 0.85) !important; /* Slightly transparent */
+		background-color: rgba(0, 133, 246, 0.75) !important; /* 75% opaque, 25% transparent */
 		backdrop-filter: blur(12px);
 	}
 

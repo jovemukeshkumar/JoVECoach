@@ -54,7 +54,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 				<!-- Mobile Image Placement -->
 				<div
 					class="mobile-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.preview-res6u.test.jove.com/home?final_destination=%2Fbiology%2Fphotosynthesis-explained%2Fphotosynthesis-definition' : null)`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.jove.com/home?final_destination=%2Fanatomy-and-physiology%2Furinary-system-explained%2Fwhat-is-urinary-system' : null)`}
 					style="cursor: pointer;"
 				>
 					<picture>
@@ -89,7 +89,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 			<div class="hero-right">
 				<div
 					class="desktop-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.preview-res6u.test.jove.com/home?final_destination=%2Fbiology%2Fphotosynthesis-explained%2Fphotosynthesis-definition' : null)`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.jove.com/home?final_destination=%2Fanatomy-and-physiology%2Furinary-system-explained%2Fwhat-is-urinary-system' : null)`}
 					style="cursor: pointer;"
 				>
 					<picture>
@@ -613,7 +613,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 				if (video) {
 					// Smooth visual fade & blur over 2 seconds
 					video.style.transition = "all 2s ease";
-					video.style.opacity = "0.2";
+					video.style.opacity = "0.8"; // Keep it bright
 					video.style.filter = "blur(10px)";
 
 					// Smooth audio fade out over 2 seconds before pausing

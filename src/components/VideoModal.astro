@@ -15,7 +15,7 @@ const { videoSrc } = Astro.props;
 			<Image src={closeIcon} alt="Close" />
 		</button>
 		<div class="video-wrapper">
-			<video id="hero-video-player" controls preload="none" width="100%" height="auto" style="max-width: 100%; display: block;">
+			<video id="hero-video-player" controls playsinline webkit-playsinline preload="none" width="100%" height="auto" style="max-width: 100%; display: block;">
 				<source src={videoSrc} type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
