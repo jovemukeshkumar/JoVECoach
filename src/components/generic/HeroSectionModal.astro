@@ -21,6 +21,7 @@ interface Props {
 	heroModalVideoSrc?: string;
 	showSubtitle?: boolean;
 	playVideoOnClick?: boolean;
+	customRedirectUrl?: string;
 }
 
 const {
@@ -38,6 +39,7 @@ const {
 	heroModalVideoSrc,
 	showSubtitle = false,
 	playVideoOnClick = false,
+	customRedirectUrl,
 } = Astro.props;
 
 const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -54,7 +56,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 				<!-- Mobile Image Placement -->
 				<div
 					class="mobile-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.jove.com/home?final_destination=%2Fanatomy-and-physiology%2Furinary-system-explained%2Fwhat-is-urinary-system' : null)`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}')`}
 					style="cursor: pointer;"
 				>
 					<picture>
@@ -89,7 +91,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 			<div class="hero-right">
 				<div
 					class="desktop-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', (window.location.pathname.includes('/form-source-test') || window.location.pathname.includes('/testing')) ? 'https://coach.jove.com/home?final_destination=%2Fanatomy-and-physiology%2Furinary-system-explained%2Fwhat-is-urinary-system' : null)`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}')`}
 					style="cursor: pointer;"
 				>
 					<picture>
