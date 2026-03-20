@@ -63,7 +63,7 @@ export const collegeBiologyData: LandingPageData = {
             title: "Master College Biology in 2-Minute Videos <br class=\"modal-break\" />- Join 1M+ Students",
             // subtitle: "Enter your details for instant access.",
             ctaText: "Watch College Bio Videos Free — No Signup",
-            videoSrc: biologyCarouselDesktop
+            videoSrc: "https://cloudfront.jove.com/CDNSource/samples2/14972.mp4"
         },
     },
     concepts: {

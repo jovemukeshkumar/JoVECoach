@@ -65,7 +65,7 @@ export const ChemistryGenJanData: LandingPageData = {
             title: "Master College Chemistry in 2-Minute Videos - Join 1M+ Students",
             // subtitle: "Enter your details for instant access.",
             ctaText: "Watch College Chem Videos Free — No Signup",
-            videoSrc: ChemistryCarouselDesktop
+            videoSrc: "https://cloudfront.jove.com/CDNSource/samples2/10671.mp4"
         },
     },
     concepts: {
