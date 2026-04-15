@@ -53,12 +53,12 @@ import type { LandingPageData } from "../landingPageData";
 
 export const statisticsJanData: LandingPageData = {
 	hero: {
-		title: 'Make Data-Driven Decisions. <br class="desktop-br" /> Master Statistics with <span class="highlight">2-Min Videos.</span>',
+		title: 'Get Promoted Faster!<br class="desktop-br" /> Master Statistics with <span class="highlight">2-Min Videos.</span>',
 		subtitle: "Data analysis, probability, and hypothesis testing—explained for real work, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Data analysis, probability, and hypothesis testing—explained for real work.",
 		ctaTitle: "Watch statistics concepts finally click.",
-		heroFormCta: "<strong>Get Certified</strong>&nbsp;- It's Free",
-		trustText: "Trusted by 1 Million+ learners",
+		heroFormCta: "<strong>Get Free Certification </strong>",
+		trustText: "Trusted by 1 Million+ learners from 1800+ Organizations",
 		image: HeroImage,
 		mobileImage: HeroImage,
 		heroModal: {
@@ -184,8 +184,8 @@ export const statisticsJanData: LandingPageData = {
 	},
 	comparison: {
 		title: 'See why professionals <span class="highlight-blue">choose JoVE Coach</span>',
-		subtitle: "20 years of trusted education, built for real-world understanding.",
-		tagline: 'Better <span class="highlight-blue">clarity</span>. Better <span class="highlight-blue">focus</span>. Better <span class="highlight-blue">decisions</span>.',
+		subtitle: "20 years of trusted learning, built for real-world understanding.",
+		tagline: "",
 		ctaText: "Try It Free",
 		items: [
 			{
@@ -243,8 +243,8 @@ export const statisticsJanData: LandingPageData = {
 		],
 	},
 	firstCTA: {
-		title: "Ready for clearer data-driven decisions?",
-		subtitle: "Try it free and see how it fits your workday.",
+		title: "Ready to fast-track your career?",
+		subtitle: "Try it free and build the skills leaders notice.",
 	},
 	secondCTA: {
 		title: "Ready to try the 4 steps",
@@ -306,12 +306,12 @@ export const statisticsJanData: LandingPageData = {
 		],
 	},
 	modal: {
-		title: "A Smarter Way to Understand Statistics Fundamentals",
+		title: "Ready For Your Next Promotion?",
 		subtitle: "Try Jove Coach and understand Data Analysis, Probability, and Hypothesis Testing — fast.",
 		ctaText: "Start My Free Trial",
 	},
 	footer: {
-		title: "A Smarter Way to Understand Statistics Fundamentals",
+		title: "The Fast Lane to Career Growth.",
 		subtitle: "Try JoVE Coach and understand Data Analysis, Probability, and Hypothesis Testing — fast.",
 		ctaText: "Start My Free Trial",
 		image: footerValuesImage,
