@@ -57,7 +57,7 @@ export const statisticsJanData: LandingPageData = {
 		subtitle: "Data analysis, probability, and hypothesis testing—explained for real work, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Data analysis, probability, and hypothesis testing—explained for real work.",
 		ctaTitle: "Watch statistics concepts finally click.",
-		heroFormCta: "<strong>Get Free Certification </strong>",
+		heroFormCta: "<strong>Get Free Certification - In Minutes</strong>",
 		trustText: "Trusted by 1 Million+ learners from 1800+ Organizations",
 		image: HeroImage,
 		mobileImage: HeroImage,
@@ -276,8 +276,8 @@ export const statisticsJanData: LandingPageData = {
 		heading: "Frequently Asked Questions",
 		items: [
 			{
-				question: "Is JoVE Coach free?",
-				answer: "You can explore videos for free, no sign-up needed. For full access, start a 7-day free trial to unlock all videos and micro-courses.",
+				question: "Is JoVE Coach a free statistics course online?",
+				answer: "You can explore our statistics videos for free—no sign-up needed. For full access to every video and micro-course, start a 7-day free trial. No credit card required.",
 			},
 			{
 				question: "How long are the videos?",
@@ -288,16 +288,28 @@ export const statisticsJanData: LandingPageData = {
 				answer: "A structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to take you from confused to confident without long courses.",
 			},
 			{
+				question: "How is this different from other data analytics courses online?",
+				answer: "Most data analytics training online runs for weeks and assumes you have time for full lectures. JoVE Coach delivers the same core concepts in 2-minute videos—built for working professionals who need answers fast.",
+			},
+			{
 				question: "How is this different from YouTube?",
 				answer: "Videos are created by statistics experts, not content creators. AI finds exactly what you need and adds quick quizzes to confirm it clicked.",
 			},
 			{
-				question: "Will JoVE Coach help me with my work projects?",
-				answer: "Yes. Professionals report better data literacy and more confident decision-making with consistent use.",
+				question: "Is this a good data science course online for working professionals?",
+				answer: "Yes. JoVE Coach is built for professionals who need practical data science and statistics training without committing to a degree or semester-long program. Learn on your schedule, apply what you learn the next day.",
 			},
 			{
-				question: "What statistics topics do you cover?",
-				answer: "Statistics fundamentals including Data Analysis, Probability, Hypothesis Testing, Regression, and more.",
+				question: "Can I learn regression analysis, hypothesis testing, and quantitative analysis?",
+				answer: "Yes. JoVE Coach covers regression analysis, hypothesis testing, quantitative analysis, and statistical modeling—each broken down into 2-minute videos with quick quizzes so concepts actually stick.",
+			},
+			{
+				question: "Does JoVE Coach offer a statistics certification or data analytics certification?",
+				answer: "Yes. JoVE Coach issues a certificate of completion when you finish a micro-course—proof of the statistics and data analytics skills you've built.",
+			},
+			{
+				question: "Will JoVE Coach help me with my work projects?",
+				answer: "Yes. Professionals report better data literacy and more confident decision-making with consistent use.",
 			},
 			{
 				question: "Can I cancel anytime?",
@@ -305,6 +317,40 @@ export const statisticsJanData: LandingPageData = {
 			},
 		],
 	},
+	// faq: {
+	// 	heading: "Frequently Asked Questions",
+	// 	items: [
+	// 		{
+	// 			question: "Is JoVE Coach free?",
+	// 			answer: "You can explore videos for free, no sign-up needed. For full access, start a 7-day free trial to unlock all videos and micro-courses.",
+	// 		},
+	// 		{
+	// 			question: "How long are the videos?",
+	// 			answer: "About 2 minutes each. One concept, clearly explained. No filler.",
+	// 		},
+	// 		{
+	// 			question: "What is a micro-course?",
+	// 			answer: "A structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to take you from confused to confident without long courses.",
+	// 		},
+	// 		{
+	// 			question: "How is this different from YouTube?",
+	// 			answer: "Videos are created by statistics experts, not content creators. AI finds exactly what you need and adds quick quizzes to confirm it clicked.",
+	// 		},
+	// 		{
+	// 			question: "Will JoVE Coach help me with my work projects?",
+	// 			answer: "Yes. Professionals report better data literacy and more confident decision-making with consistent use.",
+	// 		},
+	// 		{
+	// 			question: "What statistics topics do you cover?",
+	// 			answer: "Statistics fundamentals including Data Analysis, Probability, Hypothesis Testing, Regression, and more.",
+	// 		},
+	// 		{
+	// 			question: "Can I cancel anytime?",
+	// 			answer: "Yes. No contracts, no fees, no hassle.",
+	// 		},
+	// 	],
+	// },
+
 	modal: {
 		title: "Ready For Your Next Promotion?",
 		subtitle: "Try Jove Coach and understand Data Analysis, Probability, and Hypothesis Testing — fast.",
@@ -312,7 +358,7 @@ export const statisticsJanData: LandingPageData = {
 	},
 	footer: {
 		title: "The Fast Lane to Career Growth.",
-		subtitle: "Try JoVE Coach and understand Data Analysis, Probability, and Hypothesis Testing — fast.",
+		subtitle: "Build data skills that move your career forward — in 2-minute videos.",
 		ctaText: "Start My Free Trial",
 		image: footerValuesImage,
 		seoText: "JoVE Coach offers statistics courses with expert-verified 2-minute videos across essential statistics topics, including Data Analysis, Probability, Hypothesis Testing, Regression Analysis, Data Visualization, Statistical Inference, and more.",
