@@ -83,60 +83,6 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	<!-- Hidden Master Form for Submissions -->
 </Layout>
 
-<script is:inline>
-	// Override all modals to hide subtitle for statistics page
-	document.addEventListener('DOMContentLoaded', function() {
-		// Override navbar modal
-		const navButton = document.querySelector('.navbar .cta-button');
-		if (navButton) {
-			navButton.onclick = function() {
-				if (window.openZohoModal) {
-					window.openZohoModal(undefined, "NONE");
-				}
-			};
-		}
-
-		// Override concepts section button modal
-		const conceptsButton = document.querySelector('.concepts-section .cta-btn');
-		if (conceptsButton) {
-			const originalOnclick = conceptsButton.getAttribute('onclick');
-			if (originalOnclick && originalOnclick.includes('openZohoModal')) {
-				conceptsButton.onclick = function() {
-					if (window.openZohoModal) {
-						window.openZohoModal(undefined, "NONE");
-					}
-				};
-			}
-		}
-
-		// Override all pricing plan buttons
-		const pricingButtons = document.querySelectorAll('.pricing-section .pricing-btn, .pricing-section button[onclick*="openZohoModal"]');
-		pricingButtons.forEach(function(btn) {
-			const originalOnclick = btn.getAttribute('onclick');
-			if (originalOnclick && originalOnclick.includes('openZohoModal')) {
-				btn.onclick = function() {
-					if (window.openZohoModal) {
-						window.openZohoModal(undefined, "NONE");
-					}
-				};
-			}
-		});
-
-		// Override FirstCTASection and SecondCTASection buttons
-		const ctaButtons = document.querySelectorAll('.first-cta-section button, .second-cta-section button, button[onclick*="openZohoModal"]');
-		ctaButtons.forEach(function(btn) {
-			const originalOnclick = btn.getAttribute('onclick');
-			if (originalOnclick && originalOnclick.includes('openZohoModal')) {
-				btn.onclick = function() {
-					if (window.openZohoModal) {
-						window.openZohoModal(undefined, "NONE");
-					}
-				};
-			}
-		});
-	});
-</script>
-
 <style>
 	.feature img {
 		width: 35px !important;
