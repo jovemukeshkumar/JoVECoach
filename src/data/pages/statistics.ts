@@ -237,7 +237,7 @@ export const statisticsJanData: LandingPageData = {
 				values: { jove: true, coursera: true, youtube: false, chatgpt: false, udemy: true },
 			},
 			{
-				name: "20 years of academic trust",
+				name: "20 years of industry trust",
 				values: { jove: true, coursera: false, youtube: false, chatgpt: false, udemy: false },
 			},
 		],
@@ -276,7 +276,7 @@ export const statisticsJanData: LandingPageData = {
 		heading: "Frequently Asked Questions",
 		items: [
 			{
-				question: "Is JoVE Coach a free statistics course online?",
+				question: "Does JoVE Coach offer a free statistics course online?",
 				answer: "You can explore our statistics videos for free—no sign-up needed. For full access to every video and micro-course, start a 7-day free trial. No credit card required.",
 			},
 			{
