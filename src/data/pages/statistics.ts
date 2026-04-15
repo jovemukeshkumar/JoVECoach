@@ -277,7 +277,7 @@ export const statisticsJanData: LandingPageData = {
 		items: [
 			{
 				question: "Does JoVE Coach offer a free statistics course online?",
-				answer: "You can explore our statistics videos for free—no sign-up needed. For full access to every video and micro-course, start a 7-day free trial. No credit card required.",
+				answer: "Yes. Start a 7-day free trial to access the full statistics course online—every video, every micro-course, with no credit card required. You can also browse individual videos for free without signing up.",
 			},
 			{
 				question: "How long are the videos?",
