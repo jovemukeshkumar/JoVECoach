@@ -1,0 +1,95 @@
+---
+export const prerender = true;
+// import Navbar from "../components/Navbar.astro";
+import Footer from "../components/generic/FooterWithSEO.astro";
+import Layout from "../layouts/UpdatedLayout.astro";
+import FAQSection from "../components/generic/FAQSection.astro";
+import StepsSection from "../components/generic/StepsSection.astro";
+import FirstCTASection from "../components/generic/FirstCTASection.astro";
+import SecondCTASection from "../components/generic/SecondCTASection.astro";
+import ConceptsSection from "../components/generic/TopicsSection.astro";
+// import Testimonial from "../components/homePage/testimonial.astro";
+import LearnerPersonas from "../components/generic/LearnerPersonas.astro";
+import PricingSection from "../components/generic/PricingSection.astro";
+import ZohoFooterFormNewPage from "../components/ZohoFooterFormNewPage.astro";
+import ZohoModalNewPage from "../components/ZohoModalNewPage.astro";
+import VideoModal from "../components/VideoModal.astro";
+import ComparisonTable from "../components/generic/ComparisonTable.astro";
+import NavLogo from "../assets/NavLogo.svg";
+import HeroSection from "../components/generic/HeroSectionModal.astro";
+import Navbar from "../components/generic/Navbar.astro";
+
+import { statisticsJanData } from "../data/pages/statistics";
+// Select data subset (e.g. 'science-gen')
+const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = statisticsJanData;
+---
+
+<Layout title="JoVE Coach | Master Statistics with AI | Data Analysis & Probability" description="Struggling with Statistics? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master data analysis and probability in minutes. Try free for 7 days." robots="noindex, nofollow">
+	<link rel="preload" href={hero.mobileImage.src} as="image" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
+	<link rel="preload" href={hero.image.src} as="image" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+
+	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+
+	<!-- <HeroSection videoSrc={HeroSectionVideo} mobileImgSrc={HeroSectionImage} posterSrc={HeroSectionDesktopPoster.src} /> -->
+	<Navbar />
+
+	<div class="business-hero-wrapper">
+		<HeroSection
+			heroImage={hero.image}
+			mobileImgSrc={hero.mobileImage}
+			title={hero.title}
+			subtitle={hero.subtitle}
+			mobileSubtitle={hero.mobileSubtitle}
+			trustText={hero.trustText}
+			ctaTitle={hero.ctaTitle}
+			heroFormCta={hero.heroFormCta}
+			heroModalTitle={hero.heroModal?.title}
+			heroModalSubtitle={hero.heroModal?.subtitle}
+			heroModalCtaText={hero.heroModal?.ctaText}
+			heroModalVideoSrc={hero.heroModal?.videoSrc}
+		/>
+	</div>
+
+	<ConceptsSection 		heading={concepts.heading}
+		subheading={concepts.subheading}
+		ctaText={concepts.ctaText}
+		features={concepts.features}
+		videoSrc={concepts.video}
+		mobileVideoSrc={concepts.mobileVideo}
+		questions={concepts.questions}
+		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
+		conceptCards={concepts.conceptCards}
+		modalTitle={hero.heroModal?.title}
+		modalSubtitle={hero.heroModal?.subtitle}
+		modalCtaText={hero.heroModal?.ctaText}
+		showSubheading={false}
+	/>
+	<!-- <ConceptsSection heading={concepts.heading} subheading={concepts.subheading} features={concepts.features} videoSrc={concepts.video} mobileVideoSrc={concepts.mobileVideo} questions={concepts.questions} videoPlaybackSpeed={concepts.videoPlaybackSpeed} /> -->
+
+	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} />
+	<!-- <StepsSection title={steps.title} subtitle={steps.subtitle} discoverText={steps.discoverText} steps={steps.items} /> -->
+	<!-- <SecondCTASection title={secondCTA.title} subtitle={secondCTA.subtitle} ctaText={secondCTA.ctaText} /> -->
+	<ComparisonTable title={comparison.title} subtitle={comparison.subtitle} tagline={comparison.tagline} ctaText={comparison.ctaText} items={comparison.items} features={comparison.features} />
+	<!-- <LearnerPersonas personas={personas.items} title={personas.title} subtitle={personas.subtitle} /> -->
+	<!-- <PricingSection title={pricing.title} subtitle={pricing.subtitle} plans={pricing.plans} /> -->
+	<FAQSection heading={faq.heading} items={faq.items} />
+
+	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} image={footer?.image} />
+	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
+	<VideoModal videoSrc={hero.heroModal?.videoSrc} />
+
+	<Footer seoText={footer?.seoText} />
+
+	<!-- Hidden Master Form for Submissions -->
+</Layout>
+
+<style>
+	.feature img {
+		width: 35px !important;
+		height: 35px !important;
+	}
+
+	.business-hero-wrapper :global(h1) {
+		font-size: 31px !important;
+	}
+</style>
