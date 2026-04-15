@@ -83,6 +83,20 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	<!-- Hidden Master Form for Submissions -->
 </Layout>
 
+<script is:inline>
+	// Override navbar modal to hide subtitle for statistics page
+	document.addEventListener('DOMContentLoaded', function() {
+		const navButton = document.querySelector('.navbar .cta-button');
+		if (navButton) {
+			navButton.onclick = function() {
+				if (window.openZohoModal) {
+					window.openZohoModal(undefined, "NONE");
+				}
+			};
+		}
+	});
+</script>
+
 <style>
 	.feature img {
 		width: 35px !important;
