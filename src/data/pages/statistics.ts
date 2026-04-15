@@ -58,7 +58,7 @@ export const statisticsJanData: LandingPageData = {
 		mobileSubtitle: "Data analysis, probability, and hypothesis testing—explained for real work.",
 		ctaTitle: "Watch statistics concepts finally click.",
 		heroFormCta: "<strong>Get Free Certification - In Minutes</strong>",
-		trustText: "Trusted by 1 Million+ learners from 1800+ Organizations",
+		trustText: "Trusted by 1 Million+ learners from 1,800+ organizations",
 		image: HeroImage,
 		mobileImage: HeroImage,
 		heroModal: {
@@ -71,7 +71,7 @@ export const statisticsJanData: LandingPageData = {
 	concepts: {
 		heading: "Every <span>statistics</span> concept you need. <span>Under 2 minutes.</span>",
 		subheading: "One concept at a time, explained with short videos.",
-		ctaText: "Explore what 1M+ professionals see",
+		ctaText: "Join 1M+ Professionals",
 		features: [
 			{ icon: "micro-courses", text: "500+ Micro-courses" },
 			{ icon: "curriculum", text: "Curriculum-aligned" },
@@ -352,8 +352,8 @@ export const statisticsJanData: LandingPageData = {
 	// },
 
 	modal: {
-		title: "Ready For Your Next Promotion?",
-		subtitle: "Try Jove Coach and understand Data Analysis, Probability, and Hypothesis Testing — fast.",
+		title: "Ready for Your Next Promotion?",
+		subtitle: "Try JoVE Coach and build data skills that move your career forward.",
 		ctaText: "Start My Free Trial",
 	},
 	footer: {
