@@ -56,7 +56,7 @@ export const statisticsJanData: LandingPageData = {
 		title: 'Make Data-Driven Decisions. <br class="desktop-br" /> Master Statistics in <span class="highlight">2-Min Videos.</span>',
 		subtitle: "Data analysis, probability, and hypothesis testing—explained for real work, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Data analysis, probability, and hypothesis testing—explained for real work.",
-		ctaTitle: "See statistics concepts finally make sense",
+		ctaTitle: "Watch statistics concepts finally click.",
 		heroFormCta: "<strong>Get Certified</strong>&nbsp;- It's Free",
 		trustText: "Trusted by 1 Million+ learners",
 		image: HeroImage,
@@ -69,7 +69,7 @@ export const statisticsJanData: LandingPageData = {
 		},
 	},
 	concepts: {
-		heading: "Every <span>Statistics</span> concept you need. <span>Under 2 minutes.</span>",
+		heading: "Every <span>statistics</span> concept you need. <span>Under 2 minutes.</span>",
 		subheading: "One concept at a time, explained with short videos.",
 		ctaText: "Explore what 1M+ professionals see",
 		features: [
@@ -83,9 +83,9 @@ export const statisticsJanData: LandingPageData = {
 		mobileVideo: biologyCarouselMobile,
 		videoPlaybackSpeed: 0.75,
 		conceptCards: [
-			{ image: conceptsImg1, title: "What is an Experiment", views: "100k", time: "1:12" },
-			{ image: conceptsImg2, title: "Ordinal Level of Measurement", views: "340K", time: "0:55" },
-			{ image: conceptsImg3, title: "How Data are Classified?", views: "340k", time: "0:59" },
+			{ image: conceptsImg1, title: "What is an Experiment?", views: "100k", time: "1:12" },
+			{ image: conceptsImg2, title: "Ordinal Level of Measurement", views: "340k", time: "0:55" },
+			{ image: conceptsImg3, title: "How Data is Classified", views: "340k", time: "0:59" },
 			{ image: conceptsImg4, title: "Nominal Level of Measurement", views: "340k", time: "0:56" },
 			{ image: conceptsImg5, title: "Data Collection by Experiments", views: "340k", time: "1:13" },
 		],
@@ -277,7 +277,7 @@ export const statisticsJanData: LandingPageData = {
 		items: [
 			{
 				question: "Is JoVE Coach free?",
-				answer: "You can explore videos for free—no sign-up needed. For full access, start a 7-day free trial to unlock all videos and micro-courses.",
+				answer: "You can explore videos for free, no sign-up needed. For full access, start a 7-day free trial to unlock all videos and micro-courses.",
 			},
 			{
 				question: "How long are the videos?",
@@ -307,14 +307,14 @@ export const statisticsJanData: LandingPageData = {
 	},
 	modal: {
 		title: "A Smarter Way to Understand Statistics Fundamentals",
-		subtitle: "Try Jove Coach and understand Data Analysis, Probability, and Hypothesis Testing-fast.",
+		subtitle: "Try Jove Coach and understand Data Analysis, Probability, and Hypothesis Testing — fast.",
 		ctaText: "Start My Free Trial",
 	},
 	footer: {
 		title: "A Smarter Way to Understand Statistics Fundamentals",
-		subtitle: "Try Jove Coach and understand Data Analysis, Probability, and Hypothesis Testing-fast.",
+		subtitle: "Try JoVE Coach and understand Data Analysis, Probability, and Hypothesis Testing — fast.",
 		ctaText: "Start My Free Trial",
 		image: footerValuesImage,
-		seoText: "JoVE Coach offers Statistics courses with expert-verified 2-minute videos across essential statistics topics, including Data Analysis, Probability, Hypothesis Testing, Regression Analysis, Data Visualization, Statistical Inference, and more.",
+		seoText: "JoVE Coach offers statistics courses with expert-verified 2-minute videos across essential statistics topics, including Data Analysis, Probability, Hypothesis Testing, Regression Analysis, Data Visualization, Statistical Inference, and more.",
 	},
 };
