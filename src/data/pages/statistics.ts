@@ -53,7 +53,7 @@ import type { LandingPageData } from "../landingPageData";
 
 export const statisticsJanData: LandingPageData = {
 	hero: {
-		title: 'Get Promoted Faster!<br class="desktop-br" /> Master Statistics with <span class="highlight">2-Min Videos.</span>',
+		title: 'Get Promoted Faster.<br class="desktop-br" /> Master Statistics with <span class="highlight">2-Min Videos.</span>',
 		subtitle: "Data analysis, probability, and hypothesis testing—explained for real work, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Data analysis, probability, and hypothesis testing—explained for real work.",
 		ctaTitle: "Watch statistics concepts finally click.",
