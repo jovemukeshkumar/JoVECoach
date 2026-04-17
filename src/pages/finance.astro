@@ -19,9 +19,9 @@ import NavLogo from "../assets/NavLogo.svg";
 import HeroSection from "../components/generic/HeroSectionModal.astro";
 import Navbar from "../components/generic/Navbar.astro";
 
-import { statisticsJanData } from "../data/pages/statistics";
-// Select data subset (e.g. 'science-gen')
-const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = statisticsJanData;
+import { financeData } from "../data/pages/finance";
+// Select data subset
+const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricing, faq, modal, footer } = financeData;
 ---
 
 <Layout title="JoVE Coach | Master Statistics with AI | Data Analysis & Probability" description="Struggling with Statistics? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master data analysis and probability in minutes. Try free for 7 days." robots="noindex, nofollow">
@@ -127,7 +127,7 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	}
 
 	.business-hero-wrapper :global(h1) {
-		font-size: 29px !important;
+		font-size: 28px !important;
 	}
 
 	/* Ensure modal pill styles are available */

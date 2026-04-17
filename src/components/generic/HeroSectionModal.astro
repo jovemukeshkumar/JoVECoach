@@ -658,7 +658,8 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 		} else {
 			// Always Open Form Modal
 			if (window.openZohoModal) {
-				window.openZohoModal(title, subtitle, ctaText, formSource, redirectUrl);
+				const disclaimer = '• 7 days free • Full access • No credit card';
+				window.openZohoModal(title, subtitle, ctaText, formSource, redirectUrl, disclaimer);
 			}
 		}
 	};

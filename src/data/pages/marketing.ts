@@ -1,14 +1,14 @@
 // Hero Images
-import HeroImage from "../../assets/stats-hero-image.webp";
-import HeroImageMobile from "../../assets/stats-hero-image.webp";
+import HeroImage from "../../assets/marketing-hero-image.webp";
+import HeroImageMobile from "../../assets/marketing-hero-image.webp";
 import biologyCarouselDesktop from "../../assets/business-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/business-carousel-mobile.webm";
 
-import conceptsImg1 from "../../assets/stats-concept-1.webp";
-import conceptsImg2 from "../../assets/stats-concept-2.webp";
-import conceptsImg3 from "../../assets/stats-concept-3.webp";
-import conceptsImg4 from "../../assets/stats-concept-4.webp";
-import conceptsImg5 from "../../assets/stats-concept-5.webp";
+import conceptsImg1 from "../../assets/marketing-concept-1.webp";
+import conceptsImg2 from "../../assets/marketing-concept-2.webp";
+import conceptsImg3 from "../../assets/marketing-concept-3.webp";
+import conceptsImg4 from "../../assets/marketing-concept-4.webp";
+import conceptsImg5 from "../../assets/marketing-concept-5.webp";
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -40,10 +40,8 @@ import LearnerPersonasImg6 from "../../assets/business-persona-6.png";
 
 // Comparison Images
 import comparisonTableLogo1 from "../../assets/ComparisonTableLogo1.png";
-import comparisonTableLogo3 from "../../assets/ComparisonTableLogo3.png";
 import comparisonTableLogo4 from "../../assets/ComparisonTableLogo4New.png";
 import wrappedLogo1 from "../../assets/wrappedLogo1.svg";
-import wrappedLogo3 from "../../assets/wrappedLogo3.svg";
 import wrappedcourseralogo from "../../assets/wrappedcoursera.svg";
 import footerValuesImage from "../../assets/professional.webp";
 import courseraLogo from "../../assets/coursera.svg";
@@ -51,9 +49,9 @@ import udemyLogo from "../../assets/udemy.svg";
 
 import type { LandingPageData } from "../landingPageData";
 
-export const statisticsJanData: LandingPageData = {
+export const marketingData: LandingPageData = {
 	hero: {
-		title: 'Get Career Advantage.<br class="desktop-br" /> Master Statistics with <span class="highlight">2-Min Videos.</span>',
+		title: 'Get Career Advantage.<br class="desktop-br" /> Master Marketing with <span class="highlight">2-Min Videos.</span>',
 		subtitle: "Data analysis, probability, and hypothesis testing—explained for real work, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Data analysis, probability, and hypothesis testing—explained for real work.",
 		ctaTitle: "Watch statistics concepts finally click.",
@@ -62,14 +60,14 @@ export const statisticsJanData: LandingPageData = {
 		image: HeroImage,
 		mobileImage: HeroImage,
 		heroModal: {
-			title: 'Master Statistics in 2-Minute Videos <br class="modal-break" />- Join 1M+ Learners',
+			title: 'Master Marketing with 2-Minute Videos <br class="modal-break" />- Join 1M+ Learners',
 			// subtitle: "Enter your details for instant access.",
-			ctaText: "Watch Statistics Videos Free - No Signup",
+			ctaText: "Watch Marketing Videos Free - No Signup",
 			videoSrc: biologyCarouselDesktop,
 		},
 	},
 	concepts: {
-		heading: "Every <span>statistics</span> concept you need. <span>Under 2 minutes.</span>",
+		heading: "Every <span>marketing</span> concept you need. <span>Under 2 minutes.</span>",
 		subheading: "One concept at a time, explained with short videos.",
 		ctaText: "Join 1M+ Professionals",
 		features: [
@@ -83,11 +81,11 @@ export const statisticsJanData: LandingPageData = {
 		mobileVideo: biologyCarouselMobile,
 		videoPlaybackSpeed: 0.75,
 		conceptCards: [
-			{ image: conceptsImg1, title: "What is an Experiment?", views: "100k", time: "1:12" },
-			{ image: conceptsImg2, title: "Ordinal Level of Measurement", views: "340k", time: "0:55" },
-			{ image: conceptsImg3, title: "How Data is Classified", views: "340k", time: "0:59" },
-			{ image: conceptsImg4, title: "Nominal Level of Measurement", views: "340k", time: "0:56" },
-			{ image: conceptsImg5, title: "Data Collection by Experiments", views: "340k", time: "1:13" },
+			{ image: conceptsImg1, title: "Defining Marketing", views: "63k", time: "1:16" },
+			{ image: conceptsImg2, title: "Value Creation in Marketing", views: "63k", time: "1:23" },
+			{ image: conceptsImg3, title: "Marketing Plan", views: "63k", time: "1:26" },
+			{ image: conceptsImg4, title: "Marketing Environment", views: "22.7k", time: "1:24" },
+			{ image: conceptsImg5, title: "Buying Behavior", views: "36k", time: "1:19" },
 		],
 		questions: [
 			{ icon: conceptsSectionIcon6, text: "How do I interpret a p-value?" },
@@ -147,7 +145,7 @@ export const statisticsJanData: LandingPageData = {
 		],
 	},
 	personas: {
-		title: 'From uncertainty to clarity — <span class="highlight">we’ve got you.</span>',
+		title: 'From uncertainty to clarity — <span class="highlight">we\'ve got you.</span>',
 		subtitle: "Different roles. Same need for statistical clarity.",
 		items: [
 			{
@@ -270,8 +268,8 @@ export const statisticsJanData: LandingPageData = {
 		heading: "Frequently Asked Questions",
 		items: [
 			{
-				question: "Does JoVE Coach offer a free statistics course online?",
-				answer: "Yes. Start a 7-day free trial to access the full statistics course online—every video, every micro-course, with no credit card required. You can also browse individual videos for free without signing up.",
+				question: "Does JoVE Coach offer a free marketing course online?",
+				answer: "Yes. Start a 7-day free trial to access the full marketing course online—every video and micro-course, with no credit card required. You can also browse individual videos for free without signing up.",
 			},
 			{
 				question: "How long are the videos?",
@@ -282,28 +280,28 @@ export const statisticsJanData: LandingPageData = {
 				answer: "A structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to take you from confused to confident without long courses.",
 			},
 			{
-				question: "How is this different from other data analytics courses online?",
-				answer: "Most data analytics training online runs for weeks and assumes you have time for full lectures. JoVE Coach delivers the same core concepts in 2-minute videos—built for working professionals who need answers fast.",
+				question: "How is this different from other marketing courses online?",
+				answer: "Most marketing courses online run for weeks and assume you have time for full lectures. JoVE Coach delivers the same core marketing concepts—strategy, consumer behavior, digital marketing, analytics—in focused 2-minute videos, built for working professionals who need answers fast.",
 			},
 			{
 				question: "How is this different from YouTube?",
-				answer: "Videos are created by statistics experts, not content creators. AI finds exactly what you need and adds quick quizzes to confirm it clicked.",
+				answer: "Videos are created by marketing experts and academic authors, not content creators. AI finds exactly what you need and adds quick quizzes to confirm it clicked.",
 			},
 			{
-				question: "Is this a good data science course online for working professionals?",
-				answer: "Yes. JoVE Coach is built for professionals who need practical data science and statistics training without committing to a degree or semester-long program. Learn on your schedule, apply what you learn the next day.",
+				question: "Is this a good marketing course online for working professionals?",
+				answer: "Yes. JoVE Coach is built for marketers and business professionals who need practical marketing training without committing to an MBA or semester-long program. Learn on your schedule—apply what you learn in your next campaign, brief, or meeting.",
 			},
 			{
-				question: "Can I learn regression analysis, hypothesis testing, and quantitative analysis?",
-				answer: "Yes. JoVE Coach covers regression analysis, hypothesis testing, quantitative analysis, and statistical modeling—each broken down into 2-minute videos with quick quizzes so concepts actually stick.",
+				question: "Can I learn digital marketing, market research, and B2B marketing?",
+				answer: "Yes. JoVE Coach covers the full marketing curriculum: marketing fundamentals, consumer behavior, segmentation and positioning, the 4Ps/4Es, market research, marketing metrics, digital marketing (SEO, SEM, social media, email, e-commerce), services marketing, B2B marketing, global marketing, and contemporary topics like AI, AR, and neuromarketing—all in 2-minute videos.",
 			},
 			{
-				question: "Does JoVE Coach offer a statistics certification or data analytics certification?",
-				answer: "Yes. JoVE Coach issues a certificate of completion when you finish a micro-course—proof of the statistics and data analytics skills you've built.",
+				question: "Does JoVE Coach offer a marketing certification?",
+				answer: "Yes. JoVE Coach issues a certificate of completion when you finish a micro-course—proof of the marketing skills you've built.",
 			},
 			{
 				question: "Will JoVE Coach help me with my work projects?",
-				answer: "Yes. Professionals report better data literacy and more confident decision-making with consistent use.",
+				answer: "Yes. Marketers use JoVE Coach to sharpen campaign planning, run better market research, interpret metrics, and lead stronger strategy conversations with their teams.",
 			},
 			{
 				question: "Can I cancel anytime?",
@@ -311,50 +309,16 @@ export const statisticsJanData: LandingPageData = {
 			},
 		],
 	},
-	// faq: {
-	// 	heading: "Frequently Asked Questions",
-	// 	items: [
-	// 		{
-	// 			question: "Is JoVE Coach free?",
-	// 			answer: "You can explore videos for free, no sign-up needed. For full access, start a 7-day free trial to unlock all videos and micro-courses.",
-	// 		},
-	// 		{
-	// 			question: "How long are the videos?",
-	// 			answer: "About 2 minutes each. One concept, clearly explained. No filler.",
-	// 		},
-	// 		{
-	// 			question: "What is a micro-course?",
-	// 			answer: "A structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to take you from confused to confident without long courses.",
-	// 		},
-	// 		{
-	// 			question: "How is this different from YouTube?",
-	// 			answer: "Videos are created by statistics experts, not content creators. AI finds exactly what you need and adds quick quizzes to confirm it clicked.",
-	// 		},
-	// 		{
-	// 			question: "Will JoVE Coach help me with my work projects?",
-	// 			answer: "Yes. Professionals report better data literacy and more confident decision-making with consistent use.",
-	// 		},
-	// 		{
-	// 			question: "What statistics topics do you cover?",
-	// 			answer: "Statistics fundamentals including Data Analysis, Probability, Hypothesis Testing, Regression, and more.",
-	// 		},
-	// 		{
-	// 			question: "Can I cancel anytime?",
-	// 			answer: "Yes. No contracts, no fees, no hassle.",
-	// 		},
-	// 	],
-	// },
-
 	modal: {
 		title: "Ready for Your Next Promotion?",
-		subtitle: "Try JoVE Coach and build data skills that move your career forward.",
+		subtitle: "Try JoVE Coach and build marketing skills that move your career forward.",
 		ctaText: "Start My Free Trial",
 	},
 	footer: {
 		title: "The Fast Lane to Career Growth.",
-		subtitle: "Build data skills that move your career forward — in 2-minute videos.",
+		subtitle: "Build marketing skills that move your career forward — in 2-minute videos.",
 		ctaText: "Start My Free Trial",
 		image: footerValuesImage,
-		seoText: "JoVE Coach offers statistics courses with expert-verified 2-minute videos across essential statistics topics, including Data Analysis, Probability, Hypothesis Testing, Regression Analysis, Data Visualization, Statistical Inference, and more.",
+		seoText: "JoVE Coach offers marketing courses with expert-verified 2-minute videos across essential marketing topics, including Consumer Behavior, Digital Marketing, Market Research, B2B Marketing, Marketing Metrics, SEO, and more.JoVE Coach offers statistics courses with expert-verified 2-minute videos across essential statistics topics, including Data Analysis, Probability, Hypothesis Testing, Regression Analysis, Data Visualization, Statistical Inference, and more.",
 	},
 };
