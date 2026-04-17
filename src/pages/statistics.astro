@@ -83,6 +83,23 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 	<!-- Hidden Master Form for Submissions -->
 </Layout>
 
+<script is:inline>
+	// Apply video-transition styling to modal for statistics page
+	if (window.openZohoModal) {
+		const originalOpenZohoModal = window.openZohoModal;
+		window.openZohoModal = function(title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer) {
+			// Call original function
+			originalOpenZohoModal(title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer);
+
+			// Add video-transition class for enhanced styling
+			const zohoOverlay = document.getElementById("zoho-modal-overlay");
+			if (zohoOverlay) {
+				zohoOverlay.classList.add("video-transition");
+			}
+		};
+	}
+</script>
+
 <style>
 	.feature img {
 		width: 35px !important;
