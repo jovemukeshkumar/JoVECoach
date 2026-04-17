@@ -51,7 +51,7 @@ import type { LandingPageData } from "../landingPageData";
 
 export const financeData: LandingPageData = {
 	hero: {
-		title: 'Get Career Advantage.<br class="desktop-br" /> Master Finance with <span class="highlight">2-Min Videos.</span>',
+		title: 'Fast-Track Your Career.<br class="desktop-br" /> Master Finance with <span class="highlight">2-Min Videos.</span>',
 		subtitle: "Data analysis, probability, and hypothesis testing—explained for real work, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Data analysis, probability, and hypothesis testing—explained for real work.",
 		ctaTitle: "Watch statistics concepts finally click.",
@@ -84,7 +84,7 @@ export const financeData: LandingPageData = {
 			{ image: conceptsImg1, title: "Time Value of Money", views: "16k", time: "1:18" },
 			{ image: conceptsImg2, title: "Compound Interest", views: "16k", time: "1:11" },
 			{ image: conceptsImg3, title: "Introduction to Bonds", views: "29.4k", time: "1:11" },
-			{ image: conceptsImg4, title: "Common Stock vs. Preferred Stock", views: "29.4k", time: "1:26" },
+			{ image: conceptsImg4, title: "Common vs. Preferred Stock", views: "29.4k", time: "1:26" },
 			{ image: conceptsImg5, title: "Capital Market", views: "29.4k", time: "1:16" },
 		],
 		questions: [

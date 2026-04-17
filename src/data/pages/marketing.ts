@@ -51,7 +51,7 @@ import type { LandingPageData } from "../landingPageData";
 
 export const marketingData: LandingPageData = {
 	hero: {
-		title: 'Get Career Advantage.<br class="desktop-br" /> Master Marketing with <span class="highlight">2-Min Videos.</span>',
+		title: 'Fast-Track Your Career.<br class="desktop-br" /> Master Marketing with <span class="highlight">2-Min Videos.</span>',
 		subtitle: "Data analysis, probability, and hypothesis testing—explained for real work, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Data analysis, probability, and hypothesis testing—explained for real work.",
 		ctaTitle: "Watch statistics concepts finally click.",
