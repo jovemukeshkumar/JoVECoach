@@ -84,20 +84,28 @@ const { hero, concepts, steps, personas, comparison, firstCTA, secondCTA, pricin
 </Layout>
 
 <script is:inline>
-	// Apply video-transition styling to modal for statistics page
-	if (window.openZohoModal) {
-		const originalOpenZohoModal = window.openZohoModal;
-		window.openZohoModal = function(title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer) {
-			// Call original function
-			originalOpenZohoModal(title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer);
+	// Apply video-transition styling and custom content for statistics page
+	document.addEventListener('DOMContentLoaded', function() {
+		if (window.openZohoModal) {
+			const originalOpenZohoModal = window.openZohoModal;
+			window.openZohoModal = function(title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer) {
+				// Use custom content from statistics data
+				const customTitle = '<div class="modal-pill"><span class="stars">★★★★★</span> Trusted by 1M+ professionals</div><br/>Ready for Your Next Promotion?';
+				const customSubtitle = 'Try JoVE Coach and build data skills that move your career forward.';
+				const customCtaText = 'Start My Free Trial';
+				const customDisclaimer = 'No credit Card • Cancel anytime • Instant access';
 
-			// Add video-transition class for enhanced styling
-			const zohoOverlay = document.getElementById("zoho-modal-overlay");
-			if (zohoOverlay) {
-				zohoOverlay.classList.add("video-transition");
-			}
-		};
-	}
+				// Call original function with custom content
+				originalOpenZohoModal(customTitle, customSubtitle, customCtaText, formSource, redirectUrl, customDisclaimer);
+
+				// Add video-transition class for enhanced styling
+				const zohoOverlay = document.getElementById("zoho-modal-overlay");
+				if (zohoOverlay) {
+					zohoOverlay.classList.add("video-transition");
+				}
+			};
+		}
+	});
 </script>
 
 <style>
