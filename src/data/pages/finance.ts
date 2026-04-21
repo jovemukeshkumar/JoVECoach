@@ -62,7 +62,7 @@ export const financeData: LandingPageData = {
 		heroModal: {
 			title: 'Master Finance with 2-Minute Videos <br class="modal-break" />- Join 1M+ Learners',
 			// subtitle: "Enter your details for instant access.",
-			ctaText: "Watch Finance Videos Free - No Signup",
+			ctaText: "Get Certified In Minutes",
 			videoSrc: biologyCarouselDesktop,
 		},
 	},
@@ -312,7 +312,7 @@ export const financeData: LandingPageData = {
 	modal: {
 		title: "Ready for Your Next Promotion?",
 		subtitle: "Try JoVE Coach and build finance skills that move your career forward.",
-		ctaText: "Start My Free Trial",
+		ctaText: "Get Certified In Minutes",
 	},
 	footer: {
 		title: "The Fast Lane to Career Growth.",
