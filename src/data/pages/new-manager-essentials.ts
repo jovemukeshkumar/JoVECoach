@@ -4,11 +4,11 @@ import HeroImageMobile from "../../assets/stats-hero-image.webp";
 import biologyCarouselDesktop from "../../assets/business-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/business-carousel-mobile.webm";
 
-import conceptsImg1 from "../../assets/stats-concept-1.webp";
-import conceptsImg2 from "../../assets/stats-concept-2.webp";
-import conceptsImg3 from "../../assets/stats-concept-3.webp";
-import conceptsImg4 from "../../assets/stats-concept-4.webp";
-import conceptsImg5 from "../../assets/stats-concept-5.webp";
+import conceptsImg1 from "../../assets/41501_Potrait.webp";
+import conceptsImg2 from "../../assets/41947_Potrait.webp";
+import conceptsImg3 from "../../assets/41948_Potrait.webp";
+import conceptsImg4 from "../../assets/41949_Potrait.webp";
+import conceptsImg5 from "../../assets/41950_Potrait.webp";
 
 // Steps Images
 import aILogo from "../../assets/aILogo.svg";
@@ -74,11 +74,11 @@ export const newManagerEssentialsData: LandingPageData = {
 		mobileVideo: biologyCarouselMobile,
 		videoPlaybackSpeed: 0.75,
 		conceptCards: [
-			{ image: conceptsImg1, title: "Giving Effective Feedback", views: "100k", time: "1:27" },
-			{ image: conceptsImg2, title: "Delegation That Works", views: "340k", time: "1:23" },
-			{ image: conceptsImg3, title: "Running Better 1:1s", views: "340k", time: "1:17" },
-			{ image: conceptsImg4, title: "Setting Clear Expectations", views: "340k", time: "1:22" },
-			{ image: conceptsImg5, title: "Handling Difficult Conversations", views: "340k", time: "1:24" },
+			{ image: conceptsImg1, title: "From an Individual Contributor to Manager", views: "100k", time: "1:27" },
+			{ image: conceptsImg2, title: "Common Mistakes First-Time Managers Make", views: "340k", time: "1:23" },
+			{ image: conceptsImg3, title: "How to Build Credibility as a New Manager", views: "340k", time: "1:17" },
+			{ image: conceptsImg4, title: "How to Set Boundaries with Former Peers", views: "340k", time: "1:22" },
+			{ image: conceptsImg5, title: "Your First 90 Days as a Manager", views: "340k", time: "1:24" },
 		],
 		questions: [
 			{ icon: conceptsSectionIcon6, text: "How do I delegate without micromanaging?" },
@@ -261,45 +261,37 @@ export const newManagerEssentialsData: LandingPageData = {
 		heading: "Frequently Asked Questions",
 		items: [
 			{
-				question: "Does JoVE Coach offer a free new manager essentials course online?",
-				answer: "Yes. Start a 7-day free trial to access the full course online—every video, every micro-course, with no credit card required. You can also browse individual videos for free without signing up.",
-			},
-			{
-				question: "How long are the videos?",
-				answer: "About 2 minutes each. One concept, clearly explained. No filler.",
-			},
-			{
-				question: "What is a micro-course?",
-				answer: "A structured set of bite-sized lessons with 2-minute videos and quick quizzes—designed to take you from uncertain to confident without long courses.",
-			},
-			{
-				question: "How is this different from other leadership courses online?",
-				answer: "Most leadership training runs for weeks and assumes you have time for full lectures. JoVE Coach delivers core management concepts in 2-minute videos—built for working professionals who need answers fast.",
-			},
-			{
-				question: "How is this different from YouTube?",
-				answer: "Videos are created by experts, not content creators. AI finds exactly what you need and adds quick quizzes to confirm it clicked.",
-			},
-			{
-				question: "Is this good for first-time managers?",
-				answer: "Yes. JoVE Coach is built for professionals stepping into management who need practical skills without committing to a degree or semester-long program. Learn on your schedule, apply what you learn the next day.",
-			},
-			{
-				question: "What topics are covered?",
-				answer: "New manager essentials including delegation, feedback, 1:1s, goal setting, difficult conversations, team communication, and more—each in 2-minute videos with quick quizzes.",
-			},
-			{
-				question: "Does JoVE Coach offer a certificate?",
-				answer: "Yes. JoVE Coach issues a certificate of completion when you finish a micro-course—proof of the management skills you've built.",
-			},
-			{
-				question: "Will JoVE Coach help me at work?",
-				answer: "Yes. Professionals report clearer communication, better delegation, and more confident leadership with consistent use.",
-			},
-			{
-				question: "Can I cancel anytime?",
-				answer: "Yes. No contracts, no fees, no hassle.",
-			},
+				"answer": "Yes. Start a 7-day free trial to access the full new manager essentials course online — every video, every micro-course, with no credit card required. You can also browse individual videos for free without signing up.",
+				"question": "Does JoVE Coach offer a free new manager essentials course online?"
+			  },
+			  {
+				"answer": "13 chapters covering management fundamentals — transitioning from individual contributor to first time manager, delegation, goal setting, performance management, difficult conversations, emotional intelligence, team management, and managing up. Every leadership skill a first-time manager needs.",
+				"question": "What does the new manager essentials course cover?"
+			  },
+			  {
+				"answer": "Yes. The course is built for L&D teams scaling manager development — 13 chapters, 93 lessons, mapped to the first-time manager journey. Deploy it as a self-paced track or a structured 90-day onboarding for newly promoted managers.",
+				"question": "Is New Manager Essentials suitable for company-wide manager development programs?"
+			  },
+			  {
+				"answer": "We benchmarked against leading training providers. Most leadership training for new managers is 4–8 hours with low completion rates. We deliver the same coverage in 2-minute videos — resulting in higher completion rates. ",
+				"question": "Why choose JoVE Coach over other leadership training for new managers?"
+			  },
+			  {
+				"answer": "Yes — built specifically for working professionals stepping into management. Each lesson is 2 minutes, so learn between Slack messages, before a 1-on-1, or during lunch. Real new manager skills you can apply to your team the same day.",
+				"question": "Is JoVE Coach's first-time manager training designed for busy working professionals?"
+			  },
+			  {
+				"answer": "Yes. Learners receive a shareable JoVE Coach certificate verifying their new manager skills — recognised by L&D teams at 1,800+ organisations. Admins can also pull completion reports for internal manager development tracking.",
+				"question": "Do I get a certificate after completing the new manager development course?"
+			  },
+			  {
+				"answer": "Yes. Many enterprise customers deploy New Manager Essentials as a structured 90-day onboarding — 1 chapter per week aligned with milestone moments in a new manager's first quarter, supported by manager development cohort discussions.",
+				"question": "Can we deploy this as a 90-day onboarding for newly promoted managers?"
+			  },
+			  {
+				"answer": "Start a 7-day free trial as an individual to access the full new manager essentials course — no credit card required. For team rollouts, request a demo and we'll set up your enterprise account and L&D dashboard within a week.",
+				"question": "Can I try the new manager essentials course before buying?"
+			  },
 		],
 	},
 	modal: {
