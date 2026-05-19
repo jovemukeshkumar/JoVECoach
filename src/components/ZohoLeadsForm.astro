@@ -14,6 +14,7 @@
 		<!-- Actual Data Fields -->
 		<input type="text" style="display:none;" id="Last_Name_master" name="Last Name" maxlength="80" />
 		<input type="text" style="display:none;" id="Email_master" name="Email" maxlength="100" />
+		<input type="text" style="display:none;" id="Company_master" name="Company" maxlength="200" />
 
 		<!-- UTM & Tracking Hidden Fields (LEADCF) -->
 		<input type="text" style="display:none;" id="LEADCF11_master" name="LEADCF11" value="" />
@@ -70,22 +71,26 @@
 	window.submitToZoho = function (data) {
 		console.log("submitToZoho (Leads) called with:", data);
 
-		const { name, email, redirectUrl, formSource } = data;
+		const { name, email, organizationName, redirectUrl, formSource, redirectUri } = data;
 
-		if (!name || !email) {
-			console.error("Name and Email are required for Zoho submission.");
+		if (!name || !email || !organizationName) {
+			console.error("Name, Email, and Company are required for Zoho submission.");
 			return;
 		}
 
 		const form = document.getElementById("zoho-master-form");
 		const nameInput = document.getElementById("Last_Name_master");
 		const emailInput = document.getElementById("Email_master");
+		const companyInput = document.getElementById("Company_master");
 		const sourceInput = document.getElementById("LEADCF29_master");
 		const returnURLInput = form.querySelector('input[name="returnURL"]');
 
 		// 1. Populate Data
 		nameInput.value = name;
 		emailInput.value = email;
+		if (companyInput) {
+			companyInput.value = organizationName;
+		}
 		if (sourceInput && formSource) {
 			sourceInput.value = formSource;
 		}
@@ -105,6 +110,10 @@
 
 		urlObj.searchParams.set("username", name);
 		urlObj.searchParams.set("email", email);
+		urlObj.searchParams.set("organizationName", organizationName);
+		if (redirectUri) {
+			urlObj.searchParams.set("redirecturi", redirectUri);
+		}
 		returnURLInput.value = urlObj.toString();
 
 		console.log("Submitting Leads Form...", returnURLInput.value);

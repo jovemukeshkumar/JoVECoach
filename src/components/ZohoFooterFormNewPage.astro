@@ -5,9 +5,11 @@ interface Props {
 	ctaText?: string;
 	image?: ImageMetadata;
 	formSource?: string;
+	redirectPath?: string;
+	redirectUri?: string;
 }
 
-const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free", image = zohoCTAImage, formSource = "" } = Astro.props;
+const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free", image = zohoCTAImage, formSource = "", redirectPath, redirectUri } = Astro.props;
 
 import { Image } from "astro:assets";
 import zohoCTAImage from "../assets/zohoCTAImage.png";
@@ -19,22 +21,10 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 		<div class="zcwf_subtitle">{subtitle}</div>
 
 		<form id="webform_footer" onsubmit="return false;">
-			<div class="zcwf_row zcwf_formVisibleFields_row">
-				<div class="zcwf_col_lab" style="font-size:12px; font-family: Arial;">
-					<label for="Last_Name_footer">Name<span style="color:red;">*</span></label>
-				</div>
-				<div class="zcwf_col_fld">
-					<input type="text" id="Last_Name_footer" name="footerName" placeholder="Name*" required class="global-form-input" />
-					<div class="zcwf_col_help"></div>
-				</div>
-
-				<div class="zcwf_col_lab" style="font-size:12px; font-family: Arial;">
-					<label for="Email_footer">Email<span style="color:red;">*</span></label>
-				</div>
-				<div class="zcwf_col_fld">
-					<input type="email" id="Email_footer" name="footerEmail" placeholder="Email*" required class="global-form-input" />
-					<div class="zcwf_col_help"></div>
-				</div>
+			<div class="footer-fields-grid">
+				<input type="text" id="Last_Name_footer" name="footerName" placeholder="Name*" required class="global-form-input name-field" />
+				<input type="email" id="Email_footer" name="footerEmail" placeholder="Work Email*" required class="global-form-input email-field" />
+				<input type="text" id="Company_footer" name="footerCompany" placeholder="Company Name*" required class="global-form-input company-field" />
 			</div>
 
 			<div class="zcwf_row style-check" style="align-items: center; justify-content: flex-start; margin-top: 15px !important;">
@@ -51,16 +41,17 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 	</div>
 </div>
 
-<script is:inline define:vars={{ formSource }}>
+<script is:inline define:vars={{ formSource, redirectPath, redirectUri }}>
 	const footerForm = document.getElementById("webform_footer");
 	if (footerForm) {
 		footerForm.addEventListener("submit", function (e) {
 			e.preventDefault();
 			const name = footerForm.querySelector('input[name="footerName"]').value;
 			const email = footerForm.querySelector('input[name="footerEmail"]').value;
+			const organizationName = footerForm.querySelector('input[name="footerCompany"]').value;
 
 			if (window.submitToZoho) {
-				window.submitToZoho({ name, email, formSource });
+				window.submitToZoho({ name, email, organizationName, redirectUrl: redirectPath, redirectUri, formSource });
 			} else {
 				console.error("Global submit function missing");
 			}
@@ -104,21 +95,30 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 		height: auto;
 	}
 
-	.zcwf_formVisibleFields_row {
-		display: flex !important;
-		flex-direction: row !important;
-		gap: 10px !important;
-		flex-wrap: nowrap !important;
+	.footer-fields-grid {
+		display: grid;
+		grid-template-columns: 0.8fr 1.2fr;
+		column-gap: 10px;
+		width: 100%;
+		max-width: 480px;
+	}
+
+	.footer-fields-grid .name-field {
+		border-radius: 8px 0 0 8px;
+		border-right: none;
+	}
+
+	.footer-fields-grid .email-field {
+		border-radius: 0 8px 8px 0;
 		width: 100% !important;
 	}
 
-	.zcwf_formVisibleFields_row .zcwf_col_fld {
-		flex: 1 !important;
-		min-width: 0 !important;
-		width: auto !important;
+	.footer-fields-grid .company-field {
+		grid-column: 1 / -1;
+		width: 100%;
+		margin-top: 15px;
+		border-radius: 8px;
 	}
-
-	/* Removed duplicated input styles in favor of global-form-input */
 
 	#crmWebToEntityForm.zcwf_lblLeft * {
 		box-sizing: border-box;
@@ -150,7 +150,6 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 		line-height: 140% !important;
 		letter-spacing: 0% !important;
 		color: rgba(255, 255, 255, 0.9) !important;
-		/* max-width: 500px; */
 		margin-bottom: 32px;
 	}
 
@@ -159,14 +158,12 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 		gap: 16px !important;
 		flex-wrap: wrap !important;
 		margin: 0 !important;
-		max-width: 520px !important;
+		max-width: 480px !important;
 	}
 
 	.zcwf_col_lab {
 		display: none !important;
 	}
-
-	/* Removed redundant focus/hover styles now handled by global classes */
 
 	@media (max-width: 900px) {
 		#crmWebToEntityForm.zcwf_lblLeft {
@@ -189,13 +186,29 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 		.modal-disclaimer {
 			font-size: 12px !important;
 		}
+
+		.footer-fields-grid {
+			grid-template-columns: 1fr;
+			gap: 12px;
+			max-width: 100%;
+		}
+
+		.footer-fields-grid .name-field,
+		.footer-fields-grid .email-field {
+			border-radius: 8px !important;
+			border-right: 1px solid #d1d5db;
+		}
+
+		.footer-fields-grid .company-field {
+			margin-top: 0px;
+		}
+
 		.zcwf_row {
 			flex-direction: column !important;
 			gap: 12px !important;
-			margin: 0 auto !important; /* Center the form fields */
+			margin: 0 auto !important;
 		}
 
-		/* Mobile Layout Adjustments */
 		.style-check {
 			align-items: center !important;
 		}

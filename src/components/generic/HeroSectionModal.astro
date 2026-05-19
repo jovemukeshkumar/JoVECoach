@@ -22,6 +22,7 @@ interface Props {
 	showSubtitle?: boolean;
 	playVideoOnClick?: boolean;
 	customRedirectUrl?: string;
+	redirectUri?: string;
 }
 
 const {
@@ -40,6 +41,7 @@ const {
 	showSubtitle = false,
 	playVideoOnClick = false,
 	customRedirectUrl,
+	redirectUri,
 } = Astro.props;
 
 const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -84,7 +86,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 				<div class="cta-box" style={{ "--cta-bg": `url(${HeroSectionCTABg.src})` }}>
 					<h3 class="cta-title">{ctaTitle}</h3>
-					<ZohoDummyForm layout="horizontal" formIdSuffix="hero" ctaText={heroFormCta} buttonMinWidth="180px" showFeatures={true} formSource="hero-form" />
+					<ZohoDummyForm layout="horizontal" formIdSuffix="hero" ctaText={heroFormCta} buttonMinWidth="180px" showFeatures={true} formSource="hero-form" redirectPath={customRedirectUrl} redirectUri={redirectUri} />
 				</div>
 			</div>
 

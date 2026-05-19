@@ -45,7 +45,7 @@ import type { LandingPageData } from "../landingPageData";
 
 export const newManagerEssentialsData: LandingPageData = {
 	hero: {
-		title: 'Lead with Confidence.<br class="desktop-br" /> Master New Manager Essentials in <span class="highlight">2-Min Videos.</span>',
+		title: 'Lead with Confidence.<br class="desktop-br" /> Master New Manager Skills in <span class="highlight">2-Min Videos.</span>',
 		subtitle: "Delegation, feedback, team communication, and decision-making—explained for your first management role, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Delegation, feedback, and team communication—explained for your first management role.",
 		ctaTitle: "Watch management essentials finally click.",
@@ -60,7 +60,7 @@ export const newManagerEssentialsData: LandingPageData = {
 		},
 	},
 	concepts: {
-		heading: "Every <span>new manager</span> essential you need. <span>Under 2 minutes.</span>",
+		heading: "Every <span>new manager</span> skill you need. <span>Under 2 minutes.</span>",
 		subheading: "One concept at a time, explained with short videos.",
 		ctaText: "Join 1M+ Professionals",
 		features: [
@@ -74,11 +74,11 @@ export const newManagerEssentialsData: LandingPageData = {
 		mobileVideo: biologyCarouselMobile,
 		videoPlaybackSpeed: 0.75,
 		conceptCards: [
-			{ image: conceptsImg1, title: "Giving Effective Feedback", views: "100k", time: "1:12" },
-			{ image: conceptsImg2, title: "Delegation That Works", views: "340k", time: "0:55" },
-			{ image: conceptsImg3, title: "Running Better 1:1s", views: "340k", time: "0:59" },
-			{ image: conceptsImg4, title: "Setting Clear Expectations", views: "340k", time: "0:56" },
-			{ image: conceptsImg5, title: "Handling Difficult Conversations", views: "340k", time: "1:13" },
+			{ image: conceptsImg1, title: "Giving Effective Feedback", views: "100k", time: "1:27" },
+			{ image: conceptsImg2, title: "Delegation That Works", views: "340k", time: "1:23" },
+			{ image: conceptsImg3, title: "Running Better 1:1s", views: "340k", time: "1:17" },
+			{ image: conceptsImg4, title: "Setting Clear Expectations", views: "340k", time: "1:22" },
+			{ image: conceptsImg5, title: "Handling Difficult Conversations", views: "340k", time: "1:24" },
 		],
 		questions: [
 			{ icon: conceptsSectionIcon6, text: "How do I delegate without micromanaging?" },
@@ -315,3 +315,7 @@ export const newManagerEssentialsData: LandingPageData = {
 		seoText: "JoVE Coach offers new manager essentials courses with expert-verified 2-minute videos across essential leadership topics, including Delegation, Feedback, 1:1 Meetings, Goal Setting, Difficult Conversations, Team Communication, and more.",
 	},
 };
+
+/** Post-login destination passed as redirecturi query param on coach.jove.com/home */
+export const newManagerEssentialsRedirectUri =
+	"https://coach.jove.com/microcourse/new-manager-essentials/transitioning-from-individual-contributor-to-manager/common-mistakes-first-time-managers-make";

@@ -7,6 +7,7 @@ interface Props {
 	ctaText?: string;
 	formIdSuffix?: string;
 	redirectPath?: string;
+	redirectUri?: string;
 	buttonLayout?: "full" | "inline";
 	noteColor?: string;
 	buttonMinWidth?: string;
@@ -14,13 +15,14 @@ interface Props {
 	formSource?: string;
 }
 
-const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath, buttonLayout = "full", noteColor = "#000", buttonMinWidth = "200px", showFeatures = false, formSource = "" } = Astro.props;
+const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy", redirectPath, redirectUri, buttonLayout = "full", noteColor = "#000", buttonMinWidth = "200px", showFeatures = false, formSource = "" } = Astro.props;
 ---
 
 <form id={`dummy-form-${formIdSuffix}`} class={`zoho-dummy-form ${layout === "horizontal" ? "horizontal" : "vertical"}`} onsubmit="return false;">
 	<div class="input-container">
 		<input type="text" name="dummyName" placeholder="Name*" required class="global-form-input name-field" />
-		<input type="email" name="dummyEmail" placeholder="Email*" required class="global-form-input email-field" />
+		<input type="email" name="dummyEmail" placeholder="Work Email*" required class="global-form-input email-field" />
+		<input type="text" name="dummyOrgName" placeholder="Company Name*" required class="global-form-input company-field" />
 	</div>
 
 	<div class={`cta-wrapper ${buttonLayout}`}>
@@ -53,7 +55,7 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 	</div>
 </form>
 
-<script is:inline define:vars={{ formIdSuffix, redirectPath, formSource }}>
+<script is:inline define:vars={{ formIdSuffix, redirectPath, redirectUri, formSource }}>
 	(function () {
 		const form = document.getElementById(`dummy-form-${formIdSuffix}`);
 		if (form) {
@@ -63,9 +65,10 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 
 				const name = form.querySelector('input[name="dummyName"]').value;
 				const email = form.querySelector('input[name="dummyEmail"]').value;
+				const organizationName = form.querySelector('input[name="dummyOrgName"]').value;
 
 				if (window.submitToZoho) {
-					window.submitToZoho({ name, email, redirectUrl: redirectPath, formSource });
+					window.submitToZoho({ name, email, organizationName, redirectUrl: redirectPath, redirectUri, formSource });
 				} else {
 					console.error("window.submitToZoho is not defined. Make sure ZohoMasterForm is included.");
 					alert("Submission failed. Please try again later.");
@@ -91,34 +94,27 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 	}
 
 	.input-container {
-		display: flex;
-		gap: 0;
-	}
-
-	.horizontal .input-container {
 		display: grid;
 		grid-template-columns: 0.8fr 1.2fr;
-	}
-
-	.vertical .input-container {
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	/* Specific overrides for horizontal layout merging */
-	.horizontal .input-container {
+		column-gap: 0;
 		margin-bottom: 0.25rem;
 	}
 
-	.horizontal .name-field {
+	.name-field {
 		border-radius: 8px 0 0 8px;
 		border-right: none;
 	}
 
-	.horizontal .email-field {
+	.email-field {
 		border-radius: 0 8px 8px 0;
-
 		width: 100% !important;
+	}
+
+	.company-field {
+		grid-column: 1 / -1;
+		width: 100%;
+		margin-top: 15px;
+		border-radius: 8px;
 	}
 
 	.cta-wrapper {
@@ -178,20 +174,26 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 		.zoho-dummy-form {
 			gap: 0.5rem;
 		}
-		.horizontal .input-container {
+		.input-container {
 			grid-template-columns: 1fr;
 			gap: 12px;
-			/* padding-right: 2rem; */
 		}
 
-		.horizontal .name-field,
-		.horizontal .email-field {
+		.name-field,
+		.email-field {
 			border-radius: 8px !important;
-			border-right: 1px solid #d1d5db; /* Restore border */
+			border-right: 1px solid #d1d5db;
 			font-size: 14px;
 		}
-		.horizontal .email-field {
+
+		.email-field {
 			width: 100% !important;
+		}
+
+		.company-field {
+			width: 100% !important;
+			margin-top: 0px !important;
+			font-size: 14px;
 		}
 
 		.horizontal .cta-wrapper {

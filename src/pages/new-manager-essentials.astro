@@ -13,7 +13,7 @@ import NavLogo from "../assets/NavLogo.svg";
 import HeroSection from "../components/generic/HeroSectionModal.astro";
 import Navbar from "../components/generic/Navbar.astro";
 
-import { newManagerEssentialsData } from "../data/pages/new-manager-essentials";
+import { newManagerEssentialsData, newManagerEssentialsRedirectUri } from "../data/pages/new-manager-essentials";
 const { hero, concepts, comparison, firstCTA, faq, modal, footer } = newManagerEssentialsData;
 ---
 
@@ -39,6 +39,7 @@ const { hero, concepts, comparison, firstCTA, faq, modal, footer } = newManagerE
 			heroModalSubtitle={hero.heroModal?.subtitle}
 			heroModalCtaText={hero.heroModal?.ctaText}
 			heroModalVideoSrc={hero.heroModal?.videoSrc}
+			redirectUri={newManagerEssentialsRedirectUri}
 		/>
 	</div>
 
@@ -57,12 +58,12 @@ const { hero, concepts, comparison, firstCTA, faq, modal, footer } = newManagerE
 		modalCtaText={hero.heroModal?.ctaText}
 		showSubheading={false}
 	/>
-	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} />
+	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} redirectUri={newManagerEssentialsRedirectUri} />
 	<ComparisonTable title={comparison.title} subtitle={comparison.subtitle} tagline={comparison.tagline} ctaText={comparison.ctaText} items={comparison.items} features={comparison.features} />
 	<FAQSection heading={faq.heading} items={faq.items} />
 
-	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} image={footer?.image} formSource="footer-cta" />
-	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
+	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} image={footer?.image} formSource="footer-cta" redirectUri={newManagerEssentialsRedirectUri} />
+	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} redirectUri={newManagerEssentialsRedirectUri} />
 	<VideoModal videoSrc={hero.heroModal?.videoSrc} />
 
 	<Footer seoText={footer?.seoText} />
