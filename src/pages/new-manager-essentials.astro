@@ -1,0 +1,135 @@
+---
+export const prerender = true;
+import Footer from "../components/generic/FooterWithSEO.astro";
+import Layout from "../layouts/UpdatedLayout.astro";
+import FAQSection from "../components/generic/FAQSection.astro";
+import FirstCTASection from "../components/generic/FirstCTASection.astro";
+import ConceptsSection from "../components/generic/TopicsSection.astro";
+import ZohoFooterFormNewPage from "../components/ZohoFooterFormNewPage.astro";
+import ZohoModalNewPage from "../components/ZohoModalNewPage.astro";
+import VideoModal from "../components/VideoModal.astro";
+import ComparisonTable from "../components/generic/ComparisonTable.astro";
+import NavLogo from "../assets/NavLogo.svg";
+import HeroSection from "../components/generic/HeroSectionModal.astro";
+import Navbar from "../components/generic/Navbar.astro";
+
+import { newManagerEssentialsData } from "../data/pages/new-manager-essentials";
+const { hero, concepts, comparison, firstCTA, faq, modal, footer } = newManagerEssentialsData;
+---
+
+<Layout title="JoVE Coach | New Manager Essentials | Leadership in 2-Minute Videos" description="New to management? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master delegation, feedback, and team leadership in minutes. Try free for 7 days." robots="noindex, nofollow">
+	<link rel="preload" href={hero.mobileImage.src} as="image" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
+	<link rel="preload" href={hero.image.src} as="image" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+
+	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+
+	<Navbar />
+
+	<div class="business-hero-wrapper">
+		<HeroSection
+			heroImage={hero.image}
+			mobileImgSrc={hero.mobileImage}
+			title={hero.title}
+			subtitle={hero.subtitle}
+			mobileSubtitle={hero.mobileSubtitle}
+			trustText={hero.trustText}
+			ctaTitle={hero.ctaTitle}
+			heroFormCta={hero.heroFormCta}
+			heroModalTitle={hero.heroModal?.title}
+			heroModalSubtitle={hero.heroModal?.subtitle}
+			heroModalCtaText={hero.heroModal?.ctaText}
+			heroModalVideoSrc={hero.heroModal?.videoSrc}
+		/>
+	</div>
+
+	<ConceptsSection
+		heading={concepts.heading}
+		subheading={concepts.subheading}
+		ctaText={concepts.ctaText}
+		features={concepts.features}
+		videoSrc={concepts.video}
+		mobileVideoSrc={concepts.mobileVideo}
+		questions={concepts.questions}
+		videoPlaybackSpeed={concepts.videoPlaybackSpeed}
+		conceptCards={concepts.conceptCards}
+		modalTitle={hero.heroModal?.title}
+		modalSubtitle={hero.heroModal?.subtitle}
+		modalCtaText={hero.heroModal?.ctaText}
+		showSubheading={false}
+	/>
+	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} />
+	<ComparisonTable title={comparison.title} subtitle={comparison.subtitle} tagline={comparison.tagline} ctaText={comparison.ctaText} items={comparison.items} features={comparison.features} />
+	<FAQSection heading={faq.heading} items={faq.items} />
+
+	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} image={footer?.image} formSource="footer-cta" />
+	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
+	<VideoModal videoSrc={hero.heroModal?.videoSrc} />
+
+	<Footer seoText={footer?.seoText} />
+</Layout>
+
+<script is:inline>
+	(function() {
+		const checkAndOverride = function() {
+			if (window.openZohoModal) {
+				const originalOpenZohoModal = window.openZohoModal;
+				window.openZohoModal = function(title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer) {
+					const pillHtml = '<div class="modal-pill"><span class="stars">★★★★★</span> Trusted by 1M+ professionals</div><br/>';
+					const titleWithPill = title ? (pillHtml + title) : pillHtml + 'Ready for Your Next Promotion?';
+
+					const zohoOverlay = document.getElementById("zoho-modal-overlay");
+					if (zohoOverlay) {
+						zohoOverlay.classList.add("video-transition");
+					}
+
+					originalOpenZohoModal(titleWithPill, subtitle, ctaText, formSource, redirectUrl, customDisclaimer);
+				};
+			} else {
+				setTimeout(checkAndOverride, 100);
+			}
+		};
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', checkAndOverride);
+		} else {
+			checkAndOverride();
+		}
+	})();
+</script>
+
+<style>
+	.feature img {
+		width: 35px !important;
+		height: 35px !important;
+	}
+
+	.business-hero-wrapper :global(h1) {
+		font-size: 29px !important;
+	}
+
+	@media (max-width: 640px) {
+		.business-hero-wrapper :global(h1) {
+			font-size: 23.2px !important;
+		}
+	}
+
+	:global(.modal-pill) {
+		display: inline-flex !important;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		padding: 4px 10px;
+		border-radius: 20px;
+		font-size: 11px;
+		color: #fff;
+		margin-bottom: 12px;
+		font-weight: 500;
+		backdrop-filter: blur(4px);
+	}
+
+	:global(.modal-pill .stars) {
+		color: #FFD700;
+		margin-right: 4px;
+		letter-spacing: 1px;
+	}
+</style>
