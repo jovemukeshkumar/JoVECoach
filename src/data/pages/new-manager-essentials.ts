@@ -1,6 +1,6 @@
 // Hero Images
 import HeroImage from "../../assets/nme.png";
-import HeroImageMobile from "../../assets/stats-hero-image.webp";
+import HeroImageMobile from "../../assets/nme.png";
 import biologyCarouselDesktop from "../../assets/business-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/business-carousel-mobile.webm";
 
@@ -311,4 +311,4 @@ export const newManagerEssentialsData: LandingPageData = {
 
 /** Post-login destination passed as redirecturi query param on coach.jove.com/home */
 export const newManagerEssentialsRedirectUri =
-	"https://coach.jove.com/microcourse/new-manager-essentials/transitioning-from-individual-contributor-to-manager/common-mistakes-first-time-managers-make";
+	"https://coach.jove.com/microcourse/new-manager-essentials/transitioning-from-individual-contributor-to-manager";
