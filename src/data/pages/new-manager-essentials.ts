@@ -1,5 +1,5 @@
 // Hero Images
-import HeroImage from "../../assets/nme copy.png";
+import HeroImage from "../../assets/nme.png";
 import HeroImageMobile from "../../assets/stats-hero-image.webp";
 import biologyCarouselDesktop from "../../assets/business-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/business-carousel-mobile.webm";
