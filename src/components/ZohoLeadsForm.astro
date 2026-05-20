@@ -73,8 +73,8 @@
 
 		const { name, email, organizationName, redirectUrl, formSource, redirectUri } = data;
 
-		if (!name || !email || !organizationName) {
-			console.error("Name, Email, and Company are required for Zoho submission.");
+		if (!name || !email) {
+			console.error("Name and Email are required for Zoho submission.");
 			return;
 		}
 
@@ -89,7 +89,7 @@
 		nameInput.value = name;
 		emailInput.value = email;
 		if (companyInput) {
-			companyInput.value = organizationName;
+			companyInput.value = organizationName || "";
 		}
 		if (sourceInput && formSource) {
 			sourceInput.value = formSource;
@@ -110,7 +110,9 @@
 
 		urlObj.searchParams.set("username", name);
 		urlObj.searchParams.set("email", email);
-		urlObj.searchParams.set("organizationName", organizationName);
+		if (organizationName) {
+			urlObj.searchParams.set("organizationName", organizationName);
+		}
 		if (redirectUri) {
 			urlObj.searchParams.set("redirecturi", redirectUri);
 		}

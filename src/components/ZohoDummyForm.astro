@@ -21,37 +21,26 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 <form id={`dummy-form-${formIdSuffix}`} class={`zoho-dummy-form ${layout === "horizontal" ? "horizontal" : "vertical"}`} onsubmit="return false;">
 	<div class="input-container">
 		<input type="text" name="dummyName" placeholder="Name*" required class="global-form-input name-field" />
-		<input type="email" name="dummyEmail" placeholder="Work Email*" required class="global-form-input email-field" />
-		<input type="text" name="dummyOrgName" placeholder="Company Name*" required class="global-form-input company-field" />
+		<input type="email" name="dummyEmail" placeholder="Email*" required class="global-form-input email-field" />
+		<input type="text" name="dummyOrgName" placeholder="Company Name" class="global-form-input company-field" />
 	</div>
 
 	<div class={`cta-wrapper ${buttonLayout}`}>
-		<button type="submit" class="global-form-btn" style={`min-width: ${buttonMinWidth} !important;`} set:html={ctaText} />
-
-		{
-			showFeatures ? (
-				<div class="features-list">
-					<div class="feature-item">
-						<Image src={GreenTick} alt="tick" class="tick-icon" />
-						<span>7 days full access</span>
-					</div>
-					<div class="feature-item">
-						<Image src={GreenTick} alt="tick" class="tick-icon" />
-						<span>No credit card</span>
-					</div>
-					<div class="feature-item">
-						<Image src={GreenTick} alt="tick" class="tick-icon" />
-						<span>Cancel anytime</span>
-					</div>
-				</div>
-			) : (
-				(layout === "horizontal" || buttonLayout === "inline") && (
-					<span class="cta-note" style={buttonLayout === "inline" ? `color: ${noteColor}; font-size: 13px; margin-left:10px;` : ""}>
-						{buttonLayout === "inline" ? "No credit card" : "• 7 days free • Full access • No credit card"}
-					</span>
-				)
-			)
-		}
+		<button type="submit" class="global-form-btn" style={`min-width: 100% !important;`} set:html={ctaText} />
+	</div>
+	<div class="features-list" style="margin-top: 0px;">
+		<div class="feature-item">
+			<Image src={GreenTick} alt="tick" class="tick-icon" />
+			<span>7 days full access</span>
+		</div>
+		<div class="feature-item">
+			<Image src={GreenTick} alt="tick" class="tick-icon" />
+			<span>No credit card</span>
+		</div>
+		<div class="feature-item">
+			<Image src={GreenTick} alt="tick" class="tick-icon" />
+			<span>Cancel anytime</span>
+		</div>
 	</div>
 </form>
 

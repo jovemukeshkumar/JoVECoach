@@ -49,14 +49,14 @@ export const newManagerEssentialsData: LandingPageData = {
 		subtitle: "Delegation, feedback, team communication, and decision-making—explained for your first management role, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Delegation, feedback, and team communication—explained for your first management role.",
 		ctaTitle: "Watch management essentials finally click.",
-		heroFormCta: "<strong>Get Free Certification - In Minutes</strong>",
+		heroFormCta: "Get Free Certification - In Minutes",
 		trustText: "Trusted by 1 Million+ learners from 1,800+ organizations",
 		image: HeroImage,
 		mobileImage: HeroImageMobile,
 		heroModal: {
 			title: 'Ready for Your Next Promotion ?',
 			subtitle: "Try JoVE Coach and build leadership skills that move your career forward.",
-			ctaText: "Get Free Certification - in minutes",
+			ctaText: "Get Free Certification - In Minutes",
 			videoSrc: biologyCarouselDesktop,
 		},
 	},
@@ -76,7 +76,7 @@ export const newManagerEssentialsData: LandingPageData = {
 		videoPlaybackSpeed: 0.75,
 		conceptCards: [
 			{ image: conceptsImg1, title: "From an Individual Contributor to Manager", views: "1k", time: "1:27" },
-			{ image: conceptsImg2, title: "Common Mistakes First-Time Managers Make", views: "2.3k", time: "1:23" },
+			{ image: conceptsImg2, title: "Common Mistakes First-Time Managers Make", views: "124k", time: "1:23" },
 			{ image: conceptsImg3, title: "How to Build Credibility as a New Manager", views: "3.1k", time: "1:17" },
 			{ image: conceptsImg4, title: "How to Set Boundaries with Former Peers", views: "1.5k", time: "1:22" },
 			{ image: conceptsImg5, title: "Your First 90 Days as a Manager", views: "5.2k", time: "1:24" },
@@ -231,6 +231,7 @@ export const newManagerEssentialsData: LandingPageData = {
 	firstCTA: {
 		title: "Ready to lead with confidence?",
 		subtitle: "Try it free and build the skills leaders notice.",
+		ctaText: "Get Free Certification - In Minutes",
 	},
 	secondCTA: {
 		title: "Ready to try the 4 steps",
@@ -298,7 +299,7 @@ export const newManagerEssentialsData: LandingPageData = {
 	modal: {
 		title: "Ready for Your Next Promotion?",
 		subtitle: "Try JoVE Coach and build leadership skills that move your career forward.",
-		ctaText: "Get Free Certification - in minutes",
+		ctaText: "Get Free Certification - In Minutes",
 	},
 	footer: {
 		title: "The Fast Lane to Career Growth.",
