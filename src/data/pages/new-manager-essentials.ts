@@ -1,5 +1,5 @@
 // Hero Images
-import HeroImage from "../../assets/stats-hero-image.webp";
+import HeroImage from "../../assets/nme.png";
 import HeroImageMobile from "../../assets/stats-hero-image.webp";
 import biologyCarouselDesktop from "../../assets/business-carousel-desktop.webm";
 import biologyCarouselMobile from "../../assets/business-carousel-mobile.webm";
@@ -54,8 +54,9 @@ export const newManagerEssentialsData: LandingPageData = {
 		image: HeroImage,
 		mobileImage: HeroImageMobile,
 		heroModal: {
-			title: 'Master New Manager Essentials in 2-Minute Videos <br class="modal-break" />- Join 1M+ Learners',
-			ctaText: "Watch Manager Training Videos Free - No Signup",
+			title: 'Ready for Your Next Promotion ?',
+			subtitle: "Try JoVE Coach and build leadership skills that move your career forward.",
+			ctaText: "Get Free Certification - in minutes",
 			videoSrc: biologyCarouselDesktop,
 		},
 	},
@@ -74,11 +75,11 @@ export const newManagerEssentialsData: LandingPageData = {
 		mobileVideo: biologyCarouselMobile,
 		videoPlaybackSpeed: 0.75,
 		conceptCards: [
-			{ image: conceptsImg1, title: "From an Individual Contributor to Manager", views: "100k", time: "1:27" },
-			{ image: conceptsImg2, title: "Common Mistakes First-Time Managers Make", views: "340k", time: "1:23" },
-			{ image: conceptsImg3, title: "How to Build Credibility as a New Manager", views: "340k", time: "1:17" },
-			{ image: conceptsImg4, title: "How to Set Boundaries with Former Peers", views: "340k", time: "1:22" },
-			{ image: conceptsImg5, title: "Your First 90 Days as a Manager", views: "340k", time: "1:24" },
+			{ image: conceptsImg1, title: "From an Individual Contributor to Manager", views: "1k", time: "1:27" },
+			{ image: conceptsImg2, title: "Common Mistakes First-Time Managers Make", views: "2.3k", time: "1:23" },
+			{ image: conceptsImg3, title: "How to Build Credibility as a New Manager", views: "3.1k", time: "1:17" },
+			{ image: conceptsImg4, title: "How to Set Boundaries with Former Peers", views: "1.5k", time: "1:22" },
+			{ image: conceptsImg5, title: "Your First 90 Days as a Manager", views: "5.2k", time: "1:24" },
 		],
 		questions: [
 			{ icon: conceptsSectionIcon6, text: "How do I delegate without micromanaging?" },
@@ -297,7 +298,7 @@ export const newManagerEssentialsData: LandingPageData = {
 	modal: {
 		title: "Ready for Your Next Promotion?",
 		subtitle: "Try JoVE Coach and build leadership skills that move your career forward.",
-		ctaText: "Start My Free Trial",
+		ctaText: "Get Free Certification - in minutes",
 	},
 	footer: {
 		title: "The Fast Lane to Career Growth.",
