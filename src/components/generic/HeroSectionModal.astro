@@ -64,7 +64,17 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 					<picture>
 						<!-- Don't load on desktop (min-width: 1025px) -->
 						<source media="(min-width: 1025px)" srcset={transparentPixel} />
-						<Image src={mobileImgSrc} alt="JoVE Coach Interface" class="hero-img-mobile" loading="eager" fetchpriority="high" />
+						<Image
+							src={mobileImgSrc}
+							alt="JoVE Coach Interface"
+							class="hero-img-mobile"
+							width={800}
+							widths={[400, 600, 800]}
+							sizes="(max-width: 1024px) 100vw, 0px"
+							loading="eager"
+							fetchpriority="high"
+							decoding="async"
+						/>
 					</picture>
 				</div>
 
@@ -99,7 +109,17 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 					<picture>
 						<!-- Don't load on mobile (max-width: 1024px) -->
 						<source media="(max-width: 1024px)" srcset={transparentPixel} />
-						<Image src={heroImage} alt="JoVE Coach Interface" class="hero-img" loading="eager" fetchpriority="high" />
+						<Image
+							src={heroImage}
+							alt="JoVE Coach Interface"
+							class="hero-img"
+							width={1000}
+							widths={[700, 900, 1100, 1244]}
+							sizes="(min-width: 1025px) 50vw, 0px"
+							loading="lazy"
+							fetchpriority="auto"
+							decoding="async"
+						/>
 					</picture>
 				</div>
 			</div>

@@ -11,15 +11,19 @@ import VideoModal from "../components/VideoModal.astro";
 import ComparisonTable from "../components/generic/ComparisonTable.astro";
 import NavLogo from "../assets/NavLogo.svg";
 import HeroSection from "../components/generic/HeroSectionModal.astro";
+import { getImage } from "astro:assets";
 import Navbar from "../components/generic/Navbar.astro";
 
 import { newManagerEssentialsData, newManagerEssentialsRedirectUri } from "../data/pages/new-manager-essentials";
 const { hero, concepts, comparison, firstCTA, faq, modal, footer } = newManagerEssentialsData;
+
+const heroMobilePreload = await getImage({ src: hero.mobileImage, width: 800, format: "webp" });
+const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format: "webp" });
 ---
 
 <Layout title="JoVE Coach | New Manager Essentials | Leadership in 2-Minute Videos" description="New to management? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master delegation, feedback, and team leadership in minutes. Try free for 7 days." robots="noindex, nofollow">
-	<link rel="preload" href={hero.mobileImage.src} as="image" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
-	<link rel="preload" href={hero.image.src} as="image" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+	<link rel="preload" href={heroMobilePreload.src} as="image" type="image/webp" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
+	<link rel="preload" href={heroDesktopPreload.src} as="image" type="image/webp" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
 
 	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
 
