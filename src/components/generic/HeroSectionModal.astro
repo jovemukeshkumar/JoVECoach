@@ -43,8 +43,6 @@ const {
 	customRedirectUrl,
 	redirectUri,
 } = Astro.props;
-
-const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 ---
 
 <section class="hero-section">
@@ -61,21 +59,17 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}')`}
 					style="cursor: pointer;"
 				>
-					<picture>
-						<!-- Don't load on desktop (min-width: 1025px) -->
-						<source media="(min-width: 1025px)" srcset={transparentPixel} />
-						<Image
-							src={mobileImgSrc}
-							alt="JoVE Coach Interface"
-							class="hero-img-mobile"
-							width={800}
-							widths={[400, 600, 800]}
-							sizes="(max-width: 1024px) 100vw, 0px"
-							loading="eager"
-							fetchpriority="high"
-							decoding="async"
-						/>
-					</picture>
+					<Image
+						src={mobileImgSrc}
+						alt="JoVE Coach Interface"
+						class="hero-img-mobile"
+						width={800}
+						widths={[400, 600, 800]}
+						sizes="(max-width: 1024px) 100vw, 50vw"
+						loading="eager"
+						fetchpriority="high"
+						decoding="async"
+					/>
 				</div>
 
 				<div class="trust-bar">
@@ -106,21 +100,17 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}')`}
 					style="cursor: pointer;"
 				>
-					<picture>
-						<!-- Don't load on mobile (max-width: 1024px) -->
-						<source media="(max-width: 1024px)" srcset={transparentPixel} />
-						<Image
-							src={heroImage}
-							alt="JoVE Coach Interface"
-							class="hero-img"
-							width={1000}
-							widths={[700, 900, 1100, 1244]}
-							sizes="(min-width: 1025px) 50vw, 0px"
-							loading="lazy"
-							fetchpriority="auto"
-							decoding="async"
-						/>
-					</picture>
+					<Image
+						src={heroImage}
+						alt="JoVE Coach Interface"
+						class="hero-img"
+						width={1000}
+						widths={[700, 900, 1100, 1244]}
+						sizes="(min-width: 1025px) 50vw, 100vw"
+						loading="eager"
+						fetchpriority="high"
+						decoding="async"
+					/>
 				</div>
 			</div>
 
