@@ -22,8 +22,8 @@ const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format
 ---
 
 <Layout title="JoVE Coach | New Manager Essentials | Leadership in 2-Minute Videos" description="New to management? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master delegation, feedback, and team leadership in minutes. Try free for 7 days." robots="noindex, nofollow">
-	<link rel="preload" href={heroMobilePreload.src} as="image" type="image/webp" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
-	<link rel="preload" href={heroDesktopPreload.src} as="image" type="image/webp" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+	<link rel="preload" href={`/pp${heroMobilePreload.src}`} as="image" type="image/webp" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
+	<link rel="preload" href={`/pp${heroDesktopPreload.src}`} as="image" type="image/webp" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
 
 	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
 

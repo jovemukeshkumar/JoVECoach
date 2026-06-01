@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 
 import HeroSectionCTABg from "../../assets/HeroSectionCTABg.svg";
 // Use the new custom form
@@ -43,6 +43,9 @@ const {
 	customRedirectUrl,
 	redirectUri,
 } = Astro.props;
+
+const mobileHero = await getImage({ src: mobileImgSrc, width: 800, format: "webp" });
+const desktopHero = await getImage({ src: heroImage, width: 1000, format: "webp" });
 ---
 
 <section class="hero-section">
@@ -59,13 +62,12 @@ const {
 					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}')`}
 					style="cursor: pointer;"
 				>
-					<Image
-						src={mobileImgSrc}
+					<img
+						src={`/pp${mobileHero.src}`}
 						alt="JoVE Coach Interface"
 						class="hero-img-mobile"
-						width={800}
-						widths={[400, 600, 800]}
-						sizes="(max-width: 1024px) 100vw, 50vw"
+						width={mobileHero.attributes.width}
+						height={mobileHero.attributes.height}
 						loading="eager"
 						fetchpriority="high"
 						decoding="async"
@@ -100,13 +102,12 @@ const {
 					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}')`}
 					style="cursor: pointer;"
 				>
-					<Image
-						src={heroImage}
+					<img
+						src={`/pp${desktopHero.src}`}
 						alt="JoVE Coach Interface"
 						class="hero-img"
-						width={1000}
-						widths={[700, 900, 1100, 1244]}
-						sizes="(min-width: 1025px) 50vw, 100vw"
+						width={desktopHero.attributes.width}
+						height={desktopHero.attributes.height}
 						loading="eager"
 						fetchpriority="high"
 						decoding="async"
