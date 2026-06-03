@@ -42,6 +42,7 @@ import courseraLogo from "../../assets/coursera.svg";
 import udemyLogo from "../../assets/udemy.svg";
 
 import type { LandingPageData } from "../landingPageData";
+import { newManagerEssentialsThumbnailRedirects } from "../../config/redirectUrls";
 
 export const newManagerEssentialsData: LandingPageData = {
 	hero: {
@@ -75,11 +76,41 @@ export const newManagerEssentialsData: LandingPageData = {
 		mobileVideo: biologyCarouselMobile,
 		videoPlaybackSpeed: 0.75,
 		conceptCards: [
-			{ image: conceptsImg1, title: "From an Individual Contributor to Manager", views: "1k", time: "1:27" },
-			{ image: conceptsImg2, title: "Common Mistakes First-Time Managers Make", views: "124k", time: "1:23" },
-			{ image: conceptsImg3, title: "How to Build Credibility as a New Manager", views: "3.1k", time: "1:17" },
-			{ image: conceptsImg4, title: "How to Set Boundaries with Former Peers", views: "1.5k", time: "1:22" },
-			{ image: conceptsImg5, title: "Your First 90 Days as a Manager", views: "5.2k", time: "1:24" },
+			{
+				image: conceptsImg1,
+				title: "From an Individual Contributor to Manager",
+				views: "1k",
+				time: "1:27",
+				redirectUri: newManagerEssentialsThumbnailRedirects[0],
+			},
+			{
+				image: conceptsImg2,
+				title: "Common Mistakes First-Time Managers Make",
+				views: "124k",
+				time: "1:23",
+				redirectUri: newManagerEssentialsThumbnailRedirects[1],
+			},
+			{
+				image: conceptsImg3,
+				title: "How to Build Credibility as a New Manager",
+				views: "3.1k",
+				time: "1:17",
+				redirectUri: newManagerEssentialsThumbnailRedirects[2],
+			},
+			{
+				image: conceptsImg4,
+				title: "How to Set Boundaries with Former Peers",
+				views: "1.5k",
+				time: "1:22",
+				redirectUri: newManagerEssentialsThumbnailRedirects[3],
+			},
+			{
+				image: conceptsImg5,
+				title: "Your First 90 Days as a Manager",
+				views: "5.2k",
+				time: "1:24",
+				redirectUri: newManagerEssentialsThumbnailRedirects[4],
+			},
 		],
 		questions: [
 			{ icon: conceptsSectionIcon6, text: "How do I delegate without micromanaging?" },
@@ -310,6 +341,9 @@ export const newManagerEssentialsData: LandingPageData = {
 	},
 };
 
-/** Post-login destination passed as redirecturi query param on coach.jove.com/home */
-export const newManagerEssentialsRedirectUri =
-	"https://coach.jove.com/microcourse/new-manager-essentials/transitioning-from-individual-contributor-to-manager";
+export {
+	newManagerEssentialsRedirects,
+	newManagerEssentialsRedirectUri,
+	newManagerEssentialsHeroImageRedirect,
+	newManagerEssentialsThumbnailRedirects,
+} from "../../config/redirectUrls";

@@ -5,10 +5,9 @@ interface Props {
 	title?: string;
 	subtitle?: string;
 	ctaText?: string;
-	redirectUri?: string;
 }
 
-const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free", redirectUri = "" } = Astro.props;
+const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free for 7 days and experience AI-powered clarity for yourself.", ctaText = "Try It Free" } = Astro.props;
 ---
 
 <div id="zoho-modal-overlay" class="modal-overlay" style="display: none;">
@@ -29,7 +28,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 				<div class="zcwf_row">
 					<input type="hidden" name="modalFormSource" id="modalFormSourceInput" value="" />
 					<input type="hidden" name="modalRedirectUrl" id="modalRedirectUrlInput" value="" />
-					<input type="hidden" name="modalRedirectUri" id="modalRedirectUriInput" value={redirectUri} />
+					<input type="hidden" name="modalRedirectUri" id="modalRedirectUriInput" value="" />
 					<button id="formsubmit_modal" class="global-form-btn" type="submit">{ctaText}</button>
 				</div>
 
@@ -63,7 +62,7 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 		if (d) defaultDisclaimer = d.innerHTML;
 	}
 
-	window.openZohoModal = function (title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer) {
+	window.openZohoModal = function (title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer, redirectUri) {
 		const overlay = document.getElementById("zoho-modal-overlay");
 		if (overlay) {
 			const titleEl = overlay.querySelector(".zcwf_title");
@@ -97,6 +96,11 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 			const redirectInput = overlay.querySelector("#modalRedirectUrlInput");
 			if (redirectInput) {
 				redirectInput.value = redirectUrl || "";
+			}
+
+			const redirectUriInput = overlay.querySelector("#modalRedirectUriInput");
+			if (redirectUriInput) {
+				redirectUriInput.value = redirectUri || "";
 			}
 
 			const disclaimerEl = overlay.querySelector(".modal-disclaimer");
@@ -150,17 +154,17 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 			const email = modalForm.querySelector('input[name="modalEmail"]').value;
 			const organizationName = modalForm.querySelector('input[name="modalCompany"]').value;
 			const formSource = modalForm.querySelector('input[name="modalFormSource"]').value;
-			let redirectUrl = modalForm.querySelector('input[name="modalRedirectUrl"]').value;
 			const redirectUriInput = modalForm.querySelector('input[name="modalRedirectUri"]');
 			const redirectUri = redirectUriInput?.value?.trim() || "";
 
-			// If no custom redirectUrl was passed into the modal, send null so master defaults to /home
-			if (!redirectUrl || redirectUrl.trim() === "") {
-				redirectUrl = null;
-			}
-
 			if (window.submitToZoho) {
-				window.submitToZoho({ name, email, organizationName, redirectUrl, redirectUri: redirectUri || undefined, formSource });
+				window.submitToZoho({
+					name,
+					email,
+					organizationName,
+					formSource,
+					redirectUri: redirectUri || (window.getOpenFormRedirectUri && window.getOpenFormRedirectUri()),
+				});
 
 				// Close the video modal on submit as well
 				if (window.closeVideoModal) {

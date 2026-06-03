@@ -559,8 +559,13 @@ const featuresList = features || defaultFeatures;
 					</div>
 
 					<div class="concept-cards-container">
-						{conceptCards.map((card, index) => (
-							<div class="concept-card" onclick={`window.openZohoModal && window.openZohoModal('${modalTitle || ""}', '${modalSubtitle || ""}', '${modalCtaText || ""}', 'thumbnail-${index + 1}')`}>
+						{conceptCards.map((card, index) => {
+							const cardRedirectUri = card.redirectUri || "";
+							return (
+							<div
+								class="concept-card"
+								onclick={`window.openZohoModal && window.openZohoModal(${JSON.stringify(modalTitle || "")}, ${JSON.stringify(modalSubtitle || "")}, ${JSON.stringify(modalCtaText || "")}, ${JSON.stringify(`thumbnail-${index + 1}`)}, "", "", ${JSON.stringify(cardRedirectUri)})`}
+							>
 								<div class="card-image-wrapper">
 									<Image src={card.image} alt={card.title} class="card-bg-image" />
 									<div class="card-overlay">
@@ -581,7 +586,8 @@ const featuresList = features || defaultFeatures;
 								</div>
 								{showDescription && card.description && <div class="card-description">{card.description}</div>}
 							</div>
-						))}
+							);
+						})}
 					</div>
 
 					<div class="carousel-nav-wrapper right">
@@ -693,7 +699,7 @@ const featuresList = features || defaultFeatures;
 
 		<!-- CTA -->
 		<div class="cta">
-			<button onclick={`window.openZohoModal && window.openZohoModal('', '', '', 'concept-cta')`}>{ctaText}</button>
+			<button onclick="window.openZohoModal && window.openZohoModal('', '', '', 'concept-cta')">{ctaText}</button>
 		</div>
 	</div>
 </section>

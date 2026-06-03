@@ -14,16 +14,21 @@ import HeroSection from "../components/generic/HeroSectionModal.astro";
 import { getImage } from "astro:assets";
 import Navbar from "../components/generic/Navbar.astro";
 
-import { newManagerEssentialsData, newManagerEssentialsRedirectUri } from "../data/pages/new-manager-essentials";
+import { newManagerEssentialsData, newManagerEssentialsRedirects } from "../data/pages/new-manager-essentials";
+const { heroImageClick } = newManagerEssentialsRedirects;
 const { hero, concepts, comparison, firstCTA, faq, modal, footer } = newManagerEssentialsData;
 
 const heroMobilePreload = await getImage({ src: hero.mobileImage, width: 800, format: "webp" });
 const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format: "webp" });
 ---
 
+<script is:inline define:vars={{ heroImageClick }}>
+	window.inlineCoachRedirectFallback = heroImageClick;
+</script>
+
 <Layout title="JoVE Coach | New Manager Essentials | Leadership in 2-Minute Videos" description="New to management? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master delegation, feedback, and team leadership in minutes. Try free for 7 days." robots="noindex, nofollow">
-	<link rel="preload" href={`/pp${heroMobilePreload.src}`} as="image" type="image/webp" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
-	<link rel="preload" href={`/pp${heroDesktopPreload.src}`} as="image" type="image/webp" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
+	<link rel="preload" href={heroMobilePreload.src} as="image" type="image/webp" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
+	<link rel="preload" href={heroDesktopPreload.src} as="image" type="image/webp" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
 
 	<link rel="preload" href={NavLogo.src} as="image" type="image/svg+xml" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
 
@@ -43,7 +48,7 @@ const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format
 			heroModalSubtitle={hero.heroModal?.subtitle}
 			heroModalCtaText={hero.heroModal?.ctaText}
 			heroModalVideoSrc={hero.heroModal?.videoSrc}
-			redirectUri={newManagerEssentialsRedirectUri}
+			modalRedirectUri={heroImageClick}
 		/>
 	</div>
 
@@ -62,12 +67,12 @@ const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format
 		modalCtaText={hero.heroModal?.ctaText}
 		showSubheading={false}
 	/>
-	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} redirectUri={newManagerEssentialsRedirectUri} />
+	<FirstCTASection title={firstCTA.title} subtitle={firstCTA.subtitle} ctaText={firstCTA.ctaText} />
 	<ComparisonTable title={comparison.title} subtitle={comparison.subtitle} tagline={comparison.tagline} ctaText={comparison.ctaText} items={comparison.items} features={comparison.features} />
 	<FAQSection heading={faq.heading} items={faq.items} />
 
-	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} image={footer?.image} formSource="footer-cta" redirectUri={newManagerEssentialsRedirectUri} />
-	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} redirectUri={newManagerEssentialsRedirectUri} />
+	<ZohoFooterFormNewPage title={footer?.title} subtitle={footer?.subtitle} ctaText={footer?.ctaText} image={footer?.image} formSource="footer-cta" />
+	<ZohoModalNewPage title={modal.title} subtitle={modal.subtitle} ctaText={modal.ctaText} />
 	<VideoModal videoSrc={hero.heroModal?.videoSrc} />
 
 	<Footer seoText={footer?.seoText} />
@@ -78,7 +83,7 @@ const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format
 		const checkAndOverride = function() {
 			if (window.openZohoModal) {
 				const originalOpenZohoModal = window.openZohoModal;
-				window.openZohoModal = function(title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer) {
+				window.openZohoModal = function(title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer, redirectUri) {
 					const pillHtml = '<div class="modal-pill"><span class="stars">★★★★★</span> Trusted by 1M+ professionals</div><br/>';
 					const titleWithPill = title ? (pillHtml + title) : pillHtml + 'Ready for Your Next Promotion?';
 
@@ -87,7 +92,7 @@ const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format
 						zohoOverlay.classList.add("video-transition");
 					}
 
-					originalOpenZohoModal(titleWithPill, subtitle, ctaText, formSource, redirectUrl, customDisclaimer);
+					originalOpenZohoModal(titleWithPill, subtitle, ctaText, formSource, redirectUrl, customDisclaimer, redirectUri);
 				};
 			} else {
 				setTimeout(checkAndOverride, 100);

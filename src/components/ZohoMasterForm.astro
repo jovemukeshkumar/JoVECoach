@@ -1,5 +1,5 @@
 ---
-
+import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 ---
 
 <div id="zoho-master-form-container" style="display: none;">
@@ -67,7 +67,7 @@
 	</form>
 </div>
 
-<script is:inline>
+<script is:inline define:vars={{ ZOHO_INTEGRATION_ENABLED }}>
 	// Global function to be called by dummy forms
 	window.submitToZoho = function (data) {
 		console.log("submitToZoho (Contacts) called with:", data);
@@ -113,6 +113,12 @@
 			urlObj.searchParams.set("organizationName", organizationName);
 		}
 		returnURLInput.value = urlObj.toString();
+
+		if (window.ZOHO_INTEGRATION_ENABLED === false || ZOHO_INTEGRATION_ENABLED === false) {
+			console.warn("Zoho integration paused — skipping CRM POST. Redirecting to:", returnURLInput.value);
+			window.location.href = returnURLInput.value;
+			return;
+		}
 
 		console.log("Submitting Master Form...", returnURLInput.value);
 
@@ -285,7 +291,7 @@
 
 <input type="text" type="hidden" style="display: none;" name="aG9uZXlwb3Q" value="" />
 
-<script is:inline>
+<script is:inline define:vars={{ ZOHO_INTEGRATION_ENABLED }}>
 	// Global function to be called by dummy forms
 	window.submitToZoho = function (data) {
 		console.log("submitToZoho called with:", data);
@@ -333,6 +339,12 @@
 			urlObj.searchParams.set("organizationName", organizationName);
 		}
 		returnURLInput.value = urlObj.toString();
+
+		if (window.ZOHO_INTEGRATION_ENABLED === false || ZOHO_INTEGRATION_ENABLED === false) {
+			console.warn("Zoho integration paused — skipping CRM POST. Redirecting to:", returnURLInput.value);
+			window.location.href = returnURLInput.value;
+			return;
+		}
 
 		console.log("Check Return URL:", returnURLInput.value);
 

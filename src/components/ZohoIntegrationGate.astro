@@ -1,0 +1,115 @@
+---
+import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
+
+interface Props {
+	part?: "head" | "body";
+}
+
+const { part = "body" } = Astro.props;
+---
+
+{
+	part === "head" && (
+		<script is:inline define:vars={{ ZOHO_INTEGRATION_ENABLED }}>
+			window.ZOHO_INTEGRATION_ENABLED = ZOHO_INTEGRATION_ENABLED;
+		</script>
+	)
+}
+
+{
+	part === "body" && (
+		<script is:inline>
+			(function () {
+				if (window.ZOHO_INTEGRATION_ENABLED !== false) return;
+
+				function isZohoUrl(url) {
+					if (!url || typeof url !== "string") return false;
+					return (
+						url.includes("crm.zoho.in") ||
+						url.includes("crm.zohopublic.in") ||
+						url.includes("forms.zohopublic.in")
+					);
+				}
+
+				function fieldValue(form, selectors) {
+					for (const sel of selectors) {
+						const el = form.querySelector(sel);
+						if (el && String(el.value || "").trim()) return String(el.value).trim();
+					}
+					return "";
+				}
+
+				function redirectFromForm(form) {
+					const returnURLInput = form.querySelector('input[name="returnURL"]');
+					const stored = returnURLInput && returnURLInput.value;
+					if (stored && stored !== "null" && stored.startsWith("http")) {
+						window.location.href = stored;
+						return;
+					}
+
+					const name = fieldValue(form, ['[name="Last Name"]', "#Last_Name_modal", '[name="modalName"]', "#Last_Name_master"]);
+					const email = fieldValue(form, ['[name="Email"]', "#Email_modal", '[name="modalEmail"]', "#Email_master"]);
+					const company = fieldValue(form, ['[name="Company"]', "#Company_modal", '[name="modalCompany"]', "#Company_master"]);
+
+					const url = new URL("https://coach.jove.com/home");
+					if (name) url.searchParams.set("username", name);
+					if (email) url.searchParams.set("email", email);
+					if (company) url.searchParams.set("organizationName", company);
+					window.location.href = url.toString();
+				}
+
+				const nativeSubmit = HTMLFormElement.prototype.submit;
+				HTMLFormElement.prototype.submit = function () {
+					if (isZohoUrl(this.action)) {
+						console.warn("Zoho integration paused — skipping programmatic form submit.");
+						redirectFromForm(this);
+						return;
+					}
+					return nativeSubmit.call(this);
+				};
+
+				const nativeFetch = window.fetch;
+				window.fetch = function (input, init) {
+					const url = typeof input === "string" ? input : input instanceof Request ? input.url : "";
+					if (isZohoUrl(url)) {
+						console.warn("Zoho integration paused — skipping fetch:", url);
+						return Promise.resolve(new Response(null, { status: 204 }));
+					}
+					return nativeFetch.apply(this, arguments);
+				};
+
+				function wrapRecaptcha() {
+					if (typeof window.executeGlobalRecaptcha !== "function") return;
+					if (window.executeGlobalRecaptcha.__zohoPausedWrapped) return;
+					window.executeGlobalRecaptcha = function (callback) {
+						console.warn("Zoho integration paused — skipping reCAPTCHA.");
+						if (typeof callback === "function") callback("zoho-paused");
+					};
+					window.executeGlobalRecaptcha.__zohoPausedWrapped = true;
+				}
+
+				wrapRecaptcha();
+				document.addEventListener("DOMContentLoaded", wrapRecaptcha);
+
+				document.addEventListener(
+					"submit",
+					function (e) {
+						const form = e.target;
+						if (!(form instanceof HTMLFormElement) || !isZohoUrl(form.action)) return;
+						e.preventDefault();
+						e.stopPropagation();
+						console.warn("Zoho integration paused — skipping native form POST.");
+						redirectFromForm(form);
+					},
+					true
+				);
+
+				document.addEventListener("DOMContentLoaded", function () {
+					document.querySelectorAll('script[src*="zohopublic.in"], script[src*="crm.zoho.in"]').forEach(function (el) {
+						el.remove();
+					});
+				});
+			})();
+		</script>
+	)
+}

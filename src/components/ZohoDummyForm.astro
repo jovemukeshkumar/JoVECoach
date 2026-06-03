@@ -57,7 +57,7 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 				const organizationName = form.querySelector('input[name="dummyOrgName"]').value;
 
 				if (window.submitToZoho) {
-					window.submitToZoho({ name, email, organizationName, redirectUrl: redirectPath, redirectUri, formSource });
+					window.submitToZoho({ name, email, organizationName, formSource, redirectUri: redirectUri || undefined });
 				} else {
 					console.error("window.submitToZoho is not defined. Make sure ZohoMasterForm is included.");
 					alert("Submission failed. Please try again later.");

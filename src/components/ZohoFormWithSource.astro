@@ -1,4 +1,6 @@
 ---
+import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
+
 export interface Props {
 	formSource: string;
 	returnURL?: string;
@@ -483,8 +485,10 @@ const { formSource, returnURL = "https://coach.jove.com/home" } = Astro.props;
 			}
 		})();
 	</script>
-	<script
-		id="wf_anal"
-		src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=cf91c438cb0e2786aba08ed243c6d549211193aafbd62089abc824d75cafa92ecdabec3be2b92ab8a4c088e3ecb5185dgid85672f8d7b8086b0e0af227a480e642f665e1e58fa08f60c72e3b964b2f6d50egidc6c20f3883800f4951383c45da08d759611c7a4a9473b56a8fb84ad8cb0cf252gid3ae9cbc7a9f6c9a49aedccb3caabaadeb96228a2d4252fbeb6c4437d156fc127&tw=edd760d63c0805608aba7358f43d6aa645da41840fdf5e6856defb89376f1d3f"
-	></script>
+	{ZOHO_INTEGRATION_ENABLED && (
+		<script
+			id="wf_anal"
+			src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=cf91c438cb0e2786aba08ed243c6d549211193aafbd62089abc824d75cafa92ecdabec3be2b92ab8a4c088e3ecb5185dgid85672f8d7b8086b0e0af227a480e642f665e1e58fa08f60c72e3b964b2f6d50egidc6c20f3883800f4951383c45da08d759611c7a4a9473b56a8fb84ad8cb0cf252gid3ae9cbc7a9f6c9a49aedccb3caabaadeb96228a2d4252fbeb6c4437d156fc127&tw=edd760d63c0805608aba7358f43d6aa645da41840fdf5e6856defb89376f1d3f"
+		/>
+	)}
 </div>

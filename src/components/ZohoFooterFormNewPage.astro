@@ -51,7 +51,7 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 			const organizationName = footerForm.querySelector('input[name="footerCompany"]').value;
 
 			if (window.submitToZoho) {
-				window.submitToZoho({ name, email, organizationName, redirectUrl: redirectPath, redirectUri, formSource });
+				window.submitToZoho({ name, email, organizationName, formSource, redirectUri: redirectUri || undefined });
 			} else {
 				console.error("Global submit function missing");
 			}

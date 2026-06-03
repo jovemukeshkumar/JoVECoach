@@ -1,5 +1,5 @@
 ---
-
+import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 ---
 
 <div id="zoho-leads-form-container" style="display: none;">
@@ -66,12 +66,41 @@
 	</form>
 </div>
 
-<script is:inline>
+<script is:inline define:vars={{ ZOHO_INTEGRATION_ENABLED }}>
 	// Global function to be called by dummy forms (Overwrites MasterForm version if both loaded, but safer for testing)
+	window.getUtmSearchKeyword = function () {
+		const params = new URLSearchParams(window.location.search);
+		return params.get("utm_term") || params.get("utm_keyword") || params.get("keyword") || "";
+	};
+
+	/** Touchpoint destination URL (value for redirecturi), not the full return URL. */
+	window.getOpenFormRedirectUri = function () {
+		const searchQuery = window.getUtmSearchKeyword();
+		if (searchQuery) {
+			const url = new URL("https://coach.jove.com/coach/");
+			url.searchParams.set("searchQuery", searchQuery);
+			url.searchParams.set("page", "home");
+			return url.toString();
+		}
+		return window.inlineCoachRedirectFallback || "";
+	};
+
+	/** https://coach.jove.com/home?redirecturi=...&username=... */
+	window.buildHomeReturnUrl = function ({ redirectUri, name, email, organizationName }) {
+		const url = new URL("https://coach.jove.com/home");
+		if (redirectUri) {
+			url.searchParams.set("redirecturi", redirectUri);
+		}
+		if (name) url.searchParams.set("username", name);
+		if (email) url.searchParams.set("email", email);
+		if (organizationName) url.searchParams.set("organizationName", organizationName);
+		return url.toString();
+	};
+
 	window.submitToZoho = function (data) {
 		console.log("submitToZoho (Leads) called with:", data);
 
-		const { name, email, organizationName, redirectUrl, formSource, redirectUri } = data;
+		const { name, email, organizationName, formSource, redirectUri } = data;
 
 		if (!name || !email) {
 			console.error("Name and Email are required for Zoho submission.");
@@ -95,28 +124,20 @@
 			sourceInput.value = formSource;
 		}
 
-		// 2. Construct Return URL
-		// Use provided redirectUrl or default to /home
-		const baseUrl = redirectUrl || "https://coach.jove.com/home";
+		// 2. Construct Return URL — always coach.jove.com/home?redirecturi=...
+		const destination = redirectUri || window.getOpenFormRedirectUri();
+		returnURLInput.value = window.buildHomeReturnUrl({
+			redirectUri: destination,
+			name,
+			email,
+			organizationName,
+		});
 
-		// Handle case where baseUrl might already have params or incomplete path
-		let urlObj;
-		try {
-			urlObj = new URL(baseUrl.startsWith("http") ? baseUrl : window.location.origin + (baseUrl.startsWith("/") ? "" : "/") + baseUrl);
-		} catch (e) {
-			console.error("Invalid Redirect URL", baseUrl);
-			urlObj = new URL("https://coach.jove.com/home");
+		if (window.ZOHO_INTEGRATION_ENABLED === false || ZOHO_INTEGRATION_ENABLED === false) {
+			console.warn("Zoho integration paused — skipping CRM POST. Redirecting to:", returnURLInput.value);
+			window.location.href = returnURLInput.value;
+			return;
 		}
-
-		urlObj.searchParams.set("username", name);
-		urlObj.searchParams.set("email", email);
-		if (organizationName) {
-			urlObj.searchParams.set("organizationName", organizationName);
-		}
-		if (redirectUri) {
-			urlObj.searchParams.set("redirecturi", redirectUri);
-		}
-		returnURLInput.value = urlObj.toString();
 
 		console.log("Submitting Leads Form...", returnURLInput.value);
 

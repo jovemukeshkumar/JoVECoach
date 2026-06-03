@@ -1,5 +1,7 @@
 ---
 import "@fontsource-variable/inter";
+import ZohoIntegrationGate from "../components/ZohoIntegrationGate.astro";
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -165,6 +167,7 @@ const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description =
 		</script>
 		<!-- End Google Tag Manager -->
 		<meta name="generator" content={Astro.generator} />
+		<ZohoIntegrationGate part="head" />
 		<slot name="head" />
 	</head>
 
@@ -174,6 +177,7 @@ const { title = "JoVE Coach | Master Any STEM Concept in Minutes", description =
 		<!-- End Google Tag Manager (noscript) -->
 		<slot />
 		<div id="global-recaptcha"></div>
+		<ZohoIntegrationGate part="body" />
 	</body>
 </html>
 

@@ -144,6 +144,8 @@ export interface LandingPageData {
 			views: string;
 			time: string;
 			description?: string;
+			/** Modal submit redirect (redirecturi) for this thumbnail */
+			redirectUri?: string;
 		}[];
 		questions: {
 			icon: ImageMetadata;

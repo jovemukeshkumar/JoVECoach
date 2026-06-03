@@ -22,7 +22,7 @@ interface Props {
 	showSubtitle?: boolean;
 	playVideoOnClick?: boolean;
 	customRedirectUrl?: string;
-	redirectUri?: string;
+	modalRedirectUri?: string;
 }
 
 const {
@@ -41,7 +41,7 @@ const {
 	showSubtitle = false,
 	playVideoOnClick = false,
 	customRedirectUrl,
-	redirectUri,
+	modalRedirectUri = "",
 } = Astro.props;
 
 const mobileHero = await getImage({ src: mobileImgSrc, width: 800, format: "webp" });
@@ -59,11 +59,11 @@ const desktopHero = await getImage({ src: heroImage, width: 1000, format: "webp"
 				<!-- Mobile Image Placement -->
 				<div
 					class="mobile-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}')`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}', '${modalRedirectUri}')`}
 					style="cursor: pointer;"
 				>
 					<img
-						src={`/pp${mobileHero.src}`}
+						src={mobileHero.src}
 						alt="JoVE Coach Interface"
 						class="hero-img-mobile"
 						width={mobileHero.attributes.width}
@@ -92,18 +92,18 @@ const desktopHero = await getImage({ src: heroImage, width: 1000, format: "webp"
 
 				<div class="cta-box" style={{ "--cta-bg": `url(${HeroSectionCTABg.src})` }}>
 					<h3 class="cta-title">{ctaTitle}</h3>
-					<ZohoDummyForm layout="horizontal" formIdSuffix="hero" ctaText={heroFormCta} buttonMinWidth="180px" showFeatures={true} formSource="hero-form" redirectPath={customRedirectUrl} redirectUri={redirectUri} />
+					<ZohoDummyForm layout="horizontal" formIdSuffix="hero" ctaText={heroFormCta} buttonMinWidth="180px" showFeatures={true} formSource="hero-form" />
 				</div>
 			</div>
 
 			<div class="hero-right">
 				<div
 					class="desktop-image-wrapper"
-					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}')`}
+					onclick={`handleHeroClick(event, ${JSON.stringify(heroModalTitle)}, '${heroModalSubtitle}', '${heroModalCtaText}', '${heroModalVideoSrc || ""}', ${playVideoOnClick}, 'hero-image-click', '${customRedirectUrl || ""}', '${modalRedirectUri}')`}
 					style="cursor: pointer;"
 				>
 					<img
-						src={`/pp${desktopHero.src}`}
+						src={desktopHero.src}
 						alt="JoVE Coach Interface"
 						class="hero-img"
 						width={desktopHero.attributes.width}
@@ -610,7 +610,7 @@ const desktopHero = await getImage({ src: heroImage, width: 1000, format: "webp"
 </style>
 
 <script is:inline>
-	window.handleHeroClick = function (event, title, subtitle, ctaText, videoSrc, playVideoOnClick, formSource, redirectUrl) {
+	window.handleHeroClick = function (event, title, subtitle, ctaText, videoSrc, playVideoOnClick, formSource, redirectUrl, modalRedirectUri) {
 		if (playVideoOnClick && videoSrc && window.openVideoModal) {
 			const videoPlayer = document.getElementById("hero-video-player");
 			if (videoPlayer) {
@@ -658,7 +658,7 @@ const desktopHero = await getImage({ src: heroImage, width: 1000, format: "webp"
 							const videoCtaText = 'Start My 7-day Free Trial';
 							const videoDisclaimer = 'No credit Card • Cancel anytime • Instant access';
 
-							window.openZohoModal(videoTitle, videoSubtitle, videoCtaText, formSource, redirectUrl, videoDisclaimer);
+							window.openZohoModal(videoTitle, videoSubtitle, videoCtaText, formSource, redirectUrl, videoDisclaimer, modalRedirectUri);
 						}
 					}
 				};
@@ -672,7 +672,7 @@ const desktopHero = await getImage({ src: heroImage, width: 1000, format: "webp"
 			// Always Open Form Modal
 			if (window.openZohoModal) {
 				const disclaimer = '• 7 days free • Full access • No credit card';
-				window.openZohoModal(title, subtitle, ctaText, formSource, redirectUrl, disclaimer);
+				window.openZohoModal(title, subtitle, ctaText, formSource, redirectUrl, disclaimer, modalRedirectUri);
 			}
 		}
 	};
