@@ -344,6 +344,7 @@ export const newManagerEssentialsData: LandingPageData = {
 export {
 	newManagerEssentialsRedirects,
 	newManagerEssentialsRedirectUri,
+	newManagerEssentialsNoUtmRedirect,
 	newManagerEssentialsHeroImageRedirect,
 	newManagerEssentialsThumbnailRedirects,
 } from "../../config/redirectUrls";

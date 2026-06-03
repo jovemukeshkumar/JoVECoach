@@ -15,15 +15,15 @@ import { getImage } from "astro:assets";
 import Navbar from "../components/generic/Navbar.astro";
 
 import { newManagerEssentialsData, newManagerEssentialsRedirects } from "../data/pages/new-manager-essentials";
-const { heroImageClick } = newManagerEssentialsRedirects;
+const { heroImageClick, noUtm } = newManagerEssentialsRedirects;
 const { hero, concepts, comparison, firstCTA, faq, modal, footer } = newManagerEssentialsData;
 
 const heroMobilePreload = await getImage({ src: hero.mobileImage, width: 800, format: "webp" });
 const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format: "webp" });
 ---
 
-<script is:inline define:vars={{ heroImageClick }}>
-	window.inlineCoachRedirectFallback = heroImageClick;
+<script is:inline define:vars={{ noUtm }}>
+	window.inlineCoachRedirectFallback = noUtm;
 </script>
 
 <Layout title="JoVE Coach | New Manager Essentials | Leadership in 2-Minute Videos" description="New to management? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master delegation, feedback, and team leadership in minutes. Try free for 7 days." robots="noindex, nofollow">

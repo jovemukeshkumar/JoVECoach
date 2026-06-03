@@ -70,7 +70,9 @@ import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 	// Global function to be called by dummy forms (Overwrites MasterForm version if both loaded, but safer for testing)
 	window.getUtmSearchKeyword = function () {
 		const params = new URLSearchParams(window.location.search);
-		return params.get("utm_term") || params.get("utm_keyword") || params.get("keyword") || "";
+		const raw = params.get("utm_term") || params.get("utm_keyword") || params.get("keyword") || "";
+		const trimmed = raw.trim();
+		return trimmed.length > 0 ? trimmed : "";
 	};
 
 	/** Touchpoint destination URL (value for redirecturi), not the full return URL. */

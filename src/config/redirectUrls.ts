@@ -1,6 +1,10 @@
 /** Static modal redirects (redirecturi on coach.jove.com/home). */
 const NME_MICROCOURSE_BASE = "https://coach.jove.com/microcourse/new-manager-essentials";
 
+/** Open forms / modals when utm_term (or utm_keyword / keyword) is empty. */
+export const newManagerEssentialsNoUtmRedirect =
+	`${NME_MICROCOURSE_BASE}/transitioning-from-individual-contributor-to-manager/from-individual-contributor-to-manager`;
+
 /** Hero image click → modal submit. */
 export const newManagerEssentialsHeroImageRedirect =
 	`${NME_MICROCOURSE_BASE}/transitioning-from-individual-contributor-to-manager/common-mistakes-first-time-managers-make`;
@@ -15,6 +19,7 @@ export const newManagerEssentialsThumbnailRedirects = [
 ] as const;
 
 export const newManagerEssentialsRedirects = {
+	noUtm: newManagerEssentialsNoUtmRedirect,
 	heroImageClick: newManagerEssentialsHeroImageRedirect,
 } as const;
 
