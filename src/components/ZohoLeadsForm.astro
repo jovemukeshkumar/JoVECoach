@@ -75,6 +75,38 @@ import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 		return trimmed.length > 0 ? trimmed : "";
 	};
 
+	const LANDING_TRACKING_PARAMS = [
+		"utm_source",
+		"utm_medium",
+		"utm_campaign",
+		"utm_term",
+		"utm_content",
+		"gclid",
+		"fbclid",
+		"msclkid",
+	];
+
+	/** Copy UTM / ad click IDs from the landing page URL onto a target URL. */
+	window.appendLandingTrackingParams = function (url) {
+		const params = new URLSearchParams(window.location.search);
+		for (const key of LANDING_TRACKING_PARAMS) {
+			if (params.has(key)) {
+				url.searchParams.set(key, params.get(key));
+			}
+		}
+		return url;
+	};
+
+	/** Add landing-page tracking params to a touchpoint destination URL. */
+	window.withLandingTrackingOnDestination = function (destination) {
+		if (!destination || !destination.startsWith("http")) return destination;
+		try {
+			return window.appendLandingTrackingParams(new URL(destination)).toString();
+		} catch {
+			return destination;
+		}
+	};
+
 	/** Touchpoint destination URL (value for redirecturi), not the full return URL. */
 	window.getOpenFormRedirectUri = function () {
 		const searchQuery = window.getUtmSearchKeyword();
@@ -87,7 +119,7 @@ import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 		return window.inlineCoachRedirectFallback || "";
 	};
 
-	/** https://coach.jove.com/home?redirecturi=...&username=... */
+	/** https://coach.jove.com/home?redirecturi=...&username=...&utm_*=... */
 	window.buildHomeReturnUrl = function ({ redirectUri, name, email, organizationName }) {
 		const url = new URL("https://coach.jove.com/home");
 		if (redirectUri) {
@@ -96,7 +128,7 @@ import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 		if (name) url.searchParams.set("username", name);
 		if (email) url.searchParams.set("email", email);
 		if (organizationName) url.searchParams.set("organizationName", organizationName);
-		return url.toString();
+		return window.appendLandingTrackingParams(url).toString();
 	};
 
 	window.submitToZoho = function (data) {
@@ -127,7 +159,8 @@ import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 		}
 
 		// 2. Construct Return URL — always coach.jove.com/home?redirecturi=...
-		const destination = redirectUri || window.getOpenFormRedirectUri();
+		const rawDestination = redirectUri || window.getOpenFormRedirectUri();
+		const destination = window.withLandingTrackingOnDestination(rawDestination);
 		returnURLInput.value = window.buildHomeReturnUrl({
 			redirectUri: destination,
 			name,

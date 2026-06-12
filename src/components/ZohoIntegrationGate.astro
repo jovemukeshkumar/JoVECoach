@@ -51,6 +51,18 @@ const { part = "body" } = Astro.props;
 					const email = fieldValue(form, ['[name="Email"]', "#Email_modal", '[name="modalEmail"]', "#Email_master"]);
 					const company = fieldValue(form, ['[name="Company"]', "#Company_modal", '[name="modalCompany"]', "#Company_master"]);
 
+					if (typeof window.buildHomeReturnUrl === "function") {
+						const destination =
+							typeof window.getOpenFormRedirectUri === "function" ? window.getOpenFormRedirectUri() : "";
+						window.location.href = window.buildHomeReturnUrl({
+							redirectUri: destination,
+							name,
+							email,
+							organizationName: company,
+						});
+						return;
+					}
+
 					const url = new URL("https://coach.jove.com/home");
 					if (name) url.searchParams.set("username", name);
 					if (email) url.searchParams.set("email", email);

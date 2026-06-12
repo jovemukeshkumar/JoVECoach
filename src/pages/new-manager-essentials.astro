@@ -22,11 +22,10 @@ const heroMobilePreload = await getImage({ src: hero.mobileImage, width: 800, fo
 const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format: "webp" });
 ---
 
-<script is:inline define:vars={{ noUtm }}>
-	window.inlineCoachRedirectFallback = noUtm;
-</script>
-
 <Layout title="JoVE Coach | New Manager Essentials | Leadership in 2-Minute Videos" description="New to management? Get AI-powered explanations, 2-minute videos, and instant quizzes. Master delegation, feedback, and team leadership in minutes. Try free for 7 days." robots="noindex, nofollow">
+	<script is:inline define:vars={{ noUtm }}>
+		window.inlineCoachRedirectFallback = noUtm;
+	</script>
 	<link rel="preload" href={heroMobilePreload.src} as="image" type="image/webp" slot="head" fetchpriority="high" media="(max-width: 1024px)" />
 	<link rel="preload" href={heroDesktopPreload.src} as="image" type="image/webp" slot="head" fetchpriority="high" media="(min-width: 1025px)" />
 
