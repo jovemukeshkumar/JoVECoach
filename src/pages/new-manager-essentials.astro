@@ -83,7 +83,7 @@ const heroDesktopPreload = await getImage({ src: hero.image, width: 1000, format
 			if (window.openZohoModal) {
 				const originalOpenZohoModal = window.openZohoModal;
 				window.openZohoModal = function(title, subtitle, ctaText, formSource, redirectUrl, customDisclaimer, redirectUri) {
-					const pillHtml = '<div class="modal-pill"><span class="stars">★★★★★</span> Trusted by 1M+ professionals</div><br/>';
+					const pillHtml = '<div class="modal-pill"><span class="stars">★★★★★</span> Trusted by 5M+ professionals</div><br/>';
 					const titleWithPill = title ? (pillHtml + title) : pillHtml + 'Ready for Your Next Promotion?';
 
 					const zohoOverlay = document.getElementById("zoho-modal-overlay");

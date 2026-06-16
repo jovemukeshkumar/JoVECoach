@@ -60,7 +60,7 @@ export const scienceGenJanData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Master Biology in 2-Minute Videos <br class=\"modal-break\" />- Join 1M+ Students",
+            title: "Master Biology in 2-Minute Videos <br class=\"modal-break\" />- Join 5M+ Students",
             // subtitle: "Enter your details for instant access.",
             ctaText: "Watch Biology Videos Free — No Signup",
             videoSrc: biologyCarouselDesktop
@@ -268,7 +268,7 @@ export const scienceGenJanData: LandingPageData = {
     },
     firstCTA: {
         title: "Ready to try the smarter way?",
-        subtitle: "Try it free and see why 1M+ students switched."
+        subtitle: "Try it free and see why 5M+ students switched."
     },
     secondCTA: {
         title: 'Ready to try the 4 steps',

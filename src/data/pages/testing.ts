@@ -73,7 +73,7 @@ export const anatomyData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            title: "7-Day Free Access • No Credit Card • Trusted by 5M+ Students",
             // subtitle: "Enter your details to resume right away.",
             ctaText: "Watch Anatomy Videos Free — No Signup",
             videoSrc: "https://cloudfront.jove.com/CDNSource/samples2/16242.mp4"
@@ -255,7 +255,7 @@ export const anatomyData: LandingPageData = {
     },
     firstCTA: {
         title: "Ready to try the smarter way?",
-        subtitle: "Try it free and see why 1M+ students switched."
+        subtitle: "Try it free and see why 5M+ students switched."
     },
     secondCTA: {
         title: 'Ready to try the 4 steps',

@@ -56,11 +56,11 @@ export const marketingData: LandingPageData = {
 		mobileSubtitle: "Data analysis, probability, and hypothesis testing—explained for real work.",
 		ctaTitle: "Watch statistics concepts finally click.",
 		heroFormCta: "<strong>Get Free Certification - In Minutes</strong>",
-		trustText: "Trusted by 1 Million+ learners from 1,800+ organizations",
+		trustText: "Trusted by 5 Million+ learners from 1,800+ organizations",
 		image: HeroImage,
 		mobileImage: HeroImage,
 		heroModal: {
-			title: 'Master Marketing with 2-Minute Videos <br class="modal-break" />- Join 1M+ Learners',
+			title: 'Master Marketing with 2-Minute Videos <br class="modal-break" />- Join 5M+ Learners',
 			// subtitle: "Enter your details for instant access.",
 			ctaText: "Get Certified In Minutes",
 			videoSrc: biologyCarouselDesktop,
@@ -69,7 +69,7 @@ export const marketingData: LandingPageData = {
 	concepts: {
 		heading: "Every <span>marketing</span> concept you need. <span>Under 2 minutes.</span>",
 		subheading: "One concept at a time, explained with short videos.",
-		ctaText: "Join 1M+ Professionals",
+		ctaText: "Join 5M+ Professionals",
 		features: [
 			{ icon: "micro-courses", text: "500+ Micro-courses" },
 			{ icon: "curriculum", text: "Curriculum-aligned" },

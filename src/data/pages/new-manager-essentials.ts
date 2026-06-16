@@ -51,7 +51,7 @@ export const newManagerEssentialsData: LandingPageData = {
 		mobileSubtitle: "Delegation, feedback, and team communication—explained for your first management role.",
 		ctaTitle: "Watch management essentials finally click.",
 		heroFormCta: "Get Free Certification - In Minutes",
-		trustText: "Trusted by 1 Million+ learners from 1,800+ organizations",
+		trustText: "Trusted by 5 Million+ learners from 1,800+ organizations",
 		image: HeroImage,
 		mobileImage: HeroImageMobile,
 		heroModal: {
@@ -64,7 +64,7 @@ export const newManagerEssentialsData: LandingPageData = {
 	concepts: {
 		heading: "Every <span>new manager</span> skill you need. <span>Under 2 minutes.</span>",
 		subheading: "One concept at a time, explained with short videos.",
-		ctaText: "Join 1M+ Professionals",
+		ctaText: "Join 5M+ Professionals",
 		features: [
 			{ icon: "micro-courses", text: "500+ Micro-courses" },
 			{ icon: "curriculum", text: "Curriculum-aligned" },

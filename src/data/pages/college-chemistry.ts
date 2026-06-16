@@ -62,7 +62,7 @@ export const ChemistryGenJanData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Master College Chemistry in 2-Minute Videos - Join 1M+ Students",
+            title: "Master College Chemistry in 2-Minute Videos - Join 5M+ Students",
             // subtitle: "Enter your details for instant access.",
             ctaText: "Watch College Chem Videos Free — No Signup",
             videoSrc: "https://cloudfront.jove.com/CDNSource/samples2/10671.mp4"
@@ -243,7 +243,7 @@ export const ChemistryGenJanData: LandingPageData = {
     },
     firstCTA: {
         title: "Ready to try the smarter way?",
-        subtitle: "Try it free and see why 1M+ students switched."
+        subtitle: "Try it free and see why 5M+ students switched."
     },
     secondCTA: {
         title: 'Ready to try the 4 steps',

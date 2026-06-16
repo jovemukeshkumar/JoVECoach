@@ -53,7 +53,7 @@ export const PhysicsGenJanData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImageMobile,
         heroModal: {
-            title: "7-Day Free Access • No Credit Card • Trusted by 1M+ Students",
+            title: "7-Day Free Access • No Credit Card • Trusted by 5M+ Students",
             // subtitle: "Enter your details for instant access.",
             ctaText: "Your Free Physics Lesson is Ready",
             videoSrc: PhysicsCarouselDesktop
@@ -227,7 +227,7 @@ export const PhysicsGenJanData: LandingPageData = {
     },
     firstCTA: {
         title: "Ready to try the smarter way?",
-        subtitle: "Try it free and see why 1M+ students switched."
+        subtitle: "Try it free and see why 5M+ students switched."
     },
     secondCTA: {
         title: 'Ready to try the 4 steps',

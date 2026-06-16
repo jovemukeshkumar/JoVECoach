@@ -62,11 +62,11 @@ export const businessJanData: LandingPageData = {
         mobileSubtitle: "Finance, accounting, and economics—explained for real work.",
         ctaTitle: "See business concepts finally make sense",
         heroFormCta: "<strong>Get Certified</strong>&nbsp;- It's Free",
-        trustText: "Trusted by 1 Million+ learners",
+        trustText: "Trusted by 5 Million+ learners",
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Master Business in 2-Minute Videos <br class=\"modal-break\" />- Join 1M+ Learners",
+            title: "Master Business in 2-Minute Videos <br class=\"modal-break\" />- Join 5M+ Learners",
             // subtitle: "Enter your details for instant access.",
             ctaText: "Watch Business Videos Free — No Signup",
             videoSrc: biologyCarouselDesktop

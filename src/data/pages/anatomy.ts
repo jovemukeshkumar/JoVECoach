@@ -73,7 +73,7 @@ export const anatomyData: LandingPageData = {
         image: HeroImage,
         mobileImage: HeroImage,
         heroModal: {
-            title: "Master Anatomy & Physiology in 2-Minute Videos - Join 1M+ Students",
+            title: "Master Anatomy & Physiology in 2-Minute Videos - Join 5M+ Students",
             // subtitle: "Enter your details for instant access to this lesson and more like it.",
             ctaText: "Watch Anatomy Videos Free — No Signup",
             videoSrc: "https://cloudfront.jove.com/CDNSource/samples2/16242.mp4"
@@ -255,7 +255,7 @@ export const anatomyData: LandingPageData = {
     },
     firstCTA: {
         title: "Ready to try the smarter way?",
-        subtitle: "Try it free and see why 1M+ students switched."
+        subtitle: "Try it free and see why 5M+ students switched."
     },
     secondCTA: {
         title: 'Ready to try the 4 steps',
