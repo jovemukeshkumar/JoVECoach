@@ -30,4 +30,4 @@ export const newManagerEssentialsRedirectUri = newManagerEssentialsHeroImageRedi
 export const COACH_HOME_RETURN_URL = "https://coach.jove.com/home";
 
 /** Open-form redirecturi when utm_term is present (searchQuery appended client-side). */
-export const COACH_SEARCH_REDIRECT_BASE = "https://coach.jove.com/coach/";
+export const COACH_SEARCH_REDIRECT_BASE = "https://coach.jove.com/microcourse/new-manager-essentials";

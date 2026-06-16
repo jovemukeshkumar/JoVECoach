@@ -50,14 +50,14 @@ export const newManagerEssentialsData: LandingPageData = {
 		subtitle: "Delegation, feedback, team communication, and decision-making—explained for your first management role, without long courses. 20 years of trusted education.",
 		mobileSubtitle: "Delegation, feedback, and team communication—explained for your first management role.",
 		ctaTitle: "Watch management essentials finally click.",
-		heroFormCta: "Get Free Certification - In Minutes",
+		heroFormCta: "Start My Free Trial",
 		trustText: "Trusted by 5 Million+ learners from 1,800+ organizations",
 		image: HeroImage,
 		mobileImage: HeroImageMobile,
 		heroModal: {
 			title: 'Ready for Your Next Promotion ?',
 			subtitle: "Try JoVE Coach and build leadership skills that move your career forward.",
-			ctaText: "Get Free Certification - In Minutes",
+			ctaText: "Start My Free Trial",
 			videoSrc: biologyCarouselDesktop,
 		},
 	},
@@ -262,7 +262,7 @@ export const newManagerEssentialsData: LandingPageData = {
 	firstCTA: {
 		title: "Ready to lead with confidence?",
 		subtitle: "Try it free and build the skills leaders notice.",
-		ctaText: "Get Free Certification - In Minutes",
+		ctaText: "Start My Free Trial",
 	},
 	secondCTA: {
 		title: "Ready to try the 4 steps",
@@ -330,7 +330,7 @@ export const newManagerEssentialsData: LandingPageData = {
 	modal: {
 		title: "Ready for Your Next Promotion?",
 		subtitle: "Try JoVE Coach and build leadership skills that move your career forward.",
-		ctaText: "Get Free Certification - In Minutes",
+		ctaText: "Start My Free Trial",
 	},
 	footer: {
 		title: "The Fast Lane to Career Growth.",

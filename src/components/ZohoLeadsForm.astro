@@ -111,7 +111,7 @@ import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 	window.getOpenFormRedirectUri = function () {
 		const searchQuery = window.getUtmSearchKeyword();
 		if (searchQuery) {
-			const url = new URL("https://coach.jove.com/coach/");
+			const url = new URL("https://coach.jove.com/microcourse/new-manager-essentials/");
 			url.searchParams.set("searchQuery", searchQuery);
 			url.searchParams.set("page", "home");
 			return url.toString();
