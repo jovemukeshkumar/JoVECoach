@@ -3,7 +3,7 @@ const NME_MICROCOURSE_BASE = "https://coach.jove.com/microcourse/new-manager-ess
 
 /** Open forms / modals when utm_term (or utm_keyword / keyword) is empty. */
 export const newManagerEssentialsNoUtmRedirect =
-	`${NME_MICROCOURSE_BASE}/transitioning-from-individual-contributor-to-manager/from-individual-contributor-to-manager`;
+	`${NME_MICROCOURSE_BASE}/transitioning-from-individual-contributor-to-manager`;
 
 /** Hero image click → modal submit. */
 export const newManagerEssentialsHeroImageRedirect =
