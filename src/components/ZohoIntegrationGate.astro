@@ -103,7 +103,6 @@ const { part = "body" } = Astro.props;
 					}
 					if (company) {
 						url.searchParams.set("organizationName", company);
-						url.searchParams.set("education", company);
 					}
 					window.location.href = url.toString();
 				}
