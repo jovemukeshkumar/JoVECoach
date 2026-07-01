@@ -52,14 +52,16 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 				e.preventDefault();
 				console.log(`Dummy form ${formIdSuffix} submitted.`);
 
-				const name = form.querySelector('input[name="dummyName"]').value;
-				const email = form.querySelector('input[name="dummyEmail"]').value;
-				const organizationName = form.querySelector('input[name="dummyOrgName"]').value;
+				const name = form.querySelector('input[name="dummyName"]').value.trim();
+				const email = form.querySelector('input[name="dummyEmail"]').value.trim();
+				const organizationName = form.querySelector('input[name="dummyOrgName"]').value.trim();
 
-				if (window.submitToZoho) {
-					window.submitToZoho({ name, email, organizationName, formSource, redirectUri: redirectUri || undefined });
+				if (window.submitCoachLead) {
+					window.submitCoachLead({ name, email, organizationName, formSource, redirectUri: redirectUri || undefined });
+				} else if (window.redirectCoachLead) {
+					window.redirectCoachLead({ name, email, organizationName, redirectUri: redirectUri || undefined });
 				} else {
-					console.error("window.submitToZoho is not defined. Make sure ZohoMasterForm is included.");
+					console.error("Coach lead submit helpers are not available.");
 					alert("Submission failed. Please try again later.");
 				}
 			});

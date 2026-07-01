@@ -46,14 +46,16 @@ import zohoCTAImage from "../assets/zohoCTAImage.png";
 	if (footerForm) {
 		footerForm.addEventListener("submit", function (e) {
 			e.preventDefault();
-			const name = footerForm.querySelector('input[name="footerName"]').value;
-			const email = footerForm.querySelector('input[name="footerEmail"]').value;
-			const organizationName = footerForm.querySelector('input[name="footerCompany"]').value;
+			const name = footerForm.querySelector('input[name="footerName"]').value.trim();
+			const email = footerForm.querySelector('input[name="footerEmail"]').value.trim();
+			const organizationName = footerForm.querySelector('input[name="footerCompany"]').value.trim();
 
-			if (window.submitToZoho) {
-				window.submitToZoho({ name, email, organizationName, formSource, redirectUri: redirectUri || undefined });
+			if (window.submitCoachLead) {
+				window.submitCoachLead({ name, email, organizationName, formSource, redirectUri: redirectUri || undefined });
+			} else if (window.redirectCoachLead) {
+				window.redirectCoachLead({ name, email, organizationName, redirectUri: redirectUri || undefined });
 			} else {
-				console.error("Global submit function missing");
+				console.error("Coach lead submit helpers are not available.");
 			}
 		});
 	}

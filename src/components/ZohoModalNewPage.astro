@@ -150,29 +150,31 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 			e.preventDefault();
 			console.log("Modal Form Submitted");
 
-			const name = modalForm.querySelector('input[name="modalName"]').value;
-			const email = modalForm.querySelector('input[name="modalEmail"]').value;
-			const organizationName = modalForm.querySelector('input[name="modalCompany"]').value;
+			const name = modalForm.querySelector('input[name="modalName"]').value.trim();
+			const email = modalForm.querySelector('input[name="modalEmail"]').value.trim();
+			const organizationName = modalForm.querySelector('input[name="modalCompany"]').value.trim();
 			const formSource = modalForm.querySelector('input[name="modalFormSource"]').value;
 			const redirectUriInput = modalForm.querySelector('input[name="modalRedirectUri"]');
 			const redirectUri = redirectUriInput?.value?.trim() || "";
 
-			if (window.submitToZoho) {
-				window.submitToZoho({
-					name,
-					email,
-					organizationName,
-					formSource,
-					redirectUri: redirectUri || (window.getOpenFormRedirectUri && window.getOpenFormRedirectUri()),
-				});
+			const payload = {
+				name,
+				email,
+				organizationName,
+				formSource,
+				redirectUri: redirectUri || (window.getOpenFormRedirectUri && window.getOpenFormRedirectUri()),
+			};
 
-				// Close the video modal on submit as well
-				if (window.closeVideoModal) {
-					window.closeVideoModal();
-				}
+			if (window.submitCoachLead) {
+				window.submitCoachLead(payload);
+			} else if (window.redirectCoachLead) {
+				window.redirectCoachLead(payload);
 			} else {
-				console.error("Master form function missing.");
+				console.error("Coach lead submit helpers are not available.");
 				alert("Submission failed. Please try again later.");
+			}
+			if (window.closeVideoModal) {
+				window.closeVideoModal();
 			}
 		});
 	}

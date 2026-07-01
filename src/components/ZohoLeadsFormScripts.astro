@@ -1,0 +1,207 @@
+---
+---
+
+<script is:inline>
+	window.getUtmSearchKeyword = function () {
+		const params = new URLSearchParams(window.location.search);
+		const raw = params.get("utm_term") || params.get("utm_keyword") || params.get("keyword") || "";
+		const trimmed = raw.trim();
+		return trimmed.length > 0 ? trimmed : "";
+	};
+
+	const LANDING_TRACKING_PARAMS = [
+		"utm_source",
+		"utm_medium",
+		"utm_campaign",
+		"utm_term",
+		"utm_content",
+		"gclid",
+		"fbclid",
+		"msclkid",
+	];
+
+	window.appendLandingTrackingParams = function (url) {
+		const params = new URLSearchParams(window.location.search);
+		for (const key of LANDING_TRACKING_PARAMS) {
+			if (params.has(key)) {
+				url.searchParams.set(key, params.get(key));
+			}
+		}
+		return url;
+	};
+
+	window.normalizeUrlString = function (href) {
+		if (!href || typeof href !== "string") return href;
+		const hashIdx = href.indexOf("#");
+		const hash = hashIdx >= 0 ? href.slice(hashIdx) : "";
+		const withoutHash = hashIdx >= 0 ? href.slice(0, hashIdx) : href;
+		const qIdx = withoutHash.indexOf("?");
+		if (qIdx === -1) return href;
+		const base = withoutHash.slice(0, qIdx);
+		const query = withoutHash
+			.slice(qIdx + 1)
+			.replace(/\?/g, "&")
+			.replace(/^&+|&+$/g, "");
+		return query ? `${base}?${query}${hash}` : `${base}${hash}`;
+	};
+
+	window.parseCoachUrl = function (href) {
+		return new URL(window.normalizeUrlString(href));
+	};
+
+	window.appendUserParams = function (url, { name, email, organizationName }) {
+		const trimmedName = (name || "").trim();
+		const trimmedEmail = (email || "").trim();
+		const trimmedOrg = (organizationName || "").trim();
+
+		if (trimmedName) url.searchParams.set("username", trimmedName);
+		if (trimmedEmail) {
+			url.searchParams.set("email", trimmedEmail);
+			url.searchParams.set("useremail", trimmedEmail);
+		}
+		if (trimmedOrg) {
+			url.searchParams.set("organizationName", trimmedOrg);
+			url.searchParams.set("education", trimmedOrg);
+		}
+		return url;
+	};
+
+	window.getOpenFormRedirectUri = function () {
+		const searchQuery = window.getUtmSearchKeyword();
+		if (searchQuery) {
+			const url = new URL("https://coach.jove.com/microcourse/new-manager-essentials/");
+			url.searchParams.set("searchQuery", searchQuery);
+			url.searchParams.set("page", "home");
+			return url.toString();
+		}
+		return window.inlineCoachRedirectFallback || "";
+	};
+
+	window.buildHomeReturnUrl = function ({ redirectUri, name, email, organizationName }) {
+		const user = { name, email, organizationName };
+		const home = new URL("https://coach.jove.com/home");
+
+		if (redirectUri && redirectUri.startsWith("http")) {
+			try {
+				const dest = window.parseCoachUrl(redirectUri);
+				for (const key of ["searchQuery", "page"]) {
+					if (dest.searchParams.has(key)) {
+						home.searchParams.set(key, dest.searchParams.get(key));
+					}
+				}
+				home.searchParams.set("redirecturi", dest.origin + dest.pathname);
+			} catch {
+				home.searchParams.set("redirecturi", redirectUri.split("?")[0]);
+			}
+		}
+
+		window.appendUserParams(home, user);
+		window.appendLandingTrackingParams(home);
+		return home.toString();
+	};
+
+	window.redirectCoachLead = function ({ name, email, organizationName, redirectUri }) {
+		const rawDestination = redirectUri || window.getOpenFormRedirectUri();
+		window.location.href = window.buildHomeReturnUrl({
+			redirectUri: rawDestination,
+			name,
+			email,
+			organizationName,
+		});
+	};
+
+	window.submitCoachLead = function (data) {
+		let { name, email, organizationName, redirectUri } = data;
+		name = (name || "").trim();
+		email = (email || "").trim();
+		organizationName = (organizationName || "").trim();
+
+		if (!name || !email) {
+			console.error("Name and Email are required for submission.");
+			return;
+		}
+
+		window.redirectCoachLead({ name, email, organizationName, redirectUri });
+	};
+
+	/** @deprecated Use submitCoachLead — kept for backwards compatibility. */
+	window.submitToZoho = window.submitCoachLead;
+
+	function populateZohoTrackingFields() {
+		const params = new URLSearchParams(window.location.search);
+		const suffix = "_master";
+
+		const mapping = {
+			utm_source: `LEADCF8${suffix}`,
+			utm_medium: `LEADCF9${suffix}`,
+			utm_campaign: `LEADCF11${suffix}`,
+			utm_term: `LEADCF7${suffix}`,
+			utm_content: `LEADCF10${suffix}`,
+			ad_id: `LEADCF13${suffix}`,
+			ad_set_id: `LEADCF14${suffix}`,
+			ad_name: `LEADCF18${suffix}`,
+			ad_platform: `LEADCF12${suffix}`,
+			ad_campaign_id: `LEADCF4${suffix}`,
+			ad_group_name: `LEADCF5${suffix}`,
+			ad_group_id: `LEADCF17${suffix}`,
+			ad_campaign_name: `LEADCF6${suffix}`,
+		};
+
+		for (const key in mapping) {
+			const el = document.getElementById(mapping[key]);
+			if (el && params.has(key)) {
+				el.value = params.get(key);
+			}
+		}
+
+		const landingField = document.getElementById(`LEADCF23${suffix}`);
+		if (landingField) landingField.value = window.location.href;
+
+		const refField = document.getElementById(`LEADCF16${suffix}`);
+		if (refField) {
+			const referrerUrlParam = params.get("referrer_url") || params.get("referrer") || params.get("ref");
+			refField.value = referrerUrlParam || document.referrer || "-";
+		}
+
+		const sourceSelect = document.getElementById(`LEADCF25${suffix}`);
+		const subsourceSelect = document.getElementById(`LEADCF26${suffix}`);
+		const gclid = params.get("gclid");
+		const sources = params.getAll("source");
+		const utmSource = params.get("utm_source");
+		const utmMedium = params.get("utm_medium");
+
+		if (sourceSelect) {
+			if (sources.some(s => s.toLowerCase() === "paid") || gclid || params.get("ad_id")) {
+				sourceSelect.value = "Paid";
+			} else if (sources.some(s => s.toLowerCase() === "organic")) {
+				sourceSelect.value = "Organic";
+			} else if (sources.some(s => s.toLowerCase() === "social")) {
+				sourceSelect.value = "Social";
+			} else if (utmMedium && (utmMedium.toLowerCase().includes("cpc") || utmMedium.toLowerCase().includes("paid"))) {
+				sourceSelect.value = "Paid";
+			}
+		}
+
+		if (subsourceSelect) {
+			let subsourceValue = "";
+			for (const s of sources) {
+				if (s.toLowerCase() === "google") subsourceValue = "Google Ads";
+				else if (s.toLowerCase() === "facebook" || s.toLowerCase() === "meta") subsourceValue = "Meta Ads";
+				else if (s.toLowerCase() === "linkedin") subsourceValue = "Linkedin";
+			}
+			if (!subsourceValue && utmSource) {
+				if (utmSource.toLowerCase().includes("google")) subsourceValue = "Google Ads";
+				else if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("meta")) subsourceValue = "Meta Ads";
+				else if (utmSource.toLowerCase().includes("linkedin")) subsourceValue = "Linkedin";
+			}
+			if (!subsourceValue && gclid) subsourceValue = "Google Ads";
+			if (subsourceValue) subsourceSelect.value = subsourceValue;
+		}
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", populateZohoTrackingFields);
+	} else {
+		populateZohoTrackingFields();
+	}
+</script>

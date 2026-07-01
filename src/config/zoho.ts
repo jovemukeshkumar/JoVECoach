@@ -1,6 +1,4 @@
 /**
- * Master switch for all Zoho CRM / form traffic.
- * When false: no POSTs to crm.zoho.in, no analytics scripts, redirects still work.
- * Wired through ZohoIntegrationGate (layouts), ZohoLeadsForm, and ZohoMasterForm.
+ * Master switch for Zoho CRM POST (currently disabled — forms redirect to coach.jove.com/home only).
  */
 export const ZOHO_INTEGRATION_ENABLED = false;
