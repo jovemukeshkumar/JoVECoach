@@ -97,14 +97,43 @@ import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 		return url;
 	};
 
-	/** Add landing-page tracking params to a touchpoint destination URL. */
-	window.withLandingTrackingOnDestination = function (destination) {
-		if (!destination || !destination.startsWith("http")) return destination;
-		try {
-			return window.appendLandingTrackingParams(new URL(destination)).toString();
-		} catch {
-			return destination;
+	/** Fix URLs that were built with string concat and contain multiple "?". */
+	window.normalizeUrlString = function (href) {
+		if (!href || typeof href !== "string") return href;
+		const hashIdx = href.indexOf("#");
+		const hash = hashIdx >= 0 ? href.slice(hashIdx) : "";
+		const withoutHash = hashIdx >= 0 ? href.slice(0, hashIdx) : href;
+		const qIdx = withoutHash.indexOf("?");
+		if (qIdx === -1) return href;
+		const base = withoutHash.slice(0, qIdx);
+		const query = withoutHash
+			.slice(qIdx + 1)
+			.replace(/\?/g, "&")
+			.replace(/^&+|&+$/g, "");
+		return query ? `${base}?${query}${hash}` : `${base}${hash}`;
+	};
+
+	/** Parse a URL safely, normalizing duplicate "?" first. */
+	window.parseCoachUrl = function (href) {
+		return new URL(window.normalizeUrlString(href));
+	};
+
+	/** Add user identity params to a URL (home level only — not inside redirecturi). */
+	window.appendUserParams = function (url, { name, email, organizationName }) {
+		const trimmedName = (name || "").trim();
+		const trimmedEmail = (email || "").trim();
+		const trimmedOrg = (organizationName || "").trim();
+
+		if (trimmedName) url.searchParams.set("username", trimmedName);
+		if (trimmedEmail) {
+			url.searchParams.set("email", trimmedEmail);
+			url.searchParams.set("useremail", trimmedEmail);
 		}
+		if (trimmedOrg) {
+			url.searchParams.set("organizationName", trimmedOrg);
+			url.searchParams.set("education", trimmedOrg);
+		}
+		return url;
 	};
 
 	/** Touchpoint destination URL (value for redirecturi), not the full return URL. */
@@ -119,22 +148,39 @@ import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 		return window.inlineCoachRedirectFallback || "";
 	};
 
-	/** https://coach.jove.com/home?redirecturi=...&username=...&utm_*=... */
+	/** https://coach.jove.com/home?redirecturi=<path-only>&username=...&searchQuery=... */
 	window.buildHomeReturnUrl = function ({ redirectUri, name, email, organizationName }) {
-		const url = new URL("https://coach.jove.com/home");
-		if (redirectUri) {
-			url.searchParams.set("redirecturi", redirectUri);
+		const user = { name, email, organizationName };
+		const home = new URL("https://coach.jove.com/home");
+
+		if (redirectUri && redirectUri.startsWith("http")) {
+			try {
+				const dest = window.parseCoachUrl(redirectUri);
+				// Keep redirecturi path-only so Coach can append ?username=... safely.
+				// Promote destination query params (searchQuery, page) to the home URL.
+				for (const key of ["searchQuery", "page"]) {
+					if (dest.searchParams.has(key)) {
+						home.searchParams.set(key, dest.searchParams.get(key));
+					}
+				}
+				home.searchParams.set("redirecturi", dest.origin + dest.pathname);
+			} catch {
+				home.searchParams.set("redirecturi", redirectUri.split("?")[0]);
+			}
 		}
-		if (name) url.searchParams.set("username", name);
-		if (email) url.searchParams.set("email", email);
-		if (organizationName) url.searchParams.set("organizationName", organizationName);
-		return window.appendLandingTrackingParams(url).toString();
+
+		window.appendUserParams(home, user);
+		window.appendLandingTrackingParams(home);
+		return home.toString();
 	};
 
 	window.submitToZoho = function (data) {
 		console.log("submitToZoho (Leads) called with:", data);
 
-		const { name, email, organizationName, formSource, redirectUri } = data;
+		let { name, email, organizationName, formSource, redirectUri } = data;
+		name = (name || "").trim();
+		email = (email || "").trim();
+		organizationName = (organizationName || "").trim();
 
 		if (!name || !email) {
 			console.error("Name and Email are required for Zoho submission.");
@@ -158,11 +204,10 @@ import { ZOHO_INTEGRATION_ENABLED } from "../config/zoho";
 			sourceInput.value = formSource;
 		}
 
-		// 2. Construct Return URL — always coach.jove.com/home?redirecturi=...
+		// 2. Construct Return URL — redirecturi is path-only; params live on /home
 		const rawDestination = redirectUri || window.getOpenFormRedirectUri();
-		const destination = window.withLandingTrackingOnDestination(rawDestination);
 		returnURLInput.value = window.buildHomeReturnUrl({
-			redirectUri: destination,
+			redirectUri: rawDestination,
 			name,
 			email,
 			organizationName,

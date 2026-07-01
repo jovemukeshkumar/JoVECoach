@@ -42,18 +42,50 @@ const { part = "body" } = Astro.props;
 				function redirectFromForm(form) {
 					const returnURLInput = form.querySelector('input[name="returnURL"]');
 					const stored = returnURLInput && returnURLInput.value;
-					if (stored && stored !== "null" && stored.startsWith("http")) {
+					if (
+						stored &&
+						stored !== "null" &&
+						stored.startsWith("http") &&
+						(stored.includes("username=") || stored.includes("email=") || stored.includes("useremail="))
+					) {
 						window.location.href = stored;
 						return;
 					}
 
-					const name = fieldValue(form, ['[name="Last Name"]', "#Last_Name_modal", '[name="modalName"]', "#Last_Name_master"]);
-					const email = fieldValue(form, ['[name="Email"]', "#Email_modal", '[name="modalEmail"]', "#Email_master"]);
-					const company = fieldValue(form, ['[name="Company"]', "#Company_modal", '[name="modalCompany"]', "#Company_master"]);
+					const name = fieldValue(form, [
+						'[name="Last Name"]',
+						"#Last_Name_modal",
+						'[name="modalName"]',
+						"#Last_Name_master",
+						'[name="dummyName"]',
+						"#Last_Name_footer",
+						'[name="footerName"]',
+					]);
+					const email = fieldValue(form, [
+						'[name="Email"]',
+						"#Email_modal",
+						'[name="modalEmail"]',
+						"#Email_master",
+						'[name="dummyEmail"]',
+						"#Email_footer",
+						'[name="footerEmail"]',
+					]);
+					const company = fieldValue(form, [
+						'[name="Company"]',
+						"#Company_modal",
+						'[name="modalCompany"]',
+						"#Company_master",
+						'[name="dummyOrgName"]',
+						"#Company_footer",
+						'[name="footerCompany"]',
+					]);
+					const modalRedirectUri = document.getElementById("modalRedirectUriInput");
+					const explicitRedirectUri = modalRedirectUri && modalRedirectUri.value ? modalRedirectUri.value.trim() : "";
 
 					if (typeof window.buildHomeReturnUrl === "function") {
 						const destination =
-							typeof window.getOpenFormRedirectUri === "function" ? window.getOpenFormRedirectUri() : "";
+							explicitRedirectUri ||
+							(typeof window.getOpenFormRedirectUri === "function" ? window.getOpenFormRedirectUri() : "");
 						window.location.href = window.buildHomeReturnUrl({
 							redirectUri: destination,
 							name,
@@ -65,8 +97,14 @@ const { part = "body" } = Astro.props;
 
 					const url = new URL("https://coach.jove.com/home");
 					if (name) url.searchParams.set("username", name);
-					if (email) url.searchParams.set("email", email);
-					if (company) url.searchParams.set("organizationName", company);
+					if (email) {
+						url.searchParams.set("email", email);
+						url.searchParams.set("useremail", email);
+					}
+					if (company) {
+						url.searchParams.set("organizationName", company);
+						url.searchParams.set("education", company);
+					}
 					window.location.href = url.toString();
 				}
 
