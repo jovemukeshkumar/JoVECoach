@@ -55,12 +55,9 @@
 		const trimmedOrg = (organizationName || "").trim();
 
 		if (trimmedName) url.searchParams.set("username", trimmedName);
-		if (trimmedEmail) {
-			url.searchParams.set("email", trimmedEmail);
-			url.searchParams.set("useremail", trimmedEmail);
-		}
+		if (trimmedEmail) url.searchParams.set("email", trimmedEmail);
 		if (trimmedOrg) {
-			url.searchParams.set("organizationName", trimmedOrg);
+			url.searchParams.set("organizationname", trimmedOrg);
 		}
 		return url;
 	};

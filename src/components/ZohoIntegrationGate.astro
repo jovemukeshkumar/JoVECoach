@@ -97,12 +97,9 @@ const { part = "body" } = Astro.props;
 
 					const url = new URL("https://coach.jove.com/home");
 					if (name) url.searchParams.set("username", name);
-					if (email) {
-						url.searchParams.set("email", email);
-						url.searchParams.set("useremail", email);
-					}
+					if (email) url.searchParams.set("email", email);
 					if (company) {
-						url.searchParams.set("organizationName", company);
+						url.searchParams.set("organizationname", company);
 					}
 					window.location.href = url.toString();
 				}
