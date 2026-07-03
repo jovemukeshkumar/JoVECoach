@@ -113,6 +113,15 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 				}
 			}
 
+			overlay.querySelectorAll(".field-invalid").forEach(function (el) {
+				el.classList.remove("field-invalid");
+			});
+
+			const modalEmailInput = overlay.querySelector('input[name="modalEmail"]');
+			if (modalEmailInput && window.bindCoachEmailValidation) {
+				window.bindCoachEmailValidation(modalEmailInput);
+			}
+
 			overlay.style.display = "flex";
 			document.body.style.overflow = "hidden";
 		}
@@ -150,8 +159,10 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 			e.preventDefault();
 			console.log("Modal Form Submitted");
 
-			const name = modalForm.querySelector('input[name="modalName"]').value.trim();
-			const email = modalForm.querySelector('input[name="modalEmail"]').value.trim();
+			const nameInput = modalForm.querySelector('input[name="modalName"]');
+			const emailInput = modalForm.querySelector('input[name="modalEmail"]');
+			const name = nameInput.value.trim();
+			const email = emailInput.value.trim();
 			const organizationName = modalForm.querySelector('input[name="modalCompany"]').value.trim();
 			const formSource = modalForm.querySelector('input[name="modalFormSource"]').value;
 			const redirectUriInput = modalForm.querySelector('input[name="modalRedirectUri"]');
@@ -162,18 +173,21 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 				email,
 				organizationName,
 				formSource,
+				nameInput,
+				emailInput,
 				redirectUri: redirectUri || (window.getOpenFormRedirectUri && window.getOpenFormRedirectUri()),
 			};
 
+			let submitted = false;
 			if (window.submitCoachLead) {
-				window.submitCoachLead(payload);
+				submitted = window.submitCoachLead(payload) === true;
 			} else if (window.redirectCoachLead) {
-				window.redirectCoachLead(payload);
+				submitted = window.redirectCoachLead(payload) === true;
 			} else {
 				console.error("Coach lead submit helpers are not available.");
 				alert("Submission failed. Please try again later.");
 			}
-			if (window.closeVideoModal) {
+			if (submitted && window.closeVideoModal) {
 				window.closeVideoModal();
 			}
 		});
@@ -388,6 +402,23 @@ const { title = "The Smarter Way to Learn STEM", subtitle = "Try Jove Coach free
 
 	.global-form-input::placeholder {
 		color: rgba(255, 255, 255, 0.7);
+	}
+
+	/* Invalid state — high contrast on blue modal background */
+	#crmWebToEntityForm_modal .global-form-input.field-invalid {
+		border: 2px solid #ff4d4f !important;
+		background: #ffffff !important;
+		color: #111827 !important;
+		box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.35) !important;
+	}
+
+	#crmWebToEntityForm_modal .global-form-input.field-invalid::placeholder {
+		color: rgba(17, 24, 39, 0.45) !important;
+	}
+
+	#crmWebToEntityForm_modal .global-form-input.field-invalid:focus {
+		border-color: #ff4d4f !important;
+		box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.45) !important;
 	}
 
 	.global-form-btn {

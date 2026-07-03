@@ -52,14 +52,18 @@ const { layout = "vertical", ctaText = "Get Started Free", formIdSuffix = "dummy
 				e.preventDefault();
 				console.log(`Dummy form ${formIdSuffix} submitted.`);
 
-				const name = form.querySelector('input[name="dummyName"]').value.trim();
-				const email = form.querySelector('input[name="dummyEmail"]').value.trim();
+				const nameInput = form.querySelector('input[name="dummyName"]');
+				const emailInput = form.querySelector('input[name="dummyEmail"]');
+				const name = nameInput.value.trim();
+				const email = emailInput.value.trim();
 				const organizationName = form.querySelector('input[name="dummyOrgName"]').value.trim();
 
+				const payload = { name, email, organizationName, formSource, redirectUri: redirectUri || undefined, nameInput, emailInput };
+
 				if (window.submitCoachLead) {
-					window.submitCoachLead({ name, email, organizationName, formSource, redirectUri: redirectUri || undefined });
+					window.submitCoachLead(payload);
 				} else if (window.redirectCoachLead) {
-					window.redirectCoachLead({ name, email, organizationName, redirectUri: redirectUri || undefined });
+					window.redirectCoachLead(payload);
 				} else {
 					console.error("Coach lead submit helpers are not available.");
 					alert("Submission failed. Please try again later.");

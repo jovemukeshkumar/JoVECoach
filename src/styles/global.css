@@ -150,6 +150,16 @@ h2 span, .h2 span {
 	box-shadow: 0 0 0 3px rgba(33, 131, 237, 0.15);
 }
 
+.global-form-input.field-invalid {
+	border-color: #dc2626;
+	box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.global-form-input.field-invalid:focus {
+	border-color: #dc2626;
+	box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
 /* Global Button Style (Premium pill shape) */
 .global-form-btn {
 	width: 100%;

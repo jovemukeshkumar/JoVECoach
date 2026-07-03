@@ -49,6 +49,51 @@
 		return new URL(window.normalizeUrlString(href));
 	};
 
+	window.isValidCoachEmail = function (email) {
+		const trimmed = (email || "").trim();
+		if (!trimmed) return false;
+		const atpos = trimmed.indexOf("@");
+		const dotpos = trimmed.lastIndexOf(".");
+		return atpos >= 1 && dotpos >= atpos + 2 && dotpos + 2 < trimmed.length;
+	};
+
+	window.setCoachFieldInvalid = function (input, invalid) {
+		if (!input) return;
+		input.classList.toggle("field-invalid", invalid);
+	};
+
+	window.bindCoachEmailValidation = function (input) {
+		if (!input || input.dataset.coachValidationBound) return;
+		input.dataset.coachValidationBound = "true";
+		input.addEventListener("input", function () {
+			if (!input.value.trim() || window.isValidCoachEmail(input.value)) {
+				window.setCoachFieldInvalid(input, false);
+			}
+		});
+	};
+
+	window.validateCoachLeadFields = function ({ name, email, nameInput, emailInput }) {
+		window.setCoachFieldInvalid(nameInput, false);
+		window.setCoachFieldInvalid(emailInput, false);
+
+		const trimmedName = (name || "").trim();
+		const trimmedEmail = (email || "").trim();
+
+		if (!trimmedName) {
+			window.setCoachFieldInvalid(nameInput, true);
+			nameInput?.focus();
+			nameInput?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+			return false;
+		}
+		if (!trimmedEmail || !window.isValidCoachEmail(trimmedEmail)) {
+			window.setCoachFieldInvalid(emailInput, true);
+			emailInput?.focus();
+			emailInput?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+			return false;
+		}
+		return true;
+	};
+
 	window.appendUserParams = function (url, { name, email, organizationName }) {
 		const trimmedName = (name || "").trim();
 		const trimmedEmail = (email || "").trim();
@@ -96,7 +141,15 @@
 		return home.toString();
 	};
 
-	window.redirectCoachLead = function ({ name, email, organizationName, redirectUri }) {
+	window.redirectCoachLead = function ({ name, email, organizationName, redirectUri, nameInput, emailInput }) {
+		name = (name || "").trim();
+		email = (email || "").trim();
+		organizationName = (organizationName || "").trim();
+
+		if (!window.validateCoachLeadFields({ name, email, nameInput, emailInput })) {
+			return false;
+		}
+
 		const rawDestination = redirectUri || window.getOpenFormRedirectUri();
 		window.location.href = window.buildHomeReturnUrl({
 			redirectUri: rawDestination,
@@ -104,20 +157,16 @@
 			email,
 			organizationName,
 		});
+		return true;
 	};
 
 	window.submitCoachLead = function (data) {
-		let { name, email, organizationName, redirectUri } = data;
+		let { name, email, organizationName, redirectUri, nameInput, emailInput } = data;
 		name = (name || "").trim();
 		email = (email || "").trim();
 		organizationName = (organizationName || "").trim();
 
-		if (!name || !email) {
-			console.error("Name and Email are required for submission.");
-			return;
-		}
-
-		window.redirectCoachLead({ name, email, organizationName, redirectUri });
+		return window.redirectCoachLead({ name, email, organizationName, redirectUri, nameInput, emailInput });
 	};
 
 	/** @deprecated Use submitCoachLead — kept for backwards compatibility. */
@@ -195,9 +244,17 @@
 		}
 	}
 
+	function bindAllCoachEmailFields() {
+		document.querySelectorAll('input.email-field[type="email"]').forEach(window.bindCoachEmailValidation);
+	}
+
 	if (document.readyState === "loading") {
-		document.addEventListener("DOMContentLoaded", populateZohoTrackingFields);
+		document.addEventListener("DOMContentLoaded", function () {
+			populateZohoTrackingFields();
+			bindAllCoachEmailFields();
+		});
 	} else {
 		populateZohoTrackingFields();
+		bindAllCoachEmailFields();
 	}
 </script>
